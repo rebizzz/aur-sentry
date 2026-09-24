@@ -137,25 +137,32 @@ See `schemas/attestation.schema.json`. Core Rust types live in `src/attestation.
 
 ## Known gaps (not yet built, tracked here rather than a separate doc)
 
-- **Static analyzer is still regex/keyword-based**, not the AST-aware shell-semantics engine the
-  original vision describes (section 6: distinguishing `curl url | bash` from a benign
-  `curl url` fetch by real control/data flow, not string matching). This is a substantial,
-  separate rewrite of `src/analyzer.rs`/`src/scanner.rs` that every implementation pass so far
-  has deliberately left untouched to avoid destabilizing the existing 40+-signature scanner.
-- **No separate install-phase container.** The vision calls for building the package in one
-  disposable environment, then installing the resulting `.pkg.tar.*` fresh in a *second* clean
-  container specifically to observe `.install` script behavior (`post_install`/`post_upgrade`)
-  in isolation from build-time behavior. Today's pipeline observes build-time telemetry
-  (`makepkg`) and separately extracts+inspects the package's *contents*, but does not run
-  `pacman -U` in a second sandbox to observe `.install` scripts executing.
-- **No per-package history/diff view** in the registry UI (vision section 21) — the registry
-  shows the latest attestation per package, not a timeline of prior scans or a PKGBUILD diff
-  between versions.
-- **No homepage aggregate stats/active-threats banner** (vision section 33) — `docs/index.html`
-  lists packages individually; there's no "118,492 verified / 1,102 suspicious" summary rollup.
-- **Confidence/coverage is not tracked separately from verdict** (vision section 35) — a
-  `VERIFIED` result doesn't currently carry an explicit "analysis coverage: 94%" alongside it,
-  though `UNSUPPORTED`/`ANALYSIS_FAILED`/`INCONCLUSIVE` verdict states exist for the cases where
-  something couldn't be checked at all.
+- **Static analyzer detection is additive, not a full AST rewrite.** `src/shellparse.rs` adds a
+  bounded pipeline parser (literal-quote vs. executed-code classification, multi-stage `a | b | c`
+  splitting, recursion into `$(...)`/backticks) that lets `PIPELINE_FETCH_EXEC`/
+  `PIPELINE_BASE64_EXEC` (`src/analyzer.rs`) distinguish `curl url | tee x | bash` from
+  `curl url -o file.tar.gz`, and real base64-decode-then-execute pipelines from a string that
+  merely mentions `base64 -d`. What it deliberately does **not** attempt: here-docs, `&&`/`;`
+  sequencing, control-flow keywords, function definitions, arithmetic/glob expansion, or general
+  variable-value resolution — a full POSIX shell grammar. The original 40+ regex signatures are
+  untouched and still the primary detection surface; this is a precision layer on top, not a
+  replacement.
+- **Install-phase sandboxing — landed.** `scripts/dynamic_sandbox.sh` now runs `pacman -U`/`-R`
+  on an already-built package under the same strace telemetry as the build phase, observing
+  `pre/post_install` and `pre/post_remove` hooks for real (not just static inspection of the
+  package's contents). Canary credentials are planted fresh for this phase too.
+- **Per-package history — landed, with an honest limitation.** `docs/package.html`'s history
+  section lists every known version (via the GitHub Contents API) with a PKGBUILD
+  changed/unchanged indicator between consecutive scans. This is a sha256-equality check, not a
+  line-by-line diff — attestations only store the PKGBUILD's hash, never its source text, so a
+  real diff view would need a separate fetch of historical PKGBUILD text that isn't part of this
+  pipeline today.
+- **Homepage aggregate stats — landed.** `docs/index.html` shows a verdict-breakdown banner
+  (total tracked + verified/suspicious/malicious/other counts), computed client-side from the
+  existing manifest.
+- **Confidence/coverage is still not tracked separately from verdict** (vision section 35) — a
+  `VERIFIED` result doesn't carry an explicit "analysis coverage: 94%" alongside it, though
+  `UNSUPPORTED`/`ANALYSIS_FAILED`/`INCONCLUSIVE` verdict states exist for the cases where
+  something couldn't be checked at all. Remains genuinely unbuilt.
 
 This file is the living plan; update it as phases land instead of writing new planning docs.
