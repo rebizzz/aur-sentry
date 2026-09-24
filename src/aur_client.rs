@@ -158,10 +158,53 @@ impl AURClient {
             .filter(|p| p.last_modified.unwrap_or(0) >= cutoff)
             .collect()
     }
+    /// Fetch remote threat advisory feed from GitHub.
+    pub fn fetch_remote_advisories(&self) -> Option<Vec<crate::report::Advisory>> {
+        let url = "https://raw.githubusercontent.com/rebizzz/aur-sentry/main/advisories.json";
+        let mut resp = self.agent.get(url).call().ok()?;
+        let feed: crate::report::AdvisoryFeed = resp.body_mut().read_json().ok()?;
+        Some(feed.advisories)
+    }
 }
 
 impl Default for AURClient {
     fn default() -> Self {
         Self::new()
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn parses_aur_package_metadata_json() {
+        let raw = r#"[
+            {
+                "Name": "test-pkg",
+                "Version": "1.0.0-1",
+                "Maintainer": "archuser",
+                "LastModified": 1711234567,
+                "NumVotes": 42,
+                "Popularity": 3.14,
+                "OutOfDate": null,
+                "FirstSubmitted": 1600000000
+            },
+            {
+                "Name": "orphan-pkg",
+                "Version": "0.1-1",
+                "Maintainer": null,
+                "LastModified": 1711230000
+            }
+        ]"#;
+
+        let pkgs: Vec<AURPackage> =
+            serde_json::from_str(raw).expect("Failed to deserialize AUR packages");
+        assert_eq!(pkgs.len(), 2);
+        assert_eq!(pkgs[0].name, "test-pkg");
+        assert_eq!(pkgs[0].maintainer.as_deref(), Some("archuser"));
+        assert_eq!(pkgs[0].num_votes, Some(42));
+        assert_eq!(pkgs[1].name, "orphan-pkg");
+        assert_eq!(pkgs[1].maintainer, None);
     }
 }

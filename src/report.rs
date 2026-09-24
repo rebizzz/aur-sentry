@@ -183,3 +183,111 @@ pub fn update_readme_table(repo_root: &Path, advisories: &[Advisory]) {
     let new_content = format!("{}{}{}", &content[..start_idx], table, &content[end_idx..]);
     let _ = std::fs::write(&readme_path, new_content);
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn advisory_feed_save_and_load_roundtrip() {
+        let temp_dir = std::env::temp_dir().join(format!("aur_sentry_test_{}", std::process::id()));
+        let _ = std::fs::create_dir_all(&temp_dir);
+
+        let adv1 = Advisory {
+            package: "foo-malware".into(),
+            version: "1.0-1".into(),
+            maintainer: "badactor".into(),
+            highest_severity: "CRITICAL".into(),
+            detected_at: "2026-03-24T12:00:00Z".into(),
+            findings: vec![Finding {
+                rule_id: "REVSHELL_DEV_TCP".into(),
+                severity: "CRITICAL".into(),
+                description: "Reverse shell".into(),
+                line_number: 10,
+                matched_text: "bash -i >& /dev/tcp".into(),
+            }],
+            aur_url: "https://aur.archlinux.org/packages/foo-malware".into(),
+        };
+
+        let adv2 = Advisory {
+            package: "bar-suspicious".into(),
+            version: "0.2-1".into(),
+            maintainer: "orphan".into(),
+            highest_severity: "HIGH".into(),
+            detected_at: "2026-03-24T11:00:00Z".into(),
+            findings: vec![Finding {
+                rule_id: "SUS_VARIABLE_SPLICING".into(),
+                severity: "HIGH".into(),
+                description: "Variable splicing".into(),
+                line_number: 2,
+                matched_text: "a=b".into(),
+            }],
+            aur_url: "https://aur.archlinux.org/packages/bar-suspicious".into(),
+        };
+
+        save_advisories(&temp_dir, &[adv2.clone(), adv1.clone()]);
+
+        let loaded = load_advisories(&temp_dir);
+        assert_eq!(loaded.len(), 2);
+        // CRITICAL must be sorted before HIGH
+        assert_eq!(loaded[0].package, "foo-malware");
+        assert_eq!(loaded[0].highest_severity, "CRITICAL");
+        assert_eq!(loaded[1].package, "bar-suspicious");
+        assert_eq!(loaded[1].highest_severity, "HIGH");
+
+        // Verify RSS exists and contains both packages
+        let rss_path = temp_dir.join("advisories.xml");
+        assert!(rss_path.exists());
+        let rss_content = std::fs::read_to_string(&rss_path).unwrap();
+        assert!(rss_content.contains("foo-malware"));
+        assert!(rss_content.contains("bar-suspicious"));
+        assert!(rss_content.contains("<channel>"));
+
+        let _ = std::fs::remove_dir_all(&temp_dir);
+    }
+
+    #[test]
+    fn update_readme_table_preserves_surrounding_markdown() {
+        let temp_dir =
+            std::env::temp_dir().join(format!("aur_sentry_readme_test_{}", std::process::id()));
+        let _ = std::fs::create_dir_all(&temp_dir);
+
+        let initial_readme = r#"# AUR Sentry
+Header text.
+
+<!-- AUTOPILOT_TABLE_START -->
+<!-- AUTOPILOT_TABLE_END -->
+
+Footer notes.
+"#;
+        std::fs::write(temp_dir.join("README.md"), initial_readme).unwrap();
+
+        let adv = Advisory {
+            package: "bad-pkg".into(),
+            version: "1.0".into(),
+            maintainer: "hacker".into(),
+            highest_severity: "CRITICAL".into(),
+            detected_at: "2026-03-24T12:00:00Z".into(),
+            findings: vec![Finding {
+                rule_id: "EXFIL_DISCORD_WEBHOOK".into(),
+                severity: "CRITICAL".into(),
+                description: "Discord webhook".into(),
+                line_number: 5,
+                matched_text: "discord.com".into(),
+            }],
+            aur_url: "https://aur.archlinux.org/packages/bad-pkg".into(),
+        };
+
+        update_readme_table(&temp_dir, &[adv]);
+
+        let updated = std::fs::read_to_string(temp_dir.join("README.md")).unwrap();
+        assert!(updated.contains("Header text."));
+        assert!(updated.contains("Footer notes."));
+        assert!(updated.contains("<details open>"));
+        assert!(updated.contains("<summary>Active Threats (1)</summary>"));
+        assert!(updated.contains("`[CRITICAL]`"));
+        assert!(updated.contains("`bad-pkg`"));
+
+        let _ = std::fs::remove_dir_all(&temp_dir);
+    }
+}

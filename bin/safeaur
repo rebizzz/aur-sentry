@@ -29,9 +29,7 @@ ICON_SKULL="󰚌"
 ICON_WARN="󰀦"
 ICON_CHECK="󰄬"
 ICON_CROSS="󰅖"
-ICON_PKG="󰏗"
 ICON_DOWNLOAD="󰇚"
-ICON_SEARCH="󰍉"
 
 mkdir -p "$CACHE_DIR"
 

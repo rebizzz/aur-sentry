@@ -94,6 +94,12 @@ enum Commands {
         #[arg(long, default_value_t = 500)]
         limit: usize,
     },
+    /// Display active threat radar in the terminal
+    Radar {
+        /// Max threats to display
+        #[arg(long, default_value_t = 25)]
+        limit: usize,
+    },
 }
 
 fn main() -> ExitCode {
@@ -107,6 +113,7 @@ fn main() -> ExitCode {
             window_hours,
             limit,
         } => cmd_autopilot(&repo_root, window_hours, limit),
+        Commands::Radar { limit } => cmd_radar(limit),
     }
 }
 
@@ -325,4 +332,50 @@ fn print_findings(findings: &[aur_sentry::scanner::Finding]) {
         );
         eprintln!();
     }
+}
+
+// ── radar ───────────────────────────────────────────────────────────
+
+fn cmd_radar(limit: usize) -> ExitCode {
+    let mut advisories = report::load_advisories(Path::new("."));
+    if advisories.is_empty() {
+        let client = AURClient::new();
+        if let Some(remote) = client.fetch_remote_advisories() {
+            advisories = remote;
+        }
+    }
+
+    if advisories.is_empty() {
+        eprintln!(
+            "  {GREEN}{ICON_CHECK} {BOLD}radar clean{RESET}{GREEN} — no active threats recorded{RESET}"
+        );
+        return ExitCode::SUCCESS;
+    }
+
+    eprintln!(
+        "{CYAN}{ICON_RADAR} {BOLD}Live Threat Radar ({}){RESET}",
+        advisories.len()
+    );
+    eprintln!();
+    for adv in advisories.iter().take(limit) {
+        let color = severity_color(&adv.highest_severity);
+        let icon = severity_icon(&adv.highest_severity);
+        let triggers: Vec<_> = adv
+            .findings
+            .iter()
+            .take(3)
+            .map(|f| f.rule_id.as_str())
+            .collect();
+        eprintln!(
+            "  {color}{icon} [{BOLD}{}{RESET}{color}] {BOLD}{}{RESET} {DIM}v{} by {}{RESET} {color}— {}{RESET}",
+            adv.highest_severity,
+            adv.package,
+            adv.version,
+            adv.maintainer,
+            triggers.join(", ")
+        );
+        eprintln!("     {DIM}{}{RESET}", adv.aur_url);
+    }
+    eprintln!();
+    ExitCode::SUCCESS
 }

