@@ -1,0 +1,82 @@
+name: Dynamic Sandbox
+
+# Phase 1 "disposable sandbox" (see ARCHITECTURE.md) — the $0 substitute for the
+# AWS Fargate sandbox in the original vision. One job run == one disposable Arch
+# Linux analysis lab for exactly one AUR package, destroyed when the job ends.
+# GitHub-hosted runners only. No AWS/GCP/Azure, no paid services.
+
+on:
+  workflow_dispatch:
+    inputs:
+      package_name:
+        description: 'AUR package name to run through the disposable dynamic sandbox'
+        required: true
+        type: string
+  repository_dispatch:
+    types: [sentry-scan]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dynamic-sandbox-${{ github.event.inputs.package_name || github.event.client_payload.package }}
+  cancel-in-progress: false
+
+jobs:
+  sandbox:
+    name: Disposable Dynamic Sandbox (Arch Linux, GitHub-hosted)
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Harden Runner (Security & Egress Audit)
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Resolve target package name
+        id: pkg
+        run: |
+          PKG="${{ github.event.inputs.package_name }}"
+          if [ -z "$PKG" ]; then
+            PKG="${{ github.event.client_payload.package }}"
+          fi
+          if [ -z "$PKG" ]; then
+            echo "::error::no package name supplied (workflow_dispatch input 'package_name' or repository_dispatch client_payload.package)"
+            exit 1
+          fi
+          echo "name=$PKG" >> "$GITHUB_OUTPUT"
+
+      - name: Run disposable Arch Linux sandbox
+        run: |
+          chmod +x scripts/dynamic_sandbox.sh scripts/build_attestation.py
+          docker run --rm \
+            -v "$PWD:/workspace" \
+            -w /workspace \
+            archlinux:base-devel \
+            bash scripts/dynamic_sandbox.sh "${{ steps.pkg.outputs.name }}"
+
+      - name: Upload raw sandbox evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: dynamic-sandbox-evidence-${{ steps.pkg.outputs.name }}
+          path: sandbox-evidence/${{ steps.pkg.outputs.name }}/
+          if-no-files-found: ignore
+          retention-days: 90
+
+      - name: Commit attestation
+        if: always()
+        run: |
+          git config user.name "aur-sentry-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data/attestations
+          if git diff --cached --quiet; then
+            echo "No attestation changes to commit."
+          else
+            git commit -m "chore(sandbox): dynamic sandbox attestation for ${{ steps.pkg.outputs.name }}"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi

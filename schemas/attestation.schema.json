@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rebizzz/aur-sentry/schemas/attestation.schema.json",
+  "title": "AUR Sentry Attestation",
+  "description": "Evidence-based verification attestation for a single AUR package version.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "package",
+    "source",
+    "analyzed_at",
+    "scanner_version",
+    "static_findings",
+    "dynamic_evidence",
+    "package_analysis",
+    "reproducibility",
+    "external_intelligence",
+    "verdict",
+    "evidence_hash",
+    "signature"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "package": {
+      "$ref": "#/$defs/packageIdentity"
+    },
+    "source": {
+      "$ref": "#/$defs/sourceIdentity"
+    },
+    "analyzed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scanner_version": {
+      "type": "string"
+    },
+    "static_findings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/finding" }
+    },
+    "dynamic_evidence": {
+      "$ref": "#/$defs/dynamicEvidence"
+    },
+    "package_analysis": {
+      "$ref": "#/$defs/packageAnalysis"
+    },
+    "reproducibility": {
+      "$ref": "#/$defs/reproducibilityStatus"
+    },
+    "external_intelligence": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/intelligenceEntry" }
+    },
+    "verdict": {
+      "$ref": "#/$defs/verdict"
+    },
+    "evidence_hash": {
+      "type": "string",
+      "description": "sha256 hex digest over the canonical serialized evidence fields, excluding evidence_hash and signature.",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "signature": {
+      "type": ["string", "null"],
+      "description": "Detached signature over evidence_hash. Null until Phase 3 (Sigstore/cosign or ed25519) lands."
+    }
+  },
+  "$defs": {
+    "packageIdentity": {
+      "type": "object",
+      "required": ["name", "version", "arch"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "arch": { "type": "string" }
+      }
+    },
+    "sourceIdentity": {
+      "type": "object",
+      "required": ["aur_commit", "pkgbuild_sha256", "install_sha256"],
+      "additionalProperties": false,
+      "properties": {
+        "aur_commit": { "type": "string" },
+        "pkgbuild_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "install_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "severity": {
+      "type": "string",
+      "enum": ["INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    },
+    "behavior": {
+      "type": "string",
+      "enum": [
+        "NETWORK_ACCESS",
+        "SHELL_EXECUTION",
+        "CREDENTIAL_ACCESS",
+        "PERSISTENCE",
+        "PRIVILEGE_ESCALATION",
+        "OBFUSCATION",
+        "DYNAMIC_DOWNLOAD",
+        "ARBITRARY_FILESYSTEM_WRITE",
+        "PACKAGE_INSTALLATION",
+        "SERVICE_MANIPULATION"
+      ]
+    },
+    "finding": {
+      "type": "object",
+      "required": ["behavior", "file", "line", "severity", "description"],
+      "additionalProperties": false,
+      "properties": {
+        "behavior": { "$ref": "#/$defs/behavior" },
+        "file": { "type": "string" },
+        "line": { "type": "integer", "minimum": 0 },
+        "severity": { "$ref": "#/$defs/severity" },
+        "description": { "type": "string" }
+      }
+    },
+    "processEvent": {
+      "type": "object",
+      "required": ["command", "timestamp"],
+      "additionalProperties": false,
+      "properties": {
+        "command": { "type": "string" },
+        "parent": { "type": ["string", "null"] },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+    "networkEvent": {
+      "type": "object",
+      "required": ["destination", "timestamp"],
+      "additionalProperties": false,
+      "properties": {
+        "destination": { "type": "string" },
+        "port": { "type": ["integer", "null"] },
+        "protocol": { "type": ["string", "null"] },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+    "filesystemEvent": {
+      "type": "object",
+      "required": ["path", "operation", "timestamp"],
+      "additionalProperties": false,
+      "properties": {
+        "path": { "type": "string" },
+        "operation": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      }
+    },
+    "dynamicEvidence": {
+      "type": "object",
+      "description": "Optional/minimal in Phase 1 — the dynamic sandbox lands separately.",
+      "required": ["collected", "processes", "network", "filesystem"],
+      "additionalProperties": false,
+      "properties": {
+        "collected": {
+          "type": "boolean",
+          "description": "False when no dynamic sandbox run has been performed for this attestation."
+        },
+        "processes": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/processEvent" }
+        },
+        "network": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/networkEvent" }
+        },
+        "filesystem": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/filesystemEvent" }
+        }
+      }
+    },
+    "packageAnalysis": {
+      "type": "object",
+      "required": ["file_count", "elf_object_count"],
+      "additionalProperties": false,
+      "properties": {
+        "file_count": { "type": "integer", "minimum": 0 },
+        "elf_object_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "reproducibilityStatus": {
+      "type": "string",
+      "enum": ["NOT_ATTEMPTED", "REPRODUCED", "DIVERGED", "FAILED"]
+    },
+    "intelligenceEntry": {
+      "type": "object",
+      "required": ["source", "summary"],
+      "additionalProperties": false,
+      "properties": {
+        "source": { "type": "string" },
+        "summary": { "type": "string" },
+        "url": { "type": ["string", "null"] }
+      }
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "VERIFIED",
+        "SUSPICIOUS",
+        "MALICIOUS",
+        "INCONCLUSIVE",
+        "BUILD_FAILED",
+        "ANALYSIS_FAILED",
+        "STALE",
+        "UNSUPPORTED"
+      ]
+    }
+  }
+}
