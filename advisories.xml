@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>AUR-Sentry Security Advisories</title>
+    <link>https://github.com/rebizzz/aur-sentry</link>
+    <description>Automated supply-chain security alerts for Arch User Repository (AUR) packages</description>
+    <lastBuildDate>Thu, 24 Sep 2026 08:56:32 GMT</lastBuildDate>
+    <item>
+      <title>[MEDIUM] Suspicious pattern in 9pro-git (r111.2c1651b-1)</title>
+      <link>https://aur.archlinux.org/packages/9pro-git</link>
+      <description>Maintainer: renehsz&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
+      <pubDate>2026-09-24T08:56:27.245788+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/9pro-git#r111.2c1651b-1</guid>
+    </item>
+  </channel>
+</rss>

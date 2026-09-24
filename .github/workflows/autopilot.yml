@@ -1,0 +1,42 @@
+name: Autopilot Threat Radar
+
+on:
+  schedule:
+    # Runs every 2 hours
+    - cron: '20 */2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  radar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run unit test suite
+        run: |
+          PYTHONPATH=. python -m unittest discover -s tests
+
+      - name: Run Autopilot AUR scanner
+        run: |
+          PYTHONPATH=. python -m src.main autopilot --repo-root . --limit 80
+
+      - name: Commit updated threat radar
+        run: |
+          git config --global user.name "aur-sentry-bot"
+          git config --global user.email "bot@users.noreply.github.com"
+          git add advisories.json advisories.xml README.md
+          if ! git diff --staged --quiet; then
+            git commit -m "chore(autopilot): update AUR advisories and threat radar [skip ci]"
+            git push
+          else
+            echo "No new advisories or changes detected."
+          fi

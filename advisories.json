@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-09-24T08:56:32.367235+00:00",
+  "total_flagged": 1,
+  "advisories": [
+    {
+      "package": "9pro-git",
+      "version": "r111.2c1651b-1",
+      "maintainer": "renehsz",
+      "highest_severity": "MEDIUM",
+      "detected_at": "2026-09-24T08:56:27.245788+00:00",
+      "findings": [
+        {
+          "rule_id": "RULE_SKIP_HASH_REMOTE",
+          "severity": "MEDIUM",
+          "description": "Integrity checksum verification explicitly bypassed ('SKIP') for source files.",
+          "line_number": 16,
+          "matched_text": "sha256sums=('SKIP')"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/9pro-git"
+    }
+  ]
+}
