@@ -18,7 +18,7 @@ jobs:
   verify:
     name: Verify Threat Package on Arch Linux
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || (github.event.issue != null && startsWith(github.event.issue.title, '[CRITICAL THREAT]'))
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'issues' && startsWith(github.event.issue.title, '[CRITICAL THREAT]'))
     steps:
       - name: Harden Runner (Security & Egress Audit)
         uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
@@ -38,7 +38,7 @@ jobs:
         id: extract
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            PKG="${{ github.event.inputs.package_name }}"
+            PKG="${{ inputs.package_name }}"
           else
             TITLE="${{ github.event.issue.title }}"
             PKG=$(echo "$TITLE" | sed -E 's/.*for `?([a-zA-Z0-9_\.\-]+)`?/\1/')
@@ -67,8 +67,12 @@ jobs:
         if: github.event_name == 'issues'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_NUMBER: ${{ github.event.issue.number || '' }}
         run: |
+          if [ -z "$ISSUE_NUMBER" ]; then
+            echo "No issue number, skipping comment."
+            exit 0
+          fi
           PKG="${{ steps.extract.outputs.pkg }}"
           EXIT_CODE="${{ steps.scan.outputs.scan_exit }}"
           
