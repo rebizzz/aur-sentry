@@ -4,12 +4,12 @@
     <title>AUR-Sentry Security Advisories</title>
     <link>https://github.com/rebizzz/aur-sentry</link>
     <description>Automated supply-chain security alerts for Arch User Repository packages</description>
-    <lastBuildDate>Thu, 24 Sep 2026 10:25:27 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 10:41:06 +0000</lastBuildDate>
     <item>
       <title>[HIGH] paseo-desktop-git-bin (0.9.1.r50.gbbf8cce3f-2)</title>
       <link>https://aur.archlinux.org/packages/paseo-desktop-git-bin</link>
       <description>Maintainer: xpufx — Triggers: OBFUSCATED_DOLLAR_EXEC</description>
-      <pubDate>2026-09-24T10:24:47.033212151+00:00</pubDate>
+      <pubDate>2026-09-24T10:40:56.310264227+00:00</pubDate>
       <guid>https://aur.archlinux.org/packages/paseo-desktop-git-bin#0.9.1.r50.gbbf8cce3f-2</guid>
     </item>
   </channel>
