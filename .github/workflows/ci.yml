@@ -1,4 +1,4 @@
-name: CI Test Suite
+name: CI
 
 on:
   push:
@@ -10,18 +10,26 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
         with:
-          python-version: '3.12'
+          components: clippy, rustfmt
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
-      - name: Run unit tests
-        run: |
-          PYTHONPATH=. python -m unittest discover -s tests -v
+      - name: Check formatting
+        run: cargo fmt -- --check
 
-      - name: Test safeaur CLI
-        run: |
-          ./bin/safeaur --help
+      - name: Clippy
+        run: cargo clippy -- -D warnings
+
+      - name: Build
+        run: cargo build --release
+
+      - name: Test
+        run: cargo test

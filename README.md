@@ -1,112 +1,148 @@
-# 🛡️ AUR-Sentry
+# 󰒃 aur-sentry
 
-> **Automated supply-chain security watchdog & threat radar for the Arch User Repository (AUR).**  
-> Running on 100% Autopilot via GitHub Actions.
+> **automated supply-chain malware watchdog & threat radar for the arch user repository.**  
+> written in rust. runs on 100% autopilot. no maintainer toil.
 
 [![CI](https://github.com/rebizzz/aur-sentry/actions/workflows/ci.yml/badge.svg)](https://github.com/rebizzz/aur-sentry/actions/workflows/ci.yml)
 [![Autopilot Threat Radar](https://github.com/rebizzz/aur-sentry/actions/workflows/autopilot.yml/badge.svg)](https://github.com/rebizzz/aur-sentry/actions/workflows/autopilot.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![RSS Feed](https://img.shields.io/badge/RSS-Advisories_Feed-orange?logo=rss)](https://raw.githubusercontent.com/rebizzz/aur-sentry/main/advisories.xml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![RSS Feed](https://img.shields.io/badge/rss-threat_feed-orange?logo=rss)](https://raw.githubusercontent.com/rebizzz/aur-sentry/main/advisories.xml)
 
 ---
 
-## 🚨 Motivation: The AUR Supply-Chain Crisis
+## 󰚌 why this exists
 
-In recent months, the Arch User Repository (AUR) experienced several coordinated malware campaigns where hundreds of packages were compromised with malicious payloads—including obfuscated curl-pipe-to-bash scripts, Discord webhook token-stealers, and unauthorized crypto miners. Because Arch Linux packaging maintainers cannot realistically audit every change across 90,000+ packages, users running `yay` or `paru` are vulnerable to unvetted upstream updates.
+the AUR has 90,000+ packages and practically zero gatekeeping. anyone can upload. anyone can adopt an orphaned package with 5,000 users.
 
-**AUR-Sentry** solves this by operating as a continuous, set-and-forget **security radar** on 100% autopilot:
-1. Regularly monitors newly pushed packages and commits on the AUR.
-2. Runs static analysis heuristics over `PKGBUILD` and `.install` scripts.
-3. Automatically publishes machine-readable threat advisories (`advisories.json`), an RSS alert stream (`advisories.xml`), and updates this radar board.
-4. Provides a client-side hook (`safeaur`) that intercepts installs before your machine runs malicious build instructions.
+in 2024–2026, coordinated automated campaigns hijacked over 1,500 AUR packages:
+- **orphan takeovers**: bots auto-adopted abandoned packages with established userbases and injected second-stage downloaders.
+- **dependency confusion**: `PKGBUILD`s running untracked `npm install` pulled malicious packages like `atomic-lockfile` and `js-digest` straight from public registries into build pipelines.
+- **credential harvesting**: rust-based infostealers scraped `~/.ssh/id_*`, browser sessions (cookies, `logins.json`), cloud tokens (`~/.aws`, `~/.kube`), and crypto wallets, exfiltrating straight to discord webhooks and telegram bots.
+- **`.install` hook persistence**: commands tucked into `post_install()` running as `root` via `pacman`, dropping systemd services and crontabs that survive updates.
+
+AUR helpers like `paru` and `yay` give you a diff viewer, but realistically nobody reads 500 lines of shell on every single update. 
+
+**aur-sentry** is an autonomous, set-and-forget watchdog. it scans newly modified AUR packages every 2 hours, rips through their `PKGBUILD` and `.install` scripts with a specialized rust static-analysis engine, and publishes a live machine-readable threat radar.
 
 ---
 
-## 📡 Live Threat Radar
+## 󰐻 live threat radar
 
-The table below is updated automatically on schedule by GitHub Actions:
+auto-updated on schedule by github actions:
 
 <!-- AUTOPILOT_TABLE_START -->
-
-| Severity | Package | Version | Maintainer | Triggers | Link |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| 🟡 **MEDIUM** | `9pro-git` | r111.2c1651b-1 | renehsz | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/9pro-git) |
-| 🟡 **MEDIUM** | `actflow-git` | r803.cbdbee0-1 | Richardn | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/actflow-git) |
-| 🟡 **MEDIUM** | `admixtools-git` | r61.b10ddcf-1 | techs | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/admixtools-git) |
-| 🟡 **MEDIUM** | `aerotools-git` | r77.7109ba7-1 | orphan | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/aerotools-git) |
-| 🟡 **MEDIUM** | `akonadi-calendar-tools-git` | 6.0.40_r1177.gbe4e54f-1 | IslandC0der | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/akonadi-calendar-tools-git) |
-| 🟡 **MEDIUM** | `amctl` | 1.0.1-1 | Hengtime787 | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/amctl) |
-| 🟡 **MEDIUM** | `amethyst-tools-git` | r316.83ef9c6-1 | capnhawkbill | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/amethyst-tools-git) |
-| 🟡 **MEDIUM** | `amneziawg-tools-git` | r517.5d6179a-2 | h8ray | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/amneziawg-tools-git) |
-| 🟡 **MEDIUM** | `amqp-qtools-git` | 0.5.0.6f42dfd-2 | languitar | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/amqp-qtools-git) |
-| 🟡 **MEDIUM** | `amtterm-git` | 1.7.r25.gfc5ee7a-1 | d10n | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/amtterm-git) |
+*No active high-severity threats currently recorded in the radar.*
 <!-- AUTOPILOT_TABLE_END -->
 
-- 📄 Full machine-readable feed: [`advisories.json`](advisories.json)
-- 🔔 RSS feed for webhooks / readers: [`advisories.xml`](advisories.xml)
+- 󰏗 machine-readable JSON: [`advisories.json`](advisories.json)
+- 󰇚 RSS feed for discord webhooks & readers: [`advisories.xml`](advisories.xml)
 
 ---
 
-## ⚡ Quickstart
+## 󰈸 detection matrix
 
-### 1. Zero-Dependency Client (`safeaur`)
+aur-sentry doesn't just look for `curl | sh`. it hunts 40+ specific weaponized signatures:
 
-You can run `safeaur` directly without installing dependencies:
+| category | severity | what it catches |
+| :--- | :--- | :--- |
+| **obfuscation** | 🔴 `CRITICAL` | `base64 -d`, `xxd -r`, `printf '\x63\x75\x72\x6c'`, `printf '\143\165'`, `eval "$cmd"`, backwards strings piped to `rev \| bash`, nested `$()` variable chains |
+| **exfiltration** | 🔴 `CRITICAL` | discord webhooks, telegram bot C2 tokens, raw IP downloads (`http://185.x.x.x`), ephemeral drops (`pastebin`, `0x0.st`, `transfer.sh`), DNS tunnel exfil, raw `nc`/`socat` connections |
+| **reverse shells**| 🔴 `CRITICAL` | bash `/dev/tcp/ip/port`, `mkfifo /tmp/...`, inline python socket/subprocess shells |
+| **credential theft** | 🔴 `CRITICAL` | targetting `~/.ssh`, `~/.gnupg`, firefox/chrome/brave profiles (`logins.json`, cookies), crypto wallets (monero, bitcoin, ledger, exodus), password stores (`1password`, `bitwarden`, `pass`), `/etc/shadow`, `/etc/sudoers` |
+| **persistence** | 🔴 `CRITICAL` | dropping `/etc/systemd/system/*.service`, modifying crontabs, injecting `~/.bashrc` / `/etc/profile`, creating XDG `.desktop` autostart entries, udev rule drops |
+| **packaging abuse** | 🟠 `HIGH` | unpinned `npm install` / `bun install` / `yarn install` (dependency confusion), `replaces=()` hijacking, checksum bypasses (`SKIP`), privileged `.install` hook abuse |
+| **system tampering**| 🟠 `HIGH` | SUID bit modifications (`chmod +s`), `dd` writes to raw block devices, firewall flushing (`iptables`), out-of-tree kernel modules (`insmod`), killing security services (`apparmor`, `fail2ban`) |
+| **cryptojacking** | 🔴 `CRITICAL` | XMRig binaries, mining pools (`stratum+tcp://`, `supportxmr`), hardcoded Monero wallet addresses |
+| **typosquatting** | 🟡 `MEDIUM` | damerau-levenshtein distance $\le 1$ against top 150 AUR targets (e.g. `goolge-chrome`, `visualstudiocode`, `paruu`) |
+
+---
+
+## 󰄬 installation & setup
+
+### 1. clone & build (rust)
 
 ```bash
-# Check if a package has an active security advisory or scan its live PKGBUILD
-./bin/safeaur check <package-name>
-
-# Scan a local PKGBUILD before building
-./bin/safeaur scan ./PKGBUILD
+git clone https://github.com/rebizzz/aur-sentry.git
+cd aur-sentry
+cargo build --release
 ```
 
-### 2. Integration with `paru` / `yay`
+or with nix:
 
-You can integrate `safeaur` as a pre-build check. In `~/.config/paru/paru.conf`:
+```bash
+nix develop
+cargo build --release
+```
+
+### 2. verify any package on demand
+
+```bash
+# scan a package directly off the AUR
+./target/release/aur-sentry scan-pkg discord-canary-bin
+
+# scan a local PKGBUILD before building
+./target/release/aur-sentry scan-file ./PKGBUILD
+```
+
+### 3. paru pre-build integration
+
+drop `safeaur` into your PATH and tell `paru` to auto-verify packages before compilation.
+
+in `~/.config/paru/paru.conf`:
 
 ```ini
 [options]
 PreBuildCommand = /usr/local/bin/safeaur check
 ```
 
----
-
-## 🔍 Heuristic Detection Matrix
-
-AUR-Sentry inspects build scripts against high-confidence patterns observed in real-world attacks:
-
-| Rule ID | Severity | Description |
-| :--- | :--- | :--- |
-| `RULE_OBFUSCATED_BASE64` | 🔴 **CRITICAL** | Base64 strings piped directly to `bash`, `sh`, or `python`. |
-| `RULE_HEX_EXEC` | 🔴 **CRITICAL** | Hex-decoded payloads piped to shell execution (`xxd -r \| sh`). |
-| `RULE_DISCORD_WEBHOOK` | 🔴 **CRITICAL** | Hardcoded Discord webhook URLs used for credential/token exfiltration. |
-| `RULE_TELEGRAM_BOT_EXFIL` | 🔴 **CRITICAL** | C2 or credential drop endpoints using Telegram bot API. |
-| `RULE_REVERSE_SHELL` | 🔴 **CRITICAL** | Classic reverse shell patterns (`/dev/tcp/...`, `nc -e`, `mkfifo`). |
-| `RULE_RAW_IP_DOWNLOAD` | 🟠 **HIGH** | Unverified payloads fetched from raw IP addresses rather than domains. |
-| `RULE_CURL_PIPE_EXEC` | 🟠 **HIGH** | Arbitrary remote scripts piped to shell (`curl ... \| bash`). |
-| `RULE_PASTEBIN_DOWNLOAD` | 🟠 **HIGH** | Unpinned dynamic downloads from pastebin, hastebin, or transfer.sh. |
-| `RULE_SENSITIVE_FS_ACCESS` | 🟠 **HIGH** | Tampering with `~/.ssh`, `/etc/shadow`, `/etc/sudoers`, or `/boot`. |
-| `RULE_ROOT_PERSISTENCE` | 🟠 **HIGH** | Writes to `/etc/cron.*` or `/etc/systemd/system/` outside `$pkgdir`. |
-| `RULE_TYPOSQUATTING` | 🟡 **MEDIUM** | Damerau-Levenshtein distance $\le 1$ against top 150 popular packages. |
-| `RULE_SKIP_HASH_REMOTE` | 🟡 **MEDIUM** | Bypassing source integrity checks (`sha256sums=('SKIP')`). |
+now when you run `paru -S <package>`, `safeaur` checks the threat radar and runs a live heuristic scan on the PKGBUILD before anything touches your compiler.
 
 ---
 
-## 🛠️ Local Development & Testing
+## 󰒃 autopilot architecture
 
-Run unit tests directly:
-
-```bash
-# Using Python standard library
-python3 -m unittest discover -s tests -v
-
-# Run the autopilot scanner locally
-python3 -m src.main autopilot --limit 20
+```
+                 cron (every 2 hours)
+                          │
+                          ▼
+       fetch full AUR metadata dump (gzip)
+                          │
+                          ▼
+     filter packages modified in last 4 hours
+                          │
+                          ▼
+   parallel fetch PKGBUILD + .install scripts
+                          │
+                          ▼
+    rust heuristics engine (40+ attack rules)
+                          │
+         ┌────────────────┴────────────────┐
+         ▼                                 ▼
+   threats found?                      clean?
+         │                                 │
+         ▼                                 ▼
+  append to advisories.json           skip / log
+  update advisories.xml (RSS)
+  update README threat radar table
+         │
+         ▼
+  git commit & push [skip ci]
 ```
 
+zero human intervention required. once pushed, GitHub Actions handles the rest.
+
 ---
 
-## 📜 License
+## 󰨰 local testing
+
+```bash
+cargo test
+```
+
+all unit tests verify real attack payloads (base64 injection, discord exfil, reverse shells, raw IP curls, typosquatting, and benign package passes).
+
+---
+
+## 󰏗 license
 
 [MIT](LICENSE) © [rebizzz](https://github.com/rebizzz)

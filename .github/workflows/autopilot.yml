@@ -2,7 +2,6 @@ name: Autopilot Threat Radar
 
 on:
   schedule:
-    # Runs every 2 hours
     - cron: '20 */2 * * *'
   workflow_dispatch:
 
@@ -16,18 +15,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
 
-      - name: Run unit test suite
-        run: |
-          PYTHONPATH=. python -m unittest discover -s tests
+      - name: Cache cargo
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
+      - name: Build
+        run: cargo build --release
+
+      - name: Run unit tests
+        run: cargo test
 
       - name: Run Autopilot AUR scanner
-        run: |
-          PYTHONPATH=. python -m src.main autopilot --repo-root . --limit 80
+        run: ./target/release/aur-sentry autopilot --repo-root . --window-hours 4 --limit 500
 
       - name: Commit updated threat radar
         run: |
@@ -35,8 +42,8 @@ jobs:
           git config --global user.email "bot@users.noreply.github.com"
           git add advisories.json advisories.xml README.md
           if ! git diff --staged --quiet; then
-            git commit -m "chore(autopilot): update AUR advisories and threat radar [skip ci]"
+            git commit -m "chore(autopilot): update AUR threat radar [skip ci]"
             git push
           else
-            echo "No new advisories or changes detected."
+            echo "No new advisories detected."
           fi

@@ -14,25 +14,26 @@
       devShells = forEachSystem (pkgs: {
         default = pkgs.mkShell {
           packages = with pkgs; [
-            python3
-            ruff
-            curl
-            git
+            cargo
+            rustc
+            clippy
+            rustfmt
+            pkg-config
+            openssl
           ];
+          RUST_BACKTRACE = "1";
         };
       });
 
       packages = forEachSystem (pkgs: {
-        default = pkgs.python3Packages.buildPythonApplication {
+        default = pkgs.rustPlatform.buildRustPackage {
           pname = "aur-sentry";
           version = "0.1.0";
           src = ./.;
-          pyproject = true;
-          build-system = [ pkgs.python3Packages.setuptools ];
-
-          postInstall = ''
-            install -Dm755 bin/safeaur $out/bin/safeaur
-          '';
+          useFetchCargoVendor = true;
+          cargoHash = "";
+          nativeBuildInputs = [ pkgs.pkg-config ];
+          buildInputs = [ pkgs.openssl ];
         };
       });
     };
