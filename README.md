@@ -31,7 +31,7 @@ AUR helpers like `paru` and `yay` give you a diff viewer, but realistically nobo
 auto-updated on schedule by github actions:
 
 <!-- AUTOPILOT_TABLE_START -->
-*No active high-severity threats currently recorded in the radar.*
+*No active threats currently recorded in the radar.*
 <!-- AUTOPILOT_TABLE_END -->
 
 - 󰏗 machine-readable JSON: [`advisories.json`](advisories.json)
