@@ -70,15 +70,15 @@ PreBuildCommand = /usr/local/bin/safeaur check
 
 The static analysis engine checks 40+ signatures across PKGBUILD and `.install` files:
 
-- **[CRITICAL] Obfuscation**: `base64 -d`, `xxd -r`, octal/hex `printf`, `eval`, reversed strings (`rev | bash`).
-- **[CRITICAL] Exfiltration**: Discord webhooks, Telegram bot C2, raw IP targets, DNS tunneling, netcat connections.
-- **[CRITICAL] Reverse Shells**: Bash `/dev/tcp`, `mkfifo`, python socket one-liners.
-- **[CRITICAL] Credential Theft**: Access to `~/.ssh`, `~/.gnupg`, browser profiles (`logins.json`, cookies), crypto wallets, cloud keys (`~/.aws`, `~/.kube`), `/etc/shadow`.
-- **[CRITICAL] Persistence**: Modifying `/etc/systemd/system/`, crontabs, injecting `~/.bashrc` / `/etc/profile`, XDG autostart.
-- **[HIGH] Packaging Abuse**: Unpinned `npm install` / `bun install` (dependency confusion), privileged `.install` hooks, `replaces=()` hijacking.
-- **[HIGH] System Tampering**: SUID bits (`chmod +s`), `dd` writes to block devices, disabling firewalls/security daemons.
-- **[CRITICAL] Cryptojacking**: XMRig, mining pool addresses, hardcoded wallet addresses.
-- **[MEDIUM] Typosquatting**: Damerau-Levenshtein distance <= 1 against top AUR packages.
+- `[CRITICAL]` **Obfuscation**: `base64 -d`, `xxd -r`, octal/hex `printf`, `eval`, reversed strings (`rev | bash`).
+- `[CRITICAL]` **Exfiltration**: Discord webhooks, Telegram bot C2, raw IP targets, DNS tunneling, netcat connections.
+- `[CRITICAL]` **Reverse Shells**: Bash `/dev/tcp`, `mkfifo`, python socket one-liners.
+- `[CRITICAL]` **Credential Theft**: Access to `~/.ssh`, `~/.gnupg`, browser profiles (`logins.json`, cookies), crypto wallets, cloud keys (`~/.aws`, `~/.kube`), `/etc/shadow`.
+- `[CRITICAL]` **Persistence**: Modifying `/etc/systemd/system/`, crontabs, injecting `~/.bashrc` / `/etc/profile`, XDG autostart.
+- `[HIGH]` **Packaging Abuse**: Unpinned `npm install` / `bun install` (dependency confusion), privileged `.install` hooks, `replaces=()` hijacking.
+- `[HIGH]` **System Tampering**: SUID bits (`chmod +s`), `dd` writes to block devices, disabling firewalls/security daemons.
+- `[CRITICAL]` **Cryptojacking**: XMRig, mining pool addresses, hardcoded wallet addresses.
+- `[MEDIUM]` **Typosquatting**: Damerau-Levenshtein distance <= 1 against top AUR packages.
 
 ---
 
