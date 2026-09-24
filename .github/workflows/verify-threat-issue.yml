@@ -18,7 +18,7 @@ jobs:
   verify:
     name: Verify Threat Package on Arch Linux
     runs-on: ubuntu-latest
-    if: startsWith(github.event.issue.title, '[CRITICAL THREAT]') || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch' || (github.event.issue != null && startsWith(github.event.issue.title, '[CRITICAL THREAT]'))
     steps:
       - name: Harden Runner (Security & Egress Audit)
         uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
