@@ -86,14 +86,10 @@ jobs:
               git push -f origin autopilot/radar-readme
               EXISTING_PR=$(gh pr list --head autopilot/radar-readme --json number --jq '.[0].number')
               if [ -z "$EXISTING_PR" ]; then
+                PR_BODY="Automated update to the live Threat Radar table in README.md based on the latest AUR metadata scan. Verified by automated CI & Codecov checks."
                 gh pr create \
                   --title "chore(radar): update live threat radar in README" \
-                  --body "### Live AUR Threat Radar Update
-
-Automated update to the live Threat Radar table in \`README.md\` based on the latest AUR metadata scan.
-
-- Verified by automated CI & Codecov checks.
-- Review and merge this PR to update the public radar." \
+                  --body "$PR_BODY" \
                   --base main \
                   --head autopilot/radar-readme
               else
@@ -116,15 +112,10 @@ Automated update to the live Threat Radar table in \`README.md\` based on the la
               git push -f origin autopilot/radar-feeds
               EXISTING_DATA_PR=$(gh pr list --head autopilot/radar-feeds --json number --jq '.[0].number')
               if [ -z "$EXISTING_DATA_PR" ]; then
+                FEED_BODY="Automated synchronization of raw security advisory feeds (advisories.json and advisories.xml). Merge or drop this PR independently from the README radar."
                 gh pr create \
                   --title "data(advisories): sync threat database feeds" \
-                  --body "### Machine Security Feed Sync
-
-Automated synchronization of raw security advisory feeds:
-- \`advisories.json\`
-- \`advisories.xml\`
-
-Merge or drop this PR independently from the README radar." \
+                  --body "$FEED_BODY" \
                   --base main \
                   --head autopilot/radar-feeds
               else
