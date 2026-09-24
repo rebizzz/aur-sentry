@@ -119,6 +119,12 @@ pub const RULES: &[Rule] = &[
         pattern: r##"\b(?:nc|ncat|socat)\b\s+(?:-[a-zA-Z]*\s+)*[0-9a-zA-Z]"##,
         description: "netcat or socat connection (reverse shell or data socket)",
     },
+    Rule {
+        id: "THREAT_INTEL_TUNNEL_PROXY",
+        severity: "CRITICAL",
+        pattern: r##"(?:ngrok\.io|portmap\.io|localtunnel\.me|serveo\.net|pinggy\.io|pagekite\.me|packetriot\.com|playit\.gg|tunnelmole\.net)"##,
+        description: "connection targeting ephemeral reverse-proxy or tunnel service (attacker C2 evasion)",
+    },
     // --- Reverse Shells ---
     Rule {
         id: "REVSHELL_DEV_TCP",

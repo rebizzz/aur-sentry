@@ -4,6 +4,8 @@ Automated supply-chain malware watchdog and threat radar for the Arch User Repos
 
 [![CI](https://github.com/rebizzz/aur-sentry/actions/workflows/ci.yml/badge.svg)](https://github.com/rebizzz/aur-sentry/actions/workflows/ci.yml)
 [![Autopilot](https://github.com/rebizzz/aur-sentry/actions/workflows/autopilot.yml/badge.svg)](https://github.com/rebizzz/aur-sentry/actions/workflows/autopilot.yml)
+[![Security Audit](https://github.com/rebizzz/aur-sentry/actions/workflows/security-audit.yml/badge.svg)](https://github.com/rebizzz/aur-sentry/actions/workflows/security-audit.yml)
+[![CodeQL](https://github.com/rebizzz/aur-sentry/actions/workflows/codeql.yml/badge.svg)](https://github.com/rebizzz/aur-sentry/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ---
