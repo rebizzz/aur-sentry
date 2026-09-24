@@ -1,6 +1,24 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-24T10:16:00Z",
-  "total_flagged": 0,
-  "advisories": []
+  "updated_at": "2026-09-24T10:25:27.025649814+00:00",
+  "total_flagged": 1,
+  "advisories": [
+    {
+      "package": "paseo-desktop-git-bin",
+      "version": "0.9.1.r50.gbbf8cce3f-2",
+      "maintainer": "xpufx",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T10:24:47.033212151+00:00",
+      "findings": [
+        {
+          "rule_id": "OBFUSCATED_DOLLAR_EXEC",
+          "severity": "HIGH",
+          "description": "deeply nested substitution with pipe chain (obfuscated execution)",
+          "line_number": 33,
+          "matched_text": "$(printf '%s' \"$pkgver\" | sed -E 's/\\.r[0-9]+\\.g[0-9a-f]+$//' | sed -E 's/^([0-9]+\\.[0-9]+\\.[0-9]+)\\./\\1-/')"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/paseo-desktop-git-bin"
+    }
+  ]
 }
