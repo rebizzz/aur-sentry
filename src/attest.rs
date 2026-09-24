@@ -236,6 +236,10 @@ pub struct AttestInputs<'a> {
     pub strace_available: bool,
     pub makepkg_exit: Option<i32>,
     pub scanner_version: String,
+    /// Phase 3 reproducibility comparison result (second independent build +
+    /// diff — see scripts/dynamic_sandbox.sh). Purely informational: never
+    /// feeds `verdict_from_findings`.
+    pub reproducibility: ReproducibilityStatus,
 }
 
 /// Build and hash a full `Attestation` from the given evidence inputs. Any
@@ -335,7 +339,7 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
             filesystem,
         },
         package_analysis: PackageAnalysis::default(),
-        reproducibility: ReproducibilityStatus::NotAttempted,
+        reproducibility: inputs.reproducibility,
         external_intelligence: Vec::new(),
         verdict,
         evidence_hash: String::new(),
@@ -419,6 +423,7 @@ mod tests {
             strace_available: false,
             makepkg_exit: Some(0),
             scanner_version: "test".into(),
+            reproducibility: ReproducibilityStatus::NotAttempted,
         };
         let att = build_attestation(&inputs);
         assert_eq!(att.verdict, Verdict::Verified);
@@ -451,12 +456,36 @@ mod tests {
             strace_available: true,
             makepkg_exit: Some(0),
             scanner_version: "test".into(),
+            reproducibility: ReproducibilityStatus::NotAttempted,
         };
         let att = build_attestation(&inputs);
         assert_eq!(att.verdict, Verdict::Malicious);
         assert_eq!(att.dynamic_evidence.filesystem.len(), 1);
 
         let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn build_attestation_carries_reproducibility_status_without_affecting_verdict() {
+        let inputs = AttestInputs {
+            package: "foo".into(),
+            version: "1.0-1".into(),
+            arch: "x86_64".into(),
+            aur_commit: "deadbeef".into(),
+            pkgbuild_path: None,
+            install_path: None,
+            static_findings_path: None,
+            telemetry_path: None,
+            strace_available: false,
+            makepkg_exit: Some(0),
+            scanner_version: "test".into(),
+            reproducibility: ReproducibilityStatus::Diverged,
+        };
+        let att = build_attestation(&inputs);
+        assert_eq!(att.reproducibility, ReproducibilityStatus::Diverged);
+        // DIVERGED reproducibility must not downgrade an otherwise-clean
+        // build to SUSPICIOUS/MALICIOUS (ARCHITECTURE.md Phase 3 caution).
+        assert_eq!(att.verdict, Verdict::Verified);
     }
 
     #[test]
@@ -473,6 +502,7 @@ mod tests {
             strace_available: false,
             makepkg_exit: Some(1),
             scanner_version: "test".into(),
+            reproducibility: ReproducibilityStatus::NotAttempted,
         };
         let att = build_attestation(&inputs);
         assert_eq!(att.verdict, Verdict::BuildFailed);

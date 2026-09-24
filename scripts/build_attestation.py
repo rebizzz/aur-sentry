@@ -32,6 +32,7 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 SEVERITIES = {"INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"}
+REPRODUCIBILITY_STATUSES = {"NOT_ATTEMPTED", "REPRODUCED", "DIVERGED", "FAILED", "UNSUPPORTED"}
 
 # Heuristic rule_id/description keyword -> schema `behavior` enum mapping.
 BEHAVIOR_KEYWORDS = [
@@ -237,7 +238,12 @@ def build(args):
             "filesystem": filesystem,
         },
         "package_analysis": {"file_count": 0, "elf_object_count": 0},
-        "reproducibility": "NOT_ATTEMPTED",
+        # Informational evidence only (Phase 3 second-build diff) — never an
+        # input to `determine_verdict` above; see ARCHITECTURE.md's
+        # "non-reproducible must not automatically mean malicious" caution.
+        "reproducibility": args.reproducibility_status
+        if args.reproducibility_status in REPRODUCIBILITY_STATUSES
+        else "NOT_ATTEMPTED",
         "external_intelligence": [],
         "verdict": verdict,
     }
@@ -256,6 +262,7 @@ def main():
     ap.add_argument("--telemetry-log")
     ap.add_argument("--strace-available", default="false")
     ap.add_argument("--makepkg-exit", type=int, default=None)
+    ap.add_argument("--reproducibility-status", default="NOT_ATTEMPTED")
     ap.add_argument("--scanner-version", default="aur-sentry-dynamic-sandbox-fallback/1.0")
     ap.add_argument("--analysis-failed", action="store_true")
     ap.add_argument("--note", default=None)

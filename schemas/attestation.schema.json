@@ -192,7 +192,8 @@
     },
     "reproducibilityStatus": {
       "type": "string",
-      "enum": ["NOT_ATTEMPTED", "REPRODUCED", "DIVERGED", "FAILED"]
+      "description": "Result of a second, independent makepkg build compared against the first (Phase 3). Informational evidence only — never an input to the verdict. UNSUPPORTED means the comparison itself couldn't run to completion (e.g. a --nodeps build failed for one/both attempts), as opposed to FAILED which is reserved for an unexpected error in the comparison machinery itself.",
+      "enum": ["NOT_ATTEMPTED", "REPRODUCED", "DIVERGED", "FAILED", "UNSUPPORTED"]
     },
     "intelligenceEntry": {
       "type": "object",

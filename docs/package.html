@@ -139,6 +139,33 @@ function findingsHtml(findings) {
   `).join("");
 }
 
+// Checks whether the sibling .sig/.cert files for an attestation were
+// published (they are, once .github/workflows/dynamic-sandbox.yml's cosign
+// signing step lands for a given run). Signing is keyless via GitHub Actions
+// OIDC / Sigstore, so there's nothing secret to leak by linking these files —
+// anyone can independently verify with `cosign verify-blob` (see
+// scripts/verify_attestation.sh).
+async function buildSignedNotice(path) {
+  const sigUrl = RAW_BASE + path + ".sig";
+  const certUrl = RAW_BASE + path + ".cert";
+  try {
+    const [sigRes, certRes] = await Promise.all([
+      fetch(sigUrl, { method: "HEAD", cache: "no-store" }),
+      fetch(certUrl, { method: "HEAD", cache: "no-store" }),
+    ]);
+    if (sigRes.ok && certRes.ok) {
+      return `<p class="package-meta signed-notice">
+        &#128274; Cryptographically signed (keyless, via GitHub Actions/Sigstore) &mdash;
+        <a href="${sigUrl}">.sig</a> &middot; <a href="${certUrl}">.cert</a> &middot;
+        verify locally with <code>scripts/verify_attestation.sh</code>
+      </p>`;
+    }
+  } catch {
+    // network hiccup fetching the HEAD requests — just omit the notice
+  }
+  return `<p class="package-meta signed-notice">Not yet cryptographically signed.</p>`;
+}
+
 async function render() {
   const name = qs("name");
   if (!name) {
@@ -175,6 +202,8 @@ async function render() {
     return;
   }
 
+  const signedHtml = await buildSignedNotice(latest.path);
+
   const isExample = name.startsWith("example-");
   const noticeHtml = isExample
     ? `<div class="notice">This is fake example data used to preview this UI, not a real scan result.</div>`
@@ -194,6 +223,7 @@ async function render() {
       &middot; last analyzed ${escapeHtml(formatTimestamp(att.analyzed_at))}
     </p>
     <p style="margin: 12px 0 24px;">${badgeHtml(att.verdict)}</p>
+    ${signedHtml}
 
     <h2>What this means</h2>
     <ul class="summary-list">

@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write # required for keyless Sigstore/cosign signing via GitHub OIDC
 
 concurrency:
   group: dynamic-sandbox-${{ github.event.inputs.package_name || github.event.client_payload.package }}
@@ -26,7 +27,10 @@ jobs:
   sandbox:
     name: Disposable Dynamic Sandbox (Arch Linux, GitHub-hosted)
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # Phase 3 added a reproducibility comparison pass (two extra real
+    # `makepkg` builds, see scripts/dynamic_sandbox.sh) on top of the
+    # original --nobuild pass, so the budget was raised from 30 -> 45min.
+    timeout-minutes: 45
     steps:
       - name: Harden Runner (Security & Egress Audit)
         uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
@@ -66,6 +70,32 @@ jobs:
           path: sandbox-evidence/${{ steps.pkg.outputs.name }}/
           if-no-files-found: ignore
           retention-days: 90
+
+      - name: Install cosign
+        if: always()
+        uses: sigstore/cosign-installer@v3
+
+      - name: Sign attestation(s) with cosign (keyless via GitHub OIDC)
+        if: always()
+        run: |
+          set -uo pipefail
+          ATTEST_DIR="data/attestations/${{ steps.pkg.outputs.name }}"
+          if [ ! -d "$ATTEST_DIR" ]; then
+            echo "no attestation directory for ${{ steps.pkg.outputs.name }}, nothing to sign"
+            exit 0
+          fi
+          shopt -s nullglob
+          for f in "$ATTEST_DIR"/*.json; do
+            if [ -e "$f.sig" ] && [ -e "$f.cert" ]; then
+              echo "already signed, skipping: $f"
+              continue
+            fi
+            echo "signing $f"
+            cosign sign-blob --yes \
+              --output-signature "$f.sig" \
+              --output-certificate "$f.cert" \
+              "$f"
+          done
 
       - name: Commit attestation
         if: always()

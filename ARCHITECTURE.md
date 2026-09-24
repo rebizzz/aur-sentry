@@ -16,7 +16,7 @@ This document adapts the "AUR Sentry 2.0" vision to run entirely on free infrast
 | Raw evidence storage          | S3                     | GitHub Actions artifacts (90-day retention) + committed summarized evidence in-repo |
 | Registry web UI               | Custom web app + infra | GitHub Pages (static site) reading the committed JSON |
 | Public API                    | Custom API service     | Raw GitHub-hosted JSON files served over `raw.githubusercontent.com` / Pages, same URLs act as the API |
-| Attestation signing           | KMS / custom PKI       | `cosign` keyless signing via GitHub OIDC (Sigstore, free) or an ed25519 keypair stored as a repo secret |
+| Attestation signing           | KMS / custom PKI       | `cosign` keyless signing via GitHub OIDC (Sigstore public-good instance, free) — landed in Phase 3 |
 | GitHub issues                 | —                      | unchanged — stays as the human notification layer |
 | Reproducibility builds        | Second AWS task        | A second, independent GitHub Actions job (different runner, run later) |
 
@@ -63,8 +63,27 @@ See `schemas/attestation.schema.json`. Core Rust types live in `src/attestation.
    skeleton registry site.
 2. **Phase 2:** triage priority queue driving which packages get dynamic analysis each cycle;
    canary-secret exfiltration detection; ELF/package-content analysis.
-3. **Phase 3:** reproducibility (second independent build + diff); Sigstore/cosign signing of
-   attestations; public JSON "API" served straight from the repo/Pages.
+3. **Phase 3:** reproducibility (second independent build + diff); public JSON "API" served
+   straight from the repo/Pages; **Sigstore/cosign signing of attestations (landed)** —
+   `.github/workflows/dynamic-sandbox.yml` signs every attestation JSON keylessly via GitHub
+   Actions OIDC (`sigstore/cosign-installer` + `cosign sign-blob --yes`, free for public repos,
+   no stored secrets/KMS), publishing sibling `<version>.json.sig` and `<version>.json.cert`
+   files alongside `<version>.json` in `data/attestations/<pkg>/`. The `signature` field on
+   `Attestation` (`src/attestation.rs`) stays `None` — the JSON body is signed as-is over its
+   final on-disk bytes, so the sig/cert live as external sibling files rather than being folded
+   back into the JSON (that would require re-hashing after signing, a chicken-and-egg problem).
+   Verify any published attestation locally:
+
+   ```sh
+   scripts/verify_attestation.sh <package> <version>
+   # equivalent to:
+   cosign verify-blob \
+     --certificate  <version>.json.cert \
+     --signature    <version>.json.sig \
+     --certificate-identity-regexp '^https://github.com/rebizzz/aur-sentry/.github/workflows/dynamic-sandbox.yml@refs/heads/main$' \
+     --certificate-oidc-issuer https://token.actions.githubusercontent.com \
+     <version>.json
+   ```
 4. **Phase 4:** `aur-sentry check <pkg>` CLI hitting the published registry; `paru`/`yay`
    `PreBuildCommand` hook upgraded to consult it instead of only the local static scanner.
 

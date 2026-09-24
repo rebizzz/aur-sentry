@@ -163,6 +163,62 @@ fi
 MAKEPKG_EXIT=$?
 echo "makepkg exit code: $MAKEPKG_EXIT" >> "$EVIDENCE_DIR/makepkg.log"
 
+# ── 9b. Reproducibility check (Phase 3, ARCHITECTURE.md) — run makepkg a
+#        SECOND time, independently: a fresh clone of the same AUR source
+#        into a fresh directory, then a REAL build (no --nobuild, since you
+#        can't diff build *outputs* without an actual output) and diff the
+#        produced package file list + per-file sha256 against a first,
+#        equally independent build. Both builds still use --nodeps
+#        --skippgpcheck to stay fast/free; when a package needs
+#        network-fetched deps that --nodeps blocks, the build itself fails
+#        and the comparison degrades to UNSUPPORTED rather than failing the
+#        whole attestation. This is evidence only — it must never feed the
+#        verdict (see verdict_from_findings in src/attestation.rs). ────────
+echo "--- Reproducibility check (second independent build) ---"
+REPRO_STATUS="NOT_ATTEMPTED"
+REPRO_DIR="$EVIDENCE_DIR/reproducibility"
+mkdir -p "$REPRO_DIR"
+
+repro_build() {
+  # $1 = build slot number (1 or 2). Clones fresh and builds for real
+  # (no --nobuild) in its own directory so the two runs never share state.
+  n="$1"
+  dir="$BUILDER_HOME/pkg-src-repro-$n"
+  # shellcheck disable=SC2024 # redirect intentionally stays root-owned; only the clone itself drops to builder
+  if ! sudo -u builder bash -c 'git clone --depth 1 "https://aur.archlinux.org/$1.git" "$2"' \
+    _ "$PKG" "$dir" >"$REPRO_DIR/clone-$n.log" 2>&1; then
+    return 1
+  fi
+  [ -f "$dir/PKGBUILD" ] || return 1
+  chown -R builder:builder "$dir"
+  # shellcheck disable=SC2016 # single quotes intentional: $1 expands inside the sudo sub-shell, not here
+  # shellcheck disable=SC2024 # redirect intentionally stays root-owned; only makepkg itself drops to builder
+  if ! sudo -u builder bash -c 'cd "$1" && makepkg --noconfirm --nodeps --skippgpcheck' \
+    _ "$dir" >"$REPRO_DIR/makepkg-$n.log" 2>&1; then
+    return 1
+  fi
+  find "$dir" -maxdepth 1 -name '*.pkg.tar.*' -printf '%f\n' 2>/dev/null | sort > "$REPRO_DIR/filelist-$n.txt"
+  : > "$REPRO_DIR/hashes-$n.txt"
+  while IFS= read -r f; do
+    [ -z "$f" ] && continue
+    sha256sum "$dir/$f" | awk '{print $1}' >> "$REPRO_DIR/hashes-$n.txt"
+  done < "$REPRO_DIR/filelist-$n.txt"
+  [ -s "$REPRO_DIR/filelist-$n.txt" ]
+}
+
+if repro_build 1 && repro_build 2; then
+  if diff -q "$REPRO_DIR/filelist-1.txt" "$REPRO_DIR/filelist-2.txt" >/dev/null 2>&1 \
+    && diff -q "$REPRO_DIR/hashes-1.txt" "$REPRO_DIR/hashes-2.txt" >/dev/null 2>&1; then
+    REPRO_STATUS="REPRODUCED"
+  else
+    REPRO_STATUS="DIVERGED"
+  fi
+else
+  REPRO_STATUS="UNSUPPORTED"
+  echo "::warning::reproducibility comparison did not complete for both independent builds (commonly --nodeps blocking a network-fetched dependency) — marking UNSUPPORTED rather than failing the attestation"
+fi
+echo "Reproducibility status: $REPRO_STATUS"
+
 # ── 10. Assemble the attestation. Prefer the real CLI (`aur-sentry attest`)
 #        once src/attestation.rs lands; otherwise use the standalone Python
 #        fallback assembler so this workflow stays runnable today.
@@ -181,6 +237,7 @@ if "$AUR_BIN" attest --help >/dev/null 2>&1; then
     --static-findings "$EVIDENCE_DIR/static_scan.log"
     --telemetry "$EVIDENCE_DIR/telemetry.log"
     --makepkg-exit "$MAKEPKG_EXIT"
+    --reproducibility-status "$REPRO_STATUS"
     --output "$OUTPUT_JSON"
   )
   [ "$STRACE_OK" = true ] && ATTEST_ARGS+=(--strace-available)
@@ -203,6 +260,7 @@ else
     --telemetry-log "$EVIDENCE_DIR/telemetry.log" \
     --strace-available "$STRACE_OK" \
     --makepkg-exit "$MAKEPKG_EXIT" \
+    --reproducibility-status "$REPRO_STATUS" \
     --output "$OUTPUT_JSON"
 fi
 

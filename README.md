@@ -48,6 +48,16 @@ nix develop
 ./target/release/aur-sentry radar
 ```
 
+### Verify a published attestation
+
+Every dynamic-sandbox attestation is signed keylessly via GitHub Actions OIDC (Sigstore,
+free — see [`ARCHITECTURE.md`](ARCHITECTURE.md#phased-rollout)). Independently verify one
+with [cosign](https://docs.sigstore.dev/cosign/installation/):
+
+```bash
+scripts/verify_attestation.sh <package> <version>
+```
+
 ---
 
 ## paru / yay Hook

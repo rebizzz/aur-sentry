@@ -129,6 +129,30 @@ pub enum ReproducibilityStatus {
     Reproduced,
     Diverged,
     Failed,
+    /// A second independent build could not meaningfully be compared to the
+    /// first (e.g. `--nodeps` build failed for both/either attempt because
+    /// the package needs network-fetched dependencies). Phase 3: this is a
+    /// deliberate degrade path, not a build/attestation failure — see
+    /// ARCHITECTURE.md's "non-reproducible must not automatically mean
+    /// malicious" caution, which is exactly why this status must never feed
+    /// `verdict_from_findings`.
+    Unsupported,
+}
+
+impl ReproducibilityStatus {
+    /// Bridge from the dynamic sandbox's `--reproducibility-status` CLI
+    /// value (see src/attest.rs / .github: scripts/dynamic_sandbox.sh).
+    /// Anything unrecognized conservatively falls back to `NotAttempted`
+    /// rather than guessing.
+    pub fn from_cli_str(s: &str) -> Self {
+        match s.to_ascii_uppercase().as_str() {
+            "REPRODUCED" => ReproducibilityStatus::Reproduced,
+            "DIVERGED" => ReproducibilityStatus::Diverged,
+            "FAILED" => ReproducibilityStatus::Failed,
+            "UNSUPPORTED" => ReproducibilityStatus::Unsupported,
+            _ => ReproducibilityStatus::NotAttempted,
+        }
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -161,6 +185,9 @@ pub struct Attestation {
     pub static_findings: Vec<Finding>,
     pub dynamic_evidence: DynamicEvidence,
     pub package_analysis: PackageAnalysis,
+    /// Informational evidence only. Per ARCHITECTURE.md: "non-reproducible
+    /// must not automatically mean malicious" — `verdict_from_findings`
+    /// intentionally never reads this field, and it must stay that way.
     pub reproducibility: ReproducibilityStatus,
     pub external_intelligence: Vec<IntelligenceEntry>,
     pub verdict: Verdict,
@@ -183,6 +210,10 @@ impl Attestation {
 }
 
 /// Deterministic, extensible verdict rules — no ML/LLM judgment (Phase 1 scope).
+///
+/// Deliberately takes only `findings`: reproducibility status is evidence,
+/// never a verdict input (see the `reproducibility` field's doc comment on
+/// `Attestation` and ARCHITECTURE.md's Phase 3 caution).
 pub fn verdict_from_findings(findings: &[Finding]) -> Verdict {
     let critical_exfil_or_creds = findings.iter().any(|f| {
         f.severity == Severity::Critical
@@ -355,6 +386,42 @@ mod tests {
         att2.signature = Some("sig".into());
 
         assert_eq!(att1.compute_evidence_hash(), att2.compute_evidence_hash());
+    }
+
+    #[test]
+    fn reproducibility_status_from_cli_str_round_trips_known_values() {
+        assert_eq!(
+            ReproducibilityStatus::from_cli_str("REPRODUCED"),
+            ReproducibilityStatus::Reproduced
+        );
+        assert_eq!(
+            ReproducibilityStatus::from_cli_str("diverged"),
+            ReproducibilityStatus::Diverged
+        );
+        assert_eq!(
+            ReproducibilityStatus::from_cli_str("Failed"),
+            ReproducibilityStatus::Failed
+        );
+        assert_eq!(
+            ReproducibilityStatus::from_cli_str("unsupported"),
+            ReproducibilityStatus::Unsupported
+        );
+        assert_eq!(
+            ReproducibilityStatus::from_cli_str("garbage"),
+            ReproducibilityStatus::NotAttempted
+        );
+    }
+
+    #[test]
+    fn verdict_from_findings_ignores_reproducibility_by_construction() {
+        // verdict_from_findings takes only `&[Finding]` — there is no
+        // reproducibility parameter to accidentally wire in. This test just
+        // pins that a non-reproducible-but-otherwise-clean attestation
+        // still verdicts VERIFIED via the normal findings path.
+        let mut att = sample_attestation();
+        att.reproducibility = ReproducibilityStatus::Diverged;
+        att.verdict = verdict_from_findings(&att.static_findings);
+        assert_eq!(att.verdict, Verdict::Verified);
     }
 
     #[test]

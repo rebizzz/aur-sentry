@@ -4,7 +4,7 @@
 //! Nerdfont-powered, colored, human-readable output.
 
 use aur_sentry::attest::{self, AttestInputs};
-use aur_sentry::attestation::Verdict;
+use aur_sentry::attestation::{ReproducibilityStatus, Verdict};
 use aur_sentry::aur_client::AURClient;
 use aur_sentry::report::{self, Advisory};
 use aur_sentry::scanner::PKGBUILDScanner;
@@ -75,6 +75,7 @@ struct Cli {
 }
 
 #[derive(Subcommand)]
+#[allow(clippy::large_enum_variant)] // Attest carries many CLI flags; clap subcommand enums aren't hot-path values
 enum Commands {
     /// Scan a local PKGBUILD or .install file
     ScanFile {
@@ -149,6 +150,12 @@ enum Commands {
         #[arg(long)]
         makepkg_exit: Option<i32>,
 
+        /// Reproducibility comparison result from a second independent
+        /// makepkg build (NOT_ATTEMPTED | REPRODUCED | DIVERGED | FAILED |
+        /// UNSUPPORTED). Informational evidence only — never affects verdict.
+        #[arg(long, default_value = "NOT_ATTEMPTED")]
+        reproducibility_status: String,
+
         /// Where to write the attestation JSON
         #[arg(long)]
         output: PathBuf,
@@ -178,6 +185,7 @@ fn main() -> ExitCode {
             telemetry,
             strace_available,
             makepkg_exit,
+            reproducibility_status,
             output,
         } => cmd_attest(
             &pkgname,
@@ -190,6 +198,7 @@ fn main() -> ExitCode {
             telemetry.as_deref(),
             strace_available,
             makepkg_exit,
+            &reproducibility_status,
             &output,
         ),
     }
@@ -579,6 +588,7 @@ fn cmd_attest(
     telemetry: Option<&Path>,
     strace_available: bool,
     makepkg_exit: Option<i32>,
+    reproducibility_status: &str,
     output: &Path,
 ) -> ExitCode {
     eprintln!(
@@ -597,6 +607,7 @@ fn cmd_attest(
         strace_available,
         makepkg_exit,
         scanner_version: format!("aur-sentry/{}", env!("CARGO_PKG_VERSION")),
+        reproducibility: ReproducibilityStatus::from_cli_str(reproducibility_status),
     };
     let attestation = attest::build_attestation(&inputs);
 
