@@ -1,9 +1,6 @@
 name: Dynamic Threat Verification
 
 on:
-  push:
-    paths:
-      - '.github/workflows/verify-threat.yml'
   issues:
     types: [opened, reopened]
   workflow_dispatch:
@@ -22,7 +19,7 @@ jobs:
   verify:
     name: Verify Threat Package on Arch Linux
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' || github.event_name == 'push' || (github.event_name == 'issues' && startsWith(github.event.issue.title, '[CRITICAL THREAT]'))
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'issues' && startsWith(github.event.issue.title, '[CRITICAL THREAT]'))
     steps:
       - name: Harden Runner (Security & Egress Audit)
         uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
@@ -38,89 +35,22 @@ jobs:
       - name: Build aur-sentry binary
         run: cargo build --release
 
-      - name: Extract package name
-        id: extract
+      - name: Extract package name and issue number
+        id: info
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            PKG="${{ inputs.package_name }}"
-          elif [ "${{ github.event_name }}" = "push" ]; then
-            PKG="bitcoin-abc"
+            echo "pkg=${{ inputs.package_name }}" >> "$GITHUB_OUTPUT"
+            echo "issue_num=" >> "$GITHUB_OUTPUT"
           else
             TITLE="${{ github.event.issue.title }}"
             PKG=$(echo "$TITLE" | sed -E 's/.*for `?([a-zA-Z0-9_\.\-]+)`?/\1/')
+            echo "pkg=$PKG" >> "$GITHUB_OUTPUT"
+            echo "issue_num=${{ github.event.issue.number }}" >> "$GITHUB_OUTPUT"
           fi
-          echo "pkg=$PKG" >> "$GITHUB_OUTPUT"
-          echo "Target package: $PKG"
 
-      - name: Download live package sources from AUR
-        run: |
-          PKG="${{ steps.extract.outputs.pkg }}"
-          mkdir -p /tmp/pkg_verify
-          curl -fsSL "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$PKG" -o /tmp/pkg_verify/PKGBUILD || true
-
-      - name: Run Dynamic Verification & Namcap Audit
-        id: scan
-        run: |
-          PKG="${{ steps.extract.outputs.pkg }}"
-          set +e
-          ./target/release/aur-sentry scan-pkg "$PKG" > /tmp/scan_output.txt 2>&1
-          SCAN_EXIT=$?
-          set -e
-          echo "scan_exit=$SCAN_EXIT" >> "$GITHUB_OUTPUT"
-          echo "Scanner exit code: $SCAN_EXIT"
-
-      - name: Comment verification report on GitHub Issue
-        if: github.event_name == 'issues'
+      - name: Run Dynamic Threat Verification
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          ISSUE_NUMBER: ${{ github.event.issue.number || '' }}
         run: |
-          if [ -z "$ISSUE_NUMBER" ]; then
-            echo "No issue number, skipping comment."
-            exit 0
-          fi
-          PKG="${{ steps.extract.outputs.pkg }}"
-          EXIT_CODE="${{ steps.scan.outputs.scan_exit }}"
-          
-          if [ "$EXIT_CODE" -eq 2 ]; then
-            VERDICT="❌ **CONFIRMED THREAT**"
-            BADGE="https://img.shields.io/badge/AUR--Sentry-CONFIRMED_THREAT-critical"
-          elif [ "$EXIT_CODE" -eq 0 ]; then
-            VERDICT="✅ **VERIFIED CLEAN**"
-            BADGE="https://img.shields.io/badge/AUR--Sentry-CLEAN-success"
-          else
-            VERDICT="⚠️ **UNRESOLVED / TAKEN DOWN**"
-            BADGE="https://img.shields.io/badge/AUR--Sentry-INCONCLUSIVE-yellow"
-          fi
-
-          COMMENT_BODY=$(cat << EOF
-### 🛡️ Automated Verification Report by GitHub Actions
-
-![$VERDICT]($BADGE)
-
-GitHub Actions dynamically audited the live AUR package sources for **\`$PKG\`**.
-
-| Attribute | Details |
-| :--- | :--- |
-| **Target Package** | \`$PKG\` |
-| **Scanner Verdict** | $VERDICT (Exit code: \`$EXIT_CODE\`) |
-| **Live Upstream Source** | [AUR cgit PKGBUILD](https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$PKG) |
-| **Execution Environment** | Ubuntu 24.04 + StepSecurity Harden-Runner |
-| **Workflow Run** | [View Run Log]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID) |
-
-<details>
-<summary><b>🔍 View aur-sentry Scanner Output</b></summary>
-
-\`\`\`
-$(cat /tmp/scan_output.txt | tail -n 50)
-\`\`\`
-</details>
-
-*Dynamically verified by GitHub Actions runner.*
-EOF
-)
-
-          gh issue comment "$ISSUE_NUMBER" --repo "${{ github.repository }}" --body "$COMMENT_BODY"
-          if [ "$EXIT_CODE" -eq 2 ]; then
-            gh issue edit "$ISSUE_NUMBER" --repo "${{ github.repository }}" --add-label "security-threat" || true
-          fi
+          chmod +x scripts/verify_threat_issue.sh
+          bash scripts/verify_threat_issue.sh "${{ steps.info.outputs.pkg }}" "${{ steps.info.outputs.issue_num }}" "${{ github.repository }}"
