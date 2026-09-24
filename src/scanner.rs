@@ -432,6 +432,12 @@ impl PKGBUILDScanner {
             }
         }
 
+        // 4. Shannon Information Entropy analysis
+        findings.extend(crate::analyzer::analyze_entropy(content));
+
+        // 5. Recursive Base64 payload de-obfuscation
+        findings.extend(crate::analyzer::deobfuscate_and_scan(content, self));
+
         findings
     }
 

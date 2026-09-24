@@ -22,6 +22,9 @@ jobs:
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
 
+      - name: Install ShellCheck static analyzer
+        run: sudo apt-get update -qq && sudo apt-get install -y shellcheck jq
+
       - name: Cache cargo registry and build target
         uses: actions/cache@v4
         with:
@@ -41,6 +44,21 @@ jobs:
 
       - name: Run Autopilot AUR scanner across metadata dump
         run: ./target/release/aur-sentry autopilot --repo-root . --window-hours 4 --limit 500
+
+      - name: File automated GitHub Issue alerts for critical threats
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ -f advisories.json ] && grep -q '"highest_severity": "CRITICAL"' advisories.json; then
+            CRIT_PKGS=$(jq -r '.advisories[] | select(.highest_severity == "CRITICAL") | .package' advisories.json | head -5)
+            for p in $CRIT_PKGS; do
+              if ! gh issue list --state open --search "$p" --json title | grep -q "$p"; then
+                echo "Creating automated security issue for $p..."
+                gh issue create --title "[CRITICAL THREAT] Active supply-chain alert for $p" \
+                  --body "AUR-Sentry Autopilot detected a CRITICAL severity supply-chain threat in package **$p**. Inspect \`advisories.json\` or the README Threat Radar for details." || true
+              fi
+            done
+          fi
 
       - name: Commit and push updated threat radar
         run: |

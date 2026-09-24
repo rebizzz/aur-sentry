@@ -45,7 +45,10 @@ pub struct AURClient {
 
 impl AURClient {
     pub fn new() -> Self {
-        let agent = ureq::Agent::new_with_defaults();
+        let config = ureq::config::Config::builder()
+            .timeout_global(Some(std::time::Duration::from_secs(15)))
+            .build();
+        let agent = ureq::Agent::new_with_config(config);
         Self { agent }
     }
 
