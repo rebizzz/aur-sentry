@@ -46,7 +46,7 @@ jobs:
           sha256sum "$BIN_NAME" > "${BIN_NAME}.sha256"
 
       - name: Upload binary artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: aur-sentry-${{ matrix.target }}
           path: |
