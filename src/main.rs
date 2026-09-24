@@ -164,6 +164,15 @@ enum Commands {
         #[arg(long)]
         package_analysis: Option<PathBuf>,
 
+        /// Path to the `external_intel.json` array assembled by
+        /// scripts/dynamic_sandbox.sh from OSV.dev vulnerability-query
+        /// results (declared dependency names + the upstream project's
+        /// identity, where those map to an ecosystem OSV tracks). Missing/
+        /// absent degrades to no external evidence rather than failing.
+        /// Informational only — never affects verdict.
+        #[arg(long)]
+        external_intel: Option<PathBuf>,
+
         /// Whether strace telemetry was actually collected this run
         #[arg(long)]
         strace_available: bool,
@@ -207,6 +216,7 @@ fn main() -> ExitCode {
             static_findings,
             telemetry,
             package_analysis,
+            external_intel,
             strace_available,
             makepkg_exit,
             reproducibility_status,
@@ -221,6 +231,7 @@ fn main() -> ExitCode {
             static_findings.as_deref(),
             telemetry.as_deref(),
             package_analysis.as_deref(),
+            external_intel.as_deref(),
             strace_available,
             makepkg_exit,
             &reproducibility_status,
@@ -612,6 +623,7 @@ fn cmd_attest(
     static_findings: Option<&Path>,
     telemetry: Option<&Path>,
     package_analysis: Option<&Path>,
+    external_intel: Option<&Path>,
     strace_available: bool,
     makepkg_exit: Option<i32>,
     reproducibility_status: &str,
@@ -631,6 +643,7 @@ fn cmd_attest(
         static_findings_path: static_findings,
         telemetry_path: telemetry,
         package_analysis_path: package_analysis,
+        external_intelligence_path: external_intel,
         strace_available,
         makepkg_exit,
         scanner_version: format!("aur-sentry/{}", env!("CARGO_PKG_VERSION")),

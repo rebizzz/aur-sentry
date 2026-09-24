@@ -4,9 +4,9 @@
 //! reference behavior this ports; not required to be byte-identical).
 
 use crate::attestation::{
-    Attestation, Behavior, DynamicEvidence, ElfObjectInfo, FilesystemEvent, Finding, NetworkEvent,
-    PackageAnalysis, PackageIdentity, ReproducibilityStatus, Severity, SourceIdentity, Verdict,
-    verdict_from_findings,
+    Attestation, Behavior, DynamicEvidence, ElfObjectInfo, FilesystemEvent, Finding,
+    IntelligenceEntry, NetworkEvent, PackageAnalysis, PackageIdentity, ReproducibilityStatus,
+    Severity, SourceIdentity, Verdict, verdict_from_findings,
 };
 use crate::scanner;
 use serde::Deserialize;
@@ -291,6 +291,49 @@ fn parse_package_analysis(path: Option<&Path>) -> (PackageAnalysis, Vec<Finding>
     (analysis, findings)
 }
 
+/// Shape of the JSON array `scripts/dynamic_sandbox.sh` assembles (`jq`,
+/// from OSV.dev query results — see `--external-intel`). Deliberately the
+/// same shape as `attestation::IntelligenceEntry` itself: there's no extra
+/// raw data to carry (unlike `PackageAnalysisInput`), just evidence entries
+/// ready to store as-is.
+#[derive(Debug, Deserialize)]
+struct IntelligenceEntryInput {
+    source: String,
+    summary: String,
+    #[serde(default)]
+    url: Option<String>,
+}
+
+/// Parse the `--external-intel` JSON blob into `IntelligenceEntry`s. Any
+/// missing/unreadable/unparseable file degrades to "no external evidence"
+/// rather than failing the attestation (matches this module's general
+/// leniency for optional evidence sources).
+///
+/// Deliberately returns no `Finding`s: per ARCHITECTURE.md's "external
+/// signals become another evidence source" design and this project's
+/// existing `reproducibility`-is-informational-only precedent,
+/// `external_intelligence` never feeds `verdict_from_findings`. OSV
+/// correlation here is a best-effort, sometimes name-guessed match (see
+/// scripts/dynamic_sandbox.sh) rather than a directly-observed fact about
+/// *this* build the way canary/network/setuid evidence is, so it stays
+/// informational until that confidence bar is met.
+fn parse_external_intelligence(path: Option<&Path>) -> Vec<IntelligenceEntry> {
+    let Some(raw) = path
+        .and_then(|p| std::fs::read_to_string(p).ok())
+        .and_then(|text| serde_json::from_str::<Vec<IntelligenceEntryInput>>(&text).ok())
+    else {
+        return Vec::new();
+    };
+
+    raw.into_iter()
+        .map(|e| IntelligenceEntry {
+            source: e.source,
+            summary: e.summary,
+            url: e.url,
+        })
+        .collect()
+}
+
 fn sha256_hex(bytes: &[u8]) -> String {
     let mut hasher = Sha256::new();
     hasher.update(bytes);
@@ -313,6 +356,15 @@ pub struct AttestInputs<'a> {
     /// package). `None`/unreadable/unparseable degrades to an "unavailable"
     /// `PackageAnalysis` rather than failing the attestation.
     pub package_analysis_path: Option<&'a Path>,
+    /// Path to the `external_intel.json` array assembled by
+    /// `scripts/dynamic_sandbox.sh` from OSV.dev vulnerability-query
+    /// results (dependency names + the upstream project's Go-module
+    /// identity when `url=` is a github.com repo — see that script for the
+    /// exact, deliberately modest correlation it attempts).
+    /// `None`/unreadable/unparseable degrades to no external evidence
+    /// rather than failing the attestation. Purely informational: never
+    /// feeds `verdict_from_findings` (see `parse_external_intelligence`).
+    pub external_intelligence_path: Option<&'a Path>,
     pub strace_available: bool,
     pub makepkg_exit: Option<i32>,
     pub scanner_version: String,
@@ -392,6 +444,8 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
     let (package_analysis, package_findings) = parse_package_analysis(inputs.package_analysis_path);
     findings.extend(package_findings);
 
+    let external_intelligence = parse_external_intelligence(inputs.external_intelligence_path);
+
     // BUILD_FAILED can't come out of verdict_from_findings (findings-only), so
     // it's handled as the one explicit fallback when the build itself failed.
     let verdict = if findings.is_empty() && matches!(inputs.makepkg_exit, Some(code) if code != 0) {
@@ -423,7 +477,7 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
         },
         package_analysis,
         reproducibility: inputs.reproducibility,
-        external_intelligence: Vec::new(),
+        external_intelligence,
         verdict,
         evidence_hash: String::new(),
         signature: None,
@@ -503,6 +557,7 @@ mod tests {
             install_path: None,
             static_findings_path: None,
             package_analysis_path: None,
+            external_intelligence_path: None,
             telemetry_path: None,
             strace_available: false,
             makepkg_exit: Some(0),
@@ -537,6 +592,7 @@ mod tests {
             install_path: None,
             static_findings_path: None,
             package_analysis_path: None,
+            external_intelligence_path: None,
             telemetry_path: Some(&telemetry_path),
             strace_available: true,
             makepkg_exit: Some(0),
@@ -561,6 +617,7 @@ mod tests {
             install_path: None,
             static_findings_path: None,
             package_analysis_path: None,
+            external_intelligence_path: None,
             telemetry_path: None,
             strace_available: false,
             makepkg_exit: Some(0),
@@ -585,6 +642,7 @@ mod tests {
             install_path: None,
             static_findings_path: None,
             package_analysis_path: None,
+            external_intelligence_path: None,
             telemetry_path: None,
             strace_available: false,
             makepkg_exit: Some(1),

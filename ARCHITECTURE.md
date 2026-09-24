@@ -36,6 +36,7 @@ AUR (metadata dump, every 2h)
         - build phase (makepkg) with canary secrets planted, process/network/fs telemetry
         - install phase (pacman -U) in a second container, same telemetry
         - package/ELF analysis of build output
+        - external intelligence: OSV.dev vulnerability-database correlation (see below)
    -> Evidence Engine        (merge static + dynamic + package analysis into one evidence doc)
    -> Verdict Engine          (deterministic rules, no ML/LLM judgment)
    -> Attestation             (signed JSON: package identity + evidence + verdict)
@@ -50,6 +51,38 @@ AUR (metadata dump, every 2h)
 `STALE` fires automatically whenever the AUR commit for a package no longer matches the
 commit recorded in the latest attestation — this is what prevents "verified yesterday,
 malicious commit pushed today, still shows verified."
+
+## External intelligence (OSV.dev)
+
+The original vision describes external signals (vulnerability databases, known-malware hash
+matches) as "another evidence source" — never something that decides a verdict on its own.
+`scripts/dynamic_sandbox.sh` implements the free, realistic slice of this: a single batched
+query to `https://api.osv.dev/v1/querybatch` (no API key, generous free-tier limits) per
+package scan, written to `external_intel.json` and stored on `Attestation.external_intelligence`
+via `aur-sentry attest --external-intel <path>`.
+
+**Honest scope and limitation:** OSV.dev has no "Arch" or "AUR" ecosystem (verified against
+the OSV schema docs — there is no fabricated ecosystem here). That means there is no reliable,
+general way to query OSV for an AUR package's own dependency graph, since most AUR
+`depends()`/`makedepends()` entries are system libraries (`glibc`, `gtk3`, ...) that OSV simply
+doesn't track. What the sandbox actually queries:
+
+- Every `depends()`/`makedepends()` name from `.SRCINFO` (version constraints stripped) against
+  OSV's `PyPI`, `npm`, and `crates.io` ecosystems, on the chance the same name also happens to
+  be a package there. This is a **name-collision guess**, not an identity match — low-yield,
+  and for most AUR packages this finds nothing at all. That's expected, not a bug.
+- If PKGBUILD's `url=` points at a `github.com` repo, its Go-module form
+  (`github.com/owner/repo`) is queried against OSV's `Go` ecosystem. Unlike the above, this
+  **is** an exact identity match (Go module names are literally their GitHub path), so it's the
+  one genuinely reliable signal this step produces — and it only fires for Go-based AUR
+  packages.
+
+`external_intelligence` is **informational only**: like `reproducibility` (Phase 3), it never
+feeds `verdict_from_findings` (`src/attest.rs::parse_external_intelligence`). This was a
+deliberate, conservative choice for this pass — an OSV name-collision match is a much weaker
+signal than a directly-observed fact about the build itself (canary access, setuid files,
+undeclared network egress), so it's surfaced as evidence for a human/downstream consumer to
+weigh rather than folded into the automated verdict.
 
 ## Attestation schema
 

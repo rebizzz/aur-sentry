@@ -325,6 +325,89 @@ if [ "$PKG_ANALYSIS_AVAILABLE" != true ]; then
 fi
 echo "Package analysis available: $PKG_ANALYSIS_AVAILABLE"
 
+# ── 9d. External intelligence — OSV.dev vulnerability correlation. Purely
+#        evidence, never verdict-deciding (see ARCHITECTURE.md's "external
+#        intelligence" note and src/attest.rs's `parse_external_intelligence`
+#        doc comment). OSV.dev has NO "Arch"/"AUR" ecosystem (verified
+#        against the OSV schema docs before writing this), so there is no
+#        honest way to query it for an AUR package's own dependency graph in
+#        general. What's genuinely queryable, cheaply and for free:
+#          - each depends()/makedepends() name from .SRCINFO (version
+#            constraints stripped), tried against OSV's PyPI/npm/crates.io
+#            ecosystems in case the same name happens to also be a package
+#            there — a name-collision guess, low-yield but occasionally real
+#          - if PKGBUILD's url= is a github.com repo, its Go-module form
+#            (github.com/owner/repo) tried against OSV's Go ecosystem — this
+#            one is an EXACT identity match, not a guess, because Go module
+#            names are literally their GitHub path, so this is the most
+#            reliable signal this step produces (and only fires for
+#            Go-based AUR packages)
+#        Realistic expectation: for most AUR packages (shell scripts, C/C++
+#        tools with system-library deps, etc.) this whole step will find
+#        nothing, and external_intel.json will be `[]`. That's an honest
+#        result, not a bug. ───────────────────────────────────────────────
+echo "--- External intelligence (OSV.dev) ---"
+EXTERNAL_INTEL_JSON="$EVIDENCE_DIR/external_intel.json"
+OSV_QUERIES_JSON="$EVIDENCE_DIR/osv_queries.json"
+OSV_ECOSYSTEMS='["PyPI","npm","crates.io"]'
+
+DEP_NAMES="$(awk -F'= ?' '/^\t(make)?depends(_[A-Za-z0-9_]+)? = /{print $2}' "$SRC_DIR/.SRCINFO" 2>/dev/null \
+  | sed -E 's/[<>=].*$//' | sed '/^$/d' | sort -u | head -n 25)"
+
+PKG_URL="$(grep -m1 '^url=' "$SRC_DIR/PKGBUILD" 2>/dev/null | sed -E 's/^url=//' | tr -d '"'"'"'\r')"
+GO_MODULE=""
+case "$PKG_URL" in
+  *github.com/*)
+    GO_MODULE="$(printf '%s' "$PKG_URL" | sed -E 's#^https?://##; s#/$##; s#\.git$##')"
+    ;;
+esac
+
+{
+  if [ -n "$DEP_NAMES" ]; then
+    printf '%s\n' "$DEP_NAMES" | jq -R -c --argjson ecosystems "$OSV_ECOSYSTEMS" \
+      'select(length > 0) as $n | $ecosystems[] | {package: {name: $n, ecosystem: .}}'
+  fi
+  if [ -n "$GO_MODULE" ]; then
+    jq -n -c --arg m "$GO_MODULE" '{package: {name: $m, ecosystem: "Go"}}'
+  fi
+} | jq -s '{queries: .}' > "$OSV_QUERIES_JSON"
+
+OSV_QUERY_COUNT="$(jq '.queries | length' "$OSV_QUERIES_JSON")"
+: > "$EVIDENCE_DIR/osv_entries.jsonl"
+if [ "$OSV_QUERY_COUNT" -gt 0 ]; then
+  echo "Querying OSV.dev for $OSV_QUERY_COUNT candidate identit(y/ies)"
+  OSV_RESPONSE_JSON="$EVIDENCE_DIR/osv_response.json"
+  if curl -fsS -m 30 -X POST -H 'Content-Type: application/json' \
+    --data @"$OSV_QUERIES_JSON" https://api.osv.dev/v1/querybatch \
+    -o "$OSV_RESPONSE_JSON" 2>"$EVIDENCE_DIR/osv_query.err"; then
+    # Batch results only carry vuln IDs — fetch full advisories (capped, so
+    # a package with many hits can't turn this into an unbounded loop) for
+    # a human-readable summary/url per match.
+    HIT_IDS="$(jq -r '[.results[]?.vulns[]?.id] | unique | .[:10][]' \
+      "$OSV_RESPONSE_JSON" 2>/dev/null)"
+    if [ -n "$HIT_IDS" ]; then
+      while IFS= read -r vid; do
+        [ -z "$vid" ] && continue
+        vuln_json="$EVIDENCE_DIR/osv_vuln_$vid.json"
+        if curl -fsS -m 15 "https://api.osv.dev/v1/vulns/$vid" \
+          -o "$vuln_json" 2>>"$EVIDENCE_DIR/osv_query.err"; then
+          jq -c --arg id "$vid" '{
+            source: "osv.dev",
+            summary: (((.summary // .details // "known vulnerability") | .[0:300]) + " (" + $id + ")"),
+            url: ("https://osv.dev/vulnerability/" + $id)
+          }' "$vuln_json" >> "$EVIDENCE_DIR/osv_entries.jsonl"
+        fi
+      done <<< "$HIT_IDS"
+    fi
+  else
+    echo "::warning::OSV.dev query failed — continuing without external intelligence"
+  fi
+else
+  echo "no OSV-queryable identities found for this package (expected for most AUR packages)"
+fi
+jq -s '.' "$EVIDENCE_DIR/osv_entries.jsonl" > "$EXTERNAL_INTEL_JSON"
+echo "External intelligence entries: $(jq 'length' "$EXTERNAL_INTEL_JSON")"
+
 # ── 10. Assemble the attestation. Prefer the real CLI (`aur-sentry attest`)
 #        once src/attestation.rs lands; otherwise use the standalone Python
 #        fallback assembler so this workflow stays runnable today.
@@ -343,6 +426,7 @@ if "$AUR_BIN" attest --help >/dev/null 2>&1; then
     --static-findings "$EVIDENCE_DIR/static_scan.log"
     --telemetry "$EVIDENCE_DIR/telemetry.log"
     --package-analysis "$PKG_ANALYSIS_JSON"
+    --external-intel "$EXTERNAL_INTEL_JSON"
     --makepkg-exit "$MAKEPKG_EXIT"
     --reproducibility-status "$REPRO_STATUS"
     --output "$OUTPUT_JSON"
