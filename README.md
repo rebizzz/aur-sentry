@@ -13,29 +13,11 @@ Automated supply-chain malware watchdog and threat radar for the Arch User Repos
 The table below is generated automatically on schedule every 2 hours:
 
 <!-- AUTOPILOT_TABLE_START -->
-<details open>
-<summary>Active Threats (16)</summary>
+<details>
+<summary>Active Threats (0)</summary>
 
-| Severity | Package | Version | Maintainer | Triggers | Link |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| `[CRITICAL]` | `linuxqq-nt` | 6:3.2.34_53644-1 | logan_reed | `PKG_PROVIDES_COMMON`, `SUS_CHMOD_SUID`, `PKG_INSTALL_HOOK` | [AUR](https://aur.archlinux.org/packages/linuxqq-nt) |
-| `[HIGH]` | `voltius-git` | 0.41.0.r0.g026603b-1 | ezhkov | `PKG_SKIP_HASH`, `PKG_NPM_INSTALL` | [AUR](https://aur.archlinux.org/packages/voltius-git) |
-| `[HIGH]` | `signageos-cli` | 4.4.0-1 | prochac | `PKG_NPM_INSTALL` | [AUR](https://aur.archlinux.org/packages/signageos-cli) |
-| `[HIGH]` | `repo-notes-git` | 20260922.1.r14.g095e3b9-1 | timmo001 | `PKG_SKIP_HASH`, `PKG_NPM_INSTALL`, `PKG_INSTALL_HOOK` | [AUR](https://aur.archlinux.org/packages/repo-notes-git) |
-| `[HIGH]` | `factory-ai-droid-cli-rnoz-bin` | 0.226.2-1 | rNoz | `OBFUSCATED_DOLLAR_EXEC`, `PKG_INSTALL_HOOK`, `PKG_INSTALL_HOOK` | [AUR](https://aur.archlinux.org/packages/factory-ai-droid-cli-rnoz-bin) |
-| `[HIGH]` | `zenith-gamestream` | 2026.730.002631-2 | y0no | `PKG_SKIP_HASH`, `PKG_INSTALL_HOOK`, `PKG_INSTALL_HOOK` | [AUR](https://aur.archlinux.org/packages/zenith-gamestream) |
-| `[HIGH]` | `piclone-git` | r160.8b9c6c6-1 | linux-aarhus | `PKG_SKIP_HASH`, `PKG_INSTALL_HOOK` | [AUR](https://aur.archlinux.org/packages/piclone-git) |
-| `[MEDIUM]` | `baresip-qt-gui-git` | 4.10.1-2 | CxOrg | `PKG_PROVIDES_COMMON`, `PKG_SKIP_HASH` | [AUR](https://aur.archlinux.org/packages/baresip-qt-gui-git) |
-| `[MEDIUM]` | `spotifast-bin` | 0.10.0-1 | crmne | `PKG_REPLACE_DECL` | [AUR](https://aur.archlinux.org/packages/spotifast-bin) |
-| `[MEDIUM]` | `mp3rgui` | 3.9.0-1 | m-igashi | `PKG_SKIP_HASH` | [AUR](https://aur.archlinux.org/packages/mp3rgui) |
-| `[MEDIUM]` | `spotifast` | 0.10.0-1 | crmne | `PKG_REPLACE_DECL` | [AUR](https://aur.archlinux.org/packages/spotifast) |
-| `[MEDIUM]` | `spotifast-git` | 0.10.0-1 | crmne | `PKG_REPLACE_DECL`, `PKG_SKIP_HASH` | [AUR](https://aur.archlinux.org/packages/spotifast-git) |
-| `[MEDIUM]` | `snx-rs` | 6.4.1-1 | zdenek-biberle | `PKG_REPLACE_DECL` | [AUR](https://aur.archlinux.org/packages/snx-rs) |
-| `[MEDIUM]` | `zen-twilight-bin` | 1.23t.2026.09.23-1 | Larvey | `PKG_SKIP_HASH`, `PKG_SKIP_HASH` | [AUR](https://aur.archlinux.org/packages/zen-twilight-bin) |
-| `[MEDIUM]` | `freecad-weekly` | 26.3.0dev.09.23-1 | mar | `PKG_SKIP_HASH` | [AUR](https://aur.archlinux.org/packages/freecad-weekly) |
-| `[MEDIUM]` | `flectar-mail-git` | 0.1.0alpha.5.r7.g9f062a8-2 | liveopt | `PKG_SKIP_HASH` | [AUR](https://aur.archlinux.org/packages/flectar-mail-git) |
+*No active threats recorded in the radar.*
 </details>
-
 <!-- AUTOPILOT_TABLE_END -->
 
 - Full JSON Feed: [`advisories.json`](advisories.json)

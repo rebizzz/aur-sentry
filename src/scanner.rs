@@ -73,7 +73,7 @@ pub const RULES: &[Rule] = &[
     Rule {
         id: "OBFUSCATED_DOLLAR_EXEC",
         severity: "HIGH",
-        pattern: r##"\$\(\s*(?:echo|printf|cat)\s+.*(?:\|.*){2,}\)"##,
+        pattern: r##"\$\(\s*(?:echo|printf|cat)\s+.*(?:\|[^|\n].*){2,}\)"##,
         description: "deeply nested substitution with pipe chain (obfuscated execution)",
     },
     // --- Exfiltration ---
@@ -233,27 +233,21 @@ pub const RULES: &[Rule] = &[
     // --- Packaging Abuse ---
     Rule {
         id: "PKG_SKIP_HASH",
-        severity: "MEDIUM",
+        severity: "LOW",
         pattern: r##"(?:sha256sums|sha512sums|b2sums|md5sums)(?:_[a-z0-9_]+)?=\s*\([^)]*['"]SKIP['"]"##,
-        description: "integrity verification bypassed ('SKIP') for source archive",
+        description: "integrity verification bypassed ('SKIP') for non-VCS source archive",
     },
     Rule {
-        id: "PKG_INSTALL_HOOK",
+        id: "PKG_REPLACE_CORE",
+        severity: "CRITICAL",
+        pattern: r##"replaces=\s*\([^)]*['"](?:base|linux|glibc|systemd|coreutils|pacman|sudo|shadow)['"]"##,
+        description: "replaces=() targets a core base package (silent system package replacement)",
+    },
+    Rule {
+        id: "PKG_PROVIDES_CORE",
         severity: "HIGH",
-        pattern: r##"(?:post_install|post_upgrade|pre_install|pre_remove)\s*\(\s*\)"##,
-        description: ".install hook defined (runs with root privileges during pacman step)",
-    },
-    Rule {
-        id: "PKG_REPLACE_DECL",
-        severity: "MEDIUM",
-        pattern: r##"replaces=\s*\("##,
-        description: "replaces=() declared (can silently replace existing packages)",
-    },
-    Rule {
-        id: "PKG_PROVIDES_COMMON",
-        severity: "MEDIUM",
-        pattern: r##"provides=\s*\([^)]*(?:python|lib|core|base|linux)"##,
-        description: "provides=() claims core system package names (dependency hijacking)",
+        pattern: r##"provides=\s*\([^)]*['"](?:base|linux|glibc|systemd|coreutils|pacman|sudo|shadow)['"]"##,
+        description: "provides=() claims core base package name (dependency hijacking)",
     },
     Rule {
         id: "PKG_INSTALL_FILE_REF",
@@ -263,9 +257,9 @@ pub const RULES: &[Rule] = &[
     },
     Rule {
         id: "PKG_NPM_INSTALL",
-        severity: "HIGH",
+        severity: "LOW",
         pattern: r##"\bnpm\s+install\b|\bbun\s+install\b|\byarn\s+install\b"##,
-        description: "unlocked npm/bun/yarn install in build (dependency confusion attack vector)",
+        description: "unlocked npm/bun/yarn install during build (unpinned dependency risk)",
     },
     // --- Suspicious System Commands ---
     Rule {
@@ -376,6 +370,17 @@ impl PKGBUILDScanner {
     pub fn scan(&self, content: &str, pkgname: Option<&str>) -> Vec<Finding> {
         let mut findings = Vec::new();
 
+        let is_vcs = pkgname.is_some_and(|n| {
+            n.ends_with("-git")
+                || n.ends_with("-hg")
+                || n.ends_with("-svn")
+                || n.ends_with("-bzr")
+                || n.ends_with("-cvs")
+        }) || content.contains("git+")
+            || content.contains("git://")
+            || content.contains("hg+")
+            || content.contains("svn+");
+
         // 1. Regex pattern scanning
         for (idx, line) in content.lines().enumerate() {
             let trimmed = line.trim();
@@ -383,6 +388,12 @@ impl PKGBUILDScanner {
                 continue;
             }
             for rule in &self.rules {
+                if is_vcs && rule.id == "PKG_SKIP_HASH" {
+                    continue;
+                }
+                if rule.id == "SUS_CHMOD_SUID" && line.contains("chrome-sandbox") {
+                    continue;
+                }
                 if let Some(m) = rule.regex.find(line) {
                     let matched = m.as_str();
                     let snippet = if matched.len() > 120 {

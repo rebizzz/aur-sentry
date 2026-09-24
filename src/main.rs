@@ -228,7 +228,7 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
 
         let actionable: Vec<_> = findings
             .into_iter()
-            .filter(|f| f.severity != "INFO")
+            .filter(|f| f.severity != "INFO" && f.severity != "LOW")
             .collect();
 
         if !actionable.is_empty() {
