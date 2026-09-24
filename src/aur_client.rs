@@ -52,7 +52,14 @@ impl AURClient {
     /// Fetch package info by name from AUR RPC.
     pub fn get_package_info(&self, pkgname: &str) -> Option<AURPackage> {
         let url = format!("{AUR_RPC}/info/{pkgname}");
-        let resp: RpcResponse = self.agent.get(&url).call().ok()?.body_mut().read_json().ok()?;
+        let resp: RpcResponse = self
+            .agent
+            .get(&url)
+            .call()
+            .ok()?
+            .body_mut()
+            .read_json()
+            .ok()?;
         resp.results.into_iter().next()
     }
 
@@ -60,7 +67,11 @@ impl AURClient {
     pub fn search(&self, query: &str) -> Vec<AURPackage> {
         let url = format!("{AUR_RPC}/search/{query}");
         match self.agent.get(&url).call() {
-            Ok(mut resp) => resp.body_mut().read_json::<RpcResponse>().map(|r| r.results).unwrap_or_default(),
+            Ok(mut resp) => resp
+                .body_mut()
+                .read_json::<RpcResponse>()
+                .map(|r| r.results)
+                .unwrap_or_default(),
             Err(_) => Vec::new(),
         }
     }
@@ -68,13 +79,25 @@ impl AURClient {
     /// Fetch raw PKGBUILD content from AUR cgit.
     pub fn fetch_pkgbuild(&self, pkgname: &str) -> Option<String> {
         let url = format!("{AUR_CGIT_RAW}{pkgname}");
-        self.agent.get(&url).call().ok()?.body_mut().read_to_string().ok()
+        self.agent
+            .get(&url)
+            .call()
+            .ok()?
+            .body_mut()
+            .read_to_string()
+            .ok()
     }
 
     /// Fetch .install file from AUR cgit.
     pub fn fetch_install_file(&self, pkgname: &str, filename: &str) -> Option<String> {
         let url = format!("{AUR_CGIT_INSTALL}{filename}?h={pkgname}");
-        self.agent.get(&url).call().ok()?.body_mut().read_to_string().ok()
+        self.agent
+            .get(&url)
+            .call()
+            .ok()?
+            .body_mut()
+            .read_to_string()
+            .ok()
     }
 
     /// Download the FULL AUR metadata dump (~90k packages).
@@ -98,7 +121,11 @@ impl AURClient {
                 }
                 match serde_json::from_str::<Vec<AURPackage>>(&json_str) {
                     Ok(mut pkgs) => {
-                        pkgs.sort_by(|a, b| b.last_modified.unwrap_or(0).cmp(&a.last_modified.unwrap_or(0)));
+                        pkgs.sort_by(|a, b| {
+                            b.last_modified
+                                .unwrap_or(0)
+                                .cmp(&a.last_modified.unwrap_or(0))
+                        });
                         eprintln!("[+] Loaded {} packages from AUR metadata dump", pkgs.len());
                         pkgs
                     }

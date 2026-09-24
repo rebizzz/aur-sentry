@@ -155,7 +155,12 @@ pub fn update_readme_table(repo_root: &Path, advisories: &[Advisory]) {
                 "MEDIUM" => "🟡 **MEDIUM**",
                 _ => &adv.highest_severity,
             };
-            let triggers: Vec<_> = adv.findings.iter().take(3).map(|f| format!("`{}`", f.rule_id)).collect();
+            let triggers: Vec<_> = adv
+                .findings
+                .iter()
+                .take(3)
+                .map(|f| format!("`{}`", f.rule_id))
+                .collect();
             lines.push(format!(
                 "| {badge} | `{}` | {} | {} | {} | [AUR]({}) |",
                 adv.package,
