@@ -26,7 +26,7 @@ echo "Evidence dir: $EVIDENCE_DIR"
 # ── 1. Prepare the Arch build environment ───────────────────────────────
 echo "--- Installing sandbox dependencies ---"
 pacman -Syu --noconfirm --needed
-pacman -S --noconfirm --needed git rust strace jq python sudo namcap \
+pacman -S --noconfirm --needed git rust strace jq python sudo namcap file binutils \
   >"$EVIDENCE_DIR/pacman.log" 2>&1
 
 # ── 2. Build aur-sentry (trusted, our own code — done before canaries/AUR
@@ -219,6 +219,112 @@ else
 fi
 echo "Reproducibility status: $REPRO_STATUS"
 
+# ── 9c. Package-content & ELF analysis (ARCHITECTURE.md sections 12-13) —
+#        reuse one of the two real *.pkg.tar.* files the reproducibility
+#        step above already built (no third build). Extracted with
+#        bsdtar/tar (both ship with archlinux:base-devel via libarchive),
+#        then a pragmatic, cheap pass: total file count, ELF count via
+#        `file`, per-ELF arch/stripped/PIE via `file`+`readelf -h`, and
+#        setuid/setgid/world-writable file detection via `find -perm`. No
+#        symbol/import analysis or entropy scoring — kept deliberately
+#        lightweight for a free-tier GitHub Actions runner. Degrades to
+#        "unavailable" (not a failure) if no package file exists, e.g. both
+#        reproducibility builds failed (REPRO_STATUS=UNSUPPORTED). ─────────
+echo "--- Package-content & ELF analysis ---"
+PKG_ANALYSIS_JSON="$EVIDENCE_DIR/package_analysis.json"
+PKG_ANALYSIS_AVAILABLE=false
+
+PKG_FILE=""
+for n in 1 2; do
+  [ -n "$PKG_FILE" ] && break
+  flist="$REPRO_DIR/filelist-$n.txt"
+  [ -s "$flist" ] || continue
+  candidate="$BUILDER_HOME/pkg-src-repro-$n/$(head -n1 "$flist")"
+  [ -f "$candidate" ] && PKG_FILE="$candidate"
+done
+
+if [ -n "$PKG_FILE" ]; then
+  echo "Analyzing package: $PKG_FILE"
+  EXTRACT_DIR="$EVIDENCE_DIR/pkg-extract"
+  rm -rf "$EXTRACT_DIR"
+  mkdir -p "$EXTRACT_DIR"
+  EXTRACT_OK=false
+  if command -v bsdtar >/dev/null 2>&1; then
+    bsdtar -xf "$PKG_FILE" -C "$EXTRACT_DIR" >"$EVIDENCE_DIR/pkg_extract.log" 2>&1 && EXTRACT_OK=true
+  elif command -v tar >/dev/null 2>&1; then
+    tar -xf "$PKG_FILE" -C "$EXTRACT_DIR" >"$EVIDENCE_DIR/pkg_extract.log" 2>&1 && EXTRACT_OK=true
+  else
+    echo "::warning::neither bsdtar nor tar is available — skipping package-content analysis" \
+      | tee -a "$EVIDENCE_DIR/pkg_extract.log"
+  fi
+
+  if [ "$EXTRACT_OK" = true ]; then
+    FILE_COUNT="$(find "$EXTRACT_DIR" -type f | wc -l)"
+
+    SETUID_LIST="$EVIDENCE_DIR/setuid_files.txt"
+    WW_LIST="$EVIDENCE_DIR/world_writable_files.txt"
+    find "$EXTRACT_DIR" \( -perm -4000 -o -perm -2000 \) -type f 2>/dev/null \
+      | sed "s|^$EXTRACT_DIR/||" > "$SETUID_LIST"
+    find "$EXTRACT_DIR" -perm -0002 -type f 2>/dev/null \
+      | sed "s|^$EXTRACT_DIR/||" > "$WW_LIST"
+
+    ELF_OBJECTS_JSONL="$EVIDENCE_DIR/elf_objects.jsonl"
+    : > "$ELF_OBJECTS_JSONL"
+    ELF_COUNT=0
+    while IFS= read -r -d '' f; do
+      FOUT="$(file -b "$f" 2>/dev/null)"
+      case "$FOUT" in
+        *ELF*)
+          ELF_COUNT=$((ELF_COUNT + 1))
+          rel="${f#"$EXTRACT_DIR"/}"
+          ARCH="unknown"
+          if command -v readelf >/dev/null 2>&1; then
+            ARCH="$(readelf -h "$f" 2>/dev/null | awk -F': *' '/Machine:/{print $2; exit}')"
+            [ -n "$ARCH" ] || ARCH="unknown"
+          fi
+          STRIPPED=false
+          case "$FOUT" in *"not stripped"*) STRIPPED=false ;; *stripped*) STRIPPED=true ;; esac
+          PIE=false
+          case "$FOUT" in *"pie executable"*|*"shared object"*) PIE=true ;; esac
+          jq -n --arg path "$rel" --arg arch "$ARCH" \
+            --argjson stripped "$STRIPPED" --argjson pie "$PIE" \
+            '{path:$path, arch:$arch, stripped:$stripped, pie:$pie}' >> "$ELF_OBJECTS_JSONL"
+          ;;
+      esac
+    done < <(find "$EXTRACT_DIR" -type f -print0)
+
+    jq -n \
+      --argjson file_count "$FILE_COUNT" \
+      --argjson elf_object_count "$ELF_COUNT" \
+      --slurpfile elf_objects "$ELF_OBJECTS_JSONL" \
+      --argjson setuid_files "$(wc -l < "$SETUID_LIST")" \
+      --argjson world_writable_files "$(wc -l < "$WW_LIST")" \
+      --rawfile setuid_raw "$SETUID_LIST" \
+      --rawfile ww_raw "$WW_LIST" \
+      '{
+        available: true,
+        file_count: $file_count,
+        elf_object_count: $elf_object_count,
+        elf_objects: $elf_objects,
+        setuid_files: $setuid_files,
+        world_writable_files: $world_writable_files,
+        setuid_paths: ($setuid_raw | split("\n") | map(select(length > 0))),
+        world_writable_paths: ($ww_raw | split("\n") | map(select(length > 0)))
+      }' > "$PKG_ANALYSIS_JSON"
+    PKG_ANALYSIS_AVAILABLE=true
+  else
+    echo "::warning::failed to extract '$PKG_FILE' for package-content analysis"
+  fi
+else
+  echo "::warning::no built package available for package-content analysis (reproducibility status: $REPRO_STATUS)"
+fi
+
+if [ "$PKG_ANALYSIS_AVAILABLE" != true ]; then
+  jq -n '{available:false, file_count:0, elf_object_count:0, elf_objects:[], setuid_files:0, world_writable_files:0, setuid_paths:[], world_writable_paths:[]}' \
+    > "$PKG_ANALYSIS_JSON"
+fi
+echo "Package analysis available: $PKG_ANALYSIS_AVAILABLE"
+
 # ── 10. Assemble the attestation. Prefer the real CLI (`aur-sentry attest`)
 #        once src/attestation.rs lands; otherwise use the standalone Python
 #        fallback assembler so this workflow stays runnable today.
@@ -236,6 +342,7 @@ if "$AUR_BIN" attest --help >/dev/null 2>&1; then
     --pkgbuild "$SRC_DIR/PKGBUILD"
     --static-findings "$EVIDENCE_DIR/static_scan.log"
     --telemetry "$EVIDENCE_DIR/telemetry.log"
+    --package-analysis "$PKG_ANALYSIS_JSON"
     --makepkg-exit "$MAKEPKG_EXIT"
     --reproducibility-status "$REPRO_STATUS"
     --output "$OUTPUT_JSON"

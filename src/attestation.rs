@@ -117,9 +117,27 @@ pub struct DynamicEvidence {
 }
 
 #[derive(Debug, Clone, Default, Serialize, Deserialize)]
+pub struct ElfObjectInfo {
+    pub path: String,
+    pub arch: String,
+    pub stripped: bool,
+    pub pie: bool,
+}
+
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct PackageAnalysis {
+    /// False when no package could be extracted/analyzed for this run (e.g.
+    /// the reproducibility build failed both independent attempts). Package
+    /// analysis degrades gracefully — this is not an attestation failure.
+    pub available: bool,
     pub file_count: u64,
     pub elf_object_count: u64,
+    pub elf_objects: Vec<ElfObjectInfo>,
+    /// Count of files with the setuid or setgid bit set in the extracted
+    /// package tree.
+    pub setuid_files: u64,
+    /// Count of world-writable files in the extracted package tree.
+    pub world_writable_files: u64,
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]

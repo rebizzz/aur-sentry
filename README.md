@@ -46,6 +46,9 @@ nix develop
 
 # Query live threat radar from the terminal
 ./target/release/aur-sentry radar
+
+# Check the published attestation registry for a package before installing
+./target/release/aur-sentry check <package-name>
 ```
 
 ### Verify a published attestation

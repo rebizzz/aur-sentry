@@ -4,11 +4,12 @@
 //! reference behavior this ports; not required to be byte-identical).
 
 use crate::attestation::{
-    Attestation, Behavior, DynamicEvidence, FilesystemEvent, Finding, NetworkEvent,
+    Attestation, Behavior, DynamicEvidence, ElfObjectInfo, FilesystemEvent, Finding, NetworkEvent,
     PackageAnalysis, PackageIdentity, ReproducibilityStatus, Severity, SourceIdentity, Verdict,
     verdict_from_findings,
 };
 use crate::scanner;
+use serde::Deserialize;
 use sha2::{Digest, Sha256};
 use std::collections::HashSet;
 use std::net::ToSocketAddrs;
@@ -216,6 +217,80 @@ pub fn parse_telemetry(
     (network, filesystem)
 }
 
+/// Shape of the JSON blob `scripts/dynamic_sandbox.sh` assembles with `jq`
+/// from its package-extraction/ELF-analysis pass (see `--package-analysis`).
+/// A superset of `attestation::PackageAnalysis`: it additionally carries the
+/// raw setuid/world-writable paths so `build_attestation` can turn them into
+/// `Finding`s, since the stored `PackageAnalysis` only needs the counts.
+#[derive(Debug, Deserialize, Default)]
+struct PackageAnalysisInput {
+    #[serde(default)]
+    available: bool,
+    #[serde(default)]
+    file_count: u64,
+    #[serde(default)]
+    elf_object_count: u64,
+    #[serde(default)]
+    elf_objects: Vec<ElfObjectInfo>,
+    #[serde(default)]
+    setuid_files: u64,
+    #[serde(default)]
+    world_writable_files: u64,
+    #[serde(default)]
+    setuid_paths: Vec<String>,
+    #[serde(default)]
+    world_writable_paths: Vec<String>,
+}
+
+/// Parse the `--package-analysis` JSON blob into the stored `PackageAnalysis`
+/// plus any setuid/world-writable `Finding`s it implies. Any missing/
+/// unreadable/unparseable file degrades to "analysis unavailable" rather than
+/// failing the attestation (matches this module's general leniency).
+fn parse_package_analysis(path: Option<&Path>) -> (PackageAnalysis, Vec<Finding>) {
+    let Some(raw) = path
+        .and_then(|p| std::fs::read_to_string(p).ok())
+        .and_then(|text| serde_json::from_str::<PackageAnalysisInput>(&text).ok())
+    else {
+        return (PackageAnalysis::default(), Vec::new());
+    };
+
+    let mut findings = Vec::new();
+    if !raw.setuid_paths.is_empty() {
+        findings.push(Finding {
+            behavior: Behavior::PrivilegeEscalation,
+            file: "dynamic-sandbox".into(),
+            line: 0,
+            severity: Severity::Critical,
+            description: format!(
+                "setuid/setgid file(s) found in built package: {}",
+                raw.setuid_paths.join(", ")
+            ),
+        });
+    }
+    if !raw.world_writable_paths.is_empty() {
+        findings.push(Finding {
+            behavior: Behavior::ArbitraryFilesystemWrite,
+            file: "dynamic-sandbox".into(),
+            line: 0,
+            severity: Severity::High,
+            description: format!(
+                "world-writable file(s) found in built package: {}",
+                raw.world_writable_paths.join(", ")
+            ),
+        });
+    }
+
+    let analysis = PackageAnalysis {
+        available: raw.available,
+        file_count: raw.file_count,
+        elf_object_count: raw.elf_object_count,
+        elf_objects: raw.elf_objects,
+        setuid_files: raw.setuid_files,
+        world_writable_files: raw.world_writable_files,
+    };
+    (analysis, findings)
+}
+
 fn sha256_hex(bytes: &[u8]) -> String {
     let mut hasher = Sha256::new();
     hasher.update(bytes);
@@ -233,6 +308,11 @@ pub struct AttestInputs<'a> {
     pub install_path: Option<&'a Path>,
     pub static_findings_path: Option<&'a Path>,
     pub telemetry_path: Option<&'a Path>,
+    /// Path to the package-content/ELF-analysis JSON blob assembled by
+    /// `scripts/dynamic_sandbox.sh` (`jq`, from the real `makepkg`-built
+    /// package). `None`/unreadable/unparseable degrades to an "unavailable"
+    /// `PackageAnalysis` rather than failing the attestation.
+    pub package_analysis_path: Option<&'a Path>,
     pub strace_available: bool,
     pub makepkg_exit: Option<i32>,
     pub scanner_version: String,
@@ -309,6 +389,9 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
         });
     }
 
+    let (package_analysis, package_findings) = parse_package_analysis(inputs.package_analysis_path);
+    findings.extend(package_findings);
+
     // BUILD_FAILED can't come out of verdict_from_findings (findings-only), so
     // it's handled as the one explicit fallback when the build itself failed.
     let verdict = if findings.is_empty() && matches!(inputs.makepkg_exit, Some(code) if code != 0) {
@@ -338,7 +421,7 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
             network,
             filesystem,
         },
-        package_analysis: PackageAnalysis::default(),
+        package_analysis,
         reproducibility: inputs.reproducibility,
         external_intelligence: Vec::new(),
         verdict,
@@ -419,6 +502,7 @@ mod tests {
             pkgbuild_path: None,
             install_path: None,
             static_findings_path: None,
+            package_analysis_path: None,
             telemetry_path: None,
             strace_available: false,
             makepkg_exit: Some(0),
@@ -452,6 +536,7 @@ mod tests {
             pkgbuild_path: None,
             install_path: None,
             static_findings_path: None,
+            package_analysis_path: None,
             telemetry_path: Some(&telemetry_path),
             strace_available: true,
             makepkg_exit: Some(0),
@@ -475,6 +560,7 @@ mod tests {
             pkgbuild_path: None,
             install_path: None,
             static_findings_path: None,
+            package_analysis_path: None,
             telemetry_path: None,
             strace_available: false,
             makepkg_exit: Some(0),
@@ -498,6 +584,7 @@ mod tests {
             pkgbuild_path: None,
             install_path: None,
             static_findings_path: None,
+            package_analysis_path: None,
             telemetry_path: None,
             strace_available: false,
             makepkg_exit: Some(1),

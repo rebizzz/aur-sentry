@@ -181,13 +181,47 @@
         }
       }
     },
-    "packageAnalysis": {
+    "elfObject": {
       "type": "object",
-      "required": ["file_count", "elf_object_count"],
+      "required": ["path", "arch", "stripped", "pie"],
       "additionalProperties": false,
       "properties": {
+        "path": { "type": "string" },
+        "arch": { "type": "string" },
+        "stripped": { "type": "boolean" },
+        "pie": { "type": "boolean" }
+      }
+    },
+    "packageAnalysis": {
+      "type": "object",
+      "description": "Lightweight package-content and ELF analysis over the actual makepkg-built package (see scripts/dynamic_sandbox.sh's reproducibility build step). `available: false` means no package could be extracted/analyzed this run (e.g. both independent builds failed) — a degrade path, not an attestation failure.",
+      "required": [
+        "available",
+        "file_count",
+        "elf_object_count",
+        "elf_objects",
+        "setuid_files",
+        "world_writable_files"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "available": { "type": "boolean" },
         "file_count": { "type": "integer", "minimum": 0 },
-        "elf_object_count": { "type": "integer", "minimum": 0 }
+        "elf_object_count": { "type": "integer", "minimum": 0 },
+        "elf_objects": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/elfObject" }
+        },
+        "setuid_files": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Count of files with the setuid/setgid bit set in the extracted package tree."
+        },
+        "world_writable_files": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Count of world-writable files in the extracted package tree."
+        }
       }
     },
     "reproducibilityStatus": {
