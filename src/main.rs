@@ -1,3 +1,5 @@
+#![allow(clippy::collapsible_if)]
+
 //! CLI entry point for AUR-Sentry.
 //! Nerdfont-powered, colored, human-readable output.
 
@@ -5,7 +7,7 @@ use aur_sentry::aur_client::AURClient;
 use aur_sentry::report::{self, Advisory};
 use aur_sentry::scanner::PKGBUILDScanner;
 use clap::{Parser, Subcommand};
-use std::path::PathBuf;
+use std::path::{Path, PathBuf};
 use std::process::ExitCode;
 
 // ── Nerdfont glyphs & ANSI colors ───────────────────────────────────
@@ -117,7 +119,7 @@ fn print_banner() {
 
 // ── scan-file ───────────────────────────────────────────────────────
 
-fn cmd_scan_file(path: &PathBuf) -> ExitCode {
+fn cmd_scan_file(path: &Path) -> ExitCode {
     let content = match std::fs::read_to_string(path) {
         Ok(c) => c,
         Err(e) => {
@@ -184,13 +186,14 @@ fn cmd_scan_pkg(pkgname: &str) -> ExitCode {
 
 // ── autopilot ───────────────────────────────────────────────────────
 
-fn cmd_autopilot(repo_root: &PathBuf, window_hours: u64, limit: usize) -> ExitCode {
+fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode {
     eprintln!("{CYAN}{ICON_RADAR} {BOLD}autopilot mode{RESET}");
     eprintln!("{DIM}  window: last {window_hours}h  |  limit: {limit} packages{RESET}");
     eprintln!();
 
     let client = AURClient::new();
     let scanner = PKGBUILDScanner::new();
+    let install_re = regex::Regex::new(r##"install=\s*['"]?([a-zA-Z0-9._-]+\.install)"##).unwrap();
 
     let recent = client.get_recently_modified(window_hours);
     let to_scan: Vec<_> = recent.into_iter().take(limit).collect();
@@ -213,8 +216,6 @@ fn cmd_autopilot(repo_root: &PathBuf, window_hours: u64, limit: usize) -> ExitCo
         let mut findings = scanner.scan(&pkgbuild, Some(&pkg.name));
 
         // Also scan .install if referenced
-        let install_re =
-            regex::Regex::new(r##"install=\s*['"]?([a-zA-Z0-9._-]+\.install)"##).unwrap();
         if let Some(cap) = install_re.captures(&pkgbuild) {
             if let Some(install_content) = client.fetch_install_file(&pkg.name, &cap[1]) {
                 let install_findings = scanner.scan(&install_content, None);

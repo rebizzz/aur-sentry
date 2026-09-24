@@ -142,17 +142,21 @@ pub fn update_readme_table(repo_root: &Path, advisories: &[Advisory]) {
     }
 
     let table = if advisories.is_empty() {
-        "\n*No active threats currently recorded in the radar.*\n".to_string()
+        "\n<details>\n<summary>Active Threats (0)</summary>\n\n*No active threats recorded in the radar.*\n</details>\n".to_string()
     } else {
         let mut lines = vec![
-            "\n| Severity | Package | Version | Maintainer | Triggers | Link |".to_string(),
+            format!(
+                "\n<details open>\n<summary>Active Threats ({})</summary>\n",
+                advisories.len()
+            ),
+            "| Severity | Package | Version | Maintainer | Triggers | Link |".to_string(),
             "| :--- | :--- | :--- | :--- | :--- | :--- |".to_string(),
         ];
-        for adv in advisories.iter().take(20) {
+        for adv in advisories.iter().take(25) {
             let badge = match adv.highest_severity.as_str() {
-                "CRITICAL" => "🔴 **CRITICAL**",
-                "HIGH" => "🟠 **HIGH**",
-                "MEDIUM" => "🟡 **MEDIUM**",
+                "CRITICAL" => "`[CRITICAL]`",
+                "HIGH" => "`[HIGH]`",
+                "MEDIUM" => "`[MEDIUM]`",
                 _ => &adv.highest_severity,
             };
             let triggers: Vec<_> = adv
@@ -170,7 +174,8 @@ pub fn update_readme_table(repo_root: &Path, advisories: &[Advisory]) {
                 adv.aur_url
             ));
         }
-        format!("\n{}\n", lines.join("\n"))
+        lines.push("</details>\n".to_string());
+        format!("{}\n", lines.join("\n"))
     };
 
     let start_idx = content.find(start).unwrap() + start.len();
