@@ -14,7 +14,15 @@
 
 use regex::Regex;
 use serde::{Deserialize, Serialize};
+use std::collections::HashSet;
 use std::path::Path;
+use std::sync::LazyLock;
+
+static VAR_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r#"^([a-zA-Z_]\w*)=["']([a-zA-Z]{1,4})["']"#).unwrap());
+
+static LONG_B64_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r#"['"]([A-Za-z0-9+/=]{60,})['"]"#).unwrap());
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Finding {
@@ -334,7 +342,10 @@ struct CompiledRule {
 
 pub struct PKGBUILDScanner {
     rules: Vec<CompiledRule>,
+    #[allow(dead_code)]
     popular_packages: Vec<String>,
+    popular_set: HashSet<String>,
+    popular_cleaned: Vec<(String, String)>,
 }
 
 impl PKGBUILDScanner {
@@ -352,9 +363,17 @@ impl PKGBUILDScanner {
             .collect();
 
         let popular_packages = Self::load_popular_packages();
+        let popular_set: HashSet<String> = popular_packages.iter().cloned().collect();
+        let clean = |s: &str| s.to_lowercase().replace("-bin", "").replace("-git", "");
+        let popular_cleaned: Vec<(String, String)> = popular_packages
+            .iter()
+            .map(|p| (p.clone(), clean(p)))
+            .collect();
         Self {
             rules,
             popular_packages,
+            popular_set,
+            popular_cleaned,
         }
     }
 
@@ -423,7 +442,7 @@ impl PKGBUILDScanner {
 
         // 3. Typosquatting
         if let Some(name) = pkgname {
-            if !self.popular_packages.contains(&name.to_string()) {
+            if !self.popular_set.contains(name) {
                 if let Some(target) = self.check_typosquatting(name) {
                     findings.push(Finding {
                         rule_id: "TYPOSQUATTING".to_string(),
@@ -451,58 +470,54 @@ impl PKGBUILDScanner {
         let mut findings = Vec::new();
 
         // Long encoded strings (excluding standard sha256/sha512/b2 hex hashes)
-        if let Ok(long_b64) = Regex::new(r#"['"]([A-Za-z0-9+/=]{60,})['"]"#) {
-            for (idx, line) in content.lines().enumerate() {
-                let trimmed = line.trim();
-                if trimmed.starts_with('#')
-                    || trimmed.starts_with("sha256sums")
-                    || trimmed.starts_with("sha512sums")
-                    || trimmed.starts_with("b2sums")
-                    || trimmed.starts_with("md5sums")
-                    || trimmed.starts_with("source")
-                    || trimmed.starts_with("validpgpkeys")
+        for (idx, line) in content.lines().enumerate() {
+            let trimmed = line.trim();
+            if trimmed.starts_with('#')
+                || trimmed.starts_with("sha256sums")
+                || trimmed.starts_with("sha512sums")
+                || trimmed.starts_with("b2sums")
+                || trimmed.starts_with("md5sums")
+                || trimmed.starts_with("source")
+                || trimmed.starts_with("validpgpkeys")
+            {
+                continue;
+            }
+            if let Some(caps) = LONG_B64_RE.captures(line) {
+                let matched_str = &caps[1];
+                // Skip pure 64 or 128-character hex strings (sha256 / sha512 / b2 hashes inside multi-line arrays)
+                if (matched_str.len() == 64 || matched_str.len() == 128)
+                    && matched_str.chars().all(|c| c.is_ascii_hexdigit())
                 {
                     continue;
                 }
-                if let Some(caps) = long_b64.captures(line) {
-                    let matched_str = &caps[1];
-                    // Skip pure 64 or 128-character hex strings (sha256 / sha512 / b2 hashes inside multi-line arrays)
-                    if (matched_str.len() == 64 || matched_str.len() == 128)
-                        && matched_str.chars().all(|c| c.is_ascii_hexdigit())
-                    {
-                        continue;
-                    }
-                    findings.push(Finding {
-                        rule_id: "SUS_LONG_ENCODED_STRING".to_string(),
-                        severity: "HIGH".to_string(),
-                        description:
-                            "Long base64-like encoded string found (may hide second-stage payload)"
-                                .to_string(),
-                        line_number: idx + 1,
-                        matched_text: format!("{}...", &line.trim()[..line.trim().len().min(80)]),
-                    });
-                }
+                findings.push(Finding {
+                    rule_id: "SUS_LONG_ENCODED_STRING".to_string(),
+                    severity: "HIGH".to_string(),
+                    description:
+                        "Long base64-like encoded string found (may hide second-stage payload)"
+                            .to_string(),
+                    line_number: idx + 1,
+                    matched_text: format!("{}...", &line.trim()[..line.trim().len().min(80)]),
+                });
             }
         }
 
         // Variable splicing
-        if let Ok(var_re) = Regex::new(r#"^([a-zA-Z_]\w*)=["']([a-zA-Z]{1,4})["']"#) {
-            let short_vars: Vec<_> = content
-                .lines()
-                .filter_map(|l| var_re.captures(l.trim()).map(|c| c[1].to_string()))
-                .collect();
-            if short_vars.len() >= 3 {
-                findings.push(Finding {
-                    rule_id: "SUS_VARIABLE_SPLICING".to_string(),
-                    severity: "HIGH".to_string(),
-                    description: format!(
-                        "Multiple short variable definitions ({} found) - possible command splicing obfuscation",
-                        short_vars.len()
-                    ),
-                    line_number: 1,
-                    matched_text: format!("Variables: {}", short_vars[..short_vars.len().min(5)].join(", ")),
-                });
-            }
+        let short_vars: Vec<_> = content
+            .lines()
+            .filter_map(|l| VAR_RE.captures(l.trim()).map(|c| c[1].to_string()))
+            .collect();
+        if short_vars.len() >= 3 {
+            findings.push(Finding {
+                rule_id: "SUS_VARIABLE_SPLICING".to_string(),
+                severity: "HIGH".to_string(),
+                description: format!(
+                    "Multiple short variable definitions ({} found) - possible command splicing obfuscation",
+                    short_vars.len()
+                ),
+                line_number: 1,
+                matched_text: format!("Variables: {}", short_vars[..short_vars.len().min(5)].join(", ")),
+            });
         }
 
         findings
@@ -515,14 +530,13 @@ impl PKGBUILDScanner {
         let clean = |s: &str| s.to_lowercase().replace("-bin", "").replace("-git", "");
         let cand = clean(candidate);
 
-        for popular in &self.popular_packages {
-            let target = clean(popular);
-            if cand == target {
+        for (popular, target) in &self.popular_cleaned {
+            if &cand == target {
                 continue;
             }
             let len_diff = (cand.len() as isize - target.len() as isize).unsigned_abs();
             if len_diff <= 2 {
-                let dist = damerau_levenshtein(&cand, &target);
+                let dist = damerau_levenshtein(&cand, target);
                 if dist <= 1 || (cand.len() >= 8 && dist <= 2) {
                     return Some(popular.clone());
                 }
@@ -539,38 +553,81 @@ impl Default for PKGBUILDScanner {
 }
 
 fn damerau_levenshtein(s1: &str, s2: &str) -> usize {
-    let a: Vec<char> = s1.chars().collect();
-    let b: Vec<char> = s2.chars().collect();
+    let a = s1.as_bytes();
+    let b = s2.as_bytes();
     let len_a = a.len();
     let len_b = b.len();
 
-    let mut d = vec![vec![0usize; len_b + 2]; len_a + 2];
-    let max_dist = len_a + len_b;
+    let stride = len_b + 2;
+    let mut flat = [0usize; 66 * 66];
+    let d: &mut [usize] = if (len_a + 2) * stride <= flat.len() {
+        &mut flat[..(len_a + 2) * stride]
+    } else {
+        return damerau_levenshtein_heap(a, b);
+    };
 
-    d[0][0] = max_dist;
+    let max_dist = len_a + len_b;
+    d[0] = max_dist;
     for i in 0..=len_a {
-        d[i + 1][0] = max_dist;
-        d[i + 1][1] = i;
+        d[(i + 1) * stride] = max_dist;
+        d[(i + 1) * stride + 1] = i;
     }
     for j in 0..=len_b {
-        d[0][j + 1] = max_dist;
-        d[1][j + 1] = j;
+        d[j + 1] = max_dist;
+        d[stride + j + 1] = j;
     }
 
     for i in 1..=len_a {
         for j in 1..=len_b {
             let cost = if a[i - 1] == b[j - 1] { 0 } else { 1 };
-            d[i + 1][j + 1] = *[d[i][j + 1] + 1, d[i + 1][j] + 1, d[i][j] + cost]
-                .iter()
-                .min()
-                .unwrap();
+            let deletion = d[(i + 1) * stride + j] + 1;
+            let insertion = d[i * stride + j + 1] + 1;
+            let substitution = d[i * stride + j] + cost;
+            let mut val = deletion.min(insertion).min(substitution);
 
             if i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1] {
-                d[i + 1][j + 1] = d[i + 1][j + 1].min(d[i - 1][j - 1] + 1);
+                let transposition = d[(i - 1) * stride + j - 1] + 1;
+                val = val.min(transposition);
             }
+            d[(i + 1) * stride + j + 1] = val;
         }
     }
-    d[len_a + 1][len_b + 1]
+    d[(len_a + 1) * stride + len_b + 1]
+}
+
+fn damerau_levenshtein_heap(a: &[u8], b: &[u8]) -> usize {
+    let len_a = a.len();
+    let len_b = b.len();
+    let stride = len_b + 2;
+    let mut d = vec![0usize; (len_a + 2) * stride];
+    let max_dist = len_a + len_b;
+
+    d[0] = max_dist;
+    for i in 0..=len_a {
+        d[(i + 1) * stride] = max_dist;
+        d[(i + 1) * stride + 1] = i;
+    }
+    for j in 0..=len_b {
+        d[j + 1] = max_dist;
+        d[stride + j + 1] = j;
+    }
+
+    for i in 1..=len_a {
+        for j in 1..=len_b {
+            let cost = if a[i - 1] == b[j - 1] { 0 } else { 1 };
+            let deletion = d[(i + 1) * stride + j] + 1;
+            let insertion = d[i * stride + j + 1] + 1;
+            let substitution = d[i * stride + j] + cost;
+            let mut val = deletion.min(insertion).min(substitution);
+
+            if i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1] {
+                let transposition = d[(i - 1) * stride + j - 1] + 1;
+                val = val.min(transposition);
+            }
+            d[(i + 1) * stride + j + 1] = val;
+        }
+    }
+    d[(len_a + 1) * stride + len_b + 1]
 }
 
 #[cfg(test)]
@@ -578,6 +635,19 @@ mod tests {
     use super::*;
 
     fn test_scanner() -> PKGBUILDScanner {
+        let popular_packages = vec![
+            "google-chrome".into(),
+            "visual-studio-code-bin".into(),
+            "spotify".into(),
+            "discord".into(),
+            "paru".into(),
+        ];
+        let popular_set: HashSet<String> = popular_packages.iter().cloned().collect();
+        let clean = |s: &str| s.to_lowercase().replace("-bin", "").replace("-git", "");
+        let popular_cleaned: Vec<(String, String)> = popular_packages
+            .iter()
+            .map(|p| (p.clone(), clean(p)))
+            .collect();
         PKGBUILDScanner {
             rules: RULES
                 .iter()
@@ -590,13 +660,9 @@ mod tests {
                     })
                 })
                 .collect(),
-            popular_packages: vec![
-                "google-chrome".into(),
-                "visual-studio-code-bin".into(),
-                "spotify".into(),
-                "discord".into(),
-                "paru".into(),
-            ],
+            popular_packages,
+            popular_set,
+            popular_cleaned,
         }
     }
 

@@ -8,8 +8,14 @@
 use crate::scanner::{Finding, PKGBUILDScanner};
 use base64::prelude::*;
 use regex::Regex;
-use std::collections::HashMap;
 use std::io::Read;
+use std::sync::LazyLock;
+
+static TOKEN_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r#"['"]([A-Za-z0-9+/=_-]{40,})['"]"#).unwrap());
+
+static B64_PATTERN: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r#"['"]([A-Za-z0-9+/]{24,}={0,2})['"]"#).unwrap());
 
 /// Compute Shannon Entropy in bits per byte (0.0 to 8.0).
 /// Normal text/code: ~3.0 - 4.5
@@ -18,15 +24,17 @@ pub fn shannon_entropy(s: &str) -> f64 {
     if s.is_empty() {
         return 0.0;
     }
-    let mut counts = HashMap::new();
-    for b in s.bytes() {
-        *counts.entry(b).or_insert(0usize) += 1;
+    let mut counts = [0usize; 256];
+    for &b in s.as_bytes() {
+        counts[b as usize] += 1;
     }
     let len = s.len() as f64;
     let mut entropy = 0.0;
-    for &count in counts.values() {
-        let p = count as f64 / len;
-        entropy -= p * p.log2();
+    for &count in &counts {
+        if count > 0 {
+            let p = count as f64 / len;
+            entropy -= p * p.log2();
+        }
     }
     entropy
 }
@@ -34,7 +42,6 @@ pub fn shannon_entropy(s: &str) -> f64 {
 /// Analyze string tokens for high Shannon entropy (packed/encrypted payloads).
 pub fn analyze_entropy(content: &str) -> Vec<Finding> {
     let mut findings = Vec::new();
-    let token_re = Regex::new(r#"['"]([A-Za-z0-9+/=_-]{40,})['"]"#).unwrap();
 
     for (idx, line) in content.lines().enumerate() {
         let trimmed = line.trim();
@@ -49,7 +56,7 @@ pub fn analyze_entropy(content: &str) -> Vec<Finding> {
             continue;
         }
 
-        for cap in token_re.captures_iter(line) {
+        for cap in TOKEN_RE.captures_iter(line) {
             let token = &cap[1];
             // Skip pure hex checksums
             if (token.len() == 64 || token.len() == 128)
@@ -83,7 +90,6 @@ pub fn analyze_entropy(content: &str) -> Vec<Finding> {
 /// Recursively extract, de-obfuscate, and scan hidden Base64 payloads.
 pub fn deobfuscate_and_scan(content: &str, scanner: &PKGBUILDScanner) -> Vec<Finding> {
     let mut findings = Vec::new();
-    let b64_pattern = Regex::new(r#"['"]([A-Za-z0-9+/]{24,}={0,2})['"]"#).unwrap();
 
     for (idx, line) in content.lines().enumerate() {
         let trimmed = line.trim();
@@ -96,7 +102,7 @@ pub fn deobfuscate_and_scan(content: &str, scanner: &PKGBUILDScanner) -> Vec<Fin
             continue;
         }
 
-        for cap in b64_pattern.captures_iter(line) {
+        for cap in B64_PATTERN.captures_iter(line) {
             let candidate = &cap[1];
             // Skip pure hex checksums
             if candidate.chars().all(|c| c.is_ascii_hexdigit()) {

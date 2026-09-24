@@ -4,13 +4,55 @@
     <title>AUR-Sentry Security Advisories</title>
     <link>https://github.com/rebizzz/aur-sentry</link>
     <description>Automated supply-chain security alerts for Arch User Repository packages</description>
-    <lastBuildDate>Thu, 24 Sep 2026 10:41:06 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 14:37:55 +0000</lastBuildDate>
     <item>
-      <title>[HIGH] paseo-desktop-git-bin (0.9.1.r50.gbbf8cce3f-2)</title>
+      <title>[CRITICAL] bitcoin-abc-qt (0.33.13-0)</title>
+      <link>https://aur.archlinux.org/packages/bitcoin-abc-qt</link>
+      <description>Maintainer: Fabcien — Triggers: CRED_CRYPTO_WALLETS, CRED_CRYPTO_WALLETS</description>
+      <pubDate>2026-09-24T14:37:40.426687901+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/bitcoin-abc-qt#0.33.13-0</guid>
+    </item>
+    <item>
+      <title>[CRITICAL] opera (136.0.6008.52-3)</title>
+      <link>https://aur.archlinux.org/packages/opera</link>
+      <description>Maintainer: Refreeze5911 — Triggers: SUS_CHMOD_SUID</description>
+      <pubDate>2026-09-24T14:36:29.409356371+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/opera#136.0.6008.52-3</guid>
+    </item>
+    <item>
+      <title>[CRITICAL] bitcoin-abc (0.33.13-0)</title>
+      <link>https://aur.archlinux.org/packages/bitcoin-abc</link>
+      <description>Maintainer: Fabcien — Triggers: CRED_CRYPTO_WALLETS, CRED_CRYPTO_WALLETS</description>
+      <pubDate>2026-09-24T14:36:14.405644573+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/bitcoin-abc#0.33.13-0</guid>
+    </item>
+    <item>
+      <title>[HIGH] jlink-software-and-documentation (66:9.80-1)</title>
+      <link>https://aur.archlinux.org/packages/jlink-software-and-documentation</link>
+      <description>Maintainer: AlexisPolti — Triggers: PERSIST_UDEV_RULES</description>
+      <pubDate>2026-09-24T14:37:12.430856904+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/jlink-software-and-documentation#66:9.80-1</guid>
+    </item>
+    <item>
+      <title>[HIGH] python-pytorch-lightning (2.6.6-1)</title>
+      <link>https://aur.archlinux.org/packages/python-pytorch-lightning</link>
+      <description>Maintainer: Smoolak — Triggers: OBFUSCATED_DOLLAR_EXEC</description>
+      <pubDate>2026-09-24T14:37:02.432833610+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/python-pytorch-lightning#2.6.6-1</guid>
+    </item>
+    <item>
+      <title>[HIGH] freebuff-bin (0.0.194-1)</title>
+      <link>https://aur.archlinux.org/packages/freebuff-bin</link>
+      <description>Maintainer: lapsus — Triggers: EXFIL_CURL_PIPE_EXEC</description>
+      <pubDate>2026-09-24T14:36:57.409118700+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/freebuff-bin#0.0.194-1</guid>
+    </item>
+    <item>
+      <title>[HIGH] paseo-desktop-git-bin (0.9.2.r2.ge3c853df5-2)</title>
       <link>https://aur.archlinux.org/packages/paseo-desktop-git-bin</link>
       <description>Maintainer: xpufx — Triggers: OBFUSCATED_DOLLAR_EXEC</description>
       <pubDate>2026-09-24T10:40:56.310264227+00:00</pubDate>
-      <guid>https://aur.archlinux.org/packages/paseo-desktop-git-bin#0.9.1.r50.gbbf8cce3f-2</guid>
+      <guid>https://aur.archlinux.org/packages/paseo-desktop-git-bin#0.9.2.r2.ge3c853df5-2</guid>
     </item>
   </channel>
 </rss>

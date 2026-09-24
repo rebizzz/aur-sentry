@@ -6,6 +6,7 @@
 //! - Full metadata dump (`packages-meta-ext-v1.json.gz`) for bulk scanning
 
 use serde::Deserialize;
+use serde::de::Deserializer;
 use std::io::Read;
 
 const AUR_RPC: &str = "https://aur.archlinux.org/rpc/v5";
@@ -150,20 +151,91 @@ impl AURClient {
         }
     }
 
-    /// Get recently modified packages from the full dump within the last N hours.
+    /// Get recently modified packages from the metadata dump within the last N hours.
+    /// Streams directly from the gzip decoder with in-flight cutoff filtering to avoid
+    /// allocating 120,000+ unused package structs in memory.
     pub fn get_recently_modified(&self, hours: u64) -> Vec<AURPackage> {
         let cutoff = chrono::Utc::now().timestamp() - (hours as i64 * 3600);
-        let all = self.fetch_full_metadata();
-        all.into_iter()
-            .filter(|p| p.last_modified.unwrap_or(0) >= cutoff)
-            .collect()
+        eprintln!("[*] Downloading and streaming AUR metadata dump (filtering last {hours}h)...");
+
+        let mut resp = match self.agent.get(AUR_META_DUMP).call() {
+            Ok(r) => r,
+            Err(e) => {
+                eprintln!("[!] Failed to download metadata dump: {e}");
+                return Vec::new();
+            }
+        };
+
+        let gz_bytes = match resp
+            .body_mut()
+            .with_config()
+            .limit(150 * 1024 * 1024)
+            .read_to_vec()
+        {
+            Ok(b) => b,
+            Err(e) => {
+                eprintln!("[!] Failed to read metadata dump: {e}");
+                return Vec::new();
+            }
+        };
+
+        let decoder = flate2::read::GzDecoder::new(&gz_bytes[..]);
+        let reader = std::io::BufReader::with_capacity(128 * 1024, decoder);
+
+        let mut deserializer = serde_json::Deserializer::from_reader(reader);
+        let mut recent_pkgs = deserializer
+            .deserialize_seq(StreamFilterVisitor { cutoff })
+            .unwrap_or_else(|e| {
+                eprintln!("[!] Failed to parse metadata stream: {e}");
+                Vec::new()
+            });
+
+        recent_pkgs.sort_by(|a, b| {
+            b.last_modified
+                .unwrap_or(0)
+                .cmp(&a.last_modified.unwrap_or(0))
+        });
+
+        eprintln!(
+            "[+] Filtered {} packages modified in the last {hours}h (skipped ~{} stale packages)",
+            recent_pkgs.len(),
+            120_000usize.saturating_sub(recent_pkgs.len())
+        );
+
+        recent_pkgs
     }
+
     /// Fetch remote threat advisory feed from GitHub.
     pub fn fetch_remote_advisories(&self) -> Option<Vec<crate::report::Advisory>> {
         let url = "https://raw.githubusercontent.com/rebizzz/aur-sentry/main/advisories.json";
         let mut resp = self.agent.get(url).call().ok()?;
         let feed: crate::report::AdvisoryFeed = resp.body_mut().read_json().ok()?;
         Some(feed.advisories)
+    }
+}
+
+struct StreamFilterVisitor {
+    cutoff: i64,
+}
+
+impl<'de> serde::de::Visitor<'de> for StreamFilterVisitor {
+    type Value = Vec<AURPackage>;
+
+    fn expecting(&self, formatter: &mut std::fmt::Formatter) -> std::fmt::Result {
+        formatter.write_str("a JSON array of AUR packages")
+    }
+
+    fn visit_seq<A>(self, mut seq: A) -> Result<Self::Value, A::Error>
+    where
+        A: serde::de::SeqAccess<'de>,
+    {
+        let mut pkgs = Vec::new();
+        while let Some(pkg) = seq.next_element::<AURPackage>()? {
+            if pkg.last_modified.unwrap_or(0) >= self.cutoff {
+                pkgs.push(pkg);
+            }
+        }
+        Ok(pkgs)
     }
 }
 
@@ -206,5 +278,28 @@ mod tests {
         assert_eq!(pkgs[0].num_votes, Some(42));
         assert_eq!(pkgs[1].name, "orphan-pkg");
         assert_eq!(pkgs[1].maintainer, None);
+    }
+
+    #[test]
+    fn filters_recently_modified_from_json_array() {
+        let raw = r#"[
+            {
+                "Name": "old-pkg",
+                "Version": "1.0-1",
+                "LastModified": 1000
+            },
+            {
+                "Name": "new-pkg",
+                "Version": "2.0-1",
+                "LastModified": 2000
+            }
+        ]"#;
+
+        let mut deserializer = serde_json::Deserializer::from_str(raw);
+        let pkgs = deserializer
+            .deserialize_seq(StreamFilterVisitor { cutoff: 1500 })
+            .expect("stream deserialization succeeds");
+        assert_eq!(pkgs.len(), 1);
+        assert_eq!(pkgs[0].name, "new-pkg");
     }
 }

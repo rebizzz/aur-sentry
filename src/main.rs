@@ -7,8 +7,13 @@ use aur_sentry::aur_client::AURClient;
 use aur_sentry::report::{self, Advisory};
 use aur_sentry::scanner::PKGBUILDScanner;
 use clap::{Parser, Subcommand};
+use rayon::prelude::*;
 use std::path::{Path, PathBuf};
 use std::process::ExitCode;
+use std::sync::LazyLock;
+
+static INSTALL_RE: LazyLock<regex::Regex> =
+    LazyLock::new(|| regex::Regex::new(r##"install=\s*['"]?([a-zA-Z0-9._-]+\.install)"##).unwrap());
 
 // ── Nerdfont glyphs & ANSI colors ───────────────────────────────────
 
@@ -170,8 +175,7 @@ fn cmd_scan_pkg(pkgname: &str) -> ExitCode {
     let mut findings = scanner.scan(&pkgbuild, Some(pkgname));
 
     // Also check .install file if referenced
-    let install_re = regex::Regex::new(r##"install=\s*['"]?([a-zA-Z0-9._-]+\.install)"##).unwrap();
-    if let Some(cap) = install_re.captures(&pkgbuild) {
+    if let Some(cap) = INSTALL_RE.captures(&pkgbuild) {
         let install_name = &cap[1];
         eprintln!("{BLUE}{ICON_SEARCH} found .install ref: {install_name}, scanning...{RESET}");
         if let Some(install_content) = client.fetch_install_file(pkgname, install_name) {
@@ -200,7 +204,6 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
 
     let client = AURClient::new();
     let scanner = PKGBUILDScanner::new();
-    let install_re = regex::Regex::new(r##"install=\s*['"]?([a-zA-Z0-9._-]+\.install)"##).unwrap();
 
     let recent = client.get_recently_modified(window_hours);
     let to_scan: Vec<_> = recent.into_iter().take(limit).collect();
@@ -209,36 +212,103 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
         to_scan.len()
     );
 
-    // 1. Re-evaluate existing active advisories from previous windows
+    // 1. Re-evaluate existing active advisories from previous windows in parallel
     let existing = report::load_advisories(repo_root);
     let mut active_advisories: Vec<Advisory> = Vec::new();
-    let mut re_evaluated = 0u32;
+    let re_evaluated = existing.len() as u32;
     let mut resolved_count = 0u32;
 
     if !existing.is_empty() {
         eprintln!(
-            "{CYAN}{ICON_RADAR} {BOLD}{}{RESET}{CYAN} active advisories from previous windows being re-evaluated...{RESET}",
+            "{CYAN}{ICON_RADAR} {BOLD}{}{RESET}{CYAN} active advisories from previous windows being re-evaluated in parallel...{RESET}",
             existing.len()
         );
-        for mut adv in existing {
-            re_evaluated += 1;
-            let pkg_info = client.get_package_info(&adv.package);
-            let pkgbuild_opt = client.fetch_pkgbuild(&adv.package);
+        let results: Vec<Option<Advisory>> = existing
+            .into_par_iter()
+            .map(|mut adv| {
+                let worker_client = AURClient::new();
+                let pkg_info = worker_client.get_package_info(&adv.package);
+                let pkgbuild_opt = worker_client.fetch_pkgbuild(&adv.package);
 
-            if pkg_info.is_none() || pkgbuild_opt.is_none() {
-                eprintln!(
-                    "  {YELLOW}{ICON_WARN} {BOLD}{}{RESET} removed from AUR (takedown) — resolving active advisory",
-                    adv.package
-                );
+                if pkg_info.is_none() || pkgbuild_opt.is_none() {
+                    eprintln!(
+                        "  {YELLOW}{ICON_WARN} {BOLD}{}{RESET} removed from AUR (takedown) — resolving active advisory",
+                        adv.package
+                    );
+                    return None;
+                }
+
+                let pkgbuild = pkgbuild_opt.unwrap();
+                let mut findings = scanner.scan(&pkgbuild, Some(&adv.package));
+
+                if let Some(cap) = INSTALL_RE.captures(&pkgbuild) {
+                    if let Some(install_content) = worker_client.fetch_install_file(&adv.package, &cap[1]) {
+                        let install_findings = scanner.scan(&install_content, None);
+                        for mut f in install_findings {
+                            f.description = format!("[.install] {}", f.description);
+                            findings.push(f);
+                        }
+                    }
+                }
+
+                let actionable: Vec<_> = findings
+                    .into_iter()
+                    .filter(|f| f.severity != "INFO" && f.severity != "LOW")
+                    .collect();
+
+                if actionable.is_empty() {
+                    eprintln!(
+                        "  {GREEN}{ICON_CHECK} {BOLD}{}{RESET} no longer has threat signatures (patched clean) — resolving advisory",
+                        adv.package
+                    );
+                    return None;
+                }
+
+                // Still vulnerable: update metadata and retain
+                let highest = if actionable.iter().any(|f| f.severity == "CRITICAL") {
+                    "CRITICAL"
+                } else if actionable.iter().any(|f| f.severity == "HIGH") {
+                    "HIGH"
+                } else {
+                    "MEDIUM"
+                };
+
+                if let Some(info) = pkg_info {
+                    adv.version = info.version;
+                    adv.maintainer = info.maintainer.unwrap_or_else(|| "orphan".into());
+                }
+                adv.highest_severity = highest.to_string();
+                adv.findings = actionable;
+                Some(adv)
+            })
+            .collect();
+
+        for opt in results {
+            if let Some(adv) = opt {
+                active_advisories.push(adv);
+            } else {
                 resolved_count += 1;
-                continue;
             }
+        }
+    }
 
-            let pkgbuild = pkgbuild_opt.unwrap();
-            let mut findings = scanner.scan(&pkgbuild, Some(&adv.package));
+    // 2. Scan recent packages from the time window in parallel
+    let scanned = to_scan.len() as u32;
+    eprintln!(
+        "{BLUE}{ICON_SEARCH} scanning {scanned} packages in parallel across worker pool...{RESET}"
+    );
 
-            if let Some(cap) = install_re.captures(&pkgbuild) {
-                if let Some(install_content) = client.fetch_install_file(&adv.package, &cap[1]) {
+    let newly_flagged: Vec<Advisory> = to_scan
+        .par_iter()
+        .filter_map(|pkg| {
+            let worker_client = AURClient::new();
+            let pkgbuild = worker_client.fetch_pkgbuild(&pkg.name)?;
+
+            let mut findings = scanner.scan(&pkgbuild, Some(&pkg.name));
+
+            // Also scan .install if referenced
+            if let Some(cap) = INSTALL_RE.captures(&pkgbuild) {
+                if let Some(install_content) = worker_client.fetch_install_file(&pkg.name, &cap[1]) {
                     let install_findings = scanner.scan(&install_content, None);
                     for mut f in install_findings {
                         f.description = format!("[.install] {}", f.description);
@@ -253,64 +323,9 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
                 .collect();
 
             if actionable.is_empty() {
-                eprintln!(
-                    "  {GREEN}{ICON_CHECK} {BOLD}{}{RESET} no longer has threat signatures (patched clean) — resolving advisory",
-                    adv.package
-                );
-                resolved_count += 1;
-                continue;
+                return None;
             }
 
-            // Still vulnerable: update metadata and retain
-            let highest = if actionable.iter().any(|f| f.severity == "CRITICAL") {
-                "CRITICAL"
-            } else if actionable.iter().any(|f| f.severity == "HIGH") {
-                "HIGH"
-            } else {
-                "MEDIUM"
-            };
-
-            if let Some(info) = pkg_info {
-                adv.version = info.version;
-                adv.maintainer = info.maintainer.unwrap_or_else(|| "orphan".into());
-            }
-            adv.highest_severity = highest.to_string();
-            adv.findings = actionable;
-            active_advisories.push(adv);
-        }
-    }
-
-    // 2. Scan recent packages from the time window
-    let mut scanned = 0u32;
-    let mut new_flagged = 0u32;
-
-    for pkg in &to_scan {
-        scanned += 1;
-        let pkgbuild = match client.fetch_pkgbuild(&pkg.name) {
-            Some(c) => c,
-            None => continue,
-        };
-
-        let mut findings = scanner.scan(&pkgbuild, Some(&pkg.name));
-
-        // Also scan .install if referenced
-        if let Some(cap) = install_re.captures(&pkgbuild) {
-            if let Some(install_content) = client.fetch_install_file(&pkg.name, &cap[1]) {
-                let install_findings = scanner.scan(&install_content, None);
-                for mut f in install_findings {
-                    f.description = format!("[.install] {}", f.description);
-                    findings.push(f);
-                }
-            }
-        }
-
-        let actionable: Vec<_> = findings
-            .into_iter()
-            .filter(|f| f.severity != "INFO" && f.severity != "LOW")
-            .collect();
-
-        if !actionable.is_empty() {
-            new_flagged += 1;
             let highest = if actionable.iter().any(|f| f.severity == "CRITICAL") {
                 "CRITICAL"
             } else if actionable.iter().any(|f| f.severity == "HIGH") {
@@ -328,7 +343,7 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
                 maintainer,
                 actionable.len()
             );
-            let adv = Advisory {
+            Some(Advisory {
                 package: pkg.name.clone(),
                 version: pkg.version.clone(),
                 maintainer,
@@ -336,16 +351,19 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
                 detected_at: chrono::Utc::now().to_rfc3339(),
                 findings: actionable,
                 aur_url: format!("https://aur.archlinux.org/packages/{}", pkg.name),
-            };
+            })
+        })
+        .collect();
 
-            if let Some(pos) = active_advisories
-                .iter()
-                .position(|a| a.package == adv.package)
-            {
-                active_advisories[pos] = adv;
-            } else {
-                active_advisories.push(adv);
-            }
+    let new_flagged = newly_flagged.len() as u32;
+    for adv in newly_flagged {
+        if let Some(pos) = active_advisories
+            .iter()
+            .position(|a| a.package == adv.package)
+        {
+            active_advisories[pos] = adv;
+        } else {
+            active_advisories.push(adv);
         }
     }
 

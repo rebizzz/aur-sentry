@@ -66,69 +66,32 @@ jobs:
             done
           fi
 
-      - name: Create Separate Pull Requests for Radar & Feeds
+      - name: Create Pull Request for Threat Radar & Feeds
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "aur-sentry-bot"
           git config --global user.email "bot@users.noreply.github.com"
 
-          mkdir -p /tmp/radar_stash
-          cp ADVISORIES.md /tmp/radar_stash/ 2>/dev/null || true
-          cp advisories.json /tmp/radar_stash/ 2>/dev/null || true
-          cp advisories.xml /tmp/radar_stash/ 2>/dev/null || true
-
-          git reset --hard HEAD
-
-          # 1. Process ADVISORIES.md Threat Radar PR
-          if [ -f /tmp/radar_stash/ADVISORIES.md ]; then
-            cp /tmp/radar_stash/ADVISORIES.md ADVISORIES.md
-            if ! git diff --quiet ADVISORIES.md; then
-              echo "ADVISORIES.md threat radar has updates. Creating/updating PR..."
-              git checkout -B autopilot/radar-advisories origin/main
-              git add ADVISORIES.md
-              git commit -m "chore(radar): update live threat radar in ADVISORIES.md"
-              git push -f origin autopilot/radar-advisories
-              EXISTING_PR=$(gh pr list --head autopilot/radar-advisories --json number --jq '.[0].number')
-              if [ -z "$EXISTING_PR" ]; then
-                PR_BODY="Automated update to the live Threat Radar table in ADVISORIES.md based on the latest AUR metadata scan. Verified by automated CI & Codecov checks."
-                gh pr create \
-                  --title "chore(radar): update live threat radar in ADVISORIES.md" \
-                  --body "$PR_BODY" \
-                  --base main \
-                  --head autopilot/radar-advisories
-              else
-                echo "PR #$EXISTING_PR already exists for autopilot/radar-advisories. Branch updated."
-              fi
-              git checkout main
-              git reset --hard HEAD
+          if ! git diff --quiet ADVISORIES.md advisories.json advisories.xml; then
+            echo "Threat radar or machine feeds have updates. Creating/updating PR..."
+            git checkout -B autopilot/radar-advisories origin/main
+            git add ADVISORIES.md advisories.json advisories.xml
+            git commit -m "chore(radar): update live threat radar and feeds"
+            git push -f origin autopilot/radar-advisories
+            EXISTING_PR=$(gh pr list --head autopilot/radar-advisories --json number --jq '.[0].number')
+            if [ -z "$EXISTING_PR" ]; then
+              PR_BODY="Automated update to the live Threat Radar (ADVISORIES.md) and machine-readable feeds (advisories.json, advisories.xml) based on the latest AUR metadata scan. Verified by automated CI & Codecov checks."
+              gh pr create \
+                --title "chore(radar): update live threat radar and feeds" \
+                --body "$PR_BODY" \
+                --base main \
+                --head autopilot/radar-advisories || echo "PR already open or creation skipped."
+            else
+              echo "PR #$EXISTING_PR already exists for autopilot/radar-advisories. Branch updated."
             fi
+            git checkout main
+          else
+            echo "No changes in threat radar or feeds."
           fi
 
-          # 2. Process Machine Feeds PR
-          if [ -f /tmp/radar_stash/advisories.json ]; then
-            cp /tmp/radar_stash/advisories.json advisories.json 2>/dev/null || true
-            cp /tmp/radar_stash/advisories.xml advisories.xml 2>/dev/null || true
-            if ! git diff --quiet advisories.json advisories.xml; then
-              echo "Machine feeds have updates. Creating/updating PR..."
-              git checkout -B autopilot/radar-feeds origin/main
-              git add advisories.json advisories.xml
-              git commit -m "data(advisories): sync threat database feeds"
-              git push -f origin autopilot/radar-feeds
-              EXISTING_DATA_PR=$(gh pr list --head autopilot/radar-feeds --json number --jq '.[0].number')
-              if [ -z "$EXISTING_DATA_PR" ]; then
-                FEED_BODY="Automated synchronization of raw security advisory feeds (advisories.json and advisories.xml). Merge or drop this PR independently from the README radar."
-                gh pr create \
-                  --title "data(advisories): sync threat database feeds" \
-                  --body "$FEED_BODY" \
-                  --base main \
-                  --head autopilot/radar-feeds
-              else
-                echo "PR #$EXISTING_DATA_PR already exists for autopilot/radar-feeds. Branch updated."
-              fi
-              git checkout main
-              git reset --hard HEAD
-            fi
-          fi
-
-          rm -rf /tmp/radar_stash

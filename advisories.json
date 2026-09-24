@@ -1,11 +1,127 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-24T10:41:06.304330386+00:00",
-  "total_flagged": 1,
+  "updated_at": "2026-09-24T14:37:55.421939227+00:00",
+  "total_flagged": 7,
   "advisories": [
     {
+      "package": "bitcoin-abc-qt",
+      "version": "0.33.13-0",
+      "maintainer": "Fabcien",
+      "highest_severity": "CRITICAL",
+      "detected_at": "2026-09-24T14:37:40.426687901+00:00",
+      "findings": [
+        {
+          "rule_id": "CRED_CRYPTO_WALLETS",
+          "severity": "CRITICAL",
+          "description": "[.install] accessing cryptocurrency wallet files",
+          "line_number": 47,
+          "matched_text": ".bitcoin"
+        },
+        {
+          "rule_id": "CRED_CRYPTO_WALLETS",
+          "severity": "CRITICAL",
+          "description": "[.install] accessing cryptocurrency wallet files",
+          "line_number": 48,
+          "matched_text": ".bitcoin"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "opera",
+      "version": "136.0.6008.52-3",
+      "maintainer": "Refreeze5911",
+      "highest_severity": "CRITICAL",
+      "detected_at": "2026-09-24T14:36:29.409356371+00:00",
+      "findings": [
+        {
+          "rule_id": "SUS_CHMOD_SUID",
+          "severity": "CRITICAL",
+          "description": "setting SUID permission bit on binary (runs as root)",
+          "line_number": 70,
+          "matched_text": "chmod 4755"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/opera"
+    },
+    {
+      "package": "bitcoin-abc",
+      "version": "0.33.13-0",
+      "maintainer": "Fabcien",
+      "highest_severity": "CRITICAL",
+      "detected_at": "2026-09-24T14:36:14.405644573+00:00",
+      "findings": [
+        {
+          "rule_id": "CRED_CRYPTO_WALLETS",
+          "severity": "CRITICAL",
+          "description": "[.install] accessing cryptocurrency wallet files",
+          "line_number": 47,
+          "matched_text": ".bitcoin"
+        },
+        {
+          "rule_id": "CRED_CRYPTO_WALLETS",
+          "severity": "CRITICAL",
+          "description": "[.install] accessing cryptocurrency wallet files",
+          "line_number": 48,
+          "matched_text": ".bitcoin"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc"
+    },
+    {
+      "package": "jlink-software-and-documentation",
+      "version": "66:9.80-1",
+      "maintainer": "AlexisPolti",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T14:37:12.430856904+00:00",
+      "findings": [
+        {
+          "rule_id": "PERSIST_UDEV_RULES",
+          "severity": "HIGH",
+          "description": "creating custom udev rule for event-driven execution",
+          "line_number": 118,
+          "matched_text": "/etc/udev/rules.d/"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/jlink-software-and-documentation"
+    },
+    {
+      "package": "python-pytorch-lightning",
+      "version": "2.6.6-1",
+      "maintainer": "Smoolak",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T14:37:02.432833610+00:00",
+      "findings": [
+        {
+          "rule_id": "OBFUSCATED_DOLLAR_EXEC",
+          "severity": "HIGH",
+          "description": "deeply nested substitution with pipe chain (obfuscated execution)",
+          "line_number": 289,
+          "matched_text": "$(printf \"%s\" \"$node\" | sha256sum | cut -c1-16)"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/python-pytorch-lightning"
+    },
+    {
+      "package": "freebuff-bin",
+      "version": "0.0.194-1",
+      "maintainer": "lapsus",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T14:36:57.409118700+00:00",
+      "findings": [
+        {
+          "rule_id": "EXFIL_CURL_PIPE_EXEC",
+          "severity": "HIGH",
+          "description": "remote download piped directly into interpreter",
+          "line_number": 21,
+          "matched_text": "curl -fsSL 'https://registry.npmjs.org/freebuff/latest' | python3"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/freebuff-bin"
+    },
+    {
       "package": "paseo-desktop-git-bin",
-      "version": "0.9.1.r50.gbbf8cce3f-2",
+      "version": "0.9.2.r2.ge3c853df5-2",
       "maintainer": "xpufx",
       "highest_severity": "HIGH",
       "detected_at": "2026-09-24T10:40:56.310264227+00:00",
