@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "example-verified-pkg",
+    "version": "1.2.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "3f9a1c2e7b8d4f5061a2b3c4d5e6f7081920a1b2",
+    "pkgbuild_sha256": "1c1c121b1e0d3a2f4b5c6d7e8f9012345678901234567890abcdef012345ab",
+    "install_sha256": "9a8b7c6d5e4f3021abcdef1234567890fedcba9876543210abcdef012345cd"
+  },
+  "analyzed_at": "2026-09-20T04:12:00Z",
+  "scanner_version": "aur-sentry/0.1.0-EXAMPLE",
+  "static_findings": [],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "makepkg -s --noconfirm",
+        "parent": null,
+        "timestamp": "2026-09-20T04:10:01Z"
+      },
+      {
+        "command": "gcc -O2 -c src/main.c -o src/main.o",
+        "parent": "makepkg -s --noconfirm",
+        "timestamp": "2026-09-20T04:10:14Z"
+      }
+    ],
+    "network": [
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-20T04:10:05Z"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "file_count": 14,
+    "elf_object_count": 1
+  },
+  "reproducibility": "REPRODUCED",
+  "external_intelligence": [],
+  "verdict": "VERIFIED",
+  "evidence_hash": "b6d4a2e1f0c3897654321fedcba09876543210fedcba9876543210fedcba98",
+  "signature": null
+}

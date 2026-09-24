@@ -1,0 +1,316 @@
+/* AUR Sentry registry — plain, calm, trustworthy. No framework, no build step. */
+
+:root {
+  --bg: #f7f7f5;
+  --bg-elevated: #ffffff;
+  --text: #1c1c1a;
+  --text-muted: #5b5b56;
+  --border: #e2e0da;
+  --link: #2054a6;
+  --link-hover: #163d7c;
+  --verified: #1c7a3e;
+  --verified-bg: #e6f4ea;
+  --suspicious: #9a6400;
+  --suspicious-bg: #fbf0da;
+  --malicious: #b3261e;
+  --malicious-bg: #fbe3e1;
+  --neutral: #55545a;
+  --neutral-bg: #eceae5;
+  --code-bg: #f1efe9;
+  --radius: 10px;
+  --max-width: 880px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15161a;
+    --bg-elevated: #1d1f24;
+    --text: #ecebe6;
+    --text-muted: #a4a39c;
+    --border: #33353b;
+    --link: #7aa6f0;
+    --link-hover: #a4c2f5;
+    --verified: #63d08a;
+    --verified-bg: #16301f;
+    --suspicious: #e3b34c;
+    --suspicious-bg: #362a0f;
+    --malicious: #f1897f;
+    --malicious-bg: #3a1815;
+    --neutral: #b8b7b1;
+    --neutral-bg: #2a2b30;
+    --code-bg: #101114;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: light dark; }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.55;
+  font-size: 16px;
+}
+
+a { color: var(--link); text-decoration: none; }
+a:hover { color: var(--link-hover); text-decoration: underline; }
+
+header.site-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elevated);
+}
+
+.site-header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px 16px;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.site-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-tagline {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 28px 16px 64px;
+}
+
+footer.site-footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+h1 { font-size: 1.6rem; margin: 0 0 8px; }
+h2 { font-size: 1.2rem; margin: 32px 0 12px; }
+h3 { font-size: 1rem; margin: 20px 0 8px; }
+
+p.lede {
+  color: var(--text-muted);
+  margin: 0 0 28px;
+  max-width: 60ch;
+}
+
+.notice {
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+/* Package cards */
+.package-list {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.package-card {
+  display: block;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  color: inherit;
+}
+
+.package-card:hover {
+  border-color: var(--link);
+  text-decoration: none;
+}
+
+.package-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.package-name {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.package-meta {
+  margin-top: 6px;
+  color: var(--text-muted);
+  font-size: 0.87rem;
+}
+
+/* Verdict badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.badge-VERIFIED { color: var(--verified); background: var(--verified-bg); }
+.badge-SUSPICIOUS { color: var(--suspicious); background: var(--suspicious-bg); }
+.badge-MALICIOUS { color: var(--malicious); background: var(--malicious-bg); }
+.badge-INCONCLUSIVE,
+.badge-BUILD_FAILED,
+.badge-ANALYSIS_FAILED,
+.badge-STALE,
+.badge-UNSUPPORTED { color: var(--neutral); background: var(--neutral-bg); }
+
+/* Plain-language summary rows on the detail page */
+.summary-list {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.summary-list li {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-elevated);
+  font-size: 0.95rem;
+}
+
+.summary-ok::before { content: "\2713  "; color: var(--verified); font-weight: 700; }
+.summary-warn::before { content: "\26A0  "; color: var(--suspicious); font-weight: 700; }
+.summary-bad::before { content: "\2717  "; color: var(--malicious); font-weight: 700; }
+.summary-neutral::before { content: "\2022  "; color: var(--neutral); font-weight: 700; }
+
+/* Identity table */
+table.identity {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  margin-bottom: 24px;
+}
+
+table.identity th,
+table.identity td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+table.identity th {
+  width: 180px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+code, .mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  background: var(--code-bg);
+  padding: 1px 5px;
+  border-radius: 4px;
+  word-break: break-all;
+}
+
+/* Findings */
+.finding {
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--neutral);
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: var(--bg-elevated);
+}
+
+.finding-CRITICAL, .finding-HIGH { border-left-color: var(--malicious); }
+.finding-MEDIUM { border-left-color: var(--suspicious); }
+.finding-LOW, .finding-INFO { border-left-color: var(--neutral); }
+
+.finding-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.finding-desc { font-size: 0.95rem; }
+
+/* WHY? expandable evidence section */
+details.why {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--bg-elevated);
+  padding: 4px 0;
+  margin: 24px 0;
+}
+
+details.why > summary {
+  cursor: pointer;
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  list-style: none;
+}
+
+details.why > summary::-webkit-details-marker { display: none; }
+
+details.why > summary::before {
+  content: "\25B8  ";
+  color: var(--link);
+}
+
+details.why[open] > summary::before {
+  content: "\25BE  ";
+}
+
+.why-body {
+  padding: 0 18px 18px;
+}
+
+pre.evidence {
+  background: var(--code-bg);
+  border-radius: 8px;
+  padding: 14px;
+  overflow-x: auto;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+
+.empty-state {
+  color: var(--text-muted);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.back-link { display: inline-block; margin-bottom: 20px; font-size: 0.9rem; }

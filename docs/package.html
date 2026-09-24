@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Package details — AUR Sentry</title>
+<meta name="description" content="Evidence-based verification detail for an AUR package.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-title" href="index.html">AUR Sentry</a>
+    <span class="site-tagline">Evidence-based AUR package verification</span>
+  </div>
+</header>
+
+<main>
+  <a class="back-link" href="index.html">&larr; All packages</a>
+  <div id="content">
+    <p class="empty-state">Loading&hellip;</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>
+    Attestations are generated automatically from static analysis and a disposable
+    GitHub Actions sandbox. See
+    <a href="https://github.com/rebizzz/aur-sentry/blob/main/ARCHITECTURE.md">ARCHITECTURE.md</a>
+    for how the pipeline works.
+  </p>
+</footer>
+
+<script src="registry.js"></script>
+<script>
+const RAW_BASE = "https://raw.githubusercontent.com/rebizzz/aur-sentry/main/";
+
+const BEHAVIOR_COPY = {
+  NETWORK_ACCESS: "Made a network connection",
+  SHELL_EXECUTION: "Ran a shell command",
+  CREDENTIAL_ACCESS: "Accessed credential material",
+  PERSISTENCE: "Set up to run automatically later",
+  PRIVILEGE_ESCALATION: "Attempted to gain elevated privileges",
+  OBFUSCATION: "Used obfuscated or encoded code",
+  DYNAMIC_DOWNLOAD: "Downloaded and ran code at build/install time",
+  ARBITRARY_FILESYSTEM_WRITE: "Wrote to files outside the package",
+  PACKAGE_INSTALLATION: "Installed an additional package",
+  SERVICE_MANIPULATION: "Modified a system service",
+};
+
+const VERDICT_EXPLANATION = {
+  VERIFIED: "The build succeeded and nothing in static or dynamic analysis looked suspicious.",
+  SUSPICIOUS: "Something in this package's behavior doesn't match what a normal build/install should do. Review the evidence before installing.",
+  MALICIOUS: "This package showed confirmed malicious behavior, such as touching canary credentials or exfiltrating data. Do not install.",
+  INCONCLUSIVE: "Analysis completed but the evidence wasn't strong enough to reach a clear verdict.",
+  BUILD_FAILED: "The package failed to build in the sandbox, so it could not be fully analyzed.",
+  ANALYSIS_FAILED: "The analysis pipeline itself failed to complete for this package/version.",
+  STALE: "The AUR source has changed since this attestation was produced. Treat this verdict as out of date.",
+  UNSUPPORTED: "This package isn't currently supported by the scanner (e.g. unusual build system).",
+};
+
+function qs(name) {
+  return new URLSearchParams(location.search).get(name);
+}
+
+function renderError(msg) {
+  document.getElementById("content").innerHTML = `<p class="empty-state">${escapeHtml(msg)}</p>`;
+}
+
+function summaryLine(cls, text) {
+  return `<li class="summary-${cls}">${escapeHtml(text)}</li>`;
+}
+
+function buildPlainSummary(att) {
+  const lines = [];
+  const verdict = att.verdict;
+
+  if (verdict === "BUILD_FAILED") {
+    lines.push(summaryLine("bad", "Build failed"));
+  } else {
+    lines.push(summaryLine("ok", "Build succeeded"));
+  }
+
+  const findings = att.static_findings || [];
+  const highSeverity = findings.filter((f) => f.severity === "HIGH" || f.severity === "CRITICAL");
+  if (findings.length === 0) {
+    lines.push(summaryLine("ok", "No suspicious code patterns found in the PKGBUILD"));
+  } else if (highSeverity.length > 0) {
+    lines.push(summaryLine("bad", `${highSeverity.length} high/critical severity finding(s) in the PKGBUILD`));
+  } else {
+    lines.push(summaryLine("warn", `${findings.length} lower-severity finding(s) in the PKGBUILD`));
+  }
+
+  const dyn = att.dynamic_evidence || { collected: false, network: [], filesystem: [] };
+  if (!dyn.collected) {
+    lines.push(summaryLine("neutral", "No dynamic sandbox run performed for this attestation yet"));
+  } else {
+    const undeclared = (dyn.network || []).filter((n) => n.protocol === "undeclared");
+    if (undeclared.length > 0) {
+      lines.push(summaryLine("bad", `${undeclared.length} network connection(s) to destinations not declared in the PKGBUILD`));
+    } else {
+      lines.push(summaryLine("ok", "No suspicious network connections"));
+    }
+
+    const canaryHits = (dyn.filesystem || []).filter((f) => f.operation === "canary_access");
+    if (canaryHits.length > 0) {
+      lines.push(summaryLine("bad", `Touched ${canaryHits.length} canary credential file(s) planted for detection`));
+    } else {
+      lines.push(summaryLine("ok", "Canary credentials were not touched"));
+    }
+  }
+
+  const repro = att.reproducibility;
+  if (repro === "REPRODUCED") {
+    lines.push(summaryLine("ok", "Build was independently reproduced"));
+  } else if (repro === "DIVERGED") {
+    lines.push(summaryLine("bad", "A second independent build produced a different result"));
+  } else if (repro === "FAILED") {
+    lines.push(summaryLine("warn", "Reproducibility build failed"));
+  } else {
+    lines.push(summaryLine("neutral", "Reproducibility not yet attempted"));
+  }
+
+  return lines.join("");
+}
+
+function findingsHtml(findings) {
+  if (!findings || findings.length === 0) {
+    return `<p class="empty-state" style="padding:16px 0;">No static findings.</p>`;
+  }
+  return findings.map((f) => `
+    <div class="finding finding-${escapeHtml(f.severity)}">
+      <div class="finding-top">
+        <span>${escapeHtml(BEHAVIOR_COPY[f.behavior] || f.behavior)}</span>
+        <span>${escapeHtml(f.severity)} &middot; ${escapeHtml(f.file)}:${escapeHtml(String(f.line))}</span>
+      </div>
+      <div class="finding-desc">${escapeHtml(f.description)}</div>
+    </div>
+  `).join("");
+}
+
+async function render() {
+  const name = qs("name");
+  if (!name) {
+    renderError("No package specified. Go back to the registry and pick a package.");
+    return;
+  }
+
+  let entries;
+  try {
+    entries = await fetchManifest();
+  } catch (err) {
+    renderError(`Could not load the package manifest (${err.message}).`);
+    return;
+  }
+
+  const versions = entries
+    .filter((e) => e.package === name)
+    .sort((a, b) => (a.analyzed_at < b.analyzed_at ? 1 : -1));
+
+  if (versions.length === 0) {
+    renderError(`No attestations found for "${name}".`);
+    return;
+  }
+
+  const latest = versions[0];
+
+  let att;
+  try {
+    const res = await fetch(RAW_BASE + latest.path, { cache: "no-store" });
+    if (!res.ok) throw new Error(`${res.status}`);
+    att = await res.json();
+  } catch (err) {
+    renderError(`Could not load attestation data for "${name}" (${err.message}).`);
+    return;
+  }
+
+  const isExample = name.startsWith("example-");
+  const noticeHtml = isExample
+    ? `<div class="notice">This is fake example data used to preview this UI, not a real scan result.</div>`
+    : "";
+
+  const versionHistoryHtml = versions.length > 1
+    ? `<h2>Version history</h2><ul class="summary-list">${versions.map((v) => `
+        <li>${escapeHtml(v.version)} &mdash; ${badgeHtml(v.verdict)} &mdash; ${escapeHtml(formatTimestamp(v.analyzed_at))}</li>
+      `).join("")}</ul>`
+    : "";
+
+  document.getElementById("content").innerHTML = `
+    ${noticeHtml}
+    <h1>${escapeHtml(att.package.name)}</h1>
+    <p class="package-meta">
+      version ${escapeHtml(att.package.version)} (${escapeHtml(att.package.arch)})
+      &middot; last analyzed ${escapeHtml(formatTimestamp(att.analyzed_at))}
+    </p>
+    <p style="margin: 12px 0 24px;">${badgeHtml(att.verdict)}</p>
+
+    <h2>What this means</h2>
+    <ul class="summary-list">
+      ${buildPlainSummary(att)}
+    </ul>
+    <p class="package-meta">${escapeHtml(VERDICT_EXPLANATION[att.verdict] || "")}</p>
+
+    <details class="why">
+      <summary>WHY? See the raw evidence</summary>
+      <div class="why-body">
+
+        <h3>Source identity</h3>
+        <table class="identity">
+          <tr><th>AUR commit</th><td><code>${escapeHtml(att.source.aur_commit || "unknown")}</code></td></tr>
+          <tr><th>PKGBUILD sha256</th><td><code>${escapeHtml(att.source.pkgbuild_sha256)}</code></td></tr>
+          <tr><th>Install sha256</th><td><code>${escapeHtml(att.source.install_sha256 || "not recorded")}</code></td></tr>
+          <tr><th>Scanner version</th><td><code>${escapeHtml(att.scanner_version)}</code></td></tr>
+          <tr><th>Reproducibility</th><td>${escapeHtml(att.reproducibility)}</td></tr>
+          <tr><th>Evidence hash</th><td><code>${escapeHtml(att.evidence_hash)}</code></td></tr>
+        </table>
+
+        <h3>Static findings (${(att.static_findings || []).length})</h3>
+        ${findingsHtml(att.static_findings)}
+
+        <h3>Dynamic evidence</h3>
+        <p class="package-meta">
+          ${att.dynamic_evidence && att.dynamic_evidence.collected
+            ? "Collected during a disposable sandbox build/install run."
+            : "No dynamic sandbox run has been performed for this attestation yet."}
+        </p>
+        <pre class="evidence">${escapeHtml(JSON.stringify(att.dynamic_evidence, null, 2))}</pre>
+
+        <h3>Package analysis</h3>
+        <pre class="evidence">${escapeHtml(JSON.stringify(att.package_analysis, null, 2))}</pre>
+
+        ${(att.external_intelligence || []).length > 0 ? `
+          <h3>External intelligence</h3>
+          <pre class="evidence">${escapeHtml(JSON.stringify(att.external_intelligence, null, 2))}</pre>
+        ` : ""}
+
+        <h3>Full attestation JSON</h3>
+        <pre class="evidence">${escapeHtml(JSON.stringify(att, null, 2))}</pre>
+      </div>
+    </details>
+
+    ${versionHistoryHtml}
+  `;
+}
+
+render();
+</script>
+</body>
+</html>

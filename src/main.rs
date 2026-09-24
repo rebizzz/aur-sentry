@@ -3,6 +3,8 @@
 //! CLI entry point for AUR-Sentry.
 //! Nerdfont-powered, colored, human-readable output.
 
+use aur_sentry::attest::{self, AttestInputs};
+use aur_sentry::attestation::Verdict;
 use aur_sentry::aur_client::AURClient;
 use aur_sentry::report::{self, Advisory};
 use aur_sentry::scanner::PKGBUILDScanner;
@@ -105,6 +107,52 @@ enum Commands {
         #[arg(long, default_value_t = 25)]
         limit: usize,
     },
+    /// Assemble an evidence-based Attestation JSON from static + dynamic
+    /// sandbox evidence (native replacement for scripts/build_attestation.py)
+    Attest {
+        /// AUR package name
+        pkgname: String,
+
+        /// Resolved package version (pkgver-pkgrel)
+        #[arg(long, default_value = "unknown")]
+        version: String,
+
+        /// Target architecture
+        #[arg(long, default_value = "x86_64")]
+        arch: String,
+
+        /// AUR git commit the source was fetched at
+        #[arg(long, default_value = "")]
+        aur_commit: String,
+
+        /// Path to the fetched PKGBUILD (for hashing + declared-source IPs)
+        #[arg(long)]
+        pkgbuild: Option<PathBuf>,
+
+        /// Path to a .install file, if the package has one
+        #[arg(long)]
+        install_file: Option<PathBuf>,
+
+        /// Path to scan-file/scan-pkg's ANSI-stripped text output
+        #[arg(long)]
+        static_findings: Option<PathBuf>,
+
+        /// Path to the strace telemetry log from the dynamic sandbox
+        #[arg(long)]
+        telemetry: Option<PathBuf>,
+
+        /// Whether strace telemetry was actually collected this run
+        #[arg(long)]
+        strace_available: bool,
+
+        /// makepkg's exit code, if known
+        #[arg(long)]
+        makepkg_exit: Option<i32>,
+
+        /// Where to write the attestation JSON
+        #[arg(long)]
+        output: PathBuf,
+    },
 }
 
 fn main() -> ExitCode {
@@ -119,6 +167,31 @@ fn main() -> ExitCode {
             limit,
         } => cmd_autopilot(&repo_root, window_hours, limit),
         Commands::Radar { limit } => cmd_radar(limit),
+        Commands::Attest {
+            pkgname,
+            version,
+            arch,
+            aur_commit,
+            pkgbuild,
+            install_file,
+            static_findings,
+            telemetry,
+            strace_available,
+            makepkg_exit,
+            output,
+        } => cmd_attest(
+            &pkgname,
+            &version,
+            &arch,
+            &aur_commit,
+            pkgbuild.as_deref(),
+            install_file.as_deref(),
+            static_findings.as_deref(),
+            telemetry.as_deref(),
+            strace_available,
+            makepkg_exit,
+            &output,
+        ),
     }
 }
 
@@ -490,4 +563,82 @@ fn cmd_radar(limit: usize) -> ExitCode {
     }
     eprintln!();
     ExitCode::SUCCESS
+}
+
+// ── attest ──────────────────────────────────────────────────────────
+
+#[allow(clippy::too_many_arguments)]
+fn cmd_attest(
+    pkgname: &str,
+    version: &str,
+    arch: &str,
+    aur_commit: &str,
+    pkgbuild: Option<&Path>,
+    install_file: Option<&Path>,
+    static_findings: Option<&Path>,
+    telemetry: Option<&Path>,
+    strace_available: bool,
+    makepkg_exit: Option<i32>,
+    output: &Path,
+) -> ExitCode {
+    eprintln!(
+        "{BLUE}{ICON_SEARCH} assembling attestation for {BOLD}{pkgname}{RESET}{BLUE} v{version}{RESET}"
+    );
+
+    let inputs = AttestInputs {
+        package: pkgname.to_string(),
+        version: version.to_string(),
+        arch: arch.to_string(),
+        aur_commit: aur_commit.to_string(),
+        pkgbuild_path: pkgbuild,
+        install_path: install_file,
+        static_findings_path: static_findings,
+        telemetry_path: telemetry,
+        strace_available,
+        makepkg_exit,
+        scanner_version: format!("aur-sentry/{}", env!("CARGO_PKG_VERSION")),
+    };
+    let attestation = attest::build_attestation(&inputs);
+
+    let json = match serde_json::to_string_pretty(&attestation) {
+        Ok(j) => j,
+        Err(e) => {
+            eprintln!("{RED}{ICON_CROSS} failed to serialize attestation: {e}{RESET}");
+            return ExitCode::FAILURE;
+        }
+    };
+    if let Some(parent) = output.parent() {
+        if let Err(e) = std::fs::create_dir_all(parent) {
+            eprintln!(
+                "{RED}{ICON_CROSS} can't create {}: {e}{RESET}",
+                parent.display()
+            );
+            return ExitCode::FAILURE;
+        }
+    }
+    if let Err(e) = std::fs::write(output, format!("{json}\n")) {
+        eprintln!(
+            "{RED}{ICON_CROSS} can't write {}: {e}{RESET}",
+            output.display()
+        );
+        return ExitCode::FAILURE;
+    }
+
+    let (color, icon) = match attestation.verdict {
+        Verdict::Verified => (GREEN, ICON_CHECK),
+        Verdict::Suspicious => (YELLOW, ICON_WARN),
+        Verdict::Malicious => (RED, ICON_SKULL),
+        _ => (DIM, ICON_SEARCH),
+    };
+    eprintln!(
+        "  {color}{icon} verdict: {BOLD}{:?}{RESET}{color} — {} static finding(s){RESET}",
+        attestation.verdict,
+        attestation.static_findings.len()
+    );
+    eprintln!("  {DIM}wrote {}{RESET}", output.display());
+
+    match attestation.verdict {
+        Verdict::Verified => ExitCode::SUCCESS,
+        _ => ExitCode::from(2),
+    }
 }

@@ -186,7 +186,10 @@ impl Attestation {
 pub fn verdict_from_findings(findings: &[Finding]) -> Verdict {
     let critical_exfil_or_creds = findings.iter().any(|f| {
         f.severity == Severity::Critical
-            && matches!(f.behavior, Behavior::CredentialAccess | Behavior::NetworkAccess)
+            && matches!(
+                f.behavior,
+                Behavior::CredentialAccess | Behavior::NetworkAccess
+            )
     });
     if critical_exfil_or_creds {
         return Verdict::Malicious;

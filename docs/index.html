@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AUR Sentry — Package Registry</title>
+<meta name="description" content="Evidence-based verification results for Arch User Repository packages.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="site-header-inner">
+    <a class="site-title" href="index.html">AUR Sentry</a>
+    <span class="site-tagline">Evidence-based AUR package verification</span>
+  </div>
+</header>
+
+<main>
+  <h1>Package registry</h1>
+  <p class="lede">
+    AUR is where packages are submitted. AUR Sentry is where their trust is established.
+    Every package below was built and inspected in a disposable sandbox, and every
+    verdict links back to the raw evidence it came from &mdash; no black-box scoring.
+  </p>
+
+  <div id="content">
+    <p class="empty-state">Loading package list&hellip;</p>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>
+    Attestations are generated automatically from static analysis and a disposable
+    GitHub Actions sandbox. See
+    <a href="https://github.com/rebizzz/aur-sentry/blob/main/ARCHITECTURE.md">ARCHITECTURE.md</a>
+    for how the pipeline works.
+  </p>
+</footer>
+
+<script src="registry.js"></script>
+<script>
+async function render() {
+  const content = document.getElementById("content");
+  let entries;
+  try {
+    entries = await fetchManifest();
+  } catch (err) {
+    content.innerHTML = `<p class="empty-state">Could not load the package manifest (${escapeHtml(err.message)}).</p>`;
+    return;
+  }
+
+  if (!entries.length) {
+    content.innerHTML = `<p class="empty-state">No packages have been analyzed yet. Check back soon.</p>`;
+    return;
+  }
+
+  const isExample = entries.every((e) => e.package.startsWith("example-"));
+  let noticeHtml = "";
+  if (isExample) {
+    noticeHtml = `<div class="notice">
+      The packages below are fake example data used to preview this UI &mdash;
+      not real scan results. Real attestations will appear here as the
+      dynamic sandbox pipeline analyzes AUR packages.
+    </div>`;
+  }
+
+  const packages = latestPerPackage(entries);
+  const items = packages.map((pkg) => `
+    <li>
+      <a class="package-card" href="${packagePageUrl(pkg.package)}">
+        <div class="package-card-top">
+          <span class="package-name">${escapeHtml(pkg.package)}</span>
+          ${badgeHtml(pkg.verdict)}
+        </div>
+        <div class="package-meta">
+          version ${escapeHtml(pkg.version)} &middot; last analyzed ${escapeHtml(formatTimestamp(pkg.analyzed_at))}
+        </div>
+      </a>
+    </li>
+  `).join("");
+
+  content.innerHTML = `${noticeHtml}<ul class="package-list">${items}</ul>`;
+}
+
+render();
+</script>
+</body>
+</html>

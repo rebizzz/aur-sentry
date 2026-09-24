@@ -168,10 +168,24 @@ echo "--- Assembling attestation ---"
 OUTPUT_JSON="$ATTEST_DIR/$VERSION.json"
 if "$AUR_BIN" attest --help >/dev/null 2>&1; then
   echo "Using native 'aur-sentry attest' CLI"
-  "$AUR_BIN" attest "$PKG" \
-    --static-findings "$EVIDENCE_DIR/static_scan.log" \
-    --telemetry "$EVIDENCE_DIR/telemetry.log" \
+  ATTEST_ARGS=(
+    "$PKG"
+    --version "$VERSION"
+    --arch x86_64
+    --aur-commit "$AUR_COMMIT"
+    --pkgbuild "$SRC_DIR/PKGBUILD"
+    --static-findings "$EVIDENCE_DIR/static_scan.log"
+    --telemetry "$EVIDENCE_DIR/telemetry.log"
+    --makepkg-exit "$MAKEPKG_EXIT"
     --output "$OUTPUT_JSON"
+  )
+  [ "$STRACE_OK" = true ] && ATTEST_ARGS+=(--strace-available)
+  for f in "$SRC_DIR"/*.install; do
+    [ -e "$f" ] || continue
+    ATTEST_ARGS+=(--install-file "$f")
+    break
+  done
+  "$AUR_BIN" attest "${ATTEST_ARGS[@]}"
 else
   echo "'aur-sentry attest' not available yet — using Python fallback assembler"
   python3 "$REPO_ROOT/scripts/build_attestation.py" \

@@ -61,7 +61,26 @@ Add to `~/.config/paru/paru.conf`:
 PreBuildCommand = /usr/local/bin/safeaur check
 ```
 
-`safeaur` checks the online threat radar cache and scans the live PKGBUILD. If an active threat is flagged, the build aborts before running build scripts on your system.
+Use `PreBuildCommand = /usr/local/bin/safeaur check --strict` instead if you want any
+`SUSPICIOUS` verdict to block the build outright (see below) rather than prompt.
+
+`safeaur check <package>` runs three checks, in order, before `makepkg` runs:
+
+1. **Threat radar cache** — the local `advisories.json` cache. An active advisory aborts
+   the build immediately.
+2. **Attestation registry** — `data/attestations/<pkg>/<version>.json`, fetched live from
+   `raw.githubusercontent.com` (no auth, no local scanner needed). Policy:
+   - `VERIFIED` — continue silently.
+   - `STALE` or no attestation on record — warn, but allow the build (the registry is new
+     and still sparse, so an unscanned package is not treated as guilty).
+   - `SUSPICIOUS` — warn loudly; prompts for confirmation on an interactive terminal, or
+     blocks outright when run non-interactively or with `--strict`.
+   - `MALICIOUS` — blocks unconditionally, no prompt.
+3. **Live heuristic scan** — if the `aur-sentry` binary is available locally, it re-scans
+   the live PKGBUILD/`.install` for known attack signatures.
+
+Every step degrades gracefully: if the network, the registry, or the cache is unavailable,
+`safeaur` warns and lets the build proceed rather than hanging or failing closed.
 
 ---
 

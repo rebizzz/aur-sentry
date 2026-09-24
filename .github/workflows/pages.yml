@@ -1,0 +1,68 @@
+name: Deploy Registry to GitHub Pages
+
+# Builds docs/data/manifest.json from data/attestations/ and publishes docs/
+# as a static site via GitHub Pages. No npm/node build step -- manifest
+# generation is a stdlib-only Python script. Free for public repos.
+#
+# One-time manual setup required (cannot be done from a workflow file):
+# repo Settings -> Pages -> Build and deployment -> Source -> "GitHub Actions".
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'data/attestations/**'
+      - 'scripts/build_registry_manifest.py'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build manifest and prepare Pages artifact
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner (Security & Egress Audit)
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Build registry manifest
+        run: python3 scripts/build_registry_manifest.py
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: docs
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

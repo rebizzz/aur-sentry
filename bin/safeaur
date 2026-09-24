@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # safeaur - Pre-install supply-chain verification for paru / yay
 # Usage:
-#   safeaur check <package-name>
+#   safeaur check [--strict] <package-name>
 #   safeaur scan <path/to/PKGBUILD>
 #   safeaur update-cache
 
@@ -12,6 +12,11 @@ REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/safeaur"
 ADVISORIES_CACHE="$CACHE_DIR/advisories.json"
 FEED_URL="https://raw.githubusercontent.com/rebizzz/aur-sentry/main/advisories.json"
+
+# Attestation registry (see ARCHITECTURE.md): data/attestations/<pkg>/<version>.json,
+# published straight from the repo over raw.githubusercontent.com. No auth needed.
+ATTESTATION_RAW_BASE="https://raw.githubusercontent.com/rebizzz/aur-sentry/main/data/attestations"
+ATTESTATION_API_BASE="https://api.github.com/repos/rebizzz/aur-sentry/contents/data/attestations"
 
 # ANSI Colors
 RED="\033[1;31m"
@@ -52,11 +57,129 @@ update_cache() {
     fi
 }
 
+# Look up the attestation registry for a package (see ARCHITECTURE.md
+# "Attestation" / "Registry" stages, and data/attestations/<pkg>/<version>.json).
+# Fetches the latest version's attestation straight from
+# raw.githubusercontent.com (free, no auth, public repo) via the GitHub
+# Contents API for directory listing.
+#
+# Sets globals on return: ATT_FOUND (0/1), ATT_VERDICT, ATT_VERSION.
+# Never hangs (short curl timeouts) and never treats a network/404 failure
+# as anything other than "no attestation found" — the registry is new and
+# sparse, so missing data must never break a normal install.
+ATT_FOUND=0
+ATT_VERDICT=""
+ATT_VERSION=""
+
+fetch_attestation() {
+    local pkg="$1"
+    ATT_FOUND=0
+    ATT_VERDICT=""
+    ATT_VERSION=""
+
+    command -v curl >/dev/null 2>&1 || return 0
+
+    local listing
+    listing="$(curl -fsSL --max-time 5 "$ATTESTATION_API_BASE/$pkg" 2>/dev/null)" || return 0
+    [ -n "$listing" ] || return 0
+
+    # Extract "<version>.json" entry names, take the highest version (sort -V)
+    # as "the latest version's attestation" per the registry policy.
+    local latest
+    latest="$(grep -Eo '"name"[[:space:]]*:[[:space:]]*"[^"]+\.json"' <<<"$listing" \
+        | sed -E 's/.*"([^"]+)\.json"$/\1/' \
+        | sort -V | tail -n1)"
+    [ -n "$latest" ] || return 0
+
+    local attestation
+    attestation="$(curl -fsSL --max-time 5 "$ATTESTATION_RAW_BASE/$pkg/$latest.json" 2>/dev/null)" || return 0
+    [ -n "$attestation" ] || return 0
+
+    local verdict
+    verdict="$(grep -Eo '"verdict"[[:space:]]*:[[:space:]]*"[^"]*"' <<<"$attestation" \
+        | head -n1 | sed -E 's/.*"([^"]*)"$/\1/')"
+    [ -n "$verdict" ] || return 0
+
+    ATT_FOUND=1
+    ATT_VERDICT="$verdict"
+    ATT_VERSION="$latest"
+    return 0
+}
+
+# Apply the attestation verdict policy (see ARCHITECTURE.md "Verdict states"):
+#   VERIFIED             -> continue silently
+#   STALE / no attestation -> warn but allow (registry is new/sparse)
+#   SUSPICIOUS            -> warn loudly; interactive: confirm to proceed;
+#                             --strict or non-interactive: block
+#   MALICIOUS             -> block unconditionally
+# INCONCLUSIVE/BUILD_FAILED/ANALYSIS_FAILED/UNSUPPORTED are treated like
+# STALE/UNKNOWN — informational only, never block a build on their own.
+check_attestation_policy() {
+    local pkg="$1"
+    local strict="$2"
+
+    fetch_attestation "$pkg"
+
+    if [ "$ATT_FOUND" -ne 1 ]; then
+        echo -e "${YELLOW}${ICON_WARN} safeaur: no attestation on record for '$pkg' yet — registry is still sparse, proceeding.${RESET}"
+        return 0
+    fi
+
+    case "$ATT_VERDICT" in
+        VERIFIED)
+            : # continue silently
+            ;;
+        MALICIOUS)
+            echo -e "${RED}${BOLD}${ICON_SKULL} MALICIOUS: attestation registry flags '$pkg' (v${ATT_VERSION}) as MALICIOUS!${RESET}"
+            echo -e "${RED}  Details: https://github.com/rebizzz/aur-sentry/tree/main/data/attestations/$pkg${RESET}"
+            echo -e "${YELLOW}  Aborting build hook unconditionally.${RESET}"
+            exit 3
+            ;;
+        SUSPICIOUS)
+            echo -e "${YELLOW}${BOLD}${ICON_WARN} SUSPICIOUS: attestation registry flags '$pkg' (v${ATT_VERSION}) as SUSPICIOUS.${RESET}"
+            echo -e "${YELLOW}  Details: https://github.com/rebizzz/aur-sentry/tree/main/data/attestations/$pkg${RESET}"
+            if [ "$strict" = "1" ] || [ ! -t 0 ]; then
+                echo -e "${RED}  Non-interactive or --strict: aborting build hook.${RESET}"
+                exit 3
+            fi
+            read -r -p "$(echo -e "${YELLOW}  Proceed anyway? [y/N]:${RESET} ")" reply
+            case "$reply" in
+                [yY]|[yY][eE][sS]) : ;;
+                *)
+                    echo -e "${RED}  Aborting build hook.${RESET}"
+                    exit 3
+                    ;;
+            esac
+            ;;
+        STALE)
+            echo -e "${YELLOW}${ICON_WARN} safeaur: attestation for '$pkg' is STALE (AUR commit moved since last scan) — proceeding.${RESET}"
+            ;;
+        *)
+            echo -e "${YELLOW}${ICON_WARN} safeaur: attestation for '$pkg' is ${ATT_VERDICT:-UNKNOWN} — proceeding.${RESET}"
+            ;;
+    esac
+    return 0
+}
+
 cmd_check() {
-    local pkg="${1:-}"
+    local strict="0"
+    local pkg=""
+    while [ $# -gt 0 ]; do
+        case "$1" in
+            --strict)
+                strict="1"
+                shift
+                ;;
+            *)
+                pkg="$1"
+                shift
+                ;;
+        esac
+    done
+
     if [ -z "$pkg" ]; then
         echo -e "${RED}${ICON_CROSS} Error: Package name required.${RESET}"
-        echo "Usage: safeaur check <package-name>"
+        echo "Usage: safeaur check [--strict] <package-name>"
         exit 1
     fi
 
@@ -75,7 +198,10 @@ cmd_check() {
         fi
     fi
 
-    # 2. Run real-time heuristic scan if aur-sentry binary is available
+    # 2. Check the attestation registry (VERIFIED/SUSPICIOUS/MALICIOUS/STALE/UNKNOWN)
+    check_attestation_policy "$pkg" "$strict"
+
+    # 3. Run real-time heuristic scan if aur-sentry binary is available
     if [ -n "$AUR_SENTRY_BIN" ]; then
         "$AUR_SENTRY_BIN" scan-pkg "$pkg"
         exit $?
