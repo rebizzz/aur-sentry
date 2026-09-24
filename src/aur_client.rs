@@ -106,7 +106,12 @@ impl AURClient {
         eprintln!("[*] Downloading full AUR metadata dump (this may take a moment)...");
         match self.agent.get(AUR_META_DUMP).call() {
             Ok(mut resp) => {
-                let gz_bytes = match resp.body_mut().read_to_vec() {
+                let gz_bytes = match resp
+                    .body_mut()
+                    .with_config()
+                    .limit(150 * 1024 * 1024)
+                    .read_to_vec()
+                {
                     Ok(b) => b,
                     Err(e) => {
                         eprintln!("[!] Failed to read metadata dump: {e}");
