@@ -77,6 +77,7 @@ CANARY_AWS_SECRET="CANARY_FAKESECRETFAKESECRETFAKESECRETFAKEFAKE"
 echo "--- Fetching AUR package source ---"
 SRC_DIR="$BUILDER_HOME/pkg-src"
 FETCH_OK=true
+# shellcheck disable=SC2024 # redirect intentionally stays root-owned; only the clone itself drops to builder
 sudo -u builder bash -c 'git clone --depth 1 "https://aur.archlinux.org/$1.git" "$2"' \
   _ "$PKG" "$SRC_DIR" >"$EVIDENCE_DIR/fetch.log" 2>&1
 if [ ! -f "$SRC_DIR/PKGBUILD" ]; then
@@ -146,13 +147,16 @@ fi
 #       PKGBUILD is always sourced regardless. ──────────────────────────────
 echo "--- Running makepkg (telemetry: $STRACE_OK) ---"
 chown -R builder:builder "$SRC_DIR"
+# shellcheck disable=SC2016 # single quotes are intentional: $1/$2/$3 expand inside the sudo sub-shell, not here
 MAKEPKG_CMD='cd "$1" && GITHUB_TOKEN="$2" AWS_SECRET_ACCESS_KEY="$3" makepkg --noconfirm --nobuild --nodeps --skippgpcheck'
 : > "$EVIDENCE_DIR/telemetry.log"
 if [ "$STRACE_OK" = true ]; then
+  # shellcheck disable=SC2024 # redirect intentionally stays root-owned; only makepkg itself drops to builder
   sudo -u builder strace -f -e trace=network,file -o "$EVIDENCE_DIR/telemetry.log" -- \
     bash -c "$MAKEPKG_CMD" _ "$SRC_DIR" "$CANARY_GITHUB_TOKEN" "$CANARY_AWS_SECRET" \
     >"$EVIDENCE_DIR/makepkg.log" 2>&1
 else
+  # shellcheck disable=SC2024 # redirect intentionally stays root-owned; only makepkg itself drops to builder
   sudo -u builder bash -c "$MAKEPKG_CMD" _ "$SRC_DIR" "$CANARY_GITHUB_TOKEN" "$CANARY_AWS_SECRET" \
     >"$EVIDENCE_DIR/makepkg.log" 2>&1
 fi

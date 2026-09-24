@@ -135,7 +135,9 @@ while IFS= read -r row; do
     last_modified=$(jq -r '.last_modified' <<<"$row")
     first_submitted=$(jq -r '.first_submitted' <<<"$row")
 
-    [ -n "$name" ] && [ "$name" != "null" ] || continue
+    if [ -z "$name" ] || [ "$name" = "null" ]; then
+        continue
+    fi
 
     prev=$(jq -c --arg n "$name" '.[$n] // empty' "$STATE_FILE" 2>/dev/null || echo "")
 
@@ -161,7 +163,7 @@ while IFS= read -r row; do
 
     # STALE: latest attestation's recorded commit no longer matches AUR HEAD.
     if [ -z "$reason" ] && [ -n "$commit" ] && [ -d "$ATTESTATIONS_DIR/$name" ]; then
-        latest_attestation=$(ls -1 "$ATTESTATIONS_DIR/$name"/*.json 2>/dev/null | sort -V | tail -n1 || true)
+        latest_attestation=$(find "$ATTESTATIONS_DIR/$name" -maxdepth 1 -name '*.json' 2>/dev/null | sort -V | tail -n1 || true)
         if [ -n "$latest_attestation" ] && [ -f "$latest_attestation" ]; then
             att_commit=$(jq -r '.source.aur_commit // ""' "$latest_attestation" 2>/dev/null || echo "")
             if [ -n "$att_commit" ] && [ "$att_commit" != "$commit" ]; then
