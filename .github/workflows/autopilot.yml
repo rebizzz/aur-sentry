@@ -27,7 +27,7 @@ jobs:
         run: sudo apt-get update -qq && sudo apt-get install -y shellcheck jq
 
       - name: Cache cargo registry and build target
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             ~/.cargo/registry
