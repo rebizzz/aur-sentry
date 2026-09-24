@@ -4,13 +4,76 @@
     <title>AUR-Sentry Security Advisories</title>
     <link>https://github.com/rebizzz/aur-sentry</link>
     <description>Automated supply-chain security alerts for Arch User Repository (AUR) packages</description>
-    <lastBuildDate>Thu, 24 Sep 2026 08:56:32 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 09:00:53 GMT</lastBuildDate>
     <item>
       <title>[MEDIUM] Suspicious pattern in 9pro-git (r111.2c1651b-1)</title>
       <link>https://aur.archlinux.org/packages/9pro-git</link>
       <description>Maintainer: renehsz&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
-      <pubDate>2026-09-24T08:56:27.245788+00:00</pubDate>
+      <pubDate>2026-09-24T08:59:31.630117+00:00</pubDate>
       <guid>https://aur.archlinux.org/packages/9pro-git#r111.2c1651b-1</guid>
+    </item>
+    <item>
+      <title>[MEDIUM] Suspicious pattern in actflow-git (r803.cbdbee0-1)</title>
+      <link>https://aur.archlinux.org/packages/actflow-git</link>
+      <description>Maintainer: Richardn&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
+      <pubDate>2026-09-24T08:59:38.641568+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/actflow-git#r803.cbdbee0-1</guid>
+    </item>
+    <item>
+      <title>[MEDIUM] Suspicious pattern in admixtools-git (r61.b10ddcf-1)</title>
+      <link>https://aur.archlinux.org/packages/admixtools-git</link>
+      <description>Maintainer: techs&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
+      <pubDate>2026-09-24T08:59:40.996081+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/admixtools-git#r61.b10ddcf-1</guid>
+    </item>
+    <item>
+      <title>[MEDIUM] Suspicious pattern in aerotools-git (r77.7109ba7-1)</title>
+      <link>https://aur.archlinux.org/packages/aerotools-git</link>
+      <description>Maintainer: orphan&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
+      <pubDate>2026-09-24T08:59:44.515666+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/aerotools-git#r77.7109ba7-1</guid>
+    </item>
+    <item>
+      <title>[MEDIUM] Suspicious pattern in akonadi-calendar-tools-git (6.0.40_r1177.gbe4e54f-1)</title>
+      <link>https://aur.archlinux.org/packages/akonadi-calendar-tools-git</link>
+      <description>Maintainer: IslandC0der&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
+      <pubDate>2026-09-24T08:59:56.261846+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/akonadi-calendar-tools-git#6.0.40_r1177.gbe4e54f-1</guid>
+    </item>
+    <item>
+      <title>[MEDIUM] Suspicious pattern in amctl (1.0.1-1)</title>
+      <link>https://aur.archlinux.org/packages/amctl</link>
+      <description>Maintainer: Hengtime787&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
+      <pubDate>2026-09-24T09:00:11.539711+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/amctl#1.0.1-1</guid>
+    </item>
+    <item>
+      <title>[MEDIUM] Suspicious pattern in amethyst-tools-git (r316.83ef9c6-1)</title>
+      <link>https://aur.archlinux.org/packages/amethyst-tools-git</link>
+      <description>Maintainer: capnhawkbill&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
+      <pubDate>2026-09-24T09:00:13.896221+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/amethyst-tools-git#r316.83ef9c6-1</guid>
+    </item>
+    <item>
+      <title>[MEDIUM] Suspicious pattern in amneziawg-tools-git (r517.5d6179a-2)</title>
+      <link>https://aur.archlinux.org/packages/amneziawg-tools-git</link>
+      <description>Maintainer: h8ray&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
+      <pubDate>2026-09-24T09:00:17.554988+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/amneziawg-tools-git#r517.5d6179a-2</guid>
+    </item>
+    <item>
+      <title>[MEDIUM] Suspicious pattern in amqp-qtools-git (0.5.0.6f42dfd-2)</title>
+      <link>https://aur.archlinux.org/packages/amqp-qtools-git</link>
+      <description>Maintainer: languitar&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
+      <pubDate>2026-09-24T09:00:18.725759+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/amqp-qtools-git#0.5.0.6f42dfd-2</guid>
+    </item>
+    <item>
+      <title>[MEDIUM] Suspicious pattern in amtterm-git (1.7.r25.gfc5ee7a-1)</title>
+      <link>https://aur.archlinux.org/packages/amtterm-git</link>
+      <description>Maintainer: d10n&lt;br&gt;Rules triggered: RULE_SKIP_HASH_REMOTE</description>
+      <pubDate>2026-09-24T09:00:21.075383+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/amtterm-git#1.7.r25.gfc5ee7a-1</guid>
     </item>
   </channel>
 </rss>

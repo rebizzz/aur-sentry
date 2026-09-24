@@ -31,6 +31,15 @@ The table below is updated automatically on schedule by GitHub Actions:
 | Severity | Package | Version | Maintainer | Triggers | Link |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | 🟡 **MEDIUM** | `9pro-git` | r111.2c1651b-1 | renehsz | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/9pro-git) |
+| 🟡 **MEDIUM** | `actflow-git` | r803.cbdbee0-1 | Richardn | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/actflow-git) |
+| 🟡 **MEDIUM** | `admixtools-git` | r61.b10ddcf-1 | techs | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/admixtools-git) |
+| 🟡 **MEDIUM** | `aerotools-git` | r77.7109ba7-1 | orphan | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/aerotools-git) |
+| 🟡 **MEDIUM** | `akonadi-calendar-tools-git` | 6.0.40_r1177.gbe4e54f-1 | IslandC0der | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/akonadi-calendar-tools-git) |
+| 🟡 **MEDIUM** | `amctl` | 1.0.1-1 | Hengtime787 | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/amctl) |
+| 🟡 **MEDIUM** | `amethyst-tools-git` | r316.83ef9c6-1 | capnhawkbill | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/amethyst-tools-git) |
+| 🟡 **MEDIUM** | `amneziawg-tools-git` | r517.5d6179a-2 | h8ray | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/amneziawg-tools-git) |
+| 🟡 **MEDIUM** | `amqp-qtools-git` | 0.5.0.6f42dfd-2 | languitar | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/amqp-qtools-git) |
+| 🟡 **MEDIUM** | `amtterm-git` | 1.7.r25.gfc5ee7a-1 | d10n | `RULE_SKIP_HASH_REMOTE` | [AUR](https://aur.archlinux.org/packages/amtterm-git) |
 <!-- AUTOPILOT_TABLE_END -->
 
 - 📄 Full machine-readable feed: [`advisories.json`](advisories.json)
