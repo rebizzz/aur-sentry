@@ -110,3 +110,22 @@ jobs:
             git pull --rebase origin main
             git push origin HEAD:main
           fi
+
+      - name: File/update GitHub issue for SUSPICIOUS or MALICIOUS verdicts
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -uo pipefail
+          ATTEST_DIR="data/attestations/${{ steps.pkg.outputs.name }}"
+          chmod +x scripts/file_dynamic_threat_issue.sh
+          shopt -s nullglob
+          LATEST=""
+          for f in "$ATTEST_DIR"/*.json; do
+            LATEST="$f"
+          done
+          if [ -z "$LATEST" ]; then
+            echo "no attestation found for ${{ steps.pkg.outputs.name }}, skipping notification"
+            exit 0
+          fi
+          scripts/file_dynamic_threat_issue.sh "$LATEST" "${{ github.repository }}"
