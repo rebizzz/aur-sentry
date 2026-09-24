@@ -14,10 +14,9 @@ The table below is generated automatically on schedule every 2 hours:
 
 <!-- AUTOPILOT_TABLE_START -->
 <details>
-<summary>Active Threats (Click to expand)</summary>
+<summary>Active Threats (0)</summary>
 
 *No active threats recorded in the radar.*
-
 </details>
 <!-- AUTOPILOT_TABLE_END -->
 
