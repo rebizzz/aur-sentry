@@ -164,18 +164,25 @@ pub fn update_markdown_table_in_file(file_path: &Path, advisories: &[Advisory]) 
         return false;
     }
 
-    let table = if advisories.is_empty() {
+    let mut sorted = advisories.to_vec();
+    sorted.sort_by(|a, b| {
+        severity_rank(&a.highest_severity)
+            .cmp(&severity_rank(&b.highest_severity))
+            .then_with(|| b.detected_at.cmp(&a.detected_at))
+    });
+
+    let table = if sorted.is_empty() {
         "\n<details>\n<summary>Active Threats (0)</summary>\n\n*No active threats recorded in the radar.*\n</details>\n".to_string()
     } else {
         let mut lines = vec![
             format!(
                 "\n<details open>\n<summary>Active Threats ({})</summary>\n",
-                advisories.len()
+                sorted.len()
             ),
             "| Severity | Package | Version | Maintainer | Triggers | Link |".to_string(),
             "| :--- | :--- | :--- | :--- | :--- | :--- |".to_string(),
         ];
-        for adv in advisories.iter().take(50) {
+        for adv in sorted.iter().take(50) {
             let badge = match adv.highest_severity.as_str() {
                 "CRITICAL" => "`[CRITICAL]`",
                 "HIGH" => "`[HIGH]`",
@@ -372,6 +379,43 @@ Footer notes.
         let adv_md = std::fs::read_to_string(temp_dir.join("ADVISORIES.md")).unwrap();
         assert!(!adv_md.contains("pkg-to-remove"));
         assert!(adv_md.contains("pkg-to-keep"));
+
+        let _ = std::fs::remove_dir_all(&temp_dir);
+    }
+
+    #[test]
+    fn markdown_table_sorts_by_severity() {
+        let temp_dir =
+            std::env::temp_dir().join(format!("aur_sentry_sort_test_{}", std::process::id()));
+        let _ = std::fs::create_dir_all(&temp_dir);
+
+        let adv_high = Advisory {
+            package: "high-pkg".into(),
+            version: "1.0".into(),
+            maintainer: "user".into(),
+            highest_severity: "HIGH".into(),
+            detected_at: "2026-03-24T12:00:00Z".into(),
+            findings: vec![],
+            aur_url: "https://aur.archlinux.org/packages/high-pkg".into(),
+        };
+        let adv_crit = Advisory {
+            package: "crit-pkg".into(),
+            version: "1.0".into(),
+            maintainer: "hacker".into(),
+            highest_severity: "CRITICAL".into(),
+            detected_at: "2026-03-24T11:00:00Z".into(),
+            findings: vec![],
+            aur_url: "https://aur.archlinux.org/packages/crit-pkg".into(),
+        };
+
+        // Pass HIGH before CRITICAL to update_readme_table
+        update_readme_table(&temp_dir, &[adv_high, adv_crit]);
+
+        let adv_md = std::fs::read_to_string(temp_dir.join("ADVISORIES.md")).unwrap();
+        let crit_pos = adv_md.find("`crit-pkg`").expect("crit-pkg present");
+        let high_pos = adv_md.find("`high-pkg`").expect("high-pkg present");
+        // CRITICAL must appear before HIGH in the markdown table
+        assert!(crit_pos < high_pos);
 
         let _ = std::fs::remove_dir_all(&temp_dir);
     }

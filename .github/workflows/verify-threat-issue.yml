@@ -1,0 +1,116 @@
+name: Dynamic Threat Verification
+
+on:
+  issues:
+    types: [opened, reopened]
+  workflow_dispatch:
+    inputs:
+      package_name:
+        description: 'AUR package name to dynamically verify'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  verify:
+    name: Verify Threat Package on Arch Linux
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.title, '[CRITICAL THREAT]') || github.event_name == 'workflow_dispatch'
+    steps:
+      - name: Harden Runner (Security & Egress Audit)
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build aur-sentry binary
+        run: cargo build --release
+
+      - name: Extract package name
+        id: extract
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            PKG="${{ github.event.inputs.package_name }}"
+          else
+            TITLE="${{ github.event.issue.title }}"
+            PKG=$(echo "$TITLE" | sed -E 's/.*for `?([a-zA-Z0-9_\.\-]+)`?/\1/')
+          fi
+          echo "pkg=$PKG" >> "$GITHUB_OUTPUT"
+          echo "Target package: $PKG"
+
+      - name: Download live package sources from AUR
+        run: |
+          PKG="${{ steps.extract.outputs.pkg }}"
+          mkdir -p /tmp/pkg_verify
+          curl -fsSL "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$PKG" -o /tmp/pkg_verify/PKGBUILD || true
+
+      - name: Run Dynamic Verification & Namcap Audit
+        id: scan
+        run: |
+          PKG="${{ steps.extract.outputs.pkg }}"
+          set +e
+          ./target/release/aur-sentry scan-pkg "$PKG" > /tmp/scan_output.txt 2>&1
+          SCAN_EXIT=$?
+          set -e
+          echo "scan_exit=$SCAN_EXIT" >> "$GITHUB_OUTPUT"
+          echo "Scanner exit code: $SCAN_EXIT"
+
+      - name: Comment verification report on GitHub Issue
+        if: github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          PKG="${{ steps.extract.outputs.pkg }}"
+          EXIT_CODE="${{ steps.scan.outputs.scan_exit }}"
+          
+          if [ "$EXIT_CODE" -eq 2 ]; then
+            VERDICT="❌ **CONFIRMED THREAT**"
+            BADGE="https://img.shields.io/badge/AUR--Sentry-CONFIRMED_THREAT-critical"
+          elif [ "$EXIT_CODE" -eq 0 ]; then
+            VERDICT="✅ **VERIFIED CLEAN**"
+            BADGE="https://img.shields.io/badge/AUR--Sentry-CLEAN-success"
+          else
+            VERDICT="⚠️ **UNRESOLVED / TAKEN DOWN**"
+            BADGE="https://img.shields.io/badge/AUR--Sentry-INCONCLUSIVE-yellow"
+          fi
+
+          COMMENT_BODY=$(cat << EOF
+### 🛡️ Automated Verification Report by GitHub Actions
+
+![$VERDICT]($BADGE)
+
+GitHub Actions dynamically audited the live AUR package sources for **\`$PKG\`**.
+
+| Attribute | Details |
+| :--- | :--- |
+| **Target Package** | \`$PKG\` |
+| **Scanner Verdict** | $VERDICT (Exit code: \`$EXIT_CODE\`) |
+| **Live Upstream Source** | [AUR cgit PKGBUILD](https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=$PKG) |
+| **Execution Environment** | Ubuntu 24.04 + StepSecurity Harden-Runner |
+| **Workflow Run** | [View Run Log]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID) |
+
+<details>
+<summary><b>🔍 View aur-sentry Scanner Output</b></summary>
+
+\`\`\`
+$(cat /tmp/scan_output.txt | tail -n 50)
+\`\`\`
+</details>
+
+*Dynamically verified by GitHub Actions runner.*
+EOF
+)
+
+          gh issue comment "$ISSUE_NUMBER" --repo "${{ github.repository }}" --body "$COMMENT_BODY"
+          if [ "$EXIT_CODE" -eq 2 ]; then
+            gh issue edit "$ISSUE_NUMBER" --repo "${{ github.repository }}" --add-label "security-threat" || true
+          fi

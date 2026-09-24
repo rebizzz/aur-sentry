@@ -55,16 +55,9 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          if [ -f advisories.json ] && grep -q '"highest_severity": "CRITICAL"' advisories.json; then
-            CRIT_PKGS=$(jq -r '.advisories[] | select(.highest_severity == "CRITICAL") | .package' advisories.json | head -5)
-            for p in $CRIT_PKGS; do
-              if ! gh issue list --state open --search "$p" --json title | grep -q "$p"; then
-                echo "Creating automated security issue for $p..."
-                gh issue create --title "[CRITICAL THREAT] Active supply-chain alert for $p" \
-                  --body "AUR-Sentry Autopilot detected a CRITICAL severity supply-chain threat in package **$p**. Inspect \`advisories.json\` or ADVISORIES.md for details." || true
-              fi
-            done
-          fi
+          chmod +x scripts/file_threat_issue.sh
+          bash scripts/file_threat_issue.sh . "${{ github.repository }}"
+
 
       - name: Create Pull Request for Threat Radar & Feeds
         env:

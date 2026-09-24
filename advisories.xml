@@ -4,7 +4,7 @@
     <title>AUR-Sentry Security Advisories</title>
     <link>https://github.com/rebizzz/aur-sentry</link>
     <description>Automated supply-chain security alerts for Arch User Repository packages</description>
-    <lastBuildDate>Thu, 24 Sep 2026 14:45:35 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 16:58:04 +0000</lastBuildDate>
     <item>
       <title>[CRITICAL] microsoft-edge-beta-bin (155.0.4283.13-1)</title>
       <link>https://aur.archlinux.org/packages/microsoft-edge-beta-bin</link>

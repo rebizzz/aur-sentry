@@ -368,6 +368,11 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
     }
 
     // 3. Save advisories sorted severity-wise and update markdown
+    active_advisories.sort_by(|a, b| {
+        report::severity_rank(&a.highest_severity)
+            .cmp(&report::severity_rank(&b.highest_severity))
+            .then_with(|| b.detected_at.cmp(&a.detected_at))
+    });
     report::write_advisories(repo_root, &active_advisories);
     report::update_readme_table(repo_root, &active_advisories);
 
