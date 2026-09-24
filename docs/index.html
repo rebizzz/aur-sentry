@@ -65,6 +65,34 @@ async function render() {
   }
 
   const packages = latestPerPackage(entries);
+  const stats = verdictBreakdown(packages);
+  const statsHtml = `
+    <div class="stats-banner">
+      <div class="stats-total">
+        <span class="stats-total-num">${stats.total}</span>
+        <span class="stats-total-label">package${stats.total === 1 ? "" : "s"} tracked</span>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-tile stat-tile-VERIFIED">
+          <span class="stat-tile-num">${stats.VERIFIED}</span>
+          <span class="stat-tile-label">Verified</span>
+        </div>
+        <div class="stat-tile stat-tile-SUSPICIOUS">
+          <span class="stat-tile-num">${stats.SUSPICIOUS}</span>
+          <span class="stat-tile-label">Suspicious</span>
+        </div>
+        <div class="stat-tile stat-tile-MALICIOUS">
+          <span class="stat-tile-num">${stats.MALICIOUS}</span>
+          <span class="stat-tile-label">Malicious</span>
+        </div>
+        <div class="stat-tile stat-tile-OTHER">
+          <span class="stat-tile-num">${stats.OTHER}</span>
+          <span class="stat-tile-label">Other states</span>
+        </div>
+      </div>
+    </div>
+  `;
+
   const items = packages.map((pkg) => `
     <li>
       <a class="package-card" href="${packagePageUrl(pkg.package)}">
@@ -79,7 +107,7 @@ async function render() {
     </li>
   `).join("");
 
-  content.innerHTML = `${noticeHtml}<ul class="package-list">${items}</ul>`;
+  content.innerHTML = `${statsHtml}${noticeHtml}<ul class="package-list">${items}</ul>`;
 }
 
 render();

@@ -77,3 +77,23 @@ function latestPerPackage(entries) {
   }
   return [...latest.values()].sort((a, b) => a.package.localeCompare(b.package));
 }
+
+/* Verdict states that aren't VERIFIED/SUSPICIOUS/MALICIOUS get grouped into a
+   single "other" bucket for the homepage summary banner (they already share
+   the neutral badge color in style.css). */
+const OTHER_VERDICTS = ["INCONCLUSIVE", "BUILD_FAILED", "ANALYSIS_FAILED", "STALE", "UNSUPPORTED"];
+
+/* Given the one-entry-per-package list (see latestPerPackage), compute the
+   counts shown in the homepage aggregate stats banner. Pure client-side
+   reduce over data the manifest already has -- no extra fields needed. */
+function verdictBreakdown(packages) {
+  const counts = { total: packages.length, VERIFIED: 0, SUSPICIOUS: 0, MALICIOUS: 0, OTHER: 0 };
+  for (const pkg of packages) {
+    if (pkg.verdict === "VERIFIED" || pkg.verdict === "SUSPICIOUS" || pkg.verdict === "MALICIOUS") {
+      counts[pkg.verdict] += 1;
+    } else {
+      counts.OTHER += 1;
+    }
+  }
+  return counts;
+}

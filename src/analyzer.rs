@@ -6,6 +6,7 @@
 //! 3. Archive & binary inspection (inspects in-memory tarball streams, ELF headers, UPX packers).
 
 use crate::scanner::{Finding, PKGBUILDScanner};
+use crate::shellparse;
 use base64::prelude::*;
 use regex::Regex;
 use std::io::Read;
@@ -207,6 +208,99 @@ pub fn inspect_tar_stream(gz_bytes: &[u8]) -> Vec<Finding> {
         // Move to next 512-byte block
         offset += file_size.div_ceil(512) * 512;
     }
+    findings
+}
+
+/// Real shell-pipeline-structure detection (vision section 6), additive to
+/// the regex signature set above.
+///
+/// Uses [`crate::shellparse`] to tell an actually-executed pipeline apart
+/// from a string that merely mentions the same tool names, catching:
+///
+/// - `curl <url> | bash` / `wget -O- <url> | sh` and multi-stage variants
+///   like `curl <url> | tee /tmp/x | bash` (dangerous: a fetched remote
+///   payload piped straight into an interpreter) — while leaving
+///   `curl <url> -o file.tar.gz` (a normal source download, no pipe at all,
+///   or one that writes to a real file) unflagged.
+/// - `... | base64 -d | bash`-shaped obfuscated-execution pipelines, while
+///   leaving `echo "mentions base64 -d"` (a string literal) unflagged,
+///   since the base64 stage there was never a real pipeline stage in the
+///   first place.
+pub fn analyze_pipeline_structure(content: &str) -> Vec<Finding> {
+    let mut findings = Vec::new();
+
+    for (idx, line) in content.lines().enumerate() {
+        let trimmed = line.trim();
+        if trimmed.starts_with('#')
+            || trimmed.starts_with("sha256sums")
+            || trimmed.starts_with("sha512sums")
+            || trimmed.starts_with("b2sums")
+            || trimmed.starts_with("md5sums")
+            || trimmed.starts_with("source")
+        {
+            continue;
+        }
+        if !trimmed.contains('|') {
+            continue;
+        }
+
+        let stages = shellparse::pipeline_stages(line);
+        if stages.len() < 2 {
+            continue;
+        }
+
+        for (stage_idx, stage) in stages.iter().enumerate() {
+            let later_stages = &stages[stage_idx + 1..];
+
+            // curl/wget piped into an interpreter, anywhere downstream in
+            // the pipeline (not just the immediately-next stage), and not
+            // simply writing its output to a file.
+            if shellparse::is_fetch_command(&stage.command)
+                && !shellparse::fetch_writes_to_file(stage)
+                && later_stages
+                    .iter()
+                    .any(|s| shellparse::is_shell_interpreter(&s.command))
+            {
+                let interp = later_stages
+                    .iter()
+                    .find(|s| shellparse::is_shell_interpreter(&s.command))
+                    .map(|s| s.command.as_str())
+                    .unwrap_or("shell");
+                findings.push(Finding {
+                    rule_id: "PIPELINE_FETCH_EXEC".into(),
+                    severity: "CRITICAL".into(),
+                    description: format!(
+                        "remote fetch ({}) piped into a real pipeline stage executing '{}' \
+                         (structurally-confirmed fetch-and-execute, not a string match)",
+                        stage.command, interp
+                    ),
+                    line_number: idx + 1,
+                    matched_text: stage.text.chars().take(120).collect(),
+                });
+            }
+
+            // `base64 -d`/`--decode` as an actually-invoked pipeline stage,
+            // with a later stage that executes the decoded output.
+            if shellparse::is_base64_decode_stage(stage)
+                && later_stages
+                    .iter()
+                    .any(|s| shellparse::is_shell_interpreter(&s.command))
+            {
+                findings.push(Finding {
+                    rule_id: "PIPELINE_BASE64_EXEC".into(),
+                    severity: "CRITICAL".into(),
+                    description:
+                        "base64-decoded output piped directly into a shell interpreter \
+                         (structurally-confirmed obfuscated execution, not just a string \
+                         mentioning 'base64 -d')"
+                            .to_string(),
+                    line_number: idx + 1,
+                    matched_text: stage.text.chars().take(120).collect(),
+                });
+            }
+        }
+    }
+
     findings
 }
 

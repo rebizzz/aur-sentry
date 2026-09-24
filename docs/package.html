@@ -166,6 +166,109 @@ async function buildSignedNotice(path) {
   return `<p class="package-meta signed-notice">Not yet cryptographically signed.</p>`;
 }
 
+// Public GitHub Contents API listing for a package's attestation directory —
+// same call shape as src/main.rs's `check` subcommand (GH_CONTENTS_API) and
+// bin/safeaur's ATTESTATION_API_BASE, mirrored here in JS. No auth needed:
+// public repo, read-only, subject to GitHub's unauthenticated rate limit.
+const GH_CONTENTS_API = "https://api.github.com/repos/rebizzz/aur-sentry/contents/data/attestations";
+
+function rawAttestationUrl(pkgName, version) {
+  return `${RAW_BASE}data/attestations/${encodeURIComponent(pkgName)}/${encodeURIComponent(version)}.json`;
+}
+
+// Builds the "History" section body: lists every known version for this
+// package (from the live GitHub Contents API listing, not just whatever the
+// manifest last resolved) with verdict, analyzed_at, a link to that version's
+// raw attestation, and a changed/unchanged PKGBUILD indicator between
+// consecutive scans.
+//
+// Honest limitation: this is a sha256-equality indicator, not an actual
+// PKGBUILD diff/text view — attestations only store
+// source.pkgbuild_sha256, never the PKGBUILD text itself, so there's nothing
+// to diff line-by-line without fetching the AUR source separately (out of
+// scope here).
+async function buildHistorySection(pkgName, latestAttestation) {
+  let fileVersions = [];
+  let listingError = null;
+  try {
+    const res = await fetch(`${GH_CONTENTS_API}/${encodeURIComponent(pkgName)}`, {
+      headers: { Accept: "application/vnd.github+json" },
+      cache: "no-store",
+    });
+    if (res.ok) {
+      const listing = await res.json();
+      fileVersions = listing
+        .map((e) => e.name)
+        .filter((n) => n.endsWith(".json"))
+        .map((n) => n.slice(0, -".json".length));
+    } else {
+      listingError = `GitHub API returned ${res.status}`;
+    }
+  } catch (err) {
+    listingError = err.message;
+  }
+
+  if (fileVersions.length === 0) {
+    return `<p class="empty-state" style="padding:16px 0;">Could not load version history from GitHub${listingError ? ` (${escapeHtml(listingError)})` : ""}.</p>`;
+  }
+
+  const records = await Promise.all(fileVersions.map(async (version) => {
+    if (latestAttestation && latestAttestation.package.version === version) {
+      return { version, att: latestAttestation };
+    }
+    try {
+      const res = await fetch(rawAttestationUrl(pkgName, version), { cache: "no-store" });
+      if (!res.ok) throw new Error(`${res.status}`);
+      return { version, att: await res.json() };
+    } catch (err) {
+      return { version, att: null, error: err.message };
+    }
+  }));
+
+  // Sort oldest -> newest to compute PKGBUILD diff transitions in scan order.
+  const chrono = [...records].sort((a, b) => {
+    const ta = (a.att && a.att.analyzed_at) || "";
+    const tb = (b.att && b.att.analyzed_at) || "";
+    return ta < tb ? -1 : ta > tb ? 1 : 0;
+  });
+
+  const diffNotes = new Map();
+  for (let i = 1; i < chrono.length; i++) {
+    const cur = chrono[i];
+    const prev = chrono[i - 1];
+    if (!cur.att || !prev.att) continue;
+    const curSha = cur.att.source && cur.att.source.pkgbuild_sha256;
+    const prevSha = prev.att.source && prev.att.source.pkgbuild_sha256;
+    if (curSha && prevSha) {
+      diffNotes.set(cur.version, curSha === prevSha
+        ? "PKGBUILD unchanged since previous scan"
+        : "PKGBUILD changed since previous scan");
+    }
+  }
+
+  const rows = [...chrono].reverse().map((r) => {
+    if (!r.att) {
+      return `<li>
+        <div class="history-row-top"><span class="mono">${escapeHtml(r.version)}</span></div>
+        <div class="package-meta">Could not load this attestation (${escapeHtml(r.error || "unknown error")}).</div>
+      </li>`;
+    }
+    const note = diffNotes.get(r.version);
+    return `<li>
+      <div class="history-row-top">
+        <span class="mono">${escapeHtml(r.version)}</span>
+        ${badgeHtml(r.att.verdict)}
+      </div>
+      <div class="package-meta">
+        analyzed ${escapeHtml(formatTimestamp(r.att.analyzed_at))}${note ? ` &middot; ${escapeHtml(note)}` : ""}
+        &middot; <a href="${rawAttestationUrl(pkgName, r.version)}">raw attestation</a>
+      </div>
+    </li>`;
+  }).join("");
+
+  return `<ul class="summary-list">${rows}</ul>`;
+}
+
 async function render() {
   const name = qs("name");
   if (!name) {
@@ -207,12 +310,6 @@ async function render() {
   const isExample = name.startsWith("example-");
   const noticeHtml = isExample
     ? `<div class="notice">This is fake example data used to preview this UI, not a real scan result.</div>`
-    : "";
-
-  const versionHistoryHtml = versions.length > 1
-    ? `<h2>Version history</h2><ul class="summary-list">${versions.map((v) => `
-        <li>${escapeHtml(v.version)} &mdash; ${badgeHtml(v.verdict)} &mdash; ${escapeHtml(formatTimestamp(v.analyzed_at))}</li>
-      `).join("")}</ul>`
     : "";
 
   document.getElementById("content").innerHTML = `
@@ -269,8 +366,26 @@ async function render() {
       </div>
     </details>
 
-    ${versionHistoryHtml}
+    <details class="why" id="history-details">
+      <summary>History &mdash; ${versions.length} version${versions.length === 1 ? "" : "s"} in the manifest (click to load full history from GitHub)</summary>
+      <div class="why-body" id="history-body">
+        <p class="empty-state" style="padding:16px 0;">Loading version history from GitHub&hellip;</p>
+      </div>
+    </details>
   `;
+
+  const historyDetails = document.getElementById("history-details");
+  let historyLoaded = false;
+  historyDetails.addEventListener("toggle", async () => {
+    if (!historyDetails.open || historyLoaded) return;
+    historyLoaded = true;
+    const body = document.getElementById("history-body");
+    try {
+      body.innerHTML = await buildHistorySection(name, att);
+    } catch (err) {
+      body.innerHTML = `<p class="empty-state" style="padding:16px 0;">Could not build version history (${escapeHtml(err.message)}).</p>`;
+    }
+  });
 }
 
 render();

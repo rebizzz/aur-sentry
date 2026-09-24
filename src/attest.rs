@@ -165,12 +165,22 @@ fn extract_host(url: &str) -> Option<String> {
     }
 }
 
+/// Sandbox pass name used to tag build-phase (`makepkg`) telemetry events —
+/// see `attestation::NetworkEvent`/`FilesystemEvent::phase`.
+pub const PHASE_BUILD: &str = "build";
+/// Sandbox pass name used to tag install-phase (`pacman -U`/`-R`) telemetry
+/// events — see `attestation::NetworkEvent`/`FilesystemEvent::phase`.
+pub const PHASE_INSTALL: &str = "install";
+
 /// Parse strace `-e trace=network,file` output into network/filesystem
-/// events. Process events aren't recoverable from this telemetry shape yet,
-/// so that vector stays empty (mirrors the Python fallback).
+/// events, tagging each with which sandbox pass (`PHASE_BUILD`/
+/// `PHASE_INSTALL`) produced it. Process events aren't recoverable from this
+/// telemetry shape yet, so that vector stays empty (mirrors the Python
+/// fallback).
 pub fn parse_telemetry(
     text: &str,
     allowed_ips: &HashSet<String>,
+    phase: &str,
 ) -> (Vec<NetworkEvent>, Vec<FilesystemEvent>) {
     let now = chrono::Utc::now().to_rfc3339();
 
@@ -194,6 +204,7 @@ pub fn parse_telemetry(
                 "declared-source".into()
             }),
             timestamp: now.clone(),
+            phase: phase.to_string(),
         });
     }
 
@@ -211,10 +222,52 @@ pub fn parse_telemetry(
             path,
             operation: "canary_access".into(),
             timestamp: now.clone(),
+            phase: phase.to_string(),
         });
     }
 
     (network, filesystem)
+}
+
+/// Fold a phase's canary/network telemetry into the shared finding set so
+/// `verdict_from_findings` (Phase 1's single source of verdict truth) treats
+/// install-phase hits exactly like build-phase hits, instead of duplicating
+/// verdict logic per phase. `phase_label` is human-readable text for the
+/// finding description only (`"build"`/`"install"`) — not the same as the
+/// `phase` field stored on the telemetry events themselves.
+fn push_dynamic_findings(
+    findings: &mut Vec<Finding>,
+    network: &[NetworkEvent],
+    filesystem: &[FilesystemEvent],
+    phase_label: &str,
+) {
+    if !filesystem.is_empty() {
+        let touched: Vec<&str> = filesystem.iter().map(|f| f.path.as_str()).collect();
+        findings.push(Finding {
+            behavior: Behavior::CredentialAccess,
+            file: "dynamic-sandbox".into(),
+            line: 0,
+            severity: Severity::Critical,
+            description: format!(
+                "canary secret accessed during {phase_label}: {}",
+                touched.join(", ")
+            ),
+        });
+    }
+    if network
+        .iter()
+        .any(|n| n.protocol.as_deref() == Some("undeclared"))
+    {
+        findings.push(Finding {
+            behavior: Behavior::NetworkAccess,
+            file: "dynamic-sandbox".into(),
+            line: 0,
+            severity: Severity::High,
+            description: format!(
+                "connected to network destination(s) not declared in PKGBUILD source=() during {phase_label}"
+            ),
+        });
+    }
 }
 
 /// Shape of the JSON blob `scripts/dynamic_sandbox.sh` assembles with `jq`
@@ -351,6 +404,12 @@ pub struct AttestInputs<'a> {
     pub install_path: Option<&'a Path>,
     pub static_findings_path: Option<&'a Path>,
     pub telemetry_path: Option<&'a Path>,
+    /// Path to the install-phase strace telemetry log (`pacman -U`/`-R`
+    /// under strace, see scripts/dynamic_sandbox.sh's install-phase step).
+    /// `None`/missing degrades to "no install-phase evidence" rather than
+    /// failing the attestation — this pass is skipped entirely upstream
+    /// whenever no built package file exists (e.g. reproducibility failed).
+    pub install_telemetry_path: Option<&'a Path>,
     /// Path to the package-content/ELF-analysis JSON blob assembled by
     /// `scripts/dynamic_sandbox.sh` (`jq`, from the real `makepkg`-built
     /// package). `None`/unreadable/unparseable degrades to an "unavailable"
@@ -401,44 +460,34 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
         .map(declared_source_ips)
         .unwrap_or_default();
 
-    let (network, filesystem) = if inputs.strace_available {
+    let (mut network, mut filesystem) = if inputs.strace_available {
         let telemetry_text = inputs
             .telemetry_path
             .and_then(|p| std::fs::read_to_string(p).ok())
             .unwrap_or_default();
-        parse_telemetry(&telemetry_text, &allowed_ips)
+        parse_telemetry(&telemetry_text, &allowed_ips, PHASE_BUILD)
     } else {
         (Vec::new(), Vec::new())
     };
+    push_dynamic_findings(&mut findings, &network, &filesystem, "build");
 
-    // Fold dynamic evidence into the same finding set so `verdict_from_findings`
-    // (Phase 1's single source of verdict truth) sees canary/network hits too,
-    // instead of duplicating verdict logic here.
-    if !filesystem.is_empty() {
-        let touched: Vec<&str> = filesystem.iter().map(|f| f.path.as_str()).collect();
-        findings.push(Finding {
-            behavior: Behavior::CredentialAccess,
-            file: "dynamic-sandbox".into(),
-            line: 0,
-            severity: Severity::Critical,
-            description: format!(
-                "canary secret accessed during build: {}",
-                touched.join(", ")
-            ),
-        });
-    }
-    if network
-        .iter()
-        .any(|n| n.protocol.as_deref() == Some("undeclared"))
-    {
-        findings.push(Finding {
-            behavior: Behavior::NetworkAccess,
-            file: "dynamic-sandbox".into(),
-            line: 0,
-            severity: Severity::High,
-            description: "connected to network destination(s) not declared in PKGBUILD source=()"
-                .into(),
-        });
+    // Install-phase telemetry (pacman -U/-R under strace — see
+    // scripts/dynamic_sandbox.sh). Same strace availability gate as build
+    // telemetry (one STRACE_OK check, reused for both passes), and the same
+    // allowed_ips (it's the same package/PKGBUILD). `None`/missing degrades
+    // to "no install-phase evidence" — this pass is skipped upstream
+    // whenever no built package file exists (see scripts/dynamic_sandbox.sh).
+    if inputs.strace_available {
+        if let Some(install_telemetry_text) = inputs
+            .install_telemetry_path
+            .and_then(|p| std::fs::read_to_string(p).ok())
+        {
+            let (install_network, install_filesystem) =
+                parse_telemetry(&install_telemetry_text, &allowed_ips, PHASE_INSTALL);
+            push_dynamic_findings(&mut findings, &install_network, &install_filesystem, "install");
+            network.extend(install_network);
+            filesystem.extend(install_filesystem);
+        }
     }
 
     let (package_analysis, package_findings) = parse_package_analysis(inputs.package_analysis_path);
@@ -530,20 +579,31 @@ mod tests {
             "12345 openat(AT_FDCWD, \"/etc/passwd\", O_RDONLY) = 5\n",
         );
         let allowed: HashSet<String> = HashSet::new();
-        let (network, filesystem) = parse_telemetry(text, &allowed);
+        let (network, filesystem) = parse_telemetry(text, &allowed, PHASE_BUILD);
         assert_eq!(network.len(), 1);
         assert_eq!(network[0].destination, "1.2.3.4");
         assert_eq!(network[0].protocol.as_deref(), Some("undeclared"));
+        assert_eq!(network[0].phase, "build");
         assert_eq!(filesystem.len(), 1);
         assert!(filesystem[0].path.contains("id_fake"));
+        assert_eq!(filesystem[0].phase, "build");
     }
 
     #[test]
     fn declared_ip_is_not_flagged_as_undeclared() {
         let text = "12345 connect(3, {sa_family=AF_INET, sin_port=htons(443), sin_addr=inet_addr(\"127.0.0.1\")}, 16) = 0\n";
         let allowed: HashSet<String> = HashSet::new();
-        let (network, _) = parse_telemetry(text, &allowed);
+        let (network, _) = parse_telemetry(text, &allowed, PHASE_BUILD);
         assert_eq!(network[0].protocol.as_deref(), Some("declared-source"));
+    }
+
+    #[test]
+    fn parse_telemetry_tags_install_phase() {
+        let text = "12345 openat(AT_FDCWD, \"/root/.ssh/id_fake\", O_RDONLY) = 4\n";
+        let allowed: HashSet<String> = HashSet::new();
+        let (_, filesystem) = parse_telemetry(text, &allowed, PHASE_INSTALL);
+        assert_eq!(filesystem.len(), 1);
+        assert_eq!(filesystem[0].phase, "install");
     }
 
     #[test]
@@ -559,6 +619,7 @@ mod tests {
             package_analysis_path: None,
             external_intelligence_path: None,
             telemetry_path: None,
+            install_telemetry_path: None,
             strace_available: false,
             makepkg_exit: Some(0),
             scanner_version: "test".into(),
@@ -594,6 +655,7 @@ mod tests {
             package_analysis_path: None,
             external_intelligence_path: None,
             telemetry_path: Some(&telemetry_path),
+            install_telemetry_path: None,
             strace_available: true,
             makepkg_exit: Some(0),
             scanner_version: "test".into(),
@@ -604,6 +666,82 @@ mod tests {
         assert_eq!(att.dynamic_evidence.filesystem.len(), 1);
 
         let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn build_attestation_install_phase_canary_access_is_malicious() {
+        // A clean build-phase telemetry log, but the .install script reads
+        // the canary during `pacman -U` — this must feed the same verdict
+        // path as a build-phase hit (ARCHITECTURE.md: installing malware via
+        // .install is just as bad as building it).
+        let dir = std::env::temp_dir().join(format!(
+            "aur_sentry_attest_install_test_{}",
+            std::process::id()
+        ));
+        let _ = std::fs::create_dir_all(&dir);
+        let telemetry_path = dir.join("telemetry.log");
+        std::fs::write(&telemetry_path, "").unwrap();
+        let install_telemetry_path = dir.join("install_telemetry.log");
+        std::fs::write(
+            &install_telemetry_path,
+            "12345 openat(AT_FDCWD, \"/root/.aws/credentials\", O_RDONLY) = 4\n",
+        )
+        .unwrap();
+
+        let inputs = AttestInputs {
+            package: "evil-install-pkg".into(),
+            version: "1.0-1".into(),
+            arch: "x86_64".into(),
+            aur_commit: "".into(),
+            pkgbuild_path: None,
+            install_path: None,
+            static_findings_path: None,
+            package_analysis_path: None,
+            external_intelligence_path: None,
+            telemetry_path: Some(&telemetry_path),
+            install_telemetry_path: Some(&install_telemetry_path),
+            strace_available: true,
+            makepkg_exit: Some(0),
+            scanner_version: "test".into(),
+            reproducibility: ReproducibilityStatus::NotAttempted,
+        };
+        let att = build_attestation(&inputs);
+        assert_eq!(att.verdict, Verdict::Malicious);
+        assert_eq!(att.dynamic_evidence.filesystem.len(), 1);
+        assert_eq!(att.dynamic_evidence.filesystem[0].phase, "install");
+        assert!(
+            att.static_findings
+                .iter()
+                .any(|f| f.description.contains("during install"))
+        );
+
+        let _ = std::fs::remove_dir_all(&dir);
+    }
+
+    #[test]
+    fn build_attestation_missing_install_telemetry_degrades_gracefully() {
+        // No install_telemetry_path at all (upstream skipped the pass, e.g.
+        // no built package file existed) must not affect the attestation.
+        let inputs = AttestInputs {
+            package: "foo".into(),
+            version: "1.0-1".into(),
+            arch: "x86_64".into(),
+            aur_commit: "deadbeef".into(),
+            pkgbuild_path: None,
+            install_path: None,
+            static_findings_path: None,
+            package_analysis_path: None,
+            external_intelligence_path: None,
+            telemetry_path: None,
+            install_telemetry_path: None,
+            strace_available: true,
+            makepkg_exit: Some(0),
+            scanner_version: "test".into(),
+            reproducibility: ReproducibilityStatus::NotAttempted,
+        };
+        let att = build_attestation(&inputs);
+        assert_eq!(att.verdict, Verdict::Verified);
+        assert!(att.dynamic_evidence.filesystem.is_empty());
     }
 
     #[test]
@@ -619,6 +757,7 @@ mod tests {
             package_analysis_path: None,
             external_intelligence_path: None,
             telemetry_path: None,
+            install_telemetry_path: None,
             strace_available: false,
             makepkg_exit: Some(0),
             scanner_version: "test".into(),
@@ -644,6 +783,7 @@ mod tests {
             package_analysis_path: None,
             external_intelligence_path: None,
             telemetry_path: None,
+            install_telemetry_path: None,
             strace_available: false,
             makepkg_exit: Some(1),
             scanner_version: "test".into(),

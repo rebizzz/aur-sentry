@@ -153,9 +153,19 @@ enum Commands {
         #[arg(long)]
         static_findings: Option<PathBuf>,
 
-        /// Path to the strace telemetry log from the dynamic sandbox
+        /// Path to the build-phase strace telemetry log from the dynamic
+        /// sandbox (`makepkg` under strace)
         #[arg(long)]
         telemetry: Option<PathBuf>,
+
+        /// Path to the install-phase strace telemetry log from the dynamic
+        /// sandbox (`pacman -U`/`-R` under strace — see
+        /// scripts/dynamic_sandbox.sh's install-phase step). Missing/absent
+        /// degrades to "no install-phase evidence" rather than failing the
+        /// attestation; the sandbox script itself skips this pass entirely
+        /// when no built package file exists.
+        #[arg(long)]
+        install_telemetry: Option<PathBuf>,
 
         /// Path to the package-content/ELF-analysis JSON blob assembled by
         /// scripts/dynamic_sandbox.sh from the real makepkg-built package
@@ -215,6 +225,7 @@ fn main() -> ExitCode {
             install_file,
             static_findings,
             telemetry,
+            install_telemetry,
             package_analysis,
             external_intel,
             strace_available,
@@ -230,6 +241,7 @@ fn main() -> ExitCode {
             install_file.as_deref(),
             static_findings.as_deref(),
             telemetry.as_deref(),
+            install_telemetry.as_deref(),
             package_analysis.as_deref(),
             external_intel.as_deref(),
             strace_available,
@@ -622,6 +634,7 @@ fn cmd_attest(
     install_file: Option<&Path>,
     static_findings: Option<&Path>,
     telemetry: Option<&Path>,
+    install_telemetry: Option<&Path>,
     package_analysis: Option<&Path>,
     external_intel: Option<&Path>,
     strace_available: bool,
@@ -642,6 +655,7 @@ fn cmd_attest(
         install_path: install_file,
         static_findings_path: static_findings,
         telemetry_path: telemetry,
+        install_telemetry_path: install_telemetry,
         package_analysis_path: package_analysis,
         external_intelligence_path: external_intel,
         strace_available,
@@ -1142,11 +1156,13 @@ mod check_tests {
                 port: Some(443),
                 protocol: Some("undeclared".into()),
                 timestamp: "2026-01-01T00:00:00Z".into(),
+                phase: "build".into(),
             }],
             filesystem: vec![FilesystemEvent {
                 path: "/home/user/.ssh/id_rsa".into(),
                 operation: "canary_access".into(),
                 timestamp: "2026-01-01T00:00:00Z".into(),
+                phase: "build".into(),
             }],
         };
         let lines = build_checklist(&att);

@@ -30,7 +30,10 @@ jobs:
     # Phase 3 added a reproducibility comparison pass (two extra real
     # `makepkg` builds, see scripts/dynamic_sandbox.sh) on top of the
     # original --nobuild pass, so the budget was raised from 30 -> 45min.
-    timeout-minutes: 45
+    # The install-phase pass (`pacman -U`/`-R` under strace, reusing an
+    # already-built package — no extra build) is comparatively cheap, but
+    # gets its own margin: 45 -> 55min.
+    timeout-minutes: 55
     steps:
       - name: Harden Runner (Security & Egress Audit)
         uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0

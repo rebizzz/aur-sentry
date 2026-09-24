@@ -126,6 +126,11 @@
         "description": { "type": "string" }
       }
     },
+    "telemetryPhase": {
+      "type": "string",
+      "description": "Which disposable sandbox pass produced this telemetry event.",
+      "enum": ["build", "install"]
+    },
     "processEvent": {
       "type": "object",
       "required": ["command", "timestamp"],
@@ -133,7 +138,8 @@
       "properties": {
         "command": { "type": "string" },
         "parent": { "type": ["string", "null"] },
-        "timestamp": { "type": "string", "format": "date-time" }
+        "timestamp": { "type": "string", "format": "date-time" },
+        "phase": { "$ref": "#/$defs/telemetryPhase" }
       }
     },
     "networkEvent": {
@@ -144,7 +150,8 @@
         "destination": { "type": "string" },
         "port": { "type": ["integer", "null"] },
         "protocol": { "type": ["string", "null"] },
-        "timestamp": { "type": "string", "format": "date-time" }
+        "timestamp": { "type": "string", "format": "date-time" },
+        "phase": { "$ref": "#/$defs/telemetryPhase" }
       }
     },
     "filesystemEvent": {
@@ -154,7 +161,8 @@
       "properties": {
         "path": { "type": "string" },
         "operation": { "type": "string" },
-        "timestamp": { "type": "string", "format": "date-time" }
+        "timestamp": { "type": "string", "format": "date-time" },
+        "phase": { "$ref": "#/$defs/telemetryPhase" }
       }
     },
     "dynamicEvidence": {

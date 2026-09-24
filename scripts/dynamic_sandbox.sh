@@ -49,24 +49,36 @@ chown -R builder:builder "$REPO_ROOT"
 
 # ── 4. Plant canary secrets — obviously fake, clearly labeled. The whole
 #       point is to see if a malicious PKGBUILD/.install reads or exfiltrates
-#       these during prepare()/pkgver()/build()/package(). ─────────────────
-echo "--- Planting canary secrets ---"
-BUILDER_HOME=/home/builder
-install -d -m 700 "$BUILDER_HOME/.ssh" "$BUILDER_HOME/.aws"
-cat > "$BUILDER_HOME/.ssh/id_fake" <<'EOF'
+#       these during prepare()/pkgver()/build()/package() (build phase) or
+#       pre_install/post_install/pre_upgrade/post_upgrade/pre_remove/
+#       post_remove (install phase, see section 9d below — same canary
+#       content, planted fresh in whatever home directory that phase uses,
+#       via this one shared function so the fake-key content lives in
+#       exactly one place). ─────────────────────────────────────────────────
+plant_canaries() {
+  # $1 = home directory to plant into, $2 = owning user (chown target)
+  home_dir="$1"
+  owner="$2"
+  install -d -m 700 "$home_dir/.ssh" "$home_dir/.aws"
+  cat > "$home_dir/.ssh/id_fake" <<'EOF'
 -----BEGIN OPENSSH PRIVATE KEY-----
 CANARY-DO-NOT-USE-THIS-IS-A-FAKE-DECOY-KEY-PLANTED-BY-AUR-SENTRY
 CANARY-IF-THIS-VALUE-LEAVES-THE-SANDBOX-THE-PACKAGE-IS-EXFILTRATING-SECRETS
 -----END OPENSSH PRIVATE KEY-----
 EOF
-cat > "$BUILDER_HOME/.aws/credentials" <<'EOF'
+  cat > "$home_dir/.aws/credentials" <<'EOF'
 # CANARY — fake AWS credentials planted by AUR-Sentry's disposable sandbox.
 [default]
 aws_access_key_id = CANARY_AKIAFAKEFAKEFAKEFAKE
 aws_secret_access_key = CANARY_FAKESECRETFAKESECRETFAKESECRETFAKEFAKE
 EOF
-chown -R builder:builder "$BUILDER_HOME/.ssh" "$BUILDER_HOME/.aws"
-chmod 600 "$BUILDER_HOME/.ssh/id_fake" "$BUILDER_HOME/.aws/credentials"
+  chown -R "$owner:$owner" "$home_dir/.ssh" "$home_dir/.aws"
+  chmod 600 "$home_dir/.ssh/id_fake" "$home_dir/.aws/credentials"
+}
+
+echo "--- Planting canary secrets (build phase) ---"
+BUILDER_HOME=/home/builder
+plant_canaries "$BUILDER_HOME" builder
 
 CANARY_GITHUB_TOKEN="CANARY_ghp_0000000000000000000000000000FAKE00"
 CANARY_AWS_SECRET="CANARY_FAKESECRETFAKESECRETFAKESECRETFAKEFAKE"
@@ -325,7 +337,86 @@ if [ "$PKG_ANALYSIS_AVAILABLE" != true ]; then
 fi
 echo "Package analysis available: $PKG_ANALYSIS_AVAILABLE"
 
-# ── 9d. External intelligence — OSV.dev vulnerability correlation. Purely
+# ── 9d. Install-phase dynamic sandbox pass — the gap called out in
+#        ARCHITECTURE.md's "Known gaps" / section 11: "PKGBUILD build
+#        behavior and package installation behavior are not necessarily the
+#        same thing." Everything above observes `makepkg` (prepare/build/
+#        package); this step actually runs `pacman -U` on one of the real
+#        *.pkg.tar.* files the reproducibility step already built (no third
+#        build — reuses $PKG_FILE from the package-content analysis above),
+#        so `.install` hooks (pre_install/post_install/pre_upgrade/
+#        post_upgrade) execute for real under the same strace telemetry
+#        categories as the build phase. `pacman -U` needs root (unlike
+#        makepkg, which refuses to run as root), so unlike every other step
+#        in this script this one runs directly as root rather than dropping
+#        to the unprivileged `builder` user — that's fine, the container is
+#        disposable either way. Canary secrets are planted fresh into /root
+#        (same fake content as the build phase, via plant_canaries) since
+#        `.install` scripts can probe for credentials too. Also runs
+#        `pacman -R` afterward, under the same telemetry, to observe
+#        pre_remove/post_remove — cheap given the container is disposable
+#        regardless. Degrades to "skipped" (not a failure) when no built
+#        package file exists, e.g. both reproducibility builds failed. ─────
+echo "--- Install-phase dynamic sandbox pass ---"
+INSTALL_TELEMETRY_LOG="$EVIDENCE_DIR/install_telemetry.log"
+: > "$INSTALL_TELEMETRY_LOG"
+INSTALL_PHASE_RAN=false
+PACMAN_INSTALL_EXIT=""
+
+if [ -n "$PKG_FILE" ] && [ -f "$PKG_FILE" ]; then
+  echo "--- Planting canary secrets (install phase) ---"
+  plant_canaries /root root
+
+  echo "Installing built package: $PKG_FILE"
+  # shellcheck disable=SC2016 # single quotes intentional: $1/$2/$3 expand inside the bash -c sub-shell, not here
+  INSTALL_CMD='GITHUB_TOKEN="$2" AWS_SECRET_ACCESS_KEY="$3" pacman -U --noconfirm "$1"'
+  if [ "$STRACE_OK" = true ]; then
+    strace -f -e trace=network,file -o "$INSTALL_TELEMETRY_LOG" -- \
+      bash -c "$INSTALL_CMD" _ "$PKG_FILE" "$CANARY_GITHUB_TOKEN" "$CANARY_AWS_SECRET" \
+      >"$EVIDENCE_DIR/pacman_install.log" 2>&1
+  else
+    bash -c "$INSTALL_CMD" _ "$PKG_FILE" "$CANARY_GITHUB_TOKEN" "$CANARY_AWS_SECRET" \
+      >"$EVIDENCE_DIR/pacman_install.log" 2>&1
+  fi
+  PACMAN_INSTALL_EXIT=$?
+  echo "pacman -U exit code: $PACMAN_INSTALL_EXIT" >> "$EVIDENCE_DIR/pacman_install.log"
+  INSTALL_PHASE_RAN=true
+
+  if [ "$PACMAN_INSTALL_EXIT" -eq 0 ]; then
+    INSTALLED_PKGNAME="$(pacman -Qp "$PKG_FILE" 2>/dev/null | awk '{print $1}')"
+    if [ -n "$INSTALLED_PKGNAME" ]; then
+      echo "--- Removal-phase telemetry (pacman -R): $INSTALLED_PKGNAME ---"
+      REMOVE_TELEMETRY_LOG="$EVIDENCE_DIR/install_telemetry_remove.log"
+      # shellcheck disable=SC2016 # single quotes intentional: $1 expands inside the bash -c sub-shell, not here
+      REMOVE_CMD='pacman -R --noconfirm "$1"'
+      if [ "$STRACE_OK" = true ]; then
+        strace -f -e trace=network,file -o "$REMOVE_TELEMETRY_LOG" -- \
+          bash -c "$REMOVE_CMD" _ "$INSTALLED_PKGNAME" \
+          >"$EVIDENCE_DIR/pacman_remove.log" 2>&1
+      else
+        bash -c "$REMOVE_CMD" _ "$INSTALLED_PKGNAME" \
+          >"$EVIDENCE_DIR/pacman_remove.log" 2>&1
+      fi
+      echo "pacman -R exit code: $?" >> "$EVIDENCE_DIR/pacman_remove.log"
+      # Fold removal-phase telemetry into the same install_telemetry.log so
+      # `aur-sentry attest --install-telemetry` sees both pre_remove/
+      # post_remove and pre_install/post_install in one pass.
+      if [ -f "$REMOVE_TELEMETRY_LOG" ]; then
+        cat "$REMOVE_TELEMETRY_LOG" >> "$INSTALL_TELEMETRY_LOG"
+        rm -f "$REMOVE_TELEMETRY_LOG"
+      fi
+    else
+      echo "::warning::could not determine installed package name from '$PKG_FILE' — skipping pacman -R removal-phase telemetry"
+    fi
+  else
+    echo "::warning::pacman -U exited $PACMAN_INSTALL_EXIT — skipping removal-phase telemetry"
+  fi
+else
+  echo "::warning::no built package available for install-phase sandbox pass (reproducibility status: $REPRO_STATUS) — skipping"
+fi
+echo "Install-phase pass ran: $INSTALL_PHASE_RAN"
+
+# ── 9e. External intelligence — OSV.dev vulnerability correlation. Purely
 #        evidence, never verdict-deciding (see ARCHITECTURE.md's "external
 #        intelligence" note and src/attest.rs's `parse_external_intelligence`
 #        doc comment). OSV.dev has NO "Arch"/"AUR" ecosystem (verified
@@ -437,6 +528,11 @@ if "$AUR_BIN" attest --help >/dev/null 2>&1; then
     ATTEST_ARGS+=(--install-file "$f")
     break
   done
+  # Install-phase evidence (section 9d above) — omitted entirely when that
+  # pass didn't run (no built package file), matching --install-file's
+  # "only pass what actually exists" pattern rather than pointing at an
+  # empty file.
+  [ "$INSTALL_PHASE_RAN" = true ] && ATTEST_ARGS+=(--install-telemetry "$INSTALL_TELEMETRY_LOG")
   "$AUR_BIN" attest "${ATTEST_ARGS[@]}"
 else
   echo "'aur-sentry attest' not available yet — using Python fallback assembler"

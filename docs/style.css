@@ -122,6 +122,79 @@ p.lede {
   margin-bottom: 24px;
 }
 
+/* Homepage aggregate stats banner */
+.stats-banner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 20px;
+}
+
+.stats-total {
+  display: flex;
+  flex-direction: column;
+  padding-right: 20px;
+  border-right: 1px solid var(--border);
+  min-width: 96px;
+}
+
+.stats-total-num {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.stats-total-label {
+  color: var(--text-muted);
+  font-size: 0.82rem;
+}
+
+.stats-grid {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.stat-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 76px;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.stat-tile-num {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.stat-tile-label {
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+}
+
+.stat-tile-VERIFIED { color: var(--verified); background: var(--verified-bg); }
+.stat-tile-SUSPICIOUS { color: var(--suspicious); background: var(--suspicious-bg); }
+.stat-tile-MALICIOUS { color: var(--malicious); background: var(--malicious-bg); }
+.stat-tile-OTHER { color: var(--neutral); background: var(--neutral-bg); }
+
+/* Per-package version history */
+.history-row-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 4px;
+}
+
 /* Package cards */
 .package-list {
   display: grid;

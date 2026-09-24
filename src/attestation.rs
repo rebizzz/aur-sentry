@@ -85,11 +85,21 @@ pub struct SourceIdentity {
     pub install_sha256: Option<String>,
 }
 
+/// Which sandbox pass produced a piece of dynamic telemetry. Build-phase
+/// telemetry predates this field, so it defaults to `"build"` on
+/// deserialization for backward compatibility with older attestation JSON
+/// that doesn't carry a `phase` key at all.
+fn default_telemetry_phase() -> String {
+    "build".to_string()
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ProcessEvent {
     pub command: String,
     pub parent: Option<String>,
     pub timestamp: String,
+    #[serde(default = "default_telemetry_phase")]
+    pub phase: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -98,6 +108,9 @@ pub struct NetworkEvent {
     pub port: Option<u16>,
     pub protocol: Option<String>,
     pub timestamp: String,
+    /// `"build"` (makepkg telemetry) or `"install"` (pacman -U/-R telemetry).
+    #[serde(default = "default_telemetry_phase")]
+    pub phase: String,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -105,6 +118,9 @@ pub struct FilesystemEvent {
     pub path: String,
     pub operation: String,
     pub timestamp: String,
+    /// `"build"` (makepkg telemetry) or `"install"` (pacman -U/-R telemetry).
+    #[serde(default = "default_telemetry_phase")]
+    pub phase: String,
 }
 
 /// Minimal/optional in Phase 1 — the dynamic sandbox lands separately.
