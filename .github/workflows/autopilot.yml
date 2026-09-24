@@ -15,6 +15,11 @@ jobs:
   radar:
     runs-on: ubuntu-latest
     steps:
+      - name: Harden Runner (Dynamic Egress & Runtime Security Audit)
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+        with:
+          egress-policy: audit
+
       - name: Checkout repository
         uses: actions/checkout@v7
         with:
@@ -56,7 +61,7 @@ jobs:
               if ! gh issue list --state open --search "$p" --json title | grep -q "$p"; then
                 echo "Creating automated security issue for $p..."
                 gh issue create --title "[CRITICAL THREAT] Active supply-chain alert for $p" \
-                  --body "AUR-Sentry Autopilot detected a CRITICAL severity supply-chain threat in package **$p**. Inspect \`advisories.json\` or the README Threat Radar for details." || true
+                  --body "AUR-Sentry Autopilot detected a CRITICAL severity supply-chain threat in package **$p**. Inspect \`advisories.json\` or ADVISORIES.md for details." || true
               fi
             done
           fi
@@ -69,31 +74,31 @@ jobs:
           git config --global user.email "bot@users.noreply.github.com"
 
           mkdir -p /tmp/radar_stash
-          cp README.md /tmp/radar_stash/ 2>/dev/null || true
+          cp ADVISORIES.md /tmp/radar_stash/ 2>/dev/null || true
           cp advisories.json /tmp/radar_stash/ 2>/dev/null || true
           cp advisories.xml /tmp/radar_stash/ 2>/dev/null || true
 
           git reset --hard HEAD
 
-          # 1. Process README Threat Radar PR
-          if [ -f /tmp/radar_stash/README.md ]; then
-            cp /tmp/radar_stash/README.md README.md
-            if ! git diff --quiet README.md; then
-              echo "README threat radar has updates. Creating/updating PR..."
-              git checkout -B autopilot/radar-readme origin/main
-              git add README.md
-              git commit -m "chore(radar): update live threat radar in README"
-              git push -f origin autopilot/radar-readme
-              EXISTING_PR=$(gh pr list --head autopilot/radar-readme --json number --jq '.[0].number')
+          # 1. Process ADVISORIES.md Threat Radar PR
+          if [ -f /tmp/radar_stash/ADVISORIES.md ]; then
+            cp /tmp/radar_stash/ADVISORIES.md ADVISORIES.md
+            if ! git diff --quiet ADVISORIES.md; then
+              echo "ADVISORIES.md threat radar has updates. Creating/updating PR..."
+              git checkout -B autopilot/radar-advisories origin/main
+              git add ADVISORIES.md
+              git commit -m "chore(radar): update live threat radar in ADVISORIES.md"
+              git push -f origin autopilot/radar-advisories
+              EXISTING_PR=$(gh pr list --head autopilot/radar-advisories --json number --jq '.[0].number')
               if [ -z "$EXISTING_PR" ]; then
-                PR_BODY="Automated update to the live Threat Radar table in README.md based on the latest AUR metadata scan. Verified by automated CI & Codecov checks."
+                PR_BODY="Automated update to the live Threat Radar table in ADVISORIES.md based on the latest AUR metadata scan. Verified by automated CI & Codecov checks."
                 gh pr create \
-                  --title "chore(radar): update live threat radar in README" \
+                  --title "chore(radar): update live threat radar in ADVISORIES.md" \
                   --body "$PR_BODY" \
                   --base main \
-                  --head autopilot/radar-readme
+                  --head autopilot/radar-advisories
               else
-                echo "PR #$EXISTING_PR already exists for autopilot/radar-readme. Branch updated."
+                echo "PR #$EXISTING_PR already exists for autopilot/radar-advisories. Branch updated."
               fi
               git checkout main
               git reset --hard HEAD

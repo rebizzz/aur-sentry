@@ -13,21 +13,11 @@ Automated supply-chain malware watchdog and threat radar for the Arch User Repos
 
 ## Live Threat Radar
 
-The table below is generated automatically on schedule every 2 hours:
+Active threats and supply-chain vulnerabilities detected across the AUR are tracked live:
 
-<!-- AUTOPILOT_TABLE_START -->
-<details open>
-<summary>Active Threats (1)</summary>
-
-| Severity | Package | Version | Maintainer | Triggers | Link |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| `[HIGH]` | `paseo-desktop-git-bin` | 0.9.1.r50.gbbf8cce3f-2 | xpufx | `OBFUSCATED_DOLLAR_EXEC` | [AUR](https://aur.archlinux.org/packages/paseo-desktop-git-bin) |
-</details>
-
-<!-- AUTOPILOT_TABLE_END -->
-
-- Full JSON Feed: [`advisories.json`](advisories.json)
-- RSS Feed: [`advisories.xml`](advisories.xml)
+- **Threat Radar**: [`ADVISORIES.md`](ADVISORIES.md)
+- **JSON Feed**: [`advisories.json`](advisories.json)
+- **RSS Feed**: [`advisories.xml`](advisories.xml)
 
 ---
 
@@ -79,18 +69,77 @@ PreBuildCommand = /usr/local/bin/safeaur check
 
 The static analysis engine checks 40+ signatures across PKGBUILD and `.install` files:
 
-- `[CRITICAL]` **Obfuscation**: `base64 -d`, `xxd -r`, octal/hex `printf`, `eval`, reversed strings (`rev | bash`).
-- `[CRITICAL]` **Exfiltration**: Discord webhooks, Telegram bot C2, raw IP targets, DNS tunneling, netcat connections.
-- `[CRITICAL]` **Reverse Shells**: Bash `/dev/tcp`, `mkfifo`, python socket one-liners.
-- `[CRITICAL]` **Credential Theft**: Access to `~/.ssh`, `~/.gnupg`, browser profiles (`logins.json`, cookies), crypto wallets, cloud keys (`~/.aws`, `~/.kube`), `/etc/shadow`.
-- `[CRITICAL]` **Persistence**: Modifying `/etc/systemd/system/`, crontabs, injecting `~/.bashrc` / `/etc/profile`, XDG autostart.
-- `[HIGH]` **Packaging Abuse**: Unpinned `npm install` / `bun install` (dependency confusion), privileged `.install` hooks, `replaces=()` hijacking.
-- `[HIGH]` **System Tampering**: SUID bits (`chmod +s`), `dd` writes to block devices, disabling firewalls/security daemons.
-- `[CRITICAL]` **Cryptojacking**: XMRig, mining pool addresses, hardcoded wallet addresses.
-- `[HIGH]` **Shannon Information Entropy**: Mathematical entropy analysis (H > 5.2 bits/byte) to catch packed, encrypted, or obfuscated payloads.
-- `[CRITICAL]` **Recursive De-Obfuscator**: Extracts and decodes base64 strings in-memory, recursively scanning the unpacked payload for hidden C2 hooks.
-- `[HIGH]` **Archive & ELF Inspection**: Streams in-memory tarball sources to detect UPX-packed binaries (`UPX!`), hidden scripts in asset dirs, and miner payloads.
-- `[MEDIUM]` **Typosquatting**: Damerau-Levenshtein distance <= 1 against top AUR packages.
+<table>
+  <thead>
+    <tr>
+      <th align="left">Severity</th>
+      <th align="left">Category</th>
+      <th align="left">Signatures &amp; Detection Vectors</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>[CRITICAL]</code></td>
+      <td><strong>Obfuscation</strong></td>
+      <td><code>base64 -d</code>, <code>xxd -r</code>, octal/hex <code>printf</code>, <code>eval</code>, reversed strings (<code>rev | bash</code>)</td>
+    </tr>
+    <tr>
+      <td><code>[CRITICAL]</code></td>
+      <td><strong>Exfiltration</strong></td>
+      <td>Discord webhooks, Telegram bot C2, raw IP targets, DNS tunneling, netcat connections</td>
+    </tr>
+    <tr>
+      <td><code>[CRITICAL]</code></td>
+      <td><strong>Reverse Shells</strong></td>
+      <td>Bash <code>/dev/tcp</code>, <code>mkfifo</code>, Python socket one-liners</td>
+    </tr>
+    <tr>
+      <td><code>[CRITICAL]</code></td>
+      <td><strong>Credential Theft</strong></td>
+      <td>Access to <code>~/.ssh</code>, <code>~/.gnupg</code>, browser profiles (<code>logins.json</code>, cookies), crypto wallets, cloud keys (<code>~/.aws</code>, <code>~/.kube</code>), <code>/etc/shadow</code></td>
+    </tr>
+    <tr>
+      <td><code>[CRITICAL]</code></td>
+      <td><strong>Persistence</strong></td>
+      <td>Modifying <code>/etc/systemd/system/</code>, crontabs, injecting <code>~/.bashrc</code> / <code>/etc/profile</code>, XDG autostart</td>
+    </tr>
+    <tr>
+      <td><code>[HIGH]</code></td>
+      <td><strong>Packaging Abuse</strong></td>
+      <td>Unpinned <code>npm install</code> / <code>bun install</code> (dependency confusion), privileged <code>.install</code> hooks, <code>replaces=()</code> hijacking</td>
+    </tr>
+    <tr>
+      <td><code>[HIGH]</code></td>
+      <td><strong>System Tampering</strong></td>
+      <td>SUID bits (<code>chmod +s</code>), <code>dd</code> writes to block devices, disabling firewalls/security daemons</td>
+    </tr>
+    <tr>
+      <td><code>[CRITICAL]</code></td>
+      <td><strong>Cryptojacking</strong></td>
+      <td>XMRig, mining pool addresses, hardcoded wallet addresses</td>
+    </tr>
+    <tr>
+      <td><code>[HIGH]</code></td>
+      <td><strong>Shannon Entropy</strong></td>
+      <td>Mathematical entropy analysis (<em>H</em> &gt; 5.2 bits/byte) to catch packed, encrypted, or obfuscated payloads</td>
+    </tr>
+    <tr>
+      <td><code>[CRITICAL]</code></td>
+      <td><strong>Recursive De-Obfuscator</strong></td>
+      <td>Extracts and decodes base64 strings in-memory, recursively scanning unpacked payloads for hidden C2 hooks</td>
+    </tr>
+    <tr>
+      <td><code>[HIGH]</code></td>
+      <td><strong>Archive &amp; ELF Inspection</strong></td>
+      <td>Streams in-memory tarball sources to detect UPX-packed binaries (<code>UPX!</code>), hidden scripts in asset dirs, and miner payloads</td>
+    </tr>
+    <tr>
+      <td><code>[MEDIUM]</code></td>
+      <td><strong>Typosquatting</strong></td>
+      <td>Damerau-Levenshtein distance &le; 1 against top AUR packages</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
@@ -101,8 +150,8 @@ Runs via GitHub Actions every 2 hours:
 2. Filters packages modified in the recent window.
 3. Rips through `PKGBUILD` and `.install` files with the deep Rust analyzer suite.
 4. Files automated GitHub Issue alerts for any `[CRITICAL]` threats.
-5. Updates `advisories.json`, `advisories.xml`, and the README table above.
-6. Commits and pushes with `[skip ci]`.
+5. Updates `advisories.json`, `advisories.xml`, and `ADVISORIES.md`.
+6. Opens automated pull requests for threat radar and machine feed synchronizations.
 
 ---
 

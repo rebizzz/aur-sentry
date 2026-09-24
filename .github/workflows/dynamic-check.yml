@@ -1,0 +1,35 @@
+name: Dynamic Package Audit
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  dynamic-arch-audit:
+    name: Dynamic Arch Linux & namcap Verification
+    runs-on: ubuntu-latest
+    steps:
+      - name: Harden Runner (Dynamic Egress & Security Audit)
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run Dynamic Arch Linux & namcap Verification Suite
+        run: |
+          docker run --rm -v "$PWD:/workspace" -w /workspace archlinux:base bash -c "
+            set -euo pipefail
+            echo '=== Initializing Arch Linux Container ==='
+            pacman -Syu --noconfirm
+            pacman -S --noconfirm --needed git base-devel namcap rust cargo sudo shellcheck jq python
+            echo '=== Running Dynamic Audit ==='
+            bash scripts/arch_dynamic_audit.sh
+          "

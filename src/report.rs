@@ -40,6 +40,58 @@ pub fn load_advisories(repo_root: &Path) -> Vec<Advisory> {
     }
 }
 
+/// Rank severities for sorting (CRITICAL=0, HIGH=1, MEDIUM=2, LOW=3, other=4).
+pub fn severity_rank(s: &str) -> u8 {
+    match s {
+        "CRITICAL" => 0,
+        "HIGH" => 1,
+        "MEDIUM" => 2,
+        "LOW" => 3,
+        _ => 4,
+    }
+}
+
+/// Write advisories list directly to disk, sorted by severity and recency.
+pub fn write_advisories(repo_root: &Path, advisories: &[Advisory]) {
+    let mut sorted = advisories.to_vec();
+    sorted.sort_by(|a, b| {
+        severity_rank(&a.highest_severity)
+            .cmp(&severity_rank(&b.highest_severity))
+            .then_with(|| b.detected_at.cmp(&a.detected_at))
+    });
+
+    let feed = AdvisoryFeed {
+        version: "1.0".into(),
+        updated_at: Utc::now().to_rfc3339(),
+        total_flagged: sorted.len(),
+        advisories: sorted.clone(),
+    };
+
+    let json = serde_json::to_string_pretty(&feed).unwrap_or_default();
+    let _ = std::fs::write(repo_root.join("advisories.json"), json);
+
+    // Generate RSS
+    generate_rss(repo_root, &sorted);
+}
+
+/// Remove an advisory by package name (e.g. when taken down or patched) and persist changes.
+pub fn remove_advisory(repo_root: &Path, pkgname: &str) -> bool {
+    let mut existing = load_advisories(repo_root);
+    let original_len = existing.len();
+    existing.retain(|a| a.package != pkgname);
+    if existing.len() != original_len {
+        write_advisories(repo_root, &existing);
+        update_advisories_markdown(repo_root, &existing);
+        let readme_path = repo_root.join("README.md");
+        if readme_path.exists() {
+            update_markdown_table_in_file(&readme_path, &existing);
+        }
+        true
+    } else {
+        false
+    }
+}
+
 /// Merge new advisories into existing and save.
 pub fn save_advisories(repo_root: &Path, new: &[Advisory]) {
     let mut existing = load_advisories(repo_root);
@@ -53,35 +105,7 @@ pub fn save_advisories(repo_root: &Path, new: &[Advisory]) {
         }
     }
 
-    // Sort: CRITICAL first, then HIGH, then by detected_at desc
-    existing.sort_by(|a, b| {
-        severity_rank(&a.highest_severity)
-            .cmp(&severity_rank(&b.highest_severity))
-            .then_with(|| b.detected_at.cmp(&a.detected_at))
-    });
-
-    let feed = AdvisoryFeed {
-        version: "1.0".into(),
-        updated_at: Utc::now().to_rfc3339(),
-        total_flagged: existing.len(),
-        advisories: existing.clone(),
-    };
-
-    let json = serde_json::to_string_pretty(&feed).unwrap_or_default();
-    let _ = std::fs::write(repo_root.join("advisories.json"), json);
-
-    // Generate RSS
-    generate_rss(repo_root, &existing);
-}
-
-fn severity_rank(s: &str) -> u8 {
-    match s {
-        "CRITICAL" => 0,
-        "HIGH" => 1,
-        "MEDIUM" => 2,
-        "LOW" => 3,
-        _ => 4,
-    }
+    write_advisories(repo_root, &existing);
 }
 
 fn generate_rss(repo_root: &Path, advisories: &[Advisory]) {
@@ -127,18 +151,17 @@ fn generate_rss(repo_root: &Path, advisories: &[Advisory]) {
     let _ = std::fs::write(repo_root.join("advisories.xml"), rss);
 }
 
-/// Update the README.md threat radar table.
-pub fn update_readme_table(repo_root: &Path, advisories: &[Advisory]) {
-    let readme_path = repo_root.join("README.md");
-    let content = match std::fs::read_to_string(&readme_path) {
+/// Helper to update an existing markdown file containing AUTOPILOT markers.
+pub fn update_markdown_table_in_file(file_path: &Path, advisories: &[Advisory]) -> bool {
+    let content = match std::fs::read_to_string(file_path) {
         Ok(c) => c,
-        Err(_) => return,
+        Err(_) => return false,
     };
 
     let start = "<!-- AUTOPILOT_TABLE_START -->";
     let end = "<!-- AUTOPILOT_TABLE_END -->";
     if !content.contains(start) || !content.contains(end) {
-        return;
+        return false;
     }
 
     let table = if advisories.is_empty() {
@@ -152,7 +175,7 @@ pub fn update_readme_table(repo_root: &Path, advisories: &[Advisory]) {
             "| Severity | Package | Version | Maintainer | Triggers | Link |".to_string(),
             "| :--- | :--- | :--- | :--- | :--- | :--- |".to_string(),
         ];
-        for adv in advisories.iter().take(25) {
+        for adv in advisories.iter().take(50) {
             let badge = match adv.highest_severity.as_str() {
                 "CRITICAL" => "`[CRITICAL]`",
                 "HIGH" => "`[HIGH]`",
@@ -181,7 +204,26 @@ pub fn update_readme_table(repo_root: &Path, advisories: &[Advisory]) {
     let start_idx = content.find(start).unwrap() + start.len();
     let end_idx = content.find(end).unwrap();
     let new_content = format!("{}{}{}", &content[..start_idx], table, &content[end_idx..]);
-    let _ = std::fs::write(&readme_path, new_content);
+    std::fs::write(file_path, new_content).is_ok()
+}
+
+/// Update the ADVISORIES.md threat radar table.
+pub fn update_advisories_markdown(repo_root: &Path, advisories: &[Advisory]) {
+    let doc_path = repo_root.join("ADVISORIES.md");
+    if !doc_path.exists() {
+        let initial = "# AUR Security Advisories & Threat Radar\n\nLive threat radar generated automatically on schedule every 2 hours by `aur-sentry` autopilot.\n\n<!-- AUTOPILOT_TABLE_START -->\n<!-- AUTOPILOT_TABLE_END -->\n\n- Full JSON Feed: [`advisories.json`](advisories.json)\n- RSS Feed: [`advisories.xml`](advisories.xml)\n";
+        let _ = std::fs::write(&doc_path, initial);
+    }
+    update_markdown_table_in_file(&doc_path, advisories);
+}
+
+/// Update threat radar tables in ADVISORIES.md and (if markers exist) README.md.
+pub fn update_readme_table(repo_root: &Path, advisories: &[Advisory]) {
+    update_advisories_markdown(repo_root, advisories);
+    let readme_path = repo_root.join("README.md");
+    if readme_path.exists() {
+        update_markdown_table_in_file(&readme_path, advisories);
+    }
 }
 
 #[cfg(test)]
@@ -287,6 +329,49 @@ Footer notes.
         assert!(updated.contains("<summary>Active Threats (1)</summary>"));
         assert!(updated.contains("`[CRITICAL]`"));
         assert!(updated.contains("`bad-pkg`"));
+
+        let _ = std::fs::remove_dir_all(&temp_dir);
+    }
+
+    #[test]
+    fn remove_advisory_cleans_feeds_and_markdown() {
+        let temp_dir =
+            std::env::temp_dir().join(format!("aur_sentry_remove_test_{}", std::process::id()));
+        let _ = std::fs::create_dir_all(&temp_dir);
+
+        let adv1 = Advisory {
+            package: "pkg-to-remove".into(),
+            version: "1.0".into(),
+            maintainer: "hacker".into(),
+            highest_severity: "CRITICAL".into(),
+            detected_at: "2026-03-24T12:00:00Z".into(),
+            findings: vec![],
+            aur_url: "https://aur.archlinux.org/packages/pkg-to-remove".into(),
+        };
+        let adv2 = Advisory {
+            package: "pkg-to-keep".into(),
+            version: "2.0".into(),
+            maintainer: "user".into(),
+            highest_severity: "HIGH".into(),
+            detected_at: "2026-03-24T13:00:00Z".into(),
+            findings: vec![],
+            aur_url: "https://aur.archlinux.org/packages/pkg-to-keep".into(),
+        };
+
+        save_advisories(&temp_dir, &[adv1, adv2]);
+        assert_eq!(load_advisories(&temp_dir).len(), 2);
+
+        // Remove the taken-down / patched advisory
+        let removed = remove_advisory(&temp_dir, "pkg-to-remove");
+        assert!(removed);
+
+        let remaining = load_advisories(&temp_dir);
+        assert_eq!(remaining.len(), 1);
+        assert_eq!(remaining[0].package, "pkg-to-keep");
+
+        let adv_md = std::fs::read_to_string(temp_dir.join("ADVISORIES.md")).unwrap();
+        assert!(!adv_md.contains("pkg-to-remove"));
+        assert!(adv_md.contains("pkg-to-keep"));
 
         let _ = std::fs::remove_dir_all(&temp_dir);
     }

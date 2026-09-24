@@ -209,9 +209,80 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
         to_scan.len()
     );
 
-    let mut new_advisories: Vec<Advisory> = Vec::new();
+    // 1. Re-evaluate existing active advisories from previous windows
+    let existing = report::load_advisories(repo_root);
+    let mut active_advisories: Vec<Advisory> = Vec::new();
+    let mut re_evaluated = 0u32;
+    let mut resolved_count = 0u32;
+
+    if !existing.is_empty() {
+        eprintln!(
+            "{CYAN}{ICON_RADAR} {BOLD}{}{RESET}{CYAN} active advisories from previous windows being re-evaluated...{RESET}",
+            existing.len()
+        );
+        for mut adv in existing {
+            re_evaluated += 1;
+            let pkg_info = client.get_package_info(&adv.package);
+            let pkgbuild_opt = client.fetch_pkgbuild(&adv.package);
+
+            if pkg_info.is_none() || pkgbuild_opt.is_none() {
+                eprintln!(
+                    "  {YELLOW}{ICON_WARN} {BOLD}{}{RESET} removed from AUR (takedown) — resolving active advisory",
+                    adv.package
+                );
+                resolved_count += 1;
+                continue;
+            }
+
+            let pkgbuild = pkgbuild_opt.unwrap();
+            let mut findings = scanner.scan(&pkgbuild, Some(&adv.package));
+
+            if let Some(cap) = install_re.captures(&pkgbuild) {
+                if let Some(install_content) = client.fetch_install_file(&adv.package, &cap[1]) {
+                    let install_findings = scanner.scan(&install_content, None);
+                    for mut f in install_findings {
+                        f.description = format!("[.install] {}", f.description);
+                        findings.push(f);
+                    }
+                }
+            }
+
+            let actionable: Vec<_> = findings
+                .into_iter()
+                .filter(|f| f.severity != "INFO" && f.severity != "LOW")
+                .collect();
+
+            if actionable.is_empty() {
+                eprintln!(
+                    "  {GREEN}{ICON_CHECK} {BOLD}{}{RESET} no longer has threat signatures (patched clean) — resolving advisory",
+                    adv.package
+                );
+                resolved_count += 1;
+                continue;
+            }
+
+            // Still vulnerable: update metadata and retain
+            let highest = if actionable.iter().any(|f| f.severity == "CRITICAL") {
+                "CRITICAL"
+            } else if actionable.iter().any(|f| f.severity == "HIGH") {
+                "HIGH"
+            } else {
+                "MEDIUM"
+            };
+
+            if let Some(info) = pkg_info {
+                adv.version = info.version;
+                adv.maintainer = info.maintainer.unwrap_or_else(|| "orphan".into());
+            }
+            adv.highest_severity = highest.to_string();
+            adv.findings = actionable;
+            active_advisories.push(adv);
+        }
+    }
+
+    // 2. Scan recent packages from the time window
     let mut scanned = 0u32;
-    let mut flagged = 0u32;
+    let mut new_flagged = 0u32;
 
     for pkg in &to_scan {
         scanned += 1;
@@ -239,7 +310,7 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
             .collect();
 
         if !actionable.is_empty() {
-            flagged += 1;
+            new_flagged += 1;
             let highest = if actionable.iter().any(|f| f.severity == "CRITICAL") {
                 "CRITICAL"
             } else if actionable.iter().any(|f| f.severity == "HIGH") {
@@ -257,7 +328,7 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
                 maintainer,
                 actionable.len()
             );
-            new_advisories.push(Advisory {
+            let adv = Advisory {
                 package: pkg.name.clone(),
                 version: pkg.version.clone(),
                 maintainer,
@@ -265,14 +336,22 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
                 detected_at: chrono::Utc::now().to_rfc3339(),
                 findings: actionable,
                 aur_url: format!("https://aur.archlinux.org/packages/{}", pkg.name),
-            });
+            };
+
+            if let Some(pos) = active_advisories
+                .iter()
+                .position(|a| a.package == adv.package)
+            {
+                active_advisories[pos] = adv;
+            } else {
+                active_advisories.push(adv);
+            }
         }
     }
 
-    // Save and update
-    report::save_advisories(repo_root, &new_advisories);
-    let all = report::load_advisories(repo_root);
-    report::update_readme_table(repo_root, &all);
+    // 3. Save advisories sorted severity-wise and update markdown
+    report::write_advisories(repo_root, &active_advisories);
+    report::update_readme_table(repo_root, &active_advisories);
 
     eprintln!();
     eprintln!("{CYAN}╭──────────────────────────────────╮{RESET}");
@@ -283,18 +362,28 @@ fn cmd_autopilot(repo_root: &Path, window_hours: u64, limit: usize) -> ExitCode 
     eprintln!(
         "{CYAN}│{RESET}  {ICON_SEARCH}  scanned    {BOLD}{scanned:>6}{RESET}           {CYAN}│{RESET}"
     );
-    if flagged > 0 {
+    if re_evaluated > 0 {
         eprintln!(
-            "{CYAN}│{RESET}  {RED}{ICON_SKULL}  flagged    {BOLD}{flagged:>6}{RESET}           {CYAN}│{RESET}"
+            "{CYAN}│{RESET}  {ICON_RADAR}  re-eval    {BOLD}{re_evaluated:>6}{RESET}           {CYAN}│{RESET}"
+        );
+    }
+    if resolved_count > 0 {
+        eprintln!(
+            "{CYAN}│{RESET}  {GREEN}{ICON_CHECK}  resolved   {BOLD}{resolved_count:>6}{RESET}           {CYAN}│{RESET}"
+        );
+    }
+    if new_flagged > 0 {
+        eprintln!(
+            "{CYAN}│{RESET}  {RED}{ICON_SKULL}  flagged    {BOLD}{new_flagged:>6}{RESET}           {CYAN}│{RESET}"
         );
     } else {
         eprintln!(
-            "{CYAN}│{RESET}  {GREEN}{ICON_CHECK}  flagged    {BOLD}{flagged:>6}{RESET}           {CYAN}│{RESET}"
+            "{CYAN}│{RESET}  {GREEN}{ICON_CHECK}  new flags  {BOLD}{new_flagged:>6}{RESET}           {CYAN}│{RESET}"
         );
     }
     eprintln!(
-        "{CYAN}│{RESET}  {ICON_RADAR}  advisories {BOLD}{:>6}{RESET}           {CYAN}│{RESET}",
-        all.len()
+        "{CYAN}│{RESET}  {ICON_RADAR}  active     {BOLD}{:>6}{RESET}           {CYAN}│{RESET}",
+        active_advisories.len()
     );
     eprintln!("{CYAN}╰──────────────────────────────────╯{RESET}");
 

@@ -69,7 +69,7 @@ cmd_check() {
     if [ -f "$ADVISORIES_CACHE" ]; then
         if grep -qi "\"package\":\s*\"$pkg\"" "$ADVISORIES_CACHE"; then
             echo -e "${RED}${BOLD}${ICON_SKULL} THREAT ALERT: '$pkg' has an active security advisory in AUR-Sentry!${RESET}"
-            echo -e "${RED}  Details: https://github.com/rebizzz/aur-sentry#recent-threat-radar${RESET}"
+            echo -e "${RED}  Details: https://github.com/rebizzz/aur-sentry/blob/main/ADVISORIES.md${RESET}"
             echo -e "${YELLOW}  Aborting build hook. Inspect the PKGBUILD before proceeding!${RESET}"
             exit 2
         fi
