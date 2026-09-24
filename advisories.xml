@@ -4,7 +4,7 @@
     <title>AUR-Sentry Security Advisories</title>
     <link>https://github.com/rebizzz/aur-sentry</link>
     <description>Automated supply-chain security alerts for Arch User Repository packages</description>
-    <lastBuildDate>Thu, 24 Sep 2026 16:58:04 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 24 Sep 2026 21:43:10 +0000</lastBuildDate>
     <item>
       <title>[CRITICAL] microsoft-edge-beta-bin (155.0.4283.13-1)</title>
       <link>https://aur.archlinux.org/packages/microsoft-edge-beta-bin</link>
@@ -41,6 +41,13 @@
       <guid>https://aur.archlinux.org/packages/bitcoin-abc#0.33.13-0</guid>
     </item>
     <item>
+      <title>[CRITICAL] freebuff-bin (0.0.194-1)</title>
+      <link>https://aur.archlinux.org/packages/freebuff-bin</link>
+      <description>Maintainer: lapsus — Triggers: EXFIL_CURL_PIPE_EXEC, PIPELINE_FETCH_EXEC</description>
+      <pubDate>2026-09-24T14:42:26.552718149+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/freebuff-bin#0.0.194-1</guid>
+    </item>
+    <item>
       <title>[CRITICAL] opera (136.0.6008.52-3)</title>
       <link>https://aur.archlinux.org/packages/opera</link>
       <description>Maintainer: Refreeze5911 — Triggers: SUS_CHMOD_SUID</description>
@@ -55,6 +62,62 @@
       <guid>https://aur.archlinux.org/packages/bitcoin-abc-qt#0.33.13-0</guid>
     </item>
     <item>
+      <title>[HIGH] lupa-git (r69.c8b6b52-1)</title>
+      <link>https://aur.archlinux.org/packages/lupa-git</link>
+      <description>Maintainer: Azakidev — Triggers: OBFUSCATED_DOLLAR_EXEC</description>
+      <pubDate>2026-09-24T21:43:09.727540566+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/lupa-git#r69.c8b6b52-1</guid>
+    </item>
+    <item>
+      <title>[HIGH] proton-drive-for-linux (2.2.1-1)</title>
+      <link>https://aur.archlinux.org/packages/proton-drive-for-linux</link>
+      <description>Maintainer: Narl — Triggers: PERSIST_XDG_AUTOSTART</description>
+      <pubDate>2026-09-24T21:42:19.727655463+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/proton-drive-for-linux#2.2.1-1</guid>
+    </item>
+    <item>
+      <title>[HIGH] proton-drive-for-linux-git (2.2.1.r0.g5109427-1)</title>
+      <link>https://aur.archlinux.org/packages/proton-drive-for-linux-git</link>
+      <description>Maintainer: Narl — Triggers: PERSIST_XDG_AUTOSTART</description>
+      <pubDate>2026-09-24T21:42:15.727622426+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/proton-drive-for-linux-git#2.2.1.r0.g5109427-1</guid>
+    </item>
+    <item>
+      <title>[HIGH] proton-drive-for-linux-bin (2.2.1-1)</title>
+      <link>https://aur.archlinux.org/packages/proton-drive-for-linux-bin</link>
+      <description>Maintainer: Narl — Triggers: PERSIST_XDG_AUTOSTART</description>
+      <pubDate>2026-09-24T21:42:07.729329414+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/proton-drive-for-linux-bin#2.2.1-1</guid>
+    </item>
+    <item>
+      <title>[HIGH] azerothcore-wotlk-git (r19657.9c1bbfafec-1)</title>
+      <link>https://aur.archlinux.org/packages/azerothcore-wotlk-git</link>
+      <description>Maintainer: mrbass21 — Triggers: SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING</description>
+      <pubDate>2026-09-24T21:41:09.733663282+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/azerothcore-wotlk-git#r19657.9c1bbfafec-1</guid>
+    </item>
+    <item>
+      <title>[HIGH] nursearch (0.4.1-1)</title>
+      <link>https://aur.archlinux.org/packages/nursearch</link>
+      <description>Maintainer: NurRobin — Triggers: PERSIST_XDG_AUTOSTART</description>
+      <pubDate>2026-09-24T21:40:01.736128360+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/nursearch#0.4.1-1</guid>
+    </item>
+    <item>
+      <title>[HIGH] ipfs-desktop (1:0.50.1-2)</title>
+      <link>https://aur.archlinux.org/packages/ipfs-desktop</link>
+      <description>Maintainer: RubenKelevra — Triggers: OBFUSCATED_DOLLAR_EXEC</description>
+      <pubDate>2026-09-24T21:39:19.738004967+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/ipfs-desktop#1:0.50.1-2</guid>
+    </item>
+    <item>
+      <title>[HIGH] slskdn-bin (2026092420.slskdn.323-4)</title>
+      <link>https://aur.archlinux.org/packages/slskdn-bin</link>
+      <description>Maintainer: keefshape — Triggers: EXFIL_DNS_TUNNEL</description>
+      <pubDate>2026-09-24T21:38:40.727716462+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/slskdn-bin#2026092420.slskdn.323-4</guid>
+    </item>
+    <item>
       <title>[HIGH] coolerdash-git (3.3.5.r0.g8605fee-1)</title>
       <link>https://aur.archlinux.org/packages/coolerdash-git</link>
       <description>Maintainer: damachine — Triggers: SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING, SUS_LONG_ENCODED_STRING</description>
@@ -67,13 +130,6 @@
       <description>Maintainer: BioArchLinuxBot — Triggers: MINER_WALLET_ADDR</description>
       <pubDate>2026-09-24T14:43:32.553996335+00:00</pubDate>
       <guid>https://aur.archlinux.org/packages/r-s4arrays#1.12.1-1</guid>
-    </item>
-    <item>
-      <title>[HIGH] freebuff-bin (0.0.194-1)</title>
-      <link>https://aur.archlinux.org/packages/freebuff-bin</link>
-      <description>Maintainer: lapsus — Triggers: EXFIL_CURL_PIPE_EXEC</description>
-      <pubDate>2026-09-24T14:42:26.552718149+00:00</pubDate>
-      <guid>https://aur.archlinux.org/packages/freebuff-bin#0.0.194-1</guid>
     </item>
     <item>
       <title>[HIGH] python-pytorch-lightning (2.6.6-1)</title>
@@ -95,6 +151,13 @@
       <description>Maintainer: AlexisPolti — Triggers: PERSIST_UDEV_RULES</description>
       <pubDate>2026-09-24T14:41:25.553275896+00:00</pubDate>
       <guid>https://aur.archlinux.org/packages/jlink-software-and-documentation#66:9.80-1</guid>
+    </item>
+    <item>
+      <title>[MEDIUM] mlp-bin (0.8.0-1)</title>
+      <link>https://aur.archlinux.org/packages/mlp-bin</link>
+      <description>Maintainer: MasketLP — Triggers: TYPOSQUATTING</description>
+      <pubDate>2026-09-24T21:41:20.727807060+00:00</pubDate>
+      <guid>https://aur.archlinux.org/packages/mlp-bin#0.8.0-1</guid>
     </item>
   </channel>
 </rss>

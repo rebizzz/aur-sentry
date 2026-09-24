@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-24T16:58:04.040193129+00:00",
-  "total_flagged": 13,
+  "updated_at": "2026-09-24T21:43:10.728691924+00:00",
+  "total_flagged": 22,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -117,6 +117,30 @@
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc"
     },
     {
+      "package": "freebuff-bin",
+      "version": "0.0.194-1",
+      "maintainer": "lapsus",
+      "highest_severity": "CRITICAL",
+      "detected_at": "2026-09-24T14:42:26.552718149+00:00",
+      "findings": [
+        {
+          "rule_id": "EXFIL_CURL_PIPE_EXEC",
+          "severity": "HIGH",
+          "description": "remote download piped directly into interpreter",
+          "line_number": 21,
+          "matched_text": "curl -fsSL 'https://registry.npmjs.org/freebuff/latest' | python3"
+        },
+        {
+          "rule_id": "PIPELINE_FETCH_EXEC",
+          "severity": "CRITICAL",
+          "description": "remote fetch (curl) piped into a real pipeline stage executing 'python3' (structurally-confirmed fetch-and-execute, not a string match)",
+          "line_number": 21,
+          "matched_text": "curl -fsSL 'https://registry.npmjs.org/freebuff/latest'"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/freebuff-bin"
+    },
+    {
       "package": "opera",
       "version": "136.0.6008.52-3",
       "maintainer": "Refreeze5911",
@@ -156,6 +180,198 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "lupa-git",
+      "version": "r69.c8b6b52-1",
+      "maintainer": "Azakidev",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T21:43:09.727540566+00:00",
+      "findings": [
+        {
+          "rule_id": "OBFUSCATED_DOLLAR_EXEC",
+          "severity": "HIGH",
+          "description": "deeply nested substitution with pipe chain (obfuscated execution)",
+          "line_number": 57,
+          "matched_text": "$(echo \"$mo\" | awk -F'/locale/' '{print $2}' | cut -d'/' -f1)"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/lupa-git"
+    },
+    {
+      "package": "proton-drive-for-linux",
+      "version": "2.2.1-1",
+      "maintainer": "Narl",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T21:42:19.727655463+00:00",
+      "findings": [
+        {
+          "rule_id": "PERSIST_XDG_AUTOSTART",
+          "severity": "HIGH",
+          "description": "dropping XDG desktop autostart entry",
+          "line_number": 64,
+          "matched_text": "/etc/xdg/autostart/io.narl.proton-drive-linux-tray.desktop"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/proton-drive-for-linux"
+    },
+    {
+      "package": "proton-drive-for-linux-git",
+      "version": "2.2.1.r0.g5109427-1",
+      "maintainer": "Narl",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T21:42:15.727622426+00:00",
+      "findings": [
+        {
+          "rule_id": "PERSIST_XDG_AUTOSTART",
+          "severity": "HIGH",
+          "description": "dropping XDG desktop autostart entry",
+          "line_number": 69,
+          "matched_text": "/etc/xdg/autostart/io.narl.proton-drive-linux-tray.desktop"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/proton-drive-for-linux-git"
+    },
+    {
+      "package": "proton-drive-for-linux-bin",
+      "version": "2.2.1-1",
+      "maintainer": "Narl",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T21:42:07.729329414+00:00",
+      "findings": [
+        {
+          "rule_id": "PERSIST_XDG_AUTOSTART",
+          "severity": "HIGH",
+          "description": "dropping XDG desktop autostart entry",
+          "line_number": 49,
+          "matched_text": "/etc/xdg/autostart/io.narl.proton-drive-linux-tray.desktop"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/proton-drive-for-linux-bin"
+    },
+    {
+      "package": "azerothcore-wotlk-git",
+      "version": "r19657.9c1bbfafec-1",
+      "maintainer": "mrbass21",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T21:41:09.733663282+00:00",
+      "findings": [
+        {
+          "rule_id": "SUS_LONG_ENCODED_STRING",
+          "severity": "HIGH",
+          "description": "Long base64-like encoded string found (may hide second-stage payload)",
+          "line_number": 62,
+          "matched_text": "echo \"=======================================================================\"..."
+        },
+        {
+          "rule_id": "SUS_LONG_ENCODED_STRING",
+          "severity": "HIGH",
+          "description": "Long base64-like encoded string found (may hide second-stage payload)",
+          "line_number": 64,
+          "matched_text": "echo \"=======================================================================\"..."
+        },
+        {
+          "rule_id": "SUS_LONG_ENCODED_STRING",
+          "severity": "HIGH",
+          "description": "Long base64-like encoded string found (may hide second-stage payload)",
+          "line_number": 81,
+          "matched_text": "echo \"=======================================================================\"..."
+        },
+        {
+          "rule_id": "SUS_LONG_ENCODED_STRING",
+          "severity": "HIGH",
+          "description": "Long base64-like encoded string found (may hide second-stage payload)",
+          "line_number": 90,
+          "matched_text": "echo \"=======================================================================\"..."
+        },
+        {
+          "rule_id": "SUS_LONG_ENCODED_STRING",
+          "severity": "HIGH",
+          "description": "Long base64-like encoded string found (may hide second-stage payload)",
+          "line_number": 92,
+          "matched_text": "echo \"=======================================================================\"..."
+        },
+        {
+          "rule_id": "SUS_LONG_ENCODED_STRING",
+          "severity": "HIGH",
+          "description": "Long base64-like encoded string found (may hide second-stage payload)",
+          "line_number": 106,
+          "matched_text": "echo \"=======================================================================\"..."
+        },
+        {
+          "rule_id": "SUS_LONG_ENCODED_STRING",
+          "severity": "HIGH",
+          "description": "[.install] Long base64-like encoded string found (may hide second-stage payload)",
+          "line_number": 32,
+          "matched_text": "echo \"=======================================================================\"..."
+        },
+        {
+          "rule_id": "SUS_LONG_ENCODED_STRING",
+          "severity": "HIGH",
+          "description": "[.install] Long base64-like encoded string found (may hide second-stage payload)",
+          "line_number": 34,
+          "matched_text": "echo \"=======================================================================\"..."
+        },
+        {
+          "rule_id": "SUS_LONG_ENCODED_STRING",
+          "severity": "HIGH",
+          "description": "[.install] Long base64-like encoded string found (may hide second-stage payload)",
+          "line_number": 53,
+          "matched_text": "echo \"=======================================================================\"..."
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/azerothcore-wotlk-git"
+    },
+    {
+      "package": "nursearch",
+      "version": "0.4.1-1",
+      "maintainer": "NurRobin",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T21:40:01.736128360+00:00",
+      "findings": [
+        {
+          "rule_id": "PERSIST_XDG_AUTOSTART",
+          "severity": "HIGH",
+          "description": "dropping XDG desktop autostart entry",
+          "line_number": 63,
+          "matched_text": "/etc/xdg/autostart/nursearch.desktop"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/nursearch"
+    },
+    {
+      "package": "ipfs-desktop",
+      "version": "1:0.50.1-2",
+      "maintainer": "RubenKelevra",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T21:39:19.738004967+00:00",
+      "findings": [
+        {
+          "rule_id": "OBFUSCATED_DOLLAR_EXEC",
+          "severity": "HIGH",
+          "description": "deeply nested substitution with pipe chain (obfuscated execution)",
+          "line_number": 81,
+          "matched_text": "$(printf '%s\\n%s\\n' \"$_latest_local\" \"$_v\" | sort -V | tail -n1)"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/ipfs-desktop"
+    },
+    {
+      "package": "slskdn-bin",
+      "version": "2026092420.slskdn.323-4",
+      "maintainer": "keefshape",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-24T21:38:40.727716462+00:00",
+      "findings": [
+        {
+          "rule_id": "EXFIL_DNS_TUNNEL",
+          "severity": "HIGH",
+          "description": "DNS lookup with variable expansion (possible DNS tunneling)",
+          "line_number": 46,
+          "matched_text": "host in $"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/slskdn-bin"
     },
     {
       "package": "coolerdash-git",
@@ -227,23 +443,6 @@
       "aur_url": "https://aur.archlinux.org/packages/r-s4arrays"
     },
     {
-      "package": "freebuff-bin",
-      "version": "0.0.194-1",
-      "maintainer": "lapsus",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-24T14:42:26.552718149+00:00",
-      "findings": [
-        {
-          "rule_id": "EXFIL_CURL_PIPE_EXEC",
-          "severity": "HIGH",
-          "description": "remote download piped directly into interpreter",
-          "line_number": 21,
-          "matched_text": "curl -fsSL 'https://registry.npmjs.org/freebuff/latest' | python3"
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/freebuff-bin"
-    },
-    {
       "package": "python-pytorch-lightning",
       "version": "2.6.6-1",
       "maintainer": "Smoolak",
@@ -293,6 +492,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/jlink-software-and-documentation"
+    },
+    {
+      "package": "mlp-bin",
+      "version": "0.8.0-1",
+      "maintainer": "MasketLP",
+      "highest_severity": "MEDIUM",
+      "detected_at": "2026-09-24T21:41:20.727807060+00:00",
+      "findings": [
+        {
+          "rule_id": "TYPOSQUATTING",
+          "severity": "MEDIUM",
+          "description": "Package 'mlp-bin' closely resembles high-profile package 'tlp'",
+          "line_number": 1,
+          "matched_text": "mlp-bin -> tlp"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/mlp-bin"
     }
   ]
 }

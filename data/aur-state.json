@@ -1,1 +1,1202 @@
-{}
+{
+  "autobrr": {
+    "commit": "4915f697b5ce3ffec4816ea2ad6442e96d269707",
+    "maintainer": "fryfrog",
+    "version": "1.87.0-1",
+    "last_modified": 1790285932,
+    "first_submitted": 1661072047,
+    "last_checked": "2026-09-24T21:43:37Z"
+  },
+  "sparkle-rolling-bin": {
+    "commit": "4626ede45783dd078392270719674f3ed4a2b516",
+    "maintainer": "xishang",
+    "version": "1.26.9.r1316.3b6b252-1",
+    "last_modified": 1790285809,
+    "first_submitted": 1788131733,
+    "last_checked": "2026-09-24T21:43:39Z"
+  },
+  "linux-recall-git": {
+    "commit": "c55dd0f9534e5b2f91010b82dd11ccefcbbe97cf",
+    "maintainer": "jy0x0",
+    "version": "r27.4cfddc2-2",
+    "last_modified": 1790285676,
+    "first_submitted": 1790256776,
+    "last_checked": "2026-09-24T21:43:40Z"
+  },
+  "brum-bin": {
+    "commit": "b1e187b4c12bc83b875d5325c6920c923471b2b4",
+    "maintainer": "woofson",
+    "version": "1.0.1-1",
+    "last_modified": 1790285552,
+    "first_submitted": 1789071305,
+    "last_checked": "2026-09-24T21:43:42Z"
+  },
+  "brum": {
+    "commit": "704ef5e8e5a6dee6bdc53572558f2c60a5d2b45d",
+    "maintainer": "woofson",
+    "version": "1.0.1-1",
+    "last_modified": 1790285546,
+    "first_submitted": 1789071298,
+    "last_checked": "2026-09-24T21:43:43Z"
+  },
+  "firefox-vrr": {
+    "commit": "534ae19b44168d1fc3453ac0cd42ea1584a78df1",
+    "maintainer": "ImJstNick",
+    "version": "156.0.1-2",
+    "last_modified": 1790285522,
+    "first_submitted": 1790285522,
+    "last_checked": "2026-09-24T21:43:45Z"
+  },
+  "plannotator-bin": {
+    "commit": "3fd474f71cf1fbd8885cafc3bb3ff093d4e6859b",
+    "maintainer": "asermax",
+    "version": "0.27.20-1",
+    "last_modified": 1790285497,
+    "first_submitted": 1768705356,
+    "last_checked": "2026-09-24T21:43:46Z"
+  },
+  "seerrng-bin": {
+    "commit": "3eb31c47173b1576c44a7c47e2c51d43b59342fb",
+    "maintainer": "keefshape",
+    "version": "3.24.0-2",
+    "last_modified": 1790285400,
+    "first_submitted": 1779491193,
+    "last_checked": "2026-09-24T21:43:48Z"
+  },
+  "emutastic-bin": {
+    "commit": "7613d6503a77e33f1e33c314f2df3376145d6840",
+    "maintainer": "codingncaffeine",
+    "version": "1.9.0-1",
+    "last_modified": 1790285375,
+    "first_submitted": 1780860507,
+    "last_checked": "2026-09-24T21:43:49Z"
+  },
+  "ai-jail-bin": {
+    "commit": "4a24eab7ee98e6193a41431da16020d3c30ed12f",
+    "maintainer": "akitaonrails",
+    "version": "2.2.0-1",
+    "last_modified": 1790285362,
+    "first_submitted": 1776447319,
+    "last_checked": "2026-09-24T21:43:51Z"
+  },
+  "ai-jail": {
+    "commit": "95cc8b646ba21f4cba7ae561c7501026996a15ab",
+    "maintainer": "akitaonrails",
+    "version": "2.2.0-1",
+    "last_modified": 1790285351,
+    "first_submitted": 1776445886,
+    "last_checked": "2026-09-24T21:43:52Z"
+  },
+  "limusic-bin": {
+    "commit": "8dcdba7cc9f08e6726b8244cc98cd9ce39f03613",
+    "maintainer": "xiryuu",
+    "version": "0.8.3-1",
+    "last_modified": 1790285167,
+    "first_submitted": 1787327548,
+    "last_checked": "2026-09-24T21:43:54Z"
+  },
+  "pentest-ghostwriter": {
+    "commit": "b9d2c11c7eba417ef28daf908e0ac35de8cec7a9",
+    "maintainer": "pacmanics",
+    "version": "7.2.7-1",
+    "last_modified": 1790285071,
+    "first_submitted": 1776362882,
+    "last_checked": "2026-09-24T21:43:55Z"
+  },
+  "devinorium-server": {
+    "commit": "2bd5fafacd988dadf95d124c2cf4fb82998beec2",
+    "maintainer": "HttpAnimations",
+    "version": "0.87.0-1",
+    "last_modified": 1790285012,
+    "first_submitted": 1789320284,
+    "last_checked": "2026-09-24T21:43:57Z"
+  },
+  "devinorium": {
+    "commit": "1c15596f69a5801445c72958ad7846ed89577ee8",
+    "maintainer": "HttpAnimations",
+    "version": "0.87.0-1",
+    "last_modified": 1790284997,
+    "first_submitted": 1789320271,
+    "last_checked": "2026-09-24T21:43:58Z"
+  },
+  "unciv": {
+    "commit": "20d820c48dcc819f19fedb78f2ccba61ce641a2d",
+    "maintainer": "petercxy",
+    "version": "4.22.3.REL-1",
+    "last_modified": 1790284955,
+    "first_submitted": 1580633052,
+    "last_checked": "2026-09-24T21:44:00Z"
+  },
+  "coolercontrold": {
+    "commit": "fe2a89b7b16b7f8748634f65e88155b1abcea321",
+    "maintainer": "codifryed",
+    "version": "5.0.1-1",
+    "last_modified": 1790284867,
+    "first_submitted": 1725737455,
+    "last_checked": "2026-09-24T21:44:01Z"
+  },
+  "coolercontrold-bin": {
+    "commit": "5d90cb29182b633e4f3f43d8b7d7334f8231ed34",
+    "maintainer": "caferen",
+    "version": "5.0.1-1",
+    "last_modified": 1790284862,
+    "first_submitted": 1725816171,
+    "last_checked": "2026-09-24T21:44:03Z"
+  },
+  "coolercontrol": {
+    "commit": "c752c2ef592f271e11016b9ce709ff964c132508",
+    "maintainer": "codifryed",
+    "version": "5.0.1-1",
+    "last_modified": 1790284856,
+    "first_submitted": 1675806347,
+    "last_checked": "2026-09-24T21:44:04Z"
+  },
+  "coolercontrol-bin": {
+    "commit": "fd8506dd04d5a765b84e445de9d1bb64800ea786",
+    "maintainer": "caferen",
+    "version": "5.0.1-1",
+    "last_modified": 1790284851,
+    "first_submitted": 1725816325,
+    "last_checked": "2026-09-24T21:44:06Z"
+  },
+  "agentty-bin": {
+    "commit": "6562d660c424a9e714ef55b2f1d21f9c835b1fe0",
+    "maintainer": "1ay1",
+    "version": "0.9.10-1",
+    "last_modified": 1790284803,
+    "first_submitted": 1779151696,
+    "last_checked": "2026-09-24T21:44:07Z"
+  },
+  "spirula-studio": {
+    "commit": "75f31c2af50d5d176f97b7f4e0ea5cff40a61af2",
+    "maintainer": "viridivn",
+    "version": "2026.9.24-1",
+    "last_modified": 1790284799,
+    "first_submitted": 1788547752,
+    "last_checked": "2026-09-24T21:44:09Z"
+  },
+  "runtool": {
+    "commit": "a30775c6c4d4d770266d745f1579660d9369446b",
+    "maintainer": "nihilok",
+    "version": "0.6.1-1",
+    "last_modified": 1790284789,
+    "first_submitted": 1771149540,
+    "last_checked": "2026-09-24T21:44:10Z"
+  },
+  "clementine": {
+    "commit": "f1c6ccfa6f026a9ae9698b5d62491190cc09d0d6",
+    "maintainer": "FabioLolix",
+    "version": "1.4.1+165+g1a48f6b05-1",
+    "last_modified": 1790284716,
+    "first_submitted": 1687979008,
+    "last_checked": "2026-09-24T21:44:12Z"
+  },
+  "lib32-faad2": {
+    "commit": "aafacfd87b2ac4bfce78caf9262c5ef8ba27735d",
+    "maintainer": "rodrigo21",
+    "version": "2.11.3-1",
+    "last_modified": 1790284641,
+    "first_submitted": 1230991022,
+    "last_checked": "2026-09-24T21:44:13Z"
+  },
+  "ipfs-desktop-electron": {
+    "commit": "1fdf4b4ce4d5fc1c86319ac850f2d761a89a6090",
+    "maintainer": "alampy",
+    "version": "1:0.50.1-2",
+    "last_modified": 1790284388,
+    "first_submitted": 1689908303,
+    "last_checked": "2026-09-24T21:44:15Z"
+  },
+  "cosmic-comp-gaming": {
+    "commit": "b09647f42cd98a47c21682749ad7f3f8db5bace4",
+    "maintainer": "skygrango",
+    "version": "1:1.22.0-9",
+    "last_modified": 1790284303,
+    "first_submitted": 1778323836,
+    "last_checked": "2026-09-24T21:44:16Z"
+  },
+  "ipfs-desktop": {
+    "commit": "cebeb0f3dd25f2f7238f9fdb4fff5a4d6330f100",
+    "maintainer": "RubenKelevra",
+    "version": "1:0.50.1-2",
+    "last_modified": 1790284272,
+    "first_submitted": 1571282348,
+    "last_checked": "2026-09-24T21:44:18Z"
+  },
+  "ps-printer-app-git": {
+    "commit": "b9feeb75d69d950f52ca3fbc12d2037cfa0eb50c",
+    "maintainer": "dreieck",
+    "version": "1.0+r273.20260109.e54d07c-1",
+    "last_modified": 1790284266,
+    "first_submitted": 1790284266,
+    "last_checked": "2026-09-24T21:44:20Z"
+  },
+  "whim": {
+    "commit": "08f9ad5dc79c6cfb2cbd467c5342ecdf481ed75d",
+    "maintainer": "matth",
+    "version": "0.14.0-1",
+    "last_modified": 1790284203,
+    "first_submitted": 1789762246,
+    "last_checked": "2026-09-24T21:44:21Z"
+  },
+  "firefox-extension-bitwarden": {
+    "commit": "f3b34fc45a63aaf651c4f0d374a2467f0dee0f44",
+    "maintainer": "matth",
+    "version": "2026.9.1-1",
+    "last_modified": 1790284191,
+    "first_submitted": 1724431304,
+    "last_checked": "2026-09-24T21:44:23Z"
+  },
+  "waydoodle": {
+    "commit": "3d3ecd89052536c3ab51acab0cbc3910175fcbf5",
+    "maintainer": "dessaya",
+    "version": "2.4.0-1",
+    "last_modified": 1790284182,
+    "first_submitted": 1774301542,
+    "last_checked": "2026-09-24T21:44:24Z"
+  },
+  "cli-proxy-api-bin": {
+    "commit": "0d19784423dd65968d0eb85d52b83e24b9a354d9",
+    "maintainer": "theorangeguo",
+    "version": "7.3.17-1",
+    "last_modified": 1790284175,
+    "first_submitted": 1767170633,
+    "last_checked": "2026-09-24T21:44:26Z"
+  },
+  "rayburst": {
+    "commit": "927551cd159e1c9d8a951e93ed3d3d0fbe9ccd6e",
+    "maintainer": "lmartinez-mirror",
+    "version": "4.0.0-1",
+    "last_modified": 1790284090,
+    "first_submitted": 1790284090,
+    "last_checked": "2026-09-24T21:44:27Z"
+  },
+  "aria-fm-bin": {
+    "commit": "2f9f92f6a453a202e6daf1bb4cabebb1257dfc8a",
+    "maintainer": "cmdly",
+    "version": "0.7.6-1",
+    "last_modified": 1790284047,
+    "first_submitted": 1779747620,
+    "last_checked": "2026-09-24T21:44:29Z"
+  },
+  "lockbook-desktop": {
+    "commit": "08e0bd323fb3d384a1267ab1dfbbb9c512c7079f",
+    "maintainer": "parth",
+    "version": "26.9.18-1",
+    "last_modified": 1790283865,
+    "first_submitted": 1617575449,
+    "last_checked": "2026-09-24T21:44:30Z"
+  },
+  "lockbook": {
+    "commit": "0486f97417eadd004869e83647a19213486cd725",
+    "maintainer": "parth",
+    "version": "26.9.18-1",
+    "last_modified": 1790283851,
+    "first_submitted": 1595707840,
+    "last_checked": "2026-09-24T21:44:32Z"
+  },
+  "skillshare": {
+    "commit": "ee341131de53440151a0401e23564881bc7b4e5f",
+    "maintainer": "bbj",
+    "version": "0.21.8-1",
+    "last_modified": 1790283683,
+    "first_submitted": 1772042375,
+    "last_checked": "2026-09-24T21:44:33Z"
+  },
+  "skillshare-bin": {
+    "commit": "1e2807aeabf0de224f30f51a08f4ad886ca9dbfe",
+    "maintainer": "bbj",
+    "version": "0.21.8-1",
+    "last_modified": 1790283668,
+    "first_submitted": 1772042087,
+    "last_checked": "2026-09-24T21:44:35Z"
+  },
+  "quvyta-focus-git": {
+    "commit": "0d629033295117dcb712003efa864ab012cb6e68",
+    "maintainer": "lmartinez-mirror",
+    "version": "r15.543782b-1",
+    "last_modified": 1790283650,
+    "first_submitted": 1790283650,
+    "last_checked": "2026-09-24T21:44:36Z"
+  },
+  "aurcache-worker": {
+    "commit": "3ee4176f836dc88a79fd872c5b04d9eb7f76d730",
+    "maintainer": "gyscos",
+    "version": "0.5.0-1",
+    "last_modified": 1790283611,
+    "first_submitted": 1788805976,
+    "last_checked": "2026-09-24T21:44:38Z"
+  },
+  "yandex-messenger": {
+    "commit": "227a3b7d3c2293bd4c80b555bedabdd7bce7a970",
+    "maintainer": "bulatovv",
+    "version": "2.155.0-4",
+    "last_modified": 1790283606,
+    "first_submitted": 1767884407,
+    "last_checked": "2026-09-24T21:44:39Z"
+  },
+  "lib32-ffmpeg": {
+    "commit": "c8e21e875abab50acd5ffbeb4579f145232505e1",
+    "maintainer": "oxalin",
+    "version": "2:9.0.2-1",
+    "last_modified": 1790283578,
+    "first_submitted": 1368852187,
+    "last_checked": "2026-09-24T21:44:41Z"
+  },
+  "pdfmaker": {
+    "commit": "e116cf2fc6f6e656b5bb81cff410ed0e3c6d02f2",
+    "maintainer": "kanehekili",
+    "version": "1.0.1-1",
+    "last_modified": 1790283391,
+    "first_submitted": 1790283391,
+    "last_checked": "2026-09-24T21:44:42Z"
+  },
+  "nodejs-vite": {
+    "commit": "c67a994e828876a909d4c9e0cd954ff44060a371",
+    "maintainer": "Kimiblock",
+    "version": "8.3.1-1",
+    "last_modified": 1790283386,
+    "first_submitted": 1716686717,
+    "last_checked": "2026-09-24T21:44:44Z"
+  },
+  "webcamoid": {
+    "commit": "8ffdaebd268f4a7cad71a6091070485adb9f9593",
+    "maintainer": "hipersayan_x",
+    "version": "9.4.0-2",
+    "last_modified": 1790283357,
+    "first_submitted": 1418088565,
+    "last_checked": "2026-09-24T21:44:45Z"
+  },
+  "webcamoid-git": {
+    "commit": "4d578b5a49fd71019a2e8e7dca5252612251c820",
+    "maintainer": "hipersayan_x",
+    "version": "9.4.0.r34.g921c99cdd-1",
+    "last_modified": 1790283325,
+    "first_submitted": 1423091092,
+    "last_checked": "2026-09-24T21:44:47Z"
+  },
+  "databricks-cli-bin": {
+    "commit": "f47fb9428849bfb67e47c91a49573c06dd4be779",
+    "maintainer": "ribugent",
+    "version": "1.18.0-1",
+    "last_modified": 1790283278,
+    "first_submitted": 1696940162,
+    "last_checked": "2026-09-24T21:44:48Z"
+  },
+  "tree-sitter-php": {
+    "commit": "e846b5d1b188e79dadfa27bfb740384edc224a69",
+    "maintainer": "Chocobo1",
+    "version": "0.25.0-1",
+    "last_modified": 1790283252,
+    "first_submitted": 1741280625,
+    "last_checked": "2026-09-24T21:44:50Z"
+  },
+  "python-amulet-core": {
+    "commit": "c1212c98e098bc70cf61f0dbedf214352106cffd",
+    "maintainer": "Kimiblock",
+    "version": "1.9.49-1",
+    "last_modified": 1790283243,
+    "first_submitted": 1699795696,
+    "last_checked": "2026-09-24T21:44:51Z"
+  },
+  "lean-bin": {
+    "commit": "cf29e93300c6b8a56f508ba199a178478570db2a",
+    "maintainer": "Chocobo1",
+    "version": "4.34.1-1",
+    "last_modified": 1790283204,
+    "first_submitted": 1786828438,
+    "last_checked": "2026-09-24T21:44:53Z"
+  },
+  "zapfast-git": {
+    "commit": "f4acc8b71aa693f008c616bdb9333ee61395f447",
+    "maintainer": "crmne",
+    "version": "0.16.2-1",
+    "last_modified": 1790283155,
+    "first_submitted": 1789380028,
+    "last_checked": "2026-09-24T21:44:54Z"
+  },
+  "zapfast-bin": {
+    "commit": "f3a6e66db5d373c5f596abc5eff0ce69df5456d4",
+    "maintainer": "crmne",
+    "version": "0.16.2-1",
+    "last_modified": 1790283145,
+    "first_submitted": 1789380023,
+    "last_checked": "2026-09-24T21:44:56Z"
+  },
+  "libvirt-iso-endeavouros-bin": {
+    "commit": "0918a1fc5618f7c3d727e495b71a98e0b8718de1",
+    "maintainer": "RubenKelevra",
+    "version": "2026.08.15-1",
+    "last_modified": 1790283139,
+    "first_submitted": 1790283139,
+    "last_checked": "2026-09-24T21:44:57Z"
+  },
+  "zapfast": {
+    "commit": "db49819012e8b3884e8384cbea9462ce979dd96d",
+    "maintainer": "crmne",
+    "version": "0.16.2-1",
+    "last_modified": 1790283135,
+    "first_submitted": 1789380018,
+    "last_checked": "2026-09-24T21:44:59Z"
+  },
+  "ktlint-compose-rules": {
+    "commit": "31172ddc1c2bcddf3a2c9dc27427c60b4bf1608c",
+    "maintainer": "heddxh",
+    "version": "0.6.7-1",
+    "last_modified": 1790283116,
+    "first_submitted": 1755661131,
+    "last_checked": "2026-09-24T21:45:00Z"
+  },
+  "slskdn-bin": {
+    "commit": "8daa3fcdb87dcc8d58582f5e1b5b6929287c30b7",
+    "maintainer": "keefshape",
+    "version": "2026092420.slskdn.323-4",
+    "last_modified": 1790283079,
+    "first_submitted": 1765005947,
+    "last_checked": "2026-09-24T21:45:02Z"
+  },
+  "slskdn": {
+    "commit": "fef9cbd0fe1d7cc40b1a488df238275e15310092",
+    "maintainer": "keefshape",
+    "version": "2026092420.slskdn.323-7",
+    "last_modified": 1790283065,
+    "first_submitted": 1765006054,
+    "last_checked": "2026-09-24T21:45:03Z"
+  },
+  "python-tree-sitter-php": {
+    "commit": "5da8239c0727534b295ce4a06689bd02810ef9aa",
+    "maintainer": "bhyoo",
+    "version": "0.25.0-1",
+    "last_modified": 1790282929,
+    "first_submitted": 1777298534,
+    "last_checked": "2026-09-24T21:45:05Z"
+  },
+  "cleverswitch": {
+    "commit": "67628ba3af434f0098f0544b67f4c6b3d1a791d6",
+    "maintainer": "mbarysevich",
+    "version": "1.5.0-1",
+    "last_modified": 1790282922,
+    "first_submitted": 1785443214,
+    "last_checked": "2026-09-24T21:45:07Z"
+  },
+  "cloudflare-wrangler": {
+    "commit": "9662217a685c89353765f492b03933dbcfc36edd",
+    "maintainer": "bhyoo",
+    "version": "4.139.0-1",
+    "last_modified": 1790282909,
+    "first_submitted": 1779784564,
+    "last_checked": "2026-09-24T21:45:08Z"
+  },
+  "devinorium-server-git": {
+    "commit": "0420f2c47ee0c2c684d9b6b94fd3382d1d9fee88",
+    "maintainer": "HttpAnimations",
+    "version": "0.86.0.r2.g2fcbae7-1",
+    "last_modified": 1790282819,
+    "first_submitted": 1789320249,
+    "last_checked": "2026-09-24T21:45:10Z"
+  },
+  "devinorium-git": {
+    "commit": "3ff55e95d208530482781b261da3f17de98d833f",
+    "maintainer": "HttpAnimations",
+    "version": "0.86.0.r2.g2fcbae7-1",
+    "last_modified": 1790282804,
+    "first_submitted": 1789320237,
+    "last_checked": "2026-09-24T21:45:11Z"
+  },
+  "discord-ptb": {
+    "commit": "bf5e755c06abb00da1d330df0b079480441ec72f",
+    "maintainer": "timschumi",
+    "version": "1.0.216-1",
+    "last_modified": 1790282705,
+    "first_submitted": 1567672902,
+    "last_checked": "2026-09-24T21:45:13Z"
+  },
+  "hledger-lsp": {
+    "commit": "de9ed592aa190e05b22912ff533e9e6ea0410674",
+    "maintainer": "alerque",
+    "version": "0.2.63-1",
+    "last_modified": 1790282644,
+    "first_submitted": 1770218052,
+    "last_checked": "2026-09-24T21:45:14Z"
+  },
+  "ferrumkix-bin": {
+    "commit": "3a1eecdcdcbbd4c25bca35a5d4158e12c4c7ea85",
+    "maintainer": "Bitpainter75",
+    "version": "0.9.7-4",
+    "last_modified": 1790282586,
+    "first_submitted": 1789942510,
+    "last_checked": "2026-09-24T21:45:16Z"
+  },
+  "opal-media-player-bin": {
+    "commit": "7e9a3441ca8d6e39719e372ef5ab6f0d833a6187",
+    "maintainer": "debpalash",
+    "version": "0.8.6-1",
+    "last_modified": 1790282584,
+    "first_submitted": 1787894119,
+    "last_checked": "2026-09-24T21:45:17Z"
+  },
+  "opal-media-player": {
+    "commit": "18ec5ab217417bd77218c7176ffaea591e982b6a",
+    "maintainer": "debpalash",
+    "version": "0.8.6-1",
+    "last_modified": 1790282567,
+    "first_submitted": 1787894103,
+    "last_checked": "2026-09-24T21:45:19Z"
+  },
+  "xtool": {
+    "commit": "2e41fb66673f07d1d81f4d829d82f4bb9943c0b2",
+    "maintainer": "matth",
+    "version": "1.20.1-1",
+    "last_modified": 1790282566,
+    "first_submitted": 1767974132,
+    "last_checked": "2026-09-24T21:45:20Z"
+  },
+  "xadi": {
+    "commit": "b2d208e09b3c2e62ae8072796b6aed12ff5d6a8e",
+    "maintainer": "matth",
+    "version": "0.4.1-1",
+    "last_modified": 1790282552,
+    "first_submitted": 1767972960,
+    "last_checked": "2026-09-24T21:45:22Z"
+  },
+  "whisparr-eros-develop": {
+    "commit": "3c0b5f5bee517fd7be5882ebceeea7df0f4ac17b",
+    "maintainer": "txtsd",
+    "version": "3.6.2.1734-1",
+    "last_modified": 1790282547,
+    "first_submitted": 1768901452,
+    "last_checked": "2026-09-24T21:45:23Z"
+  },
+  "futo-notes-bin": {
+    "commit": "48ec5388819a02721783ff7d2282b144db24a96b",
+    "maintainer": "D3SOX",
+    "version": "1.8.0-1",
+    "last_modified": 1790282441,
+    "first_submitted": 1782597843,
+    "last_checked": "2026-09-24T21:45:25Z"
+  },
+  "gsa": {
+    "commit": "81915c429785dbe0754de67e34cac34f481ba521",
+    "maintainer": "TrialnError",
+    "version": "28.5.0-1",
+    "last_modified": 1790282329,
+    "first_submitted": 1613513675,
+    "last_checked": "2026-09-24T21:45:26Z"
+  },
+  "ttf-google-sans-flex-variable": {
+    "commit": "9f410a54c12880fe9d5d8d6168b51ab37d331e6d",
+    "maintainer": "evertiro",
+    "version": "1.0.0-1",
+    "last_modified": 1790282320,
+    "first_submitted": 1790282320,
+    "last_checked": "2026-09-24T21:45:28Z"
+  },
+  "gsad": {
+    "commit": "4a6279366f60a653e00833a14760203edf305cc6",
+    "maintainer": "TrialnError",
+    "version": "27.5.0-1",
+    "last_modified": 1790282249,
+    "first_submitted": 1727038487,
+    "last_checked": "2026-09-24T21:45:29Z"
+  },
+  "lightpanda-bin": {
+    "commit": "9d7a0d6a4bae10ef2afac8486ee813b59cd81969",
+    "maintainer": "swiftscythe",
+    "version": "0.4.1-1",
+    "last_modified": 1790282185,
+    "first_submitted": 1773812764,
+    "last_checked": "2026-09-24T21:45:31Z"
+  },
+  "ungoogled-chromium": {
+    "commit": "112f6ca8bc8fe57689f03e70454a5c07f89a90e3",
+    "maintainer": "JstKddng",
+    "version": "153.0.8010.52-1",
+    "last_modified": 1790282144,
+    "first_submitted": 1482134890,
+    "last_checked": "2026-09-24T21:45:32Z"
+  },
+  "hyprmoncfg-git": {
+    "commit": "120e402ae1224302d21da0b7756a977831707a81",
+    "maintainer": "crmne",
+    "version": "r300.7ba3e62-1",
+    "last_modified": 1790282077,
+    "first_submitted": 1774457965,
+    "last_checked": "2026-09-24T21:45:34Z"
+  },
+  "technitium-dns-server-bin": {
+    "commit": "3d04d5e302dae3ba61334bd4e4697b9f23ed4edf",
+    "maintainer": "owentrigueros",
+    "version": "15.5.0-1",
+    "last_modified": 1790282077,
+    "first_submitted": 1670577137,
+    "last_checked": "2026-09-24T21:45:35Z"
+  },
+  "hyprmoncfg-bin": {
+    "commit": "42daf7f90c13dcfffbe2a889280884d7a33ee81f",
+    "maintainer": "crmne",
+    "version": "1.19.0-1",
+    "last_modified": 1790282071,
+    "first_submitted": 1788081668,
+    "last_checked": "2026-09-24T21:45:37Z"
+  },
+  "hyprmoncfg": {
+    "commit": "714226fe08756a2368b3856dc28ea40267e1bbc3",
+    "maintainer": "crmne",
+    "version": "1.19.0-1",
+    "last_modified": 1790282065,
+    "first_submitted": 1774457965,
+    "last_checked": "2026-09-24T21:45:38Z"
+  },
+  "qtuxtimings-git": {
+    "commit": "7ee1804f525728a53cc4b2108e0e7b6a7857ec96",
+    "maintainer": "tredaelli",
+    "version": "1.0.5.r26.gb29b244-1",
+    "last_modified": 1790281999,
+    "first_submitted": 1790281999,
+    "last_checked": "2026-09-24T21:45:40Z"
+  },
+  "qtuxtimings-dkms-git": {
+    "commit": "7ee1804f525728a53cc4b2108e0e7b6a7857ec96",
+    "maintainer": "tredaelli",
+    "version": "1.0.5.r26.gb29b244-1",
+    "last_modified": 1790281999,
+    "first_submitted": 1790281999,
+    "last_checked": "2026-09-24T21:45:41Z"
+  },
+  "correlation": {
+    "commit": "a1d9191749c37e89fc84111142996eb2fe449457",
+    "maintainer": "isurwars",
+    "version": "3.9.6-1",
+    "last_modified": 1790281978,
+    "first_submitted": 1773625233,
+    "last_checked": "2026-09-24T21:45:43Z"
+  },
+  "python-gvm": {
+    "commit": "9bc6029d77166763848060d0e5d4268bd927d270",
+    "maintainer": "TrialnError",
+    "version": "27.10.0-1",
+    "last_modified": 1790281890,
+    "first_submitted": 1760903985,
+    "last_checked": "2026-09-24T21:45:44Z"
+  },
+  "discord-canary": {
+    "commit": "bfe6fa6e99ad05fadc722ed3d57b9dc79b6d60f8",
+    "maintainer": "timschumi",
+    "version": "1.0.1991-1",
+    "last_modified": 1790281807,
+    "first_submitted": 1667183154,
+    "last_checked": "2026-09-24T21:45:46Z"
+  },
+  "machines": {
+    "commit": "0042ffd6ff9b65537eccfe2504313069c99bf32c",
+    "maintainer": "sachesi",
+    "version": "0.1.0-1",
+    "last_modified": 1790281770,
+    "first_submitted": 1790281770,
+    "last_checked": "2026-09-24T21:45:47Z"
+  },
+  "borea-git": {
+    "commit": "2417a759e751e337641d0f8df9817ba41af68136",
+    "maintainer": "KenwoodFox",
+    "version": "0.2.1.r98.gf2e7e12-1",
+    "last_modified": 1790281556,
+    "first_submitted": 1790281555,
+    "last_checked": "2026-09-24T21:45:49Z"
+  },
+  "python-emmet-core": {
+    "commit": "5c62ebca4bc6a415b747cb95d90cb9b6b46e9563",
+    "maintainer": "harrietobrien",
+    "version": "0.87.2-1",
+    "last_modified": 1790281521,
+    "first_submitted": 1790281521,
+    "last_checked": "2026-09-24T21:45:51Z"
+  },
+  "python-pymatgen-core": {
+    "commit": "e5f83e1cbedc61148a0c776c6bae6abafb95de38",
+    "maintainer": "harrietobrien",
+    "version": "2026.9.23-1",
+    "last_modified": 1790281491,
+    "first_submitted": 1790281491,
+    "last_checked": "2026-09-24T21:45:52Z"
+  },
+  "python-custodian": {
+    "commit": "02f62710a7f70dff780f68353cc187d6ce0b5d5a",
+    "maintainer": "harrietobrien",
+    "version": "2025.12.14-1",
+    "last_modified": 1790281457,
+    "first_submitted": 1790281457,
+    "last_checked": "2026-09-24T21:45:54Z"
+  },
+  "qoder-cli-cn-bin": {
+    "commit": "f1e96b89abeaddba9ff8445c7185922716b46abd",
+    "maintainer": "galak9",
+    "version": "1.1.63-1",
+    "last_modified": 1790281385,
+    "first_submitted": 1780396239,
+    "last_checked": "2026-09-24T21:45:55Z"
+  },
+  "ipp-usb-openrc": {
+    "commit": "c32b64493160ee46c3862d010c9edf3bf17c153b",
+    "maintainer": "dreieck",
+    "version": "0.5-1",
+    "last_modified": 1790281115,
+    "first_submitted": 1790281115,
+    "last_checked": "2026-09-24T21:45:57Z"
+  },
+  "ferrumpix-bin": {
+    "commit": "7eedcc5d5691b86f852bac4c40c3d4446bbcf0bc",
+    "maintainer": "Bitpainter75",
+    "version": "0.9.51-3",
+    "last_modified": 1790281114,
+    "first_submitted": 1784018573,
+    "last_checked": "2026-09-24T21:45:58Z"
+  },
+  "python-quacc": {
+    "commit": "55d4fb8cc6d9c9bf06628d3c03590f215b49409c",
+    "maintainer": "harrietobrien",
+    "version": "1.5.13-1",
+    "last_modified": 1790281102,
+    "first_submitted": 1790281102,
+    "last_checked": "2026-09-24T21:46:00Z"
+  },
+  "cutlass": {
+    "commit": "84e25604cf57bbc4ea8806fc17e41a763486fe12",
+    "maintainer": "Smoolak",
+    "version": "4.8.0-1",
+    "last_modified": 1790281060,
+    "first_submitted": 1687301968,
+    "last_checked": "2026-09-24T21:46:01Z"
+  },
+  "python-cutlass": {
+    "commit": "84e25604cf57bbc4ea8806fc17e41a763486fe12",
+    "maintainer": "Smoolak",
+    "version": "4.8.0-1",
+    "last_modified": 1790281060,
+    "first_submitted": 1687301968,
+    "last_checked": "2026-09-24T21:46:03Z"
+  },
+  "gryt-chat-bin": {
+    "commit": "8b6948dbe6cb259056e6a14438980712f79c52b6",
+    "maintainer": "simpvert",
+    "version": "1.11.42-1",
+    "last_modified": 1790280999,
+    "first_submitted": 1772397509,
+    "last_checked": "2026-09-24T21:46:04Z"
+  },
+  "openlawsvpn-daemon": {
+    "commit": "70e8860e3bb9d1d217e6cca15d66447bd5b2189c",
+    "maintainer": "vorona",
+    "version": "1.2.3-2",
+    "last_modified": 1790280839,
+    "first_submitted": 1781135322,
+    "last_checked": "2026-09-24T21:46:06Z"
+  },
+  "openlawsvpn-cli": {
+    "commit": "70e8860e3bb9d1d217e6cca15d66447bd5b2189c",
+    "maintainer": "vorona",
+    "version": "1.2.3-2",
+    "last_modified": 1790280839,
+    "first_submitted": 1781135322,
+    "last_checked": "2026-09-24T21:46:07Z"
+  },
+  "openlawsvpn-gui": {
+    "commit": "70e8860e3bb9d1d217e6cca15d66447bd5b2189c",
+    "maintainer": "vorona",
+    "version": "1.2.3-2",
+    "last_modified": 1790280839,
+    "first_submitted": 1781135322,
+    "last_checked": "2026-09-24T21:46:09Z"
+  },
+  "lib32-libxmlrpc": {
+    "commit": "5bab64370d692950a1c5465f50be647fc26d6391",
+    "maintainer": "Ketchup901",
+    "version": "1.64.04-1",
+    "last_modified": 1790280699,
+    "first_submitted": 1788893884,
+    "last_checked": "2026-09-24T21:46:10Z"
+  },
+  "antigravity-cli": {
+    "commit": "03abcacd7c5715f27e7a6334855ee73c63f712ed",
+    "maintainer": "viridivn",
+    "version": "1.2.10_4751581200121856-1",
+    "last_modified": 1790280349,
+    "first_submitted": 1779224548,
+    "last_checked": "2026-09-24T21:46:12Z"
+  },
+  "termy-bin": {
+    "commit": "5b787d9cf6622ab4cedc78b06d00f96492c8cb71",
+    "maintainer": "itzlassejlv",
+    "version": "0.2.75-1",
+    "last_modified": 1790280349,
+    "first_submitted": 1771848675,
+    "last_checked": "2026-09-24T21:46:13Z"
+  },
+  "brave-origin-nightly-bin": {
+    "commit": "73970cf2263a5fd9ff6e9fe0ea1644dcea561872",
+    "maintainer": "brave-prerelease",
+    "version": "1.98.28-1",
+    "last_modified": 1790280286,
+    "first_submitted": 1775926562,
+    "last_checked": "2026-09-24T21:46:15Z"
+  },
+  "renovate": {
+    "commit": "d0fc185796b632ec4ef8102b84908d1ab7db6933",
+    "maintainer": "phnx47",
+    "version": "44.113.0-1",
+    "last_modified": 1790280222,
+    "first_submitted": 1778756591,
+    "last_checked": "2026-09-24T21:46:16Z"
+  },
+  "rox-player-git": {
+    "commit": "9945fa453f0ed18d7e383dd80dc81cdc34452b07",
+    "maintainer": "Trixelit",
+    "version": "1.28.5.r0.g0b99baf-1",
+    "last_modified": 1790280209,
+    "first_submitted": 1785036387,
+    "last_checked": "2026-09-24T21:46:18Z"
+  },
+  "rox-player": {
+    "commit": "48fcbe7c477c54cec30cb2391f48c3c6ca2b2014",
+    "maintainer": "Trixelit",
+    "version": "1.28.5-1",
+    "last_modified": 1790280199,
+    "first_submitted": 1785009409,
+    "last_checked": "2026-09-24T21:46:19Z"
+  },
+  "libggml-cuda-bin": {
+    "commit": "efaaaf1eb2fd43ac27d856272fd14f118f303556",
+    "maintainer": "Notes",
+    "version": "0.25.2-1",
+    "last_modified": 1790280060,
+    "first_submitted": 1776108074,
+    "last_checked": "2026-09-24T21:46:21Z"
+  },
+  "qodercli-bin": {
+    "commit": "2ebe4c612a3858bec7a292763d7743e6443fe686",
+    "maintainer": "Huipeng",
+    "version": "1.1.63-1",
+    "last_modified": 1790280005,
+    "first_submitted": 1771088477,
+    "last_checked": "2026-09-24T21:46:22Z"
+  },
+  "diskard": {
+    "commit": "4db8da0e5cf9e4a78a7c2bba89fb1075223a65e2",
+    "maintainer": "shoenot",
+    "version": "0.1.2-1",
+    "last_modified": 1790279884,
+    "first_submitted": 1772804302,
+    "last_checked": "2026-09-24T21:46:24Z"
+  },
+  "codexbar-cli": {
+    "commit": "b0753b46e4f3151b572b84ef0640c497662a0eea",
+    "maintainer": "Herbrant",
+    "version": "0.66.0-1",
+    "last_modified": 1790279722,
+    "first_submitted": 1779096008,
+    "last_checked": "2026-09-24T21:46:25Z"
+  },
+  "orca-note-appimage": {
+    "commit": "2aa76c14f804bfa4fff1da1d04dce8940d00e22b",
+    "maintainer": "neko_ayaya",
+    "version": "1.96.0-1",
+    "last_modified": 1790279549,
+    "first_submitted": 1766913019,
+    "last_checked": "2026-09-24T21:46:27Z"
+  },
+  "typbase-bin": {
+    "commit": "f31f00811af9e34ef606c22aaf2a2d0b491e6057",
+    "maintainer": "lemueldls",
+    "version": "0.2.1-1",
+    "last_modified": 1790279481,
+    "first_submitted": 1790196502,
+    "last_checked": "2026-09-24T21:46:28Z"
+  },
+  "rill-torrent": {
+    "commit": "fa3f2d207b72a302bb0b7081aea5db4795d67cca",
+    "maintainer": "sachesi",
+    "version": "0.3.2-1",
+    "last_modified": 1790279380,
+    "first_submitted": 1789751561,
+    "last_checked": "2026-09-24T21:46:30Z"
+  },
+  "openchamber-desktop-appimage": {
+    "commit": "e62c8b7c1e8cf233800801e4649e1e0a86ed792d",
+    "maintainer": "neko_ayaya",
+    "version": "2.0.1-1",
+    "last_modified": 1790279313,
+    "first_submitted": 1785476547,
+    "last_checked": "2026-09-24T21:46:32Z"
+  },
+  "nursearch": {
+    "commit": "d77d01337e799824efaf51faae403399508ef09d",
+    "maintainer": "NurRobin",
+    "version": "0.4.1-1",
+    "last_modified": 1790279160,
+    "first_submitted": 1781654874,
+    "last_checked": "2026-09-24T21:46:33Z"
+  },
+  "stripe-cli-bin": {
+    "commit": "108b96c6f8b6c8bfadd3c89fbc243dde07abdcd8",
+    "maintainer": "AlphaJack",
+    "version": "1.52.0-1",
+    "last_modified": 1790279054,
+    "first_submitted": 1575324511,
+    "last_checked": "2026-09-24T21:46:35Z"
+  },
+  "aseprite": {
+    "commit": "d4089c50e54da6e0a7a0ce4c43f9eedb6bd0e1cf",
+    "maintainer": "ImperatorStorm",
+    "version": "1.3.18.6-1",
+    "last_modified": 1790279007,
+    "first_submitted": 1320169244,
+    "last_checked": "2026-09-24T21:46:36Z"
+  },
+  "kodi-stable-git": {
+    "commit": "58d6ebf64f2c6f82fcdd1b20bc3da2118c2d95e0",
+    "maintainer": "graysky",
+    "version": "r65987.f8815ee40f4-1",
+    "last_modified": 1790278760,
+    "first_submitted": 1707837268,
+    "last_checked": "2026-09-24T21:46:38Z"
+  },
+  "kodi-stable-git-eventclients": {
+    "commit": "58d6ebf64f2c6f82fcdd1b20bc3da2118c2d95e0",
+    "maintainer": "graysky",
+    "version": "r65987.f8815ee40f4-1",
+    "last_modified": 1790278760,
+    "first_submitted": 1707837268,
+    "last_checked": "2026-09-24T21:46:39Z"
+  },
+  "kodi-stable-git-tools-texturepacker": {
+    "commit": "58d6ebf64f2c6f82fcdd1b20bc3da2118c2d95e0",
+    "maintainer": "graysky",
+    "version": "r65987.f8815ee40f4-1",
+    "last_modified": 1790278760,
+    "first_submitted": 1707837268,
+    "last_checked": "2026-09-24T21:46:41Z"
+  },
+  "kodi-stable-git-dev": {
+    "commit": "58d6ebf64f2c6f82fcdd1b20bc3da2118c2d95e0",
+    "maintainer": "graysky",
+    "version": "r65987.f8815ee40f4-1",
+    "last_modified": 1790278760,
+    "first_submitted": 1707837268,
+    "last_checked": "2026-09-24T21:46:42Z"
+  },
+  "linuxtoys-bin": {
+    "commit": "d0c8c7d1c3c7534375a95f55753e643a823f7e14",
+    "maintainer": "psygreg",
+    "version": "7.2.7-1",
+    "last_modified": 1790278688,
+    "first_submitted": 1749259231,
+    "last_checked": "2026-09-24T21:46:44Z"
+  },
+  "typbase": {
+    "commit": "1fab48350a5944f508a5c91cca526520184a00c1",
+    "maintainer": "lemueldls",
+    "version": "0.2.1-1",
+    "last_modified": 1790278682,
+    "first_submitted": 1790198187,
+    "last_checked": "2026-09-24T21:46:45Z"
+  },
+  "akash-bin": {
+    "commit": "12f958ea6a1ccd2ee2241be5f18d09d1d4507c3a",
+    "maintainer": "rnbguy",
+    "version": "2.1.2-1",
+    "last_modified": 1790278545,
+    "first_submitted": 1641668730,
+    "last_checked": "2026-09-24T21:46:47Z"
+  },
+  "infopanel-bin": {
+    "commit": "20d0eec9dafbe28d35dd9ff8978ec97918bcc318",
+    "maintainer": "emaspa",
+    "version": "0.3.7-1",
+    "last_modified": 1790278534,
+    "first_submitted": 1787490615,
+    "last_checked": "2026-09-24T21:46:48Z"
+  },
+  "vcvrack-dbrack-modules": {
+    "commit": "ccc82d688006ca72c324cc95d2c17b5e2d0f186f",
+    "maintainer": "osamc",
+    "version": "2.7.0-1",
+    "last_modified": 1790278488,
+    "first_submitted": 1740751311,
+    "last_checked": "2026-09-24T21:46:50Z"
+  },
+  "sober-bin": {
+    "commit": "3c6e929f700924abbaf5fad92e168a5b65e31609",
+    "maintainer": "marmai",
+    "version": "2026.09.5-1",
+    "last_modified": 1790278248,
+    "first_submitted": 1780499010,
+    "last_checked": "2026-09-24T21:46:51Z"
+  },
+  "kendex-bin": {
+    "commit": "941f14e663678461e8a2fe8f964db4ccd8a197fc",
+    "maintainer": "vanillagreen",
+    "version": "1:1.0.0-2",
+    "last_modified": 1790278244,
+    "first_submitted": 1787201400,
+    "last_checked": "2026-09-24T21:46:53Z"
+  },
+  "gitilante": {
+    "commit": "e94abfb745e06fd2fad12f0d1e76f97c4f88c072",
+    "maintainer": "rutilante",
+    "version": "0.8.0-1",
+    "last_modified": 1790277941,
+    "first_submitted": 1790152409,
+    "last_checked": "2026-09-24T21:46:54Z"
+  },
+  "azerothcore-wotlk-git": {
+    "commit": "776daa99039f9899c3bdea61d0cb425b28cafb80",
+    "maintainer": "mrbass21",
+    "version": "r19657.9c1bbfafec-1",
+    "last_modified": 1790277921,
+    "first_submitted": 1785193343,
+    "last_checked": "2026-09-24T21:46:56Z"
+  },
+  "ai-usagebar-bin": {
+    "commit": "6c779e59fbcab34cfae981af495c8c8b34146711",
+    "maintainer": "akitaonrails",
+    "version": "1.23.0-1",
+    "last_modified": 1790277896,
+    "first_submitted": 1779589523,
+    "last_checked": "2026-09-24T21:46:57Z"
+  },
+  "ai-usagebar": {
+    "commit": "71c2d2103b91cd4da96dc4233fbb5b8036b20031",
+    "maintainer": "akitaonrails",
+    "version": "1.23.0-1",
+    "last_modified": 1790277879,
+    "first_submitted": 1779588905,
+    "last_checked": "2026-09-24T21:46:59Z"
+  },
+  "kaeru-mcp": {
+    "commit": "99e8accf39be536614957853d0d541f4b2ba2cc2",
+    "maintainer": "Lis314",
+    "version": "0.7.4-1",
+    "last_modified": 1790277873,
+    "first_submitted": 1782985989,
+    "last_checked": "2026-09-24T21:47:00Z"
+  },
+  "tuna.am-bin": {
+    "commit": "8c40fbee6bfe14fcb12a3763647660ead10b88e6",
+    "maintainer": "jidckii",
+    "version": "0.35.1-1",
+    "last_modified": 1790277811,
+    "first_submitted": 1736955672,
+    "last_checked": "2026-09-24T21:47:02Z"
+  },
+  "firefox-nightly-i18n-zh-tw": {
+    "commit": "8207fefe5181665734c07898e59809b8bb9fd855",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277798,
+    "first_submitted": 1727808893,
+    "last_checked": "2026-09-24T21:47:03Z"
+  },
+  "firefox-nightly-i18n-zh-cn": {
+    "commit": "1be6ee916b027cd974c875f3d27752e741fca0ba",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277778,
+    "first_submitted": 1727808877,
+    "last_checked": "2026-09-24T21:47:05Z"
+  },
+  "gitilante-bin": {
+    "commit": "c6ad80f754ba038669891123de21df613273ae8b",
+    "maintainer": "rutilante",
+    "version": "0.8.0-1",
+    "last_modified": 1790277765,
+    "first_submitted": 1790190275,
+    "last_checked": "2026-09-24T21:47:06Z"
+  },
+  "openrct2-appimage": {
+    "commit": "f6d30aa941e4b6ed425fabb2c18464ab871c1e40",
+    "maintainer": "corysanin",
+    "version": "0.5.5.111-1",
+    "last_modified": 1790277762,
+    "first_submitted": 1737009955,
+    "last_checked": "2026-09-24T21:47:08Z"
+  },
+  "firefox-nightly-i18n-xh": {
+    "commit": "468fb39b13a48d5cd73b4a1386ead24a1d985cde",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277758,
+    "first_submitted": 1727807003,
+    "last_checked": "2026-09-24T21:47:09Z"
+  },
+  "firefox-nightly-i18n-vi": {
+    "commit": "e6bcc6e51128a8cd9d9da4d1da7434eff18c7b63",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277754,
+    "first_submitted": 1727806988,
+    "last_checked": "2026-09-24T21:47:11Z"
+  },
+  "kangentic-bin": {
+    "commit": "55148a60763724d7df7ce4f602f6a479354ad537",
+    "maintainer": "sophyphreak",
+    "version": "0.43.1-1",
+    "last_modified": 1790277747,
+    "first_submitted": 1777823247,
+    "last_checked": "2026-09-24T21:47:12Z"
+  },
+  "firefox-nightly-i18n-uz": {
+    "commit": "3c8824b55c4137fb06aff465f2bd4c9299036128",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277735,
+    "first_submitted": 1727806973,
+    "last_checked": "2026-09-24T21:47:14Z"
+  },
+  "firefox-nightly-i18n-ur": {
+    "commit": "b40da173aedd862c2979f26d0275635dc74e3fbb",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277717,
+    "first_submitted": 1727806958,
+    "last_checked": "2026-09-24T21:47:15Z"
+  },
+  "firefox-nightly-i18n-uk": {
+    "commit": "995a0cbc3776aeceee0d72f11a9791d5220b69d7",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277705,
+    "first_submitted": 1727806941,
+    "last_checked": "2026-09-24T21:47:17Z"
+  },
+  "firefox-nightly-i18n-trs": {
+    "commit": "34670a6c5fcf8b20d508105bfdcc888b17348e00",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277688,
+    "first_submitted": 1727806925,
+    "last_checked": "2026-09-24T21:47:18Z"
+  },
+  "firefox-nightly-i18n-tr": {
+    "commit": "fb110c1672a105feac871829f5bf1927886b5b28",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277660,
+    "first_submitted": 1727806909,
+    "last_checked": "2026-09-24T21:47:20Z"
+  },
+  "firefox-nightly-i18n-tl": {
+    "commit": "d5bf061296e1c07be056a64524b527e430454929",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277659,
+    "first_submitted": 1727806893,
+    "last_checked": "2026-09-24T21:47:22Z"
+  },
+  "firefox-nightly-i18n-th": {
+    "commit": "33d41f214f8a92d558512a976a386473404ba90b",
+    "maintainer": "Sving1024",
+    "version": "158.0a1.20260924.093433-1",
+    "last_modified": 1790277636,
+    "first_submitted": 1727806877,
+    "last_checked": "2026-09-24T21:47:23Z"
+  }
+}
