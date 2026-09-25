@@ -41,7 +41,7 @@ jobs:
           egress-policy: audit
 
       - name: Checkout repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
 
       - name: Resolve target package name
         id: pkg
@@ -75,7 +75,7 @@ jobs:
 
       - name: Upload raw sandbox evidence
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: dynamic-sandbox-evidence-${{ steps.pkg.outputs.name }}
           path: sandbox-evidence/${{ steps.pkg.outputs.name }}/
@@ -84,7 +84,7 @@ jobs:
 
       - name: Install cosign
         if: always()
-        uses: sigstore/cosign-installer@v3
+        uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac # v3
 
       - name: Sign attestation(s) with cosign (keyless via GitHub OIDC)
         if: always()
