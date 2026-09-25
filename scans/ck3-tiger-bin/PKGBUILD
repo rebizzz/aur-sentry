@@ -1,0 +1,27 @@
+# Maintainer: Relish0171 <aur.such581@aleeas.com>
+_basename=ck3-tiger
+pkgname=${_basename}-bin
+pkgver=1.19.0
+pkgrel=2
+pkgdesc="Checks game mod files for common mistakes and warns about them."
+arch=('x86_64')
+url="https://github.com/amtep/tiger"
+license=('GPL-3.0-or-later')
+depends=('glibc' 'libgcc' 'openssl')
+source=("https://github.com/amtep/tiger/releases/download/v${pkgver}/${_basename}-linux-v${pkgver}.tar.gz")
+sha256sums=('6d72d276c2b2a953f63221ff8050d1276a085b5a2ffe74977675fdf6e17e9ff3')
+
+package() {
+    cd "${srcdir}/${_basename}-linux-v${pkgver}"
+
+    install -Dm755 "${_basename}" "${pkgdir}/usr/bin/${_basename}"
+    install -Dm755 "${_basename}-auto" "${pkgdir}/usr/bin/${_basename}-auto"
+
+    install -Dm644 "${_basename}.conf" "${pkgdir}/usr/share/${pkgname}/${_basename}.conf.example"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+    install -Dm644 CONTRIBUTORS.md "${pkgdir}/usr/share/doc/${pkgname}/CONTRIBUTORS.md"
+    install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+    install -Dm644 TODO.md "${pkgdir}/usr/share/doc/${pkgname}/TODO.md"
+    install -Dm644 filter.md "${pkgdir}/usr/share/doc/${pkgname}/filter.md"
+}
