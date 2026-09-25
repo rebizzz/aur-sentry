@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cleverswitch",
+    "version": "1.5.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "67628ba3af434f0098f0544b67f4c6b3d1a791d6",
+    "pkgbuild_sha256": "18f35b833b637aab34b72816fb5b2b30c33c0e4399d4329032cd7761c25f2c56",
+    "install_sha256": "fd1eabe4962d5c8c299c200a3d101acb4ab63ac7c753bff5cabd7b2d33b01f5c"
+  },
+  "analyzed_at": "2026-09-25T00:17:09.429727718+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "BUILD_FAILED",
+  "evidence_hash": "a979ebb0e04fa98257ddc11ea77df4f05db92a007dc7f8fb8da91155088b877f",
+  "signature": null
+}
