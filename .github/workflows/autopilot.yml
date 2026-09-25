@@ -52,9 +52,22 @@ jobs:
       - name: Run Autopilot AUR scanner across metadata dump
         run: ./target/release/aur-sentry autopilot --repo-root . --window-hours 4 --limit 500
 
+      - name: Generate GitHub App token for aur-sentry bot
+        id: app-token
+        env:
+          APP_ID: ${{ secrets.BOT_APP_ID }}
+          PRIVATE_KEY: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+        if: env.APP_ID != '' && env.PRIVATE_KEY != ''
+        uses: actions/create-github-app-token@c1a8d1f2e810749e701a979f648dce0832b85e17 # v3.2.0
+        with:
+          app-id: ${{ secrets.BOT_APP_ID }}
+          private-key: ${{ secrets.BOT_APP_PRIVATE_KEY }}
+
       - name: Triage scheduler — open scan PRs for new/changed/high-risk packages
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.GITHUB_TOKEN }}
+          BOT_NAME: ${{ steps.app-token.outputs.app-slug && format('{0}[bot]', steps.app-token.outputs.app-slug) || 'aur-sentry[bot]' }}
+          BOT_EMAIL: ${{ steps.app-token.outputs.app-slug && format('{0}+{1}[bot]@users.noreply.github.com', secrets.BOT_APP_ID, steps.app-token.outputs.app-slug) || 'aur-sentry[bot]@users.noreply.github.com' }}
         run: |
           chmod +x scripts/triage_dispatch.sh
           # Cap kept deliberately small (20) so a single 2-hourly autopilot run
@@ -65,10 +78,12 @@ jobs:
 
       - name: Create Pull Request for Threat Radar & Feeds
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.GITHUB_TOKEN }}
+          BOT_NAME: ${{ steps.app-token.outputs.app-slug && format('{0}[bot]', steps.app-token.outputs.app-slug) || 'aur-sentry[bot]' }}
+          BOT_EMAIL: ${{ steps.app-token.outputs.app-slug && format('{0}+{1}[bot]@users.noreply.github.com', secrets.BOT_APP_ID, steps.app-token.outputs.app-slug) || 'aur-sentry[bot]@users.noreply.github.com' }}
         run: |
-          git config --global user.name "aur-sentry-bot"
-          git config --global user.email "bot@users.noreply.github.com"
+          git config --global user.name "$BOT_NAME"
+          git config --global user.email "$BOT_EMAIL"
 
           if ! git diff --quiet ADVISORIES.md README.md advisories.json advisories.xml data/aur-state.json; then
             echo "Threat radar, machine feeds, or triage state have updates. Creating/updating PR..."

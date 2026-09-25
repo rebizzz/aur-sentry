@@ -115,8 +115,10 @@ jq -n \
   "${REASONS[@]}" > "$DEST/request.json"
 
 git -C "$WORKTREE" add -- "scans/$PKG"
+BOT_NAME="${BOT_NAME:-aur-sentry[bot]}"
+BOT_EMAIL="${BOT_EMAIL:-aur-sentry[bot]@users.noreply.github.com}"
 git -C "$WORKTREE" \
-  -c user.name="aur-sentry-bot" -c user.email="bot@users.noreply.github.com" \
+  -c user.name="$BOT_NAME" -c user.email="$BOT_EMAIL" \
   commit --quiet --no-verify -m "scan: ${PKG} @ ${SHA7}" -m "AUR commit ${SHA}. Reasons: ${REASONS_TEXT}"
 
 # ── 4. Push + PR ────────────────────────────────────────────────────────

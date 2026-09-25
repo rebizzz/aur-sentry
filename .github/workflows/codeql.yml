@@ -3,8 +3,22 @@ name: "CodeQL Analysis"
 on:
   push:
     branches: [ "main" ]
+    paths-ignore:
+      - 'scans/**'
+      - 'data/**'
+      - 'advisories.json'
+      - 'advisories.xml'
+      - 'ADVISORIES.md'
+      - 'README.md'
   pull_request:
     branches: [ "main" ]
+    paths-ignore:
+      - 'scans/**'
+      - 'data/**'
+      - 'advisories.json'
+      - 'advisories.xml'
+      - 'ADVISORIES.md'
+      - 'README.md'
   schedule:
     - cron: '0 4 * * 1'
   workflow_dispatch:
@@ -15,6 +29,7 @@ permissions:
 jobs:
   analyze:
     name: CodeQL Security Scan (${{ matrix.language }})
+    if: "!startsWith(github.head_ref, 'scan/')"
     runs-on: ubuntu-latest
     permissions:
       actions: read

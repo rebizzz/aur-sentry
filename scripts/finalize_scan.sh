@@ -265,8 +265,8 @@ cmd_commit() {
   local verdict version attempt
   verdict="$(jq -r '.verdict' "$RESULT")"
   version="$(jq -r '.version' "$RESULT")"
-  git config user.name "aur-sentry-bot"
-  git config user.email "bot@users.noreply.github.com"
+  git config user.name "${BOT_NAME:-aur-sentry[bot]}"
+  git config user.email "${BOT_EMAIL:-aur-sentry[bot]@users.noreply.github.com}"
 
   for attempt in 1 2 3 4 5; do
     git fetch --quiet origin main
@@ -328,10 +328,11 @@ cmd_report() {
     || echo "::warning::could not set commit status"
 
   local body="$STAGE/comment.md"
+  local avatar_img="<img src=\"https://raw.githubusercontent.com/$REPO/main/assets/avatar.jpg\" width=\"28\" height=\"28\" style=\"vertical-align: middle; border-radius: 50%;\" alt=\"AUR Sentry\" />"
   if [ "$attested" = true ]; then
     local att="$STAGE/attestation/$file_ver.json"
     {
-      echo "## AUR-Sentry scan: \`$PKG\` — **$verdict**"
+      echo "## $avatar_img AUR-Sentry scan: \`$PKG\` — **$verdict**"
       echo
       jq -r --arg url "$REGISTRY_URL" '
         "| | |", "|---|---|",
@@ -356,7 +357,7 @@ cmd_report() {
     } > "$body"
   else
     {
-      echo "## AUR-Sentry scan: \`$PKG\` — **ANALYSIS_FAILED**"
+      echo "## $avatar_img AUR-Sentry scan: \`$PKG\` — **ANALYSIS_FAILED**"
       echo
       echo "The sandbox job finished with \`${SANDBOX_RESULT:-unknown}\` and produced no usable evidence, so no attestation was committed. The package will be re-triaged on a later autopilot cycle."
     } > "$body"

@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/avatar.jpg" width="140" height="140" alt="AUR Sentry Logo" style="border-radius: 50%;" />
+</p>
+
 # aur-sentry
 
 Automated supply-chain malware watchdog and threat radar for the Arch User Repository (AUR). Written in Rust, running on 100% autopilot via GitHub Actions.

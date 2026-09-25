@@ -3,8 +3,22 @@ name: Dynamic Package Audit
 on:
   push:
     branches: [ main ]
+    paths-ignore:
+      - 'scans/**'
+      - 'data/**'
+      - 'advisories.json'
+      - 'advisories.xml'
+      - 'ADVISORIES.md'
+      - 'README.md'
   pull_request:
     branches: [ main ]
+    paths-ignore:
+      - 'scans/**'
+      - 'data/**'
+      - 'advisories.json'
+      - 'advisories.xml'
+      - 'ADVISORIES.md'
+      - 'README.md'
   workflow_dispatch:
 
 permissions:
@@ -13,6 +27,7 @@ permissions:
 jobs:
   dynamic-arch-audit:
     name: Dynamic Arch Linux & namcap Verification
+    if: "!startsWith(github.head_ref, 'scan/')"
     runs-on: ubuntu-latest
     steps:
       - name: Harden Runner (Dynamic Egress & Security Audit)
