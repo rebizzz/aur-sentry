@@ -390,7 +390,11 @@ fn parse_external_intelligence(path: Option<&Path>) -> Vec<IntelligenceEntry> {
 fn sha256_hex(bytes: &[u8]) -> String {
     let mut hasher = Sha256::new();
     hasher.update(bytes);
-    format!("{:x}", hasher.finalize())
+    hasher
+        .finalize()
+        .iter()
+        .map(|b| format!("{b:02x}"))
+        .collect()
 }
 
 /// Everything `build_attestation` needs — mirrors the flags `aur-sentry
