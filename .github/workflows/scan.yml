@@ -189,7 +189,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token || github.token }}
           BOT_NAME: ${{ steps.app-token.outputs.app-slug && format('{0}[bot]', steps.app-token.outputs.app-slug) || 'aur-sentry[bot]' }}
-          BOT_EMAIL: ${{ steps.app-token.outputs.app-slug && format('{0}+{1}[bot]@users.noreply.github.com', secrets.BOT_APP_ID, steps.app-token.outputs.app-slug) || 'aur-sentry[bot]@users.noreply.github.com' }}
+          BOT_EMAIL: ${{ steps.app-token.outputs.app-slug && format('333591084+{0}[bot]@users.noreply.github.com', steps.app-token.outputs.app-slug) || '333591084+aur-sentry[bot]@users.noreply.github.com' }}
         run: bash scripts/finalize_scan.sh commit
 
       - name: Report on scan PR (status, comment, close)

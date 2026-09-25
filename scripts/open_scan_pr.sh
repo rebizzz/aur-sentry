@@ -116,7 +116,7 @@ jq -n \
 
 git -C "$WORKTREE" add -- "scans/$PKG"
 BOT_NAME="${BOT_NAME:-aur-sentry[bot]}"
-BOT_EMAIL="${BOT_EMAIL:-aur-sentry[bot]@users.noreply.github.com}"
+BOT_EMAIL="${BOT_EMAIL:-333591084+aur-sentry[bot]@users.noreply.github.com}"
 git -C "$WORKTREE" \
   -c user.name="$BOT_NAME" -c user.email="$BOT_EMAIL" \
   commit --quiet --no-verify -m "scan: ${PKG} @ ${SHA7}" -m "AUR commit ${SHA}. Reasons: ${REASONS_TEXT}"

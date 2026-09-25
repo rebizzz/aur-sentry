@@ -266,7 +266,7 @@ cmd_commit() {
   verdict="$(jq -r '.verdict' "$RESULT")"
   version="$(jq -r '.version' "$RESULT")"
   git config user.name "${BOT_NAME:-aur-sentry[bot]}"
-  git config user.email "${BOT_EMAIL:-aur-sentry[bot]@users.noreply.github.com}"
+  git config user.email "${BOT_EMAIL:-333591084+aur-sentry[bot]@users.noreply.github.com}"
 
   for attempt in 1 2 3 4 5; do
     git fetch --quiet origin main

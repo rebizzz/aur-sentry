@@ -67,7 +67,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.GITHUB_TOKEN }}
           BOT_NAME: ${{ steps.app-token.outputs.app-slug && format('{0}[bot]', steps.app-token.outputs.app-slug) || 'aur-sentry[bot]' }}
-          BOT_EMAIL: ${{ steps.app-token.outputs.app-slug && format('{0}+{1}[bot]@users.noreply.github.com', secrets.BOT_APP_ID, steps.app-token.outputs.app-slug) || 'aur-sentry[bot]@users.noreply.github.com' }}
+          BOT_EMAIL: ${{ steps.app-token.outputs.app-slug && format('333591084+{0}[bot]@users.noreply.github.com', steps.app-token.outputs.app-slug) || '333591084+aur-sentry[bot]@users.noreply.github.com' }}
         run: |
           chmod +x scripts/triage_dispatch.sh
           # Cap kept deliberately small (20) so a single 2-hourly autopilot run
@@ -80,7 +80,7 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token || secrets.GITHUB_TOKEN }}
           BOT_NAME: ${{ steps.app-token.outputs.app-slug && format('{0}[bot]', steps.app-token.outputs.app-slug) || 'aur-sentry[bot]' }}
-          BOT_EMAIL: ${{ steps.app-token.outputs.app-slug && format('{0}+{1}[bot]@users.noreply.github.com', secrets.BOT_APP_ID, steps.app-token.outputs.app-slug) || 'aur-sentry[bot]@users.noreply.github.com' }}
+          BOT_EMAIL: ${{ steps.app-token.outputs.app-slug && format('333591084+{0}[bot]@users.noreply.github.com', steps.app-token.outputs.app-slug) || '333591084+aur-sentry[bot]@users.noreply.github.com' }}
         run: |
           git config --global user.name "$BOT_NAME"
           git config --global user.email "$BOT_EMAIL"
