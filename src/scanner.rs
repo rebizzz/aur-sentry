@@ -24,9 +24,64 @@ static VAR_RE: LazyLock<Regex> =
 static LONG_B64_RE: LazyLock<Regex> =
     LazyLock::new(|| Regex::new(r#"['"]([A-Za-z0-9+/=]{60,})['"]"#).unwrap());
 
-static POPULAR_PACKAGES: LazyLock<Vec<String>> = LazyLock::new(|| {
-    serde_json::from_str(include_str!("../data/popular_packages.json")).unwrap_or_default()
-});
+pub const POPULAR_PACKAGES: &[&str] = &[
+    "google-chrome",
+    "visual-studio-code-bin",
+    "spotify",
+    "discord",
+    "paru",
+    "paru-bin",
+    "yay",
+    "yay-bin",
+    "slack-desktop",
+    "zoom",
+    "postman-bin",
+    "notion-app",
+    "brave-bin",
+    "1password",
+    "bitwarden-bin",
+    "anydesk-bin",
+    "teamviewer",
+    "insomnia",
+    "sublime-text-4",
+    "sublime-merge",
+    "docker-desktop",
+    "steam-native",
+    "protonup-qt",
+    "heroic-games-launcher-bin",
+    "obs-studio-tytan652",
+    "lutris-git",
+    "bottles",
+    "dropbox",
+    "signal-desktop-beta-bin",
+    "telegram-desktop-bin",
+    "betterdiscord-installer-bin",
+    "vencord-installer-bin",
+    "zen-browser-bin",
+    "thorium-browser-bin",
+    "floorp-bin",
+    "librewolf-bin",
+    "vesktop-bin",
+    "spicetify-cli",
+    "hyprland-git",
+    "waybar-hyprland",
+    "swww",
+    "rofi-wayland",
+    "wofi",
+    "kitty-git",
+    "foot-git",
+    "alacritty-git",
+    "nerd-fonts-complete",
+    "ttf-ms-fonts",
+    "ttf-jetbrains-mono-nerd",
+    "auto-cpufreq",
+    "tlp",
+    "ananicy-cpp",
+    "downgrade",
+    "debtap",
+    "pamac-aur",
+    "bauh",
+];
 
 #[derive(Serialize)]
 pub struct Rule {
@@ -391,10 +446,10 @@ pub struct PKGBUILDScanner {
 
 impl PKGBUILDScanner {
     pub fn new() -> Self {
-        Self::with_popular_packages(&POPULAR_PACKAGES)
+        Self::with_popular_packages(POPULAR_PACKAGES)
     }
 
-    fn with_popular_packages(popular_packages: &[String]) -> Self {
+    fn with_popular_packages(popular_packages: &[&str]) -> Self {
         let rules = RULES
             .iter()
             .filter_map(|rule| {
@@ -406,10 +461,10 @@ impl PKGBUILDScanner {
         let clean = |s: &str| s.to_lowercase().replace("-bin", "").replace("-git", "");
         Self {
             rules,
-            popular_set: popular_packages.iter().cloned().collect(),
+            popular_set: popular_packages.iter().map(|&s| s.to_string()).collect(),
             popular_cleaned: popular_packages
                 .iter()
-                .map(|p| (p.clone(), clean(p)))
+                .map(|&p| (p.to_string(), clean(p)))
                 .collect(),
         }
     }
@@ -680,11 +735,11 @@ mod tests {
 
     fn test_scanner() -> PKGBUILDScanner {
         PKGBUILDScanner::with_popular_packages(&[
-            "google-chrome".into(),
-            "visual-studio-code-bin".into(),
-            "spotify".into(),
-            "discord".into(),
-            "paru".into(),
+            "google-chrome",
+            "visual-studio-code-bin",
+            "spotify",
+            "discord",
+            "paru",
         ])
     }
 
@@ -764,7 +819,7 @@ mod tests {
 
     #[test]
     fn embedded_popular_packages_list_is_loaded() {
-        assert!(POPULAR_PACKAGES.iter().any(|p| p == "google-chrome"));
+        assert!(POPULAR_PACKAGES.iter().any(|&p| p == "google-chrome"));
         let s = PKGBUILDScanner::new();
         assert!(
             s.scan("pkgname=goolge-chrome\n", Some("goolge-chrome"))
