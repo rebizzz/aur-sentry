@@ -1,0 +1,393 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "alma-desktop-bin",
+    "version": "0.4.146-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "2d968f654af0066c3d3a07170b5c8d5454704ce6",
+    "pkgbuild_sha256": "561ab03e5fa63a3cb8619d1e4d91b95631e4970e6b50d2b148eb262803d84c2b",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T19:02:08.642940152+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:02:08.600990415+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:02:08.600990415+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:02:08.600990415+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:02:08.612042769+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.3.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:02:08.612042769+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1922,
+    "elf_object_count": 51,
+    "elf_objects": [
+      {
+        "path": "opt/Alma/chrome_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/libffmpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/alma",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/rtk/rtk",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/lark-cli/lark-cli",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/Alma/resources/uv/uv",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/bun/bun",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/bufferutil/prebuilds/linux-x64/bufferutil.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@esbuild/linux-x64/bin/esbuild",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@napi-rs/canvas-linux-x64-musl/skia.linux-x64-musl.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@napi-rs/canvas-linux-x64-gnu/skia.linux-x64-gnu.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/node-pty/build/Release/pty.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/node-pty/bin/linux-x64-139/node-pty.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/esbuild/bin/esbuild",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@fugood/node-whisper-linux-x64-cuda/index.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@fugood/node-whisper-linux-x64-vulkan/index.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@fugood/node-whisper-linux-x64/index.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/sqlite-vec-linux-x64/vec0.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@img/sharp-linuxmusl-x64/lib/sharp-linuxmusl-x64.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@img/sharp-linux-x64/lib/sharp-linux-x64.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@anthropic-ai/sandbox-runtime/dist/vendor/seccomp/x64/apply-seccomp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@anthropic-ai/sandbox-runtime/dist/vendor/seccomp/arm64/apply-seccomp",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@anthropic-ai/sandbox-runtime/vendor/seccomp/x64/apply-seccomp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/@anthropic-ai/sandbox-runtime/vendor/seccomp/arm64/apply-seccomp",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/better-sqlite3/build/Release/test_extension.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/better-sqlite3/build/Release/better_sqlite3.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/better-sqlite3/bin/linux-x64-139/better-sqlite3.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/sherpa-onnx-linux-x64/libsherpa-onnx-c-api.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/sherpa-onnx-linux-x64/libsherpa-onnx-cxx-api.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/sherpa-onnx-linux-x64/libonnxruntime.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/sherpa-onnx-linux-x64/sherpa-onnx.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/utf-8-validate/prebuilds/linux-x64/utf-8-validate.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/utf-8-validate/prebuilds/linux-x64/utf-8-validate.musl.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/jazz-midi/bin/10_15/linux64/jazz.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/jazz-midi/bin/10_15/linuxa7/jazz.node",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/jazz-midi/bin/linux64/jazz.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/jazz-midi/bin/linuxa7/jazz.node",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/jazz-midi/bin/11_15/linux64/jazz.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/jazz-midi/bin/11_15/linuxa7/jazz.node",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/x64/libonnxruntime_providers_shared.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/x64/libonnxruntime.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/x64/onnxruntime_binding.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/x64/libonnxruntime.so.1.21.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/arm64/libonnxruntime.so.1",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/arm64/onnxruntime_binding.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/resources/app.asar.unpacked/node_modules/onnxruntime-node/bin/napi-v3/linux/arm64/libonnxruntime.so.1.21.0",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Alma/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "552e370c161e8a36672c1aead039eb8c0839e605e9575e168b6f84bda9aa4c9b",
+  "signature": null
+}
