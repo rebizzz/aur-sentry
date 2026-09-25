@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "badfish",
+    "version": "1.8.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "aa1383d610bc8026f9de12555abf720623b3d000",
+    "pkgbuild_sha256": "6d95763cfde2cee8dc6f07d2df6845f5787c0f3d186ace9a28c063a3b21751a6",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T18:57:35.833026829+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T18:57:35.826275314+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-25T18:57:35.826275314+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T18:57:35.826275314+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "9752ae06974e491aac8a56b762f3961bc2434b5f1bea464b5adfe16d576352ce",
+  "signature": null
+}
