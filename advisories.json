@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-25T01:49:59+00:00",
+  "updated_at": "2026-09-25T02:25:21+00:00",
   "total_flagged": 17,
   "advisories": [
     {
@@ -158,6 +158,23 @@
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
     },
     {
+      "package": "cleverswitch",
+      "version": "1.5.0-1",
+      "maintainer": "mbarysevich",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T02:25:21+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 5a9ad140ad79657d)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/cleverswitch"
+    },
+    {
       "package": "cloudflared-bin",
       "version": "2026.9.3-1",
       "maintainer": "imlonghao",
@@ -216,23 +233,6 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/aacs-keydb-daily"
-    },
-    {
-      "package": "cleverswitch",
-      "version": "1.5.0-1",
-      "maintainer": "mbarysevich",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T01:34:43+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash ba9141f018d07dd3)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/cleverswitch"
     },
     {
       "package": "coolerdash-git",

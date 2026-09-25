@@ -10,7 +10,7 @@
     "pkgbuild_sha256": "18f35b833b637aab34b72816fb5b2b30c33c0e4399d4329032cd7761c25f2c56",
     "install_sha256": "fd1eabe4962d5c8c299c200a3d101acb4ab63ac7c753bff5cabd7b2d33b01f5c"
   },
-  "analyzed_at": "2026-09-25T01:34:41.617279852+00:00",
+  "analyzed_at": "2026-09-25T02:25:19.015360667+00:00",
   "scanner_version": "aur-sentry/0.1.0",
   "static_findings": [
     {
@@ -29,21 +29,21 @@
         "destination": "172.17.0.1",
         "port": 53,
         "protocol": "undeclared",
-        "timestamp": "2026-09-25T01:34:41.610578270+00:00",
+        "timestamp": "2026-09-25T02:25:19.008561215+00:00",
         "phase": "build"
       },
       {
-        "destination": "140.82.114.3",
+        "destination": "140.82.113.4",
         "port": 443,
         "protocol": "undeclared",
-        "timestamp": "2026-09-25T01:34:41.610578270+00:00",
+        "timestamp": "2026-09-25T02:25:19.008561215+00:00",
         "phase": "build"
       },
       {
-        "destination": "140.82.113.10",
+        "destination": "140.82.114.10",
         "port": 443,
         "protocol": "undeclared",
-        "timestamp": "2026-09-25T01:34:41.610578270+00:00",
+        "timestamp": "2026-09-25T02:25:19.008561215+00:00",
         "phase": "build"
       }
     ],
@@ -60,6 +60,6 @@
   "reproducibility": "UNSUPPORTED",
   "external_intelligence": [],
   "verdict": "SUSPICIOUS",
-  "evidence_hash": "ba9141f018d07dd300568650536f8b3a5aa3b019d9818f71c0b96e9765894c85",
+  "evidence_hash": "5a9ad140ad79657de65624f822511b2089fd3ae1ad502a762fb47b56e7718657",
   "signature": null
 }
