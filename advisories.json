@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-25T02:25:21+00:00",
-  "total_flagged": 17,
+  "updated_at": "2026-09-25T08:08:53+00:00",
+  "total_flagged": 18,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -156,6 +156,24 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "aura-emerge",
+      "version": "2.11.0-1",
+      "maintainer": "Deltacat",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:08:53+00:00",
+      "findings": [
+        {
+          "rule_id": "PKG_INSTALL_FILE_REF",
+          "severity": "INFO",
+          "description": "references external .install scriptlet",
+          "line_number": 16,
+          "matched_text": "install=aura-emerge.install",
+          "behavior": "PACKAGE_INSTALLATION"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/aura-emerge"
     },
     {
       "package": "cleverswitch",
