@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "arduino-flasher-cli",
+    "version": "0.5.4-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "316a21f5311623254ca7a68bf1b214e14ac1c070",
+    "pkgbuild_sha256": "3bc3addd0ca40cf2c40049a2d83c1ddd581acb5d15dfd743b797ccfda87d40cc",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T14:08:34.090161066+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:08:34.079616672+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:08:34.079616672+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:08:34.079616672+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "a41e731148fc17942daab3afabf0e9c24d38acb555ed75811e986572cab7533f",
+  "signature": null
+}
