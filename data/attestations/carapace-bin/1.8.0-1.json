@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "carapace-bin",
+    "version": "1.8.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e654386077c24102c4f75e6ad68e15d293d3d190",
+    "pkgbuild_sha256": "f6bc03bec63537557f41e6a6af3b7c6508101ee726afa6a05f7059c30a4a95b7",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T23:37:39.354460797+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:37:39.341948112+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:37:39.341948112+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:37:39.341948112+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/carapace",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c55d9a645834342598f4c7a5bbef846e8c7c26b4a9fe5f50d7f600a10e1162c8",
+  "signature": null
+}
