@@ -1,0 +1,22 @@
+pkgbase = cljfmt-bin
+	pkgdesc = A formatter for Clojure code
+	pkgver = 0.16.6
+	pkgrel = 1
+	url = https://github.com/weavejester/cljfmt
+	arch = x86_64
+	arch = aarch64
+	license = EPL-1.0
+	depends = glibc
+	depends = zlib
+	provides = cljfmt
+	conflicts = cljfmt
+	source = README-0.16.6.md::https://raw.githubusercontent.com/weavejester/cljfmt/0.16.6/README.md
+	source = LICENSE-0.16.6::https://raw.githubusercontent.com/weavejester/cljfmt/0.16.6/LICENSE.txt
+	sha256sums = d3e04c66d91d4b2213f20ba37d9ee71a573ebc8614c42625e6b50f3fe5a0b1b0
+	sha256sums = ba4c1321665d624f1739b1e739b8688064a13526662c054602a787d5ab0a8d5a
+	source_x86_64 = cljfmt-x86_64-0.16.6.tgz::https://github.com/weavejester/cljfmt/releases/download/0.16.6/cljfmt-0.16.6-linux-amd64.tar.gz
+	sha256sums_x86_64 = 39db2aaa1eacdbae6a555d29df9b499727717c9e000c12403d70c5d8b3f34237
+	source_aarch64 = cljfmt-aarch64-0.16.6.tgz::https://github.com/weavejester/cljfmt/releases/download/0.16.6/cljfmt-0.16.6-linux-aarch64.tar.gz
+	sha256sums_aarch64 = ecda99b7270daa649ef0bfc01f15e73201e87917940642fde132ce8fc589bace
+
+pkgname = cljfmt-bin

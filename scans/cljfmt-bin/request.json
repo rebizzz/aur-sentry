@@ -1,0 +1,8 @@
+{
+  "package": "cljfmt-bin",
+  "aur_commit": "b965c6f5a8e8eab8e134ac1a1e2597bcd90df2a2",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-25T01:42:47Z"
+}
