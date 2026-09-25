@@ -1,0 +1,27 @@
+pkgbase = cottage-bin
+	pkgdesc = A modern git based age-encrypted secrets manager for teams
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/sayanarijit/cottage
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = ctg
+	provides = ctgx
+	conflicts = cottage
+	options = !strip
+	source = README-0.7.3.md::https://raw.githubusercontent.com/sayanarijit/cottage/v0.7.3/README.md
+	source = LICENSE-0.7.3-MIT::https://raw.githubusercontent.com/sayanarijit/cottage/v0.7.3/LICENSE-MIT
+	source = LICENSE-0.7.3-APACHE::https://raw.githubusercontent.com/sayanarijit/cottage/v0.7.3/LICENSE-APACHE
+	sha256sums = 5919243f820589d17aca1f5accc9dd4ef53f4ba1c156e7c3cf0fb49c0e2bebe0
+	sha256sums = f23c6fdb2a5fb41913a9509586ac4c350ffc5f804183c0fae4bacba60b5a8ad1
+	sha256sums = 0d8ae3957a7b90ee4ecec8e790da237d70a500abf6b0b1ac08d4d85e964f1b76
+	source_x86_64 = cottage-x86_64-0.7.3.tgz::https://github.com/sayanarijit/cottage/releases/download/v0.7.3/cottage-x86_64-unknown-linux-gnu-v0.7.3.tar.gz
+	sha256sums_x86_64 = 07fa28408ddce741d10f25e46b65d1c1d4a97bff8e1295608c8b9603212fecd0
+	source_aarch64 = cottage-aarch64-0.7.3.tgz::https://github.com/sayanarijit/cottage/releases/download/v0.7.3/cottage-aarch64-unknown-linux-gnu-v0.7.3.tar.gz
+	sha256sums_aarch64 = 1b34b70f5d7142c77520638ec43b1dd29455283f39a0d719c1f301a2aecaaac6
+
+pkgname = cottage-bin
