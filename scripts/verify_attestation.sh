@@ -2,14 +2,20 @@
 # scripts/verify_attestation.sh
 #
 # Independently verifies a published AUR-Sentry attestation's Sigstore
-# signature. Attestations are signed keylessly by the dynamic-sandbox GitHub
-# Actions workflow (see .github/workflows/dynamic-sandbox.yml) using
-# `cosign sign-blob --yes` with GitHub Actions OIDC — no stored secrets, no
-# paid KMS. This script fetches the three published files
-# (<version>.json, <version>.json.sig, <version>.json.cert) from the
-# registry's raw GitHub content and runs the matching `cosign verify-blob`
-# command, confirming the JSON was signed by *this* repo's dynamic-sandbox
-# workflow and not by anyone else.
+# signature. Attestations are signed keylessly by the trusted `finalize` job
+# of .github/workflows/scan.yml using `cosign sign-blob --yes` with GitHub
+# Actions OIDC — no stored secrets, no paid KMS. This script fetches the
+# three published files (<version>.json, <version>.json.sig,
+# <version>.json.cert) from the registry's raw GitHub content and runs the
+# matching `cosign verify-blob` command, confirming the JSON was signed by
+# *this* repo's scan workflow and not by anyone else.
+#
+# Accepted signer identities (the certificate records the workflow file and
+# the ref it ran on):
+#   .github/workflows/scan.yml@refs/heads/scan/<pkg>-<commit7>  (scan PR runs)
+#   .github/workflows/scan.yml@refs/heads/main                  (manual runs)
+#   .github/workflows/dynamic-sandbox.yml@refs/heads/main       (attestations
+#     signed before the PR-based pipeline replaced that workflow)
 #
 # Usage:
 #   scripts/verify_attestation.sh <package> <version>
@@ -21,7 +27,7 @@ set -uo pipefail
 
 REPO="rebizzz/aur-sentry"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/main"
-CERT_IDENTITY_REGEXP="^https://github.com/${REPO}/.github/workflows/dynamic-sandbox.yml@refs/heads/main\$"
+CERT_IDENTITY_REGEXP="^https://github\\.com/${REPO}/\\.github/workflows/(scan\\.yml@refs/heads/(main|scan/[A-Za-z0-9@._+-]+)|dynamic-sandbox\\.yml@refs/heads/main)\$"
 CERT_OIDC_ISSUER="https://token.actions.githubusercontent.com"
 
 PKG="${1:-}"
@@ -78,7 +84,7 @@ cosign verify-blob \
 
 STATUS=$?
 if [ "$STATUS" -eq 0 ]; then
-  echo "OK: $PKG $VERSION attestation is signed by the $REPO dynamic-sandbox workflow"
+  echo "OK: $PKG $VERSION attestation is signed by the $REPO scan workflow"
 else
   echo "FAILED: signature did not verify — do not trust this attestation" >&2
 fi

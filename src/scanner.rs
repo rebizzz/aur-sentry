@@ -12,10 +12,10 @@
 //! - Structural anomalies (long encoded blobs, variable splicing)
 //! - Typosquatting (Damerau-Levenshtein against top AUR packages)
 
+use crate::findings::{Behavior, Finding};
 use regex::Regex;
-use serde::{Deserialize, Serialize};
+use serde::Serialize;
 use std::collections::HashSet;
-use std::path::Path;
 use std::sync::LazyLock;
 
 static VAR_RE: LazyLock<Regex> =
@@ -24,20 +24,17 @@ static VAR_RE: LazyLock<Regex> =
 static LONG_B64_RE: LazyLock<Regex> =
     LazyLock::new(|| Regex::new(r#"['"]([A-Za-z0-9+/=]{60,})['"]"#).unwrap());
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Finding {
-    pub rule_id: String,
-    pub severity: String,
-    pub description: String,
-    pub line_number: usize,
-    pub matched_text: String,
-}
+static POPULAR_PACKAGES: LazyLock<Vec<String>> = LazyLock::new(|| {
+    serde_json::from_str(include_str!("../data/popular_packages.json")).unwrap_or_default()
+});
 
+#[derive(Serialize)]
 pub struct Rule {
     pub id: &'static str,
     pub severity: &'static str,
     pub pattern: &'static str,
     pub description: &'static str,
+    pub behavior: Behavior,
 }
 
 pub const RULES: &[Rule] = &[
@@ -47,42 +44,49 @@ pub const RULES: &[Rule] = &[
         severity: "CRITICAL",
         pattern: r##"base64\s+(?:-d|--decode)"##,
         description: "base64 decode invocation detected (often hides malicious payload)",
+        behavior: Behavior::Obfuscation,
     },
     Rule {
         id: "OBFUSCATED_HEX",
         severity: "CRITICAL",
         pattern: r##"xxd\s+-(?:r|p)"##,
         description: "xxd hex decode detected (reconstructs binary or script payload)",
+        behavior: Behavior::Obfuscation,
     },
     Rule {
         id: "OBFUSCATED_PRINTF_OCTAL",
         severity: "CRITICAL",
         pattern: r##"printf\s+['"](?:\\[0-7]{3}){4,}"##,
         description: "printf with octal escapes (encodes shell code as octal bytes)",
+        behavior: Behavior::Obfuscation,
     },
     Rule {
         id: "OBFUSCATED_PRINTF_HEX",
         severity: "CRITICAL",
         pattern: r##"printf\s+['"](?:\\x[0-9a-fA-F]{2}){4,}"##,
         description: "printf with hex escapes (encodes shell code as hex bytes)",
+        behavior: Behavior::Obfuscation,
     },
     Rule {
         id: "OBFUSCATED_EVAL",
         severity: "CRITICAL",
         pattern: r##"\beval\s+["'$]"##,
         description: "eval with dynamic variable (executes constructed shell string)",
+        behavior: Behavior::Obfuscation,
     },
     Rule {
         id: "OBFUSCATED_REV_PIPE",
         severity: "CRITICAL",
         pattern: r##"\brev\b.*\|\s*(?:bash|sh|eval)"##,
         description: "string reversal piped to shell (backwards command obfuscation)",
+        behavior: Behavior::Obfuscation,
     },
     Rule {
         id: "OBFUSCATED_DOLLAR_EXEC",
         severity: "HIGH",
         pattern: r##"\$\(\s*(?:echo|printf|cat)\s+.*(?:\|[^|\n].*){2,}\)"##,
         description: "deeply nested substitution with pipe chain (obfuscated execution)",
+        behavior: Behavior::Obfuscation,
     },
     // --- Exfiltration ---
     Rule {
@@ -90,48 +94,56 @@ pub const RULES: &[Rule] = &[
         severity: "CRITICAL",
         pattern: r##"discord(?:app)?\.com/api/webhooks"##,
         description: "hardcoded Discord webhook URL (primary token/key exfiltration channel)",
+        behavior: Behavior::NetworkAccess,
     },
     Rule {
         id: "EXFIL_TELEGRAM_BOT",
         severity: "CRITICAL",
         pattern: r##"api\.telegram\.org/bot"##,
         description: "Telegram bot API endpoint (used as C2 or exfiltration channel)",
+        behavior: Behavior::NetworkAccess,
     },
     Rule {
         id: "EXFIL_RAW_IP",
         severity: "HIGH",
         pattern: r##"(?:curl|wget|nc|ncat)\s+[^#\n]*(?:https?://)?(?:[0-9]{1,3}\.){3}[0-9]{1,3}"##,
         description: "network tool targeting raw IP address without domain name",
+        behavior: Behavior::NetworkAccess,
     },
     Rule {
         id: "EXFIL_PASTEBIN",
         severity: "HIGH",
         pattern: r##"https?://(?:pastebin\.com/raw|hastebin\.com/raw|ghostbin\.\w+|ix\.io|sprunge\.us|transfer\.sh|0x0\.st|catbox\.moe|temp\.sh|file\.io)"##,
         description: "fetching from ephemeral pastebin/file drop (payload changes dynamically)",
+        behavior: Behavior::DynamicDownload,
     },
     Rule {
         id: "EXFIL_CURL_PIPE_EXEC",
         severity: "HIGH",
         pattern: r##"(?:curl|wget)\s+[^|\n]+\|\s*(?:sudo\s+)?(?:bash|sh|python[23]?|perl|ruby|node)"##,
         description: "remote download piped directly into interpreter",
+        behavior: Behavior::DynamicDownload,
     },
     Rule {
         id: "EXFIL_DNS_TUNNEL",
         severity: "HIGH",
         pattern: r##"(?:dig|nslookup|host)\s+[^#\n]*\$"##,
         description: "DNS lookup with variable expansion (possible DNS tunneling)",
+        behavior: Behavior::NetworkAccess,
     },
     Rule {
         id: "EXFIL_NC_CONNECT",
         severity: "HIGH",
         pattern: r##"\b(?:nc|ncat|socat)\b\s+(?:-[a-zA-Z]*\s+)*[0-9a-zA-Z]"##,
         description: "netcat or socat connection (reverse shell or data socket)",
+        behavior: Behavior::NetworkAccess,
     },
     Rule {
         id: "THREAT_INTEL_TUNNEL_PROXY",
         severity: "CRITICAL",
         pattern: r##"(?:ngrok\.io|portmap\.io|localtunnel\.me|serveo\.net|pinggy\.io|pagekite\.me|packetriot\.com|playit\.gg|tunnelmole\.net)"##,
         description: "connection targeting ephemeral reverse-proxy or tunnel service (attacker C2 evasion)",
+        behavior: Behavior::NetworkAccess,
     },
     // --- Reverse Shells ---
     Rule {
@@ -139,18 +151,21 @@ pub const RULES: &[Rule] = &[
         severity: "CRITICAL",
         pattern: r##"/dev/tcp/"##,
         description: "bash /dev/tcp connection (standard reverse shell vector)",
+        behavior: Behavior::NetworkAccess,
     },
     Rule {
         id: "REVSHELL_MKFIFO",
         severity: "CRITICAL",
         pattern: r##"mkfifo\s+/tmp/"##,
         description: "mkfifo in /tmp (named pipe reverse shell setup)",
+        behavior: Behavior::NetworkAccess,
     },
     Rule {
         id: "REVSHELL_PYTHON",
         severity: "CRITICAL",
         pattern: r##"python[23]?\s+-c\s+['"].*import\s+(?:socket|subprocess|os)"##,
         description: "python one-liner importing socket/subprocess (reverse shell script)",
+        behavior: Behavior::NetworkAccess,
     },
     // --- Credential Theft ---
     Rule {
@@ -158,60 +173,71 @@ pub const RULES: &[Rule] = &[
         severity: "CRITICAL",
         pattern: r##"(?:~/\.ssh|\$HOME/\.ssh|\$\{HOME\}/\.ssh|/home/[^/]+/\.ssh)/(?:id_rsa|id_ed25519|id_ecdsa|authorized_keys|known_hosts|config)"##,
         description: "accessing private SSH keys or credentials",
+        behavior: Behavior::CredentialAccess,
     },
     Rule {
         id: "CRED_SSH_DIR",
         severity: "HIGH",
         pattern: r##"(?:cat|cp|tar|zip|curl.*-[dF])\s+[^#\n]*\.ssh"##,
         description: "reading or copying ~/.ssh directory contents",
+        behavior: Behavior::CredentialAccess,
     },
     Rule {
         id: "CRED_GPG_DIR",
         severity: "HIGH",
         pattern: r##"(?:~/\.gnupg|\$HOME/\.gnupg)"##,
         description: "accessing GnuPG keyring directory",
+        behavior: Behavior::CredentialAccess,
     },
     Rule {
         id: "CRED_BROWSER_PROFILES",
         severity: "CRITICAL",
         pattern: r##"(?:\.mozilla/firefox|\.config/(?:google-chrome|chromium|BraveSoftware)|\.librewolf|\.config/vivaldi)[^#\n]*(?:logins\.json|Login\s*Data|cookies|Cookies|key[34]\.db|places\.sqlite)"##,
         description: "accessing browser passwords, cookies, or profile databases",
+        behavior: Behavior::CredentialAccess,
     },
     Rule {
         id: "CRED_CRYPTO_WALLETS",
         severity: "CRITICAL",
-        pattern: r##"(?:\.(?:bitcoin|ethereum|monero|electrum|solana)|\.config/(?:Exodus|Atomic|Ledger))"##,
+        // Require hidden-dir shape so domains like download.electrum.org don't match.
+        pattern: r##"(?m)(?:(?:^|[\s"'=/~])\.(?:bitcoin|ethereum|monero|electrum|solana)(?:[/\s"']|$)|\.config/(?:Exodus|Atomic|Ledger))"##,
         description: "accessing cryptocurrency wallet files",
+        behavior: Behavior::CredentialAccess,
     },
     Rule {
         id: "CRED_PASSWORD_MANAGERS",
         severity: "CRITICAL",
         pattern: r##"(?:\.(?:password-store|keepass|config/(?:1Password|bitwarden))|\.local/share/keyrings)"##,
         description: "accessing local password vault or system keyrings",
+        behavior: Behavior::CredentialAccess,
     },
     Rule {
         id: "CRED_CLOUD_CREDS",
         severity: "CRITICAL",
         pattern: r##"(?:\.aws/credentials|\.config/gcloud|\.azure/|\.kube/config|\.docker/config\.json)"##,
         description: "accessing AWS, GCP, Azure, or Kubernetes cloud credentials",
+        behavior: Behavior::CredentialAccess,
     },
     Rule {
         id: "CRED_ENV_SECRETS",
         severity: "HIGH",
         pattern: r##"(?:cat|grep|sed|awk)\s+[^#\n]*/(?:\.env|\.bashrc|\.bash_profile|\.profile|\.zshrc)"##,
         description: "reading shell profile or .env files for secrets/tokens",
+        behavior: Behavior::CredentialAccess,
     },
     Rule {
         id: "CRED_SHADOW_SUDOERS",
         severity: "CRITICAL",
         pattern: r##"(?:cat|cp|curl.*-[dF])\s+[^#\n]*/etc/(?:shadow|sudoers|passwd)"##,
         description: "reading /etc/shadow or /etc/sudoers security files",
+        behavior: Behavior::CredentialAccess,
     },
     Rule {
         id: "CRED_SHELL_HISTORY",
         severity: "HIGH",
         pattern: r##"(?:cat|cp|tar|curl)\s+[^#\n]*(?:\.bash_history|\.zsh_history|\.histfile)"##,
         description: "copying or exfiltrating shell history logs",
+        behavior: Behavior::CredentialAccess,
     },
     // --- Persistence ---
     Rule {
@@ -219,30 +245,35 @@ pub const RULES: &[Rule] = &[
         severity: "CRITICAL",
         pattern: r##"(?:cp|install|tee|cat\s*>|mv)\s+[^#\n]*/etc/systemd/system/[a-zA-Z]"##,
         description: "writing custom systemd service file outside standard package tree",
+        behavior: Behavior::Persistence,
     },
     Rule {
         id: "PERSIST_CRON",
         severity: "CRITICAL",
         pattern: r##"(?:crontab\s+-|/etc/cron\.\w+/|/var/spool/cron/)"##,
         description: "modifying crontab or cron files for persistent background execution",
+        behavior: Behavior::Persistence,
     },
     Rule {
         id: "PERSIST_PROFILE_INJECT",
         severity: "CRITICAL",
         pattern: r##"(?:>>|tee\s+-a)\s+[^#\n]*(?:\.bashrc|\.bash_profile|\.profile|\.zshrc|/etc/profile)"##,
         description: "appending persistent payload into shell startup scripts",
+        behavior: Behavior::Persistence,
     },
     Rule {
         id: "PERSIST_XDG_AUTOSTART",
         severity: "HIGH",
         pattern: r##"(?:\.config/autostart|/etc/xdg/autostart)/[a-zA-Z].*\.desktop"##,
         description: "dropping XDG desktop autostart entry",
+        behavior: Behavior::Persistence,
     },
     Rule {
         id: "PERSIST_UDEV_RULES",
         severity: "HIGH",
         pattern: r##"/etc/udev/rules\.d/"##,
         description: "creating custom udev rule for event-driven execution",
+        behavior: Behavior::Persistence,
     },
     // --- Packaging Abuse ---
     Rule {
@@ -250,30 +281,35 @@ pub const RULES: &[Rule] = &[
         severity: "LOW",
         pattern: r##"(?:sha256sums|sha512sums|b2sums|md5sums)(?:_[a-z0-9_]+)?=\s*\([^)]*['"]SKIP['"]"##,
         description: "integrity verification bypassed ('SKIP') for non-VCS source archive",
+        behavior: Behavior::DynamicDownload,
     },
     Rule {
         id: "PKG_REPLACE_CORE",
         severity: "CRITICAL",
         pattern: r##"replaces=\s*\([^)]*['"](?:base|linux|glibc|systemd|coreutils|pacman|sudo|shadow)['"]"##,
         description: "replaces=() targets a core base package (silent system package replacement)",
+        behavior: Behavior::PackageInstallation,
     },
     Rule {
         id: "PKG_PROVIDES_CORE",
         severity: "HIGH",
         pattern: r##"provides=\s*\([^)]*['"](?:base|linux|glibc|systemd|coreutils|pacman|sudo|shadow)['"]"##,
         description: "provides=() claims core base package name (dependency hijacking)",
+        behavior: Behavior::PackageInstallation,
     },
     Rule {
         id: "PKG_INSTALL_FILE_REF",
         severity: "INFO",
         pattern: r##"install=\s*['"]?[a-zA-Z0-9._-]+\.install"##,
         description: "references external .install scriptlet",
+        behavior: Behavior::PackageInstallation,
     },
     Rule {
         id: "PKG_NPM_INSTALL",
         severity: "LOW",
         pattern: r##"\bnpm\s+install\b|\bbun\s+install\b|\byarn\s+install\b"##,
         description: "unlocked npm/bun/yarn install during build (unpinned dependency risk)",
+        behavior: Behavior::DynamicDownload,
     },
     // --- Suspicious System Commands ---
     Rule {
@@ -281,42 +317,49 @@ pub const RULES: &[Rule] = &[
         severity: "CRITICAL",
         pattern: r##"chmod\s+[^#\n]*[ugo]?\+s\b|chmod\s+[^#\n]*4[0-7]{3}\b"##,
         description: "setting SUID permission bit on binary (runs as root)",
+        behavior: Behavior::PrivilegeEscalation,
     },
     Rule {
         id: "SUS_DD_WRITE",
         severity: "HIGH",
-        pattern: r##"\bdd\b\s+[^#\n]*of=/dev/(?!null)"##,
+        pattern: r##"\bdd\b\s+[^#\n]*of=/dev/(?:sd|nvme|hd|vd|xvd|mmcblk|disk|mapper|md|loop)"##,
         description: "raw dd write to disk or block device",
+        behavior: Behavior::ArbitraryFilesystemWrite,
     },
     Rule {
         id: "SUS_IPTABLES",
         severity: "HIGH",
         pattern: r##"\b(?:iptables|nftables|nft)\b\s+[^#\n]*(?:-A|-I|add\s+rule)"##,
         description: "modifying firewall rules (opening ports / redirecting traffic)",
+        behavior: Behavior::ServiceManipulation,
     },
     Rule {
         id: "SUS_KERNEL_MODULE",
         severity: "CRITICAL",
         pattern: r##"\b(?:insmod|modprobe)\s+[^#\n]*/(?:tmp|home|var)"##,
         description: "loading kernel module from non-standard path",
+        behavior: Behavior::PrivilegeEscalation,
     },
     Rule {
         id: "SUS_PROC_MANIP",
         severity: "CRITICAL",
         pattern: r##"(?:mount\s+[^#\n]*-o\s+bind\s+[^#\n]*/proc|/proc/[0-9]+/(?:exe|cmdline|environ))"##,
         description: "tampering with /proc (process hiding or memory inspection)",
+        behavior: Behavior::PrivilegeEscalation,
     },
     Rule {
         id: "SUS_KILL_SECURITY",
         severity: "HIGH",
         pattern: r##"(?:systemctl\s+(?:stop|disable|mask)\s+[^#\n]*(?:apparmor|selinux|firewall|fail2ban|clamav))"##,
         description: "disabling security services or firewalls",
+        behavior: Behavior::ServiceManipulation,
     },
     Rule {
         id: "SUS_ALIAS_HIJACK",
         severity: "CRITICAL",
         pattern: r##"alias\s+(?:ls|cat|sudo|pacman|yay|paru)="##,
         description: "aliasing core shell commands (environment hijacking)",
+        behavior: Behavior::ShellExecution,
     },
     // --- Cryptojacking ---
     Rule {
@@ -324,72 +367,51 @@ pub const RULES: &[Rule] = &[
         severity: "CRITICAL",
         pattern: r##"(?:xmrig|xmr-stak|minerd|cpuminer|stratum\+tcp://|pool\.(?:minexmr|hashvault|nanopool|supportxmr))"##,
         description: "cryptocurrency mining binary or pool URL",
+        behavior: Behavior::ShellExecution,
     },
     Rule {
         id: "MINER_WALLET_ADDR",
         severity: "HIGH",
         pattern: r##"4[0-9AB][1-9A-HJ-NP-Za-km-z]{93}"##,
         description: "Monero wallet address detected in script",
+        behavior: Behavior::ShellExecution,
     },
 ];
 
 struct CompiledRule {
-    id: &'static str,
-    severity: &'static str,
-    description: &'static str,
+    rule: &'static Rule,
     regex: Regex,
 }
 
 pub struct PKGBUILDScanner {
     rules: Vec<CompiledRule>,
-    #[allow(dead_code)]
-    popular_packages: Vec<String>,
     popular_set: HashSet<String>,
     popular_cleaned: Vec<(String, String)>,
 }
 
 impl PKGBUILDScanner {
     pub fn new() -> Self {
-        let rules: Vec<CompiledRule> = RULES
-            .iter()
-            .filter_map(|r| {
-                Regex::new(r.pattern).ok().map(|re| CompiledRule {
-                    id: r.id,
-                    severity: r.severity,
-                    description: r.description,
-                    regex: re,
-                })
-            })
-            .collect();
-
-        let popular_packages = Self::load_popular_packages();
-        let popular_set: HashSet<String> = popular_packages.iter().cloned().collect();
-        let clean = |s: &str| s.to_lowercase().replace("-bin", "").replace("-git", "");
-        let popular_cleaned: Vec<(String, String)> = popular_packages
-            .iter()
-            .map(|p| (p.clone(), clean(p)))
-            .collect();
-        Self {
-            rules,
-            popular_packages,
-            popular_set,
-            popular_cleaned,
-        }
+        Self::with_popular_packages(&POPULAR_PACKAGES)
     }
 
-    fn load_popular_packages() -> Vec<String> {
-        let paths = [
-            Path::new("data/popular_packages.json"),
-            Path::new("/home/rebiz/opt/aur-sentry/data/popular_packages.json"),
-        ];
-        for p in &paths {
-            if let Ok(content) = std::fs::read_to_string(p) {
-                if let Ok(pkgs) = serde_json::from_str::<Vec<String>>(&content) {
-                    return pkgs;
-                }
-            }
+    fn with_popular_packages(popular_packages: &[String]) -> Self {
+        let rules = RULES
+            .iter()
+            .filter_map(|rule| {
+                Regex::new(rule.pattern)
+                    .ok()
+                    .map(|regex| CompiledRule { rule, regex })
+            })
+            .collect();
+        let clean = |s: &str| s.to_lowercase().replace("-bin", "").replace("-git", "");
+        Self {
+            rules,
+            popular_set: popular_packages.iter().cloned().collect(),
+            popular_cleaned: popular_packages
+                .iter()
+                .map(|p| (p.clone(), clean(p)))
+                .collect(),
         }
-        Vec::new()
     }
 
     pub fn scan(&self, content: &str, pkgname: Option<&str>) -> Vec<Finding> {
@@ -412,14 +434,14 @@ impl PKGBUILDScanner {
             if trimmed.starts_with('#') {
                 continue;
             }
-            for rule in &self.rules {
+            for CompiledRule { rule, regex } in &self.rules {
                 if is_vcs && rule.id == "PKG_SKIP_HASH" {
                     continue;
                 }
                 if rule.id == "SUS_CHMOD_SUID" && line.contains("chrome-sandbox") {
                     continue;
                 }
-                if let Some(m) = rule.regex.find(line) {
+                if let Some(m) = regex.find(line) {
                     // Real shell-structure check (additive precision
                     // improvement, see src/shellparse.rs): "base64 -d"
                     // appearing purely inside a string literal (e.g.
@@ -444,6 +466,7 @@ impl PKGBUILDScanner {
                         description: rule.description.to_string(),
                         line_number: idx + 1,
                         matched_text: snippet,
+                        behavior: rule.behavior,
                     });
                 }
             }
@@ -464,6 +487,7 @@ impl PKGBUILDScanner {
                         ),
                         line_number: 1,
                         matched_text: format!("{name} -> {target}"),
+                        behavior: Behavior::PackageInstallation,
                     });
                 }
             }
@@ -473,7 +497,9 @@ impl PKGBUILDScanner {
         findings.extend(crate::analyzer::analyze_entropy(content));
 
         // 5. Recursive Base64 payload de-obfuscation
-        findings.extend(crate::analyzer::deobfuscate_and_scan(content, self));
+        findings.extend(crate::analyzer::deobfuscate_and_scan(content, |decoded| {
+            self.scan(decoded, None)
+        }));
 
         // 6. Real shell-pipeline-structure detection (fetch-and-execute,
         // base64-decode-and-execute) — see src/shellparse.rs.
@@ -514,6 +540,7 @@ impl PKGBUILDScanner {
                             .to_string(),
                     line_number: idx + 1,
                     matched_text: format!("{}...", &line.trim()[..line.trim().len().min(80)]),
+                    behavior: Behavior::Obfuscation,
                 });
             }
         }
@@ -533,6 +560,7 @@ impl PKGBUILDScanner {
                 ),
                 line_number: 1,
                 matched_text: format!("Variables: {}", short_vars[..short_vars.len().min(5)].join(", ")),
+                behavior: Behavior::Obfuscation,
             });
         }
 
@@ -651,35 +679,115 @@ mod tests {
     use super::*;
 
     fn test_scanner() -> PKGBUILDScanner {
-        let popular_packages = vec![
+        PKGBUILDScanner::with_popular_packages(&[
             "google-chrome".into(),
             "visual-studio-code-bin".into(),
             "spotify".into(),
             "discord".into(),
             "paru".into(),
-        ];
-        let popular_set: HashSet<String> = popular_packages.iter().cloned().collect();
-        let clean = |s: &str| s.to_lowercase().replace("-bin", "").replace("-git", "");
-        let popular_cleaned: Vec<(String, String)> = popular_packages
-            .iter()
-            .map(|p| (p.clone(), clean(p)))
-            .collect();
-        PKGBUILDScanner {
-            rules: RULES
-                .iter()
-                .filter_map(|r| {
-                    Regex::new(r.pattern).ok().map(|re| CompiledRule {
-                        id: r.id,
-                        severity: r.severity,
-                        description: r.description,
-                        regex: re,
-                    })
-                })
-                .collect(),
-            popular_packages,
-            popular_set,
-            popular_cleaned,
+        ])
+    }
+
+    #[test]
+    fn every_rule_pattern_compiles() {
+        for rule in RULES {
+            assert!(
+                Regex::new(rule.pattern).is_ok(),
+                "rule {} has an invalid regex and would be silently skipped",
+                rule.id
+            );
         }
+    }
+
+    #[test]
+    fn crypto_wallet_rule_ignores_domains_but_catches_wallet_dirs() {
+        let s = test_scanner();
+        let benign = "source=(\"https://download.electrum.org/4.5.8/Electrum-4.5.8.tar.gz\")\n";
+        assert!(
+            !s.scan(benign, None)
+                .iter()
+                .any(|f| f.rule_id == "CRED_CRYPTO_WALLETS")
+        );
+        let hostile = "tar czf /tmp/w.tgz ~/.electrum/wallets\n";
+        assert!(
+            s.scan(hostile, None)
+                .iter()
+                .any(|f| f.rule_id == "CRED_CRYPTO_WALLETS")
+        );
+    }
+
+    #[test]
+    fn dd_write_rule_flags_block_devices_not_dev_null() {
+        let s = test_scanner();
+        assert!(
+            s.scan("dd if=payload.img of=/dev/sda bs=4M\n", None)
+                .iter()
+                .any(|f| f.rule_id == "SUS_DD_WRITE")
+        );
+        assert!(
+            !s.scan("dd if=/dev/zero of=/dev/null count=1\n", None)
+                .iter()
+                .any(|f| f.rule_id == "SUS_DD_WRITE")
+        );
+    }
+
+    #[test]
+    fn every_rule_serializes_with_a_behavior() {
+        let json = serde_json::to_value(RULES).unwrap();
+        let rules = json.as_array().unwrap();
+        assert_eq!(rules.len(), RULES.len());
+        for rule in rules {
+            let behavior = rule["behavior"].as_str().unwrap_or_default();
+            assert!(
+                serde_json::from_value::<Behavior>(rule["behavior"].clone()).is_ok(),
+                "rule {} has invalid behavior {behavior:?}",
+                rule["id"]
+            );
+        }
+    }
+
+    #[test]
+    fn rule_findings_carry_their_rule_behavior() {
+        let s = test_scanner();
+        let findings = s.scan(
+            "cat ~/.ssh/id_rsa\ncurl https://discord.com/api/webhooks/1/x\ncrontab -\n",
+            None,
+        );
+        let behavior_of = |id: &str| findings.iter().find(|f| f.rule_id == id).unwrap().behavior;
+        assert_eq!(behavior_of("CRED_SSH_KEYS"), Behavior::CredentialAccess);
+        assert_eq!(
+            behavior_of("EXFIL_DISCORD_WEBHOOK"),
+            Behavior::NetworkAccess
+        );
+        assert_eq!(behavior_of("PERSIST_CRON"), Behavior::Persistence);
+    }
+
+    #[test]
+    fn embedded_popular_packages_list_is_loaded() {
+        assert!(POPULAR_PACKAGES.iter().any(|p| p == "google-chrome"));
+        let s = PKGBUILDScanner::new();
+        assert!(
+            s.scan("pkgname=goolge-chrome\n", Some("goolge-chrome"))
+                .iter()
+                .any(|f| f.rule_id == "TYPOSQUATTING")
+        );
+    }
+
+    #[test]
+    fn deobfuscator_detects_hidden_discord_webhook() {
+        let scanner = PKGBUILDScanner::new();
+        // Base64 of: curl https://discord.com/api/webhooks/123/xyz
+        let b64 = "Y3VybCBodHRwczovL2Rpc2NvcmQuY29tL2FwaS93ZWJob29rcy8xMjMveHl6";
+        let script = format!("prepare() {{\n  echo \"{b64}\" | base64 -d | sh\n}}\n");
+
+        let findings = scanner.scan(&script, None);
+        let hidden = findings
+            .iter()
+            .find(|f| f.rule_id == "DEOBFUSCATED_EXFIL_DISCORD_WEBHOOK")
+            .unwrap_or_else(|| {
+                panic!("Expected de-obfuscation to unmask the hidden Discord webhook, got: {findings:?}")
+            });
+        assert_eq!(hidden.behavior, Behavior::NetworkAccess);
     }
 
     #[test]

@@ -106,6 +106,45 @@ fetch_attestation() {
     return 0
 }
 
+# Preferred registry lookup: delegate to `aur-sentry check <pkg>` when the
+# binary is available (it prints the full evidence checklist). Its exit code
+# is 0 for VERIFIED or "no attestation yet", 2 for any other verdict; the
+# verdict itself is read from its "verdict: X" line so safeaur's own
+# SUSPICIOUS/MALICIOUS policy below still applies. Returns 1 (caller falls
+# back to the curl path) if the binary is missing, too old to have `check`,
+# or its output can't be interpreted.
+check_via_aur_sentry() {
+    local pkg="$1" out rc=0 verdict
+    [ -n "$AUR_SENTRY_BIN" ] || return 1
+    out="$("$AUR_SENTRY_BIN" check "$pkg" 2>&1)" || rc=$?
+    out="$(sed -E 's/\x1b\[[0-9;]*[mK]//g' <<<"$out")"
+    verdict="$(grep -Eo 'verdict: *[A-Za-z_]+' <<<"$out" | tail -n1 | sed -E 's/verdict: *//' \
+        | sed -E 's/([a-z])([A-Z])/\1_\2/g' | tr '[:lower:]' '[:upper:]' || true)"
+
+    case "$rc" in
+        0)
+            [ -n "$out" ] && echo "$out" >&2
+            ATT_VERSION="$(grep -Eo ' v[^ ]+$' <<<"$out" | head -n1 | sed -E 's/^ v//' || true)"
+            if [ -n "$verdict" ]; then
+                ATT_FOUND=1
+                ATT_VERDICT="VERIFIED"
+            else
+                ATT_FOUND=0
+            fi
+            return 0
+            ;;
+        2)
+            [ -n "$verdict" ] || return 1
+            echo "$out" >&2
+            ATT_VERSION="$(grep -Eo ' v[^ ]+$' <<<"$out" | head -n1 | sed -E 's/^ v//' || true)"
+            ATT_FOUND=1
+            ATT_VERDICT="$verdict"
+            return 0
+            ;;
+    esac
+    return 1
+}
+
 # Apply the attestation verdict policy (see ARCHITECTURE.md "Verdict states"):
 #   VERIFIED             -> continue silently
 #   STALE / no attestation -> warn but allow (registry is new/sparse)
@@ -118,7 +157,12 @@ check_attestation_policy() {
     local pkg="$1"
     local strict="$2"
 
-    fetch_attestation "$pkg"
+    ATT_FOUND=0
+    ATT_VERDICT=""
+    ATT_VERSION=""
+    if ! check_via_aur_sentry "$pkg"; then
+        fetch_attestation "$pkg"
+    fi
 
     if [ "$ATT_FOUND" -ne 1 ]; then
         echo -e "${YELLOW}${ICON_WARN} safeaur: no attestation on record for '$pkg' yet — registry is still sparse, proceeding.${RESET}"

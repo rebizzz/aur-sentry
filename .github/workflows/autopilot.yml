@@ -10,6 +10,7 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
+  actions: write # open_scan_pr.sh dispatches scan.yml via gh workflow run
 
 jobs:
   radar:
@@ -51,13 +52,13 @@ jobs:
       - name: Run Autopilot AUR scanner across metadata dump
         run: ./target/release/aur-sentry autopilot --repo-root . --window-hours 4 --limit 500
 
-      - name: Triage scheduler — escalate new/changed/high-risk packages to dynamic sandbox
+      - name: Triage scheduler — open scan PRs for new/changed/high-risk packages
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           chmod +x scripts/triage_dispatch.sh
           # Cap kept deliberately small (20) so a single 2-hourly autopilot run
-          # can never fan out into thousands of dynamic-sandbox jobs and blow
+          # can never fan out into thousands of scan PRs / sandbox jobs and blow
           # through Actions concurrency/minutes, even though public-repo
           # minutes are themselves free (see ARCHITECTURE.md "Triage").
           bash scripts/triage_dispatch.sh . "${{ github.repository }}" 4 20 150
@@ -69,10 +70,10 @@ jobs:
           git config --global user.name "aur-sentry-bot"
           git config --global user.email "bot@users.noreply.github.com"
 
-          if ! git diff --quiet ADVISORIES.md advisories.json advisories.xml data/aur-state.json; then
+          if ! git diff --quiet ADVISORIES.md README.md advisories.json advisories.xml data/aur-state.json; then
             echo "Threat radar, machine feeds, or triage state have updates. Creating/updating PR..."
             git checkout -B autopilot/radar-advisories origin/main
-            git add ADVISORIES.md advisories.json advisories.xml data/aur-state.json
+            git add ADVISORIES.md README.md advisories.json advisories.xml data/aur-state.json
             git commit -m "chore(radar): update live threat radar, feeds, and triage state"
             git push -f origin autopilot/radar-advisories
             EXISTING_PR=$(gh pr list --head autopilot/radar-advisories --json number --jq '.[0].number')

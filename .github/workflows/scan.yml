@@ -1,0 +1,190 @@
+name: Dynamic Scan
+
+# One run = one disposable dynamic analysis of one AUR package, split into
+# an UNTRUSTED job (sandbox: runs the package, read-only token, no verdict)
+# and a TRUSTED job (finalize: computes the verdict from the evidence, signs
+# it, commits it to main, reports on the scan PR). See ARCHITECTURE.md.
+#
+# Normally dispatched by scripts/open_scan_pr.sh on a scratch branch
+# scan/<pkg>-<aurcommit7> whose only change is scans/<pkg>/ (the package
+# snapshot). Can also be run by hand from the Actions UI on main with an
+# empty `pr` input: the sandbox job then snapshots the AUR itself.
+#
+# GitHub-hosted runners + Docker Hub base image only. No paid services.
+
+run-name: "scan ${{ inputs.package }}${{ inputs.pr && format(' (PR #{0})', inputs.pr) || '' }}"
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'AUR package name'
+        required: true
+        type: string
+      pr:
+        description: 'Scan PR number to report on and close (empty for a manual run)'
+        required: false
+        default: ''
+        type: string
+
+permissions: {}
+
+concurrency:
+  group: scan-${{ inputs.package }}
+  cancel-in-progress: false
+
+jobs:
+  sandbox:
+    name: Sandbox (untrusted, read-only)
+    runs-on: ubuntu-latest
+    # 3 containers x 15 min cap + install pass + image build + host analysis.
+    timeout-minutes: 75
+    permissions:
+      contents: read
+    env:
+      PKG: ${{ inputs.package }}
+    steps:
+      - name: Harden Runner (Security & Egress Audit)
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout scan branch
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+
+      - name: Validate package name
+        run: |
+          if ! printf '%s' "$PKG" | grep -Eq '^[A-Za-z0-9@_+][A-Za-z0-9@._+-]{0,127}$'; then
+            echo "::error::invalid package name"
+            exit 1
+          fi
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Restore cargo cache (read-only; this job never saves one)
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Build aur-sentry (host)
+        run: cargo build --release
+
+      - name: Install host analysis tools
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq libarchive-tools file binutils jq
+
+      - name: Resolve package snapshot
+        id: src
+        run: |
+          set -euo pipefail
+          if [ -f "scans/$PKG/PKGBUILD" ]; then
+            echo "dir=scans/$PKG" >> "$GITHUB_OUTPUT"
+          else
+            # Manual run without a scan PR: snapshot the AUR on the host.
+            DEST="$RUNNER_TEMP/snapshot/$PKG"
+            SHA="$(bash scripts/fetch_aur_snapshot.sh "$PKG" "$DEST")"
+            jq -n --arg package "$PKG" --arg aur_commit "$SHA" \
+              --arg requested_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" \
+              '{package: $package, aur_commit: $aur_commit, reasons: ["MANUAL"], requested_at: $requested_at}' \
+              > "$DEST/request.json"
+            echo "dir=$DEST" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run disposable sandbox containers
+        env:
+          SRC_DIR: ${{ steps.src.outputs.dir }}
+          SANDBOX_WORK: ${{ runner.temp }}/aur-sentry-work
+          AUR_SENTRY_BIN: ${{ github.workspace }}/target/release/aur-sentry
+        run: bash sandbox/run.sh "$PKG" "$SRC_DIR" "sandbox-evidence/$PKG"
+
+      - name: Reclaim ownership of container scratch output
+        # Built packages are copied out of the containers by their root user.
+        # Only the scratch dir is affected; the checkout is never mounted.
+        if: always()
+        run: sudo chown -R "$(id -u):$(id -g)" "$RUNNER_TEMP/aur-sentry-work" 2>/dev/null || true
+
+      - name: Upload raw evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
+        with:
+          name: raw-evidence
+          path: sandbox-evidence/${{ inputs.package }}/
+          if-no-files-found: warn
+          retention-days: 90
+
+  finalize:
+    name: Finalize (trusted — verdict, sign, commit, report)
+    needs: sandbox
+    if: always()
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Serializes attestation commits across parallel scans.
+    concurrency:
+      group: attestation-commit
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      id-token: write # keyless Sigstore/cosign signing via GitHub OIDC
+      pull-requests: write
+      statuses: write
+      actions: write # gh workflow run pages.yml
+    env:
+      PKG: ${{ inputs.package }}
+      PR: ${{ inputs.pr }}
+      SANDBOX_RESULT: ${{ needs.sandbox.result }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      AUR_SENTRY_BIN: ${{ github.workspace }}/target/release/aur-sentry
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Harden Runner (Security & Egress Audit)
+        uses: step-security/harden-runner@4d991eb9b905ef189e4c376166672c3f2f230481 # v2.11.0
+        with:
+          egress-policy: audit
+
+      - name: Checkout main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      # Deliberately no actions/cache here: a cache entry written on this same
+      # ref by the untrusted sandbox job must never feed the trusted binary.
+      - name: Build aur-sentry (trusted, from main, clean)
+        run: cargo build --release
+
+      - name: Download raw evidence
+        continue-on-error: true
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8
+        with:
+          name: raw-evidence
+          path: ${{ runner.temp }}/raw-evidence
+
+      - name: Install cosign
+        uses: sigstore/cosign-installer@398d4b0eeef1380460a10c8013a76f728fb906ac # v3
+
+      - name: Compute verdict and sign attestation
+        id: attest
+        run: bash scripts/finalize_scan.sh attest
+
+      - name: Commit attestation to main
+        id: commit
+        run: bash scripts/finalize_scan.sh commit
+
+      - name: Report on scan PR (status, comment, close)
+        if: always() && inputs.pr != ''
+        run: bash scripts/finalize_scan.sh report
+
+      - name: Redeploy registry (bot pushes do not trigger Pages)
+        if: steps.commit.outputs.committed == 'true'
+        run: gh workflow run pages.yml --repo "$GITHUB_REPOSITORY" --ref main

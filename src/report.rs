@@ -1,6 +1,6 @@
 //! Report generation — advisories.json and RSS feed output.
 
-use crate::scanner::Finding;
+use crate::findings::Finding;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use std::path::Path;
@@ -236,6 +236,7 @@ pub fn update_readme_table(repo_root: &Path, advisories: &[Advisory]) {
 #[cfg(test)]
 mod tests {
     use super::*;
+    use crate::findings::Behavior;
 
     #[test]
     fn advisory_feed_save_and_load_roundtrip() {
@@ -254,6 +255,7 @@ mod tests {
                 description: "Reverse shell".into(),
                 line_number: 10,
                 matched_text: "bash -i >& /dev/tcp".into(),
+                behavior: Behavior::NetworkAccess,
             }],
             aur_url: "https://aur.archlinux.org/packages/foo-malware".into(),
         };
@@ -270,6 +272,7 @@ mod tests {
                 description: "Variable splicing".into(),
                 line_number: 2,
                 matched_text: "a=b".into(),
+                behavior: Behavior::Obfuscation,
             }],
             aur_url: "https://aur.archlinux.org/packages/bar-suspicious".into(),
         };
@@ -323,6 +326,7 @@ Footer notes.
                 description: "Discord webhook".into(),
                 line_number: 5,
                 matched_text: "discord.com".into(),
+                behavior: Behavior::NetworkAccess,
             }],
             aur_url: "https://aur.archlinux.org/packages/bad-pkg".into(),
         };

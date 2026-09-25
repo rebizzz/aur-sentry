@@ -10,15 +10,15 @@ This document adapts the "AUR Sentry 2.0" vision to run entirely on free infrast
 
 | Vision component            | Paid original         | Free substitute                                             |
 |------------------------------|------------------------|---------------------------------------------------------------|
-| Disposable sandbox            | AWS Fargate task       | GitHub Actions job on a GitHub-hosted runner (fresh VM per job, destroyed after) |
-| Job queue / scheduler         | SQS + EventBridge      | GitHub Actions `workflow_dispatch` + scheduled `cron` + `repository_dispatch` |
+| Disposable sandbox            | AWS Fargate task       | GitHub Actions job on a GitHub-hosted runner (fresh VM per job; untrusted `sandbox` job has `contents: read` only, disposable containers mount only `scans/<pkg>/`) |
+| Job queue / scheduler         | SQS + EventBridge      | GitHub Actions `workflow_dispatch` + scheduled `cron` + scratch scan PRs (`scan/<pkg>-<commit7>`) |
 | Control-plane DB              | RDS PostgreSQL         | JSON/NDJSON files committed to a `data/` branch (already the pattern used by `advisories.json`) |
-| Raw evidence storage          | S3                     | GitHub Actions artifacts (90-day retention) + committed summarized evidence in-repo |
+| Raw evidence storage          | S3                     | GitHub Actions artifacts (raw logs + JSON) + committed signed attestations in-repo |
 | Registry web UI               | Custom web app + infra | GitHub Pages (static site) reading the committed JSON |
 | Public API                    | Custom API service     | Raw GitHub-hosted JSON files served over `raw.githubusercontent.com` / Pages, same URLs act as the API |
-| Attestation signing           | KMS / custom PKI       | `cosign` keyless signing via GitHub OIDC (Sigstore public-good instance, free) — landed in Phase 3 |
-| GitHub issues                 | —                      | unchanged — stays as the human notification layer |
-| Reproducibility builds        | Second AWS task        | A second, independent GitHub Actions job (different runner, run later) |
+| Attestation signing           | KMS / custom PKI       | `cosign` keyless signing via GitHub OIDC (Sigstore public-good instance, free) in trusted `finalize` job |
+| PR / human notification       | —                      | Scan PR comment with checklist + commit status, closed and branch deleted automatically |
+| Reproducibility builds        | Second AWS task        | A second, independent build in the sandbox job (file-list and sha256 diff) |
 
 Trade-offs accepted for $0 cost:
 - GitHub-hosted runners give ~2-core/7GB VMs, 6-hour job cap, and no persistent state between jobs — fine for one-package-at-a-time disposable analysis, not for always-on services.
@@ -28,21 +28,43 @@ Trade-offs accepted for $0 cost:
 ## Pipeline (mapped from the original 40-step vision)
 
 ```
-AUR (metadata dump, every 2h)
-   -> Snapshotter          (records package identity: commit, PKGBUILD sha256, SRCINFO)
-   -> Static Analyzer       (existing Rust regex/AST engine -> structured `Behavior` evidence)
-   -> Triage                (unchanged/low-risk -> stop; new/changed/high-risk -> queue dynamic job)
-   -> Dynamic Sandbox (GH Actions job, ephemeral runner)
-        - build phase (makepkg) with canary secrets planted, process/network/fs telemetry
-        - install phase (pacman -U) in a second container, same telemetry
-        - package/ELF analysis of build output
-        - external intelligence: OSV.dev vulnerability-database correlation (see below)
-   -> Evidence Engine        (merge static + dynamic + package analysis into one evidence doc)
-   -> Verdict Engine          (deterministic rules, no ML/LLM judgment)
-   -> Attestation             (signed JSON: package identity + evidence + verdict)
-   -> Registry                (commit to data/attestations/<pkg>/<version>.json, publish via Pages)
-   -> Notifications           (GitHub issue only for SUSPICIOUS/MALICIOUS)
+Autopilot (autopilot.yml, cron 2h)
+   -> Static scan across metadata dump -> updates live threat radar & feeds (PR)
+   -> Triage scheduler (scripts/triage_dispatch.sh)
+        picks <=20 packages (NEW, MAINTAINER_CHANGED, COMMIT_CHANGED, STALE, HIGH_RISK)
+        for each: scripts/open_scan_pr.sh snapshots AUR code to scans/<pkg>/
+                  opens scratch PR: scan/<pkg>-<aurcommit7>
+                  dispatches scan.yml --ref scan/... -f pr=<n>
+
+Dynamic Scan Pipeline (scan.yml)
+   -> Job 1: Sandbox (untrusted runner, permissions: contents: read only)
+        - build container: root strace traces unprivileged `builder`, stderr streamed to host
+        - install container: fresh container, pacman -U / -R under strace, stderr streamed to host
+        - host analysis: aur-sentry scan-pkg --json, package/ELF inspection, OSV intel, repro diff
+        - upload raw-evidence artifact (raw logs + JSON only; NO verdict computed here)
+   -> Job 2: Finalize (trusted runner, permissions: contents: write, id-token: write, PR: write, statuses: write)
+        - concurrency: attestation-commit (serialized to prevent race conditions on main)
+        - download artifact -> aur-sentry attest computes verdict on trusted runner
+        - cosign sign-blob via GitHub Actions OIDC (keyless Sigstore)
+        - commit data/attestations/<pkg>/<ver>.json{,.sig,.cert} to main
+        - if SUSPICIOUS/MALICIOUS: upsert into advisories.json/.xml/ADVISORIES.md in same commit
+        - post commit status on PR head SHA pointing at scan run
+        - post PR comment with verdict + checklist + registry link -> close PR -> delete branch
+        - dispatch pages.yml to redeploy Pages
 ```
+
+## PR-Based Scan Flow & Security Model
+
+The dynamic analysis pipeline uses a two-tier, PR-isolated architecture designed to prevent credential exfiltration and forged telemetry:
+
+1. **Elimination of token theft:**
+   The untrusted `sandbox` job runs with `contents: read` only and checks out with `persist-credentials: false`. It mounts *only* `scans/<pkg>/` read-only into disposable containers. No GitHub write token exists anywhere on the sandbox VM.
+2. **Tamper-proof evidence streaming:**
+   Telemetry collection runs outside the reach of the unprivileged `builder` user. Root-owned strace streams output directly to host-captured stderr. Even if code attempts to delete or modify evidence files, it cannot alter data already streamed to the host.
+3. **Trusted verdict assembly:**
+   No verdict is computed on the untrusted runner. The sandbox job uploads only raw logs and JSON evidence. The trusted `finalize` job runs on a separate, fresh runner with write credentials, downloads the artifact, computes the deterministic verdict via `aur-sentry attest`, signs the attestation keylessly via Sigstore OIDC, and commits it directly to `main`.
+4. **Transparent audit trail:**
+   Each scanned package snapshot lives on its own `scan/<pkg>-<aurcommit7>` branch and PR with a checklist of triage reasons. Once scanned, the PR receives a verdict status and comment, is closed automatically, and the branch is removed.
 
 ## Verdict states
 
@@ -93,18 +115,18 @@ See `schemas/attestation.schema.json`. Core Rust types live in `src/attestation.
 
 1. **Phase 1 — landed.** Attestation schema (`schemas/attestation.schema.json`) + Rust types
    (`src/attestation.rs`), static-analysis findings reshaped into structured `Behavior`
-   evidence, the GH Actions dynamic-sandbox workflow, the registry site skeleton.
+   evidence, the GH Actions scan workflow (`.github/workflows/scan.yml`), the registry site skeleton.
 2. **Phase 2 — landed.** Triage scheduler (`scripts/triage_dispatch.sh`, run from
    `autopilot.yml`) escalates NEW / MAINTAINER_CHANGED / COMMIT_CHANGED / STALE / HIGH_RISK
-   packages to the dynamic sandbox via `repository_dispatch`, capped at 20 dispatches/run.
-   Canary-secret planting + strace-based exfiltration detection in
-   `scripts/dynamic_sandbox.sh`. Package-content/ELF analysis (file counts, ELF arch/stripped/
-   PIE, setuid/setgid + world-writable detection) feeds the same findings list that drives
-   `verdict_from_findings` — a setuid binary or world-writable file actually flips the verdict.
+   packages to dynamic analysis by opening scratch scan PRs (`scripts/open_scan_pr.sh`), capped at 20 dispatches/run.
+   Canary-secret planting + strace-based exfiltration detection in modular sandbox scripts
+   (`sandbox/build.sh`, `sandbox/install.sh`, `sandbox/lib.sh`). Package-content/ELF analysis (file counts, ELF arch/stripped/
+   PIE, setuid/setgid + world-writable detection in `sandbox/host_analyze.sh`) feeds the same typed `Finding` list that drives
+   `verdict_from_findings` — a setuid binary or world-writable file flips the verdict.
 3. **Phase 3 — landed.**
    - Reproducibility: two independent real `makepkg` builds, file-list + hash diff. Kept
      **informational only** (never feeds the verdict) per the vision's explicit caution.
-   - Sigstore/cosign signing: `dynamic-sandbox.yml` signs every attestation JSON keylessly via
+   - Sigstore/cosign signing: the trusted `finalize` job in `scan.yml` signs every attestation JSON keylessly via
      GitHub Actions OIDC (`sigstore/cosign-installer` + `cosign sign-blob --yes`, free, no
      stored secrets/KMS), publishing sibling `<version>.json.sig` / `.cert` files. `signature`
      on `Attestation` stays `None` — signing the file's own final bytes, then folding the
@@ -116,7 +138,7 @@ See `schemas/attestation.schema.json`. Core Rust types live in `src/attestation.
      cosign verify-blob \
        --certificate  <version>.json.cert \
        --signature    <version>.json.sig \
-       --certificate-identity-regexp '^https://github.com/rebizzz/aur-sentry/.github/workflows/dynamic-sandbox.yml@refs/heads/main$' \
+       --certificate-identity-regexp '^https://github\.com/rebizzz/aur-sentry/\.github/workflows/(scan\.yml@refs/heads/(main|scan/[A-Za-z0-9@._+-]+)|dynamic-sandbox\.yml@refs/heads/main)$' \
        --certificate-oidc-issuer https://token.actions.githubusercontent.com \
        <version>.json
      ```
@@ -129,11 +151,11 @@ See `schemas/attestation.schema.json`. Core Rust types live in `src/attestation.
    && makepkg`). `bin/safeaur`'s `PreBuildCommand` hook now also consults the registry (policy:
    VERIFIED silent, STALE/unknown warn-and-allow, SUSPICIOUS warn/prompt or `--strict` block,
    MALICIOUS unconditional block) before falling back to its local heuristic scan.
-5. **Notifications — landed.** `scripts/file_dynamic_threat_issue.sh`, run from
-   `dynamic-sandbox.yml` after each attestation commit, files/updates a GitHub issue for
-   SUSPICIOUS/MALICIOUS verdicts only (mirrors the existing `file_threat_issue.sh` pattern used
-   by the static-scan autopilot). VERIFIED/INCONCLUSIVE/etc. stay silent — the registry is the
-   primary output.
+5. **Notifications & PR Lifecycle — landed.** The trusted `finalize` job posts a status check and
+   a detailed markdown comment (verdict, evidence checklist, link to registry) directly on the scan PR,
+   then closes the PR and deletes the branch. For SUSPICIOUS/MALICIOUS verdicts, advisories are
+   upserted directly into `advisories.json`, `advisories.xml`, and `ADVISORIES.md` in the same commit.
+   VERIFIED/INCONCLUSIVE/etc. stay silent in feeds — the registry is the primary output.
 
 ## Known gaps (not yet built, tracked here rather than a separate doc)
 

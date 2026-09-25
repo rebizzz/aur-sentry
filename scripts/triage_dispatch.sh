@@ -3,9 +3,10 @@
 #
 # Phase 2 triage scheduler (see ARCHITECTURE.md "Triage" stage). Runs after
 # the cheap static autopilot pass and decides which AUR packages are worth
-# escalating to the expensive per-package dynamic sandbox
-# (.github/workflows/dynamic-sandbox.yml, repository_dispatch type
-# "sentry-scan"). Static analysis already covers every changed package every
+# escalating to the expensive per-package dynamic sandbox. Each escalated
+# package gets a scratch scan PR via scripts/open_scan_pr.sh, which then
+# dispatches .github/workflows/scan.yml on that PR's branch (see
+# ARCHITECTURE.md "PR-based scan flow"). Static analysis already covers every changed package every
 # cycle; this script exists purely to keep dynamic sandbox fan-out bounded so
 # a single autopilot run can never blow through Actions concurrency/minutes.
 #
@@ -30,8 +31,8 @@
 #   scripts/triage_dispatch.sh <repo_root> <target_repo> [window_hours] [max_dispatch] [candidate_limit]
 #
 # Env overrides (all optional): AUR_SENTRY_WINDOW_HOURS, AUR_SENTRY_MAX_DISPATCH,
-# AUR_SENTRY_CANDIDATE_LIMIT, GH_TOKEN (required to actually dispatch; if
-# unset the script still updates state and prints what it WOULD dispatch).
+# AUR_SENTRY_CANDIDATE_LIMIT, GH_TOKEN (required to actually open scan PRs;
+# if unset the script still updates state and prints what it WOULD open).
 #
 # Designed to degrade gracefully: network failures, a missing metadata dump,
 # or missing tools cause the script to skip triage (exit 0) rather than fail
@@ -40,6 +41,7 @@
 
 set -uo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="${1:-.}"
 TARGET_REPO="${2:-${GITHUB_REPOSITORY:-}}"
 WINDOW_HOURS="${3:-${AUR_SENTRY_WINDOW_HOURS:-4}}"
@@ -211,29 +213,15 @@ DISPATCHED=0
 if [ "$TOTAL_ESCALATE" -gt 0 ]; then
     sort -n "$ESCALATE_FILE" | head -n "$MAX_DISPATCH" | while IFS=$'\t' read -r prio pkg reason; do
         [ -n "$pkg" ] || continue
-        echo "  -> dispatching sentry-scan for '$pkg' (${reason})"
-        if [ -z "${GH_TOKEN:-}" ] && [ -z "${GITHUB_TOKEN:-}" ]; then
-            echo "     [dry-run] no GH_TOKEN/GITHUB_TOKEN available, not actually dispatching"
-            continue
-        fi
-        if [ -z "$TARGET_REPO" ]; then
+        echo "  -> opening scan PR for '$pkg' (${reason})"
+        if [ -z "$TARGET_REPO" ] && { [ -n "${GH_TOKEN:-}" ] || [ -n "${GITHUB_TOKEN:-}" ]; }; then
             echo "     [!] no target repo resolved (pass as arg2 or set GITHUB_REPOSITORY), skipping"
             continue
         fi
-        payload=$(jq -n --arg pkg "$pkg" '{event_type: "sentry-scan", client_payload: {package: $pkg}}')
-        if command -v gh >/dev/null 2>&1; then
-            if ! echo "$payload" | gh api "repos/${TARGET_REPO}/dispatches" --input - >/dev/null 2>"$TMP_DIR/gh_err.log"; then
-                echo "     [!] dispatch failed for '$pkg': $(cat "$TMP_DIR/gh_err.log" 2>/dev/null)"
-            fi
-        else
-            token="${GH_TOKEN:-$GITHUB_TOKEN}"
-            if ! curl -fsSL -X POST \
-                -H "Authorization: token ${token}" \
-                -H "Accept: application/vnd.github+json" \
-                "https://api.github.com/repos/${TARGET_REPO}/dispatches" \
-                -d "$payload" >/dev/null 2>"$TMP_DIR/curl_err.log"; then
-                echo "     [!] dispatch failed for '$pkg': $(cat "$TMP_DIR/curl_err.log" 2>/dev/null)"
-            fi
+        # open_scan_pr.sh prints its own dry-run plan when no token is set.
+        if ! GITHUB_REPOSITORY="$TARGET_REPO" bash "$SCRIPT_DIR/open_scan_pr.sh" "$pkg" "$reason" \
+            </dev/null 2>"$TMP_DIR/scan_pr_err.log"; then
+            echo "     [!] scan PR failed for '$pkg': $(tail -n 5 "$TMP_DIR/scan_pr_err.log" 2>/dev/null)"
         fi
     done
     DISPATCHED=$(( TOTAL_ESCALATE < MAX_DISPATCH ? TOTAL_ESCALATE : MAX_DISPATCH ))
@@ -243,5 +231,5 @@ if [ "$TOTAL_ESCALATE" -gt "$MAX_DISPATCH" ]; then
     echo "[*] triage: capped at ${MAX_DISPATCH} dispatch(es) this run (${TOTAL_ESCALATE} qualified); remainder will be re-evaluated (and re-escalate if still drifted) next cycle"
 fi
 
-echo "[*] triage: complete. up to ${DISPATCHED} dynamic-sandbox dispatch(es) fired, state file updated at ${STATE_FILE#"$REPO_ROOT/"}"
+echo "[*] triage: complete. up to ${DISPATCHED} scan PR(s) opened/dispatched, state file updated at ${STATE_FILE#"$REPO_ROOT/"}"
 exit 0

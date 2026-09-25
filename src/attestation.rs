@@ -1,7 +1,7 @@
 //! Phase 1 evidence-based attestation data model.
 //!
 //! Mirrors `schemas/attestation.schema.json`. Static findings bridge from
-//! `crate::scanner::Finding` rather than duplicating the scanner's rule output.
+//! `crate::findings::Finding` rather than duplicating the scanner's rule output.
 
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
@@ -29,20 +29,7 @@ impl Severity {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
-#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
-pub enum Behavior {
-    NetworkAccess,
-    ShellExecution,
-    CredentialAccess,
-    Persistence,
-    PrivilegeEscalation,
-    Obfuscation,
-    DynamicDownload,
-    ArbitraryFilesystemWrite,
-    PackageInstallation,
-    ServiceManipulation,
-}
+pub use crate::findings::Behavior;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Finding {
@@ -54,15 +41,11 @@ pub struct Finding {
 }
 
 impl Finding {
-    /// Reshape a scanner-level `Finding` (rule id + string severity) into a
-    /// behavior-tagged attestation `Finding`, rather than re-deriving evidence.
-    pub fn from_scanner(
-        f: &crate::scanner::Finding,
-        behavior: Behavior,
-        file: impl Into<String>,
-    ) -> Self {
+    /// Reshape a scanner-level `Finding` (rule id + string severity) into an
+    /// attestation `Finding`, keeping the behavior its rule declared.
+    pub fn from_scanner(f: &crate::findings::Finding, file: impl Into<String>) -> Self {
         Finding {
-            behavior,
+            behavior: f.behavior,
             file: file.into(),
             line: f.line_number,
             severity: Severity::from_scanner_str(&f.severity),
@@ -85,12 +68,17 @@ pub struct SourceIdentity {
     pub install_sha256: Option<String>,
 }
 
+/// Sandbox pass name used to tag build-phase (`makepkg`) telemetry events.
+pub const PHASE_BUILD: &str = "build";
+/// Sandbox pass name used to tag install-phase (`pacman -U`/`-R`) telemetry events.
+pub const PHASE_INSTALL: &str = "install";
+
 /// Which sandbox pass produced a piece of dynamic telemetry. Build-phase
 /// telemetry predates this field, so it defaults to `"build"` on
 /// deserialization for backward compatibility with older attestation JSON
 /// that doesn't carry a `phase` key at all.
 fn default_telemetry_phase() -> String {
-    "build".to_string()
+    PHASE_BUILD.to_string()
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -464,14 +452,16 @@ mod tests {
 
     #[test]
     fn finding_bridges_from_scanner_finding() {
-        let scanner_finding = crate::scanner::Finding {
+        let scanner_finding = crate::findings::Finding {
             rule_id: "EXFIL_DISCORD_WEBHOOK".into(),
             severity: "CRITICAL".into(),
             description: "discord webhook exfil".into(),
             line_number: 7,
             matched_text: "discord.com/api/webhooks".into(),
+            behavior: Behavior::NetworkAccess,
         };
-        let finding = Finding::from_scanner(&scanner_finding, Behavior::NetworkAccess, "PKGBUILD");
+        let finding = Finding::from_scanner(&scanner_finding, "PKGBUILD");
+        assert_eq!(finding.behavior, Behavior::NetworkAccess);
         assert_eq!(finding.severity, Severity::Critical);
         assert_eq!(finding.line, 7);
         assert_eq!(finding.file, "PKGBUILD");

@@ -1,0 +1,13 @@
+# sandbox/Containerfile — the disposable analysis image used by sandbox/run.sh.
+# Built once per scan job on the runner (free Docker Hub base image, no
+# registry push). Every build/install container starts fresh from it.
+#
+# Deliberately NOT installed: sudo. The unprivileged `builder` user gets no
+# way back to root, so the package being built cannot kill or detach the
+# root-owned strace that observes it.
+FROM docker.io/library/archlinux:base-devel
+
+RUN pacman -Syu --noconfirm --needed git strace \
+ && useradd -m -s /bin/bash builder
+
+COPY lib.sh build.sh install.sh /opt/aur-sentry-sandbox/

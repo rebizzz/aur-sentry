@@ -53,8 +53,8 @@ nix develop
 
 ### Verify a published attestation
 
-Every dynamic-sandbox attestation is signed keylessly via GitHub Actions OIDC (Sigstore,
-free — see [`ARCHITECTURE.md`](ARCHITECTURE.md#phased-rollout)). Independently verify one
+Every scan attestation is signed keylessly via GitHub Actions OIDC (Sigstore,
+free — see [`ARCHITECTURE.md`](ARCHITECTURE.md#pr-based-scan-flow--security-model)). Independently verify one
 with [cosign](https://docs.sigstore.dev/cosign/installation/):
 
 ```bash
@@ -175,15 +175,14 @@ The static analysis engine checks 40+ signatures across PKGBUILD and `.install` 
 
 ---
 
-## Autopilot Mode
+## Autopilot & PR-Based Dynamic Sandboxing
 
 Runs via GitHub Actions every 2 hours:
-1. Downloads the full AUR metadata dump (`packages-meta-ext-v1.json.gz`, ~120k packages).
-2. Filters packages modified in the recent window.
-3. Rips through `PKGBUILD` and `.install` files with the deep Rust analyzer suite.
-4. Files automated GitHub Issue alerts for any `[CRITICAL]` threats.
-5. Updates `advisories.json`, `advisories.xml`, and `ADVISORIES.md`.
-6. Opens automated pull requests for threat radar and machine feed synchronizations.
+1. **Metadata Dump & Static Scan:** Downloads the full AUR metadata dump (`packages-meta-ext-v1.json.gz`, ~120k packages) and filters packages modified in the recent window. High-performance static analysis scans `PKGBUILD` and `.install` scripts for attack patterns.
+2. **Threat Radar Synchronization:** Updates live threat radar (`ADVISORIES.md`) and machine feeds (`advisories.json`, `advisories.xml`) via an automated pull request.
+3. **Triage & Scratch Scan PRs:** Triage prioritizes new, modified, stale, or flagged packages (capped at 20 per cycle). For each candidate, a scratch branch and PR (`scan/<pkg>-<aurcommit7>`) is created with an isolated snapshot of the package files in `scans/<pkg>/`.
+4. **Untrusted Sandbox Container Execution:** `scan.yml` runs on an untrusted runner with read-only permissions (`contents: read`). The package builds (`makepkg`) and installs (`pacman -U`) in disposable containers with planted canary secrets. Telemetry is streamed to host-captured stderr, preventing tampering or token theft.
+5. **Trusted Finalize & Attestation Signing:** A separate, trusted runner (`finalize` job) downloads raw telemetry, computes the deterministic verdict with `aur-sentry attest`, keylessly signs the attestation via GitHub Actions OIDC (Sigstore), commits `data/attestations/<pkg>/<version>.json` (plus `.sig` and `.cert`) to `main`, updates advisory feeds if suspicious/malicious, posts a verdict checklist comment to the PR, closes the PR, and deletes the scratch branch.
 
 ---
 

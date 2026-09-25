@@ -8,3 +8,6 @@ target/
 *.swp
 *.swo
 .DS_Store
+docs/data/manifest.json
+sandbox-evidence/
+scripts/__pycache__/
