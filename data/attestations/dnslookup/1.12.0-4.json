@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dnslookup",
+    "version": "1.12.0-4",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "51f737f8d279b5604a54caa2b50c2a288935016c",
+    "pkgbuild_sha256": "22b0f95656954312aa62a0f911a00a42f8ffeab267c2a86152df5015f23f4742",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T14:10:35.313111961+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:10:35.307941364+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:10:35.307941364+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:10:35.307941364+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f52b0d7a46e4bb27cb75afa440eb4cf66f0ce49e8cf7ac453ab08d7377343986",
+  "signature": null
+}
