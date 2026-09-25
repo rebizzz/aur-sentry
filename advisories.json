@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-25T01:34:43+00:00",
-  "total_flagged": 14,
+  "updated_at": "2026-09-25T01:43:50+00:00",
+  "total_flagged": 15,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -156,6 +156,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "aacs-keydb-daily",
+      "version": "20260925002448-1",
+      "maintainer": "DeepChirp",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T01:43:50+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash f176516a37fcc0af)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/aacs-keydb-daily"
     },
     {
       "package": "cleverswitch",
