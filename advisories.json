@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-25T23:36:50+00:00",
+  "updated_at": "2026-09-25T23:36:52+00:00",
   "total_flagged": 78,
   "advisories": [
     {
@@ -156,6 +156,24 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "bookshelfng-bin",
+      "version": "0.4.21.37-1",
+      "maintainer": "keefshape",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T23:36:52+00:00",
+      "findings": [
+        {
+          "rule_id": "PKG_INSTALL_FILE_REF",
+          "severity": "INFO",
+          "description": "references external .install scriptlet",
+          "line_number": 11,
+          "matched_text": "install=bookshelfng.install",
+          "behavior": "PACKAGE_INSTALLATION"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/bookshelfng-bin"
     },
     {
       "package": "agent-console-bin",
@@ -414,24 +432,6 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bluemap-bin"
-    },
-    {
-      "package": "bookshelfng-bin",
-      "version": "0.4.21.36-1",
-      "maintainer": "keefshape",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T18:58:57+00:00",
-      "findings": [
-        {
-          "rule_id": "PKG_INSTALL_FILE_REF",
-          "severity": "INFO",
-          "description": "references external .install scriptlet",
-          "line_number": 11,
-          "matched_text": "install=bookshelfng.install",
-          "behavior": "PACKAGE_INSTALLATION"
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/bookshelfng-bin"
     },
     {
       "package": "archnet-bin",
@@ -1153,23 +1153,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "camlpdf",
-      "version": "2.9.2-1",
-      "maintainer": "severach",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
-    },
-    {
       "package": "amethyst-mod-manager",
       "version": "2.5.2-1",
       "maintainer": "TheBill2001",
@@ -1185,6 +1168,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
+    },
+    {
+      "package": "camlpdf",
+      "version": "2.9.2-1",
+      "maintainer": "severach",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
     },
     {
       "package": "aura-emerge",
