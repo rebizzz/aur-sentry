@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-25T08:09:28+00:00",
-  "total_flagged": 20,
+  "updated_at": "2026-09-25T08:09:58+00:00",
+  "total_flagged": 21,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -158,21 +158,21 @@
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
     },
     {
-      "package": "camlpdf",
-      "version": "2.9.2-1",
-      "maintainer": "severach",
+      "package": "bsdutils",
+      "version": "14.3-1",
+      "maintainer": "Chocobo1",
       "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
+      "detected_at": "2026-09-25T08:09:58+00:00",
       "findings": [
         {
           "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
           "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash c6e871412fef630a)",
           "line_number": 0,
           "matched_text": ""
         }
       ],
-      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
+      "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
       "package": "amethyst-mod-manager",
@@ -190,6 +190,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
+    },
+    {
+      "package": "camlpdf",
+      "version": "2.9.2-1",
+      "maintainer": "severach",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
     },
     {
       "package": "aura-emerge",
