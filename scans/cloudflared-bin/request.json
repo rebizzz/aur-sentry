@@ -1,0 +1,8 @@
+{
+  "package": "cloudflared-bin",
+  "aur_commit": "4c7226e42e73b4c893b7fc1aae2c8fd5766f267d",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-25T01:42:56Z"
+}
