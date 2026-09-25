@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "claude-code",
+    "version": "2.1.283-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c5a5dee39e4ce89e36b00313075d01844dc9eadc",
+    "pkgbuild_sha256": "53cc039591830d513b39265f3cb85e1b3d572d1839bb3e8490658c2aafa01a87",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T23:38:17.463059911+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 31,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:38:17.452660973+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "160.79.104.10",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-25T23:38:17.452660973+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "35.190.46.17",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-25T23:38:17.452660973+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 3,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "opt/claude-code/bin/claude",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "884770a0aae9dc91801a805faaa35b79bee92015b74d9b1abbe9e61aac9f9071",
+  "signature": null
+}
