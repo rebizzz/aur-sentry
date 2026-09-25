@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "differential",
+    "version": "0.12.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "86c28e0b90a9fc757bcfedd2eb10d8d2dada48d9",
+    "pkgbuild_sha256": "0de632f030e9cae20362a2b2eea6024f83555e273d899ea2f7b03af2067c0164",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T08:11:35.032209757+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:11:35.023155847+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "151.101.130.137",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-25T08:11:35.023155847+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "151.101.2.137",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:11:35.023155847+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can fill the file system (GHSA-2hvr-h6gw-qrxp)",
+      "url": "https://osv.dev/vulnerability/GHSA-2hvr-h6gw-qrxp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo prior to Rust 1.26.0 may download the wrong dependency (GHSA-9f3p-wvj7-q82x)",
+      "url": "https://osv.dev/vulnerability/GHSA-9f3p-wvj7-q82x"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo not respecting umask when extracting crate archives (GHSA-j3xp-wfr4-hx87)",
+      "url": "https://osv.dev/vulnerability/GHSA-j3xp-wfr4-hx87"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo crates in third party registries can override the cached source of other crates (GHSA-jq42-7mfv-hm57)",
+      "url": "https://osv.dev/vulnerability/GHSA-jq42-7mfv-hm57"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo can be coerced to share credentials between registries (GHSA-p688-r7jv-fm6f)",
+      "url": "https://osv.dev/vulnerability/GHSA-p688-r7jv-fm6f"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo did not verify SSH host keys (GHSA-r5w3-xm58-jv6j)",
+      "url": "https://osv.dev/vulnerability/GHSA-r5w3-xm58-jv6j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can corrupt arbitrary files (GHSA-rfj2-q3h3-hm5j)",
+      "url": "https://osv.dev/vulnerability/GHSA-rfj2-q3h3-hm5j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious dependencies can inject arbitrary JavaScript into cargo-generated timing reports (GHSA-wrrj-h57r-vx9p)",
+      "url": "https://osv.dev/vulnerability/GHSA-wrrj-h57r-vx9p"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "176ed0e7274f802aa92f4c9d0a6f29318b69fb02e980528e88961dc4c9adbae8",
+  "signature": null
+}
