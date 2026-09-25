@@ -1,1 +1,82 @@
-{}
+{
+  "mark-shot": {
+    "commit": "e58f270c18968355c6234d20d2e9c9d945c398a1",
+    "maintainer": "Snemc-s",
+    "version": "0.1.54-1",
+    "last_modified": 1790300123,
+    "first_submitted": 1777691055,
+    "last_checked": "2026-09-25T01:42:36Z"
+  },
+  "shoal-bin": {
+    "commit": "dccf4e866c815969db709f461f3cf0bec8a07228",
+    "maintainer": "Dominiquini",
+    "version": "1.0.0-1",
+    "last_modified": 1790299952,
+    "first_submitted": 1790299952,
+    "last_checked": "2026-09-25T01:42:37Z"
+  },
+  "mx-tools": {
+    "commit": "acd4ad9095ea271214c962585be50a6d4a584dde",
+    "maintainer": "AdrianTM",
+    "version": "26.09.11-2",
+    "last_modified": 1790299882,
+    "first_submitted": 1773246664,
+    "last_checked": "2026-09-25T01:42:39Z"
+  },
+  "python-okta": {
+    "commit": "5a73d24a8e2002b8407df011f7f1bba75a54f1ed",
+    "maintainer": "darkfish",
+    "version": "3.4.6-1",
+    "last_modified": 1790299683,
+    "first_submitted": 1596553853,
+    "last_checked": "2026-09-25T01:42:40Z"
+  },
+  "lobo-bin": {
+    "commit": "94c97eaaf26beb16c458cc5bf60c46bc9f964700",
+    "maintainer": "espadon",
+    "version": "0.1.1-1",
+    "last_modified": 1790299316,
+    "first_submitted": 1788884904,
+    "last_checked": "2026-09-25T01:42:41Z"
+  },
+  "gryt-chat-bin": {
+    "commit": "821a47634805d29ea506b7449b5856973f9f9658",
+    "maintainer": "simpvert",
+    "version": "1.11.44-1",
+    "last_modified": 1790299195,
+    "first_submitted": 1772397509,
+    "last_checked": "2026-09-25T01:42:43Z"
+  },
+  "btmux-bin": {
+    "commit": "01b571dbf4b4177400d141a8d9395631e55a8110",
+    "maintainer": "Dominiquini",
+    "version": "0.0.98-1",
+    "last_modified": 1790299147,
+    "first_submitted": 1790299147,
+    "last_checked": "2026-09-25T01:42:44Z"
+  },
+  "uzdoom-bin": {
+    "commit": "32b1867ecc5e2813fed14fa89a0a47857702497c",
+    "maintainer": "gameslayer",
+    "version": "5.0.3-1",
+    "last_modified": 1790299139,
+    "first_submitted": 1765178213,
+    "last_checked": "2026-09-25T01:42:45Z"
+  },
+  "qmtui-bin": {
+    "commit": "b90db7f52e056c85333b83a2c682ba3722382f43",
+    "maintainer": "Yueyuri",
+    "version": "0.3.13-1",
+    "last_modified": 1790298939,
+    "first_submitted": 1789124239,
+    "last_checked": "2026-09-25T01:42:47Z"
+  },
+  "tmpo-bin": {
+    "commit": "3bbb048424f56e9c1806d56fe1c9dd14e2529ec8",
+    "maintainer": "Dominiquini",
+    "version": "0.10.1-1",
+    "last_modified": 1790298870,
+    "first_submitted": 1769566453,
+    "last_checked": "2026-09-25T01:42:48Z"
+  }
+}
