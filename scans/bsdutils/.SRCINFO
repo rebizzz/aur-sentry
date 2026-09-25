@@ -1,0 +1,21 @@
+pkgbase = bsdutils
+	pkgdesc = Alternative to GNU coreutils using software from FreeBSD
+	pkgver = 14.3
+	pkgrel = 1
+	url = https://codeberg.org/dcantrell/bsdutils
+	arch = i686
+	arch = x86_64
+	license = BSD-3-Clause
+	makedepends = byacc
+	makedepends = meson
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = libedit
+	depends = libxo
+	depends = ncurses
+	depends = openssl
+	source = bsdutils-14.3-src.tar.gz::https://codeberg.org/dcantrell/bsdutils/archive/v14.3.tar.gz
+	sha256sums = 047d7907fcf52deb0981169180d18c80e600918ecbb3bc84718bf63500b20550
+
+pkgname = bsdutils
