@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cherry-studio",
+    "version": "2.1.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5e78a41a4e711b9147ec39ae7c343015fc4a452e",
+    "pkgbuild_sha256": "50c6b3eb672a5f41edf405745335afd786d8229e97f1d355b5fffc14a5706056",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T14:10:50.339046828+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:10:50.295720451+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:10:50.295720451+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:10:50.295720451+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Mise's local credential_command executes untrusted config (GHSA-29hf-rm4x-xxph)",
+      "url": "https://osv.dev/vulnerability/GHSA-29hf-rm4x-xxph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm vulnerable to Command Injection via environment variable substitution (GHSA-2phv-j68v-wwqx)",
+      "url": "https://osv.dev/vulnerability/GHSA-2phv-j68v-wwqx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: pacquet trust-lockfile install can create dependency symlinks outside the project (GHSA-2rx9-3g3h-c2jv)",
+      "url": "https://osv.dev/vulnerability/GHSA-2rx9-3g3h-c2jv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm v10+ Bypass \"Dependency lifecycle scripts execution disabled by default\" (GHSA-379q-355j-w6rj)",
+      "url": "https://osv.dev/vulnerability/GHSA-379q-355j-w6rj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Repository config can expand victim environment secrets into registry requests before scripts run (GHSA-3qhv-2rgh-x77r)",
+      "url": "https://osv.dev/vulnerability/GHSA-3qhv-2rgh-x77r"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Vulnerable to Global node_modules Binary Overwrite (GHSA-4328-8hgf-7wjr)",
+      "url": "https://osv.dev/vulnerability/GHSA-4328-8hgf-7wjr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Local settings bypass config trust checks (GHSA-436v-8fw5-4mj8)",
+      "url": "https://osv.dev/vulnerability/GHSA-436v-8fw5-4mj8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv is vulnerable to arbitrary file write through entry point names (GHSA-4gg8-gxpx-9rph)",
+      "url": "https://osv.dev/vulnerability/GHSA-4gg8-gxpx-9rph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Reserved bin name deletes PNPM_HOME during global remove (GHSA-4gxm-v5v7-fqc4)",
+      "url": "https://osv.dev/vulnerability/GHSA-4gxm-v5v7-fqc4"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "bun vulnerable to OS Command Injection (GHSA-4j66-8f4r-3pjx)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j66-8f4r-3pjx"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d83f69a8bb535b04fda9cb094f167a756f4b541d3ee72623dce8e6ad35040f5c",
+  "signature": null
+}
