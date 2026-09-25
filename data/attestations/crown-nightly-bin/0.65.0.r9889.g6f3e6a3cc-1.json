@@ -1,0 +1,176 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "crown-nightly-bin",
+    "version": "0.65.0.r9889.g6f3e6a3cc-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "ef76431f90d6b95f378095fba448a48d324026e7",
+    "pkgbuild_sha256": "8056bb305265287998ebe3598977b5849bc3d4fc9123c68d1771e833dacee86e",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T19:01:04.499403805+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:01:04.469342907+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "192.178.155.132",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:01:04.469342907+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:01:04.478034798+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:01:04.478034798+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 544,
+    "elf_object_count": 16,
+    "elf_objects": [
+      {
+        "path": "opt/crown-nightly/crown-launcher",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/android-arm64/bin/libcrown-development.so",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/crown-nightly/platforms/android-arm64/bin/libcrown-release.so",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/crown-nightly/platforms/android-arm/bin/libcrown-development.so",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/crown-nightly/platforms/android-arm/bin/libcrown-release.so",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux32/bin/luac-release",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux32/bin/luajit",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux32/bin/luac",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux64/bin/crown-release",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux64/bin/texturec",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux64/bin/crown-development",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux64/bin/crown-editor-release",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux64/bin/crown-debug",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux64/bin/shaderc",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux64/bin/luajit",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/crown-nightly/platforms/linux64/bin/crown-editor-debug",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "9ac1cd0144aafed7854b84c531e4a90a3fe8d331215dc39c9ec7eee7d921e0da",
+  "signature": null
+}
