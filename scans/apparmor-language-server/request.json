@@ -1,0 +1,8 @@
+{
+  "package": "apparmor-language-server",
+  "aur_commit": "98df4ed74d29c3e143c362df27c3b287df423cbb",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-25T18:53:28Z"
+}
