@@ -1,0 +1,26 @@
+pkgbase = dsd-neo-git
+	pkgdesc = Digital Speech Decoder - A modern, modular, and performance enhanced C/C++ decoder for digital voice. DMR, P25, NXDN, YSF, and more.
+	pkgver = 2.10.0.r4.g43222a7
+	pkgrel = 1
+	url = https://github.com/arancormonk/dsd-neo
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = git
+	makedepends = cmake
+	makedepends = help2man
+	depends = mbelib-neo-git
+	depends = libsndfile
+	depends = openssl
+	depends = ncurses
+	depends = libpulse
+	depends = rtl-sdr
+	depends = soapysdr
+	depends = codec2
+	depends = curl
+	provides = dsd-neo
+	conflicts = dsd-neo
+	source = dsd-neo-git::git+https://github.com/arancormonk/dsd-neo.git#branch=main
+	sha256sums = SKIP
+
+pkgname = dsd-neo-git
