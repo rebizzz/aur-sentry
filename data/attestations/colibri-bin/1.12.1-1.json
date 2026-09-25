@@ -1,0 +1,114 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "colibri-bin",
+    "version": "1.12.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "82efc049a8189c290d611be20ceb562c6f1dff0b",
+    "pkgbuild_sha256": "3ada1670a525aa43b04a80322fd0f6d155a3c40ab5efe9bee47d6e31b8fd772c",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T08:10:52.684673401+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:10:52.676903504+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:10:52.676903504+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:10:52.676903504+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 38,
+    "elf_object_count": 8,
+    "elf_objects": [
+      {
+        "path": "usr/libexec/colibri/inkling",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/libexec/colibri/kimi_k3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/libexec/colibri/colibri",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/libexec/colibri/qwen38",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/libexec/colibri/deepseek_v4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/libexec/colibri/qwen36",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/libexec/colibri/glm53",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/libexec/colibri/olmoe",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "da05a2d9423e74fa809c128979af01006e216884ef9ebe5cd66cc20ae6992562",
+  "signature": null
+}
