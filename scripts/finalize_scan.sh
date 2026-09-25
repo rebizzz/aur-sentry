@@ -328,7 +328,7 @@ cmd_report() {
     || echo "::warning::could not set commit status"
 
   local body="$STAGE/comment.md"
-  local avatar_img="<img src=\"https://raw.githubusercontent.com/$REPO/main/assets/avatar.jpg\" width=\"28\" height=\"28\" style=\"vertical-align: middle; border-radius: 50%;\" alt=\"AUR Sentry\" />"
+  local avatar_img="<img src=\"https://raw.githubusercontent.com/$REPO/main/assets/avatar.png\" width=\"28\" height=\"28\" style=\"vertical-align: middle; border-radius: 50%;\" alt=\"AUR Sentry\" />"
   if [ "$attested" = true ]; then
     local att="$STAGE/attestation/$file_ver.json"
     {

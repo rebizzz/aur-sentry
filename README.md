@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/avatar.jpg" width="140" height="140" alt="AUR Sentry Logo" style="border-radius: 50%;" />
+  <img src="assets/avatar.png" width="140" height="140" alt="AUR Sentry Logo" style="border-radius: 50%;" />
 </p>
 
 # aur-sentry
