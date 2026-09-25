@@ -37,20 +37,33 @@ jobs:
 
       - name: Extract package name and issue number
         id: info
+        # Issue titles are attacker-controlled (anyone can open an issue). Never splice
+        # them directly into a `run:` script body via ${{ }} templating -- that's script
+        # injection, since the template substitution happens before bash ever runs.
+        # Pass through env: instead, which sets real environment variables.
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          INPUT_PKG: ${{ inputs.package_name }}
         run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "pkg=${{ inputs.package_name }}" >> "$GITHUB_OUTPUT"
+          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
+            echo "pkg=$INPUT_PKG" >> "$GITHUB_OUTPUT"
             echo "issue_num=" >> "$GITHUB_OUTPUT"
           else
-            TITLE="${{ github.event.issue.title }}"
-            PKG=$(echo "$TITLE" | sed -E 's/.*for `?([a-zA-Z0-9_\.\-]+)`?/\1/')
+            PKG=$(echo "$ISSUE_TITLE" | sed -E 's/.*for `?([a-zA-Z0-9_\.\-]+)`?/\1/')
             echo "pkg=$PKG" >> "$GITHUB_OUTPUT"
-            echo "issue_num=${{ github.event.issue.number }}" >> "$GITHUB_OUTPUT"
+            echo "issue_num=$ISSUE_NUMBER" >> "$GITHUB_OUTPUT"
           fi
 
       - name: Run Dynamic Threat Verification
+        # Same injection class applies to step outputs derived from attacker input --
+        # steps.info.outputs.pkg is regex-extracted from the (attacker-controlled) issue
+        # title, so it also must not be spliced into the script body directly.
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PKG_NAME: ${{ steps.info.outputs.pkg }}
+          ISSUE_NUM: ${{ steps.info.outputs.issue_num }}
         run: |
           chmod +x scripts/verify_threat_issue.sh
-          bash scripts/verify_threat_issue.sh "${{ steps.info.outputs.pkg }}" "${{ steps.info.outputs.issue_num }}" "${{ github.repository }}"
+          bash scripts/verify_threat_issue.sh "$PKG_NAME" "$ISSUE_NUM" "${{ github.repository }}"
