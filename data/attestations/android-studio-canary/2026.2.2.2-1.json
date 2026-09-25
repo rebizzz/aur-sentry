@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "android-studio-canary",
+    "version": "2026.2.2.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "6421d49efb1867a0a855badc4780c094363e9934",
+    "pkgbuild_sha256": "016118c3c8ea3c89f4dcdbf7f77a68195a3a5ce66baf399ea3edc7fb32a79f54",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T08:14:54.508802322+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:14:54.483887058+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "34.104.35.123",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-25T08:14:54.483887058+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "zip Incorrectly Canonicalizes Paths during Archive Extraction Leading to Arbitrary File Write (GHSA-94vh-gphv-8pm8)",
+      "url": "https://osv.dev/vulnerability/GHSA-94vh-gphv-8pm8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Incorrect path canonicalization during Archive Extraction Leading to Arbitrary File Write (RUSTSEC-2025-0168)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2025-0168"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`unzip` is unmaintained (RUSTSEC-2026-0296)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0296"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`unzip`: archive extraction is vulnerable to path traversal (zip-slip) (RUSTSEC-2026-0297)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0297"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c6b5a3eba56b11ad5730d7a994bfdc0b792fcc1d11923aea48bc8096aeebe560",
+  "signature": null
+}
