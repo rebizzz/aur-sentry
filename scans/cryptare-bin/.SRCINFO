@@ -1,0 +1,21 @@
+pkgbase = cryptare-bin
+	pkgdesc = A terminal tool for encrypting, decrypting, compressing and extracting files and directories
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/jabbott-iii/Cryptare
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = cryptare
+	conflicts = cryptare
+	options = !strip
+	source = README-1.1.0.md::https://raw.githubusercontent.com/jabbott-iii/Cryptare/v1.1.0/README.md
+	source = LICENSE-1.1.0::https://raw.githubusercontent.com/jabbott-iii/Cryptare/v1.1.0/LICENSE
+	sha256sums = a41077b8aefd2baeb54b50815fe72376c595a83e47a70204c35cd23a94a491a6
+	sha256sums = 569fbda2ba6c629a5afac7f2ae5af3b5e8579c395e226c4ab144838d61f13557
+	source_x86_64 = cryptare-x86_64-1.1.0.tgz::https://github.com/jabbott-iii/Cryptare/releases/download/v1.1.0/cryptare_linux_amd64.tar.gz
+	sha256sums_x86_64 = 923b89cfb4dc0f6cc71666d32c7c4446c89612fb19cf62f5c242f9372fee1f61
+	source_aarch64 = cryptare-aarch64-1.1.0.tgz::https://github.com/jabbott-iii/Cryptare/releases/download/v1.1.0/cryptare_linux_arm64.tar.gz
+	sha256sums_aarch64 = b96a26f809e12d29f6db10d16f4d99025fee1344dd77e8a729c92bb73146dab6
+
+pkgname = cryptare-bin
