@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cockpit-tools-bin",
+    "version": "1.3.60-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "93e36949d1a94b20a9a131a7a5ab2ad23c06b0ca",
+    "pkgbuild_sha256": "1cdb1de4b3b9c1dd3c81d2d65926ffa17dcc8b2e80a429866fc6a2f7d6c79674",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T19:00:19.646403451+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:00:19.612967869+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:00:19.612967869+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:00:19.612967869+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:00:19.621322042+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T19:00:19.621322042+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 27,
+    "elf_object_count": 2,
+    "elf_objects": [
+      {
+        "path": "usr/bin/cockpit-tools",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/cockpit-cliproxy",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "9401862370a7daa4affa5f4046da99630061dd132fd4710929241730bfa4befc",
+  "signature": null
+}
