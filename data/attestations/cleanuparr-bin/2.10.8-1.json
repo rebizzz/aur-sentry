@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cleanuparr-bin",
+    "version": "2.10.8-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5da07c623e8238a2f6e1090b2fcf39dfabf370b8",
+    "pkgbuild_sha256": "4a12d62e2c364361608db3ce27cdfe4a0941cf3dec40a21cfb78ae1ae41a90f6",
+    "install_sha256": "19f295bd0b4d3bb046a4e1bef2808277cdf033297aace97b9e719eec4d2c045e"
+  },
+  "analyzed_at": "2026-09-25T23:38:04.052241681+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 14,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:38:04.037771788+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:38:04.037771788+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:38:04.037771788+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 295,
+    "elf_object_count": 3,
+    "elf_objects": [
+      {
+        "path": "usr/lib/cleanuparr/Cleanuparr",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/cleanuparr/libe_sqlite3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/cleanuparr/libMono.Unix.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "95dd2458bcfaa3293ab32fbfd97b94933a4d27ac2adf44863416fe101d1fac3b",
+  "signature": null
+}
