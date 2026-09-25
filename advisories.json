@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-25T23:36:19+00:00",
-  "total_flagged": 75,
+  "updated_at": "2026-09-25T23:36:25+00:00",
+  "total_flagged": 76,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -156,6 +156,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "agent-deck",
+      "version": "1.16.17-1",
+      "maintainer": "Jamison",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T23:36:25+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 10ac3a748ef0132f)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/agent-deck"
     },
     {
       "package": "baresip-qt-gui-git",
@@ -1102,23 +1119,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "amethyst-mod-manager",
-      "version": "2.5.2-1",
-      "maintainer": "TheBill2001",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
-    },
-    {
       "package": "camlpdf",
       "version": "2.9.2-1",
       "maintainer": "severach",
@@ -1134,6 +1134,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/camlpdf"
+    },
+    {
+      "package": "amethyst-mod-manager",
+      "version": "2.5.2-1",
+      "maintainer": "TheBill2001",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
     },
     {
       "package": "aura-emerge",
