@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "clion-eap",
+    "version": "263.5701.36-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "2580f157f9c032336334177921e44d68ebc3ba99",
+    "pkgbuild_sha256": "c5831800ead53bbced4e718c78c53ae9e673ce86b9c2c903ffd5b60bfa68a721",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T23:40:19.174173068+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:40:19.132937199+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "18.238.109.35",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:40:19.132937199+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "b2c3514f027b429cf98ef13a422f0de84dc60af1a86c6e4471d315b9c998f4b1",
+  "signature": null
+}
