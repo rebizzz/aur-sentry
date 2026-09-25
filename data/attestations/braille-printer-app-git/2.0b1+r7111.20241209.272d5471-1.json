@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "braille-printer-app-git",
+    "version": "2.0b1+r7111.20241209.272d5471-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d235b2ab8d73af8be2100c3dc9893a9a69218fbd",
+    "pkgbuild_sha256": "3dadbeb4a4c7ca422278de02fc86831c65a471a9d5c335ed9dcb67f3752c4602",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T08:10:13.123828475+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:10:13.094448364+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:10:13.094448364+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "e947970403907da18a82440360c49ff7be7fa2b77404b74c8d1efc89b323308e",
+  "signature": null
+}
