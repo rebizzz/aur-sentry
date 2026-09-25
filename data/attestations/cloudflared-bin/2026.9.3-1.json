@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cloudflared-bin",
+    "version": "2026.9.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4c7226e42e73b4c893b7fc1aae2c8fd5766f267d",
+    "pkgbuild_sha256": "f72f744b63eea62679d28550656bf6aa02e3362ff786dc583a96d29f017e6909",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T01:49:55.999860020+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T01:49:55.988725763+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-25T01:49:55.988725763+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T01:49:55.988725763+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T01:49:55.988725763+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 7,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/cloudflared",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "cloudflared's Installer has Local Privilege Escalation Vulnerability (GHSA-7mjv-x3jf-545x)",
+      "url": "https://osv.dev/vulnerability/GHSA-7mjv-x3jf-545x"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Local Privilege Escalation in cloudflared (GHSA-hgwp-4vp4-qmm2)",
+      "url": "https://osv.dev/vulnerability/GHSA-hgwp-4vp4-qmm2"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Local Privilege Escalation in cloudflared in github.com/cloudflare/cloudflared (GO-2022-0845)",
+      "url": "https://osv.dev/vulnerability/GO-2022-0845"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "cloudflared's Installer has Local Privilege Escalation Vulnerability in github.com/cloudflare/cloudflared (GO-2023-1652)",
+      "url": "https://osv.dev/vulnerability/GO-2023-1652"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "b172e9e837b0154376042d658a2cb058a15b170439610b9444ddf271a7edeb55",
+  "signature": null
+}

@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-25T01:45:39+00:00",
-  "total_flagged": 16,
+  "updated_at": "2026-09-25T01:49:59+00:00",
+  "total_flagged": 17,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -156,6 +156,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "cloudflared-bin",
+      "version": "2026.9.3-1",
+      "maintainer": "imlonghao",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T01:49:59+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash b172e9e837b01543)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/cloudflared-bin"
     },
     {
       "package": "astra-music-git",
