@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-25T23:37:07+00:00",
+  "updated_at": "2026-09-25T23:37:17+00:00",
   "total_flagged": 80,
   "advisories": [
     {
@@ -156,6 +156,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "c0wrk-zabbius-cuda-git",
+      "version": "0.9.1.r24.g2d95abc-1",
+      "maintainer": "Zabbius",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T23:37:17+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 76bc51b33e1111c8)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/c0wrk-zabbius-cuda-git"
     },
     {
       "package": "biri-altinstall-git",
@@ -794,23 +811,6 @@
       "aur_url": "https://aur.archlinux.org/packages/codex-security"
     },
     {
-      "package": "c0wrk-zabbius-cuda-git",
-      "version": "0.9.1.r15.ga864405-1",
-      "maintainer": "Zabbius",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T14:10:10+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 72fed599407086d7)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/c0wrk-zabbius-cuda-git"
-    },
-    {
       "package": "cogpit-server",
       "version": "3.0.0-1",
       "maintainer": "Gentrit",
@@ -1187,23 +1187,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "camlpdf",
-      "version": "2.9.2-1",
-      "maintainer": "severach",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
-    },
-    {
       "package": "amethyst-mod-manager",
       "version": "2.5.2-1",
       "maintainer": "TheBill2001",
@@ -1219,6 +1202,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
+    },
+    {
+      "package": "camlpdf",
+      "version": "2.9.2-1",
+      "maintainer": "severach",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
     },
     {
       "package": "aura-emerge",
