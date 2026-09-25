@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ai-memory-bin",
+    "version": "2.4.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "380b7969b4defa61c952e0606268f477b28b3594",
+    "pkgbuild_sha256": "2686229289f2694301ad3fe3237ee6a8007c049e5bf8343400bf5a66bc82fb12",
+    "install_sha256": "94d1d95f29fe1bd3fffcae0a94e5e5328219958a3a22e8c3ad3b80aee8613a42"
+  },
+  "analyzed_at": "2026-09-25T23:35:46.482606627+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 31,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:35:46.470028967+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:35:46.470028967+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T23:35:46.470028967+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 172,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/ai-memory",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f7ca1aa67a674be5a12b86a108dec0254e0b35b65080ed6068cd4ff27fd6d0b9",
+  "signature": null
+}
