@@ -75,7 +75,7 @@ jobs:
 
       - name: Upload raw sandbox evidence
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: dynamic-sandbox-evidence-${{ steps.pkg.outputs.name }}
           path: sandbox-evidence/${{ steps.pkg.outputs.name }}/
