@@ -65,6 +65,14 @@ jobs:
             archlinux:base-devel \
             bash scripts/dynamic_sandbox.sh "${{ steps.pkg.outputs.name }}"
 
+      - name: Reclaim ownership of sandbox output from the container's root user
+        # The sandbox container runs as root (pacman/useradd/pacman -U all need it), so
+        # everything it writes to the bind-mounted /workspace — including
+        # data/attestations/ and .git/config via the checkout — ends up root-owned on
+        # the host. The runner's own user then can't sign or commit it. Reclaim it here.
+        if: always()
+        run: sudo chown -R "$(id -u):$(id -g)" .
+
       - name: Upload raw sandbox evidence
         if: always()
         uses: actions/upload-artifact@v4
