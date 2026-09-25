@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "apparmor-language-server",
+    "version": "0.9.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "98df4ed74d29c3e143c362df27c3b287df423cbb",
+    "pkgbuild_sha256": "9694d2c67f98bcbb5a6a47e9f2e72b0f2f9b39201e6644487e44a4a4026b26ca",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T18:56:28.486417384+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T18:56:28.481421266+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.65.251.78",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-25T18:56:28.481421266+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ffe167e8dfdb7b6fbc4961aead0ab7b7f6194dc52973b3833276e81cf5813312",
+  "signature": null
+}
