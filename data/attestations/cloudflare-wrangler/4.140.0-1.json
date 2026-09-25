@@ -1,0 +1,113 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cloudflare-wrangler",
+    "version": "4.140.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "2693f849598b4d0d6008103d408be651b0176ea3",
+    "pkgbuild_sha256": "345b3411e9b4135c067b35436661571f9500284e1906ce6f669fc964be85b8b7",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T08:09:59.058536842+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 39,
+      "severity": "LOW",
+      "description": "unlocked npm/bun/yarn install during build (unpinned dependency risk)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:09:59.051057412+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.16.0.34",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:09:59.051057412+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:09:59.051057412+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "npm Vulnerable to Global node_modules Binary Overwrite (GHSA-4328-8hgf-7wjr)",
+      "url": "https://osv.dev/vulnerability/GHSA-4328-8hgf-7wjr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm CLI exposing sensitive information through logs (GHSA-93f3-23rq-pjfp)",
+      "url": "https://osv.dev/vulnerability/GHSA-93f3-23rq-pjfp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Packing does not respect root-level ignore files in workspaces (GHSA-hj9c-8jmm-8c52)",
+      "url": "https://osv.dev/vulnerability/GHSA-hj9c-8jmm-8c52"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Token Leak in npm (GHSA-m5h6-hr3q-22h5)",
+      "url": "https://osv.dev/vulnerability/GHSA-m5h6-hr3q-22h5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Write in npm (GHSA-m6cx-g6qm-p2cx)",
+      "url": "https://osv.dev/vulnerability/GHSA-m6cx-g6qm-p2cx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Incorrect Permission Assignment for Critical Resource in NPM (GHSA-ph34-pc88-72gc)",
+      "url": "https://osv.dev/vulnerability/GHSA-ph34-pc88-72gc"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Local Privilege Escalation in npm (GHSA-v3jv-wrf4-5845)",
+      "url": "https://osv.dev/vulnerability/GHSA-v3jv-wrf4-5845"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm symlink reference outside of node_modules (GHSA-x8qc-rrcw-4r46)",
+      "url": "https://osv.dev/vulnerability/GHSA-x8qc-rrcw-4r46"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c2f7ed07ca034dec347cc3569bdcd8c84720c1c833df9ee1c52ab70c64bce022",
+  "signature": null
+}
