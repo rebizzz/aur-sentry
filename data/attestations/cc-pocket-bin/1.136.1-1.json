@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cc-pocket-bin",
+    "version": "1.136.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4670cbd52d7b5a7a60832731b3711a0116a17af5",
+    "pkgbuild_sha256": "c946702cbaac00180f4f28c0abf73bd94ce10ac1ef1175a71f5745af7257a6e1",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T08:10:10.203952916+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:10:10.196335704+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:10:10.196335704+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T08:10:10.196335704+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf out-of-bounds read (GHSA-5pcj-3m26-w633)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pcj-3m26-w633"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf v0.9 was discovered to contain an out-of-bounds read via the function modifyRPath at src/patchelf.cc. (PYSEC-2022-43144)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2022-43144"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ea42b2df6e4916225309123c3a7d463931b3ebfb48cbd127a2dcbc7552f1fc41",
+  "signature": null
+}
