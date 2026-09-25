@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cogpit-server",
+    "version": "3.0.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "42231c22218a962824f9e64a9bc4770f3a2134f5",
+    "pkgbuild_sha256": "50f580bdb9fb3e7a3dfc9bb09d6d76aaf41e735995d62ac1fe033e1a340f726a",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T14:10:02.803217110+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 23,
+      "severity": "LOW",
+      "description": "unlocked npm/bun/yarn install during build (unpinned dependency risk)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:10:02.791997442+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:10:02.791997442+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "bun vulnerable to OS Command Injection (GHSA-4j66-8f4r-3pjx)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j66-8f4r-3pjx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Bun has an Application-level Prototype Pollution vulnerability in the runtime native API for Glo (GHSA-v9mx-4pqq-h232)",
+      "url": "https://osv.dev/vulnerability/GHSA-v9mx-4pqq-h232"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d0aaba65a8b3b2b4c7d77d0062303ec5222bf9abb2d53e4b43f1f493d364fa84",
+  "signature": null
+}
