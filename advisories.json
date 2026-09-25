@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-25T08:10:15+00:00",
-  "total_flagged": 24,
+  "updated_at": "2026-09-25T08:10:19+00:00",
+  "total_flagged": 25,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -158,6 +158,23 @@
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
     },
     {
+      "package": "boomaga",
+      "version": "3.8.1-1",
+      "maintainer": "FabioLolix",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:10:19+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash c9f9dea22ea79a4a)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/boomaga"
+    },
+    {
       "package": "braille-printer-app-git",
       "version": "2.0b1+r7111.20241209.272d5471-1",
       "maintainer": "dreieck",
@@ -227,23 +244,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "camlpdf",
-      "version": "2.9.2-1",
-      "maintainer": "severach",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
-    },
-    {
       "package": "amethyst-mod-manager",
       "version": "2.5.2-1",
       "maintainer": "TheBill2001",
@@ -259,6 +259,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
+    },
+    {
+      "package": "camlpdf",
+      "version": "2.9.2-1",
+      "maintainer": "severach",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
     },
     {
       "package": "aura-emerge",
