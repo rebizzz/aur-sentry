@@ -114,7 +114,7 @@ cmd_attest() {
   else
     source_origin="artifact"
     for path in "$EVIDENCE/source/PKGBUILD" "$EVIDENCE"/source/*.install; do
-      [ -f "$path" ] && [ ! -L "$path" ] || continue
+      if [ ! -f "$path" ] || [ -L "$path" ]; then continue; fi
       cp -- "$path" "$src/"
     done
     aur_commit="$(jq -r '.aur_commit // ""' "$meta")"

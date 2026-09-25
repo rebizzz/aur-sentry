@@ -24,7 +24,7 @@ evidence_channel_init
 
 PKG_FILE=""
 for f in /pkg/*.pkg.tar.*; do
-  [ -f "$f" ] && [ ! -L "$f" ] || continue
+  if [ ! -f "$f" ] || [ -L "$f" ]; then continue; fi
   PKG_FILE="$f"
   break
 done

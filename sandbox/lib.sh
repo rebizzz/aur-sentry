@@ -94,7 +94,7 @@ copy_source() {
   local src="$1" dest="$2" owner="$3" f
   install -d -o "$owner" -g "$owner" "$dest"
   for f in "$src"/* "$src"/.SRCINFO; do
-    [ -f "$f" ] && [ ! -L "$f" ] || continue
+    if [ ! -f "$f" ] || [ -L "$f" ]; then continue; fi
     case "${f##*/}" in request.json) continue ;; esac
     cp --no-dereference -- "$f" "$dest/"
   done

@@ -32,7 +32,7 @@ mkdir -p "$REPRO_DIR"
 SOURCE_OUT="$EVIDENCE_DIR/source"
 mkdir -p "$SOURCE_OUT"
 for f in "$SRC_DIR"/PKGBUILD "$SRC_DIR"/*.install; do
-  [ -f "$f" ] && [ ! -L "$f" ] || continue
+  if [ ! -f "$f" ] || [ -L "$f" ]; then continue; fi
   cp -- "$f" "$SOURCE_OUT/"
 done
 # upload-artifact skips dotfiles, so .SRCINFO travels as SRCINFO.

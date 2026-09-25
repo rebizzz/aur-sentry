@@ -40,7 +40,7 @@ SHA="$(git -C "$TMP/aur" rev-parse HEAD)"
 
 mkdir -p "$DEST"
 for f in "$TMP/aur"/* "$TMP/aur"/.SRCINFO; do
-  [ -f "$f" ] && [ ! -L "$f" ] || continue
+  if [ ! -f "$f" ] || [ -L "$f" ]; then continue; fi
   name="${f##*/}"
   case "$name" in request.json) continue ;; esac
   if [ "$(stat -c %s "$f")" -gt "$MAX_FILE_BYTES" ]; then
