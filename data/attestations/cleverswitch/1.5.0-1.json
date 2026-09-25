@@ -10,13 +10,43 @@
     "pkgbuild_sha256": "18f35b833b637aab34b72816fb5b2b30c33c0e4399d4329032cd7761c25f2c56",
     "install_sha256": "fd1eabe4962d5c8c299c200a3d101acb4ab63ac7c753bff5cabd7b2d33b01f5c"
   },
-  "analyzed_at": "2026-09-25T00:17:09.429727718+00:00",
+  "analyzed_at": "2026-09-25T01:34:41.617279852+00:00",
   "scanner_version": "aur-sentry/0.1.0",
-  "static_findings": [],
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
   "dynamic_evidence": {
     "collected": true,
     "processes": [],
-    "network": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T01:34:41.610578270+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T01:34:41.610578270+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T01:34:41.610578270+00:00",
+        "phase": "build"
+      }
+    ],
     "filesystem": []
   },
   "package_analysis": {
@@ -29,7 +59,7 @@
   },
   "reproducibility": "UNSUPPORTED",
   "external_intelligence": [],
-  "verdict": "BUILD_FAILED",
-  "evidence_hash": "a979ebb0e04fa98257ddc11ea77df4f05db92a007dc7f8fb8da91155088b877f",
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ba9141f018d07dd300568650536f8b3a5aa3b019d9818f71c0b96e9765894c85",
   "signature": null
 }

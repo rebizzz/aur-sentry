@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-24T16:58:04.040193129+00:00",
-  "total_flagged": 13,
+  "updated_at": "2026-09-25T01:34:43+00:00",
+  "total_flagged": 14,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -156,6 +156,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "cleverswitch",
+      "version": "1.5.0-1",
+      "maintainer": "mbarysevich",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T01:34:43+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash ba9141f018d07dd3)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/cleverswitch"
     },
     {
       "package": "coolerdash-git",
