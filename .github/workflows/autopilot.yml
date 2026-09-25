@@ -51,13 +51,6 @@ jobs:
       - name: Run Autopilot AUR scanner across metadata dump
         run: ./target/release/aur-sentry autopilot --repo-root . --window-hours 4 --limit 500
 
-      - name: File automated GitHub Issue alerts for critical threats
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          chmod +x scripts/file_threat_issue.sh
-          bash scripts/file_threat_issue.sh . "${{ github.repository }}"
-
       - name: Triage scheduler — escalate new/changed/high-risk packages to dynamic sandbox
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
