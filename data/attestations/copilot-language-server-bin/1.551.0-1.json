@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "copilot-language-server-bin",
+    "version": "1.551.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "3b96c82a5b49639e968fdf3d0d2b6181badaedf3",
+    "pkgbuild_sha256": "49583fabf1afb51cd533f345ae4ad15c316c2f804a318dcbc9e9cfd238a98003",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T18:59:21.141554637+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T18:59:21.131217953+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T18:59:21.131217953+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T18:59:21.131217953+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T18:59:21.131217953+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 3,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/copilot-language-server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "5ee5e89c45b22c9554c70b5ab9ed44841991dbcc14760d7cfc2e3eb2dd0e2804",
+  "signature": null
+}
