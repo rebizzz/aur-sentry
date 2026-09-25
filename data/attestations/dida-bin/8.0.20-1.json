@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dida-bin",
+    "version": "8.0.20-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "92ccf2a9b877feb980b217d9500cabae40f34346",
+    "pkgbuild_sha256": "c5e5035b9ae1b71067408877a75012fd0a5a4b2e39608af4fd7a189d695fd5c4",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-25T14:13:08.743907387+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:13:08.738489492+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "182.242.63.169",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-25T14:13:08.738489492+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Yarn Improper link resolution before file access (Link Following) (GHSA-5xf4-f2fq-f69j)",
+      "url": "https://osv.dev/vulnerability/GHSA-5xf4-f2fq-f69j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Path Traversal in Yarn (GHSA-8mfc-v7wv-p62g)",
+      "url": "https://osv.dev/vulnerability/GHSA-8mfc-v7wv-p62g"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "TOCTOU Race Condition in Yarn (GHSA-hjxc-462x-x77j)",
+      "url": "https://osv.dev/vulnerability/GHSA-hjxc-462x-x77j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Yarn untrusted search path vulnerability (GHSA-mpwj-fcr6-x34c)",
+      "url": "https://osv.dev/vulnerability/GHSA-mpwj-fcr6-x34c"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Missing Encryption of Sensitive Data in yarn (GHSA-wqfc-cr59-h64p)",
+      "url": "https://osv.dev/vulnerability/GHSA-wqfc-cr59-h64p"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "a4bd42ed64d7b79b6e133039ad3029b2ecbd550a73f54d76f75d5ac5adad4473",
+  "signature": null
+}
