@@ -289,11 +289,10 @@ pub fn analyze_pipeline_structure(content: &str) -> Vec<Finding> {
                 findings.push(Finding {
                     rule_id: "PIPELINE_BASE64_EXEC".into(),
                     severity: "CRITICAL".into(),
-                    description:
-                        "base64-decoded output piped directly into a shell interpreter \
+                    description: "base64-decoded output piped directly into a shell interpreter \
                          (structurally-confirmed obfuscated execution, not just a string \
                          mentioning 'base64 -d')"
-                            .to_string(),
+                        .to_string(),
                     line_number: idx + 1,
                     matched_text: stage.text.chars().take(120).collect(),
                 });

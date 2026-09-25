@@ -56,7 +56,11 @@ pub fn classify_bytes(line: &str) -> Vec<Kind> {
         let c = bytes[i];
         let top = stack.last().copied();
         let in_literal = matches!(top, Some(b'\'') | Some(b'"'));
-        kind[i] = if in_literal { Kind::Literal } else { Kind::Code };
+        kind[i] = if in_literal {
+            Kind::Literal
+        } else {
+            Kind::Code
+        };
 
         match top {
             Some(b'\'') => {
@@ -424,12 +428,7 @@ fn parse_stage(raw: &str) -> Stage {
 
     let command = tokens
         .get(idx)
-        .map(|t| {
-            t.rsplit('/')
-                .next()
-                .unwrap_or(t.as_str())
-                .to_lowercase()
-        })
+        .map(|t| t.rsplit('/').next().unwrap_or(t.as_str()).to_lowercase())
         .unwrap_or_default();
 
     Stage {
@@ -449,8 +448,18 @@ pub fn is_fetch_command(cmd: &str) -> bool {
 pub fn is_shell_interpreter(cmd: &str) -> bool {
     matches!(
         cmd,
-        "bash" | "sh" | "zsh" | "dash" | "ksh" | "ash" | "python" | "python2" | "python3"
-            | "perl" | "ruby" | "node"
+        "bash"
+            | "sh"
+            | "zsh"
+            | "dash"
+            | "ksh"
+            | "ash"
+            | "python"
+            | "python2"
+            | "python3"
+            | "perl"
+            | "ruby"
+            | "node"
     )
 }
 

@@ -484,7 +484,12 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
         {
             let (install_network, install_filesystem) =
                 parse_telemetry(&install_telemetry_text, &allowed_ips, PHASE_INSTALL);
-            push_dynamic_findings(&mut findings, &install_network, &install_filesystem, "install");
+            push_dynamic_findings(
+                &mut findings,
+                &install_network,
+                &install_filesystem,
+                "install",
+            );
             network.extend(install_network);
             filesystem.extend(install_filesystem);
         }

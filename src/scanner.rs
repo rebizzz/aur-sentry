@@ -984,8 +984,7 @@ package() {
     fn pipeline_curl_download_to_file_not_flagged_by_pipeline_rule() {
         let s = test_scanner();
         // Extremely common, benign PKGBUILD pattern: no pipe at all.
-        let content =
-            "build() {\n  curl -sSL https://example.com/foo.tar.gz -o source.tar.gz\n}\n";
+        let content = "build() {\n  curl -sSL https://example.com/foo.tar.gz -o source.tar.gz\n}\n";
         let findings = s.scan(content, None);
         assert!(!findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
     }
@@ -1034,8 +1033,7 @@ sha256sums=('38865ecdfca86427382218086ee50a12e259e875155f949c81b539b4bfa254ff')
     #[test]
     fn pipeline_comment_mentioning_curl_and_bash_not_flagged() {
         let s = test_scanner();
-        let content =
-            "# example: curl https://example.com/install.sh | bash (do NOT do this)\nbuild() {\n  true\n}\n";
+        let content = "# example: curl https://example.com/install.sh | bash (do NOT do this)\nbuild() {\n  true\n}\n";
         let findings = s.scan(content, None);
         assert!(!findings.iter().any(|f| f.rule_id == "PIPELINE_FETCH_EXEC"));
     }
