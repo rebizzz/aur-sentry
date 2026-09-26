@@ -1,0 +1,74 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "3dco-plus-git",
+    "version": "v1.4.1.r0.g30b5086-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4bc4e25f8cc1b885ac30217839eb02f272203332",
+    "pkgbuild_sha256": "026feed67d497790ec4b7a024d919a563c4075dcd692de53f42b7c9669015e31",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T16:43:55.732816292+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:43:55.723579294+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T16:43:55.723579294+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious code in nlohmann-json (npm) (MAL-2025-711)",
+      "url": "https://osv.dev/vulnerability/MAL-2025-711"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "a6b817a188bb9106ffe7fccee8004566f1a1acf691bc8b0b195b6f23c3a706da",
+  "signature": null
+}
