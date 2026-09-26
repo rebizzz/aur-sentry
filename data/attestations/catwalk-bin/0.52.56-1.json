@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "catwalk-bin",
+    "version": "0.52.56-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "17c143d59664dbade1b1194d3c6bd7ca824b31f7",
+    "pkgbuild_sha256": "0a4e1008f00f6a52c026dfa025b6a4fd0555fc02fbc4c0e8b9b7f5b2d76f84cc",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T05:22:25.719119587+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:22:25.710567422+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:22:25.710567422+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:22:25.710567422+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:22:25.710567422+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 3,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/catwalk",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "0746e6c39aada3ed8bfa81a66077d00a8a8def4c0cac3026afc9dd85496b062c",
+  "signature": null
+}
