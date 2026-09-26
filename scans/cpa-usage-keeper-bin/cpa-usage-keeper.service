@@ -1,0 +1,21 @@
+[Unit]
+Description=CPA Usage Keeper
+Documentation=https://github.com/Willxup/cpa-usage-keeper
+
+[Service]
+Type=simple
+StateDirectory=cpa-usage-keeper
+StateDirectoryMode=0700
+WorkingDirectory=%S/cpa-usage-keeper
+EnvironmentFile=%E/cpa-usage-keeper/cpa-usage-keeper.env
+Environment=WORK_DIR=%S/cpa-usage-keeper
+ExecStart=/usr/bin/cpa-usage-keeper
+Restart=on-failure
+RestartSec=5s
+TimeoutStopSec=30s
+UMask=0077
+NoNewPrivileges=yes
+PrivateTmp=yes
+
+[Install]
+WantedBy=default.target
