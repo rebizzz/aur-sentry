@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "alise",
+    "version": "0.3.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "8dd2570159ce36c477523e77dfff6e8cbf06c3e5",
+    "pkgbuild_sha256": "31e07afe13a8c04e54bb798a8d63b208942b3c93c9f0a2c7575122a613d7eddd",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T16:43:40.513546803+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:43:40.506978579+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "217.197.84.140",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:43:40.506978579+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 55,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d2a779eebbc7e1252de5fdcf1a10a5cb1b0aeccb398e16e63357274c6aaaebe7",
+  "signature": null
+}
