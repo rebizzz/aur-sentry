@@ -1,0 +1,20 @@
+pkgbase = archman
+	pkgdesc = All available pacman options combined into one interactive script
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/ankur3-101106/pacman-utils
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0
+	makedepends = cargo
+	depends = pacman
+	depends = pacman-contrib
+	optdepends = yay
+	optdepends = paru
+	optdepends = reflector
+	provides = archman
+	options = !strip
+	source = archman-2.2.1.tgz::https://github.com/ankur3-101106/pacman-utils/archive/v2.2.1.tar.gz
+	sha256sums = b6f7d89e8339d06437ce56d2c2242d5af01ef266586f8fd0b28998646a228cd7
+
+pkgname = archman
