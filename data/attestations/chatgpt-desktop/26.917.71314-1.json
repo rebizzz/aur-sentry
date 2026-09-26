@@ -1,0 +1,371 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "chatgpt-desktop",
+    "version": "26.917.71314-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "88f94eaa2bc037f35ee872e25da98f01f1e4c417",
+    "pkgbuild_sha256": "4ba8c3ee9443740255701601546e20025ea1256da8171042f948c80621788a99",
+    "install_sha256": "78abc04b9b556ff29a8179e16d40c4932733239b6f8cd889c976b3737cba0a0b"
+  },
+  "analyzed_at": "2026-09-26T11:52:04.335963363+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:52:04.268193870+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.64.146.98",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:52:04.268193870+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:52:04.288302169+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:52:04.288302169+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 3769,
+    "elf_object_count": 45,
+    "elf_objects": [
+      {
+        "path": "usr/lib/chatgpt/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/ChatGPT",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/libqt5_shim.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/browser_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/libqt6_shim.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/plugins/openai-bundled/plugins/browser/node_modules/classic-level/prebuilds/linux-x64/classic-level.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/plugins/openai-bundled/plugins/latex/bin/tectonic",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/plugins/openai-bundled/plugins/chrome/node_modules/classic-level/prebuilds/linux-x64/classic-level.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/plugins/openai-bundled/plugins/chrome/extension-host/linux/x64/extension-host",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/native/hid-topology-watcher.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/native/remote-control-device-key.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/codex-code-mode-host",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/cua_node/lib/node_modules/classic-level/prebuilds/linux-x64/classic-level.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/cua_node/lib/node_modules/@img/sharp-linux-x64/lib/sharp-linux-x64-0.35.4.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/cua_node/lib/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.18.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/cua_node/lib/node_modules/@oai/sky/bin/linux/sky_linux_x64",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/cua_node/lib/node_modules/@oai/cua/dist/lib/js/oai_js_browser/dist/skill/node_modules/classic-level/prebuilds/linux-x64/classic-level.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/cua_node/lib/node_modules/@oai/cua/bin/linux/sky_linux_x64",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/cua_node/lib/node_modules/.bin/sky_linux_x64",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/cua_node/bin/node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/cua_node/bin/node_repl",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/codex",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/rg",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/node-pty/build/Release/pty.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-x64-glibc/watcher.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/serialport/node_modules/@serialport/bindings-cpp/prebuilds/android-arm64/node.napi.armv8.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/serialport/node_modules/@serialport/bindings-cpp/prebuilds/android-arm/node.napi.armv7.node",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/serialport/node_modules/@serialport/bindings-cpp/prebuilds/linux-arm/node.napi.armv7.node",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/serialport/node_modules/@serialport/bindings-cpp/prebuilds/linux-arm/node.napi.armv6.node",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/serialport/node_modules/@serialport/bindings-cpp/prebuilds/linux-arm64/node.napi.armv8.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/serialport/node_modules/@serialport/bindings-cpp/prebuilds/linux-x64/node.napi.musl.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/serialport/node_modules/@serialport/bindings-cpp/prebuilds/linux-x64/node.napi.glibc.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID_hidraw-linux-x64/node-napi-v4.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID-linux-x64/node-napi-v4.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID_hidraw-linux-arm64/node-napi-v4.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID-linux-x64-musl/node-napi-v4.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID-linux-arm/node-napi-v4.node",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID_hidraw-linux-x64-musl/node-napi-v4.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID_hidraw-linux-arm/node-napi-v4.node",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/node_modules/node-hid/prebuilds/HID-linux-arm64/node-napi-v4.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/@worklouder/device-kit-oai/node_modules/@worklouder/wl-device-kit/dist/native/linux/x64/serial_control.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/resources/app.asar.unpacked/node_modules/better-sqlite3/build/Release/better_sqlite3.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/chatgpt/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Potential Command Injection in libnotify (GHSA-6898-wx94-8jq8)",
+      "url": "https://osv.dev/vulnerability/GHSA-6898-wx94-8jq8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb before version 1.0.30 contains a NULL pointer dereference vulnerability that allows attackers to crash applications by supplying a malformed USB configuration descriptor where an interface claims bNumEndpoints greater than zero but is followed by a class-specific descriptor whose bLength exce (PYSEC-2026-3978)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-3978"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb before version 1.0.30 contains a one-byte out-of-bounds read vulnerability in parse_iad_array() in descriptor.c that allows attackers to trigger a denial of service by supplying a malformed USB descriptor whose bLength equals size minus one, causing the bounds check to use the original buffer (PYSEC-2026-3979)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-3979"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb is unmaintained; use rusb instead (RUSTSEC-2016-0004)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2016-0004"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "5960ad1e1e3a664ceec59c40f1e49f2e1f8a7373ec0cadea9effb314b126687e",
+  "signature": null
+}
