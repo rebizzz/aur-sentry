@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bit4id-xpki",
+    "version": "1.4.11.836-3",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "46a8742fc4daa943a33f3f5f59b966e05c731151",
+    "pkgbuild_sha256": "2f1547f68176f95c4984e1bd4bbdfd79007dcff9215bcdc1668f53e9b6a28a8b",
+    "install_sha256": "f756dfa755571511dd7a8096755e046c84533780f797d81d7fc7e1bd867f5f07"
+  },
+  "analyzed_at": "2026-09-26T16:44:59.362692768+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:44:59.351545589+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "3.170.185.24",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:44:59.351545589+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:44:59.359400379+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:44:59.359400379+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 12,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/lib/bit4id/libbit4xpki.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "794aa2d4a2991fe839ed7e52248ac2d495bcd7ae667ea591e1e876bdf11b3081",
+  "signature": null
+}
