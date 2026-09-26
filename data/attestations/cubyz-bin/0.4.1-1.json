@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cubyz-bin",
+    "version": "0.4.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "64c6c85e091fe8e660ccc376e3c6dc58f24cfdd9",
+    "pkgbuild_sha256": "99f41a293eb6f50faa90d79c90439e99c163c9d081b647f931823a63929704f6",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T11:51:02.249669257+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:51:02.224380250+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:51:02.224380250+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:51:02.224380250+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2899,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "opt/cubyz/Cubyz",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "38080a32a78e3751db70efa659d47a35dfc250949d1b021199bd9988a39f9015",
+  "signature": null
+}
