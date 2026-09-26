@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "beellama.cpp-cuda",
+    "version": "0.4.7-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "28cefd815147da9cc615013b70eaf6120452a48a",
+    "pkgbuild_sha256": "3a1d1ce9475e89adcab8321d94307add4bd8c9e8f460f8306ec80dd45997fa36",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T05:22:03.934892931+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:22:03.916659335+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:22:03.916659335+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:22:03.916659335+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Improper Certificate Validation in openssl (GHSA-34p9-f4q3-c4r7)",
+      "url": "https://osv.dev/vulnerability/GHSA-34p9-f4q3-c4r7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509NameBuilder::build` returned object is not thread safe (GHSA-3gxf-9r58-2ghg)",
+      "url": "https://osv.dev/vulnerability/GHSA-3gxf-9r58-2ghg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl Use-After-Free in `Md::fetch` and `Cipher::fetch` (GHSA-4fcv-w3qc-ppgg)",
+      "url": "https://osv.dev/vulnerability/GHSA-4fcv-w3qc-ppgg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509Extension::new` and `X509Extension::new_nid` null pointer dereference (GHSA-6hcf-g6gr-hhcr)",
+      "url": "https://osv.dev/vulnerability/GHSA-6hcf-g6gr-hhcr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "openssl npm package vulnerable to command execution (GHSA-75w2-qv55-x7fv)",
+      "url": "https://osv.dev/vulnerability/GHSA-75w2-qv55-x7fv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl has incorrect bounds assertion in aes key wrap (GHSA-8c75-8mhr-p7r9)",
+      "url": "https://osv.dev/vulnerability/GHSA-8c75-8mhr-p7r9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `SubjectAlternativeName` and `ExtendedKeyUsage::other` allow arbitrary file read (GHSA-9qwg-crg9-m2vc)",
+      "url": "https://osv.dev/vulnerability/GHSA-9qwg-crg9-m2vc"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl: rustMdCtxRef::digest_final() writes past caller buffer with no length check (GHSA-ghm9-cr32-g9qj)",
+      "url": "https://osv.dev/vulnerability/GHSA-ghm9-cr32-g9qj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl: Unchecked callback length in PSK/cookie trampolines leaks adjacent memory to peer (GHSA-hppc-g8h3-xhp3)",
+      "url": "https://osv.dev/vulnerability/GHSA-hppc-g8h3-xhp3"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "0798fd65db5b8f421d0f0003e90f0c36e47a7b4deecf7869a766f8048cd72bf4",
+  "signature": null
+}
