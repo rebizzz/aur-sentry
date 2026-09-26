@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aro-git",
+    "version": "0.1.0.r0.ge2c778e-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "40410a984b3ad32bff2c76cf92341b03b987fbe6",
+    "pkgbuild_sha256": "c7d8f4e16af632c71f676f41819360969085b2d79badb0c526fc8fcba8431285",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T16:44:12.321421748+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:44:12.314293690+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T16:44:12.314293690+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "3a90b88cdb1ff7ce5f18febbbee907abad1f7ecf5580b1be9d3aa1f12cca3641",
+  "signature": null
+}
