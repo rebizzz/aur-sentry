@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-26T21:32:46+00:00",
-  "total_flagged": 143,
+  "updated_at": "2026-09-26T21:32:58+00:00",
+  "total_flagged": 144,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -158,6 +158,23 @@
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
     },
     {
+      "package": "arsu-bin",
+      "version": "1.0.0-1",
+      "maintainer": "amad3v",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T21:32:58+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 1b1f3444242e818a)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/arsu-bin"
+    },
+    {
       "package": "blipnet",
       "version": "1.2.2-1",
       "maintainer": "agokule",
@@ -244,23 +261,6 @@
       "aur_url": "https://aur.archlinux.org/packages/aw-server-rust-git"
     },
     {
-      "package": "backlog.md",
-      "version": "1.53.0-1",
-      "maintainer": "ftiasch",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T21:31:39+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 7a575a1bc6adcc0f)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/backlog.md"
-    },
-    {
       "package": "baresip-qt-gui-git",
       "version": "4.10.1-10",
       "maintainer": "CxOrg",
@@ -276,6 +276,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/baresip-qt-gui-git"
+    },
+    {
+      "package": "backlog.md",
+      "version": "1.53.0-1",
+      "maintainer": "ftiasch",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T21:31:39+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 7a575a1bc6adcc0f)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/backlog.md"
     },
     {
       "package": "arsu",
@@ -448,23 +465,6 @@
       "aur_url": "https://aur.archlinux.org/packages/cosmostrix-bin"
     },
     {
-      "package": "clash-verge-rev",
-      "version": "2.5.6-2",
-      "maintainer": "Integral",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T16:46:17+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 69835c1c21291ff7)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
-    },
-    {
       "package": "bit4id-pki-manager",
       "version": "1.4.11.836-2",
       "maintainer": "s.pantaleev",
@@ -480,6 +480,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
+    },
+    {
+      "package": "clash-verge-rev",
+      "version": "2.5.6-2",
+      "maintainer": "Integral",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T16:46:17+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 69835c1c21291ff7)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
     },
     {
       "package": "bstring-git",
@@ -2289,23 +2306,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "amethyst-mod-manager",
-      "version": "2.5.2-1",
-      "maintainer": "TheBill2001",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
-    },
-    {
       "package": "camlpdf",
       "version": "2.9.2-1",
       "maintainer": "severach",
@@ -2321,6 +2321,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/camlpdf"
+    },
+    {
+      "package": "amethyst-mod-manager",
+      "version": "2.5.2-1",
+      "maintainer": "TheBill2001",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
     },
     {
       "package": "aura-emerge",
