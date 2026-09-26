@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ceasta-bin",
+    "version": "0.12.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "609c2eb8e4593d3e93e9fc7b9a94b7b3a49e11d6",
+    "pkgbuild_sha256": "0a344b3b15980f69c81f7755a524c0d3be74f357c8e0da085e9ec35874e85422",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T11:47:43.936729339+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:47:43.930324872+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:47:43.930324872+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:47:43.930324872+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 11,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/ceasta-cli",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "814e1af7e509de1ec7ed5f0104b1e4491603a83f98a114523014503b981e0f64",
+  "signature": null
+}
