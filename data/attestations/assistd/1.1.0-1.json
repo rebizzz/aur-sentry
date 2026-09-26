@@ -1,0 +1,83 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "assistd",
+    "version": "1.1.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4c7941e011da5df580f986e1281a682be8264287",
+    "pkgbuild_sha256": "23d88495cd8eb05725624709846ecd5353d157869c956476b80e4873e5fee353",
+    "install_sha256": "ca02d97bad810ff1d6dea163d315d9edc1c8ae64844763d3edd9e7e2884afedb"
+  },
+  "analyzed_at": "2026-09-26T05:22:06.174670857+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 43,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:22:06.166804558+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:22:06.166804558+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:22:06.166804558+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "966db51e5fdc7cec60f37af75d408e18b65d20624d19da1a5eec72fbaabea478",
+  "signature": null
+}
