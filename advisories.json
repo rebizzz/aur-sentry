@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-26T11:48:33+00:00",
-  "total_flagged": 111,
+  "updated_at": "2026-09-26T11:48:35+00:00",
+  "total_flagged": 112,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -156,6 +156,24 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "cpa-manager-plus-bin",
+      "version": "1.14.1-1",
+      "maintainer": "theorangeguo",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T11:48:35+00:00",
+      "findings": [
+        {
+          "rule_id": "PKG_INSTALL_FILE_REF",
+          "severity": "INFO",
+          "description": "references external .install scriptlet",
+          "line_number": 18,
+          "matched_text": "install=cpa-manager-plus-bin.install",
+          "behavior": "PACKAGE_INSTALLATION"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/cpa-manager-plus-bin"
     },
     {
       "package": "claude-science",
@@ -1741,23 +1759,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "amethyst-mod-manager",
-      "version": "2.5.2-1",
-      "maintainer": "TheBill2001",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
-    },
-    {
       "package": "camlpdf",
       "version": "2.9.2-1",
       "maintainer": "severach",
@@ -1773,6 +1774,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/camlpdf"
+    },
+    {
+      "package": "amethyst-mod-manager",
+      "version": "2.5.2-1",
+      "maintainer": "TheBill2001",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
     },
     {
       "package": "aura-emerge",
