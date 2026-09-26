@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bit4id-ipki",
+    "version": "1.4.10.542-4",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c8cee3bb8b9a29a4120e81f8c035fca3d53d8a93",
+    "pkgbuild_sha256": "ea0dc876c6d02c3dd8287945890a50d4120849adbc6a0208a4a3b0e8cb7aba61",
+    "install_sha256": "16b79610bf8c29710e48cd5e2b5850a1ffb1b44caf77c1a1feb8bac34c765fb4"
+  },
+  "analyzed_at": "2026-09-26T16:44:34.137413922+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:44:34.131100486+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "82.103.80.29",
+        "port": 80,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T16:44:34.131100486+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f1c79ee10a9ca8072cc9ae12a6466ab6dc66dac31a7c92c5164a448ed8a2eeda",
+  "signature": null
+}
