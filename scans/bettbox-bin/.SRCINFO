@@ -1,0 +1,21 @@
+pkgbase = bettbox-bin
+	pkgdesc = 基于 Mihomo（Clash.Meta 内核）的多平台代理客户端
+	pkgver = 1.19.3
+	pkgrel = 1
+	url = https://github.com/appshubcc/Bettbox
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = libkeybinder3
+	options = !strip
+	options = !debug
+	source = restart-bettbox.hook
+	sha256sums = 9d8b0a54499c9325ed64d987184a229af75c34600ca28afd016dff43ebb53cd0
+	source_x86_64 = https://github.com/appshubcc/Bettbox/releases/download/v1.19.3/Bettbox-1.19.3-linux-amd64.deb
+	sha256sums_x86_64 = 501bd4940618ea992c55a964daff7966ad1ac0c40cf692a0b6dd53c769a1700d
+	source_aarch64 = https://github.com/appshubcc/Bettbox/releases/download/v1.19.3/Bettbox-1.19.3-linux-arm64.deb
+	sha256sums_aarch64 = 22245336f3c1df1de5fd79627d28d1652473e5829963593e5fee05edd9e729c6
+
+pkgname = bettbox-bin
