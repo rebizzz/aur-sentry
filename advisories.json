@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-26T16:47:39+00:00",
+  "updated_at": "2026-09-26T16:48:22+00:00",
   "total_flagged": 136,
   "advisories": [
     {
@@ -158,6 +158,23 @@
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
     },
     {
+      "package": "crown-nightly-bin",
+      "version": "0.65.0.r9893.ge7ef663d2-1",
+      "maintainer": "dbartolini",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T16:48:22+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash f2285a6ca2b337d9)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/crown-nightly-bin"
+    },
+    {
       "package": "cataclysm-tlg-bin",
       "version": "1.0.r20260926.0806-1",
       "maintainer": "friedev",
@@ -226,23 +243,6 @@
       "aur_url": "https://aur.archlinux.org/packages/cosmostrix-bin"
     },
     {
-      "package": "bit4id-pki-manager",
-      "version": "1.4.11.836-2",
-      "maintainer": "s.pantaleev",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T16:46:17+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 55b0f9a3966456fb)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
-    },
-    {
       "package": "clash-verge-rev",
       "version": "2.5.6-2",
       "maintainer": "Integral",
@@ -258,6 +258,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
+    },
+    {
+      "package": "bit4id-pki-manager",
+      "version": "1.4.11.836-2",
+      "maintainer": "s.pantaleev",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T16:46:17+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 55b0f9a3966456fb)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
     },
     {
       "package": "boomaga",
@@ -1417,23 +1434,6 @@
       "aur_url": "https://aur.archlinux.org/packages/cockpit-tools"
     },
     {
-      "package": "crown-nightly-bin",
-      "version": "0.65.0.r9889.g6f3e6a3cc-1",
-      "maintainer": "dbartolini",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T19:01:07+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 9ac1cd0144aafed7)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/crown-nightly-bin"
-    },
-    {
       "package": "cockpit-tools-bin",
       "version": "1.3.60-1",
       "maintainer": "klpod221",
@@ -2170,23 +2170,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "camlpdf",
-      "version": "2.9.2-1",
-      "maintainer": "severach",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
-    },
-    {
       "package": "amethyst-mod-manager",
       "version": "2.5.2-1",
       "maintainer": "TheBill2001",
@@ -2202,6 +2185,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
+    },
+    {
+      "package": "camlpdf",
+      "version": "2.9.2-1",
+      "maintainer": "severach",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
     },
     {
       "package": "aura-emerge",
