@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bstring-git",
+    "version": "1.1.1.r1.g8a2d9ce-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "2ef64eabbba38d568c5108bd0605d598eb3c3fb4",
+    "pkgbuild_sha256": "f8adbdc9e8d67d8c9dbd1704dccd53df476ff95c2976dcc2efa59be5a88f982d",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T16:45:20.782271066+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:45:20.761984422+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:45:20.761984422+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "edc30c0e6a10403fe17a7a22525a5311512f93cd281fb66d57b7d884deec5822",
+  "signature": null
+}
