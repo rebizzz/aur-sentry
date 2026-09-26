@@ -1,0 +1,13 @@
+pkgbase = bit4id-ipki
+	pkgdesc = InfoNotary add-on for the Bit4ID Universal Middleware (enables support for InfoNotary smart cards)
+	pkgver = 1.4.10.542
+	pkgrel = 4
+	url = http://www.bit4id.com/
+	install = bit4id-ipki.install
+	arch = any
+	license = unknown
+	depends = bit4id-xpki
+	source = http://repository.infonotary.com/install/linux/DEBS22/pool/non-free/b/bit4id-ipki/bit4id-ipki_1.4.10.542-1_amd64.deb
+	sha256sums = d5747b2fe4a75fa9b810bd13683fa2703a121808bccf6c8640c74e9b135f3bf4
+
+pkgname = bit4id-ipki
