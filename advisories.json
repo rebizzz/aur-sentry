@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-26T16:46:17+00:00",
-  "total_flagged": 133,
+  "updated_at": "2026-09-26T16:47:24+00:00",
+  "total_flagged": 134,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -158,6 +158,23 @@
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
     },
     {
+      "package": "coolercontrol",
+      "version": "5.0.1-2",
+      "maintainer": "codifryed",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T16:47:24+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 6cfd7afd1cfef2cf)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/coolercontrol"
+    },
+    {
       "package": "cosmostrix-bin",
       "version": "100.0.5-1",
       "maintainer": "rezky_nightky",
@@ -175,23 +192,6 @@
       "aur_url": "https://aur.archlinux.org/packages/cosmostrix-bin"
     },
     {
-      "package": "clash-verge-rev",
-      "version": "2.5.6-2",
-      "maintainer": "Integral",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T16:46:17+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 69835c1c21291ff7)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
-    },
-    {
       "package": "bit4id-pki-manager",
       "version": "1.4.11.836-2",
       "maintainer": "s.pantaleev",
@@ -207,6 +207,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
+    },
+    {
+      "package": "clash-verge-rev",
+      "version": "2.5.6-2",
+      "maintainer": "Integral",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T16:46:17+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 69835c1c21291ff7)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
     },
     {
       "package": "boomaga",
@@ -2119,23 +2136,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "amethyst-mod-manager",
-      "version": "2.5.2-1",
-      "maintainer": "TheBill2001",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
-    },
-    {
       "package": "camlpdf",
       "version": "2.9.2-1",
       "maintainer": "severach",
@@ -2151,6 +2151,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/camlpdf"
+    },
+    {
+      "package": "amethyst-mod-manager",
+      "version": "2.5.2-1",
+      "maintainer": "TheBill2001",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
     },
     {
       "package": "aura-emerge",
