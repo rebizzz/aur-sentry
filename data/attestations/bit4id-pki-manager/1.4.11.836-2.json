@@ -1,0 +1,3116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bit4id-pki-manager",
+    "version": "1.4.11.836-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "bbeb635209e6e02ed4e4176f1eddcda61e410157",
+    "pkgbuild_sha256": "a60935d8bc57227109802e16b9a2f31344e17b376f66199213ea4ee8d53e691b",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T16:46:14.973315938+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:46:14.949627382+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "3.170.185.44",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:46:14.949627382+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:46:14.958721991+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:46:14.958721991+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2565,
+    "elf_object_count": 506,
+    "elf_objects": [
+      {
+        "path": "usr/share/bit4id/x/pinmanager/etc/libbit4xpki.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libresolv.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libunistring.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libstdc++.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libp11-kit.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libdbus-1.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6LabsFolderListModel.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libnsl.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgstgl-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libexpat.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libvorbisenc.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libdw.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgnutls.so.30",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Qml.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpixman-1.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Location.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-util.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-render.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libuuid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libtcl8.6.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgdbm.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libffi.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6SpatialAudio.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libplds4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6StateMachine.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpng16.so.16",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXft.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libm.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libapparmor.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6QmlCore.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libc.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgmp.so.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libharfbuzz.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libGLdispatch.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6LabsSettings.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Svg.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpanelw.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libtirpc.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Widgets.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXss.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libncursesw.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgstapp-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libtinfo.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libbz2.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libcairo.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-cursor.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libssl.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libdl.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Nfc.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/ld-linux.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libepoxy.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6OpenGL.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgstaudio-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgio-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXext.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libavahi-common.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6WaylandCompositor.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgcrypt.so.20",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/liblz4.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libbsd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libnssutil3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpyside6.abi3.so.6.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Designer.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libfribidi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libzstd.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxkbcommon-x11.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libcom_err.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libglib-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXcursor.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6LabsSharedImage.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpcsclite.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/librt.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXfixes.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libspeechd.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-xkb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libatk-bridge-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6ShaderTools.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpulsecommon-16.1.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libcrypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Bluetooth.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libplc4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libavahi-client.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6XcbQpa.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libnss3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libselinux.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpython3.9.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6UiTools.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgstallocators-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libdatrie.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libudev.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-shm.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libvorbis.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libmount.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libatspi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxkbcommon.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-sync.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgstpbutils-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6LabsQmlModels.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-icccm.so.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6QmlLocalStorage.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgtk-3.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6WaylandClient.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgstvideo-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libwayland-server.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Xml.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpango-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6PdfWidgets.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgssapi_krb5.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6EglFsKmsSupport.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libnettle.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgobject-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxshmfence.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6PdfQuick.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libsystemd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libdb-5.3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6TextToSpeech.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgmodule-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libwayland-client.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6HttpServer.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libogg.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libkrb5support.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6VirtualKeyboard.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libopus.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libsmime3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libidn2.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libEGL.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6NetworkAuth.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libk5crypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libicuuc.so.56",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libz.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/liblzma.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpulse.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Core.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libwayland-egl.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libBLT.2.5.so.8.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgraphite2.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libdrm.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgstbase-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6LabsWavefrontMesh.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-xfixes.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libelf.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libblkid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXdmcp.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libtasn1.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpyside6qml.abi3.so.6.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-glx.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libbrotlidec.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libhogweed.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6DBus.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgdk_pixbuf-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6WaylandEglClientHwIntegration.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libX11.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-shape.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXrandr.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libreadline.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libcairo-gobject.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-image.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpcre2-8.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libelfhooks.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6OpenGLWidgets.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpangocairo-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgcc_s.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpthread.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Network.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libsqlite3.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libbrotlicommon.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libFLAC.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXtst.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Gui.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libmd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgudev-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libcrypt.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgstreamer-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libunwind.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-render-util.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libcap.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libGLX.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6StateMachineQml.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libpangoft2-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libshiboken6.abi3.so.6.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libkrb5.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_testcapi.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_testbuffer.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/readline.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_gdbm.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_zoneinfo.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_ctypes.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/resource.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/cryptography/hazmat/bindings/_rust.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_curses_panel.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_codecs_tw.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/QtWidgets.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/QtGui.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/QtXml.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/libpyside6.abi3.so.6.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/designer",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/QtDBus.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/QtWebEngineQuick.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/position/libqtposition_positionpoll.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/position/libqtposition_nmea.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/position/libqtposition_geoclue2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/tls/libqcertonlybackend.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/tls/libqopensslbackend.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-drm-egl-server-buffer.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-linux-dmabuf-unstable-v1.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-dmabuf-server-buffer.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-shm-emulation-server.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-vulkan-server.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-wayland-egl.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-server/libqt-wayland-compositor-wayland-eglstream-controller.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/iconengines/libqsvgicon.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/imageformats/libqgif.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/imageformats/libqjpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/imageformats/libqicns.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/imageformats/libqico.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/imageformats/libqsvg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/xcbglintegrations/libqxcb-glx-integration.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/xcbglintegrations/libqxcb-egl-integration.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/canbus/libqtpassthrucanbus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/canbus/libqttinycanbus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/canbus/libqtsocketcanbus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/canbus/libqtpeakcanbus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/canbus/libqtvirtualcanbus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platformthemes/libqgtk3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platformthemes/libqxdgdesktopportal.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/designer/libPySidePlugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/designer/libqwebengineview.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/designer/libqquickwidget.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/renderplugins/libscene2d.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/multimedia/libffmpegmediaplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/multimedia/libgstreamermediaplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/egldeviceintegrations/libqeglfs-x11-integration.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/egldeviceintegrations/libqeglfs-kms-egldevice-integration.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/egldeviceintegrations/libqeglfs-emu-integration.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/texttospeech/libqtexttospeech_speechd.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/texttospeech/libqtexttospeech_mock.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-decoration-client/libbradient.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/scxmldatamodel/libqscxmlecmascriptdatamodel.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/generic/libqevdevkeyboardplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/generic/libqevdevtouchplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/generic/libqevdevtabletplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/generic/libqtuiotouchplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/generic/libqevdevmouseplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/printsupport/libcupsprintersupport.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/networkinformation/libqnetworkmanager.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/networkinformation/libqglib.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-client/libvulkan-server.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-client/libdrm-egl-server.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-client/libshm-emulation-server.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-client/libdmabuf-server.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-graphics-integration-client/libqt-plugin-wayland-egl.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforms/libqwayland-egl.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforms/libqlinuxfb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforms/libqvkkhrdisplay.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforms/libqeglfs.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforms/libqwayland-generic.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforms/libqvnc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforms/libqxcb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforms/libqminimal.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforms/libqoffscreen.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforms/libqminimalegl.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-shell-integration/libivi-shell.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-shell-integration/libxdg-shell.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-shell-integration/libwl-shell-plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-shell-integration/libqt-shell.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/wayland-shell-integration/libfullscreen-shell-v1.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/sensors/libqtsensors_iio-sensor-proxy.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/sensors/libqtsensors_generic.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/geometryloaders/libdefaultgeometryloader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/geometryloaders/libgltfgeometryloader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforminputcontexts/libqtvirtualkeyboardplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt5Compat/GraphicalEffects/private/libqtgraphicaleffectsprivateplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt5Compat/GraphicalEffects/libqtgraphicaleffectsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWayland/Client/TextureSharing/libwaylandtexturesharingplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWayland/Compositor/libqwaylandcompositorplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWayland/Compositor/QtShell/libwaylandcompositorqtshellplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWayland/Compositor/TextureSharingExtension/libwaylandtexturesharingextensionplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWayland/Compositor/XdgShell/libwaylandcompositorxdgshellplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWayland/Compositor/IviApplication/libwaylandcompositoriviapplicationplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWayland/Compositor/PresentationTime/libwaylandcompositorpresentationtimeplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWayland/Compositor/WlShell/libwaylandcompositorwlshellplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQml/Base/libqmlplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQml/Models/libmodelsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQml/WorkerScript/libworkerscriptplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQml/libqmlmetaplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQml/StateMachine/libqtqmlstatemachineplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQml/XmlListModel/libqmlxmllistmodelplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt3D/Animation/libquick3danimationplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt3D/Input/libquick3dinputplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt3D/Logic/libquick3dlogicplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt3D/Extras/libquick3dextrasplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt3D/Core/libquick3dcoreplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt3D/Render/libquick3drenderplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtScxml/libdeclarative_scxmlplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWebChannel/libwebchannelplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtTextToSpeech/libtexttospeechqmlplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick3D/Particles3D/libqtquick3dparticles3dplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick3D/Effects/libqtquick3deffectplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick3D/ParticleEffects/libqtquick3dparticleeffectsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick3D/libqquick3dplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick3D/SpatialAudio/libquick3dspatialaudioplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick3D/AssetUtils/libqtquick3dassetutilsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick3D/Helpers/libqtquick3dhelpersplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick3D/Helpers/impl/libqtquick3dhelpersimplplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtLocation/libdeclarative_locationplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtTest/libquicktestplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWebSockets/libqmlwebsocketsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt/labs/settings/libqmlsettingsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt/labs/sharedimage/libsharedimageplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt/labs/qmlmodels/liblabsmodelsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt/labs/animation/liblabsanimationplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt/labs/folderlistmodel/libqmlfolderlistmodelplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt/labs/platform/libqtlabsplatformplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/Qt/labs/wavefrontmesh/libqmlwavefrontmeshplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtRemoteObjects/libdeclarative_remoteobjectsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtCharts/libqtchartsqml2plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtSensors/libsensorsquickplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtMultimedia/libquickmultimediaplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtDataVisualization/libdatavisualizationqmlplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Window/libquickwindowplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Scene3D/libqtquickscene3dplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/Imagine/libqtquickcontrols2imaginestyleplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/Imagine/impl/libqtquickcontrols2imaginestyleimplplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/libqtquickcontrols2plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/Material/libqtquickcontrols2materialstyleplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/Material/impl/libqtquickcontrols2materialstyleimplplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/Universal/libqtquickcontrols2universalstyleplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/Universal/impl/libqtquickcontrols2universalstyleimplplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/impl/libqtquickcontrols2implplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/Basic/impl/libqtquickcontrols2basicstyleimplplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/Basic/libqtquickcontrols2basicstyleplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/Fusion/libqtquickcontrols2fusionstyleplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Controls/Fusion/impl/libqtquickcontrols2fusionstyleimplplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Effects/libeffectsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Shapes/libqmlshapesplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Scene2D/libqtquickscene2dplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/NativeStyle/libqtquickcontrols2nativestyleplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Layouts/libqquicklayoutsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/LocalStorage/libqmllocalstorageplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Particles/libparticlesplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Pdf/libpdfquickplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Templates/libqtquicktemplates2plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Layouts/libqtvkblayoutsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Styles/Builtin/libqtvkbbuiltinstylesplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Styles/libqtvkbstylesplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/libqtvkbplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Components/libqtvkbcomponentsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Plugins/Hangul/libqtvkbhangulplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Plugins/Pinyin/libqtvkbpinyinplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Plugins/Thai/libqtvkbthaiplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Plugins/libqtvkbpluginsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Plugins/TCIme/libqtvkbtcimeplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Plugins/OpenWNN/libqtvkbopenwnnplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/VirtualKeyboard/Settings/libqtvkbsettingsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Timeline/libqtquicktimelineplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/tooling/libquicktoolingplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Dialogs/quickimpl/libqtquickdialogs2quickimplplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/Dialogs/libqtquickdialogsplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtQuick/libqtquick2plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtCore/libqtqmlcoreplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWebEngine/libqtwebenginequickplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtWebEngine/ControlsDelegates/libqtwebenginequickdelegatesplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/qml/QtPositioning/libpositioningquickplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/libexec/uic",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/libexec/rcc",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/libexec/qmlcachegen",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/libexec/QtWebEngineProcess",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/libexec/qmltyperegistrar",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/Qt/libexec/qmlimportscanner",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/linguist",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/qmllint",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/QtQuick3D.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/libpyside6qml.abi3.so.6.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/assistant",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/QtOpenGLWidgets.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/QtSvgWidgets.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/QtCore.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/PySide6/QtUiTools.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/shiboken6/Shiboken.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/shiboken6/libshiboken6.abi3.so.6.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_codecs_jp.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_lsprof.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_opcode.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_contextvars.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_codecs_cn.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_curses.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_codecs_iso2022.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_uuid.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_codecs_kr.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_testimportmultiple.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_testmultiphase.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_cffi_backend.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/mmap.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_posixshmem.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_json.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/xxlimited.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_tkinter.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/audioop.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_multibytecodec.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_asyncio.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_cfb.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_aes.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_aesni.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_cbc.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_cast.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_blowfish.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_ARC4.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_chacha20.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_des3.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_eksblowfish.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_ecb.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_ocb.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_des.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_ctr.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_ofb.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_Salsa20.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_raw_arc2.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Cipher/_pkcs1_decode.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Protocol/_scrypt.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/PublicKey/_ed25519.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/PublicKey/_x25519.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/PublicKey/_ec_ws.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/PublicKey/_ed448.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Util/_cpuid_c.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Util/_strxor.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Math/_modexp.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_keccak.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_RIPEMD160.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_BLAKE2b.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_SHA256.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_MD4.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_SHA512.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_BLAKE2s.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_SHA384.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_poly1305.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_SHA224.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_MD5.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_SHA1.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_ghash_clmul.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_MD2.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/Crypto/Hash/_ghash_portable.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_crypt.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_testinternalcapi.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_dbm.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/ebimport.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_hashlib.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_multiprocessing.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/termios.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/nis.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_lzma.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_bz2.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_queue.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_decimal.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_codecs_hk.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_xxtestfuzz.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_ctypes_test.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_xxsubinterpreters.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_ssl.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/parser.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/ossaudiodev.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/python3.9/_sqlite3.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgpg-error.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libcups.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXinerama.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libicui18n.so.56",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libkeyutils.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libnspr4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libasound.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6SerialBus.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libthai.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libtk8.6.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libsndfile.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxkbfile.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libatk-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libjpeg.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6LabsAnimation.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6WlShellIntegration.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgthread-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXau.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libfontconfig.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6QmlWorkerScript.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-keysyms.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6WaylandEglCompositorHwIntegration.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libxcb-randr.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgsttag-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libasyncns.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgbm.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6QmlXmlListModel.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libwayland-cursor.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXdamage.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libfreetype.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6Pdf.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libX11-xcb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libGL.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libgdk-3.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libbz2.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/liborc-0.4.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libicudata.so.56",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXcomposite.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXrender.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libQt6SvgWidgets.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/lib/libXi.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/bit4id/x/pinmanager/bin/card_manager",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "55b0f9a3966456fbbed40e28384ba214ea9389fe46a48a50b4659354581f20af",
+  "signature": null
+}
