@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cookcli-bin",
+    "version": "0.37.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "af7cc8f7140b8a03ca5d7ea484d2bfd20e84934d",
+    "pkgbuild_sha256": "ee7b4555218625b69c2ca4bc745aad5a72ea75aeb67275b9497bf1e38b54fcd2",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T05:23:20.855451262+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:23:20.842167746+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:23:20.842167746+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:23:20.842167746+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:23:20.842167746+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/cook",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "de4f53247739147ca9c7d6a647e32aa72acd53a0d7ac82c779018ac9e20d5f7c",
+  "signature": null
+}
