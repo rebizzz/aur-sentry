@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "boomaga",
+    "version": "3.9.2-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5cc7a46cb2820e6b7c870b21cf808e5f69521a00",
+    "pkgbuild_sha256": "7434d75e8055933b194adbde153c240ee4e503afbb48630245ad1c62019562c0",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T21:32:39.700978667+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:32:39.689485747+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T21:32:39.689485747+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "48f87349ea00ccfecfb51d97f821529d9c85db85f58bbdafc938123fb318f9ba",
+  "signature": null
+}
