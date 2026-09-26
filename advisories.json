@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-26T11:47:52+00:00",
-  "total_flagged": 110,
+  "updated_at": "2026-09-26T11:48:33+00:00",
+  "total_flagged": 111,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -156,6 +156,24 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "claude-science",
+      "version": "0.1.53-1",
+      "maintainer": "boraarslan",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T11:48:33+00:00",
+      "findings": [
+        {
+          "rule_id": "PKG_SKIP_HASH",
+          "severity": "LOW",
+          "description": "integrity verification bypassed ('SKIP') for non-VCS source archive",
+          "line_number": 18,
+          "matched_text": "sha256sums=('SKIP'",
+          "behavior": "DYNAMIC_DOWNLOAD"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/claude-science"
     },
     {
       "package": "bennu-bin",
@@ -1723,23 +1741,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "camlpdf",
-      "version": "2.9.2-1",
-      "maintainer": "severach",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
-    },
-    {
       "package": "amethyst-mod-manager",
       "version": "2.5.2-1",
       "maintainer": "TheBill2001",
@@ -1755,6 +1756,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
+    },
+    {
+      "package": "camlpdf",
+      "version": "2.9.2-1",
+      "maintainer": "severach",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
     },
     {
       "package": "aura-emerge",

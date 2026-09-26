@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "claude-science",
+    "version": "0.1.53-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "0405b44fb3383d515dcf41e7782544fb760a1269",
+    "pkgbuild_sha256": "49a28f69f022df89677f0f65e9eb12d196e9772dec3cf4432b3f09bde1964d8e",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T11:48:32.382331538+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 18,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:48:32.371056610+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "160.79.104.10",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T11:48:32.371056610+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "35.190.46.17",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T11:48:32.371056610+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:48:32.380588949+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:48:32.380588949+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/claude-science",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "b23d5587d14e766693a78ed2c8c95b09748ff782005037abe023b8a9290ab99a",
+  "signature": null
+}
