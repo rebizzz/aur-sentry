@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "devbox",
+    "version": "0.18.4-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "71b3652e577155d43de6c2ad89486ab7ae4e0d94",
+    "pkgbuild_sha256": "4c01a2d1fcfc52782d8bc8c1e92742a361028c3770cc66ddbb7f0339b10182e7",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T11:48:50.656848208+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:48:50.646800097+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:48:50.646800097+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:48:50.646800097+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Out-of-bounds Write in nix (GHSA-76w9-p8mg-j927)",
+      "url": "https://osv.dev/vulnerability/GHSA-76w9-p8mg-j927"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Out-of-bounds write in nix::unistd::getgrouplist (GHSA-wgrg-5h56-jg27)",
+      "url": "https://osv.dev/vulnerability/GHSA-wgrg-5h56-jg27"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Out-of-bounds write in nix::unistd::getgrouplist (RUSTSEC-2021-0119)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2021-0119"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "b5feaf8de90c39cdb369b33fe39cf9a845c564e0bc2b6294a9c35c6b75b87fc7",
+  "signature": null
+}
