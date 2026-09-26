@@ -1,0 +1,267 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "comfy-desktop-bin",
+    "version": "1.1.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "dd5516fa51c22a47ba901857997a3c1b28df2f5f",
+    "pkgbuild_sha256": "1a4436ce2a5ce34142862a677855fa011b3bc43e9c4053bedeecfd64c22b9601",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T05:25:16.776750697+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:25:16.714305238+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:25:16.714305238+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.18.13.243",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T05:25:16.714305238+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:25:16.737109987+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:25:16.737109987+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1449,
+    "elf_object_count": 29,
+    "elf_objects": [
+      {
+        "path": "opt/Comfy Desktop/chrome_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/libffmpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/thread3.0.4/libtcl9thread3.0.4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/libpython3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/itcl4.3.5/libtcl9itcl4.3.5.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/libtcl9.0.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/libpython3.13.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/libtcl9tk9.0.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/lib-dynload/_ctypes_test.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/lib-dynload/_tkinter.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/lib-dynload/_dbm.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/site-packages/_cffi_backend.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/site-packages/pygit2/_libgit2.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/site-packages/pygit2/_pygit2.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/site-packages/pygit2.libs/libssl-b2177676.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/site-packages/pygit2.libs/libgit2-ac99ffd0.so.1.9.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/site-packages/pygit2.libs/libcrypto-e183e42f.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/site-packages/pygit2.libs/libpcre-0dd207b5.so.1.2.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/lib/python3.13/site-packages/pygit2.libs/libssh2-2a4d1765.so.1.0.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/bin/uv",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/bootstrap-python/bin/python3.13",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/app.asar.unpacked/node_modules/node-pty/build/Release/pty.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/resources/app.asar.unpacked/node_modules/7zip-bin/linux/x64/7za",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/Comfy Desktop/comfyui-desktop-2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Comfy Desktop/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Potential Command Injection in libnotify (GHSA-6898-wx94-8jq8)",
+      "url": "https://osv.dev/vulnerability/GHSA-6898-wx94-8jq8"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "71e6fb7bec9eb021ea5c6011c249c5257ceaf82789dbed3e8d2aa14ebbaadd10",
+  "signature": null
+}
