@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cataclysm-tlg-bin",
+    "version": "1.0.r20260926.0806-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e14c41c00474a6c7f291d9542c1df7830ed38476",
+    "pkgbuild_sha256": "eca6dcb4c5d17b8f363bd994201476c9394580aabed78ae85da4b99be2a18d02",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T16:47:37.312863912+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:47:37.277631119+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T16:47:37.277631119+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:47:37.277631119+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Mishandling of format strings in ncurses (GHSA-32v7-ghpr-c8hg)",
+      "url": "https://osv.dev/vulnerability/GHSA-32v7-ghpr-c8hg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf out-of-bounds read (GHSA-5pcj-3m26-w633)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pcj-3m26-w633"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Buffer overflow and format vulnerabilities in ncurses (GHSA-g7r5-x7cr-vm3v)",
+      "url": "https://osv.dev/vulnerability/GHSA-g7r5-x7cr-vm3v"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "sh _uid does not drop supplementary groups (incomplete privilege drop) (GHSA-q38v-wp89-2w55)",
+      "url": "https://osv.dev/vulnerability/GHSA-q38v-wp89-2w55"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "ncurses exposes uninitialized memory in string reading functions (GHSA-x77x-7mmh-cxv3)",
+      "url": "https://osv.dev/vulnerability/GHSA-x77x-7mmh-cxv3"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious code in ncurses (PyPI) (MAL-2025-41705)",
+      "url": "https://osv.dev/vulnerability/MAL-2025-41705"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf v0.9 was discovered to contain an out-of-bounds read via the function modifyRPath at src/patchelf.cc. (PYSEC-2022-43144)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2022-43144"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "sh _uid does not drop supplementary groups (incomplete privilege drop) (PYSEC-2026-3540)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-3540"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Buffer overflow and format vulnerabilities in functions exposed without unsafe (RUSTSEC-2019-0006)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2019-0006"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Uninitialized memory exposure in string reading functions (RUSTSEC-2025-0108)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2025-0108"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "df861a58250fad2984c3119ab0b7f64789ed111109da61b5a4507821856281be",
+  "signature": null
+}
