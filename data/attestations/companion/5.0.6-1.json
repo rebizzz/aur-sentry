@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "companion",
+    "version": "5.0.6-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f64626be844f47cc8b041809549effc79094e197",
+    "pkgbuild_sha256": "71d48c857d58b4fcab3a70ddf239659eab13d9c6caf04dd43c26dd5467e7b1df",
+    "install_sha256": "db03feeb1d0e516d694fc7474ce16f8a390adc2a1c6270a020f54a177fdd6384"
+  },
+  "analyzed_at": "2026-09-26T05:23:42.597385798+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 10,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "PERSISTENCE",
+      "file": "companion.install",
+      "line": 6,
+      "severity": "HIGH",
+      "description": "creating custom udev rule for event-driven execution"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:23:42.579858510+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:23:42.579858510+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "zip Incorrectly Canonicalizes Paths during Archive Extraction Leading to Arbitrary File Write (GHSA-94vh-gphv-8pm8)",
+      "url": "https://osv.dev/vulnerability/GHSA-94vh-gphv-8pm8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb before version 1.0.30 contains a NULL pointer dereference vulnerability that allows attackers to crash applications by supplying a malformed USB configuration descriptor where an interface claims bNumEndpoints greater than zero but is followed by a class-specific descriptor whose bLength exce (PYSEC-2026-3978)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-3978"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb before version 1.0.30 contains a one-byte out-of-bounds read vulnerability in parse_iad_array() in descriptor.c that allows attackers to trigger a denial of service by supplying a malformed USB descriptor whose bLength equals size minus one, causing the bounds check to use the original buffer (PYSEC-2026-3979)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-3979"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb is unmaintained; use rusb instead (RUSTSEC-2016-0004)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2016-0004"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Incorrect path canonicalization during Archive Extraction Leading to Arbitrary File Write (RUSTSEC-2025-0168)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2025-0168"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d1bcbbfb7cedf89d4f3e868737d042db60f51e2510e41ac7c9e1443b8f02dbfb",
+  "signature": null
+}
