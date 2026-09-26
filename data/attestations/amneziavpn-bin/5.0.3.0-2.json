@@ -1,0 +1,103 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "amneziavpn-bin",
+    "version": "5.0.3.0-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5fd7fe598d7aaf1221aeb4eb41bf7b89c983b7a8",
+    "pkgbuild_sha256": "874721a70465c40bf1b0f1dbc6d4368599e9134e1e7ff6d66b88bd15d5112c4d",
+    "install_sha256": "e9769a5e33899c9d4eb7a2a5f7e15c07a30c662362e774836d9c462abf5639b0"
+  },
+  "analyzed_at": "2026-09-26T16:44:29.894710978+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:44:29.887742726+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:44:29.887742726+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T16:44:29.887742726+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "49.12.124.107",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T16:44:29.887742726+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Path traversal in binwalk (GHSA-3cm8-v4mc-gppg)",
+      "url": "https://osv.dev/vulnerability/GHSA-3cm8-v4mc-gppg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf out-of-bounds read (GHSA-5pcj-3m26-w633)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pcj-3m26-w633"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "binwalk vulnerable to UNIX Symbolic Link (Symlink) Following (GHSA-8m3f-g62j-3vx8)",
+      "url": "https://osv.dev/vulnerability/GHSA-8m3f-g62j-3vx8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf v0.9 was discovered to contain an out-of-bounds read via the function modifyRPath at src/patchelf.cc. (PYSEC-2022-43144)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2022-43144"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Path traversal in binwalk (PYSEC-2026-787)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-787"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "binwalk vulnerable to UNIX Symbolic Link (Symlink) Following (PYSEC-2026-788)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-788"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c271145a3b76e3a5b84f469d059f8ecac80505748c9a06105fc0b39068bb1f5e",
+  "signature": null
+}
