@@ -1,0 +1,495 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aws-cli-bin",
+    "version": "2.37.4-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "b93919fc4cc6ff90f0fd7538dee3e76aaf841fa2",
+    "pkgbuild_sha256": "7b05799d685491f167bdc1b7bc52dc27708220c8f5b66fa6103fb82f2b786ce9",
+    "install_sha256": "fd813310690599bafc78565033badc2d7bcbb25a9d9ba00170c51c30ea778d5b"
+  },
+  "analyzed_at": "2026-09-26T11:49:24.560356162+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 18,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:49:24.473204566+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T11:49:24.473204566+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "18.67.76.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:49:24.473204566+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:49:24.526566825+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:49:24.526566825+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 7574,
+    "elf_object_count": 65,
+    "elf_objects": [
+      {
+        "path": "usr/local/aws-cli/v2/aws",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libuuid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/aws_completer",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libtinfo.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libreadline.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libsqlite3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libpython3.14.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/_awscrt.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libz.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/liblzma.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libffi.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/_ruamel_yaml.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_json.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_multibytecodec.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/readline.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_blake2.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_jp.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/termios.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_statistics.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/pyexpat.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/array.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_md5.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_ssl.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_ctypes.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_hmac.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_interpreters.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_queue.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_multiprocessing.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_cn.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/zlib.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_socket.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_iso2022.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_bisect.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_sha1.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/resource.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_kr.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/math.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_posixsubprocess.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/binascii.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/select.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/grp.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_posixshmem.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/mmap.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_sha2.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_uuid.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/fcntl.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_sqlite3.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_heapq.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_asyncio.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_csv.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_random.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_tw.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_elementtree.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_struct.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_sha3.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_pickle.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_interpqueues.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/unicodedata.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/syslog.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_hk.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libbz2.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "`unzip` is unmaintained (RUSTSEC-2026-0296)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0296"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`unzip`: archive extraction is vulnerable to path traversal (zip-slip) (RUSTSEC-2026-0297)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0297"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "05b16665c50ac670b6749bf0a94f45958e7459d9d279989ea7b2831610fa3154",
+  "signature": null
+}
