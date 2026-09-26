@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "baresip-qt-gui-git",
+    "version": "4.10.1-10",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f829e45ab0401252125f61e0e7e65bb7a057f25d",
+    "pkgbuild_sha256": "3d7ba434f7517ac50613b5f294775ddae5c180bd1aece279531b61d6b27bb1eb",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T21:31:37.594052770+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:31:37.584440700+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:31:37.584440700+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d96ab186b800fbcf63874fb83eaa2b4d18018e96b834136179c3ef5f9a4b13f0",
+  "signature": null
+}
