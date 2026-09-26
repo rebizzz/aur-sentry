@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cua-driver-bin",
+    "version": "0.29.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "ff241c59647a673444229548035d75dc7f62bdf1",
+    "pkgbuild_sha256": "4ec9eae3a8caa9125994ac96f283d69c9cf7a43ba80f90139c773ea8c6c34499",
+    "install_sha256": "b9cdd0356194c3533c375cd1cd3838b7d951019393edb32c7aef638f41593d51"
+  },
+  "analyzed_at": "2026-09-26T11:50:05.748434504+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:50:05.735670611+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:50:05.735670611+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:50:05.735670611+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:50:05.744275686+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:50:05.744275686+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 10,
+    "elf_object_count": 4,
+    "elf_objects": [
+      {
+        "path": "usr/lib/cua-driver/cua-cursor-theme",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/cua-driver/cua_driver_node_runtime.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/cua-driver/libcua_driver_sdk.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/cua-driver/cua-driver",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ad7772ea4ea7cbe8df52b24158ebf2d372b4342f4c78c9693e8d64a18e5936dc",
+  "signature": null
+}
