@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cli-proxy-api-bin",
+    "version": "7.3.18-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "66e0e330cc230b90b679983432dc6823ad95ca8e",
+    "pkgbuild_sha256": "609955e0f424f3a51ab31811503c37ec72dabe50d4c74ccbadbbe4fb99ff6593",
+    "install_sha256": "749d3bd97f8019e5cdf3489bbf278838a784bda7b461dc219343a7648f6b98a5"
+  },
+  "analyzed_at": "2026-09-26T11:48:36.131214850+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 18,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:48:36.123725174+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:48:36.123725174+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T11:48:36.123725174+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 4,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/cli-proxy-api",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f36cea302847f5615be45bc0fd9c1677815e3d9192effcf46d4224bdbc97ddd2",
+  "signature": null
+}
