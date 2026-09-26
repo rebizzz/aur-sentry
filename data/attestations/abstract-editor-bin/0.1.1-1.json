@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "abstract-editor-bin",
+    "version": "0.1.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c35d1af268d381588535ddae9f78dc998508275e",
+    "pkgbuild_sha256": "862e8e41935b7ce84864d7f3bf033c63ed7bdae36b2d8fad3fed0f1febfe8278",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T21:31:55.656245448+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:31:55.632712103+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:31:55.632712103+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:31:55.632712103+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:31:55.632712103+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:31:55.646475316+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:31:55.646475316+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 6,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/abstract",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d96d623358f58a4ad85a44e73ee63b6f056ecf6070fd7703a4614d5b01f8cf0a",
+  "signature": null
+}
