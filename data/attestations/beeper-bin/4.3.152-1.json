@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "beeper-bin",
+    "version": "4.3.152-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "64317992ddc5f03e4a23249db6c0b9febe6ac66f",
+    "pkgbuild_sha256": "a99632f5316f9ec0c80ded73a74dfe4009b0da45054c5278024475229351eb6c",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T05:23:50.166779896+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 60,
+      "severity": "CRITICAL",
+      "description": "eval with dynamic variable (executes constructed shell string)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T05:23:50.160128782+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.26.7.223",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-26T05:23:50.160128782+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Potential Command Injection in libnotify (GHSA-6898-wx94-8jq8)",
+      "url": "https://osv.dev/vulnerability/GHSA-6898-wx94-8jq8"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "32696661ce69c94cd544787df9ef1fcce6f2aefdd84a43b1521b62ff675b7819",
+  "signature": null
+}
