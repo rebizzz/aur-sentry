@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "clash-verge-rev-bin",
+    "version": "2.5.6-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "973662c16a160b24caabd705ae78afc870fc14cc",
+    "pkgbuild_sha256": "41eb13a580dbec9d8285f76cae94e12f88cac1583b826ec130dda8c6fe497d19",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T16:45:57.281715032+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "BUILD_FAILED",
+  "evidence_hash": "0e131b1e6a75cac3fcc6e4a207237c88c5c41d94caeefcc6f1ff801af2732049",
+  "signature": null
+}
