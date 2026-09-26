@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "arsu",
+    "version": "1.0.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "7b4f93cf9466b0965a0c73b8f6d617d26cea6544",
+    "pkgbuild_sha256": "1f3de5ae9d99a91ca5654571ef14f1667d1c5c9081d7c61b8bfa988859c52cc1",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-26T21:31:13.985734175+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:31:13.977679300+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-26T21:31:13.977679300+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can fill the file system (GHSA-2hvr-h6gw-qrxp)",
+      "url": "https://osv.dev/vulnerability/GHSA-2hvr-h6gw-qrxp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm vulnerable to Command Injection via environment variable substitution (GHSA-2phv-j68v-wwqx)",
+      "url": "https://osv.dev/vulnerability/GHSA-2phv-j68v-wwqx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: pacquet trust-lockfile install can create dependency symlinks outside the project (GHSA-2rx9-3g3h-c2jv)",
+      "url": "https://osv.dev/vulnerability/GHSA-2rx9-3g3h-c2jv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm v10+ Bypass \"Dependency lifecycle scripts execution disabled by default\" (GHSA-379q-355j-w6rj)",
+      "url": "https://osv.dev/vulnerability/GHSA-379q-355j-w6rj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Repository config can expand victim environment secrets into registry requests before scripts run (GHSA-3qhv-2rgh-x77r)",
+      "url": "https://osv.dev/vulnerability/GHSA-3qhv-2rgh-x77r"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Reserved bin name deletes PNPM_HOME during global remove (GHSA-4gxm-v5v7-fqc4)",
+      "url": "https://osv.dev/vulnerability/GHSA-4gxm-v5v7-fqc4"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Unsafe default behavior breaks integrity check (GHSA-54hh-g5mx-jqcp)",
+      "url": "https://osv.dev/vulnerability/GHSA-54hh-g5mx-jqcp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm incorrectly parses tar archives relative to specification (GHSA-5r98-f33j-g8h7)",
+      "url": "https://osv.dev/vulnerability/GHSA-5r98-f33j-g8h7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Manifest identity spoof satisfies allowBuilds and runs attacker lifecycle (GHSA-5wx6-mg75-v57r)",
+      "url": "https://osv.dev/vulnerability/GHSA-5wx6-mg75-v57r"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Binary ZIP extraction allows arbitrary file write via path traversal (Zip Slip) (GHSA-6pfh-p556-v868)",
+      "url": "https://osv.dev/vulnerability/GHSA-6pfh-p556-v868"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "47ec35daef75d8b4cbe1767eaf95015da971b982d77d006145e3a79d452fa173",
+  "signature": null
+}
