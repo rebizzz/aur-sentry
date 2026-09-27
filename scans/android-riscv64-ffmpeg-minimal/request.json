@@ -1,0 +1,8 @@
+{
+  "package": "android-riscv64-ffmpeg-minimal",
+  "aur_commit": "0f4fffb75c51f8cd3d8fd6fd488bb41b44675e86",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-27T00:56:22Z"
+}
