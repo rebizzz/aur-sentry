@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "android-aarch64-ffmpeg-minimal",
+    "version": "9.0.1-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4b0b025784df62f18b0acb3fbe2ecdcb558b1eec",
+    "pkgbuild_sha256": "69a5ffdd4c6ce0c9b32c12c7bc4a0842f2c6d6d0543a5944dff6be85bb993965",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T00:59:43.784609972+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T00:59:43.758077421+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "79.124.17.100",
+        "port": 80,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T00:59:43.758077421+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "79.124.17.100",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T00:59:43.758077421+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "71a0fc00f50aa8bd4fa528d389d37b83cdd4c63ee0b018d29f121f80d2937b3d",
+  "signature": null
+}
