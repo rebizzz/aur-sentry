@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bibavpn-desktop",
+    "version": "1.5.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c3299c1ed69a794b98a684d422780f442852ccab",
+    "pkgbuild_sha256": "3e14324a8a7e0988fddf8a04d016491f09eff848cee4d991a6d9def5f686abad",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T18:47:14.494095490+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:47:14.486595260+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:47:14.486595260+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.132",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:47:14.486595260+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can fill the file system (GHSA-2hvr-h6gw-qrxp)",
+      "url": "https://osv.dev/vulnerability/GHSA-2hvr-h6gw-qrxp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Vulnerable to Global node_modules Binary Overwrite (GHSA-4328-8hgf-7wjr)",
+      "url": "https://osv.dev/vulnerability/GHSA-4328-8hgf-7wjr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm CLI exposing sensitive information through logs (GHSA-93f3-23rq-pjfp)",
+      "url": "https://osv.dev/vulnerability/GHSA-93f3-23rq-pjfp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo prior to Rust 1.26.0 may download the wrong dependency (GHSA-9f3p-wvj7-q82x)",
+      "url": "https://osv.dev/vulnerability/GHSA-9f3p-wvj7-q82x"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Packing does not respect root-level ignore files in workspaces (GHSA-hj9c-8jmm-8c52)",
+      "url": "https://osv.dev/vulnerability/GHSA-hj9c-8jmm-8c52"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo not respecting umask when extracting crate archives (GHSA-j3xp-wfr4-hx87)",
+      "url": "https://osv.dev/vulnerability/GHSA-j3xp-wfr4-hx87"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo crates in third party registries can override the cached source of other crates (GHSA-jq42-7mfv-hm57)",
+      "url": "https://osv.dev/vulnerability/GHSA-jq42-7mfv-hm57"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Token Leak in npm (GHSA-m5h6-hr3q-22h5)",
+      "url": "https://osv.dev/vulnerability/GHSA-m5h6-hr3q-22h5"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "6088c62e8d675491cb156e761d884f7e15e9065d4e0dc650760e64e0c6328874",
+  "signature": null
+}
