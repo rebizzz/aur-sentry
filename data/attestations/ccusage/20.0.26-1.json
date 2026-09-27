@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ccusage",
+    "version": "20.0.26-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "384c6b628a72ec002af7066f09e522f11a729cf3",
+    "pkgbuild_sha256": "16a4c2abdb02dee7f62fb3acc871bac967d860f5de9ac6e3550a2924c5076c17",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T23:25:54.616685163+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:25:54.607156097+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.16.9.34",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:25:54.607156097+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/ccusage",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "7d0cb97e4b24eac52d0776f9949036c41ae6db999effdb4b53202b99e0460ea3",
+  "signature": null
+}
