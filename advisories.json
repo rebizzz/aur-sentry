@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-27T00:59:52+00:00",
+  "updated_at": "2026-09-27T01:00:04+00:00",
   "total_flagged": 157,
   "advisories": [
     {
@@ -156,6 +156,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "agent-deck",
+      "version": "1.16.19-1",
+      "maintainer": "Jamison",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-27T01:00:04+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash ae196411aee47e4a)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/agent-deck"
     },
     {
       "package": "android-armv7a-eabi-harfbuzz",
@@ -379,23 +396,6 @@
       "aur_url": "https://aur.archlinux.org/packages/computer-use-linux"
     },
     {
-      "package": "antigravity-tools-bin",
-      "version": "4.8.3-1",
-      "maintainer": "theorangeguo",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T21:33:04+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 099ca089db79b1a7)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/antigravity-tools-bin"
-    },
-    {
       "package": "cpa-usage-keeper-bin",
       "version": "1.15.8-1",
       "maintainer": "theorangeguo",
@@ -412,6 +412,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/cpa-usage-keeper-bin"
+    },
+    {
+      "package": "antigravity-tools-bin",
+      "version": "4.8.3-1",
+      "maintainer": "theorangeguo",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T21:33:04+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 099ca089db79b1a7)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/antigravity-tools-bin"
     },
     {
       "package": "dabri",
@@ -534,23 +551,6 @@
       "aur_url": "https://aur.archlinux.org/packages/aw-server-rust-git"
     },
     {
-      "package": "baresip-qt-gui-git",
-      "version": "4.10.1-10",
-      "maintainer": "CxOrg",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T21:31:39+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash d96ab186b800fbcf)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/baresip-qt-gui-git"
-    },
-    {
       "package": "backlog.md",
       "version": "1.53.0-1",
       "maintainer": "ftiasch",
@@ -566,6 +566,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/backlog.md"
+    },
+    {
+      "package": "baresip-qt-gui-git",
+      "version": "4.10.1-10",
+      "maintainer": "CxOrg",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T21:31:39+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash d96ab186b800fbcf)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/baresip-qt-gui-git"
     },
     {
       "package": "arsu",
@@ -721,23 +738,6 @@
       "aur_url": "https://aur.archlinux.org/packages/cosmostrix-bin"
     },
     {
-      "package": "bit4id-pki-manager",
-      "version": "1.4.11.836-2",
-      "maintainer": "s.pantaleev",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T16:46:17+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 55b0f9a3966456fb)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
-    },
-    {
       "package": "clash-verge-rev",
       "version": "2.5.6-2",
       "maintainer": "Integral",
@@ -753,6 +753,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
+    },
+    {
+      "package": "bit4id-pki-manager",
+      "version": "1.4.11.836-2",
+      "maintainer": "s.pantaleev",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T16:46:17+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 55b0f9a3966456fb)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
     },
     {
       "package": "bstring-git",
@@ -1721,23 +1738,6 @@
       "aur_url": "https://aur.archlinux.org/packages/ai-usagebar-bin"
     },
     {
-      "package": "agent-deck",
-      "version": "1.16.17-1",
-      "maintainer": "Jamison",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T23:36:25+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 10ac3a748ef0132f)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/agent-deck"
-    },
-    {
       "package": "ai-memory",
       "version": "2.4.1-1",
       "maintainer": "akitaonrails",
@@ -2528,23 +2528,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "camlpdf",
-      "version": "2.9.2-1",
-      "maintainer": "severach",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
-    },
-    {
       "package": "amethyst-mod-manager",
       "version": "2.5.2-1",
       "maintainer": "TheBill2001",
@@ -2560,6 +2543,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
+    },
+    {
+      "package": "camlpdf",
+      "version": "2.9.2-1",
+      "maintainer": "severach",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
     },
     {
       "package": "aura-emerge",
