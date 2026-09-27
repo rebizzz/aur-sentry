@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bend-bin",
+    "version": "2.0.31-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5180c643d220563da497082e4319424705492fa5",
+    "pkgbuild_sha256": "846b6876eacbc3b43a573cda59afe26a7ff3fd890b514e17f4a21eed1824a190",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T14:26:42.591874623+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:26:42.585216566+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:26:42.585216566+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:26:42.585216566+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 77,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/lib/bend/bin/bend",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "7149ebece2af0fbe42a818f08f598e85f8b5648d2a22bf9d39898f7d7bb88981",
+  "signature": null
+}
