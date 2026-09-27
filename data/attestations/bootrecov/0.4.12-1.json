@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bootrecov",
+    "version": "0.4.12-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a944e79590e8a36a06dd0ea68752ae405ca9378b",
+    "pkgbuild_sha256": "e0aff0325ee24fdaf9c7fafb12af2fdcacff2888183deb481f5cf86b9e257746",
+    "install_sha256": "6aba73dd7a4cbde549818f4b63a477cbc2643680007de04ce5758ac990a14a0f"
+  },
+  "analyzed_at": "2026-09-27T08:33:36.319967859+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:33:36.310821274+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:33:36.310821274+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:33:36.310821274+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "b70ac2180badd2ffab70343aee188a38f29dfabc36d993136753197876a45e3a",
+  "signature": null
+}
