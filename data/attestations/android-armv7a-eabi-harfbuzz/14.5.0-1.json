@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "android-armv7a-eabi-harfbuzz",
+    "version": "14.5.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "714d058976d067fb8c6ec81739317b0de078627c",
+    "pkgbuild_sha256": "14450c436227aabf8677835e120f8bd1bf65aadb9cd9a69ca829a559543d9f53",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T00:59:50.806822528+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T00:59:50.789844112+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T00:59:50.789844112+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.24",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T00:59:50.789844112+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "766f24b1f54729af6c06b879cb27f585fb78cc33a65347dbafa8f024a02c30e9",
+  "signature": null
+}
