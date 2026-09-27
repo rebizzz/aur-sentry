@@ -1,0 +1,16 @@
+pkgbase = aespresso
+	pkgdesc = A GTK4 frontend for archlinux's archlinux-java script
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/JustinWoodring/aespresso
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = cargo
+	depends = gtk4
+	depends = java-runtime-common
+	depends = polkit
+	optdepends = lxqt-sudo: alternative privilege escalation helper
+	source = aespresso-0.2.1.tar.gz::https://github.com/JustinWoodring/aespresso/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = abc435aac0d6e10ecd59f522047a0c65ee068f259b14a5a2cb07a6a702ea5634
+
+pkgname = aespresso
