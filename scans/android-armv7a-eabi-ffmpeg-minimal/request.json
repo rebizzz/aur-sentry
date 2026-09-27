@@ -1,0 +1,8 @@
+{
+  "package": "android-armv7a-eabi-ffmpeg-minimal",
+  "aur_commit": "e311657c2bad3b49f0a73882613144830b9a7ba3",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-27T00:56:04Z"
+}
