@@ -1,0 +1,8 @@
+{
+  "package": "arm-linux-gnueabi-binutils",
+  "aur_commit": "305da5eae4897e1e6843d3b335056045ec7f0dc8",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-27T23:20:12Z"
+}
