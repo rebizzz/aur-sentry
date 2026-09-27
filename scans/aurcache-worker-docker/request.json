@@ -1,0 +1,8 @@
+{
+  "package": "aurcache-worker-docker",
+  "aur_commit": "20f59215de37d5ec86d6e911f09030ef68339b4d",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-27T18:43:36Z"
+}
