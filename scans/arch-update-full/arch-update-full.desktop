@@ -1,0 +1,18 @@
+[Desktop Entry]
+Type=Application
+Version=2.0
+Name=Arch Update Full
+GenericName=System Updater
+Comment=Sentinel Protocol: Update automation (Pacman/AUR/Flatpak/Snap) and auditing.
+
+Exec=arch-update-full
+
+Icon=novalogov41
+
+Terminal=true
+
+Categories=System;Utility;ArchLinux;
+Keywords=update;arch;pacman;yay;flatpak;sentinela;cyberpunk;
+StartupNotify=true
+
+StartupWMClass=arch-update-full
