@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "arch-update-full",
+    "version": "4.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5f3fc168fa7017f3482b74a437da2d3b114ce297",
+    "pkgbuild_sha256": "e4d977df904846599f1abc655700d23f227afd2b7c5fe60a1697f52a57d3b6b1",
+    "install_sha256": "04a5fa6b7ef4c65c6f61ec31d24d16f0147d9519bdc585b743c73d313f9c2afc"
+  },
+  "analyzed_at": "2026-09-27T18:46:05.794860592+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 25,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:46:05.787029473+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.3.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:46:05.787029473+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 8,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-2m8x-mvfx-gwgj)",
+      "url": "https://osv.dev/vulnerability/GHSA-2m8x-mvfx-gwgj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-4wrp-79m8-9m9p)",
+      "url": "https://osv.dev/vulnerability/GHSA-4wrp-79m8-9m9p"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Permission Assignment for Critical Resource (GHSA-5hgf-628x-mcqf)",
+      "url": "https://osv.dev/vulnerability/GHSA-5hgf-628x-mcqf"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Short Circuit Evaluation Issue (GHSA-5pv5-xh52-hvrp)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pv5-xh52-hvrp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Improper Input Validation Issue in its env Utility (GHSA-5v4g-vw9x-h534)",
+      "url": "https://osv.dev/vulnerability/GHSA-5v4g-vw9x-h534"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Potential Command Injection in libnotify (GHSA-6898-wx94-8jq8)",
+      "url": "https://osv.dev/vulnerability/GHSA-6898-wx94-8jq8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-6g8r-74qp-6859)",
+      "url": "https://osv.dev/vulnerability/GHSA-6g8r-74qp-6859"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils doesn't preserve file ownership during moves across different filesystem boundaries (GHSA-957r-r8gc-vv3h)",
+      "url": "https://osv.dev/vulnerability/GHSA-957r-r8gc-vv3h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-Check to Time-of-Use (TOCTOU) race condition (GHSA-9gh9-hwpr-rvqq)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gh9-hwpr-rvqq"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Uncaught Exception When Encountering Valid but Non-UTF-8 Paths (GHSA-f2jv-wjjc-2c94)",
+      "url": "https://osv.dev/vulnerability/GHSA-f2jv-wjjc-2c94"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d703cb0fef29404a18f1141d2c35ddfb81c89e4e27efbdf3f2bda492b0178221",
+  "signature": null
+}
