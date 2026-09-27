@@ -1,0 +1,21 @@
+pkgbase = aspia-client-bin
+	pkgdesc = Remote desktop control and file transfer tool (client, official binary)
+	pkgver = 3.0.18
+	pkgrel = 1
+	url = https://aspia.org/
+	arch = x86_64
+	license = GPL-3.0-only
+	depends = dbus
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = libstdc++
+	depends = ttf-font
+	provides = aspia-client
+	conflicts = aspia-client
+	options = !debug
+	options = !strip
+	source_x86_64 = https://github.com/dchapyshev/aspia/releases/download/v3.0.18/aspia-client-3.0.18-x86_64.deb
+	sha256sums_x86_64 = 2092ee158cbef4fa4636336ac4aad777e47af86aebbc81fb7e3ebe93ae4b6800
+
+pkgname = aspia-client-bin
