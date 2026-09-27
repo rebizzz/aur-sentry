@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ai-usagebar-bin",
+    "version": "1.26.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "edac79438e6dedb281d69f04210cb3be0f0b69b4",
+    "pkgbuild_sha256": "541d72e86e981d1d1fc6c88b7bc64f5dbcb110357079f40bf61e68b0dfc3c247",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T18:45:19.936884501+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:45:19.926589895+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:45:19.926589895+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:45:19.926589895+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5,
+    "elf_object_count": 2,
+    "elf_objects": [
+      {
+        "path": "usr/bin/ai-usagebar",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/ai-usagebar-tui",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "72bac4460d2c2d539c7a45bea5253e764449a657e43ab1e93bebd31cae67596b",
+  "signature": null
+}
