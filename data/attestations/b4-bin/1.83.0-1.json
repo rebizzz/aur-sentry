@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "b4-bin",
+    "version": "1.83.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "b97f5255f76265d722f6dd9d76cab79e0e5ea00e",
+    "pkgbuild_sha256": "5d778062504bd81db79c076d35d5ae44fc66aef357d7247f47aad4ffef762061",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T23:24:39.460835891+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:39.438191398+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:39.438191398+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:39.438191398+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/b4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "197313faa0b796a6031498ea24754f2057858edc0dab5eb2846b10e4d03994ad",
+  "signature": null
+}
