@@ -1,8 +1,50 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-27T23:22:41+00:00",
-  "total_flagged": 205,
+  "updated_at": "2026-09-27T23:22:49+00:00",
+  "total_flagged": 206,
   "advisories": [
+    {
+      "package": "3dgenstudio-git",
+      "version": "rcf54f5e-1",
+      "maintainer": "corrm",
+      "highest_severity": "CRITICAL",
+      "detected_at": "2026-09-27T23:22:49+00:00",
+      "findings": [
+        {
+          "rule_id": "OBFUSCATED_BASE64",
+          "severity": "CRITICAL",
+          "description": "base64 decode invocation detected (often hides malicious payload)",
+          "line_number": 43,
+          "matched_text": "base64 -d",
+          "behavior": "OBFUSCATION"
+        },
+        {
+          "rule_id": "SUS_LONG_ENCODED_STRING",
+          "severity": "HIGH",
+          "description": "Long base64-like encoded string found (may hide second-stage payload)",
+          "line_number": 43,
+          "matched_text": "base64 -d > \"$pkgdir/usr/bin/3dgenstudio\" <<< \"IyEvYmluL2Jhc2gKIyBTdGFydHMgdGhlI...",
+          "behavior": "OBFUSCATION"
+        },
+        {
+          "rule_id": "SUS_HIGH_ENTROPY_PAYLOAD",
+          "severity": "HIGH",
+          "description": "High Shannon entropy (5.64 bits/byte) detected in string literal - packed or encrypted payload",
+          "line_number": 43,
+          "matched_text": "IyEvYmluL2Jhc2gKIyBTdGFydHMgdGhlIHByb2R1... (entropy: 5.64)",
+          "behavior": "OBFUSCATION"
+        },
+        {
+          "rule_id": "DEOBFUSCATED_REVSHELL_DEV_TCP",
+          "severity": "CRITICAL",
+          "description": "Payload decoded from Base64 on line 43: bash /dev/tcp connection (standard reverse shell vector)",
+          "line_number": 43,
+          "matched_text": "Decoded: /dev/tcp/",
+          "behavior": "NETWORK_ACCESS"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/3dgenstudio-git"
+    },
     {
       "package": "microsoft-edge-beta-bin",
       "version": "155.0.4283.13-1",
@@ -1294,23 +1336,6 @@
       "aur_url": "https://aur.archlinux.org/packages/android-armv7a-eabi-harfbuzz"
     },
     {
-      "package": "android-riscv64-ffmpeg-minimal",
-      "version": "9.0.1-2",
-      "maintainer": "hipersayan_x",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-27T00:59:51+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash b2d8367fe306d018)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/android-riscv64-ffmpeg-minimal"
-    },
-    {
       "package": "android-armv7a-eabi-ffmpeg-minimal",
       "version": "9.0.1-2",
       "maintainer": "hipersayan_x",
@@ -1326,6 +1351,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/android-armv7a-eabi-ffmpeg-minimal"
+    },
+    {
+      "package": "android-riscv64-ffmpeg-minimal",
+      "version": "9.0.1-2",
+      "maintainer": "hipersayan_x",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-27T00:59:51+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash b2d8367fe306d018)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/android-riscv64-ffmpeg-minimal"
     },
     {
       "package": "android-aarch64-ffmpeg-minimal",
@@ -1789,23 +1831,6 @@
       "aur_url": "https://aur.archlinux.org/packages/cosmostrix-bin"
     },
     {
-      "package": "bit4id-pki-manager",
-      "version": "1.4.11.836-2",
-      "maintainer": "s.pantaleev",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T16:46:17+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 55b0f9a3966456fb)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
-    },
-    {
       "package": "clash-verge-rev",
       "version": "2.5.6-2",
       "maintainer": "Integral",
@@ -1821,6 +1846,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
+    },
+    {
+      "package": "bit4id-pki-manager",
+      "version": "1.4.11.836-2",
+      "maintainer": "s.pantaleev",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T16:46:17+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 55b0f9a3966456fb)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
     },
     {
       "package": "bstring-git",
@@ -3443,23 +3485,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "camlpdf",
-      "version": "2.9.2-1",
-      "maintainer": "severach",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
-    },
-    {
       "package": "amethyst-mod-manager",
       "version": "2.5.2-1",
       "maintainer": "TheBill2001",
@@ -3475,6 +3500,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
+    },
+    {
+      "package": "camlpdf",
+      "version": "2.9.2-1",
+      "maintainer": "severach",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
     },
     {
       "package": "aura-emerge",
