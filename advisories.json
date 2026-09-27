@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-27T14:24:21+00:00",
-  "total_flagged": 186,
+  "updated_at": "2026-09-27T14:24:23+00:00",
+  "total_flagged": 187,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -156,6 +156,40 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "arctis-sound-manager",
+      "version": "1.4.30-1",
+      "maintainer": "loteran",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-27T14:24:23+00:00",
+      "findings": [
+        {
+          "rule_id": "PKG_INSTALL_FILE_REF",
+          "severity": "INFO",
+          "description": "references external .install scriptlet",
+          "line_number": 76,
+          "matched_text": "install=arctis-sound-manager.install",
+          "behavior": "PACKAGE_INSTALLATION"
+        },
+        {
+          "rule_id": "PERSIST_XDG_AUTOSTART",
+          "severity": "HIGH",
+          "description": "dropping XDG desktop autostart entry",
+          "line_number": 180,
+          "matched_text": "/etc/xdg/autostart/asm-first-run.desktop",
+          "behavior": "PERSISTENCE"
+        },
+        {
+          "rule_id": "EXFIL_CURL_PIPE_EXEC",
+          "severity": "HIGH",
+          "description": "remote download piped directly into interpreter",
+          "line_number": 124,
+          "matched_text": "curl -fsSL https://raw.githubusercontent.com/loteran/Arctis-Sound-Manager/main/scripts/uninstall.sh | bash",
+          "behavior": "DYNAMIC_DOWNLOAD"
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/arctis-sound-manager"
     },
     {
       "package": "agent-deck-bin",
@@ -521,23 +555,6 @@
       "aur_url": "https://aur.archlinux.org/packages/calibre-tui-git"
     },
     {
-      "package": "agent-deck",
-      "version": "1.16.20-1",
-      "maintainer": "Jamison",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-27T08:33:31+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash be0fe187fcce988a)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/agent-deck"
-    },
-    {
       "package": "calibre-tui-bin",
       "version": "0.6.2-1",
       "maintainer": "windust",
@@ -553,6 +570,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/calibre-tui-bin"
+    },
+    {
+      "package": "agent-deck",
+      "version": "1.16.20-1",
+      "maintainer": "Jamison",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-27T08:33:31+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash be0fe187fcce988a)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/agent-deck"
     },
     {
       "package": "calibre-tui",
@@ -793,23 +827,6 @@
       "aur_url": "https://aur.archlinux.org/packages/android-armv7a-eabi-harfbuzz"
     },
     {
-      "package": "android-riscv64-ffmpeg-minimal",
-      "version": "9.0.1-2",
-      "maintainer": "hipersayan_x",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-27T00:59:51+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash b2d8367fe306d018)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/android-riscv64-ffmpeg-minimal"
-    },
-    {
       "package": "android-armv7a-eabi-ffmpeg-minimal",
       "version": "9.0.1-2",
       "maintainer": "hipersayan_x",
@@ -825,6 +842,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/android-armv7a-eabi-ffmpeg-minimal"
+    },
+    {
+      "package": "android-riscv64-ffmpeg-minimal",
+      "version": "9.0.1-2",
+      "maintainer": "hipersayan_x",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-27T00:59:51+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash b2d8367fe306d018)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/android-riscv64-ffmpeg-minimal"
     },
     {
       "package": "android-aarch64-ffmpeg-minimal",
@@ -997,23 +1031,6 @@
       "aur_url": "https://aur.archlinux.org/packages/computer-use-linux"
     },
     {
-      "package": "antigravity-tools-bin",
-      "version": "4.8.3-1",
-      "maintainer": "theorangeguo",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T21:33:04+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 099ca089db79b1a7)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/antigravity-tools-bin"
-    },
-    {
       "package": "cpa-usage-keeper-bin",
       "version": "1.15.8-1",
       "maintainer": "theorangeguo",
@@ -1030,6 +1047,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/cpa-usage-keeper-bin"
+    },
+    {
+      "package": "antigravity-tools-bin",
+      "version": "4.8.3-1",
+      "maintainer": "theorangeguo",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T21:33:04+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 099ca089db79b1a7)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/antigravity-tools-bin"
     },
     {
       "package": "dabri",
@@ -1152,23 +1186,6 @@
       "aur_url": "https://aur.archlinux.org/packages/aw-server-rust-git"
     },
     {
-      "package": "baresip-qt-gui-git",
-      "version": "4.10.1-10",
-      "maintainer": "CxOrg",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T21:31:39+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash d96ab186b800fbcf)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/baresip-qt-gui-git"
-    },
-    {
       "package": "backlog.md",
       "version": "1.53.0-1",
       "maintainer": "ftiasch",
@@ -1184,6 +1201,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/backlog.md"
+    },
+    {
+      "package": "baresip-qt-gui-git",
+      "version": "4.10.1-10",
+      "maintainer": "CxOrg",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T21:31:39+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash d96ab186b800fbcf)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/baresip-qt-gui-git"
     },
     {
       "package": "arsu",
@@ -1339,23 +1373,6 @@
       "aur_url": "https://aur.archlinux.org/packages/cosmostrix-bin"
     },
     {
-      "package": "bit4id-pki-manager",
-      "version": "1.4.11.836-2",
-      "maintainer": "s.pantaleev",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T16:46:17+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 55b0f9a3966456fb)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
-    },
-    {
       "package": "clash-verge-rev",
       "version": "2.5.6-2",
       "maintainer": "Integral",
@@ -1371,6 +1388,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
+    },
+    {
+      "package": "bit4id-pki-manager",
+      "version": "1.4.11.836-2",
+      "maintainer": "s.pantaleev",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T16:46:17+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 55b0f9a3966456fb)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
     },
     {
       "package": "bstring-git",
@@ -3095,23 +3129,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "camlpdf",
-      "version": "2.9.2-1",
-      "maintainer": "severach",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
-    },
-    {
       "package": "amethyst-mod-manager",
       "version": "2.5.2-1",
       "maintainer": "TheBill2001",
@@ -3127,6 +3144,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
+    },
+    {
+      "package": "camlpdf",
+      "version": "2.9.2-1",
+      "maintainer": "severach",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 954fc69387a634c3)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/camlpdf"
     },
     {
       "package": "aura-emerge",
