@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "calibre-tui-bin",
+    "version": "0.6.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "57fd7e3540cc41d57100ef74edf9f2e663689365",
+    "pkgbuild_sha256": "5cd692deb7e75508056319e335f044703f4cbc5d47b670348c03ddc8bad38392",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T08:33:29.234318261+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:33:29.226252796+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:33:29.226252796+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:33:29.226252796+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:33:29.233158301+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:33:29.233158301+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/calibre-tui",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ac0b671cd72200759f40291fb193bdea5ddd4d0c723c73fffbfa34165654c536",
+  "signature": null
+}
