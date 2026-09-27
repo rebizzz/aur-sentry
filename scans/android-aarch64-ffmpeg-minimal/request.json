@@ -1,0 +1,8 @@
+{
+  "package": "android-aarch64-ffmpeg-minimal",
+  "aur_commit": "4b0b025784df62f18b0acb3fbe2ecdcb558b1eec",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-27T00:55:46Z"
+}
