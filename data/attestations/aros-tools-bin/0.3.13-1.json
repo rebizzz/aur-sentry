@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aros-tools-bin",
+    "version": "0.3.13-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "dc642bc65c136f83d7ed266d9d03802762e4057e",
+    "pkgbuild_sha256": "6f0095f1ae2caefa72b1091abea389b4225440926006182ad3c2621629772a25",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T23:24:31.399281702+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:31.380102208+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:31.380102208+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:31.380102208+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:31.389109078+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:31.389109078+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 10,
+    "elf_object_count": 8,
+    "elf_objects": [
+      {
+        "path": "usr/bin/aros-genmodule",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/aros-romtool",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/aros-ahi-runner",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/aros",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/aros-verify",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/aros-transpiler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/aros-collect",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/aros-fetch",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "4307f4b3929ee094165437b660b1c47c727ad971bad007b8b36371c3165562f7",
+  "signature": null
+}
