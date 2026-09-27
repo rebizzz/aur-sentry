@@ -1,0 +1,3207 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "animeko-appimage",
+    "version": "6.2.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "8442cfd0cdd557808261a3a156ed4162c059bd5e",
+    "pkgbuild_sha256": "42764cb88c015f4ffd5913b263b5ca2d41e45586350294dc0be930aa2a07e25f",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T01:03:04.633902097+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T01:03:04.566609155+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T01:03:04.566609155+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T01:03:04.566609155+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T01:03:04.589699155+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T01:03:04.589699155+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1068,
+    "elf_object_count": 520,
+    "elf_objects": [
+      {
+        "path": "opt/animeko/usr/lib/libapplauncher.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/ffmpeg",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/libonnxruntime4j_jni.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/libmediampv.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libunibreak.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libswscale.so.9",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libpng16.so.16",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libharfbuzz.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavutil.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libva-drm.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libplacebo.so.338",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libXss.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libbz2.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libssl.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libXext.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libfribidi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavfilter.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libglib-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libswscale.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libXfixes.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavcodec.so.62.11.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavformat.so.62.3.101",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libcrypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavcodec.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/liblcms2.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavfilter.so.11",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libswresample.so.6.1.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libmpv.so.2.6.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libz.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libgraphite2.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavutil.so.60",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavutil.so.60.8.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libbrotlidec.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavfilter.so.11.4.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libswscale.so.9.1.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libva-x11.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libXrandr.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libswresample.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libpcre2-8.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libbrotlicommon.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libxcb-dri3.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavdevice.so.62.1.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavdevice.so.62",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libmpv.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavformat.so.62",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavcodec.so.62",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavdevice.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libswresample.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libass.so.9",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libXpresent.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libavformat.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libmpv.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libva.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libfreetype.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/native/libXrender.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/libskiko-linux-x64.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/libanitorrent.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/libffmpegkitjni.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/libonnxruntime.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc_pulse.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc_xcb_events.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc_pulse.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc_vdpau.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlccore.so.9.0.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc-cache-gen",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc.so.5.6.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/libvlc_pulse.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/libvlc_xcb_events.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_splitter/libpanoramix_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_splitter/libwall_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_splitter/libclone_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libegl_x11_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libcaca_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libglconv_vaapi_wl_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libvdummy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libflaschen_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libglconv_vaapi_x11_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libgl_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libgles2_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libglconv_vaapi_drm_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libaa_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libglconv_vdpau_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libglx_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libwl_shm_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libyuv_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libxcb_xv_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libegl_wl_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libxcb_window_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libxcb_x11_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libvmem_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libwl_shell_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libxdg_shell_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_output/libfb_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/control/libhotkeys_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/control/liblirc_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/control/liboldrc_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/control/libnetsync_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/control/libdbus_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/control/libdummy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/control/libxcb_hotkeys_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/control/libmotion_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/control/libgestures_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libripple_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libfps_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libvhs_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libgradient_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libpsychedelic_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libalphamask_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/librotate_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libscene_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libbluescreen_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libantiflicker_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libmotionblur_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libgaussianblur_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libpostproc_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libscale_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libposterize_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libblend_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libwave_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/liboldmovie_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libanaglyph_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libcroppadd_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libpuzzle_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libsepia_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libextract_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libhqdn3d_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libmirror_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libadjust_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libdeinterlace_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libfreeze_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libsharpen_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/liberase_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libgradfun_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libtransform_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libball_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libmagnify_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libedgedetection_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libgrain_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libmotiondetect_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libblendbench_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libcanvas_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libinvert_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_filter/libcolorthres_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/meta_engine/libfolder_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/meta_engine/libtaglib_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libxml_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libaddonsvorepository_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libaddonsfsstorage_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/liblogger_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libvod_rtsp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libaudioscrobbler_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libexport_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libdbus_screensaver_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libxdg_screensaver_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libfingerprinter_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libstats_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/misc/libgnutls_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/mux/libmux_asf_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/mux/libmux_ts_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/mux/libmux_avi_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/mux/libmux_ps_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/mux/libmux_mpjpeg_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/mux/libmux_ogg_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/mux/libmux_wav_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/mux/libmux_mp4_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/mux/libmux_dummy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/vaapi/libvaapi_filters_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libstereo_widen_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libmono_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libparam_eq_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libtrivial_channel_mixer_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libsamplerate_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libcompressor_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libremap_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libmad_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libspatialaudio_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libscaletempo_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libtospdif_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libugly_resampler_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libaudiobargraph_a_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libgain_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libkaraoke_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libnormvol_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libaudio_format_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libdolby_surround_decoder_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libspeex_resampler_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libchorus_flanger_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libspatializer_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libequalizer_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libscaletempo_pitch_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libsoxr_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libsimple_channel_mixer_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_filter/libheadphone_channel_mixer_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libswscale_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libyuy2_i420_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi422_yuy2_sse2_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libchain_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libyuvp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi422_yuy2_mmx_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi420_10_p010_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libgrey_yuv_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi420_nv12_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/librv32_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi422_yuy2_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi420_rgb_mmx_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi420_yuy2_sse2_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi420_rgb_sse2_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libyuy2_i422_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi420_rgb_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi420_yuy2_mmx_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi420_yuy2_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/video_chroma/libi422_i420_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/logger/libfile_logger_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/logger/libsyslog_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/logger/libsd_journal_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/logger/libconsole_logger_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_hevc_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_vc1_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_dts_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_av1_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_mpegvideo_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_mlp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_mpeg4audio_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_mpeg4video_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_dirac_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_avparser_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_h264_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_copy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_mpegaudio_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_flac_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/packetizer/libpacketizer_a52_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/services_discovery/libavahi_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/services_discovery/libupnp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/services_discovery/libmediadirs_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/services_discovery/libsap_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/services_discovery/libpulselist_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/services_discovery/libudev_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/services_discovery/libpodcast_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/services_discovery/libmtp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/services_discovery/libxcb_apps_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_filter/librecord_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_filter/libhds_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_filter/libskiptags_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_filter/libadf_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_filter/libprefetch_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_filter/libdecomp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_filter/libinflate_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_filter/libcache_read_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_filter/libcache_block_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libsmf_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libdemux_cdg_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libdiracsys_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libmod_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libwav_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libnoseek_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libts_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libavformat_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libmjpeg_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libreal_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libcaf_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libmp4_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libvc1_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libsid_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libvoc_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libh26x_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libnuv_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libmkv_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/librawdv_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libaiff_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libplaylist_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libavi_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libdemux_stl_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libimage_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libflacsys_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libsubtitle_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libvobsub_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libpva_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libdemux_chromecast_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libmpgv_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libnsv_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libnsc_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libdirectory_demux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libau_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libmpc_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libty_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libxa_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libdemuxdump_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libps_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libogg_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/librawaud_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libadaptive_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libasf_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/librawvid_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libes_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/demux/libtta_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/spu/libmarq_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/spu/liblogo_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/spu/librss_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/spu/libdynamicoverlay_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/spu/libmosaic_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/spu/libsubsdelay_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/spu/libaudiobargraph_v_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/spu/libremoteosd_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/notify/libnotify_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_extractor/libarchive_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access_output/libaccess_output_udp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access_output/libaccess_output_livehttp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access_output/libaccess_output_srt_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access_output/libaccess_output_shout_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access_output/libaccess_output_rist_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access_output/libaccess_output_dummy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access_output/libaccess_output_http_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access_output/libaccess_output_file_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libdc1394_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/librist_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libaccess_realrtsp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libvcd_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libftp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libnfs_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libidummy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/librtp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/liblinsys_sdi_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libaccess_mtp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libhttps_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libaccess_alsa_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libshm_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libpulsesrc_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libsftp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libvdr_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libsdp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libv4l2_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libcdda_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libdvb_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libaccess_concat_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libtimecode_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libsmb_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libdtv_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libsatip_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/liblinsys_hdsdi_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libattachment_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libfilesystem_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libudp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libimem_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libdvdnav_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libxcb_screen_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libaccess_imem_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/liblibbluray_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libtcp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libaccess_mms_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libavio_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libvnc_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libhttp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libdvdread_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libaccess_srt_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/access/libdv1394_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/vdpau/libvdpau_display_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/vdpau/libvdpau_deinterlace_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/vdpau/libvdpau_chroma_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/vdpau/libvdpau_sharpen_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/vdpau/libvdpau_adjust_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/vdpau/libvdpau_avcodec_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/lua/liblua_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/gui/libncurses_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/gui/libqt_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/gui/libskins2_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/text_renderer/libtdummy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/text_renderer/libfreetype_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/visualization/libvisual_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/visualization/libglspectrum_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_mixer/libfloat_mixer_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_mixer/libinteger_mixer_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libtextst_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libjpeg_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/librtpvideo_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libzvbi_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libedummy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libtheora_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libx26410b_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libadpcm_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/liblibmpeg2_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libaes3_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libscte18_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libscte27_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/librawvideo_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libspeex_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libmpg123_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libddummy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libwebvtt_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libfaad_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libtwolame_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/liboggspots_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libsubsdec_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libaraw_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libttml_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libuleaddvaudio_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libdvbsub_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/liba52_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libxwd_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libopus_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libspudec_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libdav1d_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libspdif_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libcdg_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libsvcdsub_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libsubstx3g_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libg711_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/liblibass_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libdca_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libshine_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libflac_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libavcodec_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libcvdsub_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libx264_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libsvgdec_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libvorbis_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libx265_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libt140_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libpng_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libaribsub_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libcc_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libstl_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/liblpcm_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libsubsusf_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/codec/libkate_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/keystore/libsecret_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/keystore/libkwallet_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/keystore/libfile_keystore_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/keystore/libmemory_keystore_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_output/libpulse_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_output/libadummy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_output/libalsa_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_output/libafile_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/audio_output/libamem_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_record_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_standard_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_description_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_stats_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_delay_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_setid_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_es_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_autodel_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_duplicate_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_chromecast_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_rtp_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_bridge_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_dummy_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_transcode_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_mosaic_bridge_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_cycle_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_display_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_gather_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_chromaprint_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/plugins/stream_out/libstream_out_smem_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/libvlc_pulse.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/libvlc_vdpau.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/vlc-cache-gen",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/libvlc_xcb_events.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/libvlc_pulse.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/libvlc_vdpau.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/libvlc_vdpau.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/vlc/libvlc_xcb_events.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlccore.so.9",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc_xcb_events.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc_pulse.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc_vdpau.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc_vdpau.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/lib/libvlc_xcb_events.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/app/resources/appimageupdatetool-x86_64.AppImage",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libprefs.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libzip.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libawt_headless.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libmlib_image.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libnativewindow_x11.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libj2gss.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libnativewindow_awt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjaas.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/jspawnhelper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libnewt_drm.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjimage.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjogl_mobile.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/cef_server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libmanagement.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjsound.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/server/libjvm.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/server/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libsyslookup.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libawt_wlawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libinstrument.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjavajpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjogl_desktop.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libawt_xawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libnativewindow_drm.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libfontmanager.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libshared_mem_helper.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libcef.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjcef.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libfontmanager_xawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/jexec",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libnio.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/jcef_helper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libverify.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjava.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libgluegen_rt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libsplashscreen.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libwlsplashscreen.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/liblcms.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libnewt_head.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/lib/runtime/lib/libjli.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/animeko/usr/bin/Ani",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "8532e7de3eb4683c631fcdc91c2c26c22f0836a2e48a988d3e6c3b206cf9f581",
+  "signature": null
+}
