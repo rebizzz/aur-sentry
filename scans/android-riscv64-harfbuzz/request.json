@@ -1,0 +1,8 @@
+{
+  "package": "android-riscv64-harfbuzz",
+  "aur_commit": "9524dd614d00fa733a99bcf596821789c712d0d2",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-27T00:56:31Z"
+}
