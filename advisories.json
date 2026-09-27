@@ -1,7 +1,7 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-26T21:36:53+00:00",
-  "total_flagged": 150,
+  "updated_at": "2026-09-27T00:58:41+00:00",
+  "total_flagged": 151,
   "advisories": [
     {
       "package": "microsoft-edge-beta-bin",
@@ -158,6 +158,23 @@
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
     },
     {
+      "package": "agent-deck-bin",
+      "version": "1.16.19-1",
+      "maintainer": "corrm",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-27T00:58:41+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 655cf3b2ab60a3e5)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/agent-deck-bin"
+    },
+    {
       "package": "darwan-bin",
       "version": "0.1.0-1",
       "maintainer": "mah3uz",
@@ -260,6 +277,23 @@
       "aur_url": "https://aur.archlinux.org/packages/computer-use-linux"
     },
     {
+      "package": "antigravity-tools-bin",
+      "version": "4.8.3-1",
+      "maintainer": "theorangeguo",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T21:33:04+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 099ca089db79b1a7)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/antigravity-tools-bin"
+    },
+    {
       "package": "cpa-usage-keeper-bin",
       "version": "1.15.8-1",
       "maintainer": "theorangeguo",
@@ -276,23 +310,6 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/cpa-usage-keeper-bin"
-    },
-    {
-      "package": "antigravity-tools-bin",
-      "version": "4.8.3-1",
-      "maintainer": "theorangeguo",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T21:33:04+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 099ca089db79b1a7)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/antigravity-tools-bin"
     },
     {
       "package": "dabri",
@@ -415,23 +432,6 @@
       "aur_url": "https://aur.archlinux.org/packages/aw-server-rust-git"
     },
     {
-      "package": "backlog.md",
-      "version": "1.53.0-1",
-      "maintainer": "ftiasch",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T21:31:39+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 7a575a1bc6adcc0f)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/backlog.md"
-    },
-    {
       "package": "baresip-qt-gui-git",
       "version": "4.10.1-10",
       "maintainer": "CxOrg",
@@ -447,6 +447,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/baresip-qt-gui-git"
+    },
+    {
+      "package": "backlog.md",
+      "version": "1.53.0-1",
+      "maintainer": "ftiasch",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T21:31:39+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 7a575a1bc6adcc0f)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/backlog.md"
     },
     {
       "package": "arsu",
@@ -602,23 +619,6 @@
       "aur_url": "https://aur.archlinux.org/packages/cosmostrix-bin"
     },
     {
-      "package": "clash-verge-rev",
-      "version": "2.5.6-2",
-      "maintainer": "Integral",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T16:46:17+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 69835c1c21291ff7)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
-    },
-    {
       "package": "bit4id-pki-manager",
       "version": "1.4.11.836-2",
       "maintainer": "s.pantaleev",
@@ -634,6 +634,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
+    },
+    {
+      "package": "clash-verge-rev",
+      "version": "2.5.6-2",
+      "maintainer": "Integral",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T16:46:17+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 69835c1c21291ff7)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
     },
     {
       "package": "bstring-git",
@@ -2409,23 +2426,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "amethyst-mod-manager",
-      "version": "2.5.2-1",
-      "maintainer": "TheBill2001",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
-    },
-    {
       "package": "camlpdf",
       "version": "2.9.2-1",
       "maintainer": "severach",
@@ -2441,6 +2441,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/camlpdf"
+    },
+    {
+      "package": "amethyst-mod-manager",
+      "version": "2.5.2-1",
+      "maintainer": "TheBill2001",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
     },
     {
       "package": "aura-emerge",
