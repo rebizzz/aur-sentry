@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "boxesandglue-glu",
+    "version": "0.0.39-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f642c1ff9342fbd389fd9c9e723867ab456f634a",
+    "pkgbuild_sha256": "945ba037e5e752900ce74b301ddc7cd5b4320da05eeace490e1ac31a8051af43",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T23:25:05.970851956+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:25:05.964554686+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:25:05.964554686+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:25:05.964554686+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "46eaa793c757e6e4a54b225e36ac70be603fdfdffdff855d3c9b5869e14e8866",
+  "signature": null
+}
