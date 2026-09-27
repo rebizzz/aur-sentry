@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dektec-dtapiservice-bin",
+    "version": "5.2.9.142-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "ad7179c99faac06faf9fc4485f1bb8244ce69404",
+    "pkgbuild_sha256": "0f72c8582ce0c8c4abd4f7ee15d503ee938733548de794cd0387e2fa63d99680",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T08:35:07.655442021+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:35:07.650025044+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "77.94.248.195",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T08:35:07.650025044+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 3,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/DtapiServiced",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "183beab59421f85951c726bdd7f05b138af988524b5859aa798ecdf20d7fe074",
+  "signature": null
+}
