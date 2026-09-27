@@ -1,0 +1,8 @@
+{
+  "package": "arm-linux-gnueabi-gcc",
+  "aur_commit": "d867afbc39bebcec82ef8565afa081aff2bdb447",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-27T23:20:22Z"
+}
