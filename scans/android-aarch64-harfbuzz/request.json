@@ -1,0 +1,8 @@
+{
+  "package": "android-aarch64-harfbuzz",
+  "aur_commit": "186ee2aec61444c75968213a3e84192c06410ded",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-27T00:55:55Z"
+}
