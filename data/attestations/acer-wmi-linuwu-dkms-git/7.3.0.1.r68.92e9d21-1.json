@@ -1,0 +1,85 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "acer-wmi-linuwu-dkms-git",
+    "version": "7.3.0.1.r68.92e9d21-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f29bb42f3c0e2e63180ce9a71dc280395d8d5b06",
+    "pkgbuild_sha256": "5ff90baab97d5aece50fe0c1b6ca7818312c05ddcbeb1c48940f0c3020933318",
+    "install_sha256": "ec76e21c90370be61509bd4a9a0902dc0857d67f6f4e9c9819ef77c5382d4766"
+  },
+  "analyzed_at": "2026-09-27T14:23:46.864952525+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:23:46.856511906+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:23:46.856511906+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:23:46.863709808+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:23:46.863709808+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "e3de20630f23e5c6ea4dfb0119d32e44acb6adadc2c387b6724d907d59ee8de5",
+  "signature": null
+}
