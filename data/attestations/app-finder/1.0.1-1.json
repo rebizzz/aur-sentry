@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "app-finder",
+    "version": "1.0.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "9458a28f80c7bbd6cc7e2596c92561d41d4d33fc",
+    "pkgbuild_sha256": "f027b25aa75f9c5100910d0b463f7b654809b352af16fcbb1371f3639818d79b",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T23:24:20.758016908+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:20.718820132+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:20.718820132+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:20.718820132+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:20.727008206+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:24:20.727008206+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 27,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f11760b58186b94e045a93b41b7d0aa5e93de43aa862c27b3bb7fbc34aeac576",
+  "signature": null
+}

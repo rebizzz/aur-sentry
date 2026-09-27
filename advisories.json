@@ -1,6 +1,6 @@
 {
   "version": "1.0",
-  "updated_at": "2026-09-27T23:23:55+00:00",
+  "updated_at": "2026-09-27T23:24:23+00:00",
   "total_flagged": 207,
   "advisories": [
     {
@@ -198,6 +198,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bitcoin-abc-qt"
+    },
+    {
+      "package": "app-finder",
+      "version": "1.0.1-1",
+      "maintainer": "simonschubert",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-27T23:24:23+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash f11760b58186b94e)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/app-finder"
     },
     {
       "package": "aspia-client-bin",
@@ -457,23 +474,6 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/aurcache-sandbox"
-    },
-    {
-      "package": "app-finder",
-      "version": "1.0.0-1",
-      "maintainer": "simonschubert",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-27T18:46:39+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 220787d1f6a9e0d0)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/app-finder"
     },
     {
       "package": "aurcache-cli",
@@ -1387,23 +1387,6 @@
       "aur_url": "https://aur.archlinux.org/packages/android-armv7a-eabi-harfbuzz"
     },
     {
-      "package": "android-armv7a-eabi-ffmpeg-minimal",
-      "version": "9.0.1-2",
-      "maintainer": "hipersayan_x",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-27T00:59:51+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 84f134c7891176f8)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/android-armv7a-eabi-ffmpeg-minimal"
-    },
-    {
       "package": "android-riscv64-ffmpeg-minimal",
       "version": "9.0.1-2",
       "maintainer": "hipersayan_x",
@@ -1419,6 +1402,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/android-riscv64-ffmpeg-minimal"
+    },
+    {
+      "package": "android-armv7a-eabi-ffmpeg-minimal",
+      "version": "9.0.1-2",
+      "maintainer": "hipersayan_x",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-27T00:59:51+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 84f134c7891176f8)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/android-armv7a-eabi-ffmpeg-minimal"
     },
     {
       "package": "android-aarch64-ffmpeg-minimal",
@@ -1848,23 +1848,6 @@
       "aur_url": "https://aur.archlinux.org/packages/cosmostrix-bin"
     },
     {
-      "package": "clash-verge-rev",
-      "version": "2.5.6-2",
-      "maintainer": "Integral",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-26T16:46:17+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 69835c1c21291ff7)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
-    },
-    {
       "package": "bit4id-pki-manager",
       "version": "1.4.11.836-2",
       "maintainer": "s.pantaleev",
@@ -1880,6 +1863,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/bit4id-pki-manager"
+    },
+    {
+      "package": "clash-verge-rev",
+      "version": "2.5.6-2",
+      "maintainer": "Integral",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-26T16:46:17+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 69835c1c21291ff7)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/clash-verge-rev"
     },
     {
       "package": "bstring-git",
@@ -3502,23 +3502,6 @@
       "aur_url": "https://aur.archlinux.org/packages/bsdutils"
     },
     {
-      "package": "amethyst-mod-manager",
-      "version": "2.5.2-1",
-      "maintainer": "TheBill2001",
-      "highest_severity": "HIGH",
-      "detected_at": "2026-09-25T08:09:28+00:00",
-      "findings": [
-        {
-          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
-          "severity": "HIGH",
-          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
-          "line_number": 0,
-          "matched_text": ""
-        }
-      ],
-      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
-    },
-    {
       "package": "camlpdf",
       "version": "2.9.2-1",
       "maintainer": "severach",
@@ -3534,6 +3517,23 @@
         }
       ],
       "aur_url": "https://aur.archlinux.org/packages/camlpdf"
+    },
+    {
+      "package": "amethyst-mod-manager",
+      "version": "2.5.2-1",
+      "maintainer": "TheBill2001",
+      "highest_severity": "HIGH",
+      "detected_at": "2026-09-25T08:09:28+00:00",
+      "findings": [
+        {
+          "rule_id": "DYNAMIC_SANDBOX_SUSPICIOUS",
+          "severity": "HIGH",
+          "description": "dynamic sandbox verdict SUSPICIOUS (see signed attestation, evidence hash 4fd4ef39a7a39abd)",
+          "line_number": 0,
+          "matched_text": ""
+        }
+      ],
+      "aur_url": "https://aur.archlinux.org/packages/amethyst-mod-manager"
     },
     {
       "package": "aura-emerge",
