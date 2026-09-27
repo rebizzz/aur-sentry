@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "calibre-tui",
+    "version": "0.6.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "421a09fa35dac9809ed33067dc69de82a518a21f",
+    "pkgbuild_sha256": "3281aac182f7723879a03a333fae808cb2ae0f157392d6f299b4290babdc37d4",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T08:33:19.458802199+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:33:19.447933980+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T08:33:19.447933980+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "fad8ac337d5d561fac000435d46805d318ec80aba1bb9531d37b9dcc4ec6a19b",
+  "signature": null
+}
