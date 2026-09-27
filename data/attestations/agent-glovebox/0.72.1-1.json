@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "agent-glovebox",
+    "version": "0.72.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "b92dda8747987506afb485e64cdf9aafa6c4f00f",
+    "pkgbuild_sha256": "72e63c74449125b67b328f23bf56068af3b0e7ab4e392b07708e0af20dfbacd0",
+    "install_sha256": "f5022f1367ecc2bcb573b3de38fa1d8fd437077542d1c28a8a53e451bbe2c3bd"
+  },
+  "analyzed_at": "2026-09-27T14:25:16.495484856+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:25:16.470108700+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:25:16.470108700+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:25:16.470108700+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:25:16.488721701+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:25:16.488721701+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1729,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-2m8x-mvfx-gwgj)",
+      "url": "https://osv.dev/vulnerability/GHSA-2m8x-mvfx-gwgj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-4wrp-79m8-9m9p)",
+      "url": "https://osv.dev/vulnerability/GHSA-4wrp-79m8-9m9p"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Permission Assignment for Critical Resource (GHSA-5hgf-628x-mcqf)",
+      "url": "https://osv.dev/vulnerability/GHSA-5hgf-628x-mcqf"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Short Circuit Evaluation Issue (GHSA-5pv5-xh52-hvrp)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pv5-xh52-hvrp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Improper Input Validation Issue in its env Utility (GHSA-5v4g-vw9x-h534)",
+      "url": "https://osv.dev/vulnerability/GHSA-5v4g-vw9x-h534"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-6g8r-74qp-6859)",
+      "url": "https://osv.dev/vulnerability/GHSA-6g8r-74qp-6859"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils doesn't preserve file ownership during moves across different filesystem boundaries (GHSA-957r-r8gc-vv3h)",
+      "url": "https://osv.dev/vulnerability/GHSA-957r-r8gc-vv3h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-Check to Time-of-Use (TOCTOU) race condition (GHSA-9gh9-hwpr-rvqq)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gh9-hwpr-rvqq"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Uncaught Exception When Encountering Valid but Non-UTF-8 Paths (GHSA-f2jv-wjjc-2c94)",
+      "url": "https://osv.dev/vulnerability/GHSA-f2jv-wjjc-2c94"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "a88027e2c13354fd9683dde8daf33efae44587846cb7d5d0bdab6ab13ca05877",
+  "signature": null
+}
