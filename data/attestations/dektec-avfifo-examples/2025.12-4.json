@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dektec-avfifo-examples",
+    "version": "2025.12-4",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f965f9f72015b3409b31a0576f610c7d5df09f30",
+    "pkgbuild_sha256": "372350f58f0cd3be11d180aee220b1511c83689e66021c340081df6385c9fd7d",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T08:34:18.554634490+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T08:34:18.546351791+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "77.94.248.195",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T08:34:18.546351791+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "fa76b3d12200388613722d46cec8431c23b732390437cc0a03bf2de6f6160558",
+  "signature": null
+}
