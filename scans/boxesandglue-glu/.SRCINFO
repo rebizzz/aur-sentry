@@ -1,0 +1,13 @@
+pkgbase = boxesandglue-glu
+	pkgdesc = a command line interface for boxes and glue using Lua scripting
+	pkgver = 0.0.39
+	pkgrel = 1
+	url = https://github.com/boxesandglue/glu
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = https://github.com/boxesandglue/glu/archive/refs/tags/v0.0.39/glu-0.0.39.tar.gz
+	sha256sums = 4b6a8c1747d759535e28e7a371bb1eb0614f1717b5f68390ebdf87e939c98216
+
+pkgname = boxesandglue-glu
