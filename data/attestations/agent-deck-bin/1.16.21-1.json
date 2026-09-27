@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "agent-deck-bin",
+    "version": "1.16.21-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "841f49e1d0f02adee1431593c42bc1f4fe8fe7e3",
+    "pkgbuild_sha256": "bac40d22ac2e0d923e231981b0ce296dbfd10023517e9042cf075f46b07963d9",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T23:23:09.556149195+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:23:09.544855453+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:23:09.544855453+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:23:09.544855453+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:23:09.553857345+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:23:09.553857345+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 3,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/agent-deck",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "feae5ef465ceaae03ff3526ece742665911a1a5874939fd53026fb6a377f9b83",
+  "signature": null
+}
