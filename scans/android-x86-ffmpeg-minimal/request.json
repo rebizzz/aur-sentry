@@ -1,0 +1,8 @@
+{
+  "package": "android-x86-ffmpeg-minimal",
+  "aur_commit": "111266904431f26534b2e9110fcb08cf209bbe1c",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-27T00:57:02Z"
+}
