@@ -1,0 +1,14 @@
+[Unit]
+Description=AzerothCore MMORPG Authentication Server
+After=network.target
+
+[Service]
+Type=simple
+User=azerothcore
+Group=acore-admin
+WorkingDirectory=/usr/share/azerothcore
+ExecStart=/usr/bin/authserver
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

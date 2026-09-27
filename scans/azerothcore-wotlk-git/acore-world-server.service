@@ -1,0 +1,14 @@
+[Unit]
+Description=AzerothCore MMORPG World Server
+After=network.target acore-auth-server.service
+
+[Service]
+Type=simple
+User=azerothcore
+Group=acore-admin
+WorkingDirectory=/usr/share/azerothcore
+ExecStart=/usr/bin/worldserver
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

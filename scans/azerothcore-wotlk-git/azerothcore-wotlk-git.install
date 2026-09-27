@@ -1,0 +1,69 @@
+post_install() {
+	# 1. Dynamically provision the unprivileged system user account first!
+	if ! getent passwd azerothcore >/dev/null; then
+		useradd -r -s /usr/bin/nologin -d /usr/share/azerothcore azerothcore
+	fi
+
+	# 2. Ensure the administrative access group exists
+	if ! getent group acore-admin >/dev/null; then
+		groupadd -r acore-admin
+	fi
+
+	# 3. Add daemon user to that group (Fixed the missing '#' hashtag error!)
+	usermod -aG acore-admin azerothcore
+
+	# 4. Copy default configuration templates safely if they do not exist
+	if [[ ! -f /etc/azerothcore/authserver.conf ]]; then
+		cp /etc/azerothcore/authserver.conf.dist /etc/azerothcore/authserver.conf
+	fi
+
+	if [[ ! -f /etc/azerothcore/worldserver.conf ]]; then
+		cp /etc/azerothcore/worldserver.conf.dist /etc/azerothcore/worldserver.conf
+	fi
+
+	sudo sed -i 's#^SourceDirectory\s*=\s*"".*#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/worldserver.conf
+	sudo sed -i 's#^SourceDirectory\s*=\s*"".*#SourceDirectory = "/usr/share/azerothcore"#' /etc/azerothcore/authserver.conf
+
+	# Display clear user instructions
+	# Structural formatting tags
+	BOLD='\033[1m'
+	NC='\033[0m' # Reset formatting
+
+	echo "======================================================================="
+	echo -e " ⚔️  ${BOLD}AZEROTHCORE INSTALLATION SUCCESSFUL${NC}"
+	echo "======================================================================="
+	echo ""
+	echo -e "${BOLD}MAP DATA REQUIREMENTS:${NC}"
+	echo "   You need client map data before the worldserver can start."
+	echo -e "   Choose ${BOLD}one${NC} of the following options:"
+	echo ""
+	echo -e "   [Option 1 - Manual]: Extract assets using the official guide at:"
+	echo "     https://azerothcore.org"
+	echo ""
+	echo -e "   [Option 2 - Automated]: Install the pre-extracted data package via AUR:"
+	echo "     yay -S azerothcore-clientdata-git"
+	echo ""
+	echo "-----------------------------------------------------------------------"
+	echo -e "${BOLD}FINAL STEP:${NC}"
+	echo "   Please run the administrative configuration provisioner tool to"
+	echo "   initialize your databases and secure your master admin account:"
+	echo ""
+	echo "     sudo acore_setup"
+	echo ""
+	echo "======================================================================="
+
+}
+
+post_upgrade() {
+    # Systemd hooks in Arch handle daemon-reloads natively.
+    true
+}
+
+pre_remove() {
+	# Safely disable background services before removing files
+	systemctl stop acore-auth-server.service 2>/dev/null || true
+	systemctl stop acore-world-server.service 2>/dev/null || true
+
+	systemctl disable acore-auth-server.service 2>/dev/null || true
+	systemctl disable acore-world-server.service 2>/dev/null || true
+}
