@@ -1,0 +1,228 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "arm-linux-gnueabi-binutils",
+    "version": "2.47-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "305da5eae4897e1e6843d3b335056045ec7f0dc8",
+    "pkgbuild_sha256": "783e921e7ee9d26e4c8ff87b3d5aef33f91feae7ab3f1c32c37786de141157cd",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T23:34:05.259452335+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:34:05.198756483+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "209.51.188.79",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T23:34:05.198756483+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "152.19.134.44",
+        "port": 80,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:34:05.198756483+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 93,
+    "elf_object_count": 26,
+    "elf_objects": [
+      {
+        "path": "usr/arm-linux-gnueabi/bin/objdump",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/arm-linux-gnueabi/bin/ar",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/arm-linux-gnueabi/bin/readelf",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/arm-linux-gnueabi/bin/strip",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/arm-linux-gnueabi/bin/ld.bfd",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/arm-linux-gnueabi/bin/ranlib",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/arm-linux-gnueabi/bin/objcopy",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/arm-linux-gnueabi/bin/as",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/arm-linux-gnueabi/bin/ld",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/arm-linux-gnueabi/bin/nm",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-strings",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-ld",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-gprof",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-size",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-as",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-objcopy",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-readelf",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-elfedit",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-strip",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-objdump",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-ranlib",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-c++filt",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-addr2line",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-ld.bfd",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-nm",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/arm-linux-gnueabi-ar",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "zstd vulnerable to buffer overrun (GHSA-5c9c-6x87-f9vm)",
+      "url": "https://osv.dev/vulnerability/GHSA-5c9c-6x87-f9vm"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "21e001372fba27913136c6f72e5815963393b04f4c81ec52645557f50b8e39ad",
+  "signature": null
+}
