@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "android-riscv64-ffmpeg-minimal",
+    "version": "9.0.1-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "0f4fffb75c51f8cd3d8fd6fd488bb41b44675e86",
+    "pkgbuild_sha256": "ce6d700989a855f77b3db7a74f237118a5ebfbfffc8e21cc7d55ba020460604c",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T00:59:49.534648087+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T00:59:49.517964345+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "79.124.17.100",
+        "port": 80,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T00:59:49.517964345+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "79.124.17.100",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T00:59:49.517964345+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "b2d8367fe306d018cb2c5f2c83490703b445e28d5b819abe09815bd5cc351732",
+  "signature": null
+}
