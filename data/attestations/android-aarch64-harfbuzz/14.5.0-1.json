@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "android-aarch64-harfbuzz",
+    "version": "14.5.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "186ee2aec61444c75968213a3e84192c06410ded",
+    "pkgbuild_sha256": "412416cc4d3bfc57510c2fbec66648f31f4a17f21e9d2c0071658c375e902b0b",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T00:58:54.146176526+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T00:58:54.135731014+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T00:58:54.135731014+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T00:58:54.135731014+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "4b630cd28fbfc4e870a2292f9803257b8229f170a0a81c74cb5bb5c6308d692d",
+  "signature": null
+}
