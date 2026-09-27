@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "android-armv7a-eabi-ffmpeg-minimal",
+    "version": "9.0.1-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e311657c2bad3b49f0a73882613144830b9a7ba3",
+    "pkgbuild_sha256": "196e2c2f721be4e23fdf34b2938aee1bda714311da6108bf97d4918c9bb6a83f",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T00:59:49.460555275+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T00:59:49.433780256+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "79.124.17.100",
+        "port": 80,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T00:59:49.433780256+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "79.124.17.100",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T00:59:49.433780256+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "84f134c7891176f85e97570432bad7b44af4e6595ec8c84d8bf66c68515ce5e7",
+  "signature": null
+}
