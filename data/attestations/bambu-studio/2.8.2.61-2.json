@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bambu-studio",
+    "version": "2.8.2.61-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a56da2b7d0f8b30306f43c75ededa752cdb58611",
+    "pkgbuild_sha256": "8948b998bfb20d3df0664ba4c7b6fcaee6483f5503685c7a8dbc4777f20266ae",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T18:48:03.771215790+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:48:03.742948466+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:48:03.742948466+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T18:48:03.742948466+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "bzip2 allows attackers to cause a denial of service via a large file that triggers an integer overflow (GHSA-96jv-r488-c2rj)",
+      "url": "https://osv.dev/vulnerability/GHSA-96jv-r488-c2rj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "bzip2 Denial of Service (DoS) (RUSTSEC-2023-0004)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2023-0004"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "3be303067c735a16a00489cc6181c8e920a689b692684c191bd36b46cd83df4d",
+  "signature": null
+}
