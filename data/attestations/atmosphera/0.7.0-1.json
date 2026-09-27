@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "atmosphera",
+    "version": "0.7.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "3e2c1aae0079d3c0ef3c6c74dde725edb2b06668",
+    "pkgbuild_sha256": "1ad74d0cf6d022ad3ee6b695afce298291a4a55f7b1b56873465e172be5b7b3d",
+    "install_sha256": "34bf364810c5966dbe139bed5817c16c15f5a79ae63fa550a9d2d481adcb834c"
+  },
+  "analyzed_at": "2026-09-27T23:26:03.284174970+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 40,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:26:03.258498771+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T23:26:03.258498771+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T23:26:03.258498771+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 6863,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "26d9736e4e3f53f53f34f776aa9b31244a7c813ccd2308d4fcf106f4b57310db",
+  "signature": null
+}
