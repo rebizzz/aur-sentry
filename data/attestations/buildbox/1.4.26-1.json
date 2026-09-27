@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "buildbox",
+    "version": "1.4.26-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4ee3e096f60ef189f7783096e1c2af257c0f3b77",
+    "pkgbuild_sha256": "7a589ccebd4b70af08db6d2512772f5736384e6fe37127bff6655ab1c3256a1d",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-27T14:26:44.631917201+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-27T14:26:44.619695581+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.65.251.78",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-27T14:26:44.619695581+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Crash due to uncontrolled recursion in protobuf crate (GHSA-2gh3-rmm4-6rq5)",
+      "url": "https://osv.dev/vulnerability/GHSA-2gh3-rmm4-6rq5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Improper Certificate Validation in openssl (GHSA-34p9-f4q3-c4r7)",
+      "url": "https://osv.dev/vulnerability/GHSA-34p9-f4q3-c4r7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509NameBuilder::build` returned object is not thread safe (GHSA-3gxf-9r58-2ghg)",
+      "url": "https://osv.dev/vulnerability/GHSA-3gxf-9r58-2ghg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl Use-After-Free in `Md::fetch` and `Cipher::fetch` (GHSA-4fcv-w3qc-ppgg)",
+      "url": "https://osv.dev/vulnerability/GHSA-4fcv-w3qc-ppgg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509Extension::new` and `X509Extension::new_nid` null pointer dereference (GHSA-6hcf-g6gr-hhcr)",
+      "url": "https://osv.dev/vulnerability/GHSA-6hcf-g6gr-hhcr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "openssl npm package vulnerable to command execution (GHSA-75w2-qv55-x7fv)",
+      "url": "https://osv.dev/vulnerability/GHSA-75w2-qv55-x7fv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf affected by a JSON recursion depth bypass (GHSA-7gcm-g887-7qv7)",
+      "url": "https://osv.dev/vulnerability/GHSA-7gcm-g887-7qv7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl has incorrect bounds assertion in aes key wrap (GHSA-8c75-8mhr-p7r9)",
+      "url": "https://osv.dev/vulnerability/GHSA-8c75-8mhr-p7r9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf-cpp and protobuf-python have potential Denial of Service issue (GHSA-8gq9-2x98-w8hf)",
+      "url": "https://osv.dev/vulnerability/GHSA-8gq9-2x98-w8hf"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "e9fc3bb011e9327a165579d1e965710d7cf3bbdc4636fe868e53162de5432ca9",
+  "signature": null
+}
