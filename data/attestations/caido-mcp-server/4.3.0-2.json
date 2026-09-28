@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "caido-mcp-server",
+    "version": "4.3.0-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5ed451fc64e10cf502e2d8ea5117dd941cb8e6ac",
+    "pkgbuild_sha256": "410abc070115656155af3f541723df46e89fac3eefef5e858b0dccd1aa5442e1",
+    "install_sha256": "9e576a446f10d3a025da29aeb19fea60a0ba7d1c92f398a338171686ddb63bd6"
+  },
+  "analyzed_at": "2026-09-28T14:25:49.781408135+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 13,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:25:49.775621030+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:25:49.775621030+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:25:49.775621030+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "495637116b61d7236bc062c1ede3b674e632fd8649833908a04981124c4fa94e",
+  "signature": null
+}
