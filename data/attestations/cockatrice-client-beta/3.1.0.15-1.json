@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cockatrice-client-beta",
+    "version": "3.1.0.15-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "6b245c0c14ae89935cc0b1f6211189d531fa8bc3",
+    "pkgbuild_sha256": "382f683a6a931953b566e8d2e904ca75e67f2f64be0ad71a514119490d40e97a",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T14:27:54.997410797+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 38,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:27:54.984735351+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:27:54.984735351+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:27:54.984735351+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Crash due to uncontrolled recursion in protobuf crate (GHSA-2gh3-rmm4-6rq5)",
+      "url": "https://osv.dev/vulnerability/GHSA-2gh3-rmm4-6rq5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf affected by a JSON recursion depth bypass (GHSA-7gcm-g887-7qv7)",
+      "url": "https://osv.dev/vulnerability/GHSA-7gcm-g887-7qv7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf-cpp and protobuf-python have potential Denial of Service issue (GHSA-8gq9-2x98-w8hf)",
+      "url": "https://osv.dev/vulnerability/GHSA-8gq9-2x98-w8hf"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf-python has a potential Denial of Service issue (GHSA-8qvm-5x2c-j2w7)",
+      "url": "https://osv.dev/vulnerability/GHSA-8qvm-5x2c-j2w7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf susceptible to buffer overflow (GHSA-jwvw-v7c5-m82h)",
+      "url": "https://osv.dev/vulnerability/GHSA-jwvw-v7c5-m82h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Uncontrolled memory consumption in protobuf (GHSA-mh6h-f25p-98f8)",
+      "url": "https://osv.dev/vulnerability/GHSA-mh6h-f25p-98f8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf allows remote authenticated attackers to cause a heap-based buffer overflow. (PYSEC-2017-65)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2017-65"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Nullptr dereference when a null char is present in a proto symbol. The symbol is parsed incorrectly, leading to an unchecked call into the proto file's name during generation of the resulting error message. Since the symbol is incorrectly parsed, the file is nullptr. We recommend upgrading to versio (PYSEC-2022-48)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2022-48"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf affected by a JSON recursion depth bypass (PYSEC-2026-1805)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-1805"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "9455286853ca3716424ae05b51904dc49070bc5633ebeea7cf87d672ea63fe64",
+  "signature": null
+}
