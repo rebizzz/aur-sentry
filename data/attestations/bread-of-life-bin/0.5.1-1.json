@@ -1,0 +1,100 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bread-of-life-bin",
+    "version": "0.5.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "6f905444e463eec43444c4d5d7f3ec114ca28350",
+    "pkgbuild_sha256": "2ed3cc62105ef7d0993b5b9bcc0a72da842f92281a868766d15d46b3dcead2a3",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T05:49:47.319541751+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:47.285842825+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-28T05:49:47.285842825+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:47.285842825+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:47.285842825+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:47.293531408+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.3.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:47.293531408+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 6,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/bread-of-life",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "62de4f5cd79dba06d895d51124c58e429e56f4aa752d5c944e876efa6b7eca91",
+  "signature": null
+}
