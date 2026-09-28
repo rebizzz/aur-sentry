@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dankmail",
+    "version": "0.3.6-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d7fc5cad1d4aa3fc0c1cbcf3d2de7c366cf8bf9f",
+    "pkgbuild_sha256": "5478059db0c5711c216d53cbcf3a864253ca6c5ec86d7447c8441edc76a58a50",
+    "install_sha256": "79b0f6884373cfc70f0fb472fea6dc854f01fa5f593f2eeb8240dc9060289501"
+  },
+  "analyzed_at": "2026-09-28T05:49:18.344641272+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 12,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:18.335847811+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-28T05:49:18.335847811+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:18.335847811+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "211930cc99a95c900b64f1ade19fcb1c0fc033461b09c8aef654327d6121a9d7",
+  "signature": null
+}
