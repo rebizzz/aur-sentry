@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "filmulator",
+    "version": "0.12.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "fc6321c42ebbe28dbec7173ab43c7bc263149a5b",
+    "pkgbuild_sha256": "0c308b16aebb12c9f6d2765c5acd908288c3a61afb3e50a0b54d7e1df0aee419",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T05:50:00.975808879+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:50:00.964779526+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:50:00.964779526+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:50:00.964779526+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Exiv2 allows Use After Free (GHSA-38h4-fx85-qcx7)",
+      "url": "https://osv.dev/vulnerability/GHSA-38h4-fx85-qcx7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Exiv2 Segmentation Faults in Exiv2::EpsImage::writeMetadata() via crafted EPS file (GHSA-496f-x7cq-cq39)",
+      "url": "https://osv.dev/vulnerability/GHSA-496f-x7cq-cq39"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Exiv2  has a denial of service due to unbounded recursion in QuickTimeVideo::multipleEntriesDecoder (GHSA-crmj-qh74-2r36)",
+      "url": "https://osv.dev/vulnerability/GHSA-crmj-qh74-2r36"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Exiv2 has an out-of-bounds read in QuickTimeVideo::NikonTagsDecoder (GHSA-g9xm-7538-mq8w)",
+      "url": "https://osv.dev/vulnerability/GHSA-g9xm-7538-mq8w"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Exiv2 has quadratic performance in ICC profile parsing in JpegBase::readMetadata (GHSA-m54q-mm9w-fp6g)",
+      "url": "https://osv.dev/vulnerability/GHSA-m54q-mm9w-fp6g"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "An issue was discovered in Exiv2 0.26. When the data structure of the structure ifd is incorrect, the program assigns pValue_ to 0x0, and the value of pValue() is 0x0. TiffImageEntry::doWriteImage will use the value of pValue() to cause a segmentation fault. To exploit this vulnerability, someone mu (PYSEC-2017-112)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2017-112"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "There is a heap-based buffer over-read in the Exiv2::tEXtToDataBuf function of pngimage.cpp in Exiv2 0.27-RC3. A crafted input will lead to a remote denial of service attack. (PYSEC-2018-117)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2018-117"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "There is a SEGV in Exiv2::Internal::TiffParserWorker::findPrimaryGroups of tiffimage_int.cpp in Exiv2 0.27-RC3. A crafted input will lead to a remote denial of service attack. (PYSEC-2018-118)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2018-118"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "There is a heap-based buffer over-read in Exiv2::Jp2Image::encodeJp2Header of jp2image.cpp in Exiv2 0.27-RC3. A crafted input will lead to a remote denial of service attack. (PYSEC-2018-119)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2018-119"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "There is an infinite loop in Exiv2::Jp2Image::encodeJp2Header of jp2image.cpp in Exiv2 0.27-RC3. A crafted input will lead to a remote denial of service attack. (PYSEC-2018-120)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2018-120"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "2fe41e77fe33d04a721e7413677d4ba00eb0b9c7d33b7136ee753e7c54e31708",
+  "signature": null
+}
