@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "curl-cmake",
+    "version": "8.22.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "7c53298dacc7626780441a32ecf1f31e95d1b5f5",
+    "pkgbuild_sha256": "6a59e73381129ec2d88bd076651350025ab2d18dbf3cd8e38d832aba9f10a9ea",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T05:49:21.843113856+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:21.828817747+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:21.828817747+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:21.828817747+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "dc98796263eeaa5a948cb9cf4f3f30dca35a0fdae1c2c2583a1f73cff4b7242a",
+  "signature": null
+}
