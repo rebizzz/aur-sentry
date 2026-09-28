@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aptakube-appimage",
+    "version": "1.21.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "6fa9bceecbcd950e0a023277b971977460b6ea44",
+    "pkgbuild_sha256": "98b7aa9f7f68ee1579c67c37deb069484cfbc4c19d25bd4e3984c37d8a64e9d7",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T14:26:14.926286795+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:26:14.915925358+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "216.150.16.129",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:26:14.915925358+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:26:14.923335039+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:26:14.923335039+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "opt/aptakube-appimage/aptakube-appimage.AppImage",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "581ee3ae3369089250326c7b8b3409e864ab49bf4339cfc5c5238aaf1c6abf81",
+  "signature": null
+}
