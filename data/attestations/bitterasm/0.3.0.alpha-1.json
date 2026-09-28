@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bitterasm",
+    "version": "0.3.0.alpha-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c6ee57aff08602c63dbbee8c7ecea9233805c50f",
+    "pkgbuild_sha256": "f0eb05af82eddc2e7fdfc1a2a7ebe67f3a4829a3908677ff8c434d791b7adef7",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T20:51:59.493291767+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T20:51:59.486955418+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T20:51:59.486955418+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T20:51:59.486955418+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can fill the file system (GHSA-2hvr-h6gw-qrxp)",
+      "url": "https://osv.dev/vulnerability/GHSA-2hvr-h6gw-qrxp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-2m8x-mvfx-gwgj)",
+      "url": "https://osv.dev/vulnerability/GHSA-2m8x-mvfx-gwgj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-4wrp-79m8-9m9p)",
+      "url": "https://osv.dev/vulnerability/GHSA-4wrp-79m8-9m9p"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Permission Assignment for Critical Resource (GHSA-5hgf-628x-mcqf)",
+      "url": "https://osv.dev/vulnerability/GHSA-5hgf-628x-mcqf"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Short Circuit Evaluation Issue (GHSA-5pv5-xh52-hvrp)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pv5-xh52-hvrp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Improper Input Validation Issue in its env Utility (GHSA-5v4g-vw9x-h534)",
+      "url": "https://osv.dev/vulnerability/GHSA-5v4g-vw9x-h534"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-6g8r-74qp-6859)",
+      "url": "https://osv.dev/vulnerability/GHSA-6g8r-74qp-6859"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils doesn't preserve file ownership during moves across different filesystem boundaries (GHSA-957r-r8gc-vv3h)",
+      "url": "https://osv.dev/vulnerability/GHSA-957r-r8gc-vv3h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo prior to Rust 1.26.0 may download the wrong dependency (GHSA-9f3p-wvj7-q82x)",
+      "url": "https://osv.dev/vulnerability/GHSA-9f3p-wvj7-q82x"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-Check to Time-of-Use (TOCTOU) race condition (GHSA-9gh9-hwpr-rvqq)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gh9-hwpr-rvqq"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "568a546081bdad00b4b042c446b4adbb03aaf5b05d51ded9c4d022d1d9c4c246",
+  "signature": null
+}
