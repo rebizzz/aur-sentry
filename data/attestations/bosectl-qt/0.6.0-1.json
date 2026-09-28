@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bosectl-qt",
+    "version": "0.6.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "99603c7419b815a87362a2a09ef9c87eb90bf19f",
+    "pkgbuild_sha256": "bc144e0bd422d6c4a69ac85dcb1221e4d0ea915dfe87cb50709196e268cbe0d7",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T20:51:40.221019798+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T20:51:40.211139239+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T20:51:40.211139239+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T20:51:40.211139239+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "gcc crate is unmaintained (RUSTSEC-2025-0121)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2025-0121"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "9c4d90ab87b6ebe41573198da5d3018b4e084ca24526d3246d2d335358f13aff",
+  "signature": null
+}
