@@ -1,0 +1,69 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "clipse-gui",
+    "version": "0.10.0-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4a0d9afb29e6c5494a0db865299595d99e733036",
+    "pkgbuild_sha256": "83f1cf959e9a7f51d18e3cbd9e0e1302fc905b5c7f1e8abca820dafacba2af5b",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T14:27:51.451326052+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:27:51.442222173+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:27:51.442222173+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "gtk-layer-shell GTK3 bindings - no longer maintained (RUSTSEC-2024-0422)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2024-0422"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "399be4dbd9b7d0cb885e64a8f88488d19503b495d9f607185654544f677c70be",
+  "signature": null
+}
