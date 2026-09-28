@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cachy-auto-update",
+    "version": "1.3.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "705c61dfc451b52d0d683f43d95d5f801a111681",
+    "pkgbuild_sha256": "23e8570e6dc5d93c251c1aaa18015b00d5ed4949c2dbd0da06359e9fbabd2179",
+    "install_sha256": "114d6e7e506972d143a3034a3356e4a9aab8fd1f5ff659b5496795271b957749"
+  },
+  "analyzed_at": "2026-09-28T14:26:11.581315023+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:26:11.571050340+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:26:11.571050340+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:26:11.571050340+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:26:11.578298736+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T14:26:11.578298736+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 26,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "21dede93bc7066eefdeea43650af39eaf210e7ea329854687b82ef9d0f9fc114",
+  "signature": null
+}
