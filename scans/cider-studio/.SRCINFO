@@ -1,0 +1,22 @@
+pkgbase = cider-studio
+	pkgdesc = run & control roblox studio advancedly on linux
+	pkgver = 2.13.0
+	pkgrel = 2
+	url = https://git.ifwerez.ru/rez/cider
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = gcc
+	makedepends = curl
+	makedepends = git
+	depends = sdl2
+	depends = libgl
+	depends = freetype2
+	depends = zlib
+	depends = xz
+	depends = curl
+	depends = cabextract
+	depends = wine
+	optdepends = bubblewrap: filesystem sandbox for studio
+
+pkgname = cider-studio
