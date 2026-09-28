@@ -1,0 +1,51 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cider-studio",
+    "version": "2.13.0-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e8ee07cee181f8b4b5fcc2166862b92874f2129f",
+    "pkgbuild_sha256": "f40ca223d845bf183aa655c744390648242e713d1103843663712686be1e08e6",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T20:52:30.677945379+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "gcc crate is unmaintained (RUSTSEC-2025-0121)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2025-0121"
+    }
+  ],
+  "verdict": "VERIFIED",
+  "evidence_hash": "4ce7fd659679ebdd95ed412c0502a102f60db989bf7fb86b4793b4fb9d8df3c3",
+  "signature": null
+}
