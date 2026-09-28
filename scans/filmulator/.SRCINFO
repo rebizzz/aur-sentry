@@ -1,0 +1,23 @@
+pkgbase = filmulator
+	pkgdesc = Simple raw photo editor based on the process of developing film
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://filmulator.org/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = curl-cmake
+	makedepends = lcms2-cmake
+	makedepends = libraw-cmake
+	makedepends = openmp
+	depends = exiv2
+	depends = hicolor-icon-theme
+	depends = lensfun
+	depends = libarchive
+	depends = libraw
+	depends = librtprocess
+	depends = qt5-quickcontrols2
+	options = !buildflags
+	source = filmulator-gui-0.12.0.tar.gz::https://github.com/CarVac/filmulator-gui/archive/v0.12.0.tar.gz
+	b2sums = e5f39baca780f2df09dfd9b7f7f8574db0d5cb0e8054c0ae6d51dc5b10fd921e9101749f4476eb37d34d5ac7080293d7a0f2aed61cae5f30aeb32a3057c81fb7
+
+pkgname = filmulator
