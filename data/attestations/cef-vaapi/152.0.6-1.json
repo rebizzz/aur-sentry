@@ -1,0 +1,91 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cef-vaapi",
+    "version": "152.0.6-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "04b5e874e89f3fa42fa8035875f865d035528d0b",
+    "pkgbuild_sha256": "8bf60ecb1cac9cdf623013dc77bfc55a32f648c6678b7f36dc7cef65fd8d8ac0",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T06:32:56.433853947+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T06:32:54.035896278+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "173.194.45.207",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T06:32:54.035896278+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-28T06:32:54.035896278+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Scrapy is vulnerable to a denial of service (DoS) attack due to flaws in brotli decompression implementation (GHSA-2qfp-q593-8484)",
+      "url": "https://osv.dev/vulnerability/GHSA-2qfp-q593-8484"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Integer overflow in the bundled Brotli C library (GHSA-5v8v-66v8-mwm7)",
+      "url": "https://osv.dev/vulnerability/GHSA-5v8v-66v8-mwm7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "A buffer overflow exists in the Brotli library versions prior to 1.0.8 where an attacker controlling the input length of a \"one-shot\" decompression request to a script can trigger a crash, which happens when copying over chunks of data larger than 2 GiB. It is recommended to update your Brotli libra (PYSEC-2020-29)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2020-29"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Scrapy is vulnerable to a denial of service (DoS) attack due to flaws in brotli decompression implementation (PYSEC-2026-2401)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-2401"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "bddf6841e295c58b94d370fcea9584d6006be969c4dcff55c5be2edad8865a83",
+  "signature": null
+}
