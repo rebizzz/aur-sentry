@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cider-studio-bin",
+    "version": "2.13.0-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "6f5d91e112a57fc92942d92c1f4576dfc95a262e",
+    "pkgbuild_sha256": "eb47e750e85510e2efa674e6d1d00e38cd21405e4948dc2435b8c623e714cd32",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-28T20:52:34.524545508+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 12,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T20:52:34.518769255+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.67.128.67",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-28T20:52:34.518769255+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "73d5bfb1c5d055144bff49d244fba1b3d863e095547f981d119692cf9f9a0bce",
+  "signature": null
+}
