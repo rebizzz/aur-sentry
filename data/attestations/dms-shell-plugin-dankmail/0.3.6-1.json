@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dms-shell-plugin-dankmail",
+    "version": "0.3.6-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d0f04217b3bc641d9b08f59595e7fabe967df0d0",
+    "pkgbuild_sha256": "295aaf694e583107bbff43dd8bae27d1e333e24839904e8904108f34266073d0",
+    "install_sha256": "7a3e5e712423bff442d9eeba28a167474a3fb9852cfd7c5960c2a6cf1ceb0865"
+  },
+  "analyzed_at": "2026-09-28T05:49:34.439398029+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 10,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:34.432550188+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:34.432550188+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-28T05:49:34.432550188+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 4,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "905cd421013404f4ba5f456812e541aa915bf4158ff9ad221d265d0db65d6c7a",
+  "signature": null
+}
