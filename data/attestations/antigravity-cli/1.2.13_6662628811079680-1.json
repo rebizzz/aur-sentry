@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "antigravity-cli",
+    "version": "1.2.13_6662628811079680-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "0a778d089ed874faa257c1ff44dc5fb1a7731795",
+    "pkgbuild_sha256": "df5303b2e9e89b21fb2475d49f3c9217f379ccee5e6018d6e4d5759a0408d31b",
+    "install_sha256": "450890cf8a16ef1ce66500bc9a5ffc89a945081f02648d93079a259395d2d1cd"
+  },
+  "analyzed_at": "2026-09-29T22:43:38.671886191+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 14,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:43:38.664480058+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "34.144.170.27",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:43:38.664480058+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/agy",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "169700b47ae7a105d55e95d20e8b5e22ee5e38596a1fff1c13db1b319ba57b16",
+  "signature": null
+}
