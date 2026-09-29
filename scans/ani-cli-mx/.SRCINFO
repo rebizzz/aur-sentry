@@ -1,0 +1,22 @@
+pkgbase = ani-cli-mx
+	pkgdesc = Command-line anime streaming helper for Mexico-oriented provider support
+	pkgver = 3.0.7
+	pkgrel = 1
+	url = https://github.com/Gildedboy/ani-cli-mx
+	arch = any
+	license = GPL
+	depends = bash
+	depends = curl
+	depends = gawk
+	depends = grep
+	depends = openssl
+	depends = sed
+	depends = fzf
+	depends = mpv
+	depends = python
+	depends = yt-dlp
+	optdepends = aria2: parallel video downloads
+	source = ani-cli-mx-3.0.7.tar.gz::https://github.com/Gildedboy/ani-cli-mx/archive/refs/tags/v3.0.7.tar.gz
+	sha256sums = 2ec3c7acc6ab76b92d8371cc4430710651f1c9d060739eb1230b1921e7ecd232
+
+pkgname = ani-cli-mx
