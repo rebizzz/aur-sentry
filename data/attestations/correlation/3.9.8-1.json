@@ -1,0 +1,101 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "correlation",
+    "version": "3.9.8-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5e279b73ce24f5a3d0594d939a46540b43b5e954",
+    "pkgbuild_sha256": "b83e428127b68f2b58030d0bd97c5e317fe1df440897324c3a09d811633b4b29",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T02:22:31.084990151+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:31.073157767+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:31.073157767+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:31.073157767+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`DecimalArray` does not perform bound checks on accessing values and offsets (GHSA-h588-76vg-prgj)",
+      "url": "https://osv.dev/vulnerability/GHSA-h588-76vg-prgj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`FixedSizeBinaryArray` does not perform bound checks on accessing values and offsets (GHSA-qgrp-8f3v-q85p)",
+      "url": "https://osv.dev/vulnerability/GHSA-qgrp-8f3v-q85p"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`BinaryArray` does not perform bound checks on reading values and offsets (GHSA-r7cj-wmwv-hfw5)",
+      "url": "https://osv.dev/vulnerability/GHSA-r7cj-wmwv-hfw5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`BinaryArray` does not perform bound checks on reading values and offsets (RUSTSEC-2021-0116)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2021-0116"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`DecimalArray` does not perform bound checks on accessing values and offsets (RUSTSEC-2021-0117)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2021-0117"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`FixedSizeBinaryArray` does not perform bound checks on accessing values and offsets (RUSTSEC-2021-0118)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2021-0118"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "244a8c61c885b044f60c4e083107a0cf83f935b775b4dbc02be3671aad4b66d3",
+  "signature": null
+}
