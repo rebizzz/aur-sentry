@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ctfl",
+    "version": "2.13.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "bbee93227c8e2e06f0c30bdc394af3ede3d3cfb5",
+    "pkgbuild_sha256": "7b49c37a1abdfc2f64db462e256ae32f24e36fbe94ed4514ee815e46f676e395",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T22:45:20.051901717+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:45:20.047898564+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:45:20.047898564+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:45:20.047898564+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "be831126ba1d8173c25c6e88f45bfa8fa3c71bf85392973bb5af679c5ed2d836",
+  "signature": null
+}
