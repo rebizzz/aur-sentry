@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "alps",
+    "version": "2026.09.25-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a23661e453e1ed32257a6a34f11af8c73ebba377",
+    "pkgbuild_sha256": "815f97207635a6296c8693f982155c1a2f0ac9871309c7655b51b189281af21d",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T08:59:05.396492612+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T08:59:05.376849401+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T08:59:05.376849401+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d3bdb2a8199ba736b7c611b3e3b7b83fd139298614499259df92279a7bf8778c",
+  "signature": null
+}
