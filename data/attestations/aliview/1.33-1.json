@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aliview",
+    "version": "1.33-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "00ecc3cb6c6e409587fbdfd4516952a583b22aa2",
+    "pkgbuild_sha256": "1bbdcaeaa0301dc17db5bb75b5444a5c7d8887fc7f3ed660c38244980dbdba4a",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T02:20:19.798936837+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:20:19.791281730+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:20:19.791281730+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:20:19.791281730+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "51eb0330750020bcea2f0d11b58417af13c215fed316cc872997dbfe1a13afdf",
+  "signature": null
+}
