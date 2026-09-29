@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "beekeeper-studio-git",
+    "version": "6.1.3.r83.gc67ca75-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c7523acbdc92ee8f9557dedf599b402b247a439f",
+    "pkgbuild_sha256": "42bd9ff23dc9dcaa6b3cba1235a5c1aa47b7790e6b9845d5840334e219265f66",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T02:21:34.870518480+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 135,
+      "severity": "LOW",
+      "description": "unlocked npm/bun/yarn install during build (unpinned dependency risk)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:21:34.851009123+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:21:34.851009123+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "npm Vulnerable to Global node_modules Binary Overwrite (GHSA-4328-8hgf-7wjr)",
+      "url": "https://osv.dev/vulnerability/GHSA-4328-8hgf-7wjr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Yarn Improper link resolution before file access (Link Following) (GHSA-5xf4-f2fq-f69j)",
+      "url": "https://osv.dev/vulnerability/GHSA-5xf4-f2fq-f69j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Path Traversal in Yarn (GHSA-8mfc-v7wv-p62g)",
+      "url": "https://osv.dev/vulnerability/GHSA-8mfc-v7wv-p62g"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm CLI exposing sensitive information through logs (GHSA-93f3-23rq-pjfp)",
+      "url": "https://osv.dev/vulnerability/GHSA-93f3-23rq-pjfp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Packing does not respect root-level ignore files in workspaces (GHSA-hj9c-8jmm-8c52)",
+      "url": "https://osv.dev/vulnerability/GHSA-hj9c-8jmm-8c52"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "TOCTOU Race Condition in Yarn (GHSA-hjxc-462x-x77j)",
+      "url": "https://osv.dev/vulnerability/GHSA-hjxc-462x-x77j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Token Leak in npm (GHSA-m5h6-hr3q-22h5)",
+      "url": "https://osv.dev/vulnerability/GHSA-m5h6-hr3q-22h5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Write in npm (GHSA-m6cx-g6qm-p2cx)",
+      "url": "https://osv.dev/vulnerability/GHSA-m6cx-g6qm-p2cx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Yarn untrusted search path vulnerability (GHSA-mpwj-fcr6-x34c)",
+      "url": "https://osv.dev/vulnerability/GHSA-mpwj-fcr6-x34c"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "5104d0902e7f5c3f4f76a31c3572ef9f25bf3133e014239b2a27a5db39a4c663",
+  "signature": null
+}
