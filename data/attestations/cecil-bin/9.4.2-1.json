@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cecil-bin",
+    "version": "9.4.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c14adb2bc58765b8bf368cc7e7fcee6686b37a2c",
+    "pkgbuild_sha256": "f44e1b7d3ca45ac8e738ca5feb167cf199b3e41078d5c61558d4eec385471b47",
+    "install_sha256": "e2c6e4a4755f09f71c7e0bc1657a5fbcdefc866c449f7e3716cb0a4948e7fa5f"
+  },
+  "analyzed_at": "2026-09-29T22:44:48.019371419+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 11,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:44:48.002072648+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "52.52.192.191",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:44:48.002072648+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:44:48.011322445+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:44:48.011322445+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "209.209.59.11",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:44:48.011322445+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f95797544b56250057a2f06c87a81178afa481719835a147f099954095643e51",
+  "signature": null
+}
