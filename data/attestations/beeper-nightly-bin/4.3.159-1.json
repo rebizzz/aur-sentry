@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "beeper-nightly-bin",
+    "version": "4.3.159-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e2c9b6c579491a5543d80958949d53d01a40126c",
+    "pkgbuild_sha256": "b78cfe0ca4e8a5da308370a7d685b56a88aeb9d1edfe85e96f22fdd5edd1ef2a",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T02:21:35.416378201+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 29,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:21:35.408422650+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "3.66.251.71",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-29T02:21:35.408422650+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.26.6.223",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:21:35.408422650+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Potential Command Injection in libnotify (GHSA-6898-wx94-8jq8)",
+      "url": "https://osv.dev/vulnerability/GHSA-6898-wx94-8jq8"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "dd0afb4c6769d88932a7e84f1183b5f10571f5a0e3424435c6fd7df488767045",
+  "signature": null
+}
