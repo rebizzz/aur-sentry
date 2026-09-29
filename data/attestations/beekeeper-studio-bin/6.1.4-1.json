@@ -1,0 +1,256 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "beekeeper-studio-bin",
+    "version": "6.1.4-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4e660416a0a00c22bfbacd8a251d5eb53ce5e764",
+    "pkgbuild_sha256": "371629b2b3bb6d17277657d26da247c92a4ed6aedbb2d62df0e78c86f29f9f31",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T16:54:13.145630397+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:54:13.102381031+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:54:13.102381031+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:54:13.102381031+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:54:13.114096308+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:54:13.114096308+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:54:13.114096308+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 965,
+    "elf_object_count": 27,
+    "elf_objects": [
+      {
+        "path": "opt/Beekeeper Studio/chrome_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/beekeeper-studio-bin",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/libffmpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/sqlanywhere/build/Release/sqlanywhere.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/mongodb-client-encryption/build/Release/mongocrypt.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/@libsql/linux-x64-gnu/index.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/@libsql/linux-x64-musl/index.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/msnodesqlv8/build/Release/sqlserver.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/kerberos/build/Release/kerberos.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/oracledb/build/Release/oracledb-6.7.2-linux-arm64.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/oracledb/build/Release/oracledb-6.7.2-linux-x64.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/better-sqlite3/build/Release/better_sqlite3.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/os-dns-native/build/Release/os_dns_native.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/snowflake-sdk/dist/lib/minicore/binaries/sf_mini_core_0.0.1.linux-arm64-musl.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/snowflake-sdk/dist/lib/minicore/binaries/sf_mini_core_0.0.1.linux-arm64-gnu.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/snowflake-sdk/dist/lib/minicore/binaries/sf_mini_core_0.0.1.linux-x64-musl.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/snowflake-sdk/dist/lib/minicore/binaries/sf_mini_core_0.0.1.linux-x64-gnu.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/ssh2/lib/protocol/crypto/build/Release/sshcrypto.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/@mongodb-js/devtools-connect/node_modules/kerberos/build/Release/kerberos.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/@duckdb/node-bindings-linux-x64/duckdb.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/@duckdb/node-bindings-linux-x64/libduckdb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/resources/app.asar.unpacked/node_modules/@mongosh/service-provider-node-driver/node_modules/kerberos/build/Release/kerberos.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Beekeeper Studio/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "4389571c3a0b1fc8e3c057758cd9151cf0fc05d54ba1f8d7b5292e7454821e15",
+  "signature": null
+}
