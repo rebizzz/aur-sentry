@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cherry-studio-electron-bin",
+    "version": "2.1.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "6b9653b6f47e4599da64e743dc3653e4e0e49a69",
+    "pkgbuild_sha256": "9863e2ad5c0873d4e3c2c1cc743e300e8e90bbd475a0ef84b8124bc8531a0184",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T09:01:11.850229002+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T09:01:11.837887928+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-29T09:01:11.837887928+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T09:01:11.837887928+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T09:01:11.837887928+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Mise's local credential_command executes untrusted config (GHSA-29hf-rm4x-xxph)",
+      "url": "https://osv.dev/vulnerability/GHSA-29hf-rm4x-xxph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Local settings bypass config trust checks (GHSA-436v-8fw5-4mj8)",
+      "url": "https://osv.dev/vulnerability/GHSA-436v-8fw5-4mj8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv is vulnerable to arbitrary file write through entry point names (GHSA-4gg8-gxpx-9rph)",
+      "url": "https://osv.dev/vulnerability/GHSA-4gg8-gxpx-9rph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "bun vulnerable to OS Command Injection (GHSA-4j66-8f4r-3pjx)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j66-8f4r-3pjx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Mise vulnerable to arbitrary command execution via task-include files in an untrusted, config-less repository (GHSA-77g9-363w-rccq)",
+      "url": "https://osv.dev/vulnerability/GHSA-77g9-363w-rccq"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv allows ZIP payload obfuscation through parsing differentials (GHSA-8qf3-x8v5-2pj8)",
+      "url": "https://osv.dev/vulnerability/GHSA-8qf3-x8v5-2pj8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "mise HTTP backend uses raw version path for install symlink destination (GHSA-f94h-j2qg-fxw3)",
+      "url": "https://osv.dev/vulnerability/GHSA-f94h-j2qg-fxw3"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Mise Vulnerable to Arbitrary Code Execution via Tera Templates in .tool-versions Files (Trust Bypass) (GHSA-fjj5-v948-whjj)",
+      "url": "https://osv.dev/vulnerability/GHSA-fjj5-v948-whjj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "OS command injection in ripgrep (GHSA-g4xg-fxmg-vcg5)",
+      "url": "https://osv.dev/vulnerability/GHSA-g4xg-fxmg-vcg5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv vulnerable to arbitrary file deletion through RECORD entries (GHSA-pjjw-68hj-v9mw)",
+      "url": "https://osv.dev/vulnerability/GHSA-pjjw-68hj-v9mw"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "6b7ce221f49a8ba528290a323b55b1f92697d36946988664e12169bac885b0f9",
+  "signature": null
+}
