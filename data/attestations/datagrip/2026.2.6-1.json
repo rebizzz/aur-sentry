@@ -1,0 +1,798 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "datagrip",
+    "version": "2026.2.6-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "0a7dd566d42fd124e2eced1037e297adbab75ef9",
+    "pkgbuild_sha256": "9ca64651957ff4523688cc1c86bb8ea8c3e2668884a77a1353d299cdb3a024f9",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T16:57:16.710837577+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:57:16.686997650+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "18.238.109.91",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:57:16.686997650+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "18.238.109.27",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:57:16.686997650+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2106,
+    "elf_object_count": 122,
+    "elf_objects": [
+      {
+        "path": "opt/datagrip/plugins/platform-ijent-bundledBinaries/ijent-x86_64-unknown-linux-musl-release",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/platform-ijent-bundledBinaries/ijent-aarch64-unknown-linux-musl-release",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libstdc++.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libssl.so.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libdbus-1.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libfreebl3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libexpat.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libdw.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libpixman-1.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libxcb-render.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libuuid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libX11.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libnssckbi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libplds4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libGLdispatch.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libgcrypt.so.11",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libcairo.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libpci.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libgio-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXfont2.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXext.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libavahi-common.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/liblz4.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libnssutil3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libsecret-1.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libfribidi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libcom_err.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libglib-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXcursor.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libglapi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libsoftokn3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXfixes.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libatk-bridge-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libplc4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libavahi-client.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libnss3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libselinux.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libssl3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libxcb-shm.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libmount.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libatspi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libxkbcommon.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libwayland-server.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libpango-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libgssapi_krb5.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libgobject-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libxshmfence.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libfreeblpriv3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libsystemd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libgmodule-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libwayland-client.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libkrb5support.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libsmime3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libEGL.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libk5crypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libxcb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libz.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/liblzma.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libdrm.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libelf.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libblkid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXdmcp.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libX11.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXrandr.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libffi.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libsqlite3.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libattr.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXtst.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libnssdbm3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libcrypt.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libcrypto.so.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXxf86vm.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libfontenc.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libcap.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libGLX.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libkrb5.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libgpg-error.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libcups.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libkeyutils.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libnspr4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libasound.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libthai.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libxkbfile.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libatk-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXau.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libfontconfig.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libpng15.so.15",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libgbm.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libe2p.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libwayland-cursor.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXdamage.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libfreetype.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libX11-xcb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libpcre.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libGL.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libbz2.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXcomposite.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXrender.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/lib/libXi.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/bin/xkbcomp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip/plugins/remote-dev-server/selfcontained/bin/Xvfb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip/plugins/cwm-plugin/quiche-native/linux-x86-64/libquiche.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/jcef-plugin/jcef/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/jcef-plugin/jcef/cef_server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip/plugins/jcef-plugin/jcef/libshared_mem_helper.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/jcef-plugin/jcef/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/jcef-plugin/jcef/libcef.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/jcef-plugin/jcef/libjcef.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/jcef-plugin/jcef/jcef_helper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip/plugins/jcef-plugin/jcef/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/jcef-plugin/jcef/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/plugins/jcef-plugin/jcef/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/lib/pty4j/linux/x86-64/libpty.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/lib/jna/amd64/libjnidispatch.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/lib/native/linux-x86_64/libsqliteij.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/lib/skiko-awt-runtime-all/libskiko-linux-x64.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/lib/async-profiler/aarch64/libasyncProfiler.so",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/lib/async-profiler/amd64/libasyncProfiler.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/bin/datagrip",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/bin/remote-dev-server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip/bin/fsnotifier",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip/bin/restarter",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f4aa9c2ede2396875683a1c5a832b3af537576d0dd378b48a6cfeaa9b69b7c9d",
+  "signature": null
+}
