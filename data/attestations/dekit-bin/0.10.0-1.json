@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dekit-bin",
+    "version": "0.10.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "09aeb165e07dbdc8e4ac3aff55c340098aee1d18",
+    "pkgbuild_sha256": "9e5b940db7e903e535b45347ee8a69f384c907ceeefa482348cc0a43c1b64db8",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T02:22:55.814118299+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:55.805185612+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:55.805185612+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:55.805185612+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f9df878fbb08d07c9c67024a7102f179ca4694580b881f4cd84150ff6b58b21c",
+  "signature": null
+}
