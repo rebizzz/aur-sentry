@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "atago-bin",
+    "version": "0.25.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d42c460f4b4e428b070d81a0b10923583a6b6b02",
+    "pkgbuild_sha256": "e14cb8acecfd474470347b7a2dc9e930d2fc3b08f9495f9d271c70a33c19b713",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T02:20:53.709574123+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:20:53.698731207+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:20:53.698731207+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-29T02:20:53.698731207+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 49,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/atago",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "0211896b19b54306c0d8fe8cae745145b83c1bb4c6cd2e05a6df6ef136cc160e",
+  "signature": null
+}
