@@ -1,0 +1,22 @@
+pkgbase = correlation
+	pkgdesc = Analysis tool for liquid and amorphous solid structures
+	pkgver = 3.9.8
+	pkgrel = 1
+	url = https://github.com/Isurwars/Correlation
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = rust
+	makedepends = pkgconf
+	depends = intel-oneapi-tbb
+	depends = hdf5
+	depends = arrow
+	depends = fontconfig
+	depends = freetype2
+	depends = libxcb
+	depends = fftw
+	source = correlation-3.9.8.tar.gz::https://github.com/Isurwars/Correlation/archive/refs/tags/v3.9.8.tar.gz
+	sha256sums = 826954b47793ce1a960ecb2e9521aa1a649671b66669df2422d2c47508c29144
+
+pkgname = correlation
