@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cli-proxy-api",
+    "version": "8.0.4-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "8e6c12dca20ba019a4b729291ab542964d890ab8",
+    "pkgbuild_sha256": "b78ccf80627be5ebc86851727f9f12d3e8ef84e5d2d5a348f520709a2c78c803",
+    "install_sha256": "21a7d2dbba038bdb5c3a9da34c52f9dcfe1621d279220ab66bda8830c14f34fa"
+  },
+  "analyzed_at": "2026-09-29T16:53:09.195013491+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 14,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:53:09.183726661+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:53:09.183726661+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:53:09.183726661+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "185631ad6437d996c90e4ebc8479faaaa637fc241d023fa9598af5c5fbb5175d",
+  "signature": null
+}
