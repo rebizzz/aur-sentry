@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cmdpeek-bin",
+    "version": "0.0.19-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "653c5fa27f02e82f0314f8346eeca0dd9dee2f7d",
+    "pkgbuild_sha256": "f034745deb4f93acbd618779857c57dbc4c9e90f7e269e55e48389e3a7162d6e",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T02:21:49.842487729+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:21:49.833068645+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-29T02:21:49.833068645+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:21:49.833068645+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 4,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/cmdpeek",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "47ed2f093daaddbda9f6900e25f628b2f8e8002ba526d6fb1243d7515c9cbebc",
+  "signature": null
+}
