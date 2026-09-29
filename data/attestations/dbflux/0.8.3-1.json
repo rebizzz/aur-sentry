@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dbflux",
+    "version": "0.8.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a4449ce4cf67fc8e934e2ac016bdb5670ccbd5f9",
+    "pkgbuild_sha256": "2b167094abed15dc6dae6fb5d4049438e43af5e9a8e1d3c7a58e060eb5c4741e",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T02:23:45.414663384+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:23:45.388788491+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:23:45.388788491+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:23:45.388788491+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:23:45.402251831+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:23:45.402251831+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 6,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/dbflux",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Improper Certificate Validation in openssl (GHSA-34p9-f4q3-c4r7)",
+      "url": "https://osv.dev/vulnerability/GHSA-34p9-f4q3-c4r7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509NameBuilder::build` returned object is not thread safe (GHSA-3gxf-9r58-2ghg)",
+      "url": "https://osv.dev/vulnerability/GHSA-3gxf-9r58-2ghg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl Use-After-Free in `Md::fetch` and `Cipher::fetch` (GHSA-4fcv-w3qc-ppgg)",
+      "url": "https://osv.dev/vulnerability/GHSA-4fcv-w3qc-ppgg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "zstd vulnerable to buffer overrun (GHSA-5c9c-6x87-f9vm)",
+      "url": "https://osv.dev/vulnerability/GHSA-5c9c-6x87-f9vm"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509Extension::new` and `X509Extension::new_nid` null pointer dereference (GHSA-6hcf-g6gr-hhcr)",
+      "url": "https://osv.dev/vulnerability/GHSA-6hcf-g6gr-hhcr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "openssl npm package vulnerable to command execution (GHSA-75w2-qv55-x7fv)",
+      "url": "https://osv.dev/vulnerability/GHSA-75w2-qv55-x7fv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl has incorrect bounds assertion in aes key wrap (GHSA-8c75-8mhr-p7r9)",
+      "url": "https://osv.dev/vulnerability/GHSA-8c75-8mhr-p7r9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `SubjectAlternativeName` and `ExtendedKeyUsage::other` allow arbitrary file read (GHSA-9qwg-crg9-m2vc)",
+      "url": "https://osv.dev/vulnerability/GHSA-9qwg-crg9-m2vc"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl: rustMdCtxRef::digest_final() writes past caller buffer with no length check (GHSA-ghm9-cr32-g9qj)",
+      "url": "https://osv.dev/vulnerability/GHSA-ghm9-cr32-g9qj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl: Unchecked callback length in PSK/cookie trampolines leaks adjacent memory to peer (GHSA-hppc-g8h3-xhp3)",
+      "url": "https://osv.dev/vulnerability/GHSA-hppc-g8h3-xhp3"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "7d376eec175f105f6614c6f461d6fec4b1e2e5d15087f898cbb9fd6bc62c2c0e",
+  "signature": null
+}
