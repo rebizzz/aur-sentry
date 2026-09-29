@@ -1,0 +1,16 @@
+pkgbase = atmos-bin
+	pkgdesc = Automated Terraform Management & Orchestration Software (ATMOS)
+	pkgver = 1.230.0
+	pkgrel = 1
+	url = https://github.com/cloudposse/atmos
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = terraform
+	optdepends = opentofu
+	source_x86_64 = atmos_1.230.0_linux_amd64::https://github.com/cloudposse/atmos/releases/download/v1.230.0/atmos_1.230.0_linux_amd64
+	sha256sums_x86_64 = e4f97c0ed5033fb9b3d91701bfec3bf0df6011c1f9097a9fbb894587b55c2f29
+	source_aarch64 = atmos_1.230.0_linux_arm64::https://github.com/cloudposse/atmos/releases/download/v1.230.0/atmos_1.230.0_linux_arm64
+	sha256sums_aarch64 = 47d24c79ce560de10ccbb921c0279a1b6bf9cbc371e112f87afbcd7e3dbd0552
+
+pkgname = atmos-bin
