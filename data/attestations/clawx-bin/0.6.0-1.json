@@ -1,0 +1,369 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "clawx-bin",
+    "version": "0.6.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "65a6167b088638b594da40cb32383d3283d57835",
+    "pkgbuild_sha256": "8f390190e3843ca0ad9f1b760de63ac778d2f30c0fca4905338aacf982c085dd",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T22:59:13.337928848+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:59:13.007122930+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:59:13.007122930+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:59:13.007122930+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:59:13.097331874+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T22:59:13.097331874+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 39888,
+    "elf_object_count": 46,
+    "elf_objects": [
+      {
+        "path": "opt/ClawX/chrome_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/libffmpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/clawx",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/dingtalk-dws/vendor/dws",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-fs/prebuilds/android-arm64/bare-fs.bare",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-fs/prebuilds/android-ia32/bare-fs.bare",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-fs/prebuilds/android-arm/bare-fs.bare",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-fs/prebuilds/linux-arm64/bare-fs.bare",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-fs/prebuilds/android-x64/bare-fs.bare",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-fs/prebuilds/linux-x64/bare-fs.bare",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/@esbuild/linux-x64/bin/esbuild",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/@snazzah/davey-linux-x64-gnu/davey.linux-x64-gnu.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-os/prebuilds/android-arm64/bare-os.bare",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-os/prebuilds/android-ia32/bare-os.bare",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-os/prebuilds/android-arm/bare-os.bare",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-os/prebuilds/linux-arm64/bare-os.bare",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-os/prebuilds/android-x64/bare-os.bare",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-os/prebuilds/linux-x64/bare-os.bare",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-url/prebuilds/android-arm64/bare-url.bare",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-url/prebuilds/android-ia32/bare-url.bare",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-url/prebuilds/android-arm/bare-url.bare",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-url/prebuilds/linux-arm64/bare-url.bare",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-url/prebuilds/android-x64/bare-url.bare",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/bare-url/prebuilds/linux-x64/bare-url.bare",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/@lydell/node-pty-linux-x64/prebuilds/linux-x64/pty.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/sqlite-vec-linux-x64/vec0.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/@img/sharp-linux-x64/lib/sharp-linux-x64.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/@img/sharp-libvips-linux-x64/lib/libvips-cpp.so.8.17.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw/node_modules/tree-sitter-bash/prebuilds/linux-x64/tree-sitter-bash.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/app.asar.unpacked/node_modules/@ubjs/node-linux-arm64-gnu/uniffi-runtime-napi.linux-arm64-gnu.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/app.asar.unpacked/node_modules/@ubjs/node-linux-x64-gnu/uniffi-runtime-napi.linux-x64-gnu.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/app.asar.unpacked/node_modules/@trycua/cua-driver-linux-x64-gnu/cua_driver_node_runtime.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/app.asar.unpacked/node_modules/@trycua/cua-driver-linux-x64-gnu/libcua_driver_sdk.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/app.asar.unpacked/node_modules/@trycua/cua-driver-linux-arm64-gnu/cua_driver_node_runtime.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/app.asar.unpacked/node_modules/@trycua/cua-driver-linux-arm64-gnu/libcua_driver_sdk.so",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw-plugins/wecom/node_modules/@wecom/cli-linux-arm64/bin/wecom-cli",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw-plugins/wecom/node_modules/@wecom/cli-linux-x64/bin/wecom-cli",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw-plugins/discord/node_modules/@snazzah/davey-linux-x64-musl/davey.linux-x64-musl.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/openclaw-plugins/discord/node_modules/@snazzah/davey-linux-x64-gnu/davey.linux-x64-gnu.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/bin/agent-browser",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/resources/bin/uv",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ClawX/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Potential Command Injection in libnotify (GHSA-6898-wx94-8jq8)",
+      "url": "https://osv.dev/vulnerability/GHSA-6898-wx94-8jq8"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "23fd6a641be4769128f0e064939819ef48bc56eab41258c1074544ce9c28593e",
+  "signature": null
+}
