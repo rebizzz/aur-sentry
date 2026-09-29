@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "agentics-companion",
+    "version": "0.1.100-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a713d0e9f6463cd06ff8c646350ad66baa2d5dc5",
+    "pkgbuild_sha256": "bae93d8537c6a22201d9125163ce96acb1fb4ee76518699db1e900578adbb707",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T08:58:26.532380650+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T08:58:26.528587210+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.21.15.185",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-29T08:58:26.528587210+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "44ebe5328965af4dc374ccc7ad6f2bf49daa228c518996775a9040eef01e92ee",
+  "signature": null
+}
