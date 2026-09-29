@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "abstract-editor",
+    "version": "0.1.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "819da8773e444f44ed93dc3d3df45c781fd7defc",
+    "pkgbuild_sha256": "05a01271134ff073a1f59b40a4b76b5d960b6aabacf7c23b63c435e2f85b9ac9",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T16:50:12.694994022+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:50:12.687824101+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:50:12.687824101+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:50:12.687824101+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "a8fa7039b5e45f7ab59167394df6f77809c0ed9746c7045f222b5b031e961b57",
+  "signature": null
+}
