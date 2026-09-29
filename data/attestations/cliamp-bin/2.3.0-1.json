@@ -1,0 +1,151 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cliamp-bin",
+    "version": "2.3.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "63efe65bcf4eebe09c609ae00b4fd50f15d17720",
+    "pkgbuild_sha256": "0abcf8cfa979b71ea87a042e31c07a4577b18c26b070cc3501e3ed4f9a80c7ee",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T02:22:45.337485013+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:45.292102687+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:45.292102687+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:45.292102687+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-29T02:22:45.292102687+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:45.307557973+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:22:45.307557973+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 6,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/cliamp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "yt-dlp Generic Extractor MITM Vulnerability via Arbitrary Proxy Injection (GHSA-3ch3-jhc6-5r8x)",
+      "url": "https://osv.dev/vulnerability/GHSA-3ch3-jhc6-5r8x"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "yt-dlp has dependency on potentially malicious third-party code in Douyu extractors (GHSA-3v33-3wmw-3785)",
+      "url": "https://osv.dev/vulnerability/GHSA-3v33-3wmw-3785"
+    },
+    {
+      "source": "osv.dev",
+      "summary": " yt-dlp on Windows vulnerable to `--exec` command injection when using `%q` (GHSA-42h4-v29r-42qg)",
+      "url": "https://osv.dev/vulnerability/GHSA-42h4-v29r-42qg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "yt-dlp: Arbitrary command injection possible if --exec option used with yt-dlp (GHSA-69qj-pvh9-c5wg)",
+      "url": "https://osv.dev/vulnerability/GHSA-69qj-pvh9-c5wg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "yt-dlp: Downstream command injection via improper sanitization of yt-dlp --write-link output (GHSA-6v4j-43gg-vj32)",
+      "url": "https://osv.dev/vulnerability/GHSA-6v4j-43gg-vj32"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "yt-dlp File system modification and RCE through improper file-extension sanitization (GHSA-79w7-vh3h-8g4j)",
+      "url": "https://osv.dev/vulnerability/GHSA-79w7-vh3h-8g4j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "yt-dlp: Dangerous file type creation via insufficient filename sanitization (Bypass of CVE-2024-38519) (GHSA-c6mh-fpjc-4pr3)",
+      "url": "https://osv.dev/vulnerability/GHSA-c6mh-fpjc-4pr3"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "yt-dlp: File Downloader cookie leak with curl  (GHSA-f7j3-774f-rfhj)",
+      "url": "https://osv.dev/vulnerability/GHSA-f7j3-774f-rfhj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "yt-dlp: Arbitrary Command Injection when using the `--netrc-cmd` option (GHSA-g3gw-q23r-pgqm)",
+      "url": "https://osv.dev/vulnerability/GHSA-g3gw-q23r-pgqm"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "yt-dlp: `--exec` command injection when using `%q` in yt-dlp on Windows (Bypass of CVE-2023-40581) (GHSA-hjq6-52gw-2g7p)",
+      "url": "https://osv.dev/vulnerability/GHSA-hjq6-52gw-2g7p"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "0686c05f35afb4382238ea5361843b1f70fcd8263e73817dd960fad05ebc8606",
+  "signature": null
+}
