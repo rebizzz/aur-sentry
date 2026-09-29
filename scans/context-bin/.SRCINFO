@@ -1,0 +1,27 @@
+pkgbase = context-bin
+	pkgdesc = Standalone CLI and MCP server for deterministic repository context (prebuilt binary)
+	pkgver = 20260929.2
+	pkgrel = 1
+	url = https://github.com/timmo001/context
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = context
+	conflicts = context
+	conflicts = context-git
+	options = !strip
+	source = context.bash
+	source = context.fish
+	source = _context
+	source = LICENSE
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	source_x86_64 = context-20260929.2-linux-x86_64.tar.gz::https://github.com/timmo001/context/releases/download/20260929.2/context-20260929.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 62506c49fe5d8d89abd66fbfb871cf626c9046897b14c126143c4411ab96afbb
+	source_aarch64 = context-20260929.2-linux-aarch64.tar.gz::https://github.com/timmo001/context/releases/download/20260929.2/context-20260929.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 5dd4d327bce9f6e708ff14f12247a90f2a81dc3d0de6d16d7bbd5206950d4d20
+
+pkgname = context-bin
