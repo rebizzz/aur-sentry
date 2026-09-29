@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cloud-fs-bin",
+    "version": "1.1.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "b5235f2876bf14a9b665698bf81f915278b0b679",
+    "pkgbuild_sha256": "f6b0ced799b02f2d4f116a0ea3f448f1175a8e2a5c2f575cea843d5943d4aa09",
+    "install_sha256": "f2d0bffedcfcb542ee07eef4f797dc848703f6d63f0d7b837a89a190dcc09780"
+  },
+  "analyzed_at": "2026-09-29T09:00:31.345639170+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 24,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "PERSISTENCE",
+      "file": "PKGBUILD",
+      "line": 134,
+      "severity": "CRITICAL",
+      "description": "writing custom systemd service file outside standard package tree"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T09:00:31.330247671+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T09:00:31.330247671+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-29T09:00:31.330247671+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "bb0bd10d72b382a1de03bd91d583ead2c611dfe9aef14d05dbf0c235ed01db3f",
+  "signature": null
+}
