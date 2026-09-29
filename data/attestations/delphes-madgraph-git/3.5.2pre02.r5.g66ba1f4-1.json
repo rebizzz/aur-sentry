@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "delphes-madgraph-git",
+    "version": "3.5.2pre02.r5.g66ba1f4-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a1ac3119cabdd2b62b0b79ecac62bf9fe97f9057",
+    "pkgbuild_sha256": "c2ddd4feca5ebd70adf1d96a71a144b7bced691faa1423c839bfb8829703d354",
+    "install_sha256": "a1e48cc00f0a816b761ed5d7454ccef86ab89fb47f4e7f91a3716b80177015a0"
+  },
+  "analyzed_at": "2026-09-29T02:23:35.948373894+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 14,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:23:35.934892615+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T02:23:35.934892615+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "4f911887995a83318642b8960c02b4682658d355d8c315aaadd05f1619eeaf3b",
+  "signature": null
+}
