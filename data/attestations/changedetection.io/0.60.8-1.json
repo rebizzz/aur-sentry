@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "changedetection.io",
+    "version": "0.60.8-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "218b766d2cc7e6b21c06447ea3c7d1784b89099a",
+    "pkgbuild_sha256": "29aa2880b6aacd7427839f0087a9e9115bc855d7739f8b71ae367121dbc1500f",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-29T08:59:14.847967457+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T08:59:14.840005730+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-29T08:59:14.840005730+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T08:59:14.840005730+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Apprise vulnerable to regex injection with IFTTT Plugin (GHSA-qhmp-h54x-38qr)",
+      "url": "https://osv.dev/vulnerability/GHSA-qhmp-h54x-38qr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Apprise is an open source library which allows you to send a notification to almost all of the most popular notification services available. In affected versions users who use Apprise granting them access to the IFTTT plugin (which just comes out of the box) are subject to a denial of service attack (PYSEC-2021-327)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2021-327"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ee9ac90f105254314a98d3330eb58277963d505e50b1cfc0ae80ab6b2c9770fd",
+  "signature": null
+}
