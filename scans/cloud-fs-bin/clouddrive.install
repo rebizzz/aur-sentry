@@ -1,0 +1,44 @@
+post_install() {
+cat << EOF
+----------------------------------------------
+1. Set up start and enable on boot using systemd:
+  Root privileges: systemctl enable --now clouddrive.service
+2. Check the status using systemd:
+  Root privileges: systemctl status clouddrive.service
+3. Open in default browser:
+  Recommended: xdg-open http://localhost:19798
+  IPv4: xdg-open http://127.0.0.1:19798
+  IPv6: xdg-open http://[::]:19798
+Note: If the browser opens slowly or lags, please try using the browser's incognito mode.
+4. When mounting a local disk after logging in, set UID and GID:
+  Get the current user's UID: id -u
+  Get the current user's GID: id -g
+  Get the UID of another user: id -u username
+  Get the GID of another user: id -g username
+5. Mount point provided by the AUR package: /media/clouddrive
+6. The webdav mount point provided by default: /media/clouddrive-dav
+  Fill in clouddirve webdav username and password to: /etc/davfs2/secrets
+  eg:
+
+#  cat << EOF | sudo tee -a /etc/davfs2/secrets
+# # personal webdav, application password
+# /media/clouddrive-dav user@email.com  mypassword
+# EOF
+
+  Use systemd to set clouddrive-dav to start and enable it at boot time:
+  Root privileges: systemctl enable --now media-clouddrive-dav
+  Root privileges: systemctl status media-clouddrive-dav
+7. Use rclone to mount the cd2 dav service, the default location is: /meadia/rclone-cd2-dav
+
+  sudo systemctl enable --now rclone-example-cd2-dav@username.service
+  sudo systemctl status rclone-example-cd2-dav@username.service
+8. Purchase recommendation code: 7jp9Aajq
+-----------------------------------------------
+EOF
+
+}
+
+post_upgrade() {
+  post_install
+}
+
