@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "antigravity-appimage",
+    "version": "2.18.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "320b0ab32c07386f84f9080dba4c3d56d4920be4",
+    "pkgbuild_sha256": "f32e2962e38d78c573ea7a0ee3f62adf3a160bf5a4978226c97c17baf51bbaa3",
+    "install_sha256": "0ab7f749c56d00f263dbd81ce8686bd5f1b58c7701d1e8651a68ecc1926cf913"
+  },
+  "analyzed_at": "2026-09-29T08:59:16.327315089+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T08:59:16.315948045+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "74.125.69.207",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T08:59:16.315948045+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T08:59:16.325877789+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T08:59:16.325877789+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 10,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "opt/antigravity-appimage/Antigravity.AppImage",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "893152fce078f8cc932433452ddb3a1dfd6f2bddb9fe83535d82b44144caa16e",
+  "signature": null
+}
