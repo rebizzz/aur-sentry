@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "context-bin",
+    "version": "20260929.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "251cf9dcda0fb67bce0d0779ba7bbf64ba44088d",
+    "pkgbuild_sha256": "85dab6e84ac8be8c68f3331a5e1ff4006703fd94d61c08a4390728485125d20d",
+    "install_sha256": "28779a74baca716dce72e75466cf143017f52f1494e0433db6c7364ac83ab9cf"
+  },
+  "analyzed_at": "2026-09-29T16:54:03.134915512+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 18,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:54:03.124567759+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:54:03.124567759+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-29T16:54:03.124567759+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/context",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ea4d2910a55903888037a0a773305975d8b9c0c5de35b6be4cc4459662a087ce",
+  "signature": null
+}
