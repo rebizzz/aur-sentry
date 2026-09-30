@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ai-usagebar-bin",
+    "version": "1.29.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a6a101585a8c646f6fdf1e453030310990ad0a97",
+    "pkgbuild_sha256": "90ae8a8150cf2039b85931d82aa1901c21a6ec78d309ffa1199e639aa0d2e4c7",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T19:48:09.971523342+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 42,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 43,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:48:09.961723646+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:48:09.961723646+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:48:09.961723646+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5,
+    "elf_object_count": 2,
+    "elf_objects": [
+      {
+        "path": "usr/bin/ai-usagebar",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/ai-usagebar-tui",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "5f391ddb33d16ad246460c15902362e8f7640f9450d2318ffaa9ef709ae358be",
+  "signature": null
+}
