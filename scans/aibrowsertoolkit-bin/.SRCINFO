@@ -1,0 +1,20 @@
+pkgbase = aibrowsertoolkit-bin
+	pkgdesc = Agentic browser automation CLI for AI agents
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://github.com/skssmd/Ai-Browser-Toolkit
+	install = aibrowsertoolkit-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	optdepends = google-chrome: the browser this drives
+	optdepends = microsoft-edge-stable-bin: alternative browser
+	provides = aibrowsertoolkit
+	conflicts = aibrowsertoolkit
+	options = !strip
+	source_x86_64 = https://github.com/skssmd/Ai-Browser-Toolkit/releases/download/v0.7.6/aibrowsertoolkit-0.7.6-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 80047ee771b09bbc917a7736643c3df367fd10066fbc45811a8b3cec9a516058
+	source_aarch64 = https://github.com/skssmd/Ai-Browser-Toolkit/releases/download/v0.7.6/aibrowsertoolkit-0.7.6-linux-aarch64.tar.gz
+	sha256sums_aarch64 = d6013df630f51f2d8fb46749dbf5082d6600cfd7dec1ce119025b64c8a5be859
+
+pkgname = aibrowsertoolkit-bin
