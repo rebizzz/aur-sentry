@@ -1,0 +1,8 @@
+{
+  "package": "alertmanager-bin",
+  "aur_commit": "de8718e3e883e08c0e4cd01bed6efde859c6e7d4",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-30T13:02:37Z"
+}
