@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "anytype-bin",
+    "version": "0.57.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "3e3b11b7f40bbfe26dec4114e76eeff84449d87f",
+    "pkgbuild_sha256": "71e93fd99ef8f58686e84f91700935b0ff47cc03aaed7e2ca2a33c743476e2c6",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T19:47:53.676465457+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:47:53.664624565+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:47:53.664624565+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:47:53.664624565+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:47:53.674564539+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.3.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:47:53.674564539+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 3,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/anytype",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "e74464ccfd905341a7f2949339d0f400759e399c644f5510636bc4187b508102",
+  "signature": null
+}
