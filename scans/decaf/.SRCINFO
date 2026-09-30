@@ -1,0 +1,15 @@
+pkgbase = decaf
+	pkgdesc = Suspend the system after a while: a scriptable sleep timer
+	pkgver = 2.0.0
+	pkgrel = 2
+	url = https://github.com/Davi-S/decaf
+	arch = any
+	license = MIT
+	depends = bash
+	depends = systemd
+	depends = glib2
+	depends = libnotify
+	source = decaf-2.0.0.tar.gz::https://github.com/Davi-S/decaf/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 6fdd757796b0d781258982e7b1baf2c9bee8be75435821843807b9ac55759993
+
+pkgname = decaf
