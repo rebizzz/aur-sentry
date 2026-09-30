@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "clouddrive-mediaserver-plugin-bin",
+    "version": "1.0.5-3",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "cf2a853f4da7ed6a1b79befe5433b9592fac4dcd",
+    "pkgbuild_sha256": "404685d9da1aa67cf4d9388e9ea8a8320b528df378c224f673886675230a8220",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T06:01:23.817308342+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:01:23.801979241+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:01:23.801979241+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:01:23.801979241+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "1c58c80b83f94df6991f5cf33e41a2b5cf3f320f93f2aa367dffbe06642887ff",
+  "signature": null
+}
