@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "blender-mcp-git",
+    "version": "r233.60d2a31-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5d30539eb4fc7a2f4763833e98e6aa64fd67efc9",
+    "pkgbuild_sha256": "cc2d78ed911fc62bbaa4974c8a3c025865a8a00b0585f68dbd14a4566aba9a22",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T13:07:50.822238488+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:07:50.816905957+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:07:50.816905957+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "8a577dade80b9b73907c3bcb18b6777985a867a2d7076353ad1a3858f431d8e6",
+  "signature": null
+}
