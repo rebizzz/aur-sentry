@@ -1,0 +1,270 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bb-bin",
+    "version": "0.44.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a8fa3b2492cb0f7b0336b2c6e9978e8f2c350730",
+    "pkgbuild_sha256": "a04c4b3428faf36fd3b54b80b8e6a308e52f223d24dcbf4107e7398c8d1a7792",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T19:50:37.779709373+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:50:37.693428317+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-30T19:50:37.693428317+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:50:37.693428317+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 10688,
+    "elf_object_count": 34,
+    "elf_objects": [
+      {
+        "path": "opt/bb/usr/lib/libXss.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/usr/lib/libnotify.so.4.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/usr/lib/libXtst.so.6.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/usr/lib/libappindicator3.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/usr/lib/libgconf-2.so.4.1.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/usr/lib/libindicator3.so.7.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/chrome_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/libffmpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/bb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-arm64/fs-native-extensions.bare",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-arm64/fs-native-extensions.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-ia32/fs-native-extensions.bare",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-ia32/fs-native-extensions.node",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-arm/fs-native-extensions.bare",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-arm/fs-native-extensions.node",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/linux-arm64/fs-native-extensions.bare",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/linux-arm64/fs-native-extensions.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-x64/fs-native-extensions.bare",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-x64/fs-native-extensions.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/linux-x64/fs-native-extensions.bare",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/linux-x64/fs-native-extensions.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-arm64/pty.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-x64/pty.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-x64-glibc/watcher.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-x64-musl/watcher.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-arm64-glibc/watcher.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-arm64-musl/watcher.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/linuxmusl-arm64.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/linuxmusl-x64.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/linux-x64.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/linux-arm64.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c8d0f82a953aa26b1f34a18758c27e1fe300a45a407938cb62601560d868ce1b",
+  "signature": null
+}
