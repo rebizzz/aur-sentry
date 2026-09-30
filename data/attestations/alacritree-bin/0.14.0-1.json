@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "alacritree-bin",
+    "version": "0.14.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "7b3a907838b9319ed62f501cb3e307b9e8ad9540",
+    "pkgbuild_sha256": "cf0a7a95eb1a9ce4ad882190843df76e36e8ec49776cdb9fc927bf6109aee692",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T13:06:11.901727928+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 42,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:06:11.881378052+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:06:11.881378052+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:06:11.881378052+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:06:11.881378052+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:06:11.893655660+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.3.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:06:11.893655660+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 10,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/alacritree",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Relative Path Traversal in git-delta (GHSA-5xg3-j2j6-rcx4)",
+      "url": "https://osv.dev/vulnerability/GHSA-5xg3-j2j6-rcx4"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Relative Path Traversal in git-delta (RUSTSEC-2021-0105)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2021-0105"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "41eae2b3b9d9e9c9b4671d70d66f44251b1b029645685cff3d708009381df62c",
+  "signature": null
+}
