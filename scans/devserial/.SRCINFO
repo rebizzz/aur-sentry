@@ -1,0 +1,24 @@
+pkgbase = devserial
+	pkgdesc = Serial terminal with SQLite-buffered output and CLI, TUI, GUI, REST and MCP
+	pkgver = 0.2.6
+	pkgrel = 1
+	url = https://github.com/metaneutrons/devserial
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = libxcb
+	depends = gcc-libs
+	depends = glibc
+	depends = libxkbcommon
+	depends = libx11
+	depends = wayland
+	depends = libgl
+	conflicts = devserial-bin
+	options = !lto
+	options = !debug
+	source = devserial::git+https://github.com/metaneutrons/devserial.git#tag=devserial-v0.2.6
+	sha256sums = SKIP
+
+pkgname = devserial
