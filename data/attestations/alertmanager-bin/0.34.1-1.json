@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "alertmanager-bin",
+    "version": "0.34.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "de8718e3e883e08c0e4cd01bed6efde859c6e7d4",
+    "pkgbuild_sha256": "3b3f7df2c1aff9df001db1e413ce4ab9e824589ca1b907a95ad21bbb042f3290",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T13:06:59.618004624+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:06:59.605152126+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:06:59.605152126+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:06:59.605152126+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 4,
+    "elf_object_count": 2,
+    "elf_objects": [
+      {
+        "path": "usr/bin/amtool",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/alertmanager",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Alertmanager UI is vulnerable to stored XSS via the /api/v1/alerts endpoint (GHSA-v86x-5fm3-5p7j)",
+      "url": "https://osv.dev/vulnerability/GHSA-v86x-5fm3-5p7j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Alertmanager UI is vulnerable to stored XSS via the /api/v1/alerts endpoint in github.com/prometheus/alertmanager (GO-2023-2020)",
+      "url": "https://osv.dev/vulnerability/GO-2023-2020"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "666088107b01f16726e9a7844053f9960495bd10c68cb06b9331daa6d18ebafb",
+  "signature": null
+}
