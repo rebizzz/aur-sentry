@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "baiduwenku-bin",
+    "version": "3.4.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e2934143f70e24e4788d515982ce406ae43773f0",
+    "pkgbuild_sha256": "c742962c7b2b28f564899db0f1fb5acadcd15475cffebd74f64b1dfcbd44a83c",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T13:29:34.426375347+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:29:34.419005132+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "183.60.227.36",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-30T13:29:34.419005132+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:29:34.419005132+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:29:34.419005132+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 6,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "4dec4693cf4e024b222d7633b696ea619b0dc4d1913c3d076a0f0dcfb8e24cbe",
+  "signature": null
+}
