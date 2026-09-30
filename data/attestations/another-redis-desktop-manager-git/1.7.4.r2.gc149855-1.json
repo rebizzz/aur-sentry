@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "another-redis-desktop-manager-git",
+    "version": "1.7.4.r2.gc149855-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d93b80d7b3110c94e867c97f9f35f9d369578285",
+    "pkgbuild_sha256": "96fe0b3fc04589fcde5f236e49529d75976f3c3d2201e2e4be41adc71e1db99f",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T06:00:05.873382102+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 101,
+      "severity": "LOW",
+      "description": "unlocked npm/bun/yarn install during build (unpinned dependency risk)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:00:05.867421376+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:00:05.867421376+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "npm Vulnerable to Global node_modules Binary Overwrite (GHSA-4328-8hgf-7wjr)",
+      "url": "https://osv.dev/vulnerability/GHSA-4328-8hgf-7wjr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "bun vulnerable to OS Command Injection (GHSA-4j66-8f4r-3pjx)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j66-8f4r-3pjx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm CLI exposing sensitive information through logs (GHSA-93f3-23rq-pjfp)",
+      "url": "https://osv.dev/vulnerability/GHSA-93f3-23rq-pjfp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Packing does not respect root-level ignore files in workspaces (GHSA-hj9c-8jmm-8c52)",
+      "url": "https://osv.dev/vulnerability/GHSA-hj9c-8jmm-8c52"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Token Leak in npm (GHSA-m5h6-hr3q-22h5)",
+      "url": "https://osv.dev/vulnerability/GHSA-m5h6-hr3q-22h5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Write in npm (GHSA-m6cx-g6qm-p2cx)",
+      "url": "https://osv.dev/vulnerability/GHSA-m6cx-g6qm-p2cx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Incorrect Permission Assignment for Critical Resource in NPM (GHSA-ph34-pc88-72gc)",
+      "url": "https://osv.dev/vulnerability/GHSA-ph34-pc88-72gc"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Local Privilege Escalation in npm (GHSA-v3jv-wrf4-5845)",
+      "url": "https://osv.dev/vulnerability/GHSA-v3jv-wrf4-5845"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Bun has an Application-level Prototype Pollution vulnerability in the runtime native API for Glo (GHSA-v9mx-4pqq-h232)",
+      "url": "https://osv.dev/vulnerability/GHSA-v9mx-4pqq-h232"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f3dfd39abcf5888bb3961b214746c976b58bc2332e7022f9a607e346424efafc",
+  "signature": null
+}
