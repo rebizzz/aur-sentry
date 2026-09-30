@@ -1,0 +1,115 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "carvel-tools",
+    "version": "20260930-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4a33fcd0c13a4bb33ffb0c31c36f6fba86a530b4",
+    "pkgbuild_sha256": "c6d9360bf97a6330750e09b87f10f793e52ccce678ecc139dad061a6dc37c1b7",
+    "install_sha256": "005922568254c7a01e0c1a5421c68aa98d5fd903154c46709da8a349740be5e2"
+  },
+  "analyzed_at": "2026-09-30T06:01:02.736663007+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 13,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:01:02.730209076+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:01:02.730209076+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:01:02.730209076+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 22,
+    "elf_object_count": 7,
+    "elf_objects": [
+      {
+        "path": "usr/bin/kwt",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/ytt",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/kbld",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/vendir",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/imgpkg",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/kapp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/kctrl",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f6352e4e387c62490f3a992919324110614e2d71744bb08e82a7721d2c9080cd",
+  "signature": null
+}
