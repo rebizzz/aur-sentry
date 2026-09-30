@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aibrowsertoolkit-bin",
+    "version": "0.7.6-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "0edcf73cde2e6bd5f541b3533af2e5e0c7d235ab",
+    "pkgbuild_sha256": "0a3cc3251fe35dfdbdf7992f7831e6ddbc39c18eef82a53e1ff19bbdde1b26a4",
+    "install_sha256": "ef6ba5a52f0ec715fb39c1e74d0bb836cb970135dcee3d8e07bbca80c06e1aaf"
+  },
+  "analyzed_at": "2026-09-30T13:07:26.266973585+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:07:26.210616581+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:07:26.210616581+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:07:26.210616581+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 4660,
+    "elf_object_count": 15,
+    "elf_objects": [
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/itcl4.3.8/libtcl9itcl4.3.8.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/thread3.0.6/libtcl9thread3.0.6.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/libpython3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/libtcl9.0.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/libpython3.13.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/libtcl9tk9.0.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/python3.13/lib-dynload/_tkinter.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/python3.13/lib-dynload/_dbm.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/python3.13/site-packages/pydantic_core/_pydantic_core.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/python3.13/site-packages/greenlet/_greenlet.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/python3.13/site-packages/greenlet/tests/_test_extension.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/python3.13/site-packages/greenlet/tests/_test_extension_cpp.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/python3.13/site-packages/websockets/speedups.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/lib/python3.13/site-packages/playwright/driver/node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/aibrowsertoolkit/python/bin/python3.13",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "8c700ec3dd897a9aa6b9fb5a161951d61f72106ed0b3cd68ae3db1f6cc21ecbd",
+  "signature": null
+}
