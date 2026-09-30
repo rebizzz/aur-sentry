@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dankmail-git",
+    "version": "r105.cf03c8d-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "82cb762bf7939ccd3fe67f240cf54d494debb3c2",
+    "pkgbuild_sha256": "fcd983d6c9e16e4993bc22af34210a94a7bc9c50a3db7c94ebb1192e80c22f87",
+    "install_sha256": "79b0f6884373cfc70f0fb472fea6dc854f01fa5f593f2eeb8240dc9060289501"
+  },
+  "analyzed_at": "2026-09-30T06:02:06.454465322+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 14,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:02:06.447407651+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:02:06.447407651+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c2df5e639a6df7a3de6fffbe85e1daf124d8e6bacc8f01d59052adb3f3ed4094",
+  "signature": null
+}
