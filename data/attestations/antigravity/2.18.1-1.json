@@ -1,0 +1,128 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "antigravity",
+    "version": "2.18.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "647d9d84d6b73543d28f46b2be82562ae451fb84",
+    "pkgbuild_sha256": "91ecd8e84b09d217fd65122cfe8a49c24923aa2838bc5f24d1f5aef7cb01734b",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T06:01:20.441319663+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:01:20.385640567+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "142.250.189.155",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:01:20.385640567+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:01:20.407064783+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:01:20.407064783+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 369,
+    "elf_object_count": 8,
+    "elf_objects": [
+      {
+        "path": "opt/Antigravity/chrome_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Antigravity/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Antigravity/antigravity",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Antigravity/libffmpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Antigravity/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/Antigravity/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Antigravity/resources/bin/webm_encoder",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/Antigravity/resources/bin/language_server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "9c5a7da2c9568b269101f8a7e4cd27c29216f1fc9a19f6ad05f33e4b79620c70",
+  "signature": null
+}
