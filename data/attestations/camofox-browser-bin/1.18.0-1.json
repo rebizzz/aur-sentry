@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "camofox-browser-bin",
+    "version": "1.18.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f34e124546df4f417549eaf1b6b760204edb7f71",
+    "pkgbuild_sha256": "67995006d90fdaa04be88e1c016f2522724f0d4aa3465e3777f8682f837d3b2a",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T19:49:18.494701888+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 22,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 33,
+      "severity": "LOW",
+      "description": "unlocked npm/bun/yarn install during build (unpinned dependency risk)"
+    },
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 139,
+      "severity": "LOW",
+      "description": "unlocked npm/bun/yarn install during build (unpinned dependency risk)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:49:18.488524460+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.16.4.34",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T19:49:18.488524460+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "6a0cc863d4c36ff2664afcf77052aacd6c67ff7507da35af135fbee83e300738",
+  "signature": null
+}
