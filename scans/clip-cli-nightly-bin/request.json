@@ -1,0 +1,8 @@
+{
+  "package": "clip-cli-nightly-bin",
+  "aur_commit": "707fdb45350fb58aa06190e39ac8f9ee86e06464",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-09-30T05:57:51Z"
+}
