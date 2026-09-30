@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "clip-cli-nightly-bin",
+    "version": "3.0.1+nightly+20260930+0+g10afbd59-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "707fdb45350fb58aa06190e39ac8f9ee86e06464",
+    "pkgbuild_sha256": "29aed2333ca9cd12d5851affe4db4dbfbb3f4991931aff9f7a1d9a38b4efc1e2",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T06:00:53.930042718+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 18,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 19,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:00:53.922963980+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-30T06:00:53.922963980+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T06:00:53.922963980+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/clip",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d3e7f350080be460b8bbe70657cb94f4624306ae7df86b502b0bc313edc6fba7",
+  "signature": null
+}
