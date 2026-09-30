@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ampcode",
+    "version": "0.0.1790769659_g954f35-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4658cba77be37ca5783dd5c985ad7f32a20e8024",
+    "pkgbuild_sha256": "ec14e041e6111117dc96834227168b43d58e2fe57a5dd9a5b8b23c51b38ee7e1",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-09-30T13:06:04.214648831+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-09-30T13:06:04.205315151+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "136.68.113.218",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-09-30T13:06:04.205315151+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/amp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "080f897356186b6bdad1c4fdf962dd2c12ba37704639be46b0e51d1f5e006b72",
+  "signature": null
+}
