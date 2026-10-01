@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "angkorgit-bin",
+    "version": "0.20.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "45f04d3c58b36be7d675874f2d847a1cf0c8fa60",
+    "pkgbuild_sha256": "80872016f8a8dbba35ed23054700dfa1c18d9b5ae9853da2308d3beffa1187f3",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T00:18:45.589435344+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:18:45.535490467+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:18:45.535490467+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:18:45.535490467+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:18:45.553975621+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:18:45.553975621+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 7,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/angkorgit",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "8b382a4e46645cb716565c43429cb690a39c441771e066f038be9306a3c5636c",
+  "signature": null
+}
