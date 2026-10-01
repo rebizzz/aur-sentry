@@ -1,0 +1,14 @@
+pkgbase = arcticons-icon-theme
+	pkgdesc = A monotone line-based icon pack for android - freedesktop version
+	pkgver = 15.3.2.0
+	pkgrel = 1
+	url = https://codeberg.org/Arcticons/Arcticons-Linux
+	arch = any
+	license = GPL3
+	provides = arcticons-icon-theme
+	conflicts = arcticons-icon-theme
+	options = !strip
+	source = https://codeberg.org/Arcticons/Arcticons-Linux/archive/15.3.2.0.tar.gz
+	sha512sums = 03d7ddd59a694290a37fc68a08ea6b77813d424865bb3ece4ee926781400f93206ac2e09fdf443dbf7737ace78518bff01140d9e6e86ba3c84fca3c35239803e
+
+pkgname = arcticons-icon-theme
