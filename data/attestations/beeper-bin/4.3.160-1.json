@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "beeper-bin",
+    "version": "4.3.160-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "63d0fc0afeda1df372fb92f3c499838d4e966342",
+    "pkgbuild_sha256": "b97d96b88856441ab2ee5dffc952bb3daa88f8b06b95c8a72cd32c01f0e4b0b1",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T06:26:35.558274951+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 60,
+      "severity": "CRITICAL",
+      "description": "eval with dynamic variable (executes constructed shell string)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:26:35.551626117+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.67.71.63",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:26:35.551626117+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Potential Command Injection in libnotify (GHSA-6898-wx94-8jq8)",
+      "url": "https://osv.dev/vulnerability/GHSA-6898-wx94-8jq8"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "67d92abe3fcaba65d77f5f9dc12e1529e33a74714d52cc0fb2aa1b67774d04b6",
+  "signature": null
+}
