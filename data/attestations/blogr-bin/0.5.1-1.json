@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "blogr-bin",
+    "version": "0.5.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "0f1d21953cdebc865ca48183a0288ab244f32b64",
+    "pkgbuild_sha256": "377cee4eaca4a8bd0493937947d27bb1f8ff3698cc01cbdfb178b81db85469d3",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T13:55:49.904303086+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T13:55:49.897470575+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-01T13:55:49.897470575+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T13:55:49.897470575+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/blogr",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f34986d69de2f626bd5fabd596323938433760fe3a879966d5e2ba3053f16d8a",
+  "signature": null
+}
