@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "buck2-bin",
+    "version": "2026.10.01-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e2577a745b73a450c819d7ab81c306aaa2c0d501",
+    "pkgbuild_sha256": "8ebd56bd14123de3f1dde2e6a2a598f981eda884049ff86e293d8ebd79750998",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T06:26:51.544173978+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:26:51.532338705+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:26:51.532338705+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:26:51.532338705+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/buck2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "zstd vulnerable to buffer overrun (GHSA-5c9c-6x87-f9vm)",
+      "url": "https://osv.dev/vulnerability/GHSA-5c9c-6x87-f9vm"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "b8315b368690ffbf473fd469ff9e6eba9e4ebd633a7e2511c14af72c93bf05b4",
+  "signature": null
+}
