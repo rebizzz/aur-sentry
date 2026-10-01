@@ -1,0 +1,56 @@
+# Maintainer: AkitaOnRails <boss@akitaonrails.com>
+
+pkgname=ai-jail
+pkgver=2.6.0
+pkgrel=1
+pkgdesc="Sandbox wrapper for AI coding agents"
+arch=('x86_64' 'aarch64')
+url="https://github.com/akitaonrails/ai-jail"
+license=('GPL-3.0-only')
+depends=('bubblewrap' 'glibc' 'gcc-libs')
+makedepends=('cargo')
+optdepends=(
+    'mise: language version management inside the sandbox'
+    'docker: Docker socket passthrough for sandboxed agents'
+)
+# Cargo's release profile strips symbols, so the auto-generated -debug split
+# would be empty and would collide with ai-jail-bin-debug if both package
+# variants were ever installed on the same machine.
+options=('!debug' '!lto')
+conflicts=('ai-jail-bin')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('eb6ce972875c9a0bd96f38877ebbc5ef7d85e99ea94260c6fa18e31aa6ac6f54')
+
+prepare() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=1.97.1
+    cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+}
+
+build() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=1.97.1
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release
+}
+
+check() {
+    cd "$pkgname-$pkgver"
+    export RUSTUP_TOOLCHAIN=1.97.1
+    export CARGO_TARGET_DIR=target
+    # Pin CARGO_HOME to the real cargo cache (populated by prepare()/build())
+    export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
+    export HOME="$srcdir/test-home"
+    mkdir -p "$HOME"
+    # Keep AUR builds robust across user kernels/containers: run the unit test
+    # binary, not the sandbox-escape integration tests that require working
+    # unprivileged namespaces at package-build time.
+    cargo test --frozen --release --bin ai-jail
+}
+
+package() {
+    cd "$pkgname-$pkgver"
+    install -Dm0755 -t "$pkgdir/usr/bin/"                    "target/release/ai-jail"
+    install -Dm0644 -t "$pkgdir/usr/share/doc/$pkgname/"     "README.md"
+    install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
