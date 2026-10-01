@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aimp-skins",
+    "version": "20261001-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d5f68c512899c13508353eb77af2cd5857871421",
+    "pkgbuild_sha256": "824c3cfd8a8b77decb746c30d8fcf1a2cddd8eb7a5b6bba328d870a931e01df6",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T13:53:56.931572367+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "VERIFIED",
+  "evidence_hash": "20738f359bab0d5e127383919379677bf71cd9df412040ea893d6e0465dff70e",
+  "signature": null
+}
