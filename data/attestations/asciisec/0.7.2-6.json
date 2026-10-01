@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "asciisec",
+    "version": "0.7.2-6",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "93750efe7e81f66538f2909d1f9bf4dec5b5ff59",
+    "pkgbuild_sha256": "cc6abe7f36c237ac4854ed52fc48e66877d915f016419c6c82b6d4474bd0ac46",
+    "install_sha256": "29ed8a8464387261c3bc30b0c944759e1209d7c3b5a536b4bf597bedeaca08ed"
+  },
+  "analyzed_at": "2026-10-01T19:59:09.356900352+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 11,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T19:59:09.350181206+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "57.128.93.156",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-01T19:59:09.350181206+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "a4d2630a93601e2bf79779f36123c4da24bb12d227c5700fba2769f853f92166",
+  "signature": null
+}
