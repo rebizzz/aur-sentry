@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bettbox-pre",
+    "version": "1.19.4pre1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f7a52ef7db00cb8af27450c21d68a9d6c53c6468",
+    "pkgbuild_sha256": "d00e7a9da17187cef84446a8aed1d6f0e9f39362a910ac747819ff7575b016c3",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T20:01:08.629316489+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T20:01:08.608661695+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T20:01:08.608661695+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T20:01:08.608661695+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf out-of-bounds read (GHSA-5pcj-3m26-w633)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pcj-3m26-w633"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf v0.9 was discovered to contain an out-of-bounds read via the function modifyRPath at src/patchelf.cc. (PYSEC-2022-43144)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2022-43144"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "e04f0e4b8cc58ccb1a20bb1dee3afd338243dcea6f7abc300be671e67f878ec0",
+  "signature": null
+}
