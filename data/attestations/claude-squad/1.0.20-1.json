@@ -1,0 +1,71 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "claude-squad",
+    "version": "1.0.20-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "281f4a3484398b2f6f19600ce5c5c302ee61909c",
+    "pkgbuild_sha256": "1f1a12c42f09c25d96e49e2efe8b3e2c58b63f1b21b8f00682378581bee848b2",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T13:56:42.382652789+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T13:56:42.373879843+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T13:56:42.373879843+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T13:56:42.373879843+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "85d1f753738205f51a13056b53f7fcca917480b57d357e3335a5967ecea3af6d",
+  "signature": null
+}
