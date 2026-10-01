@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "arcticons-icon-theme",
+    "version": "15.3.2.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "1729fef72970dfc4b77bc0b4c752428034bdf734",
+    "pkgbuild_sha256": "e375745b280293b832c02b2251bf2df076686ebe3b97a0a328e2b65b74188d3f",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T00:17:27.304248703+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:17:27.298769019+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "217.197.84.140",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-01T00:17:27.298769019+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "85d8e2f949e71d270b32b57c13f6bd80f8e8ab2a5a55b0ea5e8254ced9c3a7e9",
+  "signature": null
+}
