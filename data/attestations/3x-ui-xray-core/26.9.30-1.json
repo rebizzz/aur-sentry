@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "3x-ui-xray-core",
+    "version": "26.9.30-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "34e74f42a62c15f3d9d2b8b3a4efae1b4747e8a9",
+    "pkgbuild_sha256": "a84d6baff0efa8f786ee39f5854788c850bcb8416e5db649716a41825c371bbd",
+    "install_sha256": "5e697bfb12148b6d60f5827f4942c84eb0e777ec37546c4ce96a651f3ad8a3c2"
+  },
+  "analyzed_at": "2026-10-01T06:24:56.572943214+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:24:56.557035886+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:24:56.557035886+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:24:56.557035886+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ad93039de4cd656edb044d0a91bc3a75fe4be54eda3ecbc7267fbba73c6bde7f",
+  "signature": null
+}
