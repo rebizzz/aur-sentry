@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "deadlywp-bin",
+    "version": "0.0.7-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4521bd1714dba991942ba02a8e967bc2e447a356",
+    "pkgbuild_sha256": "59548b2ebd0d0154cc97bc61b9ba77e50e2efe83e896148789205d12aaaace0a",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T06:29:10.647433490+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:29:10.575584600+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:29:10.575584600+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:29:10.575584600+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:29:10.597445143+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.3.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:29:10.597445143+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 6,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/deadlywp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "df3795f37f8aa4cf8db55a19e129dc76538e0b7c7314ed063961783138e14464",
+  "signature": null
+}
