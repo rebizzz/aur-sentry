@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "booru-viewer-git",
+    "version": "0.3.3.r0.geb75e06-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "ce1ae2e2678c575b8cdf9322c3da8b138216627e",
+    "pkgbuild_sha256": "1d4d5ce588a1a0c45acfd53d8031cee993e30dfb8721069d4745d31744261a58",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T00:18:40.176360815+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:18:40.169470183+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.21.95.107",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:18:40.169470183+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "42d29e7f1725545185cc62f60c72b9f2486216c6565bb1d65a15b9800944860e",
+  "signature": null
+}
