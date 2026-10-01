@@ -1,0 +1,72 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "browseros-bin",
+    "version": "0.50.5-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "aa30c5403ebac1cf7c2f8215b4b58341880344d7",
+    "pkgbuild_sha256": "02781b034fea1f082a8bb78dabdfb647370e5b206c1ff5d76e612d52af9f0ff2",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T06:26:57.405838164+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 17,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:26:57.400710679+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:26:57.400710679+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T06:26:57.400710679+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "294041e8e3ec07076cf54ce883e76166b87a97010c62375593cdd1a6dacb2651",
+  "signature": null
+}
