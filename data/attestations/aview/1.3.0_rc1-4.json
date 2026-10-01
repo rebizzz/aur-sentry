@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aview",
+    "version": "1.3.0_rc1-4",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "48e3407b419961bfc5d8c33b26efa24df31b891c",
+    "pkgbuild_sha256": "2fbaec929e1348f69a9e181afcbc07222037de3725a95a2b3dd5b14727679968",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T20:00:08.645220137+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T20:00:08.638728745+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.18.12.149",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-01T20:00:08.638728745+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "69.65.16.141",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T20:00:08.638728745+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "8d06e039dfe0089cc96ef401f3b62d88d4c62e21de26e2bd122a398d6c609b71",
+  "signature": null
+}
