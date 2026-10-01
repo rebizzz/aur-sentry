@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bitrise",
+    "version": "3.1.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d4069494314365de35addc526ca25dede4457735",
+    "pkgbuild_sha256": "54d052c0de09289afefefbb0a6bc220711567305c346323c719f9c95226e2891",
+    "install_sha256": "89dc9013e987ec829c9d7661737f685b34b954336883e24d51f92ecdfe87a5e8"
+  },
+  "analyzed_at": "2026-10-01T00:19:05.314694413+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:19:05.297424338+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:19:05.297424338+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:19:05.297424338+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "4b2fd1f6f01974834d26f91a320a04ed0a3e53caf075945455c0c7bf90b6fef1",
+  "signature": null
+}
