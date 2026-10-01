@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aacs-keydb-daily",
+    "version": "20261001000656-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "7712a4455c5739bbd0ceb029e8cbbb757eeda294",
+    "pkgbuild_sha256": "5c2644898ab9a37cc647fb9f2ca0b00a89bc2482ec400532454bc868cdf2b1f5",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-01T00:17:48.248837758+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:17:48.241871901+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "207.241.237.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-01T00:17:48.241871901+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:17:48.247759691+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.3.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-01T00:17:48.247759691+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "752daadb95a44185d3cff9acf4e080786930e6ac1277dfba4bf1c65030e007ff",
+  "signature": null
+}
