@@ -1,0 +1,137 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bocker",
+    "version": "0.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f00707927ca5fe2bccbf67bfd24ebd11259ae435",
+    "pkgbuild_sha256": "f1b0c5b2431893abf94bc27a7aac1f8a16720d7d992fbc8a0e92014667a0b1ae",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-02T06:20:08.094583952+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:08.089094434+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:08.089094434+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:08.089094434+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:08.093403913+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:08.093403913+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 3,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-2m8x-mvfx-gwgj)",
+      "url": "https://osv.dev/vulnerability/GHSA-2m8x-mvfx-gwgj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-4wrp-79m8-9m9p)",
+      "url": "https://osv.dev/vulnerability/GHSA-4wrp-79m8-9m9p"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Permission Assignment for Critical Resource (GHSA-5hgf-628x-mcqf)",
+      "url": "https://osv.dev/vulnerability/GHSA-5hgf-628x-mcqf"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Short Circuit Evaluation Issue (GHSA-5pv5-xh52-hvrp)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pv5-xh52-hvrp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Improper Input Validation Issue in its env Utility (GHSA-5v4g-vw9x-h534)",
+      "url": "https://osv.dev/vulnerability/GHSA-5v4g-vw9x-h534"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-6g8r-74qp-6859)",
+      "url": "https://osv.dev/vulnerability/GHSA-6g8r-74qp-6859"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils doesn't preserve file ownership during moves across different filesystem boundaries (GHSA-957r-r8gc-vv3h)",
+      "url": "https://osv.dev/vulnerability/GHSA-957r-r8gc-vv3h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-Check to Time-of-Use (TOCTOU) race condition (GHSA-9gh9-hwpr-rvqq)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gh9-hwpr-rvqq"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Uncaught Exception When Encountering Valid but Non-UTF-8 Paths (GHSA-f2jv-wjjc-2c94)",
+      "url": "https://osv.dev/vulnerability/GHSA-f2jv-wjjc-2c94"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Provision of Specified Functionality Issue (GHSA-fhr3-xh3q-69w6)",
+      "url": "https://osv.dev/vulnerability/GHSA-fhr3-xh3q-69w6"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "7f5ffb028d4dbe21ed28e7e5f5401c24bea9d56643567f08e765b134341a542f",
+  "signature": null
+}
