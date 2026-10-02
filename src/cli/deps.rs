@@ -37,7 +37,10 @@ pub fn run(args: &DepsArgs) -> ExitCode {
         let text = match std::fs::read_to_string(target_path) {
             Ok(t) => t,
             Err(e) => {
-                eprintln!("{RED}{ICON_CROSS} can't read {}: {e}{RESET}", target_path.display());
+                eprintln!(
+                    "{RED}{ICON_CROSS} can't read {}: {e}{RESET}",
+                    target_path.display()
+                );
                 return ExitCode::FAILURE;
             }
         };
@@ -59,7 +62,9 @@ pub fn run(args: &DepsArgs) -> ExitCode {
                     (name, ver, text)
                 }
                 None => {
-                    eprintln!("{RED}{ICON_CROSS} couldn't find or download PKGBUILD for '{target}'{RESET}");
+                    eprintln!(
+                        "{RED}{ICON_CROSS} couldn't find or download PKGBUILD for '{target}'{RESET}"
+                    );
                     return ExitCode::FAILURE;
                 }
             }
@@ -77,7 +82,8 @@ pub fn run(args: &DepsArgs) -> ExitCode {
         compile_dependency_bom(&pkgname, &pkgver, &raw_deps, &client, args.depth);
 
     if args.json {
-        let json_out = serde_json::to_string_pretty(&bom).expect("DependencyBom serializes to JSON");
+        let json_out =
+            serde_json::to_string_pretty(&bom).expect("DependencyBom serializes to JSON");
         println!("{json_out}");
     } else {
         render_deps_terminal(&bom);
@@ -134,7 +140,11 @@ fn render_deps_terminal(bom: &DependencyBom) {
             .iter()
             .filter(|w| w.level == ThreatLevel::Critical)
             .count();
-        if crit > 0 { 10.0 } else { (sum.warning_count as f64 * 2.5).min(8.0) }
+        if crit > 0 {
+            10.0
+        } else {
+            (sum.warning_count as f64 * 2.5).min(8.0)
+        }
     } else {
         0.0
     };
@@ -149,8 +159,14 @@ fn render_deps_terminal(bom: &DependencyBom) {
     };
 
     let rows = [
-        BoxRow::new("Target:", format!("{} v{}", bom.root_package, bom.root_version)),
-        BoxRow::new("Total Deps:", format!("{} packages resolved", sum.total_dependencies)),
+        BoxRow::new(
+            "Target:",
+            format!("{} v{}", bom.root_package, bom.root_version),
+        ),
+        BoxRow::new(
+            "Total Deps:",
+            format!("{} packages resolved", sum.total_dependencies),
+        ),
         BoxRow::new(
             "Breakdown:",
             format!(
@@ -169,7 +185,12 @@ fn render_deps_terminal(bom: &DependencyBom) {
         ),
     ];
 
-    let box_str = render_box("DEPENDENCY AUDIT & BILL OF MATERIALS", &rows, border_color, 66);
+    let box_str = render_box(
+        "DEPENDENCY AUDIT & BILL OF MATERIALS",
+        &rows,
+        border_color,
+        66,
+    );
     eprint!("{box_str}");
     eprintln!();
 

@@ -279,7 +279,10 @@ impl MultiSourceClient {
         }
 
         // 3. Virtual common system targets
-        if matches!(clean_name, "sh" | "awk" | "java-runtime" | "java-environment") {
+        if matches!(
+            clean_name,
+            "sh" | "awk" | "java-runtime" | "java-environment"
+        ) {
             let intel = PackageIntelligence {
                 name: clean_name.to_string(),
                 origin: PackageOrigin::VirtualProvides,
@@ -308,7 +311,10 @@ impl MultiSourceClient {
                 num_votes: None,
                 popularity: None,
                 out_of_date: false,
-                upstream_url: Some(format!("https://archlinux.org/packages/{}/{clean_name}/", origin.repo_name())),
+                upstream_url: Some(format!(
+                    "https://archlinux.org/packages/{}/{clean_name}/",
+                    origin.repo_name()
+                )),
                 description: Some("Official Arch Linux package".to_string()),
                 depends: Vec::new(),
                 make_depends: Vec::new(),

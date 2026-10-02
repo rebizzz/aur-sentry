@@ -170,7 +170,11 @@ impl DependencyBom {
         let mut aur = Vec::new();
         let mut seen = HashSet::new();
 
-        for node in self.direct_dependencies.iter().chain(&self.transitive_dependencies) {
+        for node in self
+            .direct_dependencies
+            .iter()
+            .chain(&self.transitive_dependencies)
+        {
             if seen.insert(&node.name) {
                 let item = WebDepItem {
                     name: node.name.clone(),
@@ -238,7 +242,11 @@ impl DependencyBom {
             let child_total = children.len();
             for (j, child) in children.iter().enumerate() {
                 let child_is_last = j + 1 == child_total;
-                let child_conn = if child_is_last { "└── " } else { "├── " };
+                let child_conn = if child_is_last {
+                    "└── "
+                } else {
+                    "├── "
+                };
                 out.push_str(&format!(
                     "{child_prefix}{child_conn}📦 {} [{}]\n",
                     child.name,
@@ -257,10 +265,7 @@ pub fn parse_dependency_spec(
     dep_type: DependencyType,
     arch: Option<String>,
 ) -> RawDependency {
-    let clean = spec
-        .trim()
-        .trim_matches(|c| c == '\'' || c == '"')
-        .trim();
+    let clean = spec.trim().trim_matches(|c| c == '\'' || c == '"').trim();
 
     let (dep_spec, desc) = if dep_type == DependencyType::OptDepends {
         if let Some((pkg, rest)) = clean.split_once(':') {
@@ -310,9 +315,9 @@ pub fn extract_pkgbuild_dependencies(content: &str) -> Vec<RawDependency> {
     let mut results = Vec::new();
 
     // Check for .SRCINFO format: lines like `\tdepends = pkg` or `pkgbase = ...`
-    let is_srcinfo = content
-        .lines()
-        .any(|l| l.contains("pkgbase =") || l.contains("pkgname =") || l.starts_with("\tdepends ="));
+    let is_srcinfo = content.lines().any(|l| {
+        l.contains("pkgbase =") || l.contains("pkgname =") || l.starts_with("\tdepends =")
+    });
     if is_srcinfo {
         for line in content.lines() {
             let trimmed = line.trim();
@@ -325,18 +330,22 @@ pub fn extract_pkgbuild_dependencies(content: &str) -> Vec<RawDependency> {
                     "makedepends" => (Some(DependencyType::MakeDepends), None),
                     "checkdepends" => (Some(DependencyType::CheckDepends), None),
                     "optdepends" => (Some(DependencyType::OptDepends), None),
-                    k if k.starts_with("depends_") => {
-                        (Some(DependencyType::Depends), Some(k["depends_".len()..].to_string()))
-                    }
-                    k if k.starts_with("makedepends_") => {
-                        (Some(DependencyType::MakeDepends), Some(k["makedepends_".len()..].to_string()))
-                    }
-                    k if k.starts_with("checkdepends_") => {
-                        (Some(DependencyType::CheckDepends), Some(k["checkdepends_".len()..].to_string()))
-                    }
-                    k if k.starts_with("optdepends_") => {
-                        (Some(DependencyType::OptDepends), Some(k["optdepends_".len()..].to_string()))
-                    }
+                    k if k.starts_with("depends_") => (
+                        Some(DependencyType::Depends),
+                        Some(k["depends_".len()..].to_string()),
+                    ),
+                    k if k.starts_with("makedepends_") => (
+                        Some(DependencyType::MakeDepends),
+                        Some(k["makedepends_".len()..].to_string()),
+                    ),
+                    k if k.starts_with("checkdepends_") => (
+                        Some(DependencyType::CheckDepends),
+                        Some(k["checkdepends_".len()..].to_string()),
+                    ),
+                    k if k.starts_with("optdepends_") => (
+                        Some(DependencyType::OptDepends),
+                        Some(k["optdepends_".len()..].to_string()),
+                    ),
                     _ => (None, None),
                 };
 
@@ -560,7 +569,12 @@ pub fn evaluate_dependency_threats(
     let name = &dep.name;
 
     // Do not flag virtual sonames (e.g. libalpm.so) or known virtual targets
-    if name.contains(".so") || matches!(name.as_str(), "sh" | "awk" | "java-runtime" | "java-environment") {
+    if name.contains(".so")
+        || matches!(
+            name.as_str(),
+            "sh" | "awk" | "java-runtime" | "java-environment"
+        )
+    {
         return warnings;
     }
 
@@ -576,7 +590,9 @@ pub fn evaluate_dependency_threats(
         "crypto",
     ];
     for &core in CORE_PRIMITIVES {
-        if name != core && (name.starts_with(&format!("{core}-")) || name.ends_with(&format!("-{core}"))) {
+        if name != core
+            && (name.starts_with(&format!("{core}-")) || name.ends_with(&format!("-{core}")))
+        {
             if !origin.is_official() && !client.is_official_package(name) {
                 warnings.push(DependencyThreatWarning {
                     package_name: name.clone(),
@@ -641,7 +657,9 @@ pub fn compile_dependency_bom(
         };
 
         match intel.origin {
-            PackageOrigin::OfficialCore | PackageOrigin::OfficialExtra | PackageOrigin::OfficialMultilib => {
+            PackageOrigin::OfficialCore
+            | PackageOrigin::OfficialExtra
+            | PackageOrigin::OfficialMultilib => {
                 summary.official_count += 1;
             }
             PackageOrigin::Aur => {

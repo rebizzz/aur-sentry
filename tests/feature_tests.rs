@@ -141,12 +141,7 @@ optdepends=('pipewire: audio server')
 "#;
     let pkgbuild = sandbox.write_file("PKGBUILD", content);
 
-    let output = run_aur_sentry(&[
-        "deps",
-        pkgbuild.to_str().unwrap(),
-        "--json",
-        "--offline",
-    ]);
+    let output = run_aur_sentry(&["deps", pkgbuild.to_str().unwrap(), "--json", "--offline"]);
 
     assert_eq!(output.code(), Some(0));
     assert!(
@@ -178,11 +173,7 @@ depends=('glibc' 'bash')
 "#;
     let pkgbuild = sandbox.write_file("PKGBUILD", content);
 
-    let output = run_aur_sentry(&[
-        "deps",
-        pkgbuild.to_str().unwrap(),
-        "--offline",
-    ]);
+    let output = run_aur_sentry(&["deps", pkgbuild.to_str().unwrap(), "--offline"]);
 
     assert_eq!(output.code(), Some(0));
     assert!(output.stderr.contains("AUR-Sentry"));
@@ -201,11 +192,7 @@ depends=('glibc' 'archlinux-keyring-malicious-patch')
 "#;
     let pkgbuild = sandbox.write_file("PKGBUILD", content);
 
-    let output = run_aur_sentry(&[
-        "deps",
-        pkgbuild.to_str().unwrap(),
-        "--offline",
-    ]);
+    let output = run_aur_sentry(&["deps", pkgbuild.to_str().unwrap(), "--offline"]);
 
     assert_eq!(
         output.code(),

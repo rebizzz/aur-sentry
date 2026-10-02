@@ -12,9 +12,8 @@ use std::process::{Command, Stdio};
 use std::sync::LazyLock;
 use std::time::{Duration, Instant};
 
-static PKG_NAME_RE: LazyLock<Regex> = LazyLock::new(|| {
-    Regex::new(r"^[A-Za-z0-9@_+][A-Za-z0-9@._+-]{0,127}$").expect("valid regex")
-});
+static PKG_NAME_RE: LazyLock<Regex> =
+    LazyLock::new(|| Regex::new(r"^[A-Za-z0-9@_+][A-Za-z0-9@._+-]{0,127}$").expect("valid regex"));
 
 static INSTALL_RE: LazyLock<Regex> = LazyLock::new(|| {
     Regex::new(r#"install=\s*['"]?([a-zA-Z0-9._-]+\.install)"#).expect("valid regex")
@@ -314,13 +313,15 @@ pub fn prepare_sandbox_paths(
     }
 
     let has_traversal = custom_out.is_some_and(|p| {
-        p.components().any(|c| matches!(c, std::path::Component::ParentDir))
+        p.components()
+            .any(|c| matches!(c, std::path::Component::ParentDir))
     });
 
     let base_root = if let Some(custom) = custom_out {
         // Enforce that custom directory is anchored within generated/ and contains no traversal
         if has_traversal
-            || (!custom.starts_with(repo_root.join("generated")) && !custom.starts_with("generated"))
+            || (!custom.starts_with(repo_root.join("generated"))
+                && !custom.starts_with("generated"))
         {
             repo_root.join("generated/sandbox").join(pkgname)
         } else if custom.is_relative() {
@@ -541,10 +542,7 @@ pub fn run_sandbox_audit(
     cmd.env("SANDBOX_WORK", paths.work_dir.to_string_lossy().as_ref());
     cmd.env("SANDBOX_MEM", &options.memory_limit);
     cmd.env("SANDBOX_CPUS", &options.cpu_limit);
-    cmd.env(
-        "SANDBOX_TIMEOUT",
-        format!("{}s", options.timeout.as_secs()),
-    );
+    cmd.env("SANDBOX_TIMEOUT", format!("{}s", options.timeout.as_secs()));
     cmd.env("AUR_SENTRY_BIN", aur_sentry_bin.to_string_lossy().as_ref());
 
     let status = cmd.status().map_err(|e| SandboxError::ExecutionFailed {
@@ -686,7 +684,11 @@ mod tests {
         let paths = prepare_sandbox_paths(&repo_root, "test-local", None).unwrap();
 
         let local_pkgbuild = paths.source_dir.join("PKGBUILD");
-        std::fs::write(&local_pkgbuild, "pkgname=local-tool\npkgver=3.2.1\npkgrel=2\n").unwrap();
+        std::fs::write(
+            &local_pkgbuild,
+            "pkgname=local-tool\npkgver=3.2.1\npkgrel=2\n",
+        )
+        .unwrap();
 
         let (pkg, ver) = acquire_package_source(local_pkgbuild.to_str().unwrap(), &paths).unwrap();
         assert_eq!(pkg, "local-tool");

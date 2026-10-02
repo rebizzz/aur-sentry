@@ -134,10 +134,22 @@ pub fn stderr_supports_color() -> bool {
 
 /// Generate a colored visual block gauge: `[████████░░] 8.0/10 [CRITICAL]`
 pub fn threat_gauge(score: f64, max_score: f64, width: usize, colored: bool) -> String {
-    let safe_max = if max_score.is_nan() || max_score <= 0.0 { 10.0 } else { max_score };
-    let safe_score = if score.is_nan() || score < 0.0 { 0.0 } else { score };
+    let safe_max = if max_score.is_nan() || max_score <= 0.0 {
+        10.0
+    } else {
+        max_score
+    };
+    let safe_score = if score.is_nan() || score < 0.0 {
+        0.0
+    } else {
+        score
+    };
     let clamped = safe_score.clamp(0.0, safe_max);
-    let ratio = if safe_max > 0.0 { clamped / safe_max } else { 0.0 };
+    let ratio = if safe_max > 0.0 {
+        clamped / safe_max
+    } else {
+        0.0
+    };
     let filled_blocks = (ratio * (width as f64)).round() as usize;
     let filled = filled_blocks.min(width);
     let empty = width.saturating_sub(filled);
@@ -155,7 +167,9 @@ pub fn threat_gauge(score: f64, max_score: f64, width: usize, colored: bool) -> 
     let bar = format!("{}{}", "█".repeat(filled), "░".repeat(empty));
 
     if colored {
-        format!("{color}[{bar}]{RESET} {BOLD}{clamped:.1}/{safe_max:.0}{RESET} {color}[{rating}]{RESET}")
+        format!(
+            "{color}[{bar}]{RESET} {BOLD}{clamped:.1}/{safe_max:.0}{RESET} {color}[{rating}]{RESET}"
+        )
     } else {
         format!("[{bar}] {clamped:.1}/{safe_max:.0} [{rating}]")
     }
@@ -191,12 +205,7 @@ impl<'a> BoxRow<'a> {
 }
 
 /// Render a rounded modern box with automatic column padding and pixel-perfect right borders.
-pub fn render_box(
-    title: &str,
-    rows: &[BoxRow],
-    border_color: &str,
-    min_width: usize,
-) -> String {
+pub fn render_box(title: &str, rows: &[BoxRow], border_color: &str, min_width: usize) -> String {
     let mut content_width = min_width;
     for row in rows {
         let row_w = visual_width(row.label) + 2 + visual_width(&row.value);
@@ -318,8 +327,16 @@ pub fn print_banner() {
     let subtitle = "  supply-chain threat radar for the arch user repository";
 
     eprintln!("{CYAN}╭{}╮{RESET}", "─".repeat(width));
-    eprintln!("{CYAN}│{BOLD}{WHITE}{:<w$}{RESET}{CYAN}│{RESET}", title, w = width);
-    eprintln!("{CYAN}│{DIM}{:<w$}{RESET}{CYAN}│{RESET}", subtitle, w = width);
+    eprintln!(
+        "{CYAN}│{BOLD}{WHITE}{:<w$}{RESET}{CYAN}│{RESET}",
+        title,
+        w = width
+    );
+    eprintln!(
+        "{CYAN}│{DIM}{:<w$}{RESET}{CYAN}│{RESET}",
+        subtitle,
+        w = width
+    );
     eprintln!("{CYAN}╰{}╯{RESET}", "─".repeat(width));
     eprintln!();
 }
@@ -336,7 +353,10 @@ pub fn print_scan_results(target: &str, findings: &[crate::findings::Finding]) {
         let rows = [
             BoxRow::new("Target:", target),
             BoxRow::new("Threat Gauge:", gauge),
-            BoxRow::new("Status:", format!("{GREEN}clean — no threats detected{RESET}")),
+            BoxRow::new(
+                "Status:",
+                format!("{GREEN}clean — no threats detected{RESET}"),
+            ),
         ];
         let box_str = render_box("SCAN VERDICT: VERIFIED CLEAN", &rows, GREEN, 60);
         eprint!("{box_str}");
@@ -346,17 +366,19 @@ pub fn print_scan_results(target: &str, findings: &[crate::findings::Finding]) {
         return;
     }
 
-    let border_color = if score >= 7.0 {
-        RED
-    } else {
-        YELLOW
-    };
+    let border_color = if score >= 7.0 { RED } else { YELLOW };
 
     let rows = [
         BoxRow::new("Target:", target),
-        BoxRow::new("Findings:", format!("{RED}{} threat(s) detected{RESET}", findings.len())),
+        BoxRow::new(
+            "Findings:",
+            format!("{RED}{} threat(s) detected{RESET}", findings.len()),
+        ),
         BoxRow::new("Threat Gauge:", gauge),
-        BoxRow::new("Action:", format!("{RED}QUARANTINE — DO NOT BUILD OR INSTALL{RESET}")),
+        BoxRow::new(
+            "Action:",
+            format!("{RED}QUARANTINE — DO NOT BUILD OR INSTALL{RESET}"),
+        ),
     ];
     let box_str = render_box("SCAN VERDICT: THREAT DETECTED", &rows, border_color, 60);
     eprint!("{box_str}");
