@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ampache",
+    "version": "8.2.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e8dcd188f0fcf3091953767774830ad94da1f2b5",
+    "pkgbuild_sha256": "ed7dc2fa63e62cf7ad1206cfa5668e692a9912aa82d6723afd05b771714aa0af",
+    "install_sha256": "bd9bad5e2825dbc203a7f8e478ba44657de559ce6fe4bd6d079089bbe47734db"
+  },
+  "analyzed_at": "2026-10-02T06:21:03.085282284+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:21:03.008265439+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:21:03.008265439+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:21:03.008265439+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:21:03.050173065+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:21:03.050173065+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 6296,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "MariaDB has Cleartext Transmission of Sensitive Information and Insufficiently Protected Credentials (GHSA-42r5-vhpq-m858)",
+      "url": "https://osv.dev/vulnerability/GHSA-42r5-vhpq-m858"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "MariaDB's connector leaks the cleartext password to an MitM despite `ssl: true` (GHSA-cqhc-2h57-wpxf)",
+      "url": "https://osv.dev/vulnerability/GHSA-cqhc-2h57-wpxf"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "MariaDB has  possible SQL injection in Buffer parameter escaping under big5/gbk/sjis/cp932/gb18030 client charsets (GHSA-g5xc-5w98-jfvm)",
+      "url": "https://osv.dev/vulnerability/GHSA-g5xc-5w98-jfvm"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "MariaDB server is a community developed fork of MySQL server. In versions 3.3.18 and 3.4.8, an application that was taking non-validated user input, escaping it with mysql_real_escape_string() and sending it to the database using text protocol and big5 character set was vulnerable to SQL injections, (PYSEC-2026-217)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-217"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "35ac3507341d53bb86624f7203b137b00f793bed20300a88e295c9f2e54975e7",
+  "signature": null
+}
