@@ -138,7 +138,7 @@ function findingsHtml(findings, pkgName, aurCommit) {
     let locHtml = `${escapeHtml(f.file)}:${escapeHtml(String(f.line))}`;
     if (f.file === "PKGBUILD" && f.line > 0 && aurCommit && aurCommit !== "unknown") {
       const cgitLineUrl = `https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=${encodeURIComponent(pkgName)}&id=${encodeURIComponent(aurCommit)}#n${f.line}`;
-      locHtml = `<a href="${cgitLineUrl}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">${locHtml} ${ICONS.extLink}</a>`;
+      locHtml = `<a href="${cgitLineUrl}" target="_blank" rel="noopener" class="finding-loc-link">${locHtml} ${ICONS.extLink}</a>`;
     }
     return `
       <div class="finding finding-${escapeHtml(f.severity)}">

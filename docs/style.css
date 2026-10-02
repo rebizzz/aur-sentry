@@ -956,12 +956,34 @@ code, .mono {
 .finding-top {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 10px;
   flex-wrap: wrap;
   font-size: 0.85rem;
   color: var(--text-muted);
   margin-bottom: 6px;
   font-weight: 500;
+}
+
+.finding-loc-link {
+  color: inherit;
+  text-decoration: underline;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ext-icon,
+svg.ext-icon,
+.finding-top svg,
+.finding svg {
+  width: 13px !important;
+  height: 13px !important;
+  max-width: 13px !important;
+  max-height: 13px !important;
+  display: inline-block;
+  vertical-align: -1px;
+  flex-shrink: 0;
 }
 
 .finding-desc {
