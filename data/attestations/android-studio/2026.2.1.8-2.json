@@ -1,0 +1,1562 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "android-studio",
+    "version": "2026.2.1.8-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "29f6e47f29cf876f922778ede666e98509b2aae7",
+    "pkgbuild_sha256": "82c8510040013ea75f07103178a96e8e536462f4ab36614d7ea7757fc27bba30",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-02T06:23:21.199053944+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:23:21.140644264+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "142.251.210.142",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:23:21.140644264+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:23:21.171933759+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:23:21.171933759+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 4033,
+    "elf_object_count": 247,
+    "elf_objects": [
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib64/libc++.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib64/liblldb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib64/libform.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib64/libpython3.11.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib64/libpanel.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib64/libxml2.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib64/libncurses.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib64/libedit.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib64/libc++abi.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/libc++.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_lsprof.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_opcode.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/ossaudiodev.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_decimal.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_socket.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_codecs_jp.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_datetime.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_testclinic.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_testmultiphase.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_bisect.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/mmap.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_xxsubinterpreters.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_xxtestfuzz.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_multibytecodec.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_posixsubprocess.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_contextvars.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/audioop.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/syslog.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_curses.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_posixshmem.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_struct.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/array.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/nis.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_codecs_tw.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/pyexpat.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_blake2.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/cmath.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_codecs_hk.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/binascii.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_statistics.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_md5.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/fcntl.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_sha3.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_multiprocessing.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/termios.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_testimportmultiple.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/math.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_codecs_cn.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_bz2.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_elementtree.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_zoneinfo.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_crypt.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_sha256.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_codecs_kr.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_heapq.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_asyncio.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_random.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/unicodedata.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_testcapi.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/select.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_codecs_iso2022.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_testbuffer.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_curses_panel.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/spwd.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/xxlimited_35.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/grp.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_ctypes_test.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_sha512.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_typing.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_json.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_testinternalcapi.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/resource.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_pickle.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_sha1.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_csv.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/_queue.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/xxlimited.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/lib/python3.11/lib-dynload/zlib.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/android/armeabi/lldb-server",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/android/x86_64/lldb-server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/android/x86/lldb-server",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/android/arm64-v8a/lldb-server",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/bin/llvm-symbolizer",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/bin/minidump_stackwalk",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/android-studio/plugins/android-ndk/resources/lldb/bin/LLDBFrontend",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-skylakex.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-ivybridge.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-cannonlake.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-base.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-base.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-icelake.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-haswell.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libllama.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libllama-common.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libllama-common.so.0.0.9660",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-x64.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-zen4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-cascadelake.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-cooperlake.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-rpc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libllama.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml.so.0.15.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-piledriver.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-alderlake.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libmtmd.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libllama-server-impl.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libmtmd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libmtmd.so.0.0.9660",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libllama-common.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/llama-server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-sse42.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libllama.so.0.0.9660",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-sandybridge.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-base.so.0.15.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-cpu-sapphirerapids.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/gemini/resources/llamacpp/libggml-vulkan.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/cidr-clangd/bin/clang/linux/x64/bin/libc++.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/cidr-clangd/bin/clang/linux/x64/bin/clangd",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/android-cli/bin/android",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/process-tracker-agent/native/x86_64/process-tracker",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/process-tracker-agent/native/armeabi-v7a/process-tracker",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/process-tracker-agent/native/x86/process-tracker",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/process-tracker-agent/native/arm64-v8a/process-tracker",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/transport/x86_64/transport",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/transport/armeabi-v7a/transport",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/transport/native/agent/x86_64/libjvmtiagent.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/transport/native/agent/armeabi-v7a/libjvmtiagent.so",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/transport/native/agent/x86/libjvmtiagent.so",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/transport/native/agent/arm64-v8a/libjvmtiagent.so",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/transport/x86/transport",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/transport/arm64-v8a/transport",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/simpleperf/x86_64/simpleperf",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/simpleperf/armeabi-v7a/simpleperf",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/simpleperf/x86/simpleperf",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/simpleperf/arm64-v8a/simpleperf",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/simpleperf/linux-x86_64/simpleperf",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/simpleperf/linux-x86_64/libsimpleperf_report.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/native/libimage_converter.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/native/libjni_object_tagger.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/x86_64/perfetto",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/x86_64/traced_probes",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/x86_64/traced",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/x86_64/libperfetto.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/armeabi-v7a/perfetto",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/armeabi-v7a/traced_probes",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/armeabi-v7a/traced",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/armeabi-v7a/libperfetto.so",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/x86/perfetto",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/x86/traced_probes",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/x86/traced",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/x86/libperfetto.so",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/arm64-v8a/perfetto",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/arm64-v8a/traced_probes",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/arm64-v8a/traced",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/perfetto/arm64-v8a/libperfetto.so",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/traceconv/traceconv",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/installer/x86_64/installer",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/installer/armeabi-v7a/installer",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/installer/x86/installer",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/installer/arm64-v8a/installer",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/trace_processor_server/trace-processor",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/screen-sharing-agent/x86_64/libscreen-sharing-agent.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/screen-sharing-agent/armeabi-v7a/libscreen-sharing-agent.so",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/screen-sharing-agent/x86/libscreen-sharing-agent.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/screen-sharing-agent/arm64-v8a/libscreen-sharing-agent.so",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/android/resources/trace_processor_daemon/trace_processor_daemon",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/webp/lib/libwebp/linux/libwebp_jni.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/design-tools/resources/layoutlib/data/linux/lib64/libandroid_runtime.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/plugins/design-tools/resources/layoutlib/data/linux/lib64/layoutlib_jni.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/lib/pty4j/linux/x86-64/libpty.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/lib/jna/amd64/libjnidispatch.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/lib/native/linux-x86_64/libsqliteij.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/lib/skiko-awt-runtime-all/libskiko-linux-x64.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libprefs.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libzip.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libawt_headless.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libmlib_image.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libj2gss.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libjaas.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/jspawnhelper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libjimage.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libmanagement_ext.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libmanagement.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libjsound.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/server/libjvm.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/server/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libsyslookup.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libawt_wlawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libinstrument.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libsctp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libjavajpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libawt_xawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libfontmanager.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libmanagement_agent.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libfontmanager_xawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/jexec",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libdt_socket.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libnio.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libverify.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libattach.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libjava.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libextnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libjdwp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libsplashscreen.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libj2pkcs11.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libwlsplashscreen.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/liblcms.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libjawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/librmi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libsaproc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libj2pcsc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/lib/libjli.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jhsdb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jar",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jstack",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/keytool",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jstat",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jcmd",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/javap",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/rmiregistry",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jnativescan",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jrunscript",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jwebserver",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jimage",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jps",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jlink",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/javac",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jmod",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jdeprscan",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jfr",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jdb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jmap",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jarsigner",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jinfo",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/java",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/javadoc",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/serialver",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/jbr/bin/jdeps",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/bin/studio",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/android-studio/bin/fsnotifier",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/android-studio/bin/restarter",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "fd615ffb319852a3fa1f90b8b52ea5aeddb1d16bf737434c936a65cfc331b32e",
+  "signature": null
+}
