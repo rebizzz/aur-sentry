@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "archie-cli-nightly",
+    "version": "0.4.0a-236",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "86a280c101feddd823f59fbeda13e5604b1795e0",
+    "pkgbuild_sha256": "48aa3ca4ddffb1b5159e26e86b2ce146bd1971b749cbe33570d6a1b8c704aada",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-02T00:19:50.484927337+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T00:19:50.476087870+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.65.251.78",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-02T00:19:50.476087870+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "uv is vulnerable to arbitrary file write through entry point names (GHSA-4gg8-gxpx-9rph)",
+      "url": "https://osv.dev/vulnerability/GHSA-4gg8-gxpx-9rph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv allows ZIP payload obfuscation through parsing differentials (GHSA-8qf3-x8v5-2pj8)",
+      "url": "https://osv.dev/vulnerability/GHSA-8qf3-x8v5-2pj8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv vulnerable to arbitrary file deletion through RECORD entries (GHSA-pjjw-68hj-v9mw)",
+      "url": "https://osv.dev/vulnerability/GHSA-pjjw-68hj-v9mw"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv allows ZIP payload obfuscation through parsing differentials (GHSA-pqhf-p39g-3x64)",
+      "url": "https://osv.dev/vulnerability/GHSA-pqhf-p39g-3x64"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv has ZIP payload obfuscation through parsing differentials (GHSA-v653-r55g-hcmg)",
+      "url": "https://osv.dev/vulnerability/GHSA-v653-r55g-hcmg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv has differential in tar extraction with PAX headers (GHSA-w476-p2h3-79g9)",
+      "url": "https://osv.dev/vulnerability/GHSA-w476-p2h3-79g9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv allows ZIP payload obfuscation through parsing differentials (PYSEC-2026-2001)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-2001"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "A flaw was found in uv. This vulnerability allows an attacker to execute malicious code during package resolution or installation via specially crafted ZIP (Zipped Information Package) archives that exploit parsing differentials, requiring user interaction to install an attacker-controlled package. (PYSEC-2026-2295)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-2295"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ab13e417e01202f62822f5db4183169cbdec22288281764f35a3b1872b4508c0",
+  "signature": null
+}
