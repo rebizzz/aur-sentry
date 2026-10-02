@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "agent-browser-bin",
+    "version": "0.38.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "55545d840affec695752ad5f68f8d5a6714c8f81",
+    "pkgbuild_sha256": "96dccbbc99c96bef79f3dbcd553498f25be64b2d02412c5fdf25ba43636bff17",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-02T00:19:08.047376063+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T00:19:08.036273378+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T00:19:08.036273378+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T00:19:08.036273378+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T00:19:08.036273378+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 31,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/lib/agent-browser/bin/agent-browser",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "7c6c8442c9e5fcda89cd2c77d42f946500020f2f8d634f0aab9a01112ab45bec",
+  "signature": null
+}
