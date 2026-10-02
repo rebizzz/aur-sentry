@@ -93,21 +93,20 @@ CUTOFF=$(( $(date -u +%s) - WINDOW_HOURS * 3600 ))
 CANDIDATES_FILE="$TMP_DIR/candidates.jsonl"
 
 # Packages modified within the window, newest first, bounded to CANDIDATE_LIMIT.
-# Note: $DUMP_JSON is already a top-level JSON array (the metadata dump), so
-# no -s/slurp here — that would wrap it in an extra array.
-jq -c --argjson cutoff "$CUTOFF" '
+# Native slicing in jq avoids broken pipe (SIGPIPE) errors when streaming to head.
+jq -c --argjson cutoff "$CUTOFF" --argjson limit "$CANDIDATE_LIMIT" '
   [ .[] | select((.LastModified // 0) >= $cutoff) |
     {name: .Name, base: (.PackageBase // .Name), version: (.Version // ""),
      maintainer: (.Maintainer // "orphan"), last_modified: (.LastModified // 0),
      first_submitted: (.FirstSubmitted // 0)} ] |
-  sort_by(-(.last_modified // 0))
-' "$DUMP_JSON" > "$TMP_DIR/candidates_array.json"
+  sort_by(-(.last_modified // 0)) |
+  .[0:$limit][]
+' "$DUMP_JSON" > "$CANDIDATES_FILE"
 JQ_STATUS=$?
 if [ "$JQ_STATUS" -ne 0 ]; then
     echo "[!] triage: metadata dump failed to parse (jq exit $JQ_STATUS), skipping triage this run (non-fatal)"
     exit 0
 fi
-jq -c '.[]' "$TMP_DIR/candidates_array.json" | head -n "$CANDIDATE_LIMIT" > "$CANDIDATES_FILE"
 
 NUM_CANDIDATES=$(wc -l < "$CANDIDATES_FILE" | tr -d ' ')
 echo "[*] triage: ${NUM_CANDIDATES} candidate package(s) modified in the last ${WINDOW_HOURS}h (bounded to ${CANDIDATE_LIMIT})"
