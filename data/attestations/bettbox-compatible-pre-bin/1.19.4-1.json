@@ -1,0 +1,190 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bettbox-compatible-pre-bin",
+    "version": "1.19.4-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "fdfec0155f408d38a7ec52f570ad055465391c2b",
+    "pkgbuild_sha256": "71f8874ca41cd0eca521665c5cf23ac49f5908eca7dda338fa03371d79426103",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-02T06:20:48.105824352+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    },
+    {
+      "behavior": "PRIVILEGE_ESCALATION",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "setuid/setgid file(s) found in built package: usr/lib/bettbox/BettboxCore"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:48.057249233+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:48.057249233+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:48.057249233+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:48.075226054+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.3.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:48.075226054+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 134,
+    "elf_object_count": 16,
+    "elf_objects": [
+      {
+        "path": "usr/lib/bettbox/BettboxCore",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libdynamic_color_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libcode_forge.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libhotkey_manager_linux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/liburl_launcher_linux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/librestart_app_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libflutter_qjs_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libdartjni.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libscreen_retriever_linux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libflutter_linux_gtk.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libtray_manager_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libwindow_manager_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libfile_selector_linux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libgtk_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/lib/libapp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/bettbox/Bettbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 1,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "eb67d92d337702e6c73da6c63ba37013fdcb9038785181ddc81396212db1db6d",
+  "signature": null
+}
