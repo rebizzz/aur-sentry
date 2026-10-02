@@ -114,7 +114,7 @@ jq -n \
   --args '{package: $package, aur_commit: $aur_commit, reasons: $ARGS.positional, requested_at: $requested_at}' \
   "${REASONS[@]}" > "$DEST/request.json"
 
-git -C "$WORKTREE" add -- "scans/$PKG"
+git -C "$WORKTREE" add -f -- "scans/$PKG"
 BOT_NAME="${BOT_NAME:-aur-sentry[bot]}"
 BOT_EMAIL="${BOT_EMAIL:-333591084+aur-sentry[bot]@users.noreply.github.com}"
 git -C "$WORKTREE" \
