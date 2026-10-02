@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "blockbench",
+    "version": "5.2.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "3d665d7853b51ef37deda2f8f8bcc7d37a980784",
+    "pkgbuild_sha256": "88af0ba3dcf69a49019037753968ffe91eba80082f080238884cf78b33fa3827",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-02T06:19:59.666974842+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 42,
+      "severity": "LOW",
+      "description": "unlocked npm/bun/yarn install during build (unpinned dependency risk)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:19:59.657350733+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:19:59.657350733+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Unpreventable top-level navigation (GHSA-2q4g-w47c-4674)",
+      "url": "https://osv.dev/vulnerability/GHSA-2q4g-w47c-4674"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Electron: Out-of-bounds read in second-instance IPC on macOS and Linux (GHSA-3c8v-cfp5-9885)",
+      "url": "https://osv.dev/vulnerability/GHSA-3c8v-cfp5-9885"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Renderers can obtain access to random bluetooth device without permission in Electron (GHSA-3p22-ghq8-v749)",
+      "url": "https://osv.dev/vulnerability/GHSA-3p22-ghq8-v749"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Vulnerable to Global node_modules Binary Overwrite (GHSA-4328-8hgf-7wjr)",
+      "url": "https://osv.dev/vulnerability/GHSA-4328-8hgf-7wjr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Electron: DevTools JavaScript Injection via Unsanitized Dock State Parameter (GHSA-4f78-qhmw-8j8m)",
+      "url": "https://osv.dev/vulnerability/GHSA-4f78-qhmw-8j8m"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Electron: HTTP Response Header Injection in custom protocol handlers and webRequest (GHSA-4p4r-m79c-wq3v)",
+      "url": "https://osv.dev/vulnerability/GHSA-4p4r-m79c-wq3v"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Chromium Remote Code Execution in electron (GHSA-4w88-rjj3-x7wp)",
+      "url": "https://osv.dev/vulnerability/GHSA-4w88-rjj3-x7wp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Electron: Use-after-free in offscreen child window paint callback (GHSA-532v-xpq5-8h95)",
+      "url": "https://osv.dev/vulnerability/GHSA-532v-xpq5-8h95"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Context isolation bypass in Electron (GHSA-56pc-6jqp-xqj8)",
+      "url": "https://osv.dev/vulnerability/GHSA-56pc-6jqp-xqj8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Electron: shell.openPath path validation bypass via embedded null byte (GHSA-5c9j-mhmv-5xgx)",
+      "url": "https://osv.dev/vulnerability/GHSA-5c9j-mhmv-5xgx"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "42067356295c0f48982d425a7d7761a1fcfa7389d3b23dc876a679a5a131e994",
+  "signature": null
+}
