@@ -21,6 +21,11 @@
             pkg-config
             openssl
             jq
+            gh
+            cosign
+            shellcheck
+            python3
+            curl
           ];
           RUST_BACKTRACE = "1";
         };

@@ -26,20 +26,60 @@ static STRACE_OPEN_RE: LazyLock<regex::Regex> =
 static URL_RE: LazyLock<regex::Regex> =
     LazyLock::new(|| regex::Regex::new(r#"https?://[^\s"'()]+"#).unwrap());
 
+static SOURCE_BLOCK_RE: LazyLock<regex::Regex> = LazyLock::new(|| {
+    regex::Regex::new(r#"(?s)\bsource(?:_[a-zA-Z0-9_]+)?\s*=\s*\((.*?)\)"#).unwrap()
+});
+
 /// Best-effort DNS resolution of PKGBUILD `source=()` hosts, so telemetry
 /// connections outside this allowlist can be flagged as undeclared network.
+/// Only extracts from actual source=() definitions to prevent arbitrary comments
+/// or metadata fields (like url=) from bypassing network checks.
 pub fn declared_source_ips(pkgbuild_text: &str) -> HashSet<String> {
     let mut ips = HashSet::new();
-    for m in URL_RE.find_iter(pkgbuild_text) {
-        let Some(host) = extract_host(m.as_str()) else {
-            continue;
-        };
-        if let Ok(mut addrs) = (host.as_str(), 80u16).to_socket_addrs() {
-            if let Some(addr) = addrs.next() {
-                ips.insert(addr.ip().to_string());
+
+    // Prefer extracting only from source=() / source_x86_64=() array blocks
+    let mut found_source = false;
+    for cap in SOURCE_BLOCK_RE.captures_iter(pkgbuild_text) {
+        found_source = true;
+        let block = &cap[1];
+        for line in block.lines() {
+            let trimmed = line.trim();
+            if trimmed.starts_with('#') {
+                continue;
+            }
+            for m in URL_RE.find_iter(trimmed) {
+                if let Some(host) = extract_host(m.as_str()) {
+                    if let Ok(mut addrs) = (host.as_str(), 80u16).to_socket_addrs() {
+                        if let Some(addr) = addrs.next() {
+                            ips.insert(addr.ip().to_string());
+                        }
+                    }
+                }
             }
         }
     }
+
+    // Fallback: if no source array matched (e.g. single-line source="..."), check lines starting with source
+    if !found_source {
+        for line in pkgbuild_text.lines() {
+            let trimmed = line.trim();
+            if trimmed.starts_with('#') {
+                continue;
+            }
+            if trimmed.starts_with("source") {
+                for m in URL_RE.find_iter(trimmed) {
+                    if let Some(host) = extract_host(m.as_str()) {
+                        if let Ok(mut addrs) = (host.as_str(), 80u16).to_socket_addrs() {
+                            if let Some(addr) = addrs.next() {
+                                ips.insert(addr.ip().to_string());
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     ips
 }
 

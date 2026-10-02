@@ -13,9 +13,9 @@ sandbox-evidence/
 scripts/__pycache__/
 
 # Generated artifacts, telemetry, and agent directories
-generated/
+/generated/
 .agents/
-evidence/
-scans/
+/evidence/
+/scans/
 *.log
 *.tmp
