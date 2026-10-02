@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bashman-bin",
+    "version": "0.10.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "740b388d6171796798a9a13aee007bd6a584f1ed",
+    "pkgbuild_sha256": "99edef0142e5fa8c5d53e9aa221cbd3d488502e8d22a659779aedd1499fa8962",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-02T06:18:37.971857626+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:18:37.965799404+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:18:37.965799404+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:18:37.965799404+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 4,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/cargo-bashman",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary file overwrite in tar-rs (GHSA-2367-c296-3mp2)",
+      "url": "https://osv.dev/vulnerability/GHSA-2367-c296-3mp2"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "node-tar: Decompression/parse DoS via unlimited input (GHSA-23hp-3jrh-7fpw)",
+      "url": "https://osv.dev/vulnerability/GHSA-23hp-3jrh-7fpw"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "node-tar has a race condition leading to uninitialized memory exposure (GHSA-29xp-372q-xqph)",
+      "url": "https://osv.dev/vulnerability/GHSA-29xp-372q-xqph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal (GHSA-34x7-hfp2-rc4v)",
+      "url": "https://osv.dev/vulnerability/GHSA-34x7-hfp2-rc4v"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Creation/Overwrite due to insufficient absolute path sanitization (GHSA-3jfq-g458-7qm9)",
+      "url": "https://osv.dev/vulnerability/GHSA-3jfq-g458-7qm9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "tar has a PAX header desynchronization issue (GHSA-3pv8-6f4r-ffg2)",
+      "url": "https://osv.dev/vulnerability/GHSA-3pv8-6f4r-ffg2"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Creation/Overwrite on Windows via insufficient relative path sanitization (GHSA-5955-9wpr-37jh)",
+      "url": "https://osv.dev/vulnerability/GHSA-5955-9wpr-37jh"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Links in archive can create arbitrary directories (GHSA-62jx-8vmh-4mcw)",
+      "url": "https://osv.dev/vulnerability/GHSA-62jx-8vmh-4mcw"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction (GHSA-83g3-92jg-28cx)",
+      "url": "https://osv.dev/vulnerability/GHSA-83g3-92jg-28cx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "node-tar is Vulnerable to Arbitrary File Overwrite and Symlink Poisoning via Insufficient Path Sanitization (GHSA-8qq5-rm4j-mr97)",
+      "url": "https://osv.dev/vulnerability/GHSA-8qq5-rm4j-mr97"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "9ce924b92c9a36fd6aab22a28869df757ab0c3f16a08ed300e69e2a6950625bb",
+  "signature": null
+}
