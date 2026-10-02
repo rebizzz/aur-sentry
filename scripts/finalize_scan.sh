@@ -185,10 +185,16 @@ cmd_attest() {
   echo "verdict: $verdict"
 
   if command -v cosign >/dev/null 2>&1; then
-    cosign sign-blob --yes \
-      --output-signature "$output.sig" \
-      --output-certificate "$output.cert" \
-      "$output" || echo "::warning::cosign signing failed — committing unsigned attestation"
+    if cosign sign-blob --yes --bundle "$output.bundle" "$output"; then
+      echo "signed attestation bundle: $output.bundle"
+      # For backward compatibility with scripts expecting raw .sig and .cert files
+      if [ -f "$output.bundle" ]; then
+        jq -r '.messageSignature.signature // empty' "$output.bundle" 2>/dev/null | base64 -d > "$output.sig" 2>/dev/null || true
+        jq -r '.verificationMaterial.certificate.rawBytes // empty' "$output.bundle" 2>/dev/null | base64 -d 2>/dev/null | openssl x509 2>/dev/null > "$output.cert" || true
+      fi
+    else
+      echo "::warning::cosign signing failed — committing unsigned attestation"
+    fi
   else
     echo "::warning::cosign not installed — committing unsigned attestation"
   fi
@@ -269,7 +275,7 @@ cmd_commit() {
   git config user.name "${BOT_NAME:-aur-sentry[bot]}"
   git config user.email "${BOT_EMAIL:-333591084+aur-sentry[bot]@users.noreply.github.com}"
 
-  for attempt in 1 2 3 4 5; do
+  for attempt in 1 2 3 4 5 6 7 8; do
     git fetch --quiet origin main
     git checkout --quiet --force -B finalize-scan origin/main
     apply_changes
@@ -285,9 +291,9 @@ cmd_commit() {
       return 0
     fi
     echo "::warning::push attempt $attempt failed, retrying on a fresh main"
-    sleep $((attempt * 5 + RANDOM % 5))
+    sleep $((attempt * 3 + RANDOM % 6))
   done
-  echo "::error::could not push attestation to main after 5 attempts"
+  echo "::error::could not push attestation to main after 8 attempts"
   return 1
 }
 

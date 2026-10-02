@@ -441,7 +441,10 @@ fn parse_stage(raw: &str) -> Stage {
 /// Fetch tools (`curl`, `wget`) whose stdout can be piped into an
 /// interpreter.
 pub fn is_fetch_command(cmd: &str) -> bool {
-    matches!(cmd, "curl" | "wget")
+    matches!(
+        cmd,
+        "curl" | "wget" | "aria2c" | "axel" | "fetch" | "lwp-download" | "httpie" | "http"
+    )
 }
 
 /// Shell/script interpreters that would execute piped-in text as code.

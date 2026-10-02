@@ -251,6 +251,25 @@ pub fn verdict_from_findings(findings: &[Finding]) -> Verdict {
     if critical_exfil_or_creds {
         return Verdict::Malicious;
     }
+
+    // Rootkit-class privilege escalation at Critical severity is also
+    // unambiguously malicious even without observed network exfil:
+    // a package that installs a SUID rootkit or hooks /etc/ld.so.preload
+    // has crossed the line regardless of whether we caught data leaving.
+    let critical_rootkit_priv_esc = findings.iter().any(|f| {
+        f.severity == Severity::Critical
+            && f.behavior == Behavior::PrivilegeEscalation
+            && (f.description.contains("SUID")
+                || f.description.contains("ld.so.preload")
+                || f.description.contains("setuid")
+                || f.description.contains("setcap")
+                || f.description.contains("sudoers")
+                || f.description.contains("Polkit"))
+    });
+    if critical_rootkit_priv_esc {
+        return Verdict::Malicious;
+    }
+
     if findings
         .iter()
         .any(|f| f.severity == Severity::High || f.severity == Severity::Critical)
@@ -374,7 +393,7 @@ mod tests {
     #[test]
     fn verdict_critical_but_unrelated_behavior_is_not_malicious() {
         // CRITICAL severity alone isn't enough — only credential-access/exfil-shaped
-        // (network-access) behaviors trigger MALICIOUS per the Phase 1 rule.
+        // (network-access) or rootkit priv-esc behaviors trigger MALICIOUS.
         let findings = vec![Finding {
             behavior: Behavior::Obfuscation,
             file: "PKGBUILD".into(),
@@ -383,6 +402,27 @@ mod tests {
             description: "packed payload".into(),
         }];
         assert_eq!(verdict_from_findings(&findings), Verdict::Suspicious);
+    }
+
+    #[test]
+    fn verdict_critical_rootkit_privilege_escalation_is_malicious() {
+        let findings = vec![Finding {
+            behavior: Behavior::PrivilegeEscalation,
+            file: "PKGBUILD".into(),
+            line: 7,
+            severity: Severity::Critical,
+            description: "setting SUID permission bit on binary (runs as root)".into(),
+        }];
+        assert_eq!(verdict_from_findings(&findings), Verdict::Malicious);
+
+        let preload_finding = vec![Finding {
+            behavior: Behavior::PrivilegeEscalation,
+            file: "PKGBUILD".into(),
+            line: 9,
+            severity: Severity::Critical,
+            description: "injecting shared library into /etc/ld.so.preload (rootkit hook)".into(),
+        }];
+        assert_eq!(verdict_from_findings(&preload_finding), Verdict::Malicious);
     }
 
     #[test]

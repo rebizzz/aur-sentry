@@ -155,8 +155,9 @@ pub fn deobfuscate_and_scan(content: &str, rescan: impl Fn(&str) -> Vec<Finding>
 ///   first place.
 pub fn analyze_pipeline_structure(content: &str) -> Vec<Finding> {
     let mut findings = Vec::new();
+    let logical_lines = crate::scanner::join_continued_lines(content);
 
-    for (idx, line) in content.lines().enumerate() {
+    for (line_num, line) in logical_lines {
         let trimmed = line.trim();
         if trimmed.starts_with('#')
             || trimmed.starts_with("sha256sums")
@@ -171,7 +172,7 @@ pub fn analyze_pipeline_structure(content: &str) -> Vec<Finding> {
             continue;
         }
 
-        let stages = shellparse::pipeline_stages(line);
+        let stages = shellparse::pipeline_stages(&line);
         if stages.len() < 2 {
             continue;
         }
@@ -201,7 +202,7 @@ pub fn analyze_pipeline_structure(content: &str) -> Vec<Finding> {
                          (structurally-confirmed fetch-and-execute, not a string match)",
                         stage.command, interp
                     ),
-                    line_number: idx + 1,
+                    line_number: line_num,
                     matched_text: stage.text.chars().take(120).collect(),
                     behavior: Behavior::DynamicDownload,
                 });
@@ -219,9 +220,9 @@ pub fn analyze_pipeline_structure(content: &str) -> Vec<Finding> {
                     severity: "CRITICAL".into(),
                     description: "base64-decoded output piped directly into a shell interpreter \
                          (structurally-confirmed obfuscated execution, not just a string \
-                         mentioning 'base64 -d')"
+                          mentioning 'base64 -d')"
                         .to_string(),
-                    line_number: idx + 1,
+                    line_number: line_num,
                     matched_text: stage.text.chars().take(120).collect(),
                     behavior: Behavior::Obfuscation,
                 });

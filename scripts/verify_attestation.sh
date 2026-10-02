@@ -62,27 +62,40 @@ if ! curl -fsSL "$JSON_URL" -o "$JSON_FILE"; then
   exit 1
 fi
 
-echo "fetching $SIG_URL"
-if ! curl -fsSL "$SIG_URL" -o "$SIG_FILE"; then
-  echo "error: could not fetch signature ($SIG_URL) — this attestation may predate signing, or signing failed" >&2
-  exit 1
+BUNDLE_PATH="data/attestations/$PKG/$VERSION.json.bundle"
+BUNDLE_URL="$RAW_BASE/$BUNDLE_PATH"
+BUNDLE_FILE="$WORKDIR/$VERSION.json.bundle"
+
+if curl -fsSL "$BUNDLE_URL" -o "$BUNDLE_FILE" 2>/dev/null; then
+  echo "verifying with cosign bundle (Sigstore public-good instance)..."
+  cosign verify-blob \
+    --bundle "$BUNDLE_FILE" \
+    --certificate-identity-regexp "$CERT_IDENTITY_REGEXP" \
+    --certificate-oidc-issuer "$CERT_OIDC_ISSUER" \
+    "$JSON_FILE"
+  STATUS=$?
+else
+  echo "fetching $SIG_URL"
+  if ! curl -fsSL "$SIG_URL" -o "$SIG_FILE"; then
+    echo "error: could not fetch signature ($SIG_URL) — this attestation may predate signing, or signing failed" >&2
+    exit 1
+  fi
+
+  echo "fetching $CERT_URL"
+  if ! curl -fsSL "$CERT_URL" -o "$CERT_FILE"; then
+    echo "error: could not fetch certificate ($CERT_URL) — this attestation may predate signing, or signing failed" >&2
+    exit 1
+  fi
+
+  echo "verifying with cosign (Sigstore public-good instance)..."
+  cosign verify-blob \
+    --certificate "$CERT_FILE" \
+    --signature "$SIG_FILE" \
+    --certificate-identity-regexp "$CERT_IDENTITY_REGEXP" \
+    --certificate-oidc-issuer "$CERT_OIDC_ISSUER" \
+    "$JSON_FILE"
+  STATUS=$?
 fi
-
-echo "fetching $CERT_URL"
-if ! curl -fsSL "$CERT_URL" -o "$CERT_FILE"; then
-  echo "error: could not fetch certificate ($CERT_URL) — this attestation may predate signing, or signing failed" >&2
-  exit 1
-fi
-
-echo "verifying with cosign (Sigstore public-good instance)..."
-cosign verify-blob \
-  --certificate "$CERT_FILE" \
-  --signature "$SIG_FILE" \
-  --certificate-identity-regexp "$CERT_IDENTITY_REGEXP" \
-  --certificate-oidc-issuer "$CERT_OIDC_ISSUER" \
-  "$JSON_FILE"
-
-STATUS=$?
 if [ "$STATUS" -eq 0 ]; then
   echo "OK: $PKG $VERSION attestation is signed by the $REPO scan workflow"
 else

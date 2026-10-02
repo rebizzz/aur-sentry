@@ -81,14 +81,14 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
         .map(strace::declared_source_ips)
         .unwrap_or_default();
 
-    let (mut network, mut filesystem) = if inputs.strace_available {
+    let (mut network, mut filesystem, mut processes) = if inputs.strace_available {
         let telemetry_text = inputs
             .telemetry_path
             .and_then(|p| std::fs::read_to_string(p).ok())
             .unwrap_or_default();
         strace::parse_telemetry(&telemetry_text, &allowed_ips, PHASE_BUILD)
     } else {
-        (Vec::new(), Vec::new())
+        (Vec::new(), Vec::new(), Vec::new())
     };
     findings.extend(strace::dynamic_findings(&network, &filesystem, "build"));
 
@@ -99,7 +99,7 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
             .install_telemetry_path
             .and_then(|p| std::fs::read_to_string(p).ok())
         {
-            let (install_network, install_filesystem) =
+            let (install_network, install_filesystem, install_processes) =
                 strace::parse_telemetry(&install_telemetry_text, &allowed_ips, PHASE_INSTALL);
             findings.extend(strace::dynamic_findings(
                 &install_network,
@@ -108,6 +108,7 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
             ));
             network.extend(install_network);
             filesystem.extend(install_filesystem);
+            processes.extend(install_processes);
         }
     }
 
@@ -143,7 +144,7 @@ pub fn build_attestation(inputs: &AttestInputs) -> Attestation {
         static_findings: findings,
         dynamic_evidence: DynamicEvidence {
             collected: inputs.strace_available,
-            processes: Vec::new(),
+            processes,
             network,
             filesystem,
         },

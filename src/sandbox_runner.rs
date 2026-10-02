@@ -576,10 +576,10 @@ pub fn run_sandbox_audit(
         String::new()
     };
 
-    let (network_events, filesystem_events) = if strace_available && !telemetry_text.is_empty() {
+    let (network_events, filesystem_events, _process_events) = if strace_available && !telemetry_text.is_empty() {
         parse_telemetry(&telemetry_text, &allowed_ips, "build")
     } else {
-        (Vec::new(), Vec::new())
+        (Vec::new(), Vec::new(), Vec::new())
     };
 
     let attest_inputs = AttestInputs {
