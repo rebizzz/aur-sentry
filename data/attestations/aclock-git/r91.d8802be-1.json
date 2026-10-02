@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aclock-git",
+    "version": "r91.d8802be-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "280c319de34c03e0851bad87323a1f216e7a6be8",
+    "pkgbuild_sha256": "135fb1fbeb5c0104dc5b29e29dbf4ef58c2b16ea3066a958d6a94c4e3ef45400",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-02T06:17:37.462249800+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:17:37.452701980+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:17:37.452701980+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/lib/debug/usr/bin/aclock.debug",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Mishandling of format strings in ncurses (GHSA-32v7-ghpr-c8hg)",
+      "url": "https://osv.dev/vulnerability/GHSA-32v7-ghpr-c8hg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Buffer overflow and format vulnerabilities in ncurses (GHSA-g7r5-x7cr-vm3v)",
+      "url": "https://osv.dev/vulnerability/GHSA-g7r5-x7cr-vm3v"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "ncurses exposes uninitialized memory in string reading functions (GHSA-x77x-7mmh-cxv3)",
+      "url": "https://osv.dev/vulnerability/GHSA-x77x-7mmh-cxv3"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious code in ncurses (PyPI) (MAL-2025-41705)",
+      "url": "https://osv.dev/vulnerability/MAL-2025-41705"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Buffer overflow and format vulnerabilities in functions exposed without unsafe (RUSTSEC-2019-0006)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2019-0006"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Uninitialized memory exposure in string reading functions (RUSTSEC-2025-0108)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2025-0108"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "gcc crate is unmaintained (RUSTSEC-2025-0121)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2025-0121"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "90250e894bbdfd3f5199739919300436873964f8d4db27e5b48cd8625b845fb6",
+  "signature": null
+}
