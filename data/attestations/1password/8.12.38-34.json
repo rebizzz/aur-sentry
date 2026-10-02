@@ -1,0 +1,204 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "1password",
+    "version": "8.12.38-34",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e4388fb49c1aa634b0677a9d8bca1da610cc95fb",
+    "pkgbuild_sha256": "f9ba5cec297d035efaeb32f4eda4cb0a80deb9ac3f7d4cc3f80ea5dc4d800a58",
+    "install_sha256": "2234d8b356049eb029ceb184faf0aa8c9e758df2fca66904d3f7af698aac95b6"
+  },
+  "analyzed_at": "2026-10-02T00:19:46.880659052+00:00",
+  "scanner_version": "aur-sentry/0.1.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 13,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 39,
+      "severity": "CRITICAL",
+      "description": "eval with dynamic variable (executes constructed shell string)"
+    },
+    {
+      "behavior": "PRIVILEGE_ESCALATION",
+      "file": "1password.install",
+      "line": 17,
+      "severity": "CRITICAL",
+      "description": "setting SUID permission bit on binary (runs as root)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    },
+    {
+      "behavior": "PRIVILEGE_ESCALATION",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "setuid/setgid file(s) found in built package: opt/1Password/chrome-sandbox"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T00:19:46.847685439+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "13.227.65.87",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-02T00:19:46.847685439+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.17.0.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T00:19:46.856619075+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T00:19:46.856619075+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 93,
+    "elf_object_count": 16,
+    "elf_objects": [
+      {
+        "path": "opt/1Password/1Password-Crash-Handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/1Password-BrowserSupport",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/1Password-LastPass-Exporter",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/op-ssh-sign",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/libop_sdk_ipc_client.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/chrome_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/1password-mcp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/libffmpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/libop_sdk_lib_core.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/1password",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/resources/app.asar.unpacked/index.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/1Password/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 1,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "0fd0957c80362554b208fc88164e1908332258c88a3f47647ece482de9a7aa94",
+  "signature": null
+}
