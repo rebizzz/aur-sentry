@@ -1,0 +1,65 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "catdir",
+    "version": "0.1.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a64c5c332324edd82ad337ec48312a424f7b57ca",
+    "pkgbuild_sha256": "21683b8386ddf4f0622b246784d32f5c6e73a76961d8a929bf56c05795370207",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-02T06:20:37.394624331+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:37.388964828+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:37.388964828+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:37.388964828+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "33e08dbeb63bf2326df6dc887e16779baec42c080edb114e7e2851664e13bc76",
+  "signature": null
+}
