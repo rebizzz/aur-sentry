@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bren",
+    "version": "0.4-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "288cc304fdcf0a5265f4074ffba0a7b157f80bea",
+    "pkgbuild_sha256": "cb6746643101da7b638b429f9de66dfeb64128c2735d1e23be98727a8022c356",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-02T06:20:15.553123694+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:15.543783348+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:15.543783348+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-02T06:20:15.543783348+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/bren",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "gcc crate is unmaintained (RUSTSEC-2025-0121)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2025-0121"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "fb97e0fe6e7cb5554c37ee104850f67812b27e2cf1f0c305dd48c378f127f62b",
+  "signature": null
+}
