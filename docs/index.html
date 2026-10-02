@@ -5,8 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AUR Sentry — Package Registry</title>
 <meta name="description" content="Evidence-based verification results for Arch User Repository packages.">
-<link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="assets/avatar.png">
+<link rel="stylesheet" href="style.css">
+<script>
+// FOUC Prevention: apply saved or system theme before first paint
+(function() {
+  try {
+    const saved = localStorage.getItem("aur-sentry-theme");
+    const theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (_) {}
+})();
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -17,6 +27,11 @@
         <a class="site-title" href="index.html">AUR Sentry</a>
         <span class="site-tagline">Evidence-based AUR package verification</span>
       </div>
+    </div>
+    <div class="site-header-actions">
+      <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle dark/light theme" title="Toggle theme">
+        <!-- populated by registry.js initThemeToggle -->
+      </button>
     </div>
   </div>
 </header>
@@ -30,7 +45,7 @@
   </p>
 
   <div id="content">
-    <p class="empty-state">Loading package list&hellip;</p>
+    <p class="empty-state">Loading package manifest&hellip;</p>
   </div>
 </main>
 
@@ -45,7 +60,9 @@
 
 <script src="registry.js"></script>
 <script>
-async function render() {
+async function initApp() {
+  initThemeToggle();
+
   const content = document.getElementById("content");
   let entries;
   try {
@@ -55,68 +72,343 @@ async function render() {
     return;
   }
 
-  if (!entries.length) {
+  if (!entries || !entries.length) {
     content.innerHTML = `<p class="empty-state">No packages have been analyzed yet. Check back soon.</p>`;
     return;
   }
 
   const isExample = entries.every((e) => e.package.startsWith("example-"));
-  let noticeHtml = "";
-  if (isExample) {
-    noticeHtml = `<div class="notice">
-      The packages below are fake example data used to preview this UI &mdash;
-      not real scan results. Real attestations will appear here as the
-      dynamic sandbox pipeline analyzes AUR packages.
-    </div>`;
-  }
+  const noticeHtml = isExample ? `
+    <div class="notice">
+      The packages below are example test fixtures &mdash; real attestations
+      appear here as the sandbox pipeline analyzes AUR packages.
+    </div>
+  ` : "";
 
-  const packages = latestPerPackage(entries);
-  const stats = verdictBreakdown(packages);
-  const statsHtml = `
-    <div class="stats-banner">
-      <div class="stats-total">
-        <span class="stats-total-num">${stats.total}</span>
-        <span class="stats-total-label">package${stats.total === 1 ? "" : "s"} tracked</span>
+  const allPackages = latestPerPackage(entries);
+  const globalStats = verdictBreakdown(allPackages);
+
+  // Setup main layout skeleton
+  content.innerHTML = `
+    ${noticeHtml}
+    <div class="stats-banner" id="stats-banner">
+      <div class="stats-total" id="stat-total-tile" role="button" tabindex="0" title="Show all packages">
+        <span class="stats-total-num">${globalStats.total}</span>
+        <span class="stats-total-label">package${globalStats.total === 1 ? "" : "s"} tracked</span>
       </div>
       <div class="stats-grid">
-        <div class="stat-tile stat-tile-VERIFIED">
-          <span class="stat-tile-num">${stats.VERIFIED}</span>
+        <div class="stat-tile stat-tile-VERIFIED" data-filter="VERIFIED" role="button" tabindex="0" title="Filter by Verified">
+          <span class="stat-tile-num">${globalStats.VERIFIED}</span>
           <span class="stat-tile-label">Verified</span>
         </div>
-        <div class="stat-tile stat-tile-SUSPICIOUS">
-          <span class="stat-tile-num">${stats.SUSPICIOUS}</span>
+        <div class="stat-tile stat-tile-SUSPICIOUS" data-filter="SUSPICIOUS" role="button" tabindex="0" title="Filter by Suspicious">
+          <span class="stat-tile-num">${globalStats.SUSPICIOUS}</span>
           <span class="stat-tile-label">Suspicious</span>
         </div>
-        <div class="stat-tile stat-tile-MALICIOUS">
-          <span class="stat-tile-num">${stats.MALICIOUS}</span>
+        <div class="stat-tile stat-tile-MALICIOUS" data-filter="MALICIOUS" role="button" tabindex="0" title="Filter by Malicious">
+          <span class="stat-tile-num">${globalStats.MALICIOUS}</span>
           <span class="stat-tile-label">Malicious</span>
         </div>
-        <div class="stat-tile stat-tile-OTHER">
-          <span class="stat-tile-num">${stats.OTHER}</span>
-          <span class="stat-tile-label">Other states</span>
+        <div class="stat-tile stat-tile-OTHER" data-filter="OTHER" role="button" tabindex="0" title="Filter by Other states">
+          <span class="stat-tile-num">${globalStats.OTHER}</span>
+          <span class="stat-tile-label">Other</span>
         </div>
       </div>
     </div>
+
+    <div class="registry-controls">
+      <div class="search-container">
+        <div class="search-icon-wrapper">${ICONS.search}</div>
+        <input
+          type="search"
+          id="package-search"
+          class="search-input"
+          placeholder="Filter packages by name, version, or keyword... (/ to focus)"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Search packages"
+        >
+        <div class="search-actions">
+          <kbd class="kbd-shortcut" id="search-kbd">/</kbd>
+          <button type="button" id="search-clear" class="search-clear-btn" aria-label="Clear search input" title="Clear search">
+            ${ICONS.cross}
+          </button>
+        </div>
+      </div>
+
+      <div class="filter-tabs" role="tablist" aria-label="Verdict tabs">
+        <button class="filter-tab active" data-verdict="ALL" role="tab" aria-selected="true">
+          All <span class="filter-tab-count" id="count-all">${globalStats.total}</span>
+        </button>
+        <button class="filter-tab" data-verdict="VERIFIED" role="tab" aria-selected="false">
+          Verified <span class="filter-tab-count" id="count-verified">${globalStats.VERIFIED}</span>
+        </button>
+        <button class="filter-tab" data-verdict="SUSPICIOUS" role="tab" aria-selected="false">
+          Suspicious <span class="filter-tab-count" id="count-suspicious">${globalStats.SUSPICIOUS}</span>
+        </button>
+        <button class="filter-tab" data-verdict="MALICIOUS" role="tab" aria-selected="false">
+          Malicious <span class="filter-tab-count" id="count-malicious">${globalStats.MALICIOUS}</span>
+        </button>
+        <button class="filter-tab" data-verdict="OTHER" role="tab" aria-selected="false">
+          Other <span class="filter-tab-count" id="count-other">${globalStats.OTHER}</span>
+        </button>
+      </div>
+
+      <div class="results-meta">
+        <span id="results-count">Showing ${allPackages.length} packages</span>
+        <span id="clear-filters-wrapper" style="display: none;">
+          <a class="clear-filter-link" id="clear-filters-link" href="#reset">Reset filters</a>
+        </span>
+      </div>
+    </div>
+
+    <ul class="package-list" id="package-list"></ul>
+    <div id="empty-state" class="empty-state" style="display: none;">
+      <div class="empty-state-icon">&#128269;</div>
+      <div class="empty-state-title" id="empty-state-title">No matching packages found</div>
+      <div class="empty-state-desc" id="empty-state-desc">Try refining your search terms or clearing the verdict filter.</div>
+      <button type="button" class="btn-reset-search" id="btn-empty-reset">Clear all filters</button>
+    </div>
   `;
 
-  const items = packages.map((pkg) => `
-    <li>
-      <a class="package-card" href="${packagePageUrl(pkg.package)}">
-        <div class="package-card-top">
-          <span class="package-name">${escapeHtml(pkg.package)}</span>
-          ${badgeHtml(pkg.verdict)}
-        </div>
-        <div class="package-meta">
-          version ${escapeHtml(pkg.version)} &middot; last analyzed ${escapeHtml(formatTimestamp(pkg.analyzed_at))}
-        </div>
-      </a>
-    </li>
-  `).join("");
+  // UI Elements
+  const searchInput = document.getElementById("package-search");
+  const searchClear = document.getElementById("search-clear");
+  const searchKbd = document.getElementById("search-kbd");
+  const filterTabs = document.querySelectorAll(".filter-tab");
+  const packageListEl = document.getElementById("package-list");
+  const emptyStateEl = document.getElementById("empty-state");
+  const emptyStateTitle = document.getElementById("empty-state-title");
+  const resultsCountEl = document.getElementById("results-count");
+  const clearFiltersWrapper = document.getElementById("clear-filters-wrapper");
+  const clearFiltersLink = document.getElementById("clear-filters-link");
+  const btnEmptyReset = document.getElementById("btn-empty-reset");
+  const statTiles = document.querySelectorAll(".stat-tile");
+  const statTotalTile = document.getElementById("stat-total-tile");
 
-  content.innerHTML = `${statsHtml}${noticeHtml}<ul class="package-list">${items}</ul>`;
+  // State
+  let currentQuery = "";
+  let currentVerdict = "ALL";
+
+  // Read initial state from URL query parameters
+  const initialParams = new URLSearchParams(window.location.search);
+  if (initialParams.has("q")) {
+    currentQuery = initialParams.get("q") || "";
+    searchInput.value = currentQuery;
+  }
+  if (initialParams.has("verdict")) {
+    const v = (initialParams.get("verdict") || "").toUpperCase();
+    if (["ALL", "VERIFIED", "SUSPICIOUS", "MALICIOUS", "OTHER"].includes(v)) {
+      currentVerdict = v;
+    }
+  }
+
+  function syncUrl() {
+    const params = new URLSearchParams();
+    if (currentQuery.trim()) {
+      params.set("q", currentQuery.trim());
+    }
+    if (currentVerdict && currentVerdict !== "ALL") {
+      params.set("verdict", currentVerdict);
+    }
+    const newQueryString = params.toString();
+    const newUrl = newQueryString ? `?${newQueryString}` : window.location.pathname;
+    window.history.replaceState({ q: currentQuery, verdict: currentVerdict }, "", newUrl);
+  }
+
+  function updateTabsAndTiles() {
+    filterTabs.forEach((tab) => {
+      const tabVerdict = tab.getAttribute("data-verdict");
+      const isActive = tabVerdict === currentVerdict;
+      tab.classList.toggle("active", isActive);
+      tab.setAttribute("aria-selected", isActive ? "true" : "false");
+    });
+
+    statTiles.forEach((tile) => {
+      const tileVerdict = tile.getAttribute("data-filter");
+      tile.classList.toggle("active", tileVerdict === currentVerdict);
+    });
+  }
+
+  function renderList() {
+    const q = currentQuery.trim().toLowerCase();
+    searchClear.style.display = q ? "flex" : "none";
+    searchKbd.style.display = q ? "none" : "block";
+
+    // Filter by search query first
+    const matchingQuery = q
+      ? allPackages.filter((pkg) => {
+          return (
+            pkg.package.toLowerCase().includes(q) ||
+            pkg.version.toLowerCase().includes(q) ||
+            (pkg.arch && pkg.arch.toLowerCase().includes(q)) ||
+            (pkg.verdict && pkg.verdict.toLowerCase().includes(q))
+          );
+        })
+      : allPackages;
+
+    // Update real-time counts on filter tabs based on current search query
+    const tabCounts = verdictBreakdown(matchingQuery);
+    document.getElementById("count-all").textContent = tabCounts.total;
+    document.getElementById("count-verified").textContent = tabCounts.VERIFIED;
+    document.getElementById("count-suspicious").textContent = tabCounts.SUSPICIOUS;
+    document.getElementById("count-malicious").textContent = tabCounts.MALICIOUS;
+    document.getElementById("count-other").textContent = tabCounts.OTHER;
+
+    // Filter by selected verdict
+    let finalPackages = matchingQuery;
+    if (currentVerdict !== "ALL") {
+      if (currentVerdict === "OTHER") {
+        finalPackages = matchingQuery.filter(
+          (pkg) => !["VERIFIED", "SUSPICIOUS", "MALICIOUS"].includes(pkg.verdict)
+        );
+      } else {
+        finalPackages = matchingQuery.filter((pkg) => pkg.verdict === currentVerdict);
+      }
+    }
+
+    // Update Results Meta
+    const isFiltered = Boolean(q || currentVerdict !== "ALL");
+    clearFiltersWrapper.style.display = isFiltered ? "inline" : "none";
+
+    let metaText = `Showing ${finalPackages.length} of ${allPackages.length} package${allPackages.length === 1 ? "" : "s"}`;
+    if (q && currentVerdict !== "ALL") {
+      metaText = `Showing ${finalPackages.length} of ${allPackages.length} packages matching "${escapeHtml(q)}" (${verdictLabel(currentVerdict)})`;
+    } else if (q) {
+      metaText = `Showing ${finalPackages.length} of ${allPackages.length} packages matching "${escapeHtml(q)}"`;
+    } else if (currentVerdict !== "ALL") {
+      metaText = `Showing ${finalPackages.length} of ${allPackages.length} ${verdictLabel(currentVerdict).toLowerCase()} packages`;
+    }
+    resultsCountEl.textContent = metaText;
+
+    // Render Package Cards or Empty State
+    if (finalPackages.length === 0) {
+      packageListEl.innerHTML = "";
+      emptyStateEl.style.display = "block";
+      if (q) {
+        emptyStateTitle.textContent = `No packages match "${q}"`;
+      } else {
+        emptyStateTitle.textContent = `No packages found for verdict "${verdictLabel(currentVerdict)}"`;
+      }
+    } else {
+      emptyStateEl.style.display = "none";
+      const cardsHtml = finalPackages.map((pkg) => `
+        <li>
+          <a class="package-card" href="${packagePageUrl(pkg.package)}">
+            <div class="package-card-top">
+              <span class="package-name">${escapeHtml(pkg.package)}</span>
+              ${badgeHtml(pkg.verdict)}
+            </div>
+            <div class="package-meta">
+              <span>version <strong>${escapeHtml(pkg.version)}</strong></span>
+              <span>&middot;</span>
+              <span>analyzed ${escapeHtml(formatTimestamp(pkg.analyzed_at))}</span>
+              ${pkg.findings_count ? `<span>&middot;</span><span>${pkg.findings_count} finding${pkg.findings_count === 1 ? "" : "s"}</span>` : ""}
+            </div>
+          </a>
+        </li>
+      `).join("");
+      packageListEl.innerHTML = cardsHtml;
+    }
+
+    updateTabsAndTiles();
+    syncUrl();
+  }
+
+  // Search input event
+  searchInput.addEventListener("input", (e) => {
+    currentQuery = e.target.value;
+    renderList();
+  });
+
+  // Search clear button
+  searchClear.addEventListener("click", () => {
+    currentQuery = "";
+    searchInput.value = "";
+    searchInput.focus();
+    renderList();
+  });
+
+  // Keyboard shortcuts: / to focus search, Escape to clear
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "/" && document.activeElement !== searchInput && !["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      searchInput.focus();
+      searchInput.select();
+    } else if (e.key === "Escape" && document.activeElement === searchInput) {
+      if (searchInput.value) {
+        currentQuery = "";
+        searchInput.value = "";
+        renderList();
+      } else {
+        searchInput.blur();
+      }
+    }
+  });
+
+  // Tab click handlers
+  filterTabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      currentVerdict = tab.getAttribute("data-verdict");
+      renderList();
+    });
+  });
+
+  // Stat tile click handlers
+  statTiles.forEach((tile) => {
+    const handleStatClick = () => {
+      const v = tile.getAttribute("data-filter");
+      currentVerdict = currentVerdict === v ? "ALL" : v;
+      renderList();
+    };
+    tile.addEventListener("click", handleStatClick);
+    tile.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        handleStatClick();
+      }
+    });
+  });
+
+  // Total stat tile clicks reset to ALL
+  statTotalTile.addEventListener("click", () => {
+    currentVerdict = "ALL";
+    renderList();
+  });
+  statTotalTile.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      currentVerdict = "ALL";
+      renderList();
+    }
+  });
+
+  // Reset filters
+  function resetAllFilters(e) {
+    if (e) e.preventDefault();
+    currentQuery = "";
+    currentVerdict = "ALL";
+    searchInput.value = "";
+    renderList();
+    searchInput.focus();
+  }
+  clearFiltersLink.addEventListener("click", resetAllFilters);
+  btnEmptyReset.addEventListener("click", resetAllFilters);
+
+  // Popstate handler for browser back/forward buttons
+  window.addEventListener("popstate", (e) => {
+    const params = new URLSearchParams(window.location.search);
+    currentQuery = params.get("q") || "";
+    currentVerdict = params.get("verdict") || "ALL";
+    searchInput.value = currentQuery;
+    renderList();
+  });
+
+  // Initial render
+  renderList();
 }
 
-render();
+initApp();
 </script>
 </body>
 </html>

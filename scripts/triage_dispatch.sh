@@ -50,7 +50,8 @@ CANDIDATE_LIMIT="${5:-${AUR_SENTRY_CANDIDATE_LIMIT:-150}}"
 
 AUR_META_DUMP="https://aur.archlinux.org/packages-meta-ext-v1.json.gz"
 STATE_FILE="$REPO_ROOT/data/aur-state.json"
-ADVISORIES_JSON="$REPO_ROOT/advisories.json"
+ADVISORIES_JSON="$REPO_ROOT/generated/advisories.json"
+[ ! -f "$ADVISORIES_JSON" ] && [ -f "$REPO_ROOT/advisories.json" ] && ADVISORIES_JSON="$REPO_ROOT/advisories.json"
 ATTESTATIONS_DIR="$REPO_ROOT/data/attestations"
 
 echo "[*] triage: window=${WINDOW_HOURS}h max_dispatch=${MAX_DISPATCH} candidate_limit=${CANDIDATE_LIMIT} repo=${TARGET_REPO:-<unknown>}"

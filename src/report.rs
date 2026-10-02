@@ -24,9 +24,14 @@ pub struct AdvisoryFeed {
     pub advisories: Vec<Advisory>,
 }
 
-/// Load existing advisories from disk if present.
+/// Load existing advisories from disk if present. Checks generated/advisories.json first.
 pub fn load_advisories(repo_root: &Path) -> Vec<Advisory> {
-    let path = repo_root.join("advisories.json");
+    let gen_path = repo_root.join("generated").join("advisories.json");
+    let path = if gen_path.exists() {
+        gen_path
+    } else {
+        repo_root.join("advisories.json")
+    };
     if !path.exists() {
         return Vec::new();
     }
@@ -51,7 +56,7 @@ pub fn severity_rank(s: &str) -> u8 {
     }
 }
 
-/// Write advisories list directly to disk, sorted by severity and recency.
+/// Write advisories list directly to disk, sorted by severity and recency in generated/.
 pub fn write_advisories(repo_root: &Path, advisories: &[Advisory]) {
     let mut sorted = advisories.to_vec();
     sorted.sort_by(|a, b| {
@@ -68,7 +73,9 @@ pub fn write_advisories(repo_root: &Path, advisories: &[Advisory]) {
     };
 
     let json = serde_json::to_string_pretty(&feed).unwrap_or_default();
-    let _ = std::fs::write(repo_root.join("advisories.json"), json);
+    let gen_dir = repo_root.join("generated");
+    let _ = std::fs::create_dir_all(&gen_dir);
+    let _ = std::fs::write(gen_dir.join("advisories.json"), json);
 
     // Generate RSS
     generate_rss(repo_root, &sorted);
@@ -148,7 +155,9 @@ fn generate_rss(repo_root: &Path, advisories: &[Advisory]) {
 </rss>"#
     );
 
-    let _ = std::fs::write(repo_root.join("advisories.xml"), rss);
+    let gen_dir = repo_root.join("generated");
+    let _ = std::fs::create_dir_all(&gen_dir);
+    let _ = std::fs::write(gen_dir.join("advisories.xml"), rss);
 }
 
 /// Helper to update an existing markdown file containing AUTOPILOT markers.
@@ -160,9 +169,15 @@ pub fn update_markdown_table_in_file(file_path: &Path, advisories: &[Advisory]) 
 
     let start = "<!-- AUTOPILOT_TABLE_START -->";
     let end = "<!-- AUTOPILOT_TABLE_END -->";
-    if !content.contains(start) || !content.contains(end) {
+
+    let Some(start_pos) = content.find(start) else {
         return false;
-    }
+    };
+    let start_idx = start_pos + start.len();
+    let Some(relative_end) = content[start_idx..].find(end) else {
+        return false;
+    };
+    let end_idx = start_idx + relative_end;
 
     let mut sorted = advisories.to_vec();
     sorted.sort_by(|a, b| {
@@ -208,20 +223,25 @@ pub fn update_markdown_table_in_file(file_path: &Path, advisories: &[Advisory]) 
         format!("{}\n", lines.join("\n"))
     };
 
-    let start_idx = content.find(start).unwrap() + start.len();
-    let end_idx = content.find(end).unwrap();
     let new_content = format!("{}{}{}", &content[..start_idx], table, &content[end_idx..]);
     std::fs::write(file_path, new_content).is_ok()
 }
 
-/// Update the ADVISORIES.md threat radar table.
+/// Update the ADVISORIES.md threat radar table in generated/.
 pub fn update_advisories_markdown(repo_root: &Path, advisories: &[Advisory]) {
-    let doc_path = repo_root.join("ADVISORIES.md");
+    let gen_dir = repo_root.join("generated");
+    let _ = std::fs::create_dir_all(&gen_dir);
+    let doc_path = gen_dir.join("ADVISORIES.md");
     if !doc_path.exists() {
         let initial = "# AUR Security Advisories & Threat Radar\n\nLive threat radar generated automatically on schedule every 2 hours by `aur-sentry` autopilot.\n\n<!-- AUTOPILOT_TABLE_START -->\n<!-- AUTOPILOT_TABLE_END -->\n\n- Full JSON Feed: [`advisories.json`](advisories.json)\n- RSS Feed: [`advisories.xml`](advisories.xml)\n";
         let _ = std::fs::write(&doc_path, initial);
     }
     update_markdown_table_in_file(&doc_path, advisories);
+
+    let root_doc = repo_root.join("ADVISORIES.md");
+    if root_doc.exists() {
+        update_markdown_table_in_file(&root_doc, advisories);
+    }
 }
 
 /// Update threat radar tables in ADVISORIES.md and (if markers exist) README.md.
@@ -288,7 +308,7 @@ mod tests {
         assert_eq!(loaded[1].highest_severity, "HIGH");
 
         // Verify RSS exists and contains both packages
-        let rss_path = temp_dir.join("advisories.xml");
+        let rss_path = temp_dir.join("generated").join("advisories.xml");
         assert!(rss_path.exists());
         let rss_content = std::fs::read_to_string(&rss_path).unwrap();
         assert!(rss_content.contains("foo-malware"));
@@ -380,7 +400,8 @@ Footer notes.
         assert_eq!(remaining.len(), 1);
         assert_eq!(remaining[0].package, "pkg-to-keep");
 
-        let adv_md = std::fs::read_to_string(temp_dir.join("ADVISORIES.md")).unwrap();
+        let adv_md =
+            std::fs::read_to_string(temp_dir.join("generated").join("ADVISORIES.md")).unwrap();
         assert!(!adv_md.contains("pkg-to-remove"));
         assert!(adv_md.contains("pkg-to-keep"));
 
@@ -415,11 +436,33 @@ Footer notes.
         // Pass HIGH before CRITICAL to update_readme_table
         update_readme_table(&temp_dir, &[adv_high, adv_crit]);
 
-        let adv_md = std::fs::read_to_string(temp_dir.join("ADVISORIES.md")).unwrap();
+        let adv_md =
+            std::fs::read_to_string(temp_dir.join("generated").join("ADVISORIES.md")).unwrap();
         let crit_pos = adv_md.find("`crit-pkg`").expect("crit-pkg present");
         let high_pos = adv_md.find("`high-pkg`").expect("high-pkg present");
         // CRITICAL must appear before HIGH in the markdown table
         assert!(crit_pos < high_pos);
+
+        let _ = std::fs::remove_dir_all(&temp_dir);
+    }
+
+    #[test]
+    fn update_markdown_table_handles_inverted_or_missing_markers() {
+        let temp_dir =
+            std::env::temp_dir().join(format!("aur_sentry_marker_test_{}", std::process::id()));
+        let _ = std::fs::create_dir_all(&temp_dir);
+
+        let inverted_file = temp_dir.join("inverted.md");
+        std::fs::write(
+            &inverted_file,
+            "<!-- AUTOPILOT_TABLE_END -->\n<!-- AUTOPILOT_TABLE_START -->",
+        )
+        .unwrap();
+        assert!(!update_markdown_table_in_file(&inverted_file, &[]));
+
+        let missing_file = temp_dir.join("missing.md");
+        std::fs::write(&missing_file, "<!-- AUTOPILOT_TABLE_START --> only").unwrap();
+        assert!(!update_markdown_table_in_file(&missing_file, &[]));
 
         let _ = std::fs::remove_dir_all(&temp_dir);
     }

@@ -243,16 +243,17 @@ apply_changes() {
   cp -- "$STAGE"/attestation/* "$dest/"
   git add -- "$dest"
   if [ -f "$STAGE/advisory.json" ]; then
-    [ -f advisories.json ] && jq -e '.advisories | type == "array"' advisories.json >/dev/null 2>&1 \
-      || echo '{"version":"1.0","updated_at":"","total_flagged":0,"advisories":[]}' > advisories.json
+    mkdir -p generated
+    local adv_file="generated/advisories.json"
+    [ -f "$adv_file" ] && jq -e '.advisories | type == "array"' "$adv_file" >/dev/null 2>&1 \
+      || echo '{"version":"1.0","updated_at":"","total_flagged":0,"advisories":[]}' > "$adv_file"
     jq --slurpfile e "$STAGE/advisory.json" '
       def rank: {"CRITICAL":0,"HIGH":1,"MEDIUM":2,"LOW":3}[.highest_severity] // 4;
       .advisories = ([.advisories[] | select(.package != $e[0].package)] + $e
                      | sort_by(.detected_at) | reverse | sort_by(rank))
       | .total_flagged = (.advisories | length)
-      | .updated_at = $e[0].detected_at' advisories.json > advisories.json.tmp \
-      && mv advisories.json.tmp advisories.json
-    git add advisories.json
+      | .updated_at = $e[0].detected_at' "$adv_file" > "$adv_file.tmp" \
+      && mv "$adv_file.tmp" "$adv_file"
   fi
 }
 

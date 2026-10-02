@@ -6,13 +6,22 @@ use crate::ui::*;
 use std::path::Path;
 use std::process::ExitCode;
 
-pub fn run(limit: usize) -> ExitCode {
+pub fn run(limit: usize, json: bool) -> ExitCode {
     let mut advisories = report::load_advisories(Path::new("."));
     if advisories.is_empty() {
         let client = AURClient::new();
         if let Some(remote) = client.fetch_remote_advisories() {
             advisories = remote;
         }
+    }
+
+    if json {
+        let count = limit.min(advisories.len());
+        let slice = &advisories[..count];
+        if let Ok(serialized) = serde_json::to_string_pretty(slice) {
+            println!("{serialized}");
+        }
+        return ExitCode::SUCCESS;
     }
 
     if advisories.is_empty() {

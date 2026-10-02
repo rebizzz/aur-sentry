@@ -53,6 +53,23 @@ def load_attestation(path: Path):
         print(f"warning: skipping {path}: missing required field(s)", file=sys.stderr)
         return None
 
+    source = data.get("source") or {}
+    pkgbuild_sha256 = source.get("pkgbuild_sha256") or ""
+    aur_commit = source.get("aur_commit") or ""
+
+    static_findings = data.get("static_findings") or []
+    findings_count = len(static_findings)
+
+    sig_file = Path(str(path) + ".sig")
+    has_signature = bool(data.get("signature")) or sig_file.is_file()
+
+    deps = (
+        data.get("dependencies")
+        or (data.get("package_analysis") or {}).get("dependencies")
+        or []
+    )
+    dependencies_count = len(deps) if isinstance(deps, (list, dict)) else 0
+
     return {
         "package": name,
         "version": version,
@@ -60,6 +77,11 @@ def load_attestation(path: Path):
         "analyzed_at": analyzed_at,
         "arch": arch,
         "path": str(path.relative_to(REPO_ROOT)),
+        "pkgbuild_sha256": pkgbuild_sha256,
+        "aur_commit": aur_commit,
+        "findings_count": findings_count,
+        "has_signature": has_signature,
+        "dependencies_count": dependencies_count,
     }
 
 

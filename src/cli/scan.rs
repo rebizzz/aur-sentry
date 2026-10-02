@@ -23,7 +23,7 @@ pub fn scan_file(path: &Path, json: bool) -> ExitCode {
     eprintln!("{BLUE}{ICON_SEARCH} scanning {}{RESET}", path.display());
     let scanner = PKGBUILDScanner::new();
     let findings = scanner.scan(&content, None);
-    print_findings(&findings);
+    print_findings(&file_label(path), &findings);
     let found = !findings.is_empty();
     if json {
         print_json(&FileFindings {
@@ -69,7 +69,7 @@ pub fn scan_pkg(pkgname: &str, json: bool) -> ExitCode {
     for install in &files[1..] {
         combined.extend(tag_install(install.findings.clone()));
     }
-    print_findings(&combined);
+    print_findings(pkgname, &combined);
     if json {
         print_json(&files);
     }
@@ -97,35 +97,8 @@ fn print_json(value: &impl Serialize) {
     );
 }
 
-fn print_findings(findings: &[Finding]) {
-    if findings.is_empty() {
-        eprintln!();
-        eprintln!("  {GREEN}{ICON_CHECK} {BOLD}clean{RESET}{GREEN} — no threats detected{RESET}");
-        eprintln!();
-        return;
-    }
-
-    eprintln!();
-    eprintln!(
-        "  {RED}{ICON_SKULL} {BOLD}{} threat(s) detected{RESET}",
-        findings.len()
-    );
-    eprintln!();
-
-    for f in findings {
-        let color = severity_color(&f.severity);
-        let icon = severity_icon(&f.severity);
-        eprintln!(
-            "  {color}{icon}  [{BOLD}{}{RESET}{color}] {}{RESET}",
-            f.severity, f.rule_id
-        );
-        eprintln!("     {}", f.description);
-        eprintln!(
-            "     {DIM}line {}: {}{RESET}",
-            f.line_number, f.matched_text
-        );
-        eprintln!();
-    }
+fn print_findings(target: &str, findings: &[Finding]) {
+    print_scan_results(target, findings);
 }
 
 #[cfg(test)]

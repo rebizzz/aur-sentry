@@ -5,8 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Package details — AUR Sentry</title>
 <meta name="description" content="Evidence-based verification detail for an AUR package.">
-<link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="assets/avatar.png">
+<link rel="stylesheet" href="style.css">
+<script>
+// FOUC Prevention: apply saved or system theme before first paint
+(function() {
+  try {
+    const saved = localStorage.getItem("aur-sentry-theme");
+    const theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    document.documentElement.setAttribute("data-theme", theme);
+  } catch (_) {}
+})();
+</script>
 </head>
 <body>
 <header class="site-header">
@@ -18,13 +28,22 @@
         <span class="site-tagline">Evidence-based AUR package verification</span>
       </div>
     </div>
+    <div class="site-header-actions">
+      <button id="theme-toggle" class="theme-toggle-btn" type="button" aria-label="Toggle dark/light theme" title="Toggle theme">
+        <!-- populated by registry.js initThemeToggle -->
+      </button>
+    </div>
   </div>
 </header>
 
 <main>
-  <a class="back-link" href="index.html">&larr; All packages</a>
+  <a class="back-link" href="index.html" id="back-link" onclick="if(window.history.length > 1){ window.history.back(); return false; }">
+    <!-- Populated by script with icon -->
+    &larr; Back to registry
+  </a>
+
   <div id="content">
-    <p class="empty-state">Loading&hellip;</p>
+    <p class="empty-state">Loading package details&hellip;</p>
   </div>
 </main>
 
@@ -39,42 +58,23 @@
 
 <script src="registry.js"></script>
 <script>
-const RAW_BASE = "https://raw.githubusercontent.com/rebizzz/aur-sentry/main/";
-
-const BEHAVIOR_COPY = {
-  NETWORK_ACCESS: "Made a network connection",
-  SHELL_EXECUTION: "Ran a shell command",
-  CREDENTIAL_ACCESS: "Accessed credential material",
-  PERSISTENCE: "Set up to run automatically later",
-  PRIVILEGE_ESCALATION: "Attempted to gain elevated privileges",
-  OBFUSCATION: "Used obfuscated or encoded code",
-  DYNAMIC_DOWNLOAD: "Downloaded and ran code at build/install time",
-  ARBITRARY_FILESYSTEM_WRITE: "Wrote to files outside the package",
-  PACKAGE_INSTALLATION: "Installed an additional package",
-  SERVICE_MANIPULATION: "Modified a system service",
-};
-
-const VERDICT_EXPLANATION = {
-  VERIFIED: "The build succeeded and nothing in static or dynamic analysis looked suspicious.",
-  SUSPICIOUS: "Something in this package's behavior doesn't match what a normal build/install should do. Review the evidence before installing.",
-  MALICIOUS: "This package showed confirmed malicious behavior, such as touching canary credentials or exfiltrating data. Do not install.",
-  INCONCLUSIVE: "Analysis completed but the evidence wasn't strong enough to reach a clear verdict.",
-  BUILD_FAILED: "The package failed to build in the sandbox, so it could not be fully analyzed.",
-  ANALYSIS_FAILED: "The analysis pipeline itself failed to complete for this package/version.",
-  STALE: "The AUR source has changed since this attestation was produced. Treat this verdict as out of date.",
-  UNSUPPORTED: "This package isn't currently supported by the scanner (e.g. unusual build system).",
-};
-
 function qs(name) {
-  return new URLSearchParams(location.search).get(name);
+  return new URLSearchParams(window.location.search).get(name);
 }
 
 function renderError(msg) {
-  document.getElementById("content").innerHTML = `<p class="empty-state">${escapeHtml(msg)}</p>`;
+  document.getElementById("content").innerHTML = `
+    <div class="empty-state">
+      <div class="empty-state-icon">&#9888;</div>
+      <div class="empty-state-title">Unable to display package</div>
+      <div class="empty-state-desc">${escapeHtml(msg)}</div>
+      <a href="index.html" class="btn-reset-search">Return to registry</a>
+    </div>
+  `;
 }
 
-function summaryLine(cls, text) {
-  return `<li class="summary-${cls}">${escapeHtml(text)}</li>`;
+function summaryLine(cls, iconSvg, text) {
+  return `<li class="summary-${cls}">${iconSvg}<span>${escapeHtml(text)}</span></li>`;
 }
 
 function buildPlainSummary(att) {
@@ -82,316 +82,472 @@ function buildPlainSummary(att) {
   const verdict = att.verdict;
 
   if (verdict === "BUILD_FAILED") {
-    lines.push(summaryLine("bad", "Build failed"));
+    lines.push(summaryLine("bad", ICONS.cross, "Build failed in disposable sandbox"));
   } else {
-    lines.push(summaryLine("ok", "Build succeeded"));
+    lines.push(summaryLine("ok", ICONS.check, "Build succeeded cleanly in sandbox"));
   }
 
   const findings = att.static_findings || [];
   const highSeverity = findings.filter((f) => f.severity === "HIGH" || f.severity === "CRITICAL");
   if (findings.length === 0) {
-    lines.push(summaryLine("ok", "No suspicious code patterns found in the PKGBUILD"));
+    lines.push(summaryLine("ok", ICONS.check, "No suspicious code patterns detected in PKGBUILD static analysis"));
   } else if (highSeverity.length > 0) {
-    lines.push(summaryLine("bad", `${highSeverity.length} high/critical severity finding(s) in the PKGBUILD`));
+    lines.push(summaryLine("bad", ICONS.cross, `${highSeverity.length} high/critical severity security finding(s) detected in PKGBUILD`));
   } else {
-    lines.push(summaryLine("warn", `${findings.length} lower-severity finding(s) in the PKGBUILD`));
+    lines.push(summaryLine("warn", ICONS.alertTriangle, `${findings.length} lower-severity finding(s) detected in PKGBUILD`));
   }
 
   const dyn = att.dynamic_evidence || { collected: false, network: [], filesystem: [] };
   if (!dyn.collected) {
-    lines.push(summaryLine("neutral", "No dynamic sandbox run performed for this attestation yet"));
+    lines.push(summaryLine("neutral", ICONS.infoCircle, "No dynamic sandbox telemetry collected for this attestation yet"));
   } else {
     const undeclared = (dyn.network || []).filter((n) => n.protocol === "undeclared");
     if (undeclared.length > 0) {
-      lines.push(summaryLine("bad", `${undeclared.length} network connection(s) to destinations not declared in the PKGBUILD`));
+      lines.push(summaryLine("bad", ICONS.cross, `${undeclared.length} undeclared network connection(s) detected during build`));
     } else {
-      lines.push(summaryLine("ok", "No suspicious network connections"));
+      lines.push(summaryLine("ok", ICONS.check, "No suspicious or undeclared network connections observed"));
     }
 
     const canaryHits = (dyn.filesystem || []).filter((f) => f.operation === "canary_access");
     if (canaryHits.length > 0) {
-      lines.push(summaryLine("bad", `Touched ${canaryHits.length} canary credential file(s) planted for detection`));
+      lines.push(summaryLine("bad", ICONS.cross, `Attempted access to ${canaryHits.length} planted canary credential file(s)`));
     } else {
-      lines.push(summaryLine("ok", "Canary credentials were not touched"));
+      lines.push(summaryLine("ok", ICONS.check, "Canary credential integrity preserved (no exfiltration attempts)"));
     }
   }
 
   const repro = att.reproducibility;
   if (repro === "REPRODUCED") {
-    lines.push(summaryLine("ok", "Build was independently reproduced"));
+    lines.push(summaryLine("ok", ICONS.check, "Build was independently reproduced with identical bit-for-bit output"));
   } else if (repro === "DIVERGED") {
-    lines.push(summaryLine("bad", "A second independent build produced a different result"));
+    lines.push(summaryLine("bad", ICONS.cross, "Independent verification build diverged from first build"));
   } else if (repro === "FAILED") {
-    lines.push(summaryLine("warn", "Reproducibility build failed"));
+    lines.push(summaryLine("warn", ICONS.alertTriangle, "Reproducibility comparison build failed"));
   } else {
-    lines.push(summaryLine("neutral", "Reproducibility not yet attempted"));
+    lines.push(summaryLine("neutral", ICONS.infoCircle, "Reproducibility verification not yet attempted"));
   }
 
   return lines.join("");
 }
 
-function findingsHtml(findings) {
+function findingsHtml(findings, pkgName, aurCommit) {
   if (!findings || findings.length === 0) {
-    return `<p class="empty-state" style="padding:16px 0;">No static findings.</p>`;
+    return `<p class="empty-state" style="padding:16px 0;">No static findings recorded.</p>`;
   }
-  return findings.map((f) => `
-    <div class="finding finding-${escapeHtml(f.severity)}">
-      <div class="finding-top">
-        <span>${escapeHtml(BEHAVIOR_COPY[f.behavior] || f.behavior)}</span>
-        <span>${escapeHtml(f.severity)} &middot; ${escapeHtml(f.file)}:${escapeHtml(String(f.line))}</span>
+  return findings.map((f) => {
+    let locHtml = `${escapeHtml(f.file)}:${escapeHtml(String(f.line))}`;
+    if (f.file === "PKGBUILD" && f.line > 0 && aurCommit && aurCommit !== "unknown") {
+      const cgitLineUrl = `https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=${encodeURIComponent(pkgName)}&id=${encodeURIComponent(aurCommit)}#n${f.line}`;
+      locHtml = `<a href="${cgitLineUrl}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">${locHtml} ${ICONS.extLink}</a>`;
+    }
+    return `
+      <div class="finding finding-${escapeHtml(f.severity)}">
+        <div class="finding-top">
+          <span>${escapeHtml(BEHAVIOR_COPY[f.behavior] || f.behavior)}</span>
+          <span>${escapeHtml(f.severity)} &middot; ${locHtml}</span>
+        </div>
+        <div class="finding-desc">${escapeHtml(f.description)}</div>
       </div>
-      <div class="finding-desc">${escapeHtml(f.description)}</div>
-    </div>
-  `).join("");
+    `;
+  }).join("");
 }
 
-// Checks whether the sibling .sig/.cert files for an attestation were
-// published (they are, once .github/workflows/dynamic-sandbox.yml's cosign
-// signing step lands for a given run). Signing is keyless via GitHub Actions
-// OIDC / Sigstore, so there's nothing secret to leak by linking these files —
-// anyone can independently verify with `cosign verify-blob` (see
-// scripts/verify_attestation.sh).
-async function buildSignedNotice(path) {
+function renderNetworkTable(events) {
+  if (!events || events.length === 0) {
+    return `<p class="package-meta">No external network connections observed during sandbox run.</p>`;
+  }
+  const rows = events.map((ev) => {
+    const isUndeclared = ev.protocol === "undeclared";
+    const protoBadge = isUndeclared
+      ? `<span class="badge badge-MALICIOUS">undeclared</span>`
+      : `<span class="badge badge-VERIFIED">${escapeHtml(ev.protocol || "standard")}</span>`;
+
+    return `
+      <tr>
+        <td><code>${escapeHtml(ev.phase || "build")}</code></td>
+        <td><code>${escapeHtml(ev.destination)}</code></td>
+        <td><code>${escapeHtml(String(ev.port ?? "-"))}</code></td>
+        <td>${protoBadge}</td>
+        <td>${escapeHtml(formatTimestamp(ev.timestamp))}</td>
+      </tr>
+    `;
+  }).join("");
+
+  return `
+    <div class="telemetry-table-container">
+      <table class="telemetry-table">
+        <thead>
+          <tr>
+            <th>Phase</th>
+            <th>Destination</th>
+            <th>Port</th>
+            <th>Classification</th>
+            <th>Timestamp</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderOsvAdvisories(intel) {
+  if (!intel || intel.length === 0) {
+    return `<p class="package-meta">No external vulnerability advisories matched for this package version.</p>`;
+  }
+
+  return `
+    <div class="osv-grid">
+      ${intel.map((item) => `
+        <div class="osv-card">
+          <div class="osv-source-row">
+            <span class="osv-source-badge">${escapeHtml(item.source || "osv.dev")}</span>
+            ${item.url ? `
+              <a class="ext-link-btn" href="${escapeHtml(item.url)}" target="_blank" rel="noopener">
+                View Advisory ${ICONS.extLink}
+              </a>
+            ` : ""}
+          </div>
+          <div class="osv-summary">${escapeHtml(item.summary)}</div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderDependencyTree(att) {
+  const tree = att.dependency_tree || att.dependencies || (att.package_analysis && att.package_analysis.dependencies);
+  if (!tree) return "";
+
+  let treeContent = "";
+  if (typeof tree === "string") {
+    treeContent = escapeHtml(tree);
+  } else if (Array.isArray(tree)) {
+    treeContent = tree.map((d) => `├── ${escapeHtml(typeof d === 'string' ? d : (d.name || JSON.stringify(d)))}`).join("\n");
+  } else if (typeof tree === "object") {
+    const lines = [];
+    if (tree.official && tree.official.length) {
+      lines.push("Official Arch Linux Dependencies:");
+      tree.official.forEach((d) => lines.push(`├── [core/extra] ${escapeHtml(typeof d === 'string' ? d : d.name)}`));
+    }
+    if (tree.aur && tree.aur.length) {
+      lines.push("AUR Transitive Dependencies:");
+      tree.aur.forEach((d) => lines.push(`├── [aur] ${escapeHtml(typeof d === 'string' ? d : d.name)}`));
+    }
+    if (tree.suspicious && tree.suspicious.length) {
+      lines.push("Threat Warnings / Suspicious Dependencies:");
+      tree.suspicious.forEach((w) => lines.push(`└── [WARNING] ${escapeHtml(typeof w === 'string' ? w : (w.message || w.name))}`));
+    }
+    treeContent = lines.join("\n");
+  }
+
+  if (!treeContent) return "";
+
+  return `
+    <h2>Dependency Analysis & BOM</h2>
+    <div class="dep-tree-container">
+      <div class="dep-tree-header">
+        <span class="dep-tree-title">Resolved Dependency Tree</span>
+        <span class="badge badge-VERIFIED">Multi-Source Audited</span>
+      </div>
+      <div class="dep-tree-content">${treeContent}</div>
+    </div>
+  `;
+}
+
+function renderCopyableHash(hash) {
+  if (!hash) return "<code>not recorded</code>";
+  return `
+    <div class="copy-wrapper">
+      <code>${escapeHtml(hash)}</code>
+      <button type="button" class="copy-btn" onclick="copyToClipboard('${escapeHtml(hash)}', this)" aria-label="Copy hash" title="Copy to clipboard">
+        ${ICONS.copy} Copy
+      </button>
+    </div>
+  `;
+}
+
+function buildSignedNoticeHtml(path, hasSignature) {
   const sigUrl = RAW_BASE + path + ".sig";
   const certUrl = RAW_BASE + path + ".cert";
-  try {
-    const [sigRes, certRes] = await Promise.all([
-      fetch(sigUrl, { method: "HEAD", cache: "no-store" }),
-      fetch(certUrl, { method: "HEAD", cache: "no-store" }),
-    ]);
-    if (sigRes.ok && certRes.ok) {
-      return `<p class="package-meta signed-notice">
-        &#128274; Cryptographically signed (keyless, via GitHub Actions/Sigstore) &mdash;
-        <a href="${sigUrl}">.sig</a> &middot; <a href="${certUrl}">.cert</a> &middot;
-        verify locally with <code>scripts/verify_attestation.sh</code>
-      </p>`;
-    }
-  } catch {
-    // network hiccup fetching the HEAD requests — just omit the notice
+  const verifyCmd = `scripts/verify_attestation.sh ${path}`;
+
+  if (hasSignature) {
+    return `
+      <div class="signed-notice">
+        &#128274; <strong>Cryptographically Signed</strong> (Keyless Sigstore / GitHub Actions OIDC)
+        &mdash;
+        <a href="${sigUrl}" target="_blank" rel="noopener">.sig</a> &middot;
+        <a href="${certUrl}" target="_blank" rel="noopener">.cert</a>
+        <div style="margin-top: 6px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+          <span style="font-size:0.82rem; color:var(--text-muted);">Verify locally:</span>
+          <code>${escapeHtml(verifyCmd)}</code>
+          <button type="button" class="copy-btn" onclick="copyToClipboard('${escapeHtml(verifyCmd)}', this)" title="Copy verification command">
+            ${ICONS.copy} Copy Command
+          </button>
+        </div>
+      </div>
+    `;
   }
-  return `<p class="package-meta signed-notice">Not yet cryptographically signed.</p>`;
+  return `
+    <div class="signed-notice">
+      &#9888; <strong>Signature:</strong> Not yet cryptographically signed with Sigstore.
+    </div>
+  `;
 }
 
-// Public GitHub Contents API listing for a package's attestation directory —
-// same call shape as src/main.rs's `check` subcommand (GH_CONTENTS_API) and
-// bin/safeaur's ATTESTATION_API_BASE, mirrored here in JS. No auth needed:
-// public repo, read-only, subject to GitHub's unauthenticated rate limit.
-const GH_CONTENTS_API = "https://api.github.com/repos/rebizzz/aur-sentry/contents/data/attestations";
-
-function rawAttestationUrl(pkgName, version) {
-  return `${RAW_BASE}data/attestations/${encodeURIComponent(pkgName)}/${encodeURIComponent(version)}.json`;
-}
-
-// Builds the "History" section body: lists every known version for this
-// package (from the live GitHub Contents API listing, not just whatever the
-// manifest last resolved) with verdict, analyzed_at, a link to that version's
-// raw attestation, and a changed/unchanged PKGBUILD indicator between
-// consecutive scans.
-//
-// Honest limitation: this is a sha256-equality indicator, not an actual
-// PKGBUILD diff/text view — attestations only store
-// source.pkgbuild_sha256, never the PKGBUILD text itself, so there's nothing
-// to diff line-by-line without fetching the AUR source separately (out of
-// scope here).
-async function buildHistorySection(pkgName, latestAttestation) {
-  let fileVersions = [];
-  let listingError = null;
-  try {
-    const res = await fetch(`${GH_CONTENTS_API}/${encodeURIComponent(pkgName)}`, {
-      headers: { Accept: "application/vnd.github+json" },
-      cache: "no-store",
-    });
-    if (res.ok) {
-      const listing = await res.json();
-      fileVersions = listing
-        .map((e) => e.name)
-        .filter((n) => n.endsWith(".json"))
-        .map((n) => n.slice(0, -".json".length));
-    } else {
-      listingError = `GitHub API returned ${res.status}`;
-    }
-  } catch (err) {
-    listingError = err.message;
+function buildHistorySectionFromManifest(pkgName, currentVersion, versions) {
+  if (!versions || versions.length === 0) {
+    return `<p class="empty-state" style="padding:16px 0;">No prior versions recorded in registry.</p>`;
   }
 
-  if (fileVersions.length === 0) {
-    return `<p class="empty-state" style="padding:16px 0;">Could not load version history from GitHub${listingError ? ` (${escapeHtml(listingError)})` : ""}.</p>`;
-  }
-
-  const records = await Promise.all(fileVersions.map(async (version) => {
-    if (latestAttestation && latestAttestation.package.version === version) {
-      return { version, att: latestAttestation };
-    }
-    try {
-      const res = await fetch(rawAttestationUrl(pkgName, version), { cache: "no-store" });
-      if (!res.ok) throw new Error(`${res.status}`);
-      return { version, att: await res.json() };
-    } catch (err) {
-      return { version, att: null, error: err.message };
-    }
-  }));
-
-  // Sort oldest -> newest to compute PKGBUILD diff transitions in scan order.
-  const chrono = [...records].sort((a, b) => {
-    const ta = (a.att && a.att.analyzed_at) || "";
-    const tb = (b.att && b.att.analyzed_at) || "";
-    return ta < tb ? -1 : ta > tb ? 1 : 0;
-  });
-
+  // Sort chronologically (oldest -> newest) to compare PKGBUILD sha256 transitions
+  const chrono = [...versions].sort((a, b) => (a.analyzed_at < b.analyzed_at ? -1 : 1));
   const diffNotes = new Map();
+
   for (let i = 1; i < chrono.length; i++) {
     const cur = chrono[i];
     const prev = chrono[i - 1];
-    if (!cur.att || !prev.att) continue;
-    const curSha = cur.att.source && cur.att.source.pkgbuild_sha256;
-    const prevSha = prev.att.source && prev.att.source.pkgbuild_sha256;
-    if (curSha && prevSha) {
-      diffNotes.set(cur.version, curSha === prevSha
+    if (cur.pkgbuild_sha256 && prev.pkgbuild_sha256) {
+      diffNotes.set(cur.version, cur.pkgbuild_sha256 === prev.pkgbuild_sha256
         ? "PKGBUILD unchanged since previous scan"
-        : "PKGBUILD changed since previous scan");
+        : "PKGBUILD updated since previous scan");
     }
   }
 
-  const rows = [...chrono].reverse().map((r) => {
-    if (!r.att) {
-      return `<li>
-        <div class="history-row-top"><span class="mono">${escapeHtml(r.version)}</span></div>
-        <div class="package-meta">Could not load this attestation (${escapeHtml(r.error || "unknown error")}).</div>
-      </li>`;
-    }
-    const note = diffNotes.get(r.version);
-    return `<li>
-      <div class="history-row-top">
-        <span class="mono">${escapeHtml(r.version)}</span>
-        ${badgeHtml(r.att.verdict)}
-      </div>
-      <div class="package-meta">
-        analyzed ${escapeHtml(formatTimestamp(r.att.analyzed_at))}${note ? ` &middot; ${escapeHtml(note)}` : ""}
-        &middot; <a href="${rawAttestationUrl(pkgName, r.version)}">raw attestation</a>
-      </div>
-    </li>`;
+  // Render newest first for display
+  const rows = [...chrono].reverse().map((entry) => {
+    const isCurrent = entry.version === currentVersion;
+    const note = diffNotes.get(entry.version);
+    const rawUrl = RAW_BASE + entry.path;
+
+    return `
+      <li class="${isCurrent ? "history-item-current" : ""}">
+        <div class="history-row-top">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <span class="mono" style="font-weight:700;">${escapeHtml(entry.version)}</span>
+            ${isCurrent ? `<span class="history-current-tag">Current view</span>` : ""}
+            ${badgeHtml(entry.verdict)}
+          </div>
+          <div class="history-actions">
+            ${!isCurrent ? `
+              <a class="ext-link-btn" href="${packagePageUrl(pkgName, entry.version)}">
+                Inspect in UI
+              </a>
+            ` : ""}
+            <a class="ext-link-btn" href="${rawUrl}" target="_blank" rel="noopener">
+              Raw JSON ${ICONS.extLink}
+            </a>
+          </div>
+        </div>
+        <div class="package-meta">
+          <span>analyzed ${escapeHtml(formatTimestamp(entry.analyzed_at))}</span>
+          ${note ? `<span>&middot;</span><span>${escapeHtml(note)}</span>` : ""}
+          ${entry.findings_count ? `<span>&middot;</span><span>${entry.findings_count} finding${entry.findings_count === 1 ? "" : "s"}</span>` : ""}
+        </div>
+      </li>
+    `;
   }).join("");
 
   return `<ul class="summary-list">${rows}</ul>`;
 }
 
 async function render() {
+  initThemeToggle();
+
+  // Set Back Link with Left Arrow
+  const backLink = document.getElementById("back-link");
+  if (backLink) {
+    backLink.innerHTML = `${ICONS.arrowLeft} Back to registry`;
+  }
+
   const name = qs("name");
+  const requestedVersion = qs("version");
+
   if (!name) {
-    renderError("No package specified. Go back to the registry and pick a package.");
+    renderError("No package specified in query string. Please return to the registry and choose a package.");
     return;
   }
 
+  // Fetch manifest to resolve version list
   let entries;
   try {
     entries = await fetchManifest();
   } catch (err) {
-    renderError(`Could not load the package manifest (${err.message}).`);
+    renderError(`Could not load package manifest (${err.message}).`);
     return;
   }
 
-  const versions = entries
+  // Find all entries for this package
+  const pkgVersions = entries
     .filter((e) => e.package === name)
     .sort((a, b) => (a.analyzed_at < b.analyzed_at ? 1 : -1));
 
-  if (versions.length === 0) {
-    renderError(`No attestations found for "${name}".`);
+  if (pkgVersions.length === 0) {
+    renderError(`Package "${name}" was not found in the AUR Sentry registry manifest.`);
     return;
   }
 
-  const latest = versions[0];
+  // Pick target version: either specifically requested ?version=... or latest
+  let selectedEntry = pkgVersions[0];
+  if (requestedVersion) {
+    const found = pkgVersions.find((v) => v.version === requestedVersion);
+    if (found) {
+      selectedEntry = found;
+    }
+  }
 
+  // Load attestation data using relative-first offline-resilient fetcher
   let att;
   try {
-    const res = await fetch(RAW_BASE + latest.path, { cache: "no-store" });
-    if (!res.ok) throw new Error(`${res.status}`);
-    att = await res.json();
+    att = await fetchAttestationData(selectedEntry.path);
   } catch (err) {
-    renderError(`Could not load attestation data for "${name}" (${err.message}).`);
+    renderError(`Could not load attestation data for "${name}" version ${selectedEntry.version} (${err.message}).`);
     return;
   }
 
-  const signedHtml = await buildSignedNotice(latest.path);
+  // Update Page Title
+  document.title = `${att.package.name} ${att.package.version} — AUR Sentry Verification`;
+
+  // External context links
+  const aurPkgUrl = `https://aur.archlinux.org/packages/${encodeURIComponent(name)}`;
+  const aurCommit = att.source && att.source.aur_commit;
+  const cgitCommitUrl = (aurCommit && aurCommit !== "unknown")
+    ? `https://aur.archlinux.org/cgit/aur.git/commit/?h=${encodeURIComponent(name)}&id=${encodeURIComponent(aurCommit)}`
+    : null;
+
+  // Hero Verdict Info
+  const heroData = getHeroVerdictData(att.verdict);
+  const heroClass = `hero-verdict-${att.verdict === 'VERIFIED' || att.verdict === 'SUSPICIOUS' || att.verdict === 'MALICIOUS' || att.verdict === 'BUILD_FAILED' ? att.verdict : 'OTHER'}`;
+
+  // Signature check
+  const hasSig = Boolean(selectedEntry.has_signature || att.signature);
+  const signedHtml = buildSignedNoticeHtml(selectedEntry.path, hasSig);
 
   const isExample = name.startsWith("example-");
-  const noticeHtml = isExample
-    ? `<div class="notice">This is fake example data used to preview this UI, not a real scan result.</div>`
-    : "";
+  const noticeHtml = isExample ? `
+    <div class="notice">
+      This is example test data used to preview this interface &mdash; not a real scan result.
+    </div>
+  ` : "";
 
+  // Render Full Content
   document.getElementById("content").innerHTML = `
     ${noticeHtml}
-    <h1>${escapeHtml(att.package.name)}</h1>
-    <p class="package-meta">
-      version ${escapeHtml(att.package.version)} (${escapeHtml(att.package.arch)})
-      &middot; last analyzed ${escapeHtml(formatTimestamp(att.analyzed_at))}
-    </p>
-    <p style="margin: 12px 0 24px;">${badgeHtml(att.verdict)}</p>
+
+    <div class="package-header-row">
+      <div class="package-header-title">
+        <h1>${escapeHtml(att.package.name)}</h1>
+        <span class="mono" style="font-size:1.05rem; font-weight:600;">v${escapeHtml(att.package.version)}</span>
+        <span class="package-meta" style="margin-top:0;">(${escapeHtml(att.package.arch || "x86_64")})</span>
+      </div>
+      <div class="package-header-links">
+        <a class="ext-link-btn" href="${aurPkgUrl}" target="_blank" rel="noopener" title="View package on AUR">
+          AUR Package ${ICONS.extLink}
+        </a>
+        ${cgitCommitUrl ? `
+          <a class="ext-link-btn" href="${cgitCommitUrl}" target="_blank" rel="noopener" title="Inspect commit in AUR cgit">
+            AUR Commit ${ICONS.extLink}
+          </a>
+        ` : ""}
+      </div>
+    </div>
+
+    <!-- Prominent Hero Verdict Banner -->
+    <div class="hero-verdict-banner ${heroClass}">
+      <div class="hero-verdict-icon-container">
+        ${heroData.icon}
+      </div>
+      <div class="hero-verdict-body">
+        <div class="hero-verdict-tag">${escapeHtml(heroData.tag)}</div>
+        <h2 class="hero-verdict-title">${escapeHtml(heroData.title)}</h2>
+        <p class="hero-verdict-desc">${escapeHtml(heroData.desc)}</p>
+      </div>
+    </div>
+
     ${signedHtml}
 
     <h2>What this means</h2>
     <ul class="summary-list">
       ${buildPlainSummary(att)}
     </ul>
-    <p class="package-meta">${escapeHtml(VERDICT_EXPLANATION[att.verdict] || "")}</p>
 
-    <details class="why">
-      <summary>WHY? See the raw evidence</summary>
+    ${renderDependencyTree(att)}
+
+    <!-- Expandable Raw Evidence Section -->
+    <details class="why" open>
+      <summary>Verification Evidence & Auditing Details</summary>
       <div class="why-body">
 
-        <h3>Source identity</h3>
+        <h3>Source Identity & Checksums</h3>
         <table class="identity">
-          <tr><th>AUR commit</th><td><code>${escapeHtml(att.source.aur_commit || "unknown")}</code></td></tr>
-          <tr><th>PKGBUILD sha256</th><td><code>${escapeHtml(att.source.pkgbuild_sha256)}</code></td></tr>
-          <tr><th>Install sha256</th><td><code>${escapeHtml(att.source.install_sha256 || "not recorded")}</code></td></tr>
-          <tr><th>Scanner version</th><td><code>${escapeHtml(att.scanner_version)}</code></td></tr>
-          <tr><th>Reproducibility</th><td>${escapeHtml(att.reproducibility)}</td></tr>
-          <tr><th>Evidence hash</th><td><code>${escapeHtml(att.evidence_hash)}</code></td></tr>
+          <tr>
+            <th>AUR commit</th>
+            <td>
+              ${cgitCommitUrl ? `
+                <div class="copy-wrapper">
+                  <code><a href="${cgitCommitUrl}" target="_blank" rel="noopener" style="color:inherit;">${escapeHtml(aurCommit)}</a></code>
+                  <button type="button" class="copy-btn" onclick="copyToClipboard('${escapeHtml(aurCommit)}', this)" title="Copy commit sha">
+                    ${ICONS.copy} Copy
+                  </button>
+                </div>
+              ` : `<code>${escapeHtml(aurCommit || "unknown")}</code>`}
+            </td>
+          </tr>
+          <tr>
+            <th>PKGBUILD sha256</th>
+            <td>${renderCopyableHash(att.source.pkgbuild_sha256)}</td>
+          </tr>
+          <tr>
+            <th>Install sha256</th>
+            <td>${renderCopyableHash(att.source.install_sha256)}</td>
+          </tr>
+          <tr>
+            <th>Evidence hash</th>
+            <td>${renderCopyableHash(att.evidence_hash)}</td>
+          </tr>
+          <tr>
+            <th>Scanner version</th>
+            <td><code>${escapeHtml(att.scanner_version)}</code></td>
+          </tr>
+          <tr>
+            <th>Reproducibility</th>
+            <td><code>${escapeHtml(att.reproducibility)}</code></td>
+          </tr>
         </table>
 
-        <h3>Static findings (${(att.static_findings || []).length})</h3>
-        ${findingsHtml(att.static_findings)}
+        <h3>Static Analysis Findings (${(att.static_findings || []).length})</h3>
+        ${findingsHtml(att.static_findings, att.package.name, aurCommit)}
 
-        <h3>Dynamic evidence</h3>
+        <h3>Dynamic Sandbox Network Telemetry</h3>
         <p class="package-meta">
           ${att.dynamic_evidence && att.dynamic_evidence.collected
-            ? "Collected during a disposable sandbox build/install run."
-            : "No dynamic sandbox run has been performed for this attestation yet."}
+            ? "Network connections recorded inside the disposable sandbox container during build and packaging:"
+            : "No dynamic sandbox telemetry was recorded for this attestation."}
         </p>
-        <pre class="evidence">${escapeHtml(JSON.stringify(att.dynamic_evidence, null, 2))}</pre>
-
-        <h3>Package analysis</h3>
-        <pre class="evidence">${escapeHtml(JSON.stringify(att.package_analysis, null, 2))}</pre>
+        ${renderNetworkTable(att.dynamic_evidence ? att.dynamic_evidence.network : [])}
 
         ${(att.external_intelligence || []).length > 0 ? `
-          <h3>External intelligence</h3>
-          <pre class="evidence">${escapeHtml(JSON.stringify(att.external_intelligence, null, 2))}</pre>
+          <h3>External Vulnerability Intelligence (OSV.dev)</h3>
+          ${renderOsvAdvisories(att.external_intelligence)}
         ` : ""}
 
-        <h3>Full attestation JSON</h3>
+        <h3>Raw Attestation Artifact</h3>
+        <p class="package-meta">Full signed JSON attestation data adhering to attestation v1.0 schema:</p>
         <pre class="evidence">${escapeHtml(JSON.stringify(att, null, 2))}</pre>
       </div>
     </details>
 
-    <details class="why" id="history-details">
-      <summary>History &mdash; ${versions.length} version${versions.length === 1 ? "" : "s"} in the manifest (click to load full history from GitHub)</summary>
+    <!-- Version History Section (Manifest-driven, 0 GitHub API rate limits) -->
+    <details class="why" id="history-details" ${pkgVersions.length > 1 ? "open" : ""}>
+      <summary>Version History &mdash; ${pkgVersions.length} scan${pkgVersions.length === 1 ? "" : "s"} recorded in manifest</summary>
       <div class="why-body" id="history-body">
-        <p class="empty-state" style="padding:16px 0;">Loading version history from GitHub&hellip;</p>
+        ${buildHistorySectionFromManifest(name, att.package.version, pkgVersions)}
       </div>
     </details>
   `;
-
-  const historyDetails = document.getElementById("history-details");
-  let historyLoaded = false;
-  historyDetails.addEventListener("toggle", async () => {
-    if (!historyDetails.open || historyLoaded) return;
-    historyLoaded = true;
-    const body = document.getElementById("history-body");
-    try {
-      body.innerHTML = await buildHistorySection(name, att);
-    } catch (err) {
-      body.innerHTML = `<p class="empty-state" style="padding:16px 0;">Could not build version history (${escapeHtml(err.message)}).</p>`;
-    }
-  });
 }
 
 render();

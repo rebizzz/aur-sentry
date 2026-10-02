@@ -54,15 +54,20 @@ mkdir -p "$WORK"
 REPRO_DIR="$EVIDENCE_DIR/reproducibility"
 mkdir -p "$REPRO_DIR"
 
+CONTAINER_ENGINE="${CONTAINER_RUNTIME:-$(command -v podman 2>/dev/null || command -v docker 2>/dev/null || echo docker)}"
+MEM_LIMIT="${SANDBOX_MEM:-4g}"
+CPU_LIMIT="${SANDBOX_CPUS:-2}"
+
 echo "=== AUR-Sentry disposable dynamic sandbox ==="
 echo "Package: $PKG"
+echo "Container engine: $CONTAINER_ENGINE"
 echo "Source snapshot (read-only in containers): $SRC_DIR"
 echo "Evidence dir (host-only): $EVIDENCE_DIR"
 echo "Scratch dir: $WORK"
 
 # ── 1. Build the sandbox image (pacman -Syu + strace/git + builder user) ──
 echo "--- Building sandbox image $IMAGE ---"
-if ! docker build --pull -t "$IMAGE" -f "$SCRIPT_DIR/Containerfile" "$SCRIPT_DIR" \
+if ! "$CONTAINER_ENGINE" build --pull -t "$IMAGE" -f "$SCRIPT_DIR/Containerfile" "$SCRIPT_DIR" \
   >"$EVIDENCE_DIR/pacman.log" 2>&1; then
   echo "::error::failed to build sandbox image" | tee -a "$EVIDENCE_DIR/fatal.log"
   tail -n 50 "$EVIDENCE_DIR/pacman.log"
@@ -73,7 +78,7 @@ fi
 #       influence whether telemetry is considered available. ─────────────
 echo "--- Checking strace availability ---"
 STRACE_OK=false
-if docker run --rm --cap-add SYS_PTRACE "$IMAGE" \
+if "$CONTAINER_ENGINE" run --rm --cap-add SYS_PTRACE "$IMAGE" \
   strace -f -e trace=network,file,process -o /dev/null true \
   >"$EVIDENCE_DIR/strace_check.log" 2>&1; then
   STRACE_OK=true
@@ -85,21 +90,23 @@ fi
 SANDBOX_STRACE=0
 [ "$STRACE_OK" = true ] && SANDBOX_STRACE=1
 
-# sandbox_run <label> <stdout_file> <stderr_file> [docker run args...]
+# sandbox_run <label> <stdout_file> <stderr_file> [container run args...]
 # One disposable container. Its stdout/stderr go straight into host files;
 # the container has no path to either file.
 sandbox_run() {
   local label="$1" out="$2" err="$3" name rc
   shift 3
   name="aur-sentry-sbx-$$-$label"
-  timeout "$TIMEOUT" docker run --name "$name" \
+  timeout "$TIMEOUT" "$CONTAINER_ENGINE" run --name "$name" \
     --cap-add SYS_PTRACE \
     --security-opt no-new-privileges \
     --pids-limit 4096 \
+    --memory="$MEM_LIMIT" \
+    --cpus="$CPU_LIMIT" \
     -e SANDBOX_STRACE="$SANDBOX_STRACE" \
     "$@" >"$out" 2>"$err"
   rc=$?
-  docker rm -f "$name" >/dev/null 2>&1
+  "$CONTAINER_ENGINE" rm -f "$name" >/dev/null 2>&1
   [ "$rc" -eq 124 ] && echo "::warning::container '$label' timed out after $TIMEOUT"
   return "$rc"
 }

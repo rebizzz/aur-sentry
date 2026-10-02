@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/rebizzz/aur-sentry/schemas/dependency_bom.schema.json",
+  "title": "AUR Sentry Dependency BOM",
+  "description": "Comprehensive Dependency Bill of Materials (BOM) and threat evaluation for an Arch User Repository package.",
+  "type": "object",
+  "required": [
+    "bom_version",
+    "root_package",
+    "root_version",
+    "generated_at",
+    "summary",
+    "direct_dependencies",
+    "transitive_dependencies",
+    "warnings"
+  ],
+  "properties": {
+    "bom_version": {
+      "type": "string",
+      "const": "1.0"
+    },
+    "root_package": {
+      "type": "string"
+    },
+    "root_version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "summary": {
+      "type": "object",
+      "required": [
+        "total_dependencies",
+        "official_count",
+        "aur_count",
+        "virtual_count",
+        "unresolved_count",
+        "warning_count",
+        "depends_count",
+        "makedepends_count",
+        "checkdepends_count",
+        "optdepends_count"
+      ],
+      "properties": {
+        "total_dependencies": { "type": "integer", "minimum": 0 },
+        "official_count": { "type": "integer", "minimum": 0 },
+        "aur_count": { "type": "integer", "minimum": 0 },
+        "virtual_count": { "type": "integer", "minimum": 0 },
+        "unresolved_count": { "type": "integer", "minimum": 0 },
+        "warning_count": { "type": "integer", "minimum": 0 },
+        "depends_count": { "type": "integer", "minimum": 0 },
+        "makedepends_count": { "type": "integer", "minimum": 0 },
+        "checkdepends_count": { "type": "integer", "minimum": 0 },
+        "optdepends_count": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "direct_dependencies": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/bomNode" }
+    },
+    "transitive_dependencies": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/bomNode" }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/threatWarning" }
+    }
+  },
+  "$defs": {
+    "versionConstraint": {
+      "type": "object",
+      "required": ["operator", "version"],
+      "properties": {
+        "operator": {
+          "type": "string",
+          "enum": ["=", ">=", "<=", ">", "<"]
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "bomNode": {
+      "type": "object",
+      "required": ["name", "purl", "raw_spec", "dep_type", "origin", "depth", "warnings"],
+      "properties": {
+        "name": { "type": "string" },
+        "purl": { "type": "string" },
+        "raw_spec": { "type": "string" },
+        "dep_type": {
+          "type": "string",
+          "enum": ["DEPENDS", "MAKE_DEPENDS", "CHECK_DEPENDS", "OPT_DEPENDS"]
+        },
+        "architecture": {
+          "type": ["string", "null"]
+        },
+        "constraint": {
+          "oneOf": [
+            { "$ref": "#/$defs/versionConstraint" },
+            { "type": "null" }
+          ]
+        },
+        "description": {
+          "type": ["string", "null"]
+        },
+        "origin": {
+          "type": "string",
+          "enum": [
+            "OFFICIAL_CORE",
+            "OFFICIAL_EXTRA",
+            "OFFICIAL_MULTILIB",
+            "AUR",
+            "VIRTUAL_SONAME",
+            "VIRTUAL_PROVIDES",
+            "UNRESOLVED"
+          ]
+        },
+        "resolved_version": {
+          "type": ["string", "null"]
+        },
+        "maintainer": {
+          "type": ["string", "null"]
+        },
+        "num_votes": {
+          "type": ["integer", "null"]
+        },
+        "popularity": {
+          "type": ["number", "null"]
+        },
+        "depth": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "parent": {
+          "type": ["string", "null"]
+        },
+        "warnings": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/threatWarning" }
+        }
+      }
+    },
+    "threatWarning": {
+      "type": "object",
+      "required": ["package_name", "rule_id", "level", "message"],
+      "properties": {
+        "package_name": { "type": "string" },
+        "rule_id": { "type": "string" },
+        "level": {
+          "type": "string",
+          "enum": ["CLEAN", "INFO", "WARNING", "CRITICAL"]
+        },
+        "message": { "type": "string" },
+        "target": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  }
+}

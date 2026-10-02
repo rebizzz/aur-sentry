@@ -85,12 +85,12 @@ jobs:
           git config --global user.name "$BOT_NAME"
           git config --global user.email "$BOT_EMAIL"
 
-          if ! git diff --quiet ADVISORIES.md README.md advisories.json advisories.xml data/aur-state.json; then
+          if ! git diff --quiet README.md data/aur-state.json; then
             echo "Threat radar, machine feeds, or triage state have updates. Pushing directly to main..."
             for attempt in 1 2 3 4 5; do
               git fetch --quiet origin main
               git checkout --quiet --force -B radar-update origin/main
-              git add ADVISORIES.md README.md advisories.json advisories.xml data/aur-state.json
+              git add README.md data/aur-state.json
               if git diff --cached --quiet; then
                 echo "No changes after rebase."
                 break

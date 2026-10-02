@@ -35,7 +35,7 @@ evidence_channel_init() {
 # script reads or exfiltrates these, the strace telemetry shows it.
 plant_canaries() {
   local home_dir="$1" owner="$2"
-  install -d -m 700 "$home_dir/.ssh" "$home_dir/.aws"
+  install -d -m 700 "$home_dir/.ssh" "$home_dir/.aws" "$home_dir/.gnupg" "$home_dir/.docker" "$home_dir/.config/gcloud"
   cat > "$home_dir/.ssh/id_fake" <<'EOF'
 -----BEGIN OPENSSH PRIVATE KEY-----
 CANARY-DO-NOT-USE-THIS-IS-A-FAKE-DECOY-KEY-PLANTED-BY-AUR-SENTRY
@@ -48,8 +48,32 @@ EOF
 aws_access_key_id = CANARY_AKIAFAKEFAKEFAKEFAKE
 aws_secret_access_key = CANARY_FAKESECRETFAKESECRETFAKESECRETFAKEFAKE
 EOF
-  chown -R "$owner:$owner" "$home_dir/.ssh" "$home_dir/.aws"
-  chmod 600 "$home_dir/.ssh/id_fake" "$home_dir/.aws/credentials"
+  cat > "$home_dir/.docker/config.json" <<'EOF'
+{
+  "auths": {
+    "https://index.docker.io/v1/": {
+      "auth": "CANARY_FAKE_DOCKER_AUTH_TOKEN_DO_NOT_EXFILTRATE"
+    }
+  }
+}
+EOF
+  cat > "$home_dir/.env" <<'EOF'
+# CANARY — decoy environment secrets planted by AUR-Sentry sandbox
+DATABASE_URL="postgres://canary_user:CANARY_PASS@localhost:5432/canary_db"
+DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/canary/FAKE_WEBHOOK_SECRET"
+SLACK_WEBHOOK_URL="https://hooks.slack.com/services/CANARY/FAKE/WEBHOOK"
+OPENAI_API_KEY="sk-canary-fake-api-key-aur-sentry-telemetry-trap"
+EOF
+  cat > "$home_dir/.config/gcloud/application_default_credentials.json" <<'EOF'
+{
+  "client_id": "CANARY_GCLOUD_CLIENT_ID.apps.googleusercontent.com",
+  "client_secret": "CANARY_GCLOUD_SECRET",
+  "refresh_token": "CANARY_GCLOUD_REFRESH_TOKEN",
+  "type": "authorized_user"
+}
+EOF
+  chown -R "$owner:$owner" "$home_dir/.ssh" "$home_dir/.aws" "$home_dir/.gnupg" "$home_dir/.docker" "$home_dir/.config" "$home_dir/.env"
+  chmod 600 "$home_dir/.ssh/id_fake" "$home_dir/.aws/credentials" "$home_dir/.docker/config.json" "$home_dir/.env" "$home_dir/.config/gcloud/application_default_credentials.json"
 }
 
 # run_traced <user> <cmd> [args...]

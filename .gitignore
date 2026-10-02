@@ -11,3 +11,11 @@ target/
 docs/data/manifest.json
 sandbox-evidence/
 scripts/__pycache__/
+
+# Generated artifacts, telemetry, and agent directories
+generated/
+.agents/
+evidence/
+scans/
+*.log
+*.tmp

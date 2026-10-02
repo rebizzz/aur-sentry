@@ -1,0 +1,39 @@
+name: Threat Detection Rule Proposal
+description: Propose a new malware heuristic or analysis rule for AUR packages
+title: "feat(analyzer): add detection rule for [Threat Pattern]"
+labels: ["enhancement", "rules"]
+body:
+  - type: markdown
+    attributes:
+      value: Thank you for contributing threat intelligence to aur-sentry!
+  - type: textarea
+    id: attack_vector
+    attributes:
+      label: Attack Vector / Threat Description
+      description: Explain the malware technique or suspicious behavior pattern.
+    validations:
+      required: true
+  - type: textarea
+    id: sample_pattern
+    attributes:
+      label: Sample PKGBUILD / Script Snippet
+      description: Provide an example of how this threat appears in code.
+      render: bash
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Proposed Severity
+      options:
+        - Critical (Malicious verdict)
+        - High (Suspicious verdict)
+        - Medium (Warning / Triage required)
+        - Low (Informational)
+    validations:
+      required: true
+  - type: textarea
+    id: false_positives
+    attributes:
+      label: Potential False Positives
+      description: Are there legitimate packages that use this pattern? How can we differentiate them?

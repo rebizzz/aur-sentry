@@ -11,7 +11,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/safeaur"
 ADVISORIES_CACHE="$CACHE_DIR/advisories.json"
-FEED_URL="https://raw.githubusercontent.com/rebizzz/aur-sentry/main/advisories.json"
+FEED_URL="https://raw.githubusercontent.com/rebizzz/aur-sentry/main/generated/advisories.json"
 
 # Attestation registry (see ARCHITECTURE.md): data/attestations/<pkg>/<version>.json,
 # published straight from the repo over raw.githubusercontent.com. No auth needed.
@@ -236,7 +236,7 @@ cmd_check() {
     if [ -f "$ADVISORIES_CACHE" ]; then
         if grep -qi "\"package\":\s*\"$pkg\"" "$ADVISORIES_CACHE"; then
             echo -e "${RED}${BOLD}${ICON_SKULL} THREAT ALERT: '$pkg' has an active security advisory in AUR-Sentry!${RESET}"
-            echo -e "${RED}  Details: https://github.com/rebizzz/aur-sentry/blob/main/ADVISORIES.md${RESET}"
+            echo -e "${RED}  Details: https://github.com/rebizzz/aur-sentry/blob/main/generated/ADVISORIES.md${RESET}"
             echo -e "${YELLOW}  Aborting build hook. Inspect the PKGBUILD before proceeding!${RESET}"
             exit 2
         fi

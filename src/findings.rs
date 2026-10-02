@@ -4,6 +4,8 @@
 
 use serde::{Deserialize, Serialize};
 
+pub type RuleId = String;
+
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "SCREAMING_SNAKE_CASE")]
 pub enum Behavior {
@@ -17,11 +19,28 @@ pub enum Behavior {
     ArbitraryFilesystemWrite,
     PackageInstallation,
     ServiceManipulation,
+    // Expanded R4 threat behavior variants
+    #[serde(alias = "OBFUSCATED_SCRIPT")]
+    ObfuscatedScript,
+    #[serde(alias = "REVERSE_SHELL")]
+    ReverseShell,
+    #[serde(alias = "PERSISTENCE_MECHANISM")]
+    PersistenceMechanism,
+}
+
+impl Behavior {
+    /// Returns true if this behavior indicates direct credential theft or unauthorized network/reverse-shell access.
+    pub fn is_critical_indicator(&self) -> bool {
+        matches!(
+            self,
+            Behavior::CredentialAccess | Behavior::NetworkAccess | Behavior::ReverseShell
+        )
+    }
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Finding {
-    pub rule_id: String,
+    pub rule_id: RuleId,
     pub severity: String,
     pub description: String,
     pub line_number: usize,
@@ -74,5 +93,24 @@ mod tests {
         )
         .unwrap();
         assert_eq!(f.behavior, Behavior::ShellExecution);
+    }
+
+    #[test]
+    fn expanded_behaviors_serialize_and_deserialize() {
+        let b1 = Behavior::ObfuscatedScript;
+        let s1 = serde_json::to_string(&b1).unwrap();
+        assert_eq!(s1, r#""OBFUSCATED_SCRIPT""#);
+
+        let d1: Behavior = serde_json::from_str(r#""OBFUSCATION""#).unwrap();
+        assert_eq!(d1, Behavior::Obfuscation);
+
+        let b2 = Behavior::ReverseShell;
+        let s2 = serde_json::to_string(&b2).unwrap();
+        assert_eq!(s2, r#""REVERSE_SHELL""#);
+        assert!(b2.is_critical_indicator());
+
+        let b3 = Behavior::PersistenceMechanism;
+        let s3 = serde_json::to_string(&b3).unwrap();
+        assert_eq!(s3, r#""PERSISTENCE_MECHANISM""#);
     }
 }

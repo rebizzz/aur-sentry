@@ -3,7 +3,9 @@
 mod attest;
 mod autopilot;
 mod check;
+mod deps;
 mod radar;
+mod sandbox;
 mod scan;
 
 use crate::aur_client::AURClient;
@@ -55,11 +57,15 @@ enum Commands {
     Check {
         /// AUR package name
         pkgname: String,
+
+        /// Print attestation as JSON on stdout
+        #[arg(long)]
+        json: bool,
     },
     /// Run full autopilot — downloads AUR metadata dump, scans recently
     /// modified packages, updates advisories
     Autopilot {
-        /// Repo root for writing advisories.json, advisories.xml, README.md
+        /// Repo root (writes to generated/advisories.json, generated/advisories.xml, README.md)
         #[arg(long, default_value = ".")]
         repo_root: PathBuf,
 
@@ -76,10 +82,18 @@ enum Commands {
         /// Max threats to display
         #[arg(long, default_value_t = 25)]
         limit: usize,
+
+        /// Output advisories as JSON on stdout
+        #[arg(long)]
+        json: bool,
     },
     /// Assemble an evidence-based Attestation JSON from static + dynamic
     /// sandbox evidence (native replacement for scripts/build_attestation.py)
     Attest(attest::AttestArgs),
+    /// Audit and display package dependency tree and bill of materials
+    Deps(deps::DepsArgs),
+    /// Run dynamic container sandbox audit (podman/docker) with strace telemetry
+    Sandbox(sandbox::SandboxArgs),
 }
 
 pub fn run() -> ExitCode {
@@ -88,14 +102,16 @@ pub fn run() -> ExitCode {
     match cli.command {
         Commands::ScanFile { path, json } => scan::scan_file(&path, json),
         Commands::ScanPkg { pkgname, json } => scan::scan_pkg(&pkgname, json),
-        Commands::Check { pkgname } => check::run(&pkgname),
+        Commands::Check { pkgname, json } => check::run(&pkgname, json),
         Commands::Autopilot {
             repo_root,
             window_hours,
             limit,
         } => autopilot::run(&repo_root, window_hours, limit),
-        Commands::Radar { limit } => radar::run(limit),
+        Commands::Radar { limit, json } => radar::run(limit, json),
         Commands::Attest(args) => attest::run(&args),
+        Commands::Deps(args) => deps::run(&args),
+        Commands::Sandbox(args) => sandbox::run(&args),
     }
 }
 

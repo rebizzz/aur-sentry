@@ -7,7 +7,6 @@
 
 use serde::Deserialize;
 use serde::de::Deserializer;
-use std::io::Read;
 
 const AUR_RPC: &str = "https://aur.archlinux.org/rpc/v5";
 const AUR_CGIT_RAW: &str = "https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=";
@@ -109,26 +108,12 @@ impl AURClient {
     pub fn fetch_full_metadata(&self) -> Vec<AURPackage> {
         eprintln!("[*] Downloading full AUR metadata dump (this may take a moment)...");
         match self.agent.get(AUR_META_DUMP).call() {
-            Ok(mut resp) => {
-                let gz_bytes = match resp
-                    .body_mut()
-                    .with_config()
-                    .limit(150 * 1024 * 1024)
-                    .read_to_vec()
-                {
-                    Ok(b) => b,
-                    Err(e) => {
-                        eprintln!("[!] Failed to read metadata dump: {e}");
-                        return Vec::new();
-                    }
-                };
-                let mut decoder = flate2::read::GzDecoder::new(&gz_bytes[..]);
-                let mut json_str = String::new();
-                if decoder.read_to_string(&mut json_str).is_err() {
-                    eprintln!("[!] Failed to decompress metadata dump");
-                    return Vec::new();
-                }
-                match serde_json::from_str::<Vec<AURPackage>>(&json_str) {
+            Ok(resp) => {
+                let body_reader = resp.into_body().into_reader();
+                let decoder = flate2::read::GzDecoder::new(body_reader);
+                let reader = std::io::BufReader::with_capacity(128 * 1024, decoder);
+                let mut deserializer = serde_json::Deserializer::from_reader(reader);
+                match Vec::<AURPackage>::deserialize(&mut deserializer) {
                     Ok(mut pkgs) => {
                         pkgs.sort_by(|a, b| {
                             b.last_modified
@@ -158,7 +143,7 @@ impl AURClient {
         let cutoff = chrono::Utc::now().timestamp() - (hours as i64 * 3600);
         eprintln!("[*] Downloading and streaming AUR metadata dump (filtering last {hours}h)...");
 
-        let mut resp = match self.agent.get(AUR_META_DUMP).call() {
+        let resp = match self.agent.get(AUR_META_DUMP).call() {
             Ok(r) => r,
             Err(e) => {
                 eprintln!("[!] Failed to download metadata dump: {e}");
@@ -166,20 +151,8 @@ impl AURClient {
             }
         };
 
-        let gz_bytes = match resp
-            .body_mut()
-            .with_config()
-            .limit(150 * 1024 * 1024)
-            .read_to_vec()
-        {
-            Ok(b) => b,
-            Err(e) => {
-                eprintln!("[!] Failed to read metadata dump: {e}");
-                return Vec::new();
-            }
-        };
-
-        let decoder = flate2::read::GzDecoder::new(&gz_bytes[..]);
+        let body_reader = resp.into_body().into_reader();
+        let decoder = flate2::read::GzDecoder::new(body_reader);
         let reader = std::io::BufReader::with_capacity(128 * 1024, decoder);
 
         let mut deserializer = serde_json::Deserializer::from_reader(reader);
@@ -205,10 +178,18 @@ impl AURClient {
         recent_pkgs
     }
 
-    /// Fetch remote threat advisory feed from GitHub.
+    /// Fetch remote threat advisory feed from GitHub (checks generated/ first).
     pub fn fetch_remote_advisories(&self) -> Option<Vec<crate::report::Advisory>> {
-        let url = "https://raw.githubusercontent.com/rebizzz/aur-sentry/main/advisories.json";
-        let mut resp = self.agent.get(url).call().ok()?;
+        let gen_url =
+            "https://raw.githubusercontent.com/rebizzz/aur-sentry/main/generated/advisories.json";
+        if let Ok(mut resp) = self.agent.get(gen_url).call() {
+            if let Ok(feed) = resp.body_mut().read_json::<crate::report::AdvisoryFeed>() {
+                return Some(feed.advisories);
+            }
+        }
+        let fallback_url =
+            "https://raw.githubusercontent.com/rebizzz/aur-sentry/main/advisories.json";
+        let mut resp = self.agent.get(fallback_url).call().ok()?;
         let feed: crate::report::AdvisoryFeed = resp.body_mut().read_json().ok()?;
         Some(feed.advisories)
     }

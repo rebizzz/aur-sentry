@@ -42,7 +42,13 @@ pub fn declared_source_ips(pkgbuild_text: &str) -> HashSet<String> {
 fn extract_host(url: &str) -> Option<String> {
     let after_scheme = url.split_once("://")?.1;
     let host_port = after_scheme.split(['/', '?', '#']).next()?;
-    let host = host_port.rsplit('@').next()?.split(':').next()?;
+    let user_host_port = host_port.rsplit('@').next()?;
+    let host = if user_host_port.starts_with('[') {
+        let close_bracket = user_host_port.find(']')?;
+        &user_host_port[1..close_bracket]
+    } else {
+        user_host_port.split(':').next()?
+    };
     if host.is_empty() {
         None
     } else {
@@ -187,5 +193,25 @@ mod tests {
         let (_, filesystem) = parse_telemetry(text, &allowed, PHASE_INSTALL);
         assert_eq!(filesystem.len(), 1);
         assert_eq!(filesystem[0].phase, "install");
+    }
+
+    #[test]
+    fn extract_host_handles_ipv6_and_ports() {
+        assert_eq!(
+            extract_host("http://[2001:db8::1]:8080/path"),
+            Some("2001:db8::1".into())
+        );
+        assert_eq!(
+            extract_host("https://[::1]/download.tar.gz"),
+            Some("::1".into())
+        );
+        assert_eq!(
+            extract_host("http://user:pass@[2001:db8::2]:9000/api"),
+            Some("2001:db8::2".into())
+        );
+        assert_eq!(
+            extract_host("https://example.org:443/file"),
+            Some("example.org".into())
+        );
     }
 }

@@ -7,7 +7,7 @@
 # root-owned strace that observes it.
 FROM docker.io/library/archlinux:base-devel
 
-RUN pacman -Syu --noconfirm --needed git strace \
+RUN pacman -Syu --noconfirm --needed git strace ca-certificates curl jq file binutils diffutils \
  && useradd -m -s /bin/bash builder
 
 COPY lib.sh build.sh install.sh /opt/aur-sentry-sandbox/

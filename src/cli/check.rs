@@ -231,10 +231,12 @@ pub(super) fn verdict_exit_code(v: Verdict) -> ExitCode {
     }
 }
 
-pub fn run(pkgname: &str) -> ExitCode {
-    eprintln!(
-        "{BLUE}{ICON_SEARCH} checking attestation registry for {BOLD}{pkgname}{RESET}{BLUE}...{RESET}"
-    );
+pub fn run(pkgname: &str, json: bool) -> ExitCode {
+    if !json {
+        eprintln!(
+            "{BLUE}{ICON_SEARCH} checking attestation registry for {BOLD}{pkgname}{RESET}{BLUE}...{RESET}"
+        );
+    }
 
     let agent = build_registry_agent();
 
@@ -256,10 +258,14 @@ pub fn run(pkgname: &str) -> ExitCode {
     };
 
     let Some(version) = pick_highest_version(&versions) else {
-        eprintln!();
-        eprintln!(
-            "  {YELLOW}{ICON_WARN} No attestation found for '{BOLD}{pkgname}{RESET}{YELLOW}' — package has not been analyzed yet.{RESET}"
-        );
+        if json {
+            println!("null");
+        } else {
+            eprintln!();
+            eprintln!(
+                "  {YELLOW}{ICON_WARN} No attestation found for '{BOLD}{pkgname}{RESET}{YELLOW}' — package has not been analyzed yet.{RESET}"
+            );
+        }
         return ExitCode::SUCCESS;
     };
 
@@ -272,16 +278,20 @@ pub fn run(pkgname: &str) -> ExitCode {
         Ok(mut resp) => match resp.body_mut().read_json() {
             Ok(a) => a,
             Err(e) => {
-                eprintln!(
-                    "  {RED}{ICON_CROSS} failed to parse attestation for '{pkgname}' v{version}: {e}{RESET}"
-                );
+                if !json {
+                    eprintln!(
+                        "  {RED}{ICON_CROSS} failed to parse attestation for '{pkgname}' v{version}: {e}{RESET}"
+                    );
+                }
                 return ExitCode::SUCCESS;
             }
         },
         Err(e) => {
-            eprintln!(
-                "  {RED}{ICON_CROSS} failed to fetch attestation for '{pkgname}' v{version}: {e}{RESET}"
-            );
+            if !json {
+                eprintln!(
+                    "  {RED}{ICON_CROSS} failed to fetch attestation for '{pkgname}' v{version}: {e}{RESET}"
+                );
+            }
             return ExitCode::SUCCESS;
         }
     };
@@ -289,7 +299,13 @@ pub fn run(pkgname: &str) -> ExitCode {
     let signed = agent.head(&format!("{raw_url}.sig")).call().is_ok()
         && agent.head(&format!("{raw_url}.cert")).call().is_ok();
 
-    print_check_report(pkgname, &attestation, signed);
+    if json {
+        if let Ok(serialized) = serde_json::to_string_pretty(&attestation) {
+            println!("{serialized}");
+        }
+    } else {
+        print_check_report(pkgname, &attestation, signed);
+    }
     verdict_exit_code(attestation.verdict)
 }
 

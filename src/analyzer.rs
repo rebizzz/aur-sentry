@@ -67,6 +67,7 @@ pub fn analyze_entropy(content: &str) -> Vec<Finding> {
 
             let ent = shannon_entropy(token);
             if ent > 5.2 {
+                let token_snip: String = token.chars().take(40).collect();
                 findings.push(Finding {
                     rule_id: "SUS_HIGH_ENTROPY_PAYLOAD".into(),
                     severity: "HIGH".into(),
@@ -77,7 +78,7 @@ pub fn analyze_entropy(content: &str) -> Vec<Finding> {
                     line_number: idx + 1,
                     matched_text: format!(
                         "{}... (entropy: {:.2})",
-                        &token[..token.len().min(40)],
+                        token_snip,
                         ent
                     ),
                     behavior: Behavior::Obfuscation,
@@ -116,6 +117,7 @@ pub fn deobfuscate_and_scan(content: &str, rescan: impl Fn(&str) -> Vec<Finding>
                 if let Ok(decoded_str) = String::from_utf8(decoded_bytes) {
                     // Recursively scan the un-obfuscated content
                     for inner in rescan(&decoded_str) {
+                        let inner_snip: String = inner.matched_text.chars().take(80).collect();
                         findings.push(Finding {
                             rule_id: format!("DEOBFUSCATED_{}", inner.rule_id),
                             severity: "CRITICAL".into(),
@@ -125,10 +127,7 @@ pub fn deobfuscate_and_scan(content: &str, rescan: impl Fn(&str) -> Vec<Finding>
                                 inner.description
                             ),
                             line_number: idx + 1,
-                            matched_text: format!(
-                                "Decoded: {}",
-                                inner.matched_text[..inner.matched_text.len().min(80)].trim()
-                            ),
+                            matched_text: format!("Decoded: {}", inner_snip.trim()),
                             behavior: inner.behavior,
                         });
                     }
@@ -277,5 +276,32 @@ mod tests {
         assert_eq!(shannon_entropy("aaaaaaa"), 0.0);
         // 4 different characters equally distributed has log2(4) = 2.0 entropy
         assert!((shannon_entropy("abcd") - 2.0).abs() < 1e-6);
+    }
+
+    #[test]
+    fn utf8_multibyte_safety_in_entropy_and_deobfuscator() {
+        // Multi-byte unicode string where naive byte slicing at 40 or 80 would split characters
+        let multibyte_token = "🦀".repeat(30); // 4 bytes per crab, total 120 bytes
+        let findings = analyze_entropy(&format!("msg='{multibyte_token}'"));
+        // Even if entropy triggers or not, it should not panic!
+        for f in findings {
+            assert!(f.matched_text.contains("..."));
+        }
+
+        // Deobfuscator inner match containing multi-byte characters
+        let b64 = "Y3VybCBodHRwczovL2Rpc2NvcmQuY29tL2FwaS93ZWJob29rcy8xMjMveHl6";
+        let script = format!("prepare() {{\n  echo \"{b64}\" | base64 -d | sh\n}}\n");
+        let results = deobfuscate_and_scan(&script, |_| {
+            vec![Finding {
+                rule_id: "SUS_PAYLOAD".into(),
+                severity: "CRITICAL".into(),
+                description: "test".into(),
+                line_number: 1,
+                matched_text: "🚀".repeat(50), // 4 bytes each = 200 bytes, byte slicing at 80 splits emoji
+                behavior: Behavior::Obfuscation,
+            }]
+        });
+        assert_eq!(results.len(), 1);
+        assert!(results[0].matched_text.starts_with("Decoded: 🚀"));
     }
 }

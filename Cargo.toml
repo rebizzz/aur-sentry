@@ -1,6 +1,6 @@
 [package]
 name = "aur-sentry"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 authors = ["rebizzz"]
 description = "Automated supply-chain malware watchdog & threat radar for the Arch User Repository"
