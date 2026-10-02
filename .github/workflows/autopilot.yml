@@ -28,6 +28,8 @@ jobs:
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@7e38f4b43b4db5c8dd498af069a4f6196df1d067 # stable
+        with:
+          toolchain: stable
 
       - name: Install ShellCheck static analyzer
         run: sudo apt-get update -qq && sudo apt-get install -y shellcheck jq
