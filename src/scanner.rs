@@ -16,8 +16,10 @@ use regex::{Regex, RegexSet};
 use serde::Serialize;
 use std::sync::LazyLock;
 
-static VAR_RE: LazyLock<Regex> =
-    LazyLock::new(|| Regex::new(r#"^([a-zA-Z_]\w*)=(?:["']([a-zA-Z0-9_-]{1,16})["']|([a-zA-Z0-9_-]{1,16}))$"#).unwrap());
+static VAR_RE: LazyLock<Regex> = LazyLock::new(|| {
+    Regex::new(r#"^([a-zA-Z_]\w*)=(?:["']([a-zA-Z0-9_-]{1,16})["']|([a-zA-Z0-9_-]{1,16}))$"#)
+        .unwrap()
+});
 
 static LONG_B64_RE: LazyLock<Regex> =
     LazyLock::new(|| Regex::new(r#"['"]([A-Za-z0-9+/=]{60,})['"]"#).unwrap());
@@ -626,7 +628,11 @@ pub fn join_continued_lines(content: &str) -> Vec<(usize, String)> {
         let trimmed_end = line.trim_end();
 
         let has_continuation = if trimmed_end.ends_with('\\') {
-            let backslash_count = trimmed_end.bytes().rev().take_while(|&b| b == b'\\').count();
+            let backslash_count = trimmed_end
+                .bytes()
+                .rev()
+                .take_while(|&b| b == b'\\')
+                .count();
             backslash_count % 2 == 1
         } else {
             false
@@ -1609,7 +1615,9 @@ build() {
 "#;
         let findings = s.scan(content, Some("split-test"));
         assert!(
-            findings.iter().any(|f| f.rule_id == "EXFIL_CURL_PIPE_EXEC" || f.rule_id == "PIPELINE_FETCH_EXEC"),
+            findings
+                .iter()
+                .any(|f| f.rule_id == "EXFIL_CURL_PIPE_EXEC" || f.rule_id == "PIPELINE_FETCH_EXEC"),
             "Expected curl | bash detection across backslash continuation, got: {findings:?}"
         );
     }

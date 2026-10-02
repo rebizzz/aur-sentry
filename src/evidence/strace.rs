@@ -1,7 +1,9 @@
 //! Dynamic-sandbox strace telemetry: network/filesystem event extraction,
 //! declared-source allowlisting, and the findings those events imply.
 
-use crate::attestation::{Behavior, FilesystemEvent, Finding, NetworkEvent, ProcessEvent, Severity};
+use crate::attestation::{
+    Behavior, FilesystemEvent, Finding, NetworkEvent, ProcessEvent, Severity,
+};
 use std::collections::HashSet;
 use std::net::ToSocketAddrs;
 use std::sync::LazyLock;
