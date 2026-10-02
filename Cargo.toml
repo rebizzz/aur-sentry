@@ -11,6 +11,10 @@ repository = "https://github.com/rebizzz/aur-sentry"
 name = "aur-sentry"
 path = "src/main.rs"
 
+[lib]
+name = "aur_sentry"
+path = "src/lib.rs"
+
 [dependencies]
 clap = { version = "4", features = ["derive"] }
 regex = "1"

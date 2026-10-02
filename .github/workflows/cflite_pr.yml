@@ -1,0 +1,29 @@
+name: ClusterFuzzLite PR fuzzing
+on:
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'fuzz/**'
+      - '.clusterfuzzlite/**'
+
+permissions:
+  contents: read
+
+jobs:
+  PR:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+    steps:
+      - name: Build Fuzzers
+        id: build
+        uses: google/clusterfuzzlite/actions/build-fuzzers@884713a6c30a92e5e8504449e48d80a2c5a3364e # v1
+        with:
+          language: rust
+      - name: Run Fuzzers
+        id: run
+        uses: google/clusterfuzzlite/actions/run-fuzzers@884713a6c30a92e5e8504449e48d80a2c5a3364e # v1
+        with:
+          fuzz-seconds: 60
+          mode: 'code-change'
