@@ -1,0 +1,23 @@
+pkgbase = drawio-desktop-bin
+	pkgdesc = Diagram drawing application built on web technology
+	pkgver = 31.7.0
+	pkgrel = 1
+	url = https://www.drawio.com
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = gtk3
+	depends = libxss
+	depends = nss
+	depends = alsa-lib
+	provides = drawio-desktop
+	provides = drawio-desktop-bin
+	conflicts = drawio-desktop
+	source = LICENSE-31.7.0::https://raw.githubusercontent.com/jgraph/drawio-desktop/refs/heads/dev/LICENSE
+	sha256sums = 3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986
+	source_x86_64 = drawio-desktop-bin-31.7.0-x86_64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v31.7.0/drawio-amd64-31.7.0.deb
+	sha256sums_x86_64 = eb9695e208fcc5ccfbfc496aa8ab2f52a273297d83715de2177b231c172c13de
+	source_aarch64 = drawio-desktop-bin-31.7.0-aarch64.deb::https://github.com/jgraph/drawio-desktop/releases/download/v31.7.0/drawio-arm64-31.7.0.deb
+	sha256sums_aarch64 = ad7acb0546768a6a7b6563c96d9beb0cd4cef3165e830e56a8cbc2ca0faf25de
+
+pkgname = drawio-desktop-bin
