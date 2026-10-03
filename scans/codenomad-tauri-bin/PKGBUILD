@@ -1,0 +1,31 @@
+# Maintainer: @aardbol
+pkgname=codenomad-tauri-bin
+pkgver=0.20.1
+pkgrel=1
+pkgdesc='The AI Coding Cockpit for OpenCode (Tauri-based)'
+arch=('x86_64')
+url='https://github.com/NeuralNomadsAI/CodeNomad'
+license=('MIT')
+depends=(
+  'glibc'
+  'gtk3'
+  'webkit2gtk-4.1'
+)
+optdepends=(
+  'libayatana-appindicator: tray icon support'
+  'xdg-desktop-portal: desktop integration'
+  'opencode: the open source coding agent'
+)
+provides=('codenomad')
+conflicts=('codenomad' 'codenomad-git' 'codenomad-bin')
+options=('!debug' '!strip')
+
+source_x86_64=("${pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/CodeNomad-Tauri-linux-x64-${pkgver}.deb")
+
+sha256sums_x86_64=('7608664dc45766cf3ce81a8a753722963ce6e466d5e87dc17114c5b81adac13a')
+
+package() {
+  # Extract the data payload from the deb (ar archive containing data.tar.gz).
+  bsdtar -xf "${pkgname}-${pkgver}.deb" -C "$srcdir" data.tar.gz
+  bsdtar -xf "$srcdir/data.tar.gz" -C "$pkgdir"
+}
