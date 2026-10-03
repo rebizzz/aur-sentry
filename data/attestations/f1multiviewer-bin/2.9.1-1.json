@@ -1,0 +1,288 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "f1multiviewer-bin",
+    "version": "2.9.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "6f6ec1270e894486760b4814bdd59eceff4d1724",
+    "pkgbuild_sha256": "4956fe802f5eecb8dfdbf5b574009e25551be1fafec58f29dc0fbfe12f400374",
+    "install_sha256": "3e9b24c786bf9024520b1b239d94bde249c93de801229f954e531f0751c0d977"
+  },
+  "analyzed_at": "2026-10-03T12:41:25.403345986+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 16,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o MultiViewer-linux-x64-2.9.1.zip.\"... https://releases.multiviewer.app\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/MultiViewer-\"... /home/builder/build/MultiViewer-\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/MultiViewer-\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/f1multiviewe\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/MultiVie\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/MultiViewer-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- MultiViewer-linux-x64-2.9.1.zip",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gzip -cd",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf MultiViewer-linux-x64-2.9.1.zip",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/f1multiv\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/f1multiviewe\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- f1multiviewer.desktop",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf f1multiviewer.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.26.2.31",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:41:25.395584483+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "7d4af40683418091e97981201ec78d7abdb547e616fb003cd11da7c26245f7b0",
+  "signature": null
+}
