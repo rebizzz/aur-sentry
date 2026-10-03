@@ -1,0 +1,344 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "azd-cli",
+    "version": "1.35.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5ea664b4cd5cd50ed4911b639da3cff53a33cbf5",
+    "pkgbuild_sha256": "4ada226a37cb9e32126794561abbedf5d228ba2a0964b0693b4d11fc7410add6",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-03T12:57:24.108436844+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o azd-linux-amd64.tar.gz.part https://github.com/azure/azure-d\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/azd-linux-am\"... /home/builder/build/azd-linux-am\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/azd-linux-am\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/LICENSE /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf LICENSE -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/azd-linu\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/azd-linux-am\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- azd-linux-amd64.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf azd-linux-amd64.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/azd-cli-1.35.0-1-x86_64.pkg\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.107290169+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/azd-cli-1.35.0-1-x86_64.pkg\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.107290169+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/azd-cli-1.35.0-1-x86_64.pkg\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.107290169+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.107290169+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.107290169+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.107290169+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm azd-cli",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.107290169+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm azd-cli",
+        "parent": null,
+        "timestamp": "2026-10-03T12:57:24.107290169+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:57:24.097360725+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/azd",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "197b8f248f054dd614dcf18eb0ccf853353ddd8be9004da2deffcd46a74fc370",
+  "signature": null
+}
