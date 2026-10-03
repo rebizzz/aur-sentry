@@ -1,0 +1,370 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cli-proxy-api-bin",
+    "version": "8.0.13-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "b5e21110b8d3139632fb450187782d64a75ecad9",
+    "pkgbuild_sha256": "dea6089ea451dafa8d275f6290b4b07f254778241394602980cd6c94c068b1e0",
+    "install_sha256": "749d3bd97f8019e5cdf3489bbf278838a784bda7b461dc219343a7648f6b98a5"
+  },
+  "analyzed_at": "2026-10-03T12:50:27.179805521+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 18,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "PERSISTENCE",
+      "file": "PKGBUILD",
+      "line": 32,
+      "severity": "CRITICAL",
+      "description": "creating persistent systemd user service"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cli-proxy-api-bin-8.0.13-x86_64.\"... https://github.com/router-for-me\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/cli-proxy-ap\"... /home/builder/build/cli-proxy-ap\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cli-proxy-ap\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cli-prox\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cli-proxy-ap\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cli-proxy-api.service",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf cli-proxy-api.service -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cli-proxy-api-bin-8.0.13-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cli-proxy-api-bin-8.0.13-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/cli-proxy-api-bin-8.0.13-1-\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/cli-proxy-api-bin-8.0.13-1-\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/cli-proxy-api-bin-8.0.13-1-\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_acidln/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-user",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm cli-proxy-api-bin",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm cli-proxy-api-bin",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_WW98K9/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:50:27.178499546+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:50:27.168287845+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 4,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/cli-proxy-api",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "75fcc8b355b8c3e41d74f0f7c8c58ed300fee99e6c84cbbfb320a24b5f96dc79",
+  "signature": null
+}
