@@ -1,0 +1,623 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "1panel-v2-bin",
+    "version": "2.3.2-3",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "6c8d7c502f6eee11c560fb2c6f888b4e19361687",
+    "pkgbuild_sha256": "18cb3f1463b75eabfb2f481678ee75d68f8dbffd8efd1d306d2118955981465a",
+    "install_sha256": "4ddc021a8db5b7ad4b7c13ed02e5fff927e1834c8fc532db3fd8a3e6440a8d3a"
+  },
+  "analyzed_at": "2026-10-03T12:35:58.050477578+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 24,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "1panel-v2-bin.install",
+      "line": 21,
+      "severity": "HIGH",
+      "description": "deeply nested substitution with pipe chain (obfuscated execution)"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "1panel-v2-bin.install",
+      "line": 22,
+      "severity": "HIGH",
+      "description": "deeply nested substitution with pipe chain (obfuscated execution)"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "1panel-v2-bin.install",
+      "line": 23,
+      "severity": "HIGH",
+      "description": "deeply nested substitution with pipe chain (obfuscated execution)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "1panel-v2-bin.install",
+      "line": 111,
+      "severity": "HIGH",
+      "description": "DNS lookup with variable expansion (possible DNS tunneling)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o 1panel-v2.3.2-linux-amd64.tar.gz\"... https://resource.fit2cloud.com/1\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/1panel-v2.3.\"... /home/builder/build/1panel-v2.3.\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/1panel-v2.3.\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/1panel-v\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/1panel-v2.3.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- 1panel-v2.3.2-linux-amd64.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf 1panel-v2.3.2-linux-amd64.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/1panel-v2-bin-2.3.2-3-x86_6\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/1panel-v2-bin-2.3.2-3-x86_6\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/1panel-v2-bin-2.3.2-3-x86_6\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 9D4C5AA15426DA0A",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FDC3040B92ACA748",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A91764759326B440",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F6B1610B3ECDBC9F",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 05C7775A9E8B977407FE08E69D4C5AA1\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 262A58EC6C51F7EA395B2E2DFDC3040B\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 2E36D8620221482FC45CB7F2A9176475\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 601F20F1D1BBBF4A78CF5B6DF6B1610B\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_VVioQH/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "cat /dev/urandom",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "head -n 16",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "md5sum",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "head -c 10",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "shuf -i 10000-65535 -n 1",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ss -tlun",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "grep -q :50335 ",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "sed -i -e s|^ORIGINAL_PORT=.*|ORIGINAL_POR\"... -e s|^ORIGINAL_ENTRANCE=.*|ORIGINAL\"... -e s|^ORIGINAL_USERNAME=.*|ORIGINAL\"... -e s|^ORIGINAL_PASSWORD=.*|ORIGINAL\"... /usr/bin/1pctl",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "chmod 600 /opt/1panel/.install-credentials",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "awk $2==\\\"00000000\\\" && $8==\\\"00000000\\\"\"... /proc/1/net/route",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "grep -B1 host LOCAL /proc/1/net/fib_trie",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "grep -E \\\\|-- [0-9",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "sed s/.*-- //",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "grep -v ^127\\\\.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... sysusers",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/systemd-sysusers",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm 1panel-v2-bin",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm 1panel-v2-bin",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_AYVWTf/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "163.181.60.205",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:35:58.037393527+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:35:58.047320543+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 11,
+    "elf_object_count": 2,
+    "elf_objects": [
+      {
+        "path": "usr/bin/1panel-agent",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/1panel-core",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "1Panel open source panel project has an unauthorized vulnerability. (GHSA-26w3-q4j8-4xjp)",
+      "url": "https://osv.dev/vulnerability/GHSA-26w3-q4j8-4xjp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "1Panel has an SQL injection issue related to the orderBy clause (GHSA-5grx-v727-qmq6)",
+      "url": "https://osv.dev/vulnerability/GHSA-5grx-v727-qmq6"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "1Panel contains a cross-site request forgery (CSRF) vulnerability in the panel name management functionality (GHSA-5xpq-2vmc-5cqp)",
+      "url": "https://osv.dev/vulnerability/GHSA-5xpq-2vmc-5cqp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "1Panel's password verification is suspected to have a timing attack vulnerability (GHSA-6m9h-2pr2-9j8f)",
+      "url": "https://osv.dev/vulnerability/GHSA-6m9h-2pr2-9j8f"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "1Panel IP Access Control Bypass via Untrusted X-Forwarded-For Headers (GHSA-7cqv-qcq2-r765)",
+      "url": "https://osv.dev/vulnerability/GHSA-7cqv-qcq2-r765"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "1Panel vulnerable to command injection when entering the container terminal (GHSA-7x2c-fgx6-xf9h)",
+      "url": "https://osv.dev/vulnerability/GHSA-7x2c-fgx6-xf9h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "1Panel Arbitrary File Download vulnerability (GHSA-85cf-gj29-f555)",
+      "url": "https://osv.dev/vulnerability/GHSA-85cf-gj29-f555"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "1Panel set-cookie is missing the Secure keyword (GHSA-9xfw-jjq2-7v8h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9xfw-jjq2-7v8h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "1Panel arbitrary file write vulnerability (GHSA-f8ch-w75v-c847)",
+      "url": "https://osv.dev/vulnerability/GHSA-f8ch-w75v-c847"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "1Panel arbitrary file write vulnerability (GHSA-hf7j-xj3w-87g4)",
+      "url": "https://osv.dev/vulnerability/GHSA-hf7j-xj3w-87g4"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "9248e58bfd778e2f44c2823ef331f76cbb4a491be43934cce29953d1afe6fa6d",
+  "signature": null
+}
