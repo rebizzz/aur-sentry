@@ -1,0 +1,911 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aws-cli-bin",
+    "version": "2.37.9-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "fa9a3ae76b3b87ce7e261b6c983927cdbc01ac64",
+    "pkgbuild_sha256": "dc635b948804a01237dd54b41d920b0da77652dccb0cfb8622b2aa16942953f9",
+    "install_sha256": "fd813310690599bafc78565033badc2d7bcbb25a9d9ba00170c51c30ea778d5b"
+  },
+  "analyzed_at": "2026-10-03T12:59:49.762187857+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 18,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aws_bash_completer.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aws_bash_com\"... /home/builder/build/aws_bash_com\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aws_zsh_completer.sh.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aws_zsh_comp\"... /home/builder/build/aws_zsh_comp\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o LICENSE.txt.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/LICENSE.txt.\"... /home/builder/build/LICENSE.txt",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aws-cli-bin-2.37.9-x86_64.zip.pa\"... https://awscli.amazonaws.com/aws\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aws-cli-bin-\"... /home/builder/build/aws-cli-bin-\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aws_bash_com\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aws_zsh_comp\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/LICENSE.txt",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aws-cli-bin-\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/aws_bash\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aws_bash_com\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aws_bash_completer",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf aws_bash_completer -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/aws_zsh_\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aws_zsh_comp\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aws_zsh_completer.sh",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf aws_zsh_completer.sh -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/LICENSE.\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/LICENSE.txt /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- LICENSE.txt",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf LICENSE.txt -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/aws-cli-\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aws-cli-bin-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aws-cli-bin-2.37.9-x86_64.zip",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gzip -cd",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf aws-cli-bin-2.37.9-x86_64.zip",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aws-cli-bin-1:2.37.9-1-x86_\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aws-cli-bin-1:2.37.9-1-x86_\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/aws-cli-bin-1:2.37.9-1-x86_\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 771DF6627EDF681F",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 5B7E3FB71B7F10329A1C03AB771DF662\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm aws-cli-bin",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm aws-cli-bin",
+        "parent": null,
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "18.65.238.14",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:59:49.672211242+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:59:49.727215610+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 7599,
+    "elf_object_count": 65,
+    "elf_objects": [
+      {
+        "path": "usr/local/aws-cli/v2/aws",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libuuid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/aws_completer",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libtinfo.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libreadline.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libsqlite3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libpython3.14.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/_awscrt.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libz.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/liblzma.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libffi.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/_ruamel_yaml.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_json.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_multibytecodec.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/readline.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_blake2.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_jp.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/termios.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_statistics.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_decimal.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/pyexpat.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/array.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_md5.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_ssl.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_ctypes.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_hmac.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_lzma.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_bz2.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_interpreters.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_queue.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_multiprocessing.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_cn.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/zlib.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_socket.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_iso2022.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_bisect.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_sha1.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/resource.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_kr.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/math.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_posixsubprocess.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/binascii.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/select.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/grp.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_posixshmem.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/mmap.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_sha2.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_uuid.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/fcntl.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_sqlite3.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_hashlib.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_heapq.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_asyncio.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_csv.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_random.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_tw.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_elementtree.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_struct.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_sha3.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_pickle.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_interpqueues.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/unicodedata.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/syslog.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/python3.14/lib-dynload/_codecs_hk.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/local/aws-cli/v2/libbz2.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "`unzip` is unmaintained (RUSTSEC-2026-0296)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0296"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`unzip`: archive extraction is vulnerable to path traversal (zip-slip) (RUSTSEC-2026-0297)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0297"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "e676f65242bd03689ca0844298f28f876376bccea8084583c75443e4fb31cba0",
+  "signature": null
+}
