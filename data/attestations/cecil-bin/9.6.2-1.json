@@ -1,0 +1,687 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cecil-bin",
+    "version": "9.6.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "3205e9d142ed2d9244d519f4689f644ca5b714ee",
+    "pkgbuild_sha256": "ec2c3e199e05ac6bba8730326dd1f6cf85fbd717f0e6beb0cd2be2479bf8d36c",
+    "install_sha256": "e2c6e4a4755f09f71c7e0bc1657a5fbcdefc866c449f7e3716cb0a4948e7fa5f"
+  },
+  "analyzed_at": "2026-10-03T16:44:19.334580571+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 11,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -o cecil-9.6.2.phar.part -H Referer: https://cecil.app/downl\"... https://cecil.app/download/9.6.2\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/cecil-9.6.2.\"... /home/builder/build/cecil-9.6.2.\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cecil-9.6.2.\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cecil-9.\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cecil-9.6.2.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cecil-9.6.2.phar",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf cecil-9.6.2.phar -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/cecil-bin-9.6.2-1-any.pkg.t\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/cecil-bin-9.6.2-1-any.pkg.t\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/cecil-bin-9.6.2-1-any.pkg.t\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 06096A6AD1CEDDAC",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 6D42BDD116E0068F",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 76A5EF9054449A5C",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 94657AB20F2A092B",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B8AC08600F108CDF",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- C06086337C50773E",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 93B11DAA4C197E3D",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F296BDE50368C6CE",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FDC3040B92ACA748",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 9B7A287D9A2EC608",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0F65C7D881506130",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 7A4E76095D8A52E4",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E85B8683EB48BC95",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A91764759326B440",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 535F8C0339450F054A4D282706096A6A\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0429897DE5F3BDAC537A30696D42BDD1\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 3E80CA1A8B89F69CBA57D98A76A5EF90\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- ADC8A1FCC15E01D45310419E94657AB2\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 83BC8889351B5DEBBB68416EB8AC0860\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E499C79F53C96A54E572FEE1C0608633\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F00B96D15228013FFC9C9D0393B11DAA\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 54C1FD273361EA514A237793F296BDE5\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 262A58EC6C51F7EA395B2E2DFDC3040B\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 62CC73F884E52957B2FDD8839B7A287D\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 95220BE99CE6FF778AE0DC670F65C7D8\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 1519D5ABA65BF6FC2B73C7567A4E7609\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 80247D99EABD3A4D1E3A1836E85B8683\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 2E36D8620221482FC45CB7F2A9176475\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_HFxvEZ/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "vercmp 0 2:2.13.93-1",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/40-fo\"... /etc/fonts/conf.d",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "find usr/share/fontconfig/conf.defaul\"... -mindepth 1",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/60-generic.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-yes-antiali\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/60-latin.conf",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/50-user.conf",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-scale-bitma\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/51-local.conf",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/90-synthetic.c\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/45-generic.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-hinting-sli\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/80-delicious.c\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/49-sansserif.c\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/45-latin.conf",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/48-guessfamily\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/65-fonts-persi\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/30-metric-alia\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/11-lcdfilter-d\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/20-unhint-smal\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/40-nonlatin.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/69-unifont.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/48-spacing.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/65-nonlatin.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "vercmp 0 0",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/fc-cache -rs",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_46vNEV/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/fc-cache -s",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm cecil-bin",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm cecil-bin",
+        "parent": null,
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "13.52.188.95",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T16:44:19.322952981+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.3.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T16:44:19.327865599+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "1d2e2f3cbdfac9dd736468e3139335bfab87f3c6a81a92e143a3095119c36b6e",
+  "signature": null
+}
