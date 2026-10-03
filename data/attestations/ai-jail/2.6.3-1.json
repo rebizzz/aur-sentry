@@ -1,0 +1,325 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ai-jail",
+    "version": "2.6.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "9a0f4c235a15362ea118b03d162e558ad2a878e1",
+    "pkgbuild_sha256": "cdeb88bd411ce72525a4b7dc9f040083c31bfd05827dc76d0978d930af549af2",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-03T21:39:18.310682008+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: ai-jail-2.6.3/.envrc"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o ai-jail-2.6.3.tar.gz.part https://github.com/akitaonrails/\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/ai-jail-2.6.\"... /home/builder/build/ai-jail-2.6.\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/ai-jail-2.6.\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/ai-jail-\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/ai-jail-2.6.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- ai-jail-2.6.3.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf ai-jail-2.6.3.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -n s/host: //p",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "ai-jail-2.6.3/.envrc",
+        "operation": "canary_access",
+        "timestamp": "2026-10-03T21:39:18.302096531+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can fill the file system (GHSA-2hvr-h6gw-qrxp)",
+      "url": "https://osv.dev/vulnerability/GHSA-2hvr-h6gw-qrxp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo prior to Rust 1.26.0 may download the wrong dependency (GHSA-9f3p-wvj7-q82x)",
+      "url": "https://osv.dev/vulnerability/GHSA-9f3p-wvj7-q82x"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo not respecting umask when extracting crate archives (GHSA-j3xp-wfr4-hx87)",
+      "url": "https://osv.dev/vulnerability/GHSA-j3xp-wfr4-hx87"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo crates in third party registries can override the cached source of other crates (GHSA-jq42-7mfv-hm57)",
+      "url": "https://osv.dev/vulnerability/GHSA-jq42-7mfv-hm57"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo can be coerced to share credentials between registries (GHSA-p688-r7jv-fm6f)",
+      "url": "https://osv.dev/vulnerability/GHSA-p688-r7jv-fm6f"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo did not verify SSH host keys (GHSA-r5w3-xm58-jv6j)",
+      "url": "https://osv.dev/vulnerability/GHSA-r5w3-xm58-jv6j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can corrupt arbitrary files (GHSA-rfj2-q3h3-hm5j)",
+      "url": "https://osv.dev/vulnerability/GHSA-rfj2-q3h3-hm5j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious dependencies can inject arbitrary JavaScript into cargo-generated timing reports (GHSA-wrrj-h57r-vx9p)",
+      "url": "https://osv.dev/vulnerability/GHSA-wrrj-h57r-vx9p"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "d9da54c5c7bd215b0eaf18c2b5b07ad53f101b8dff9edea80a9344f7b04a67e7",
+  "signature": null
+}
