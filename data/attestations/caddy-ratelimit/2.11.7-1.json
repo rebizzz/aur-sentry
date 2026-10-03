@@ -1,0 +1,637 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "caddy-ratelimit",
+    "version": "2.11.7-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "2d4d0747abd85ed00df80860c1c7bcb7007a1244",
+    "pkgbuild_sha256": "46455b935fb3b4440ebe377689b4f24db0815549124b6e0f4d94d45aa971ce40",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-03T12:54:08.889353416+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/caddyserver/c\"... /home/builder/build/caddy",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/caddyserver/c\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/caddyserver/c\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 967 on fef9e21\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/caddy rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/caddy/info",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/caddyserver/d\"... /home/builder/build/caddy-dist",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/caddyserver/d\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/caddyserver/d\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 988 on fef9e21\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/caddy-dist rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/caddy-dist/i\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o caddy-disable-executable-alterin\"... https://src.fedoraproject.org/rp\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/caddy-disabl\"... /home/builder/build/caddy-disabl\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/caddy archive --format tar v2.11.7",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/caddy-dist archive --format tar v2.11.7",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/caddy.servic\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/caddy-api.se\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/caddy.tmpfil\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/caddy.sysuse\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/Caddyfile",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/use-data-dir\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/caddy-disabl\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/caddy caddy",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/caddy",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git tag -l --format=%(tag) v2.11.7",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg v2.11.7 --",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/caddy-dist caddy-dist",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/caddy-dist",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/caddy.se\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/caddy.servic\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- caddy.service",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf caddy.service -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/caddy-ap\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/caddy-api.se\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- caddy-api.service",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf caddy-api.service -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/caddy.tm\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/caddy.tmpfil\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- caddy.tmpfiles",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf caddy.tmpfiles -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/caddy.sy\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/caddy.sysuse\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- caddy.sysusers",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf caddy.sysusers -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/Caddyfil\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/Caddyfile /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- Caddyfile",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf Caddyfile -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/use-data\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/use-data-dir\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- use-data-dir-for-autosave.patch",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf use-data-dir-for-autosave.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/caddy-di\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/caddy-disabl\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- caddy-disable-executable-alterin\"...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf caddy-disable-executable-alterin\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed s|/var/www/html|/srv/http|g -i caddy-dist/welcome/index.html",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "38.145.32.20",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-03T12:54:08.872522751+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Open redirect in caddy (GHSA-2927-hv3p-f3vp)",
+      "url": "https://osv.dev/vulnerability/GHSA-2927-hv3p-f3vp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Caddy: FastCGI header normalization bypass in `forward_auth copy_headers` (GHSA-f59h-q822-g45g)",
+      "url": "https://osv.dev/vulnerability/GHSA-f59h-q822-g45g"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Caddy vulnerable to Authentication Bypass due to mishandling of TLS client authentication (GHSA-gr7w-x2jp-3xgw)",
+      "url": "https://osv.dev/vulnerability/GHSA-gr7w-x2jp-3xgw"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Caddy allows enumeration of Certificates and Hostnames (GHSA-jf2w-mq6r-56v8)",
+      "url": "https://osv.dev/vulnerability/GHSA-jf2w-mq6r-56v8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Caddy: Windows `file_server` path authorization bypass via encoded backslash (GHSA-qrp7-cvwr-j2c6)",
+      "url": "https://osv.dev/vulnerability/GHSA-qrp7-cvwr-j2c6"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Caddy: stripHTML template function bypass (GHSA-vcc4-2c75-vc9v)",
+      "url": "https://osv.dev/vulnerability/GHSA-vcc4-2c75-vc9v"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d66708d00e50bd820cf5711ff41776a3adee5a4f5e85a79a9598f1b76f8dd0b9",
+  "signature": null
+}
