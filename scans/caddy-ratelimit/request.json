@@ -1,0 +1,8 @@
+{
+  "package": "caddy-ratelimit",
+  "aur_commit": "2d4d0747abd85ed00df80860c1c7bcb7007a1244",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-03T11:24:58Z"
+}
