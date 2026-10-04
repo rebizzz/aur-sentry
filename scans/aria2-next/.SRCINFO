@@ -1,0 +1,37 @@
+pkgbase = aria2-next
+	pkgdesc = Maintained aria2 fork with extensive bug fixes and modernized architecture
+	pkgver = 2.8.5
+	pkgrel = 1
+	url = https://github.com/AnInsomniacy/aria2-next
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = boost
+	makedepends = boost-libs
+	makedepends = ca-certificates
+	makedepends = cmake
+	makedepends = cppunit
+	makedepends = curl
+	makedepends = fmt
+	makedepends = gnutls
+	makedepends = gzip
+	makedepends = libssh2
+	makedepends = libtorrent-rasterbar
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = spdlog
+	depends = c-ares
+	depends = expat
+	depends = libgcc_s.so
+	depends = libstdc++.so
+	depends = libssh2
+	depends = libz.so
+	depends = openssl
+	depends = sqlite
+	optdepends = motrix-next: A full-featured download manager rebuilt with Tauri 2, Vue 3, and Rust
+	provides = aria2-next
+	conflicts = aria2-next
+	source = aria2-next::git+https://github.com/AnInsomniacy/aria2-next.git#tag=v2.8.5
+	sha256sums = d5e92afd01831a22d5d20758a00776bbd7016eb5c38371966f9516acdef3579b
+
+pkgname = aria2-next
