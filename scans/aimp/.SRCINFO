@@ -1,0 +1,26 @@
+pkgbase = aimp
+	pkgdesc = Powerful free audio player, converter and tag editor (v6 Beta, Unstable)
+	pkgver = 6.00.3088
+	pkgrel = 1
+	url = https://www.aimp.ru
+	changelog = changelog
+	arch = x86_64
+	license = custom
+	depends = hicolor-icon-theme
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = cairo
+	depends = pango
+	depends = sqlite
+	depends = libvorbis
+	depends = harfbuzz
+	optdepends = libappindicator: extend app-menu support
+	optdepends = opus-tools: audio codec support
+	provides = aimp
+	conflicts = aimp
+	source = https://aimp.ru/files/desktop/builds/aimp-6.00.3088beta7-1-x86_64.pkg.tar.zst
+	source = changelog
+	sha256sums = 4d5cdab5e758490c57a62b10c6d6e9e2a049f250b64315c99904ec24b1cbf48f
+	sha256sums = 61e62ba0f4696e46d2675ccb2c58d10c8c52c414de1a7dc6131109b5c71f6c8a
+
+pkgname = aimp
