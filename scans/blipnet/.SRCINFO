@@ -1,0 +1,22 @@
+pkgbase = blipnet
+	pkgdesc = Send files to people and devices around the world
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://blip.net
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-proprietary
+	depends = alsa-lib
+	depends = gcc-libs
+	depends = glibc
+	depends = fontconfig
+	depends = freetype2
+	depends = libx11
+	options = !strip
+	options = !debug
+	source_x86_64 = https://static.blip.net/linux/blip-1.2.3-linux-amd64.tar.gz
+	sha256sums_x86_64 = 6734e84294f128ac7db3b0ad0499e9996f84b20a5aa9836415b7370dcb7e610b
+	source_aarch64 = https://static.blip.net/linux/blip-1.2.3-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 3c582de658eff85fcbe9301b78774b862dc22f40401d777458d2126ac3f1c4a9
+
+pkgname = blipnet
