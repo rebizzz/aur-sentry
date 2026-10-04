@@ -1,0 +1,357 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aggr-bin",
+    "version": "1.12.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "302e43f61e973f68166464fded6a0f7f5c58efd7",
+    "pkgbuild_sha256": "3a9eaa30a0021d403aea0d082961765de39f0d1994adccea5997b1a4eb7a3b31",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-04T15:37:56.978503155+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o readme.md.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/readme.md.pa\"... /home/builder/build/readme.md",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aggr-x86_64-1.12.0.tgz.part https://github.com/aymericbeaume\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aggr-x86_64-\"... /home/builder/build/aggr-x86_64-\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/readme.md",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aggr-x86_64-\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/readme.m\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/readme.md /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- readme.md",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf readme.md -q *",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/aggr-x86\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aggr-x86_64-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aggr-x86_64-1.12.0.tgz",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf aggr-x86_64-1.12.0.tgz",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aggr-bin-1.12.0-1-x86_64.pk\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.977804825+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aggr-bin-1.12.0-1-x86_64.pk\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.977804825+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/aggr-bin-1.12.0-1-x86_64.pk\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.977804825+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.977804825+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.977804825+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.977804825+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm aggr-bin",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.977804825+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm aggr-bin",
+        "parent": null,
+        "timestamp": "2026-10-04T15:37:56.977804825+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-04T15:37:56.971504463+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 3,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/aggr",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c06e9266fa89cc56db2610e413feaed5b575f66af30dda1db4d5ca903ea39388",
+  "signature": null
+}
