@@ -1,0 +1,339 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cataclysm-tlg-bin",
+    "version": "1.0.r20261004.1050-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "cad6b24bf656a873f3b93f1d6aa862c0a1612037",
+    "pkgbuild_sha256": "187afb8064284a6c75f94b1ccdf74763aad3b33d805edc81bc3fd02a20f18cfb",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-04T20:02:15.605650799+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cataclysm-tlg-bin-curses-1.0.r20\"... https://github.com/Cataclysm-TLG\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/cataclysm-tl\"... /home/builder/build/cataclysm-tl\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cataclysm-tlg-bin-tiles-1.0.r202\"... https://github.com/Cataclysm-TLG\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cataclysm-tl\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cataclys\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cataclysm-tl\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cataclysm-tlg-bin-curses-1.0.r20\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cataclysm-tlg-bin-curses-1.0.r20\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cataclysm-tlg-bin-tiles-1.0.r202\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cataclysm-tlg-bin-tiles-1.0.r202\"...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p _curses _tiles",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xzf /home/builder/build/src/cataclys\"... -C _curses",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xzf /home/builder/build/src/cataclys\"... -C _tiles",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-04T20:02:15.541827629+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Mishandling of format strings in ncurses (GHSA-32v7-ghpr-c8hg)",
+      "url": "https://osv.dev/vulnerability/GHSA-32v7-ghpr-c8hg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf out-of-bounds read (GHSA-5pcj-3m26-w633)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pcj-3m26-w633"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Buffer overflow and format vulnerabilities in ncurses (GHSA-g7r5-x7cr-vm3v)",
+      "url": "https://osv.dev/vulnerability/GHSA-g7r5-x7cr-vm3v"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "sh _uid does not drop supplementary groups (incomplete privilege drop) (GHSA-q38v-wp89-2w55)",
+      "url": "https://osv.dev/vulnerability/GHSA-q38v-wp89-2w55"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "ncurses exposes uninitialized memory in string reading functions (GHSA-x77x-7mmh-cxv3)",
+      "url": "https://osv.dev/vulnerability/GHSA-x77x-7mmh-cxv3"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious code in ncurses (PyPI) (MAL-2025-41705)",
+      "url": "https://osv.dev/vulnerability/MAL-2025-41705"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf v0.9 was discovered to contain an out-of-bounds read via the function modifyRPath at src/patchelf.cc. (PYSEC-2022-43144)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2022-43144"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "sh _uid does not drop supplementary groups (incomplete privilege drop) (PYSEC-2026-3540)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-3540"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Buffer overflow and format vulnerabilities in functions exposed without unsafe (RUSTSEC-2019-0006)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2019-0006"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Uninitialized memory exposure in string reading functions (RUSTSEC-2025-0108)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2025-0108"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "b9cddefde1c6a62a569f0b1c3c2a160f30c2c2de5ba46b29e7b42b6a808e0cea",
+  "signature": null
+}
