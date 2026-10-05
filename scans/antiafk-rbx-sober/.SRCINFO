@@ -1,0 +1,24 @@
+pkgbase = antiafk-rbx-sober
+	pkgdesc = Native Linux Anti-AFK utility for Sober (Roblox)
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Agzes/AntiAFK-RBX-Sober
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libxkbcommon
+	optdepends = grim: screen capture for Auto Reconnect on Hyprland, Niri, and COSMIC
+	optdepends = spectacle: screen capture for Auto Reconnect on KDE Plasma
+	optdepends = wtype: keystroke injection on Niri
+	optdepends = xdotool: window management and input fallback on X11 and i3
+	optdepends = wmctrl: window listing on X11
+	optdepends = maim: screen capture for Auto Reconnect on X11
+	options = !lto
+	source = antiafk-rbx-sober-1.0.0.tar.gz::https://github.com/Agzes/AntiAFK-RBX-Sober/archive/refs/tags/v.1.0.0.tar.gz
+	sha256sums = 2b72297f672ab8c9325dd16327b98efb99699153019bc2cf4beeed9abe1a9331
+
+pkgname = antiafk-rbx-sober
