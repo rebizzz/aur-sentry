@@ -1,0 +1,287 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "blender-mcp-git",
+    "version": "r242.df7de4c-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "95f3f02d1de82e0c500edd691a844b407c064063",
+    "pkgbuild_sha256": "9315252bcd686560d9aaf7c00463ea57c01187db10dfe6845683364aadc6a6f1",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-05T15:11:32.497661236+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/ahujasid/blen\"... /home/builder/build/blender-mcp-\"...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/ahujasid/blen\"...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/ahujasid/blen\"...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 870 on 4d8f9d8\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/blender-mcp-\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/blender-mcp-\"...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/blender-mcp-\"... blender-mcp-git",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/blender-mcp-\"...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-list --count HEAD",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --short HEAD",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Updated version: %s",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-05T15:11:32.491134376+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "9c72964f760f8fc1c666948d172abdac28e9216efa9d77c0c66aaa56f837e5ac",
+  "signature": null
+}
