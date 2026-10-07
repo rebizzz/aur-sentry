@@ -1,0 +1,307 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "clangd-bin",
+    "version": "23.1.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c0fe9ad727200590261e4fc20a18d0aa66bbf5fb",
+    "pkgbuild_sha256": "0627db38974ccf400aa7581c42186a1a558c3d66b207148edc4b8f3f5a1649b0",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-07T17:44:22.068328684+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o clangd-linux-23.1.0.zip.part https://github.com/clangd/clangd\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/clangd-linux\"... /home/builder/build/clangd-linux\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/clangd-linux\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/clangd-l\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/clangd-linux\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- clangd-linux-23.1.0.zip",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gzip -cd",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf clangd-linux-23.1.0.zip",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/clangd-bin-23.1.0-1-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.067236919+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/clangd-bin-23.1.0-1-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.067236919+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/clangd-bin-23.1.0-1-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.067236919+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.067236919+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.067236919+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.067236919+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm clangd-bin",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.067236919+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm clangd-bin",
+        "parent": null,
+        "timestamp": "2026-10-07T17:44:22.067236919+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-07T17:44:22.058936409+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/clangd",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ffda845aea3ccaa5dd5b057d576f239a7d79d6a126fe7cfb8ef7f557cf935e26",
+  "signature": null
+}
