@@ -1,0 +1,414 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "devinorium",
+    "version": "0.101.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f122c1266a538c4ff0601dd94a18ab677dfac179",
+    "pkgbuild_sha256": "5135d95b5dd023ab988ceff7aba107e1c81a5a88d01511702d5e17ac7820d5ce",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-07T23:30:38.276775721+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: devinorium-0.101.0/.env.example, devinorium-0.101.0/packaging/aur/files/devinorium.env"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o devinorium-v0.101.0.tar.gz.part https://github.com/justacalico/d\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/devinorium-v\"... /home/builder/build/devinorium-v\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o flutter_linux_3.44.9-stable.tar.\"... https://storage.googleapis.com/f\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/flutter_linu\"... /home/builder/build/flutter_linu\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/devinorium-v\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/flutter_linu\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/devinori\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/devinorium-v\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- devinorium-v0.101.0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf devinorium-v0.101.0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/flutter_\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/flutter_linu\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- flutter_linux_3.44.9-stable.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf flutter_linux_3.44.9-stable.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/devinorium.d\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- devinorium.desktop",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf devinorium.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/devinorium.s\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- devinorium.svg",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf devinorium.svg -q *",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "34.153.2.27",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "devinorium-0.101.0/.env.example",
+        "operation": "canary_access",
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "devinorium-0.101.0/packaging/aur/files/devinorium.env",
+        "operation": "canary_access",
+        "timestamp": "2026-10-07T23:30:38.206421013+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can fill the file system (GHSA-2hvr-h6gw-qrxp)",
+      "url": "https://osv.dev/vulnerability/GHSA-2hvr-h6gw-qrxp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "zip Incorrectly Canonicalizes Paths during Archive Extraction Leading to Arbitrary File Write (GHSA-94vh-gphv-8pm8)",
+      "url": "https://osv.dev/vulnerability/GHSA-94vh-gphv-8pm8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo prior to Rust 1.26.0 may download the wrong dependency (GHSA-9f3p-wvj7-q82x)",
+      "url": "https://osv.dev/vulnerability/GHSA-9f3p-wvj7-q82x"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo not respecting umask when extracting crate archives (GHSA-j3xp-wfr4-hx87)",
+      "url": "https://osv.dev/vulnerability/GHSA-j3xp-wfr4-hx87"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo crates in third party registries can override the cached source of other crates (GHSA-jq42-7mfv-hm57)",
+      "url": "https://osv.dev/vulnerability/GHSA-jq42-7mfv-hm57"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo can be coerced to share credentials between registries (GHSA-p688-r7jv-fm6f)",
+      "url": "https://osv.dev/vulnerability/GHSA-p688-r7jv-fm6f"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo did not verify SSH host keys (GHSA-r5w3-xm58-jv6j)",
+      "url": "https://osv.dev/vulnerability/GHSA-r5w3-xm58-jv6j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can corrupt arbitrary files (GHSA-rfj2-q3h3-hm5j)",
+      "url": "https://osv.dev/vulnerability/GHSA-rfj2-q3h3-hm5j"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "c3d8847f02a29c66f4c541278f0309e345285a3e893820b6ee65820a04ff29a3",
+  "signature": null
+}
