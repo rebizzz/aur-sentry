@@ -1,0 +1,41 @@
+pkgbase = appflowy
+	pkgdesc = Open-source alternative to Notion – you own your data and customizations
+	pkgver = 0.14.7
+	pkgrel = 1
+	url = https://appflowy.com
+	arch = x86_64
+	license = AGPL-3.0-or-later
+	makedepends = clang
+	makedepends = cmake
+	makedepends = git
+	makedepends = ninja
+	makedepends = pkg-config
+	makedepends = sqlite
+	makedepends = openssl
+	makedepends = unzip
+	makedepends = protobuf
+	makedepends = rsync
+	makedepends = rustup
+	makedepends = cargo-make
+	depends = glib2>=2.80
+	depends = gst-plugins-base-libs
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libkeybinder3
+	depends = libnotify
+	depends = rocksdb
+	optdepends = kdialog: file picker on KDE Plasma
+	optdepends = zenity: file picker on GNOME/GTK
+	conflicts = appflowy-bin
+	conflicts = appflowy-git
+	options = !lto
+	options = !debug
+	options = !buildflags
+	source = appflowy-0.14.7.tar.gz::https://github.com/AppFlowy-IO/AppFlowy/archive/refs/tags/0.14.7.tar.gz
+	source = flutter::git+https://github.com/flutter/flutter.git#tag=3.27.4
+	source = appflowy.desktop
+	sha256sums = d09b44949bfe371055877f697f7c5392d12cf3b00d6a613881ed8f76417f4e79
+	sha256sums = 41d2ef9589b0ff14b4c55a614933fb8f68307738882c8e6c454fc334d4952ce3
+	sha256sums = 55c02d13249b333088ee452e76c8f36254e510651023549dc7e35efca02ca821
+
+pkgname = appflowy
