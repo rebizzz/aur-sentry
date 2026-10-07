@@ -1,0 +1,37 @@
+pkgbase = boomaga-git
+	pkgdesc = A virtual printer for viewing a document before printing it out using the physical printer (Qt6)
+	pkgver = 3.9.3.r0.g251dcad
+	pkgrel = 2
+	url = https://www.boomaga.org
+	install = boomaga-git.install
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-only
+	license = LGPL-2.1-or-later
+	makedepends = qt6-tools
+	makedepends = git
+	makedepends = cmake
+	depends = cups
+	depends = ghostscript
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libcups
+	depends = libgcc
+	depends = libglvnd
+	depends = libstdc++
+	depends = poppler
+	depends = qt6-base
+	depends = zlib
+	optdepends = sudo: add the virtual printer from the Boomaga GUI
+	optdepends = qt6-wayland: run the GUI natively on Wayland
+	provides = boomaga=3.9.3.r0.g251dcad
+	conflicts = boomaga
+	conflicts = boomaga-qt5
+	conflicts = boomaga-qt6-git
+	options = !emptydirs
+	source = boomaga::git+https://github.com/Boomaga/boomaga.git#branch=master
+	source = README.install
+	sha256sums = SKIP
+	sha256sums = 481746423a1b4c5d05d992a9282c43078fe8f34524a6224de1553299b716c7ea
+
+pkgname = boomaga-git
