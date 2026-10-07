@@ -1,0 +1,8 @@
+{
+  "package": "clangd-bin",
+  "aur_commit": "c0fe9ad727200590261e4fc20a18d0aa66bbf5fb",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-07T17:40:26Z"
+}
