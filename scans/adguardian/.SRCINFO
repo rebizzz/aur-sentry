@@ -1,0 +1,16 @@
+pkgbase = adguardian
+	pkgdesc = Terminal-based, real-time traffic monitoring and statistics for your AdGuard Home instance
+	pkgver = 1.8.0
+	pkgrel = 1
+	url = https://github.com/Lissy93/AdGuardian-Term
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	optdepends = gum: interactive prompt for generation of environment file for authentication
+	options = !lto
+	source = AdGuardian-Term-1.8.0.tar.gz::https://github.com/Lissy93/AdGuardian-Term/archive/refs/tags/1.8.0.tar.gz
+	source = adguardian.bash
+	sha512sums = c4f3958f8b7e1628b00bbc0a208addb674801729968c001c1ca4d8a22333e9d6fa83de806b37d56c8f158c25cdd2e2aaa8acdeec14a540d8c6cf85af8dd453fc
+	sha512sums = e025063ba440cef8e5d6bd764e327397e513e8584a322e95e9805b31284a886c836b56531196d4d1185d8c2ccc8b550fbce03a480a21828c2a9221b3fe798cc4
+
+pkgname = adguardian
