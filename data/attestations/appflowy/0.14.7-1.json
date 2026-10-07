@@ -1,0 +1,479 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "appflowy",
+    "version": "0.14.7-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "137d5ecda52e780ba3a894088d265741792cbb75",
+    "pkgbuild_sha256": "c697cf107fc82d5d98119074729119a6581067132ac25a6a66f89b30bce0c5af",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-07T09:15:45.773806673+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: AppFlowy-0.14.7/frontend/appflowy_flutter/dev.env, AppFlowy-0.14.7/frontend/rust-lib/flowy-ai/dev.env, AppFlowy-0.14.7/frontend/rust-lib/flowy-sqlite/.env"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o appflowy-0.14.7.tar.gz.part https://github.com/AppFlowy-IO/A\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/appflowy-0.1\"... /home/builder/build/appflowy-0.1\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/flutter/flutt\"... /home/builder/build/flutter",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/flutter/flutt\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/flutter/flutt\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 967 on a345ed5\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/flutter rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/flutter/info",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/appflowy-0.1\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/flutter archive --format tar 3.27.4",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/appflowy.des\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/appflowy\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/appflowy-0.1\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- appflowy-0.14.7.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf appflowy-0.14.7.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/flutter flutter",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/flutter",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git tag -l --format=%(tag) 3.27.4",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg 3.27.4 --",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/appflowy.des\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- appflowy.desktop",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf appflowy.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i s/^APPFLOWY_VERSION = .*/APPFLOW\"... Makefile.toml",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i s/^version: .*/version: 0.14.7/ appflowy_flutter/pubspec.yaml",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "AppFlowy-0.14.7/frontend/appflowy_flutter/dev.env",
+        "operation": "canary_access",
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "AppFlowy-0.14.7/frontend/rust-lib/flowy-ai/dev.env",
+        "operation": "canary_access",
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "AppFlowy-0.14.7/frontend/rust-lib/flowy-sqlite/.env",
+        "operation": "canary_access",
+        "timestamp": "2026-10-07T09:15:45.604470368+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Crash due to uncontrolled recursion in protobuf crate (GHSA-2gh3-rmm4-6rq5)",
+      "url": "https://osv.dev/vulnerability/GHSA-2gh3-rmm4-6rq5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Improper Certificate Validation in openssl (GHSA-34p9-f4q3-c4r7)",
+      "url": "https://osv.dev/vulnerability/GHSA-34p9-f4q3-c4r7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509NameBuilder::build` returned object is not thread safe (GHSA-3gxf-9r58-2ghg)",
+      "url": "https://osv.dev/vulnerability/GHSA-3gxf-9r58-2ghg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl Use-After-Free in `Md::fetch` and `Cipher::fetch` (GHSA-4fcv-w3qc-ppgg)",
+      "url": "https://osv.dev/vulnerability/GHSA-4fcv-w3qc-ppgg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Potential Command Injection in libnotify (GHSA-6898-wx94-8jq8)",
+      "url": "https://osv.dev/vulnerability/GHSA-6898-wx94-8jq8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509Extension::new` and `X509Extension::new_nid` null pointer dereference (GHSA-6hcf-g6gr-hhcr)",
+      "url": "https://osv.dev/vulnerability/GHSA-6hcf-g6gr-hhcr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "openssl npm package vulnerable to command execution (GHSA-75w2-qv55-x7fv)",
+      "url": "https://osv.dev/vulnerability/GHSA-75w2-qv55-x7fv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf affected by a JSON recursion depth bypass (GHSA-7gcm-g887-7qv7)",
+      "url": "https://osv.dev/vulnerability/GHSA-7gcm-g887-7qv7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl has incorrect bounds assertion in aes key wrap (GHSA-8c75-8mhr-p7r9)",
+      "url": "https://osv.dev/vulnerability/GHSA-8c75-8mhr-p7r9"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "9a09d43d2c9627667241d3f9fa802593fbbb2f12da40498f24d6c34737470b3c",
+  "signature": null
+}
