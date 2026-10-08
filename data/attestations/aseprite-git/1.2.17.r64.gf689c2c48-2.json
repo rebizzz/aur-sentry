@@ -1,0 +1,4526 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aseprite-git",
+    "version": "1.2.17.r64.gf689c2c48-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "0f8d4bb0ed66b56bc84aafe5982081d7a2224631",
+    "pkgbuild_sha256": "78610d4373e589479e2d78e7793fb11be77eb90233b496840e3865287e73ab42",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-08T14:24:47.410895693+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: packages/TPF/maketpf.env_curl, packages/TPF/maketpf.env_curllib"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/asep\"... /home/builder/build/aseprite",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/asep\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/asep\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1432 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/aseprite rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/aseprite/inf\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/pixm\"... /home/builder/build/pixman",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/pixm\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/pixm\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1462 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/pixman rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/pixman/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/simp\"... /home/builder/build/simpleini",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/simp\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/simp\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1486 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/simpleini rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/simpleini/in\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/gtes\"... /home/builder/build/gtest",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/gtes\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/gtes\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1510 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/gtest rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/gtest/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/libw\"... /home/builder/build/libwebp",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/libw\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/libw\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1534 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/libwebp rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/libwebp/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/flic\"... /home/builder/build/flic",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/flic\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/flic\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1558 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/flic rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/flic/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/free\"... /home/builder/build/freetype2",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/free\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/free\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1582 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/freetype2 rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/freetype2/in\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/zlib\"... /home/builder/build/zlib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/zlib\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/zlib\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1606 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/zlib rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/zlib/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/libp\"... /home/builder/build/libpng",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/libp\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/libp\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1630 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/libpng rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/libpng/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/clip\"... /home/builder/build/clip",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/clip\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/clip\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1654 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/clip rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/clip/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/obse\"... /home/builder/build/observable",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/obse\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/obse\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1678 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/observable rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/observable/i\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/undo\"... /home/builder/build/undo",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/undo\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/undo\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1702 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/undo rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/undo/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/laf.\"... /home/builder/build/laf",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/laf.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/laf.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1726 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/laf rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/laf/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/cmar\"... /home/builder/build/cmark",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/cmar\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/cmar\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1750 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cmark rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cmark/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/harf\"... /home/builder/build/harfbuzz",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/harf\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/harf\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1774 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/harfbuzz rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/harfbuzz/inf\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/liba\"... /home/builder/build/libarchive",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/liba\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/liba\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1798 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/libarchive rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/libarchive/i\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/json\"... /home/builder/build/json11",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/json\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/json\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1822 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/json11 rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/json11/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/benc\"... /home/builder/build/benchmark",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/benc\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/benc\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1846 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/benchmark rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/benchmark/in\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/gifl\"... /home/builder/build/giflib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/gifl\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/gifl\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1870 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/giflib rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/giflib/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/fmt.\"... /home/builder/build/fmt",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/fmt.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/fmt.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1894 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/fmt rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/fmt/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/tiny\"... /home/builder/build/tinyexpr",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/tiny\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/tiny\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1918 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/tinyexpr rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/tinyexpr/inf\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/lua /home/builder/build/lua",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/lua",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/lua",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1942 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/lua rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/lua/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/tga.\"... /home/builder/build/tga",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/tga.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/tga.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1966 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/tga rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/tga/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/curl\"... /home/builder/build/curl",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/curl\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/curl\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1990 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/curl rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/curl/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/IXWe\"... /home/builder/build/IXWebSocket",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/IXWe\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/IXWe\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2014 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/IXWebSocket rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/IXWebSocket/\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/aseprite/skia\"... /home/builder/build/skia",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/skia\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/skia\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2038 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/skia rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/skia/info",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/desktop.patc\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/aseprite aseprite",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/aseprite",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg origin/main --",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/desktop.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/desktop.patc\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- desktop.patch",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf desktop.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/pixman pixman",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/pixman",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/simpleini simpleini",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/simpleini",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/gtest gtest",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/gtest",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/libwebp libwebp",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/libwebp",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/flic flic",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/flic",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/freetype2 freetype2",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/freetype2",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/zlib zlib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/zlib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/libpng libpng",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/libpng",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/clip clip",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/clip",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/observable observable",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/observable",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/undo undo",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/undo",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/laf laf",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/laf",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cmark cmark",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cmark",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/harfbuzz harfbuzz",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/harfbuzz",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/libarchive libarchive",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/libarchive",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/json11 json11",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/json11",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/benchmark benchmark",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/benchmark",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/giflib giflib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/giflib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/fmt fmt",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/fmt",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/tinyexpr tinyexpr",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/tinyexpr",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/lua lua",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/lua",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/tga tga",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/tga",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/curl curl",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/curl",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/IXWebSocket IXWebSocket",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/IXWebSocket",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/skia skia",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/skia",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg origin/aseprite-m124 --",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule init",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule init",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "basename /usr/lib/git-core/git-submodule",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/-/ /",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git --exec-path",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "basename -- /usr/lib/git-core/git-submodule",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "envsubst --variables usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "envsubst usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "uname -s",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --git-dir",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --git-path objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --is-inside-work-tree",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --show-prefix",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --show-toplevel",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/-/_/g",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper init --",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/libwebp.ur\"... /home/builder/build/src/libwebp",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.src/observable.url /home/builder/build/src/observab\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/harfbuzz.u\"... /home/builder/build/src/harfbuzz",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/IXWebSocke\"... /home/builder/build/src/IXWebSoc\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/libarchive\"... /home/builder/build/src/libarchi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.src/tga.url /home/builder/build/src/tga",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.src/flic.url /home/builder/build/src/flic",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/freetype2.\"... /home/builder/build/src/freetype\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/zlib.url /home/builder/build/src/zlib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/curl.url /home/builder/build/src/curl",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/benchmark.\"... /home/builder/build/src/benchmar\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/simpleini.\"... /home/builder/build/src/simplein\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/json11.url /home/builder/build/src/json11",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/libpng.url /home/builder/build/src/libpng",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/cmark.url /home/builder/build/src/cmark",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/gtest.url /home/builder/build/src/gtest",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/tinyexpr.u\"... /home/builder/build/src/tinyexpr",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/lua.url /home/builder/build/src/lua",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/pixman.url /home/builder/build/src/pixman",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.src/clip.url /home/builder/build/src/clip",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/fmt.url /home/builder/build/src/fmt",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.src/undo.url /home/builder/build/src/undo",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.laf.url /home/builder/build/src/laf",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/giflib.url /home/builder/build/src/giflib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c protocol.file.allow=always submodule update",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule update",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper update --",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path laf --name laf --url /home/builder/build/src/laf",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/laf /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/laf/.git",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path src/flic --name src/flic --url /home/builder/build/src/flic",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/flic /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/flic/.gi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path src/observable --name src/observable --url /home/builder/build/src/observab\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/observab\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/observab\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path src/psd --name src/psd --url https://github.com/aseprite/psd.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- https://github.com/aseprite/psd.\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/psd.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/psd.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2557 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path src/tga --name src/tga --url /home/builder/build/src/tga",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/tga /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/tga/.git",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path src/undo --name src/undo --url /home/builder/build/src/undo",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/undo /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/undo/.gi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/IXWebSocket --name third_party/IXWebSocket --url /home/builder/build/src/IXWebSoc\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/IXWebSoc\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/IXWebSoc\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/TinyEXIF --name third_party/TinyEXIF --url https://github.com/aseprite/Tiny\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- https://github.com/aseprite/Tiny\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/Tiny\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/Tiny\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2578 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/benchmark --name third_party/benchmark --url /home/builder/build/src/benchmar\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/benchmar\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/benchmar\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/cityhash --name third_party/cityhash --url https://github.com/aseprite/city\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- https://github.com/aseprite/city\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/city\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/city\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2593 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/cmark --name third_party/cmark --url /home/builder/build/src/cmark",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/cmark /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/cmark/.g\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/curl --name third_party/curl --url /home/builder/build/src/curl",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/curl /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/curl/.gi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/fmt --name third_party/fmt --url /home/builder/build/src/fmt",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/fmt /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/fmt/.git",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/freetype2 --name third_party/freetype2 --url /home/builder/build/src/freetype\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/freetype\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/freetype\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/giflib --name third_party/giflib --url /home/builder/build/src/giflib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/giflib /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/giflib/.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/harfbuzz --name third_party/harfbuzz --url /home/builder/build/src/harfbuzz",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/harfbuzz /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/harfbuzz\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/json11 --name third_party/json11 --url /home/builder/build/src/json11",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/json11 /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/json11/.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/libarchive --name third_party/libarchive --url /home/builder/build/src/libarchi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/libarchi\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/libarchi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/libpng --name third_party/libpng --url /home/builder/build/src/libpng",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/libpng /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/libpng/.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/libwebp --name third_party/libwebp --url /home/builder/build/src/libwebp",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/libwebp /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/libwebp/\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/lua --name third_party/lua --url /home/builder/build/src/lua",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/lua /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/lua/.git",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/pixman --name third_party/pixman --url /home/builder/build/src/pixman",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/pixman /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/pixman/.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/qoi --name third_party/qoi --url https://github.com/aseprite/qoi.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- https://github.com/aseprite/qoi.\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/qoi.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/qoi.\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2641 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/simpleini --name third_party/simpleini --url /home/builder/build/src/simplein\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/simplein\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/simplein\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/tinyexpr --name third_party/tinyexpr --url /home/builder/build/src/tinyexpr",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/tinyexpr /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/tinyexpr\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/tinyxml2 --name third_party/tinyxml2 --url https://github.com/aseprite/tiny\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- https://github.com/aseprite/tiny\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2659 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/zlib --name third_party/zlib --url /home/builder/build/src/zlib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- /home/builder/build/src/zlib /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/zlib/.gi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 500768cccc6447e3b7816bedbfcb378a\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 500768cccc6447e3b7816bedbfcb378a\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 a37fe2d46e5ae7dd68b6048be7765c0b\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f a37fe2d46e5ae7dd68b6048be7765c0b\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 b21d07fb046b2422e940e7171340317a\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f b21d07fb046b2422e940e7171340317a\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 87af728fe4b35ed79d94de0932017dcf\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 87af728fe4b35ed79d94de0932017dcf\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 cd3420c3a5797f1200fd1e1970ca2959\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f cd3420c3a5797f1200fd1e1970ca2959\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 2209ac5d36e59d7c85e48df7cb32cb0c\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 2209ac5d36e59d7c85e48df7cb32cb0c\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 89c92099597d47b61ba35f84ae2a3514\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 89c92099597d47b61ba35f84ae2a3514\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 21d6cf762724260f8e5bcee4abdee541\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 21d6cf762724260f8e5bcee4abdee541\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 c58e6d0710581e3a08d65c349664128a\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f c58e6d0710581e3a08d65c349664128a\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 e2a9a15316816e61f22107c1cc3d07b5\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f e2a9a15316816e61f22107c1cc3d07b5\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 9e2a6540f1a83720bab8b914dbf446fc\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/cmark",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --exclude-hidden=fetch --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --git-dir=/home/builder/build/cm\"... for-each-ref --format=%(objectname)",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git maintenance run --auto --no-quiet --detach",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git commit-graph write --split --reachable --progress",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 9e2a6540f1a83720bab8b914dbf446fc\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 9e2a6540f1a83720bab8b914dbf446fc\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 09cf6fd7009a98377db655c15e7ae508\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/curl",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --git-dir=/home/builder/build/cu\"... for-each-ref --format=%(objectname)",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 09cf6fd7009a98377db655c15e7ae508\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 09cf6fd7009a98377db655c15e7ae508\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 f781d2b9321934f881de1ddb5be1db69\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f f781d2b9321934f881de1ddb5be1db69\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 66a04dd6f858e92766d77deda44a6d8d\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --git-dir=/home/builder/build/fr\"... for-each-ref --format=%(objectname)",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 66a04dd6f858e92766d77deda44a6d8d\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 66a04dd6f858e92766d77deda44a6d8d\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 94a7edbf52f8a0c0e2ee4ee210784c2d\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/giflib",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --git-dir=/home/builder/build/gi\"... for-each-ref --format=%(objectname)",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 94a7edbf52f8a0c0e2ee4ee210784c2d\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 94a7edbf52f8a0c0e2ee4ee210784c2d\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 d14c2d1764f800d31b51893fb3d1e05d\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/harfbuzz",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --git-dir=/home/builder/build/ha\"... for-each-ref --format=%(objectname)",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin d14c2d1764f800d31b51893fb3d1e05d\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f d14c2d1764f800d31b51893fb3d1e05d\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 a4e1714f5592dbe9a9f11539e6f87424\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f a4e1714f5592dbe9a9f11539e6f87424\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 7bde8b8259921f2dcbb31a664ceb298b\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 7bde8b8259921f2dcbb31a664ceb298b\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 34005e3d3d373c0c36898cc55eae48a7\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 34005e3d3d373c0c36898cc55eae48a7\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 9ce5843dbabcfd3f7c39ec7ceba9cbeb\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 9ce5843dbabcfd3f7c39ec7ceba9cbeb\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 2a00e6b0013f54ce80b6e3cefe6514e1\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 2a00e6b0013f54ce80b6e3cefe6514e1\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 285b9a907caffeb979322e629d4e57aa\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 285b9a907caffeb979322e629d4e57aa\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 c3dcfe780bf28f4a59bca7f0a60e2e18\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f c3dcfe780bf28f4a59bca7f0a60e2e18\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 9fa7622f41e36105a4c767a7765bb24a\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 9fa7622f41e36105a4c767a7765bb24a\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 24b9db07acb98fb1051d6b3a0afbc4f8\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 24b9db07acb98fb1051d6b3a0afbc4f8\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 312a8092245df393db14a0b2427457ed\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 312a8092245df393db14a0b2427457ed\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 51b7f2abdade71cd9bb0e7a373ef2610\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 51b7f2abdade71cd9bb0e7a373ef2610\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path clip --name clip --url https://github.com/aseprite/clip\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- https://github.com/aseprite/clip\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2870 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/googletest --name third_party/googletest --url https://github.com/aseprite/goog\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/aseprite\"... -- https://github.com/aseprite/goog\"... /home/builder/build/src/aseprite\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/aseprite/goog\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/aseprite/goog\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2882 on 80cb49\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 964847c26261f00c5e5bf9ceab622347\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 964847c26261f00c5e5bf9ceab622347\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 155b337c938a2953e5675f9dc18c99f0\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 155b337c938a2953e5675f9dc18c99f0\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch --strip=1 --input=/home/builder/build/src/\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p build",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "python tools/git-sync-deps",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git --version",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --quiet --depth=1 --no-checkout https://chromium.googlesource.co\"... /home/builder/build/src/skia/bui\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --quiet --depth=1 --no-checkout https://skia.googlesource.com/ex\"... /home/builder/build/src/skia/thi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --quiet --depth=1 --no-checkout https://chromium.googlesource.co\"... /home/builder/build/src/skia/thi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --quiet --depth=1 --no-checkout https://dawn.googlesource.com/da\"... /home/builder/build/src/skia/thi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --quiet --depth=1 --no-checkout https://android.googlesource.com\"... /home/builder/build/src/skia/thi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --quiet --depth=1 --no-checkout https://github.com/aseprite/free\"... /home/builder/build/src/skia/thi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --quiet --depth=1 --no-checkout https://skia.googlesource.com/th\"... /home/builder/build/src/skia/thi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://skia.googlesource.com/ex\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://chromium.googlesource.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://dawn.googlesource.com/da\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://android.googlesource.com\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://skia.googlesource.com/ex\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://chromium.googlesource.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --quiet --depth=1 --no-checkout https://swiftshader.googlesource\"... /home/builder/build/src/skia/thi\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://android.googlesource.com\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://dawn.googlesource.com/da\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://skia.googlesource.com/th\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://skia.googlesource.com/th\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://swiftshader.googlesource\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://swiftshader.googlesource\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/bui\"... index-pack --stdin --fix-thin --keep=fetch-pack 2905 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2913 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2919 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2907 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2938 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2945 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2942 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2943 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2931 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2955 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2923 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2952 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2932 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2929 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config sync-deps.disable",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2925 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2989 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2953 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet a205468bc5d3a353fb15dae2398a101d\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2962 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3027 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3026 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2971 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2911 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 55aab4ac0607ab651055d354d64c4615\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2927 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2978 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2935 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet b02a12d1dd821118763debec6b83d00a\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git remote set-url origin https://chromium.googlesource.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3015 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git remote set-url origin https://skia.googlesource.com/ex\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet b138e6ce86ae843c42a1a08f37903207\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3017 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2921 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 66a3fa9dbdca3b67053a483d130564ea\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... a205468bc5d3a353fb15dae2398a101d\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... 55aab4ac0607ab651055d354d64c4615\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet e2d024354e11cc6b041b0cff032d73f0\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https https://chromium.googlesource.co\"... https://chromium.googlesource.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... b02a12d1dd821118763debec6b83d00a\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 0bad08bb207bbfc1d6f3bbc82b9242b0\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3010 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https https://skia.googlesource.com/ex\"... https://skia.googlesource.com/ex\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... https://chromium.googlesource.co\"... https://chromium.googlesource.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... b138e6ce86ae843c42a1a08f37903207\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 66a3fa9dbdca3b67053a483d130564ea\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... https://skia.googlesource.com/ex\"... https://skia.googlesource.com/ex\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 169895d529dfce00390a20e69c2f5160\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3007 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... e2d024354e11cc6b041b0cff032d73f0\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet d248929c059ff7629a85333699717d7a\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 0bad08bb207bbfc1d6f3bbc82b9242b0\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2981 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 5cf722e659014ebaf2f573a6dd935116\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... 169895d529dfce00390a20e69c2f5160\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 8b246ff75c6615ba4532fe4fde20f1be\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet e3f919ccfe3ef542cfc983a821460702\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3262 on 80cb49\"... --pack_header=2 865",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet e04b6028651dfd6b87067c0d27c1207c\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... d248929c059ff7629a85333699717d7a\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2957 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet a896e3d066448b3530dbcaa48869fafe\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3278 on 80cb49\"... --pack_header=2 1412",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 5cf722e659014ebaf2f573a6dd935116\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 646b7f569718921d7d4b5b8e22572ff6\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/bui\"... unpack-objects -q --pack_header=2 78",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... 8b246ff75c6615ba4532fe4fde20f1be\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3269 on 80cb49\"... --pack_header=2 325",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet ed683925e4897a84b3bffc5c1414c85b\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... e3f919ccfe3ef542cfc983a821460702\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... e04b6028651dfd6b87067c0d27c1207c\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... a896e3d066448b3530dbcaa48869fafe\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 646b7f569718921d7d4b5b8e22572ff6\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3290 on 80cb49\"... --pack_header=2 7237",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 5",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 4",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... ed683925e4897a84b3bffc5c1414c85b\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet a6bfc237255a6bac1513f7c1ebde6d8a\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 32",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet a4140c5fd47dcf3a030726a60b293db6\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/bui\"... rev-list --objects --stdin --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet c0cab63c5300fa12284194fbef57aa2e\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 2af26267cdfcb63a88e5c74a85927a12\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet b055c9b483e70ecd57b3cf7204db21f5\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... rev-list --objects --stdin --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 733fd2b522918f81f9c4669350dafd06\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 334aca32051ef6ede2711487acf45d95\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3381 on 80cb49\"... --pack_header=2 153",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet b8fcf307f1f347089e3c46eb4451d27f\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git maintenance run --auto --quiet --detach",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 55d35d8387c15bf0cfd71861df67af8c\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... a6bfc237255a6bac1513f7c1ebde6d8a\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 66a04dd6f858e92766d77deda44a6d8d\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... a4140c5fd47dcf3a030726a60b293db6\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... c0cab63c5300fa12284194fbef57aa2e\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 2af26267cdfcb63a88e5c74a85927a12\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 733fd2b522918f81f9c4669350dafd06\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... b055c9b483e70ecd57b3cf7204db21f5\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... 334aca32051ef6ede2711487acf45d95\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 67",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2950 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 9",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git remote set-url origin https://github.com/aseprite/free\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3429 on 80cb49\"... --pack_header=2 174",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... b8fcf307f1f347089e3c46eb4451d27f\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... 55d35d8387c15bf0cfd71861df67af8c\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://github.com/aseprite/free\"... 66a04dd6f858e92766d77deda44a6d8d\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 96",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3394 on 80cb49\"... --pack_header=2 224",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3457 on 80cb49\"... --pack_header=2 247",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https https://github.com/aseprite/free\"... https://github.com/aseprite/free\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 748945ec6f1c67b7efc934ab0808e1d3\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git repack -d -l -q --cruft --cruft-expiration=2.weeks.ago --write-midx",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 69",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... https://github.com/aseprite/free\"... https://github.com/aseprite/free\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git remote set-url origin https://android.googlesource.com\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3588-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3510 on 80cb49\"... --pack_header=2 232",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 40",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 44",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://android.googlesource.com\"... 748945ec6f1c67b7efc934ab0808e1d3\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3588-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https https://android.googlesource.com\"... https://android.googlesource.com\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3516 on 80cb49\"... --pack_header=2 298",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3520 on 80cb49\"... --pack_header=2 944",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 577baa05033cf1d9236b3d078ca4b326\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... https://android.googlesource.com\"... https://android.googlesource.com\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet f20663ca7fec48fdc88e4c4d7c5889f8\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 74",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3549 on 80cb49\"... --pack_header=2 587",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-3672f3ec36\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3559 on 80cb49\"... --pack_header=2 221",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 577baa05033cf1d9236b3d078ca4b326\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3680-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3560 on 80cb49\"... --pack_header=2 693",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... f20663ca7fec48fdc88e4c4d7c5889f8\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3694-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 144b348e072a78e8130ed0acc452c9f0\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3680-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3694-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3728-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git remote set-url origin https://skia.googlesource.com/th\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/th\"... 144b348e072a78e8130ed0acc452c9f0\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-d1dc619d89\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3728-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-2cb80f6c7e\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3777-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https https://skia.googlesource.com/th\"... https://skia.googlesource.com/th\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... https://skia.googlesource.com/th\"... https://skia.googlesource.com/th\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3711 on 80cb49\"... --pack_header=2 470",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3809-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 441f98d02deafd9b090aea568282b28f\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3777-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-e906fa2a89\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3814-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2967 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3809-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 441f98d02deafd9b090aea568282b28f\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 10",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 82",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-eefc18109e\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3814-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2917 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-1dfdfdc769\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-3fb228c8e7\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2915 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2970 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3880-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2998 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3847 on 80cb49\"... --pack_header=2 135",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3880-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet c8d0c9b1d16bfda56f15165d39e0ffa3\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet bb217acdca1cc0c16b704669dd6f91a1\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-214f470c8f\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 61f5e95eb939f4fa620f6770907591fe\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://android.googlesource.com\"... c8d0c9b1d16bfda56f15165d39e0ffa3\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3939-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://android.googlesource.com\"... bb217acdca1cc0c16b704669dd6f91a1\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 61f5e95eb939f4fa620f6770907591fe\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-3939-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 424360251cdcfc314cfc528f53c872ec\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-286a500f5c\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 424360251cdcfc314cfc528f53c872ec\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 3781 on 80cb49\"... --pack_header=2 244",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 27",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 75",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 2909 on 80cb49\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... unpack-objects -q --pack_header=2 16",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 4cfc6d8e173e800df086d7be078da2e8\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 6d03dfbedda1615c4cba1211f8d81735\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 4cfc6d8e173e800df086d7be078da2e8\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... 6d03dfbedda1615c4cba1211f8d81735\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 21d124c4bf321a18dae1dc94602aa262\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... 21d124c4bf321a18dae1dc94602aa262\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet bcf4f7198d4dc5f3127e84a6ca657c88\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... bcf4f7198d4dc5f3127e84a6ca657c88\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 4058 on 80cb49\"... --pack_header=2 240",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 93885509be1c9240bc55fa515ceb3481\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 4083 on 80cb49\"... --pack_header=2 5353",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://android.googlesource.com\"... 93885509be1c9240bc55fa515ceb3481\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 4069 on 80cb49\"... --pack_header=2 2553",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-4108-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 4053 on 80cb49\"... --pack_header=2 1700",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-4108-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet a0718d4f121727e30b8d52c7a189ebf5\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://chromium.googlesource.co\"... a0718d4f121727e30b8d52c7a189ebf5\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-e65d143a7b\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 4132 on 80cb49\"... --pack_header=2 4354",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-4153-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-4153-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 4097 on 80cb49\"... --pack_header=2 2648",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-4174-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-17ac3a9c22\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-4174-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-114f4cc1f7\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet bac513d0ae286600ea0f75a75223a5b5\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git remote set-url origin https://dawn.googlesource.com/da\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://dawn.googlesource.com/da\"... bac513d0ae286600ea0f75a75223a5b5\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https https://dawn.googlesource.com/da\"... https://dawn.googlesource.com/da\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... https://dawn.googlesource.com/da\"... https://dawn.googlesource.com/da\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 4199 on 80cb49\"... --pack_header=2 46809",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet 14b80ebeab022b2c78f84a573f01028c\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --quiet bbe6452b420c5ddc4b0fd421b0a3ce27\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git remote set-url origin https://swiftshader.googlesource\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-4225-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://swiftshader.googlesource\"... bbe6452b420c5ddc4b0fd421b0a3ce27\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git fetch --quiet --depth=1 https://skia.googlesource.com/ex\"... 14b80ebeab022b2c78f84a573f01028c\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https https://swiftshader.googlesource\"... https://swiftshader.googlesource\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... https://swiftshader.googlesource\"... https://swiftshader.googlesource\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-4225-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 4232 on 80cb49\"... --pack_header=2 403",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/skia/thi\"... index-pack --stdin --fix-thin --keep=fetch-pack 4231 on 80cb49\"... --pack_header=2 943",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-62158b22f5\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-4276-pack --keep-true-parents --non-empty --all --reflog --indexed-objects",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git pack-objects --local --quiet --delta-base-offset --honor-pack-keep .git/objects/pack/.tmp-4276-pack --cruft --cruft-expiration=2.weeks.ago --non-empty",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git multi-pack-index write --no-progress --preferred-pack=pack-7e82a209fb\"... --refs-snapshot=/home/builder/bu\"... --stdin-packs",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/sbin/python /home/builder/build/src/skia/bin\"...",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/sbin/python third_party/externals/emsdk/emsd\"... install --permanent 3.1.44",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "tar -xf /home/builder/build/src/skia/thi\"... --strip 1",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "xz -d",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bzip2 -d",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/sbin/python third_party/externals/emsdk/emsd\"... activate --permanent 3.1.44",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed s/\\\\([^-",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git describe --long --tags",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Updated version: %s",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "74.125.197.82",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "64.233.178.82",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "142.250.69.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "142.250.69.123",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "packages/TPF/maketpf.env_curl",
+        "operation": "canary_access",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "packages/TPF/maketpf.env_curllib",
+        "operation": "canary_access",
+        "timestamp": "2026-10-08T14:24:46.630503418+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "cc6dd829bd34fac678ac92759141c3dea4cd4eb9b611277f645539d9fadfd14d",
+  "signature": null
+}
