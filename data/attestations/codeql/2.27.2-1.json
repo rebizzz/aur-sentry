@@ -1,0 +1,1354 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "codeql",
+    "version": "2.27.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "692d4258e78c5bb01435c91aab7d4b6f1100883f",
+    "pkgbuild_sha256": "94311fea3fdd86481c073ff412e3330592dd6e088d6788e4169f8de09e58de73",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-09T00:59:04.722900403+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml, codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml, codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml, codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml, codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml, codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml, codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml, codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml, codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml, codeql/qlpacks/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml, codeql/qlpacks/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml, codeql/qlpacks/codeql/java-examples/0.0.0/.codeql/libraries/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml, codeql/qlpacks/codeql/java-examples/0.0.0/.codeql/libraries/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml, codeql/qlpacks/codeql/java-queries/1.11.12/.codeql/libraries/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml, codeql/qlpacks/codeql/java-queries/1.11.12/.codeql/libraries/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during install: /opt/codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml, /opt/codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml, /opt/codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml, /opt/codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml, /opt/codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml, /opt/codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml, /opt/codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml, /opt/codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml, /opt/codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml, /opt/codeql/qlpacks/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml, /opt/codeql/qlpacks/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml, /opt/codeql/qlpacks/codeql/java-examples/0.0.0/.codeql/libraries/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml, /opt/codeql/qlpacks/codeql/java-examples/0.0.0/.codeql/libraries/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml, /opt/codeql/qlpacks/codeql/java-queries/1.11.12/.codeql/libraries/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml, /opt/codeql/qlpacks/codeql/java-queries/1.11.12/.codeql/libraries/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o codeql-bundle-2.27.2-x86_64.tar.\"... https://github.com/github/codeql\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/codeql-bundl\"... /home/builder/build/codeql-bundl\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/codeql-bundl\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/codeql-b\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/codeql-bundl\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- codeql-bundle-2.27.2-x86_64.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf codeql-bundle-2.27.2-x86_64.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/codeql-2.27.2-1-x86_64.pkg.\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/codeql-2.27.2-1-x86_64.pkg.\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/codeql-2.27.2-1-x86_64.pkg.\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm codeql",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm codeql",
+        "parent": null,
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/java-examples/0.0.0/.codeql/libraries/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/java-examples/0.0.0/.codeql/libraries/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/java-queries/1.11.12/.codeql/libraries/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "codeql/qlpacks/codeql/java-queries/1.11.12/.codeql/libraries/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.221988440+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/go-examples/0.0.0/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.caarlos0.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.gobuffalo.envy.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/go-queries/1.6.12/.codeql/libraries/codeql/go-all/8.0.0/ext/github.com.kelseyhightower.envconfig.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/java-examples/0.0.0/.codeql/libraries/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/java-examples/0.0.0/.codeql/libraries/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/java-queries/1.11.12/.codeql/libraries/codeql/java-all/9.3.2/ext/com.couchbase.client.core.env.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      },
+      {
+        "path": "/opt/codeql/qlpacks/codeql/java-queries/1.11.12/.codeql/libraries/codeql/java-all/9.3.2/ext/org.apache.commons.exec.environment.model.yml",
+        "operation": "canary_access",
+        "timestamp": "2026-10-09T00:59:04.496806693+00:00",
+        "phase": "install"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 35063,
+    "elf_object_count": 144,
+    "elf_objects": [
+      {
+        "path": "opt/codeql/go/tools/linux64/go-extractor",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/codeql/go/tools/linux64/go-bootstrap",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/codeql/go/tools/linux64/go-autobuilder",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/codeql/go/tools/linux64/go-build-runner",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/codeql/go/tools/linux64/go-configure-baseline",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/codeql/go/tools/linux64/go-gen-dbscheme",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/codeql/go/tools/linux64/go-tokenizer",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/createdump",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libMonoPosixHelper.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/Semmle.Autobuild.CSharp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libSystem.Security.Cryptography.Native.OpenSsl.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libclrgcexp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libSystem.Net.Security.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libhostpolicy.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libmscordaccore.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libcoreclr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libSystem.Globalization.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libSystem.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libclrjit.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libmscordbi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/Semmle.Extraction.CSharp.Standalone",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/Semmle.Extraction.CSharp.Driver",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libSystem.IO.Compression.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libclrgc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libcoreclrtraceptprovider.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/csharp/tools/linux64/libhostfxr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/ruby/tools/linux64/extractor",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib64_haswell_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/x86_64-linux-gnutrace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib64_xeon_phi_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib64_i686_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib/x86_64-linux-gnutrace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib/i386-linux-gnutrace_i686_trace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib/x86_64-linux-gnu_i686_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib/x86_64-linux-gnu_x86_64_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib/i386-linux-gnutrace__trace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib/i386-linux-gnutrace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib/x86_64-linux-gnu_haswell_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib/x86_64-linux-gnu_xeon_phi_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/runner",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/i386-linux-gnutrace_i686_trace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib_i686_trace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/x86_64-linux-gnu_i686_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib64_x86_64_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib32_i686_trace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib32trace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/scc",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib64__trace",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/libtrace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/x86_64-linux-gnu_x86_64_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib_xeon_phi_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib_x86_64_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib_haswell_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/runner-linux",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/i386-linux-gnutrace__trace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/i386-linux-gnutrace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/x86_64-linux-gnu_haswell_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/x86_64-linux-gnu_xeon_phi_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib__trace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libprefs.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libzip.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libawt_headless.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libmlib_image.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/jspawnhelper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libsimdsort.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libjimage.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libmanagement.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libjsound.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/server/libjvm.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/server/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libsyslookup.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libinstrument.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libjavajpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libawt_xawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libfontmanager.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libmanagement_agent.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/jexec",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libnio.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libverify.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libjava.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libsplashscreen.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/liblcms.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libfreetype.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libjawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/librmi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/lib/libjli.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/bin/keytool",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/bin/rmiregistry",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/bin/javac",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/bin/java",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/java/bin/serialver",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib64trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/lib32__trace.so",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/tools/linux64/preload_tracer",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/python/tools/linux64/tsg-python",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/cpp/tools/linux64/deptrace-server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/cpp/tools/linux64/hash",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/cpp/tools/linux64/trap-cache-reader",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/cpp/tools/linux64/cpp-telemetry",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/cpp/tools/linux64/extractor-static",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/codeql/cpp/tools/linux64/bmn",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/cpp/tools/linux64/extractor",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/rust/tools/linux64/autobuild",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/rust/tools/linux64/extractor",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/swift/tools/linux64/incompatible-os",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libprefs.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libzip.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libawt_headless.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libmlib_image.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/jspawnhelper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libsimdsort.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libjimage.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libmanagement.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libjsound.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/server/libjvm.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/server/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libsyslookup.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libinstrument.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libjavajpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libawt_xawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libfontmanager.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/jexec",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libdt_socket.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libnio.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libverify.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libjava.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libjdwp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libsplashscreen.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libj2pkcs11.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/liblcms.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libjawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/librmi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/lib/libjli.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/bin/keytool",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/bin/rmiregistry",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/bin/javac",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/bin/java",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/codeql/java/tools/linux64/jdk-extractor-java/bin/serialver",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "92562bd6c9632c119110797ebe234fe04ae2410834c7b5154010dac9b3a99ccf",
+  "signature": null
+}
