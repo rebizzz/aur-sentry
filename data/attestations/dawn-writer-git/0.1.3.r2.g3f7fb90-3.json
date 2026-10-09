@@ -1,0 +1,753 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dawn-writer-git",
+    "version": "0.1.3.r2.g3f7fb90-3",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "7ca3b389c1682fdf88eb3e1ddbdd699373f6e796",
+    "pkgbuild_sha256": "4b029999bd46340e7dd8e6c64efa63d1a6950cb8d3092bc7c36e6cd13eaf74c3",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-09T00:48:23.545285752+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/andrewmd5/daw\"... /home/builder/build/dawn-writer-\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/andrewmd5/daw\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/andrewmd5/daw\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 946 on c8eea9a\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/dawn-writer-\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/dawn-writer-\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/dawn-writer-\"... dawn-writer-git-0.1.3.r2.g3f7fb9\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/dawn-writer-\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule update --init --recursive",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule update --init --recursive",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "basename /usr/lib/git-core/git-submodule",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/-/ /",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git --exec-path",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "basename -- /usr/lib/git-core/git-submodule",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "envsubst --variables usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "envsubst usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "uname -s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --git-dir",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --git-path objects",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --is-inside-work-tree",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --show-prefix",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --show-toplevel",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/-/_/g",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper update --recursive --init --",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third-party/cyaml --name third-party/cyaml --url https://github.com/andrewmd5/cya\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/dawn-wri\"... -- https://github.com/andrewmd5/cya\"... /home/builder/build/src/dawn-wri\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/andrewmd5/cya\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/andrewmd5/cya\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1006 on c8eea9\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third-party/nanosvg --name third-party/nanosvg --url https://github.com/memononen/nan\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/dawn-wri\"... -- https://github.com/memononen/nan\"... /home/builder/build/src/dawn-wri\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/memononen/nan\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/memononen/nan\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1018 on c8eea9\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third-party/pcre2 --name third-party/pcre2 --url https://github.com/PCRE2Project/\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/dawn-wri\"... -- https://github.com/PCRE2Project/\"... /home/builder/build/src/dawn-wri\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/PCRE2Project/\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/PCRE2Project/\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1030 on c8eea9\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third-party/utf8proc --name third-party/utf8proc --url https://github.com/JuliaStrings/\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/dawn-wri\"... -- https://github.com/JuliaStrings/\"... /home/builder/build/src/dawn-wri\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/JuliaStrings/\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/JuliaStrings/\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1042 on c8eea9\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 0672e81b809bc3dfd1d4f57ba0fcfbb2\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 0672e81b809bc3dfd1d4f57ba0fcfbb2\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=third-party/cyaml\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path refs/yaml-spec --name refs/yaml-spec --url https://github.com/yaml/yaml-spe\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/dawn-wri\"... -- https://github.com/yaml/yaml-spe\"... /home/builder/build/src/dawn-wri\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/yaml/yaml-spe\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/yaml/yaml-spe\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1058 on c8eea9\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path refs/yaml-test-suite --name refs/yaml-test-suite --url https://github.com/yaml/yaml-tes\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/dawn-wri\"... -- https://github.com/yaml/yaml-tes\"... /home/builder/build/src/dawn-wri\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/yaml/yaml-tes\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/yaml/yaml-tes\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1070 on c8eea9\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third-party/Unity --name third-party/Unity --url https://github.com/ThrowTheSwitc\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/dawn-wri\"... -- https://github.com/ThrowTheSwitc\"... /home/builder/build/src/dawn-wri\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/ThrowTheSwitc\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/ThrowTheSwitc\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1082 on c8eea9\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 1b1a1be43bd6e0cfec45caf0e40af3b5\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 1b1a1be43bd6e0cfec45caf0e40af3b5\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 ccfa74e56afb53da960847ff6e6976c0\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f ccfa74e56afb53da960847ff6e6976c0\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 51d2db98e292545321fcf23999920622\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 51d2db98e292545321fcf23999920622\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 5cefd9847949af6df13f65027fd43af5\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 5cefd9847949af6df13f65027fd43af5\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=third-party/nanos\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 a1508f74f13c9227714cf16c34244369\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f a1508f74f13c9227714cf16c34244369\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=third-party/pcre2\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path deps/sljit --name deps/sljit --url https://github.com/zherczeg/slji\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/dawn-wri\"... -- https://github.com/zherczeg/slji\"... /home/builder/build/src/dawn-wri\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/zherczeg/slji\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/zherczeg/slji\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1114 on c8eea9\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 45f910b78c6605ebf5b53d3ec7cb00f2\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 45f910b78c6605ebf5b53d3ec7cb00f2\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 90daf9f396cfec91668758eb9cc54bd5\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 90daf9f396cfec91668758eb9cc54bd5\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=third-party/utf8p\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git describe --long --tags",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed s/^v//;s/\\\\([^-",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T00:48:23.525260200+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "zstd vulnerable to buffer overrun (GHSA-5c9c-6x87-f9vm)",
+      "url": "https://osv.dev/vulnerability/GHSA-5c9c-6x87-f9vm"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "The PCRE2 library is a set of C functions that implement regular expression pattern matching. In version 10.45, a heap-buffer-overflow read vulnerability exists in the PCRE2 regular expression matching engine, specifically within the handling of the (*scs:...) (Scan SubString) verb when combined wit (PYSEC-2025-259)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2025-259"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "92df83ae6e12235bd405275b076846c8e8b1789455a1ff77d3334a2326199c89",
+  "signature": null
+}
