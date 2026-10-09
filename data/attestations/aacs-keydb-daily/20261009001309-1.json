@@ -1,0 +1,369 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aacs-keydb-daily",
+    "version": "20261009001309-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "9a7d0c6d658ecd021dbce790faeb5ef26462e8d2",
+    "pkgbuild_sha256": "2473552ba1f41d4ac45803c08a2f9c8a26d7eebb59a73960d7785faeb58ca960",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-09T00:43:12.478168210+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o keydb_eng-20261009001309.zip.par\"... https://web.archive.org/web/2026\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/keydb_eng-20\"... /home/builder/build/keydb_eng-20\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/keydb_eng-20\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/keydb_en\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/keydb_eng-20\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- keydb_eng-20261009001309.zip",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gzip -cd",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf keydb_eng-20261009001309.zip",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aacs-keydb-daily-2026100900\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aacs-keydb-daily-2026100900\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/aacs-keydb-daily-2026100900\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E1E3CF0539448BFF",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 531ECF3644A44FEA0B47DBCDE1E3CF05\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm aacs-keydb-daily",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm aacs-keydb-daily",
+        "parent": null,
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "207.241.237.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-09T00:43:12.471296592+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T00:43:12.476940137+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "1ed164b9856093696dc0c3f4b6a3390cb51fb023ab8c9503f60e3c7da49e32ca",
+  "signature": null
+}
