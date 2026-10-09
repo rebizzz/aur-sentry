@@ -1,0 +1,288 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ampcode",
+    "version": "0.0.1791489635_gdf6e24-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "170f9b69c34c0b0668c65421687139059ac6fd71",
+    "pkgbuild_sha256": "9e4ff9896e31eeaa4bd3f7eb08d1e292fc51b67355b56d62cbb8f9b7eff963ef",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-09T00:45:04.411460635+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o ampcode-0.0.1791489635_gdf6e24-x\"... https://static.ampcode.com/cli/0\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/ampcode-0.0.\"... /home/builder/build/ampcode-0.0.\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/ampcode-0.0.\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/ampcode-\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/ampcode-0.0.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- ampcode-0.0.1791489635_gdf6e24-x\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf ampcode-0.0.1791489635_gdf6e24-x\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/ampcode-0.0.1791489635_gdf6\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.410481508+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/ampcode-0.0.1791489635_gdf6\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.410481508+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/ampcode-0.0.1791489635_gdf6\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.410481508+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.410481508+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.410481508+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.410481508+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm ampcode",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.410481508+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm ampcode",
+        "parent": null,
+        "timestamp": "2026-10-09T00:45:04.410481508+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "136.68.113.218",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-09T00:45:04.400779803+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/amp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "1255b1b826e888aaa57493c91ec92d40752205d5bfbd5ff63803e5516f1a90b2",
+  "signature": null
+}
