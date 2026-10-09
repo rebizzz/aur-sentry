@@ -1,0 +1,724 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "certiliamiddleware",
+    "version": "3.9.12-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e92ab478d71e4e8a72736ad990d54bc0e356b5f5",
+    "pkgbuild_sha256": "57e660a60053188dd7da51c0ba752b312a35d0a7e93f08365f59cd4b103e3cb9",
+    "install_sha256": "943a7fbd86ef6665bc9654ac2337a125a21e58dcca1b2cc87d07d44cff655660"
+  },
+  "analyzed_at": "2026-10-09T09:31:11.653329932+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 13,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o certiliamiddleware_3.9.12-1_amd6\"... https://repo.certilia.com/reposi\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/certiliamidd\"... /home/builder/build/certiliamidd\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/certiliamidd\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/certilia\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/certiliamidd\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- certiliamiddleware_3.9.12-1_amd6\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf certiliamiddleware_3.9.12-1_amd6\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf certiliamiddleware_3.9.12-1_amd6\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/certiliamiddleware-3.9.12-1\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/certiliamiddleware-3.9.12-1\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/certiliamiddleware-3.9.12-1\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F296BDE50368C6CE",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B8AC08600F108CDF",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 6D42BDD116E0068F",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- C06086337C50773E",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 94657AB20F2A092B",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 93B11DAA4C197E3D",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 54C1FD273361EA514A237793F296BDE5\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 83BC8889351B5DEBBB68416EB8AC0860\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0429897DE5F3BDAC537A30696D42BDD1\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E499C79F53C96A54E572FEE1C0608633\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- ADC8A1FCC15E01D45310419E94657AB2\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F00B96D15228013FFC9C9D0393B11DAA\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_luPxql/.INSTALL; pre\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pidof /opt/certiliamiddleware/Certilia\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pidof /usr/lib/akd/certiliamiddleware/\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pidof /usr/lib/akd/eidkidmiddleware/Si\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pidof /usr/lib/akd/eidmiddleware/Signe\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_IhM629/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "update-ca-trust",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "mkdir -p /etc/ca-certificates/extracted",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "trust extract --overwrite --comment --format=pem-bundle --filter=ca-anchors --purpose=server-auth /etc/ca-certificates/extracted/t\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "trust extract --overwrite --comment --format=pem-bundle --filter=ca-anchors --purpose=email /etc/ca-certificates/extracted/e\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "trust extract --overwrite --comment --format=pem-bundle --filter=ca-anchors --purpose=code-signing /etc/ca-certificates/extracted/o\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "trust extract --overwrite --comment --format=openssl-bundle --filter=certificates /etc/ca-certificates/extracted/c\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "trust extract --overwrite --format=edk2-cacerts --filter=ca-anchors --purpose=server-auth /etc/ca-certificates/extracted/e\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "trust extract --overwrite --format=java-cacerts --filter=ca-anchors --purpose=server-auth /etc/ca-certificates/extracted/j\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "trust extract --overwrite --format=pem-directory-hash --filter=ca-anchors --purpose=server-auth /etc/ca-certificates/extracted/c\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -fsr -t /etc/ssl/certs /etc/ca-certificates/extracted/c\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "find -L /etc/ssl/certs -maxdepth 1 -type l -delete",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -fsr /etc/ca-certificates/extracted/j\"... /etc/ssl/certs/java/cacerts",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemctl enable --now pcscd.service",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... sysusers",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/systemd-sysusers",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... tmpfiles",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/systemd-tmpfiles --create",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... udev-reload",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/update-ca-trust",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... reload dbus",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm certiliamiddleware",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm certiliamiddleware",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_fGhW9n/.INSTALL; pre\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_RacVBl/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.68.134.31",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-09T09:31:11.608460556+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-09T09:31:11.617476593+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 43,
+    "elf_object_count": 18,
+    "elf_objects": [
+      {
+        "path": "opt/certiliamiddleware/plugins/tls/libqcertonlybackend.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/plugins/tls/libqopensslbackend.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/plugins/imageformats/libqjpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/plugins/imageformats/libqjp2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/plugins/xcbglintegrations/libqxcb-glx-integration.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/plugins/xcbglintegrations/libqxcb-egl-integration.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/plugins/printsupport/libcupsprintersupport.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/plugins/platforms/libqxcb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/lib/libQt6Widgets.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/lib/libQt6XcbQpa.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/lib/libQt6Core.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/lib/libQt6PrintSupport.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/lib/libQt6DBus.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/lib/libQt6Network.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/lib/libQt6Gui.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/CertiliaSigner",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/pkcs11/libCertiliaPkcs11.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/certiliamiddleware/CertiliaClient",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "152a83ff43275952b4ba956207ee4260b90ecd5a3ed1a2cb5ff1dad74bff43d1",
+  "signature": null
+}
