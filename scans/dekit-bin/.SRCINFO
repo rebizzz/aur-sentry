@@ -1,0 +1,22 @@
+pkgbase = dekit-bin
+	pkgdesc = Run multiple commands in parallel
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/pvolok/dekit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = help2man
+	provides = dekit
+	conflicts = dekit
+	replaces = mprocs-bin
+	source = CHANGELOG-0.10.1.md::https://raw.githubusercontent.com/pvolok/dekit/v0.10.1/CHANGELOG.md
+	source = README-0.10.1.md::https://raw.githubusercontent.com/pvolok/dekit/v0.10.1/README.md
+	sha256sums = 0cd6657d3191d1f0bd217f5124baaf165251287af2dd2634f8020a217936eab7
+	sha256sums = c0a2a5b8ab8e2faa72f2838bcda75b8ee228fe5429d408b8e32d8a4db7847c3f
+	source_x86_64 = dekit-x86_64-0.10.1.tgz::https://github.com/pvolok/dekit/releases/download/v0.10.1/dekit-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = 59563c26122073b0430488ec16ab38f44c838b5cf6924f34fc5971f68e2cc810
+	source_aarch64 = dekit-aarch64-0.10.1.tgz::https://github.com/pvolok/dekit/releases/download/v0.10.1/dekit-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 6bbc4de2f475ece6a0211578f8754fe611d70149fca24e59f3bc694a78db37fc
+
+pkgname = dekit-bin
