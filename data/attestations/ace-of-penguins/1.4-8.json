@@ -1,0 +1,792 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ace-of-penguins",
+    "version": "1.4-8",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d237c1cf82ec2ba05140ae4a971b3319c9f5691d",
+    "pkgbuild_sha256": "8c6d524d3d06411cd1698682f4608a192699363a7f8c60ab33e9baea5666f610",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-10T23:49:59.459527837+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o ace-1.4.tar.gz.part https://www.delorie.com/store/ac\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/ace-1.4.tar.\"... /home/builder/build/ace-1.4.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/ace-1.4.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/ace14_fixes.\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/badmatch.pat\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/imagelib_fix\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/make-imglib_\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/table_fix.pa\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/canfield.des\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/freecell.des\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/golf.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/mastermind.d\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/merlin.deskt\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/minesweeper.\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/pegged.deskt\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/penguins.des\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/solitaire.de\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/spider.deskt\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/taipei.deskt\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/taipei-edito\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/thornq.deskt\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/ace-1.4.\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/ace-1.4.tar.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- ace-1.4.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf ace-1.4.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/ace14_fi\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/ace14_fixes.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- ace14_fixes.patch",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf ace14_fixes.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/badmatch\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/badmatch.pat\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- badmatch.patch",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf badmatch.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/imagelib\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/imagelib_fix\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- imagelib_fix.patch",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf imagelib_fix.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/make-img\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/make-imglib_\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- make-imglib_fix.patch",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf make-imglib_fix.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/table_fi\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/table_fix.pa\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- table_fix.patch",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf table_fix.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/canfield\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/canfield.des\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- canfield.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf canfield.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/freecell\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/freecell.des\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- freecell.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf freecell.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/golf.des\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/golf.desktop /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- golf.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf golf.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/mastermi\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/mastermind.d\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- mastermind.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf mastermind.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/merlin.d\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/merlin.deskt\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- merlin.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf merlin.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/mineswee\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/minesweeper.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- minesweeper.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf minesweeper.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/pegged.d\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/pegged.deskt\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- pegged.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf pegged.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/penguins\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/penguins.des\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- penguins.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf penguins.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/solitair\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/solitaire.de\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- solitaire.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf solitaire.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/spider.d\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/spider.deskt\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- spider.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf spider.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/taipei.d\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/taipei.deskt\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- taipei.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf taipei.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/taipei-e\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/taipei-edito\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- taipei-editor.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf taipei-editor.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/thornq.d\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/thornq.deskt\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- thornq.desktop",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf thornq.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "159.250.13.24",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-10T23:49:59.448337096+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "6289517f542967b94ef66855140448ee49e63a375d5fff81d2d5bdc1ef1f11a6",
+  "signature": null
+}
