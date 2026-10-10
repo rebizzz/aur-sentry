@@ -1,0 +1,63 @@
+# Maintainer: vogan <voganwong@hotmail.com>
+
+pkgname=cherry-studio-bin
+_pkgname=cherry-studio
+pkgver=2.1.5
+pkgrel=1
+pkgdesc="🍒 Cherry Studio is a desktop client that supports for multiple LLM providers "
+arch=('x86_64' 'aarch64')
+url="https://github.com/cherryHQ/cherry-studio"
+license=('AGPL-3.0')
+options=('!strip' '!debug')
+depends=('fuse2')
+conflicts=("$_pkgname")
+
+# Determine architecture-specific values
+case "$CARCH" in
+  x86_64)
+    _appimage_arch='linux-x64'
+    ;;
+  aarch64)
+    _appimage_arch='linux-arm64'
+    ;;
+esac
+
+source=("${_pkgname}-${pkgver}.AppImage::${url}/releases/download/v${pkgver}/Cherry-Studio-${pkgver}-${_appimage_arch}.AppImage"
+  "${_pkgname}.desktop"
+  "${_pkgname}.png"
+  "${pkgname}.sh")
+
+noextract=("${_pkgname}-${pkgver}.AppImage")
+
+# Architecture-specific SHA256 checksums
+case "$CARCH" in
+  x86_64)
+    _sha256sum='b8f42c2669c1fe7be40b7998782aa7ad3b2367ea949f08d6e94fbfd59060c1d1'
+    ;;
+  aarch64)
+    _sha256sum='1e0d7b4b7325b7d47e2cd3924890d0021793066764708865d45e5bb9a54213c4'
+    ;;
+esac
+
+sha256sums=("$_sha256sum"
+            'fd0b11ca782c9c0de6dbf34143b7f14560b4a7020e316c58e9a5e1115551c7ee'
+            '597463003798254ab97505e2374485e55262152483f717f3169da3444de60f94'
+            '6aed5e7ca95679b2545540241dc9e6b055da1dfde696006a1712f90cfbfaec92')
+
+package() {
+  cd "$srcdir"
+
+  # Create directories
+  install -dm755 "$pkgdir/usr/bin/$pkgname"
+  install -dm755 "$pkgdir/usr/share/applications"
+  install -dm755 "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+
+  # Install AppImage
+  install -Dm755 "${_pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${_pkgname}.AppImage"
+  # Install icon
+  install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
+  # Install desktop file
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
+  # Install wrapper script
+  install -m755 "${pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
+}
