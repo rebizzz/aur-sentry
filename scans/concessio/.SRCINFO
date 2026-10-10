@@ -1,0 +1,17 @@
+pkgbase = concessio
+	pkgdesc = Understand File Permissions
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://apps.gnome.org/Concessio
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = blueprint-compiler
+	makedepends = meson
+	makedepends = vala
+	depends = gtk4
+	depends = libadwaita
+	depends = libgee
+	source = concessio-1.0.0.tar.gz::https://github.com/ronniedroid/concessio/archive/refs/tags/v1.0.0.tar.gz
+	sha256sums = 484295fea983c1541b52c494bd8540a3a6f1fbb6e9d93be0cfcfd67674768c54
+
+pkgname = concessio
