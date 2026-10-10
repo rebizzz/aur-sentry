@@ -1,0 +1,35 @@
+pkgbase = chat2db-community-bin
+	pkgdesc = AI-driven database tool and SQL client, The hottest GUI client, supporting MySQL, Oracle, PostgreSQL, DB2, SQL Server, DB2, SQLite, H2, ClickHouse, and more.
+	pkgver = 5.3.8
+	pkgrel = 1
+	url = https://chat2db.ai/
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	depends = mesa
+	depends = at-spi2-core
+	depends = libxext
+	depends = libxi
+	depends = libxrandr
+	depends = libcups
+	depends = libxkbcommon
+	depends = nss
+	depends = nspr
+	depends = alsa-lib
+	depends = libxcomposite
+	depends = cairo
+	depends = pango
+	depends = libxdamage
+	depends = freetype2
+	depends = libxcursor
+	provides = chat2db-community=5.3.8
+	conflicts = chat2db-community
+	options = !emptydirs
+	source = chat2db-community.sh
+	sha256sums = 2f34cdc2dec53f3cc3cea02d56ab796ec3887ced306c8c2d8d80b23b7d5510f0
+	source_aarch64 = chat2db-community-5.3.8-aarch64.rpm::https://github.com/CodePhiliaX/Chat2DB/releases/download/v5.3.8/Chat2DB-Community-5.3.8-aarch64.rpm
+	sha256sums_aarch64 = a0e037d8dbcbf102e4506f410c658b0d599d0cfea31a4882aecf65e168ee0d1f
+	source_x86_64 = chat2db-community-5.3.8-x86_64.rpm::https://github.com/CodePhiliaX/Chat2DB/releases/download/v5.3.8/Chat2DB-Community-5.3.8-x86_64.rpm
+	sha256sums_x86_64 = fdc7f39615ab48250f427ae33ab4b858f834cbf435da35fbb9106753fb6d15f9
+
+pkgname = chat2db-community-bin
