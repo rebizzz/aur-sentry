@@ -1,0 +1,8 @@
+{
+  "package": "arch-update-manager-git",
+  "aur_commit": "07a977060590d739fa8b824a6bb643cc55ad134f",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-10T12:53:08Z"
+}
