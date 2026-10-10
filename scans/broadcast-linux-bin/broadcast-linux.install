@@ -1,0 +1,23 @@
+post_install() {
+    cat <<'MSG'
+==> broadcast-linux: open "broadcast-linux" from your app menu (or run broadcast-linux-gui)
+    to download NVIDIA's files, accept their licence, start the service and choose effects.
+    In a terminal instead, as your normal user:
+      broadcast-linux setup
+      systemctl --user enable --now broadcast-linux
+==> For the camera, prepare v4l2loopback before starting the service.
+    If your kernel lacks the module, install v4l2loopback-dkms and matching kernel headers.
+      sudo modprobe v4l2loopback
+      sudo usermod -aG video "$USER"    # then log in again
+==> In your app, select 'NVIDIA Broadcast Mic' and 'Broadcast Camera'.
+    Defaults: mic noise removal on; camera effects off.
+    Settings live in ~/.config/broadcast-linux/config.toml (all options:
+    /usr/share/doc/broadcast-linux/config.toml); the settings window edits it for you.
+    Check the setup: broadcast-linux doctor
+    Logs: journalctl --user -u broadcast-linux -b
+MSG
+}
+
+post_upgrade() {
+    echo "==> broadcast-linux: run 'systemctl --user restart broadcast-linux' to use the new version"
+}
