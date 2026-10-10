@@ -1,0 +1,1171 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bb_launcher-bin",
+    "version": "16.12-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "1d626143c45154189749fe535d72bc69b35b9728",
+    "pkgbuild_sha256": "501d95fab34f4a525db4fa5888e870001b20c4d4102f4e54746bba42da0c5b31",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-10T18:54:03.564287935+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (4 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o 16.12-BB_Launcher-qt-Downloader.\"... https://github.com/rainmakerv3/B\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/16.12-BB_Lau\"... /home/builder/build/16.12-BB_Lau\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/16.12-BB_Lau\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/16.12-BB\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/16.12-BB_Lau\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- 16.12-BB_Launcher-qt-Downloader.\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf 16.12-BB_Launcher-qt-Downloader.\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod +x 16.12-BB_Launcher-qt-Downloader.\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "./16.12-BB_Launcher-qt-Downloade\"... --appimage-extract",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/bb_launcher-bin-16.12-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.561783307+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/bb_launcher-bin-16.12-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.561783307+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/bb_launcher-bin-16.12-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.561783307+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.561783307+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.561783307+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.561783307+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm bb_launcher-bin",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.561783307+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm bb_launcher-bin",
+        "parent": null,
+        "timestamp": "2026-10-10T18:54:03.561783307+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-10T18:54:03.553574600+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 348,
+    "elf_object_count": 141,
+    "elf_objects": [
+      {
+        "path": "opt/bb_launcher/usr/plugins/position/libqtposition_positionpoll.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/position/libqtposition_nmea.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/position/libqtposition_geoclue2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/tls/libqcertonlybackend.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/tls/libqopensslbackend.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/imageformats/libqgif.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/imageformats/libqjpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/imageformats/libqicns.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/imageformats/libqico.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/imageformats/libqwebp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/imageformats/libqsvg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/imageformats/libqwbmp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/imageformats/libqtga.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/xcbglintegrations/libqxcb-glx-integration.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/xcbglintegrations/libqxcb-egl-integration.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/platformthemes/libqxdgdesktopportal.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-decoration-client/libadwaita.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-decoration-client/libbradient.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/printsupport/libcupsprintersupport.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/networkinformation/libqnetworkmanager.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/networkinformation/libqglib.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-graphics-integration-client/libvulkan-server.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-graphics-integration-client/libdrm-egl-server.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-graphics-integration-client/libshm-emulation-server.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-graphics-integration-client/libdmabuf-server.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-graphics-integration-client/libqt-plugin-wayland-egl.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/platforms/libqwayland.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/platforms/libqxcb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-shell-integration/libivi-shell.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-shell-integration/libxdg-shell.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-shell-integration/libwl-shell-plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-shell-integration/libqt-shell.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/wayland-shell-integration/libfullscreen-shell-v1.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/platforminputcontexts/libcomposeplatforminputcontextplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/plugins/platforminputcontexts/libibusplatforminputcontextplugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libp11-kit.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libdbus-1.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libgnutls.so.30",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6Qml.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-util.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-render.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libffi.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libplds4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libpng16.so.16",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6Svg.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libatomic.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6Widgets.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libicuuc.so.73",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libbz2.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-cursor.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6OpenGL.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libgio-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libXext.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libavahi-common.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6SerialPort.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libgcrypt.so.20",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/liblz4.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libbsd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libzstd.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxkbcommon-x11.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libglib-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6QmlMeta.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libXfixes.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-xkb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6WebChannel.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libicudata.so.73",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libplc4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libavahi-client.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6XcbQpa.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libselinux.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libudev.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-shm.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6Positioning.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libmount.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxkbcommon.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-sync.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-icccm.so.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6WaylandClient.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libgssapi_krb5.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libnettle.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libgobject-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxshmfence.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libsystemd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libgmodule-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libkrb5support.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libsmime3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libidn2.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libk5crypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libicui18n.so.73",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/liblzma.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6Core.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libwayland-egl.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6PrintSupport.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-xfixes.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6Concurrent.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libblkid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libXdmcp.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libtasn1.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-glx.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libbrotlidec.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libhogweed.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6DBus.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-shape.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libXrandr.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-image.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libpcre2-8.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6WebSockets.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6Network.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libbrotlicommon.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libXtst.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6WebEngineCore.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6Gui.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libmd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-render-util.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libunistring.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libcap.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libkrb5.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libcups.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libkeyutils.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libnspr4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6WebEngineWidgets.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxkbfile.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6WlShellIntegration.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libgthread-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libXau.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6Quick.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6QmlWorkerScript.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-keysyms.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libxcb-randr.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6QuickWidgets.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libwayland-cursor.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libQt6QmlModels.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libXdamage.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libXcomposite.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libXrender.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/lib/libXi.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/libexec/QtWebEngineProcess",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/optional/libstdc++.so.6/libstdc++.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/optional/exec.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/optional/libgcc_s.so.1/libgcc_s.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb_launcher/usr/bin/bb_launcher",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "`unzip` is unmaintained (RUSTSEC-2026-0296)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0296"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`unzip`: archive extraction is vulnerable to path traversal (zip-slip) (RUSTSEC-2026-0297)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0297"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "7fe5dfbaadb05cafc3323cf2a553b80faeab2fba30259c5061be8ef568e4b579",
+  "signature": null
+}
