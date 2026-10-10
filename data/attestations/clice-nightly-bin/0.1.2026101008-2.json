@@ -1,0 +1,299 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "clice-nightly-bin",
+    "version": "0.1.2026101008-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "db4c96ea41956800ce0e30100f8aa8af876e4fb0",
+    "pkgbuild_sha256": "7f44d633022ee55f77f3a014354087f5c924c58457b7be107aae62d59476017f",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-10T12:59:24.444992971+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o symbolize-0.1.2026101008.py.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/symbolize-0.\"... /home/builder/build/symbolize-0.\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o clice-0.1.2026101008.x86_64-unkn\"... https://github.com/clice-io/clic\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/clice-0.1.20\"... /home/builder/build/clice-0.1.20\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/symbolize-0.\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/clice-0.1.20\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/symboliz\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/symbolize-0.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- symbolize-0.1.2026101008.py",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf symbolize-0.1.2026101008.py -q *",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/clice-0.\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/clice-0.1.20\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- clice-0.1.2026101008.x86_64-unkn\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf clice-0.1.2026101008.x86_64-unkn\"...",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-10T12:59:24.425133981+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf out-of-bounds read (GHSA-5pcj-3m26-w633)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pcj-3m26-w633"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Patchelf v0.9 was discovered to contain an out-of-bounds read via the function modifyRPath at src/patchelf.cc. (PYSEC-2022-43144)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2022-43144"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "a21770e09effb663d9c5ff7c5443062d70208881406d65e5e53fe41b0e8fb7d4",
+  "signature": null
+}
