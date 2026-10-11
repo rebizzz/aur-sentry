@@ -1,0 +1,181 @@
+# The tray unit was renamed to app-ArctisManager.service: xdg-desktop-portal
+# reads a non-sandboxed process's app id off the unit its cgroup names, and
+# under arctis-gui.service that id came out empty — the GlobalShortcuts portal
+# then refuses the session and the clip shortcut never binds. An install that
+# left the old unit enabled would keep starting the tray the broken way, and a
+# user-level copy of it shadows the packaged unit even when disabled, so both
+# the enable and the file have to go.
+_asm_migrate_gui_unit() {
+    REAL_USER="${SUDO_USER:-}"
+    [ -n "$REAL_USER" ] || return 0
+    REAL_UID=$(id -u "$REAL_USER") || return 0
+    XDG_RUNTIME_DIR="/run/user/$REAL_UID"
+    [ -S "$XDG_RUNTIME_DIR/bus" ] || return 0
+
+    su -l "$REAL_USER" -c "
+        XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR
+        DBUS_SESSION_BUS_ADDRESS=unix:path=$XDG_RUNTIME_DIR/bus
+        export XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS
+        systemctl --user disable --now arctis-gui.service >/dev/null 2>&1 || true
+        rm -f \"\$HOME/.config/systemd/user/arctis-gui.service\"
+        systemctl --user daemon-reload >/dev/null 2>&1 || true
+        systemctl --user enable --now app-ArctisManager.service >/dev/null 2>&1 || true
+    " >/dev/null 2>&1 || true
+}
+
+post_install() {
+    # Reload udev rules
+    udevadm control --reload-rules 2>/dev/null || true
+    # Scoped to SteelSeries (idVendor=1038), the way the Distrobox installers
+    # have always done it. Re-adding every USB device on the machine disturbs
+    # hardware that has nothing to do with ASM, and — because this runs while
+    # asm-daemon still holds the headset's interface with the kernel driver
+    # detached — it makes the running daemon lose the device (errno 19) and
+    # lets hid-generic claim interface 4 back. The headset then reads as absent
+    # until it is physically replugged, after every single upgrade.
+    udevadm trigger --action=add --subsystem-match=usb --attr-match=idVendor=1038 2>/dev/null || true
+
+    REAL_USER="${SUDO_USER:-}"
+
+    # Ensure an AUR helper is available (yay or paru).
+    # dbus-next is bundled so ASM works without one, but having an AUR helper
+    # is useful for future updates and other AUR packages.
+    if [ -n "$REAL_USER" ]; then
+        if ! su -l "$REAL_USER" -c "command -v yay >/dev/null 2>&1 || command -v paru >/dev/null 2>&1"; then
+            echo "==> No AUR helper found — installing yay-bin for ${REAL_USER}..."
+            if su -l "$REAL_USER" -c "command -v git >/dev/null 2>&1"; then
+                su -l "$REAL_USER" -c "
+                    git clone --depth=1 https://aur.archlinux.org/yay-bin.git /tmp/_asm_yay_install &&
+                    cd /tmp/_asm_yay_install &&
+                    makepkg -si --noconfirm
+                " && rm -rf /tmp/_asm_yay_install \
+                  || echo "  [!] yay install failed — run manually: git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si"
+            else
+                echo "  git not found. Install yay manually:"
+                echo "    sudo pacman -S git base-devel"
+                echo "    git clone https://aur.archlinux.org/yay-bin.git && cd yay-bin && makepkg -si"
+            fi
+        fi
+    fi
+
+    # Run asm-setup immediately if the installing user has an active D-Bus session.
+    # Falls back to /etc/xdg/autostart/asm-first-run.desktop on next login otherwise.
+    if [ -n "$REAL_USER" ]; then
+        REAL_UID=$(id -u "$REAL_USER")
+        XDG_RUNTIME_DIR="/run/user/$REAL_UID"
+        DBUS_SOCKET="$XDG_RUNTIME_DIR/bus"
+        if [ -S "$DBUS_SOCKET" ]; then
+            echo "==> Running asm-setup for ${REAL_USER}..."
+            su -l "$REAL_USER" -c \
+                "XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS=unix:path=$DBUS_SOCKET asm-setup" \
+                || echo "  [!] asm-setup failed — run manually: asm-setup"
+        else
+            echo "==> No active session found — asm-setup will run on next login."
+        fi
+    fi
+
+    _asm_migrate_gui_unit
+
+    echo "==> Arctis Sound Manager installed!"
+    echo ""
+}
+
+post_upgrade() {
+    udevadm control --reload-rules 2>/dev/null || true
+    # Scoped to SteelSeries (idVendor=1038), the way the Distrobox installers
+    # have always done it. Re-adding every USB device on the machine disturbs
+    # hardware that has nothing to do with ASM, and — because this runs while
+    # asm-daemon still holds the headset's interface with the kernel driver
+    # detached — it makes the running daemon lose the device (errno 19) and
+    # lets hid-generic claim interface 4 back. The headset then reads as absent
+    # until it is physically replugged, after every single upgrade.
+    udevadm trigger --action=add --subsystem-match=usb --attr-match=idVendor=1038 2>/dev/null || true
+
+    # Replacing files on disk does not touch running processes: asm-daemon keeps
+    # executing the version it loaded at startup until something restarts it.
+    [ -x /usr/lib/arctis-sound-manager/restart-user-services.sh ] && \
+        /usr/lib/arctis-sound-manager/restart-user-services.sh || true
+
+    _asm_migrate_gui_unit
+
+    echo "==> Arctis Sound Manager upgraded to $(pacman -Q arctis-sound-manager | awk '{print $2}')."
+    echo ""
+}
+
+post_remove() {
+    udevadm control --reload-rules 2>/dev/null || true
+
+    # Clean up the user-level PipeWire virtual sinks and filter-chain configs
+    # that asm-setup deployed to ~/.config/pipewire/. Without this step the
+    # "ghost" Arctis virtual sinks (Game/Chat/Media) keep being loaded by
+    # PipeWire on every login because the .conf files in pipewire.conf.d/
+    # outlive the package — this is what issue #24 reported.
+    #
+    # Audio profiles in ~/.config/arctis_manager/profiles/ are PRESERVED
+    # (matches the `scripts/uninstall.sh --purge` contract) so a future
+    # reinstall picks them back up. To wipe them too, run the standalone
+    # uninstaller:
+    #   curl -fsSL https://raw.githubusercontent.com/loteran/Arctis-Sound-Manager/main/scripts/uninstall.sh | bash -s -- --all --purge
+
+    REAL_USER="${SUDO_USER:-}"
+    if [ -z "$REAL_USER" ]; then
+        echo "==> No SUDO_USER detected — skipping user-level cleanup."
+        echo "    Run as the regular user to finish removing ghost virtual sinks:"
+        echo "    curl -fsSL https://raw.githubusercontent.com/loteran/Arctis-Sound-Manager/main/scripts/uninstall.sh | bash -s -- --purge --yes"
+        return 0
+    fi
+
+    REAL_UID=$(id -u "$REAL_USER")
+    XDG_RUNTIME_DIR="/run/user/$REAL_UID"
+    DBUS_SOCKET="$XDG_RUNTIME_DIR/bus"
+
+    echo "==> Cleaning up user-level configs for ${REAL_USER} (audio profiles preserved)..."
+
+    # Run as the real user; redirect to /dev/null so makepkg's noisy output
+    # doesn't drown the install summary.
+    su -l "$REAL_USER" -c "
+        XDG_RUNTIME_DIR=$XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS=unix:path=$DBUS_SOCKET
+        export XDG_RUNTIME_DIR DBUS_SESSION_BUS_ADDRESS
+
+        # Stop services (best-effort — units may already be gone with the package)
+        for unit in arctis-manager.service arctis-video-router.service arctis-stream-guard.service app-ArctisManager.service arctis-gui.service filter-chain.service; do
+            systemctl --user disable --now \"\$unit\" >/dev/null 2>&1 || true
+        done
+
+        # Remove the PipeWire configs that create ghost virtual sinks
+        rm -f \"\$HOME/.config/pipewire/pipewire.conf.d/10-arctis-virtual-sinks.conf\"
+        rm -f \"\$HOME/.config/pipewire/filter-chain.conf.d/sink-virtual-surround-7.1-hesuvi.conf\"
+        rm -f \"\$HOME/.config/pipewire/filter-chain.conf.d\"/sonar-*.conf
+
+        # Stale user-level systemd unit copies left over from older installs
+        rm -f \"\$HOME/.config/systemd/user/arctis-manager.service\"
+        rm -f \"\$HOME/.config/systemd/user/arctis-video-router.service\"
+                rm -f \"\$HOME/.config/systemd/user/arctis-stream-guard.service\"
+        rm -f \"\$HOME/.config/systemd/user/app-ArctisManager.service\"
+        rm -f \"\$HOME/.config/systemd/user/arctis-gui.service\"
+
+        # The user-level desktop entry asm-setup writes (it shadows the
+        # packaged one by design), otherwise a ghost launcher entry pointing at
+        # a removed asm-gui survives the uninstall.
+        rm -f \"\$HOME/.local/share/applications/ArctisManager.desktop\"
+        rm -f \"\$HOME/.local/share/applications/ArctisManagerSystray.desktop\"
+        update-desktop-database \"\$HOME/.local/share/applications\" >/dev/null 2>&1 || true
+
+        # Disable dinit services if on a dinit system
+        if command -v dinitctl >/dev/null 2>&1; then
+            for svc in arctis-manager arctis-video-router arctis-stream-guard arctis-gui pipewire-filter-chain; do
+                dinitctl disable "$svc" 2>/dev/null || true
+            done
+        fi
+
+        # Reload PipeWire so the ghost sinks disappear immediately,
+        # not on next login
+        if [ -S \"\$DBUS_SOCKET\" ]; then
+            systemctl --user daemon-reload >/dev/null 2>&1 || true
+            systemctl --user restart pipewire pipewire-pulse >/dev/null 2>&1 || true
+        fi
+    " 2>/dev/null || echo "  [!] cleanup as ${REAL_USER} returned non-zero (probably already gone) — safe to ignore."
+
+    echo "  [ok] ghost Arctis virtual sinks removed."
+    echo "  Profiles kept in ~/.config/arctis_manager/profiles/ — delete manually if you want a clean slate."
+}
