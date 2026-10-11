@@ -1,0 +1,24 @@
+pkgbase = blockdiag
+	pkgdesc = Generate block-diagram images from text files
+	pkgver = 3.4.2
+	pkgrel = 1
+	url = https://github.com/yuzutech/blockdiag
+	arch = any
+	license = Apache-2.0
+	checkdepends = python-docutils
+	checkdepends = python-pytest
+	checkdepends = python-reportlab
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-funcparserlib
+	depends = python-pillow
+	depends = python-webcolors
+	optdepends = python-reportlab: for PDF export
+	optdepends = python-docutils: for RST parser
+	source = https://github.com/yuzutech/blockdiag/archive/refs/tags/v3.4.2.tar.gz
+	sha256sums = 55e91305ca0238a7d3505dfaa23eab6f434c3dca0bdfa02da763d8fc6306d990
+
+pkgname = blockdiag
