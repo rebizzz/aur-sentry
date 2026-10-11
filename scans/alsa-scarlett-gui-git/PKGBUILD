@@ -1,0 +1,54 @@
+origname='alsa-scarlett-gui'
+pkgname='alsa-scarlett-gui-git'
+pkgver=1.0beta9
+pkgrel=1
+pkgdesc="GUI for the ALSA controls presented by the Scarlett2 driver, Development version"
+arch=('i686' 'x86_64')
+url="https://github.com/geoffreybennett/alsa-scarlett-gui"
+license=('GPL-3.0-or-later' 'LGPL-3.0-or-later')
+depends=(
+    'glibc'
+    'glib2'
+    'alsa-lib'
+    'alsa-utils'
+    'gtk4'
+    'hicolor-icon-theme'
+    'cairo'
+    'pango'
+    'openssl'
+)
+makedepends=('gcc' 'make' 'git' 'pkgconf' 'sed')
+provides=("$origname")
+conflicts=("$origname")
+# If you want a specific tag add `#tag=$pkgver` to the source.
+source=("git+${url}.git#tag=$pkgver")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd "$origname"
+    git describe --abbrev=4 --always --tags | sed 's/-/./g'
+}
+
+build() {
+    cd "$srcdir/$origname"
+
+    make \
+        -C src \
+        PREFIX=/usr \
+        VERSION="$pkgver"
+}
+
+package() {
+    cd "$srcdir/$origname"
+
+    make \
+        -C src \
+        PREFIX="$pkgdir/usr" \
+        VERSION="$pkgver" \
+        install
+
+    # documentation
+    install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md ./docs/*.md
+    install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname/img" img/*
+    install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname/demo" demo/*
+}
