@@ -1,0 +1,18 @@
+pkgbase = agentsight
+	pkgdesc = eBPF-based observability for AI agent sessions, prompts, process trees, files, network activity, and token usage
+	pkgver = 1.0.31
+	pkgrel = 1
+	url = https://github.com/eunomia-bpf/agentsight
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = zstd
+	depends = sqlite3
+	options = !lto
+	source = agentsight-1.0.31.tar.gz::https://github.com/eunomia-bpf/agentsight/archive/refs/tags/v1.0.31.tar.gz
+	source = system-libsqlite3.patch
+	sha256sums = 249842b182bb9f0df9335e66defa77bc20ab17deb1bb6bb5d52c2d09dfd7e142
+	sha256sums = 9634b66ec7cb3384e2812000b4a3dcdf62bf01d7e28b93c8e85d85ffac563a08
+
+pkgname = agentsight
