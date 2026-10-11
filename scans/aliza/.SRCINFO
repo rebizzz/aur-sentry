@@ -1,0 +1,25 @@
+pkgbase = aliza
+	pkgdesc = Medical imaging viewer for 2D, 3D and 4D images in DICOM, MetaIO, Nifti, Nrrd and other formats (30-day free trial, then paid license required)
+	pkgver = 2.8.3.1
+	pkgrel = 1
+	url = https://www.aliza-medical-imaging.de
+	install = aliza.install
+	arch = x86_64
+	license = LicenseRef-aliza
+	depends = libgcc
+	depends = libstdc++
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libx11
+	depends = libxt
+	depends = qt5-base
+	depends = qt5-svg
+	depends = zlib
+	options = !emptydirs
+	source = https://www.aliza-medical-imaging.de/aliza_2.8.3.1_amd64.deb
+	source = aliza.sh
+	sha512sums = 09402f8ae810144b8264852fa02d9b6ff3a7050a84cf2f8b8c5bbf976c974c1d8b37143390e4b2e7676bcd604706d4e366b3478a273b8b3592c27b97dccc7932
+	sha512sums = bd59a261a68422ffaabd30d40aa12da46fb1faf4a48f63e5524b8d61276c036e64cbefc1d3e184d10aae87ff2cbbd7a4d51ebce9c3bcb3244d6712704ee3d1b0
+
+pkgname = aliza
