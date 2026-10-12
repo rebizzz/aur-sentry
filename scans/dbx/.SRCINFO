@@ -1,0 +1,27 @@
+pkgbase = dbx
+	pkgdesc = Open-source database management tool (Tauri-based)
+	pkgver = 0.6.41
+	pkgrel = 1
+	url = https://github.com/t8y2/dbx
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = pnpm
+	makedepends = pkgconf
+	makedepends = git
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = sqlite
+	depends = unixodbc
+	depends = openssl
+	depends = hicolor-icon-theme
+	provides = dbx
+	conflicts = dbx-bin
+	options = !lto
+	options = !debug
+	source = dbx-0.6.41.tar.gz::https://github.com/t8y2/dbx/archive/refs/tags/v0.6.41.tar.gz
+	sha256sums = 196d1f4a6c7589c09f232315a08f1c905de104726854e7975ddb17ad97b04b1c
+
+pkgname = dbx
