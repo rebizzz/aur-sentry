@@ -1,0 +1,384 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "creality-print-bin",
+    "version": "7.3.0.6157-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "7396da503c64096753e6c3e2f470ead8b1e6b770",
+    "pkgbuild_sha256": "c600030a75eed29cbd09c30e42a9ce1ac76bf350c9d8c7d213aa3d4939b11c7a",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-12T06:23:24.316242402+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (4 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o creality-print-7.3.0-README.md.p\"... https://github.com/CrealityOffic\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/creality-pri\"... /home/builder/build/creality-pri\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o creality-print-7.3.0-LICENSE.txt\"... https://github.com/CrealityOffic\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o CrealityPrint-V7.3.0.6157-x86_64\"... https://github.com/CrealityOffic\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/CrealityPrin\"... /home/builder/build/CrealityPrin\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/creality-pri\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/CrealityPrin\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/creality\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/creality-pri\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- creality-print.sh",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf creality-print.sh -q *",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- creality-print-7.3.0-README.md",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf creality-print-7.3.0-README.md -q *",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- creality-print-7.3.0-LICENSE.txt",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf creality-print-7.3.0-LICENSE.txt -q *",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/Creality\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/CrealityPrin\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- CrealityPrint-V7.3.0.6157-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf CrealityPrint-V7.3.0.6157-x86_64\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod +x CrealityPrint-V7.3.0.6157-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "./CrealityPrint-V7.3.0.6157-x86_\"... --appimage-extract",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf CrealityPrint-V7.3.0.6157-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f squashfs-root CrealityPrint-V7.3.0.6157-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i s/AppRun/CrealityPrint/g CrealityPrint.desktop",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-12T06:23:24.298345659+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "bzip2 allows attackers to cause a denial of service via a large file that triggers an integer overflow (GHSA-96jv-r488-c2rj)",
+      "url": "https://osv.dev/vulnerability/GHSA-96jv-r488-c2rj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "bzip2 Denial of Service (DoS) (RUSTSEC-2023-0004)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2023-0004"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "da37dc41650e862f574520fb1f0c027247085f32f9e7f075492f9206e42dbb69",
+  "signature": null
+}
