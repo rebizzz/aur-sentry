@@ -1,0 +1,8 @@
+{
+  "package": "firefox-nightly-i18n-ach",
+  "aur_commit": "d58d150cc89c3df7c17c0457a3994403edc87f7d",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-12T23:16:50Z"
+}
