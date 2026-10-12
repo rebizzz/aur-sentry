@@ -1,0 +1,3475 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "feedback-bin",
+    "version": "0.3.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "8579c1eff7fa6bf7e2fddf7fb7ee2d2007ac6595",
+    "pkgbuild_sha256": "6cf18c01d4b769b6f5dc6e37eca9bc21b7b0674227f28bb97256596e79a6d8db",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-12T23:28:50.319394955+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during install: /opt/fee[dB]ack/resources/slopsmith/plugins/notedetect/.env.example"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o feedback-0.3.0-amd64.deb.part https://github.com/got-feedBack/\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/feedback-0.3\"... /home/builder/build/feedback-0.3\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/feedback-0.3\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/feedback\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/feedback-0.3\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- feedback-0.3.0-amd64.deb",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf feedback-0.3.0-amd64.deb -q *",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf feedback-0.3.0-amd64.deb",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/feedback-bin-0.3.0-1-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/feedback-bin-0.3.0-1-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/feedback-bin-0.3.0-1-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F296BDE50368C6CE",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 9B7A287D9A2EC608",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 498EF247F340C1E0",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- C06086337C50773E",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 94657AB20F2A092B",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 93B11DAA4C197E3D",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B8AC08600F108CDF",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 6D42BDD116E0068F",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 786C63F330D7CB92",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 632C3CC0D1C9CAF6",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A91764759326B440",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0F65C7D881506130",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 7A4E76095D8A52E4",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E85B8683EB48BC95",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FDC3040B92ACA748",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A85E811EB4CA2E08",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FC1B547C8D8172C8",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 244740D17C7FD0EC",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 06096A6AD1CEDDAC",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 39E4B877E62EB915",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 54C1FD273361EA514A237793F296BDE5\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 62CC73F884E52957B2FDD8839B7A287D\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 5E6D49448958B384301F1F22498EF247\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E499C79F53C96A54E572FEE1C0608633\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- ADC8A1FCC15E01D45310419E94657AB2\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F00B96D15228013FFC9C9D0393B11DAA\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 83BC8889351B5DEBBB68416EB8AC0860\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0429897DE5F3BDAC537A30696D42BDD1\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B5971F2C5C10A9A08C60030F786C63F3\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 14E46FE5FD69F2E287E244DB632C3CC0\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 2E36D8620221482FC45CB7F2A9176475\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 95220BE99CE6FF778AE0DC670F65C7D8\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 1519D5ABA65BF6FC2B73C7567A4E7609\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 80247D99EABD3A4D1E3A1836E85B8683\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 262A58EC6C51F7EA395B2E2DFDC3040B\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B0D65295476606B71F0C6F82A85E811E\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E240B57E2C4630BA768E2F26FC1B547C\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 2191B89431BAC0A8B96DE93D244740D1\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 535F8C0339450F054A4D282706096A6A\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 8FC15A064950A99DD1BD14DD39E4B877\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_YGWyqF/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "vercmp 0 0.32.0-2",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "dconf update",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_EDCKY4/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "vercmp 0 2:2.13.93-1",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/40-fo\"... /etc/fonts/conf.d",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "find usr/share/fontconfig/conf.defaul\"... -mindepth 1",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/60-generic.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-yes-antiali\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/60-latin.conf",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/50-user.conf",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-scale-bitma\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/51-local.conf",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/90-synthetic.c\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/45-generic.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-hinting-sli\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/80-delicious.c\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/49-sansserif.c\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/45-latin.conf",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/48-guessfamily\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/65-fonts-persi\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/30-metric-alia\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/11-lcdfilter-d\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/20-unhint-smal\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/40-nonlatin.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/69-unifont.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/48-spacing.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/65-nonlatin.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "vercmp 0 0",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/fc-cache -rs",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... sysusers",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/systemd-sysusers",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-user",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/env PKGSYSTEM_ENABLE_FSYNC=0 /usr/bin/update-mime-database /usr/share/mime",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/update-mime-database /usr/share/mime",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... reload dbus",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/fc-cache -s",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gio-querymodules /usr/lib/gio/modules",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gtk-query-immodules-3.0 --update-cache",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/gtk-u\"...",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gtk-update-icon-cache -q usr/share/icons/Adwaita/",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gtk-update-icon-cache -q usr/share/icons/AdwaitaLegacy/",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gtk-update-icon-cache -q usr/share/icons/default/",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gtk-update-icon-cache -q usr/share/icons/hicolor/",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/update-desktop-database --quiet",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm feedback-bin",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm feedback-bin",
+        "parent": null,
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-12T23:28:50.164761678+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "/opt/fee[dB]ack/resources/slopsmith/plugins/notedetect/.env.example",
+        "operation": "canary_access",
+        "timestamp": "2026-10-12T23:28:50.206748975+00:00",
+        "phase": "install"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 11685,
+    "elf_object_count": 427,
+    "elf_objects": [
+      {
+        "path": "opt/fee[dB]ack/feedback",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/chrome_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/libffmpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/libpython3.12.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/libpython3.12.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/lib-dynload/_crypt.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/PIL/_imagingft.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/PIL/_imagingtk.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/PIL/_imagingcms.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/PIL/_imagingmath.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/PIL/_imagingmorph.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/PIL/_imaging.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/PIL/_webp.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/PIL/_avif.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pydantic_core/_pydantic_core.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/uvloop/loop.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/yaml/_yaml.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/watchfiles/_rust_notify.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/websockets/speedups.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/_cffi_backend.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/psutil/_psutil_linux.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/curl_cffi/_wrapper.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/charset_normalizer/cd.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/charset_normalizer/md.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/httptools/parser/parser.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/httptools/parser/url_parser.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/81d243bd2c585b0f4821__mypyc.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libopenjp2-b07f72ad.so.2.5.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libtiff-fc87e79d.so.6.2.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libharfbuzz-172d1f63.so.0.61421.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/liblcms2-dade1fbf.so.2.0.19",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libzstd-44be1190.so.1.5.7",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libwebpdemux-9fe2abcc.so.2.0.17",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libjpeg-31e2ca52.so.62.4.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libwebp-51b0b3f7.so.7.2.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libfreetype-9fc94c80.so.6.20.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libwebpmux-8fb1c9f6.so.3.1.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libavif-8a7f9d56.so.16.4.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libbrotlidec-7e5462ba.so.1.2.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/liblzma-2be87c3e.so.5.8.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libpng16-abb096d5.so.16.58.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libxcb-ad31f5a3.so.1.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libsharpyuv-0066295b.so.0.1.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libbrotlicommon-53534446.so.1.2.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/lib/python3.12/site-packages/pillow.libs/libXau-154567c4.so.6.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/python/runtime/bin/python3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StereoAnalogVibe.vst3/Contents/x86_64-linux/StereoAnalogVibe.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/G-550.vst3/Contents/x86_64-linux/StudioGraphicEQ.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StudioPitch.vst3/Contents/x86_64-linux/StudioPitch.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StudioWahFilter.vst3/Contents/x86_64-linux/StudioWahFilter.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StudioPlate.vst3/Contents/x86_64-linux/StudioPlate.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/RotaVibe.vst3/Contents/x86_64-linux/RotaVibe.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StereoTubeTrem.vst3/Contents/x86_64-linux/StereoTubeTrem.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/SynthFilter.vst3/Contents/x86_64-linux/SynthFilter.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/TapeEcho.vst3/Contents/x86_64-linux/TapeEcho.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/HZX.vst3/Contents/x86_64-linux/StudioComp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StereoPhaser.vst3/Contents/x86_64-linux/StereoPhaser.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StudioVerb.vst3/Contents/x86_64-linux/StudioVerb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StudioChamber.vst3/Contents/x86_64-linux/StudioChamber.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/LNG.vst3/Contents/x86_64-linux/StudioEQ.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StudioDelay.vst3/Contents/x86_64-linux/StudioDelay.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/RB Final Leveler.vst3/Contents/x86_64-linux/RB Final Leveler.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StudioChorus.vst3/Contents/x86_64-linux/StudioChorus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/racks/StudioFlanger.vst3/Contents/x86_64-linux/StudioFlanger.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/DustupCDN.vst3/Contents/x86_64-linux/DustupCDN.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/SamplegVH140C.vst3/Contents/x86_64-linux/SamplegVH140C.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/LovoltDR103.vst3/Contents/x86_64-linux/LovoltDR103.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/HipzonGA8.vst3/Contents/x86_64-linux/HipzonGA8.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/AOR50.vst3/Contents/x86_64-linux/AOR50.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/UnparallelDC30.vst3/Contents/x86_64-linux/UnparallelDC30.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/Superdrive45.vst3/Contents/x86_64-linux/Superdrive45.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/SamplegV4B.vst3/Contents/x86_64-linux/SamplegV4B.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/SbrRedhead.vst3/Contents/x86_64-linux/SbrRedhead.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/SharkeHB3500.vst3/Contents/x86_64-linux/SharkeHB3500.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/FreddyKrueger800BR.vst3/Contents/x86_64-linux/FreddyKrueger800BR.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/UnparallelChieftain.vst3/Contents/x86_64-linux/UnparallelChieftain.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/EpicallRuby.vst3/Contents/x86_64-linux/EpicallRuby.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/CitrusJimmyBean.vst3/Contents/x86_64-linux/CitrusJimmyBean.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/EpicallCentura.vst3/Contents/x86_64-linux/EpicallCentura.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/SharkeHB5000.vst3/Contents/x86_64-linux/SharkeHB5000.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/Lovolt100.vst3/Contents/x86_64-linux/Lovolt100.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MarkIII.vst3/Contents/x86_64-linux/MarkIII.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/BENDER SUPERNOVA 22.vst3/Contents/x86_64-linux/TW22.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MarstenJCM800.vst3/Contents/x86_64-linux/MarstenJCM800.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/RonaldJC120.vst3/Contents/x86_64-linux/RonaldJC120.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MarkII.vst3/Contents/x86_64-linux/MarkII.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/CitrusOR100.vst3/Contents/x86_64-linux/CitrusOR100.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/CitrusRumbleverb50.vst3/Contents/x86_64-linux/CitrusRumbleverb50.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/AidenGT880.vst3/Contents/x86_64-linux/AidenGT880.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/LovoltDR504.vst3/Contents/x86_64-linux/LovoltDR504.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/SamplegSBTCL.vst3/Contents/x86_64-linux/SamplegSBTCL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MarstenVS100.vst3/Contents/x86_64-linux/MarstenVS100.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MarstenDSL15.vst3/Contents/x86_64-linux/MarstenDSL15.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/AidenGT300.vst3/Contents/x86_64-linux/AidenGT300.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MarstenDBS7400.vst3/Contents/x86_64-linux/MarstenDBS7400.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/DSL100.vst3/Contents/x86_64-linux/DSL100.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/Plexi.vst3/Contents/x86_64-linux/Plexi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MrYEMS.vst3/Contents/x86_64-linux/MrYEMS.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MarstenJVM410.vst3/Contents/x86_64-linux/MarstenJVM410.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/CitrusOR50.vst3/Contents/x86_64-linux/CitrusOR50.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/CitrusBigTremor.vst3/Contents/x86_64-linux/CitrusBigTremor.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/SillaBoogieBass400.vst3/Contents/x86_64-linux/SillaBoogieBass400.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/BOX AC30.vst3/Contents/x86_64-linux/EN30.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MarstenJTM45.vst3/Contents/x86_64-linux/MarstenJTM45.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/HipzonGA79RVT.vst3/Contents/x86_64-linux/HipzonGA79RVT.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/BenderFumble800.vst3/Contents/x86_64-linux/BenderFumble800.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/Meve1073.vst3/Contents/x86_64-linux/Meve1073.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/CitrusAD50.vst3/Contents/x86_64-linux/CitrusAD50.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/AidenGT550.vst3/Contents/x86_64-linux/AidenGT550.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/SinAmpBassDriver.vst3/Contents/x86_64-linux/SinAmpBassDriver.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/TracerV8.vst3/Contents/x86_64-linux/TracerV8.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/BENDER DELUXE.vst3/Contents/x86_64-linux/TW26.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/PeeBeeTMinus.vst3/Contents/x86_64-linux/PeeBeeTMinus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/DualRect.vst3/Contents/x86_64-linux/DualRect.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/HipzonGA88.vst3/Contents/x86_64-linux/HipzonGA88.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/Multiversal610.vst3/Contents/x86_64-linux/Multiversal610.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/TW40.vst3/Contents/x86_64-linux/TW40.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MarstenBluesbreaker.vst3/Contents/x86_64-linux/MarstenBluesbreaker.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/PolystoneMiniBrute.vst3/Contents/x86_64-linux/PolystoneMiniBrute.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/MrYMaz38.vst3/Contents/x86_64-linux/MrYMaz38.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/ElectricB600F.vst3/Contents/x86_64-linux/ElectricB600F.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/EngelFireball.vst3/Contents/x86_64-linux/EngelFireball.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/JC90.vst3/Contents/x86_64-linux/JC90.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/amps/CitrusAD200.vst3/Contents/x86_64-linux/CitrusAD200.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/BLACKBRASS.vst3/Contents/x86_64-linux/BassOverdrive.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Germanium Drive.vst3/Contents/x86_64-linux/GermaniumDrive.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/BZ-1.vst3/Contents/x86_64-linux/BZ1.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Bass Wah.vst3/Contents/x86_64-linux/BassWah.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Big Buzz.vst3/Contents/x86_64-linux/BigBuzz.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/LM-2.vst3/Contents/x86_64-linux/Limiter.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/FL-2.vst3/Contents/x86_64-linux/ClassicFlanger.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Mega-Trem.vst3/Contents/x86_64-linux/AmpTrem.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/DL-3.vst3/Contents/x86_64-linux/BassFilterDelay.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Deja Chorus.vst3/Contents/x86_64-linux/Chorus20.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/DM-2.vst3/Contents/x86_64-linux/NpnDelay.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/OC-5.vst3/Contents/x86_64-linux/Octavius.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/SO-2.vst3/Contents/x86_64-linux/BassSubOctave.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/CB-3.vst3/Contents/x86_64-linux/BassChorus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Multi Comp.vst3/Contents/x86_64-linux/BassMultiComp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Super-Buzz.vst3/Contents/x86_64-linux/SuperBuzz.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/RV-2.vst3/Contents/x86_64-linux/DigitalVerb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Deluxe Servant.vst3/Contents/x86_64-linux/VintageFlanger.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/VB-2.vst3/Contents/x86_64-linux/MultiVibe.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/N117R Flanger.vst3/Contents/x86_64-linux/EightiesFlanger.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/WT-DX.vst3/Contents/x86_64-linux/EdenWTDI.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/BU-TRON III.vst3/Contents/x86_64-linux/AutoFilter.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Cry Man.vst3/Contents/x86_64-linux/USWah.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Acoustic Emulator.vst3/Contents/x86_64-linux/AcousticSimulator.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Valve Echo.vst3/Contents/x86_64-linux/ValveEcho.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/phase 99.vst3/Contents/x86_64-linux/BassPhase.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/RT-2.vst3/Contents/x86_64-linux/BakedRotatoe.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Buzz-Tone.vst3/Contents/x86_64-linux/BuzzTone.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Multi Pitch.vst3/Contents/x86_64-linux/MultiPitch.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Oceanduct.vst3/Contents/x86_64-linux/AutoVibe.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/FM108.vst3/Contents/x86_64-linux/ModernFlanger.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/OS-2.vst3/Contents/x86_64-linux/LineDrive.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/MIME.vst3/Contents/x86_64-linux/Enbiggenator.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/SD-1.vst3/Contents/x86_64-linux/SuperDrive.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/MT-2.vst3/Contents/x86_64-linux/ShredZone.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/DS-1.vst3/Contents/x86_64-linux/StandardDistortion.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Oil Can Echo.vst3/Contents/x86_64-linux/OilCanEcho.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/SE-3.vst3/Contents/x86_64-linux/BassFilterEcho.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/BitCruncher.vst3/Contents/x86_64-linux/BitCruncher.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/CH-2.vst3/Contents/x86_64-linux/Chorus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/FBM-1.vst3/Contents/x86_64-linux/AmpEQ.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/PH-1.vst3/Contents/x86_64-linux/ShaverPhaser.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/RingMod.vst3/Contents/x86_64-linux/RingMod.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Bass Emulator.vst3/Contents/x86_64-linux/BassEmulator.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Attack of the Clones.vst3/Contents/x86_64-linux/SendInTheClones.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/FM105.vst3/Contents/x86_64-linux/BobFilter.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Tremolo.vst3/Contents/x86_64-linux/Tremolo.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Lo Fi Filter.vst3/Contents/x86_64-linux/LoFiFilter.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Galaxy Echo.vst3/Contents/x86_64-linux/CosmicEcho.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/FM107.vst3/Contents/x86_64-linux/ModernFlanger.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/DL9.vst3/Contents/x86_64-linux/ModDelay.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Range Booster.vst3/Contents/x86_64-linux/RangeBooster.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/CDO.vst3/Contents/x86_64-linux/CustomDrive.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Mouse.vst3/Contents/x86_64-linux/BassDistortion.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/No Fi Echo.vst3/Contents/x86_64-linux/NoFiEcho.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Real Spring.vst3/Contents/x86_64-linux/TubeSpring.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/FL-3.vst3/Contents/x86_64-linux/BassFlanger.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/NYRBS103.vst3/Contents/x86_64-linux/NYRBS103.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Beta Fist.vst3/Contents/x86_64-linux/Swole.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Dyna-Trem.vst3/Contents/x86_64-linux/TremOle.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/GEB-8.vst3/Contents/x86_64-linux/BassEQ8.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Bass Big Buzz.vst3/Contents/x86_64-linux/BassFuzz.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/VOODOO.vst3/Contents/x86_64-linux/PlateVerb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/HM-2.vst3/Contents/x86_64-linux/AlloyDistortion.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/CH-5.vst3/Contents/x86_64-linux/DigitalChorus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/TR-2.vst3/Contents/x86_64-linux/MultiTrem.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/EQ5.vst3/Contents/x86_64-linux/EQ5.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/UV-1.vst3/Contents/x86_64-linux/MarshallSupervibe.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/UniMod.vst3/Contents/x86_64-linux/OmniMod.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/BOX B847.vst3/Contents/x86_64-linux/UKWah.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Multi-Vibe.vst3/Contents/x86_64-linux/AmpVibe.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/134 Stereo Chorus.vst3/Contents/x86_64-linux/AnalogChorus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/phase 90.vst3/Contents/x86_64-linux/Phaser363.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Rocket Phase.vst3/Contents/x86_64-linux/PlanePhase.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Jockey Bad.vst3/Contents/x86_64-linux/ModernWah.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Qtrix.vst3/Contents/x86_64-linux/AutoSweep.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/GE-8.vst3/Contents/x86_64-linux/EQ8.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/dyna comp.vst3/Contents/x86_64-linux/DynamicsCompression.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Holy Spring.vst3/Contents/x86_64-linux/SpringReverb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/FM104.vst3/Contents/x86_64-linux/AnalogDelay.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/GM-2.vst3/Contents/x86_64-linux/MarshallGuvnorPlus.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/NF-1.vst3/Contents/x86_64-linux/NoiseGate.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/OCTUP.vst3/Contents/x86_64-linux/OctaveUp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/ENBIGGEN.vst3/Contents/x86_64-linux/BassEnbig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/slopsmith/plugins/rig_builder/vst/pedals/Vintage Distortion.vst3/Contents/x86_64-linux/VintageDistortion.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/app.asar.unpacked/build/Release/libonnxruntime_providers_shared.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/app.asar.unpacked/build/Release/libonnxruntime.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/app.asar.unpacked/build/Release/slopsmith-vst-host",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/app.asar.unpacked/build/Release/slopsmith_audio.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/app.asar.unpacked/node_modules/velopack/lib/native/velopack_nodeffi_linux_x64_gnu.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/app.asar.unpacked/node_modules/velopack/lib/native/velopack_nodeffi_linux_arm64_gnu.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libavc1394.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libunistring.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libtheoraenc.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libstdc++.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/ffmpeg",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libiec61883.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsodium.so.23",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libp11-kit.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libdbus-1.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libserd-0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libavfilter.so.7",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libexpat.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libvorbisenc.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgnutls.so.30",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpixman-1.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/librubberband.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libxcb-render.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libuuid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libflite_cmu_us_rms.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpocketsphinx.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libffi.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsord-0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpng16.so.16",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libapparmor.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgmp.so.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libharfbuzz.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libGLdispatch.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libinstpatch-1.0.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libva-drm.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXss.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libflite_cmu_us_kal16.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libicuuc.so.70",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libncursesw.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libtinfo.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libbz2.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libcairo.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsnappy.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libssl.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libavformat.so.58",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libspeex.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgio-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXext.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgcrypt.so.20",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpulsecommon-15.99.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/liblz4.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libbsd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libfribidi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libzstd.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libquadmath.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgfortran.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libflite_cmulex.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libslang.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/librsvg-2.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libcom_err.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libcaca.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libglib-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXcursor.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgomp.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libtheoradec.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libflite_cmu_us_kal.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXfixes.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsphinxbase.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libcrypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libwebpmux.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libvorbisfile.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libopenal.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libnorm.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libavdevice.so.58",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libflite_cmu_us_awb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libflite_cmu_us_slt.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libselinux.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgme.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libvidstab.so.1.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libdatrie.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libvdpau.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libudev.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libxcb-shm.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libvorbis.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libmount.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/ffprobe",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libxkbcommon.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libtwolame.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libwayland-server.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsndio.so.7",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpango-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/librom1394.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgssapi_krb5.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libnettle.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libssh-gcrypt.so.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgsm.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgobject-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libchromaprint.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libusb-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libxml2.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libavcodec.so.58",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsystemd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libflite_usenglish.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libudfread.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libSDL2-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libdb-5.3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgmodule-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libwayland-client.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libogg.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libkrb5support.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libopus.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libidn2.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libk5crypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXv.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libxcb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libz.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/liblzma.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libicudata.so.70",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpulse.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libwayland-egl.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgraphite2.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libmysofa.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libdrm.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libxvidcore.so.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libblas.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libxcb-xfixes.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libvpx.so.7",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libopenmpt.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libblkid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXdmcp.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpcre.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libtasn1.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsrt-gnutls.so.1.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libbrotlidec.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libhogweed.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgdk_pixbuf-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libdc1394.so.25",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libva-x11.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libX11.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libxcb-shape.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXrandr.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libreadline.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libcairo-gobject.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpcre2-8.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libopenjp2.so.7",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpangocairo-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libbrotlicommon.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libzimg.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libx265.so.199",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libzmq.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libFLAC.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/liblilv-0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libavutil.so.56",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libnuma.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsratom-0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libmd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libdecor-0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXxf86vm.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libzvbi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libswresample.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libOpenCL.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libcap.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libGLX.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpangoft2-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpgm-5.3.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libkrb5.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libfluidsynth.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgpg-error.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXinerama.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libmpg123.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libkeyutils.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libasound.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libcdio_cdda.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libaom.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libcdio_paranoia.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libmfx.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libthai.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libswscale.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsndfile.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libflite.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libraw1394.so.11",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libjpeg.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libass.so.9",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libshine.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXau.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libfontconfig.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libcodec2.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libcdio.so.19",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpulse-simple.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libpostproc.so.55",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libxcb-randr.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libasyncns.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libgbm.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libx264.so.163",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsoxr.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libbs2b.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/librabbitmq.so.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libva.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libsamplerate.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libdav1d.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libwayland-cursor.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libfreetype.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libX11-xcb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libGL.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libwebp.so.7",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/fluidsynth",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libbluray.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/liblapack.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libjack.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXrender.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libmp3lame.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/vgmstream-cli",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/fee[dB]ack/resources/bin/libXi.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/fee[dB]ack/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "7aa8a136718250ad49e9629c2e0f5511e822bbc49d00c91a840278e9b61e5063",
+  "signature": null
+}
