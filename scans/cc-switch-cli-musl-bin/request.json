@@ -1,0 +1,8 @@
+{
+  "package": "cc-switch-cli-musl-bin",
+  "aur_commit": "af74bf49b4200c24468b4df97ccadb623dff055d",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-12T06:18:26Z"
+}
