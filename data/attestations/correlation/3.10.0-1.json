@@ -1,0 +1,300 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "correlation",
+    "version": "3.10.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "840ced2b1e41f02acc56fbaf248d1fb1cc75517f",
+    "pkgbuild_sha256": "5754e27a287ab586032cb35d151d2da93d1b3ef0ede3ee43d5850b5533359030",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-13T07:09:34.480735068+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o correlation-3.10.0.tar.gz.part https://github.com/Isurwars/Corr\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/correlation-\"... /home/builder/build/correlation-\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/correlation-\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/correlat\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/correlation-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- correlation-3.10.0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf correlation-3.10.0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "20.29.134.23",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-13T07:09:34.469824259+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`DecimalArray` does not perform bound checks on accessing values and offsets (GHSA-h588-76vg-prgj)",
+      "url": "https://osv.dev/vulnerability/GHSA-h588-76vg-prgj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`FixedSizeBinaryArray` does not perform bound checks on accessing values and offsets (GHSA-qgrp-8f3v-q85p)",
+      "url": "https://osv.dev/vulnerability/GHSA-qgrp-8f3v-q85p"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`BinaryArray` does not perform bound checks on reading values and offsets (GHSA-r7cj-wmwv-hfw5)",
+      "url": "https://osv.dev/vulnerability/GHSA-r7cj-wmwv-hfw5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`BinaryArray` does not perform bound checks on reading values and offsets (RUSTSEC-2021-0116)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2021-0116"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`DecimalArray` does not perform bound checks on accessing values and offsets (RUSTSEC-2021-0117)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2021-0117"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`FixedSizeBinaryArray` does not perform bound checks on accessing values and offsets (RUSTSEC-2021-0118)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2021-0118"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "055f8214902444d25efcb0c637dd455f6895c671975f4068e27eb15bcea5a7db",
+  "signature": null
+}
