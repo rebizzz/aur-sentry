@@ -1,0 +1,18 @@
+pkgbase = cls-rs
+	pkgdesc = cls - Command-Line Soundboard written in Rust
+	pkgver = 4.0.0
+	pkgrel = 1
+	url = https://codeberg.org/NorthWestWind/cls
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = ffmpeg
+	optdepends = pulse-native-provider: null sink and auto audio loopback
+	conflicts = cls-rs-git
+	conflicts = cls-rs-bin
+	replaces = cls-soundboard
+	source = https://codeberg.org/NorthWestWind/cls/archive/v4.0.0.tar.gz
+	sha256sums = fe9363a86b39fe8c986bc03f82e4c8219adbba002702d539d28fbb6b30d738ed
+
+pkgname = cls-rs
