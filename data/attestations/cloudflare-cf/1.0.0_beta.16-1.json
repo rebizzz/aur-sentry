@@ -1,0 +1,276 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cloudflare-cf",
+    "version": "1.0.0_beta.16-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "594de23641ee19ab0890d87bd446e0905a341a8b",
+    "pkgbuild_sha256": "3ab2b016d1f8d2987366c598eb4a01545d3895b2fabfcc94cc6c3b706d182d50",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-13T16:23:31.852850641+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 27,
+      "severity": "LOW",
+      "description": "unlocked npm/bun/yarn install during build (unpinned dependency risk)"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cf-1.0.0-beta.16.tgz.part https://registry.npmjs.org/cf/-/\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/cf-1.0.0-bet\"... /home/builder/build/cf-1.0.0-bet\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cf-1.0.0-bet\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cf-1.0.0\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cf-1.0.0-bet\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.16.11.34",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-13T16:23:31.842400482+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "npm Vulnerable to Global node_modules Binary Overwrite (GHSA-4328-8hgf-7wjr)",
+      "url": "https://osv.dev/vulnerability/GHSA-4328-8hgf-7wjr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm CLI exposing sensitive information through logs (GHSA-93f3-23rq-pjfp)",
+      "url": "https://osv.dev/vulnerability/GHSA-93f3-23rq-pjfp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Packing does not respect root-level ignore files in workspaces (GHSA-hj9c-8jmm-8c52)",
+      "url": "https://osv.dev/vulnerability/GHSA-hj9c-8jmm-8c52"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Token Leak in npm (GHSA-m5h6-hr3q-22h5)",
+      "url": "https://osv.dev/vulnerability/GHSA-m5h6-hr3q-22h5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Write in npm (GHSA-m6cx-g6qm-p2cx)",
+      "url": "https://osv.dev/vulnerability/GHSA-m6cx-g6qm-p2cx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Incorrect Permission Assignment for Critical Resource in NPM (GHSA-ph34-pc88-72gc)",
+      "url": "https://osv.dev/vulnerability/GHSA-ph34-pc88-72gc"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Local Privilege Escalation in npm (GHSA-v3jv-wrf4-5845)",
+      "url": "https://osv.dev/vulnerability/GHSA-v3jv-wrf4-5845"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm symlink reference outside of node_modules (GHSA-x8qc-rrcw-4r46)",
+      "url": "https://osv.dev/vulnerability/GHSA-x8qc-rrcw-4r46"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "fa9197f5860ac3a530b11db9430a9f577604c1e60da64ab81bee4704c7c712e7",
+  "signature": null
+}
