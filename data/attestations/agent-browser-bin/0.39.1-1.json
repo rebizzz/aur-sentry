@@ -1,0 +1,352 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "agent-browser-bin",
+    "version": "0.39.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "88a7479e59fc94c97a9967677068ea1e151476a2",
+    "pkgbuild_sha256": "bc961254ec0fbc70bc1bccc88646c4400c6849341e6bb18769443ac6d15f1325",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-13T21:35:20.943555423+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: agent-browser-1165952d74ceed98fdc2dd97190ad41f44dd0e24/benchmarks/.env.example, agent-browser-1165952d74ceed98fdc2dd97190ad41f44dd0e24/evals/.env.example, agent-browser-1165952d74ceed98fdc2dd97190ad41f44dd0e24/examples/environments/.env.example"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o agent-browser-0.39.1-1165952d74c\"... https://github.com/vercel-labs/a\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/agent-browse\"... /home/builder/build/agent-browse\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o agent-browser-bin-0.39.1-x86_64.\"... https://github.com/vercel-labs/a\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/agent-browse\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/agent-br\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/agent-browse\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- agent-browser-0.39.1-1165952d74c\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf agent-browser-0.39.1-1165952d74c\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- agent-browser-bin-0.39.1-x86_64",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf agent-browser-bin-0.39.1-x86_64 -q *",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/agent-browser-bin-0.39.1-1-\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.942621832+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/agent-browser-bin-0.39.1-1-\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.942621832+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/agent-browser-bin-0.39.1-1-\"...",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.942621832+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.942621832+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.942621832+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.942621832+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm agent-browser-bin",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.942621832+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm agent-browser-bin",
+        "parent": null,
+        "timestamp": "2026-10-13T21:35:20.942621832+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "agent-browser-1165952d74ceed98fdc2dd97190ad41f44dd0e24/benchmarks/.env.example",
+        "operation": "canary_access",
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "agent-browser-1165952d74ceed98fdc2dd97190ad41f44dd0e24/evals/.env.example",
+        "operation": "canary_access",
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "agent-browser-1165952d74ceed98fdc2dd97190ad41f44dd0e24/examples/environments/.env.example",
+        "operation": "canary_access",
+        "timestamp": "2026-10-13T21:35:20.934135719+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 31,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/lib/agent-browser/bin/agent-browser",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "7139f209254126d3aca9a433655d1881642a53d985f4ab889aa9bc30deaf5b86",
+  "signature": null
+}
