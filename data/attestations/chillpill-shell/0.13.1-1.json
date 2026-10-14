@@ -1,0 +1,304 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "chillpill-shell",
+    "version": "0.13.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "7c48ceb70c6e6186efee81db1f76bfac95618054",
+    "pkgbuild_sha256": "ceb9d903d868c0c0c78edd3ec2ebf4f97e297de5017858c536c5922caa811e34",
+    "install_sha256": "f29d9b8cd1a5ac301e95362661b35bd428aa4aa86c67c043d71638891eda06a3"
+  },
+  "analyzed_at": "2026-10-14T14:04:42.456603723+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 63,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o chillpill-shell-0.13.1.tar.gz.pa\"... https://github.com/LUCKYS1NGHH/C\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/chillpill-sh\"... /home/builder/build/chillpill-sh\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/chillpill-sh\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/chillpil\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/chillpill-sh\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chillpill-shell-0.13.1.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf chillpill-shell-0.13.1.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T14:04:42.449026063+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary file overwrite in tar-rs (GHSA-2367-c296-3mp2)",
+      "url": "https://osv.dev/vulnerability/GHSA-2367-c296-3mp2"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "node-tar: Decompression/parse DoS via unlimited input (GHSA-23hp-3jrh-7fpw)",
+      "url": "https://osv.dev/vulnerability/GHSA-23hp-3jrh-7fpw"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "node-tar has a race condition leading to uninitialized memory exposure (GHSA-29xp-372q-xqph)",
+      "url": "https://osv.dev/vulnerability/GHSA-29xp-372q-xqph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal (GHSA-34x7-hfp2-rc4v)",
+      "url": "https://osv.dev/vulnerability/GHSA-34x7-hfp2-rc4v"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Creation/Overwrite due to insufficient absolute path sanitization (GHSA-3jfq-g458-7qm9)",
+      "url": "https://osv.dev/vulnerability/GHSA-3jfq-g458-7qm9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "tar has a PAX header desynchronization issue (GHSA-3pv8-6f4r-ffg2)",
+      "url": "https://osv.dev/vulnerability/GHSA-3pv8-6f4r-ffg2"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Creation/Overwrite on Windows via insufficient relative path sanitization (GHSA-5955-9wpr-37jh)",
+      "url": "https://osv.dev/vulnerability/GHSA-5955-9wpr-37jh"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Links in archive can create arbitrary directories (GHSA-62jx-8vmh-4mcw)",
+      "url": "https://osv.dev/vulnerability/GHSA-62jx-8vmh-4mcw"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Read/Write via Hardlink Target Escape Through Symlink Chain in node-tar Extraction (GHSA-83g3-92jg-28cx)",
+      "url": "https://osv.dev/vulnerability/GHSA-83g3-92jg-28cx"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "738075266b6269ee892176309d4b12788733510c572696c4396f68fcc5bd51b1",
+  "signature": null
+}
