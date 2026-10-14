@@ -1,0 +1,8 @@
+{
+  "package": "cpa-usage-keeper-systemd-bin",
+  "aur_commit": "b7d6e258b6a69c832ca19c0ca816082a3e8562cd",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-14T14:02:15Z"
+}
