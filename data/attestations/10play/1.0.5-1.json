@@ -1,0 +1,126 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "10play",
+    "version": "1.0.5-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "3dbac9a7d414efdc63054ea72d0ed03adb98b3cb",
+    "pkgbuild_sha256": "ea8b952fe291b951fb08d248c12cea7728abb19c2a9f5a2e42843c153d199d7f",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-14T07:57:55.478328587+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s is not available for the '%s'\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-14T07:57:55.471768982+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`unzip` is unmaintained (RUSTSEC-2026-0296)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0296"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`unzip`: archive extraction is vulnerable to path traversal (zip-slip) (RUSTSEC-2026-0297)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0297"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "6183156a86446c3ab3ffb41302e1b8abf4542b4c7497344eec76343649b8662d",
+  "signature": null
+}
