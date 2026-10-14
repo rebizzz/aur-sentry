@@ -1,0 +1,22 @@
+pkgbase = 3x-ui-mtg-multi-core
+	pkgdesc = Highly opinionated MTPROTO proxy for Telegram. Supports accounts (for *x-ui)
+	pkgver = 1.16.0
+	pkgrel = 1
+	url = https://github.com/MHSanaei/mtg-multi
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	provides = x-ui-mtg-core
+	provides = x-ui-mtg-multi-core
+	conflicts = x-ui-mtg-core
+	conflicts = x-ui-mtg-multi-core
+	options = !debug
+	source = https://github.com/MHSanaei/mtg-multi/archive/v1.16.0/3x-ui-mtg-multi-core-1.16.0.tar.gz
+	sha256sums = 265c723d1c8cdccd5d43c826505a4aa5b22ffe0462f35322665594991fb9482f
+	b2sums = 92079472f58b8eab625ebee7088b3860fa675cfcb22f27e5639b004ab27930c6b42f29608d5ecf3cb7ae5edc25a58092c207d74c926f4f2a57dbaa70fee3089c
+
+pkgname = 3x-ui-mtg-multi-core
