@@ -1,0 +1,459 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "asf",
+    "version": "6.3.10.6-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "4cb2507b501dc59f494cd2fc712f48c756dc498f",
+    "pkgbuild_sha256": "62177e9cea182499b71ccf3dcc9e812e01d19d2d06006a99dd9126f97871b88d",
+    "install_sha256": "bff7215f85f56994194cfb8b3b7440cd59df752e2ae7395db3c97b273b1bd003"
+  },
+  "analyzed_at": "2026-10-14T19:00:27.192264342+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 19,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: /home/builder/build/asf.env, asf.env"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/JustArchiNET/\"... /home/builder/build/asf",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/JustArchiNET/\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/JustArchiNET/\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 12657 on c2d9f\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/asf rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/asf/info",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/asf archive --format tar 6.3.10.6",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/service.patc\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/asf.env",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/ASF.json",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/NLog.config",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/asf asf",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/asf",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git tag -l --format=%(tag) 6.3.10.6",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg 6.3.10.6 --",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/service.\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/service.patc\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- service.patch",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf service.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/asf.env",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/asf.env /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- asf.env",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf asf.env -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/ASF.json",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/ASF.json /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- ASF.json",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf ASF.json -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/NLog.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/NLog.config /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- NLog.config",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf NLog.config -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch --forward --input=/home/builder/build/src/\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "/home/builder/build/asf.env",
+        "operation": "canary_access",
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "asf.env",
+        "operation": "canary_access",
+        "timestamp": "2026-10-14T19:00:27.140423665+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "aa6124f95105ce6276bca5821db0b4752784743ff46394289cfecc72e06ee67f",
+  "signature": null
+}
