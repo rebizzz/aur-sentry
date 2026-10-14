@@ -1,0 +1,616 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "antigravity-appimage",
+    "version": "2.23.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "71472c06f270542082f2300b65a3d2dd058e88bc",
+    "pkgbuild_sha256": "217ba742f4538c75652d7dd30277dc86831f2bb4e907a697aa6c404f283a982f",
+    "install_sha256": "0ab7f749c56d00f263dbd81ce8686bd5f1b58c7701d1e8651a68ecc1926cf913"
+  },
+  "analyzed_at": "2026-10-14T07:59:14.266013445+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o Antigravity-2.23.1-x86_64.AppIma\"... https://storage.googleapis.com/a\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/Antigravity-\"... /home/builder/build/Antigravity-\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/antigravity.\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/antigravity-\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/antigravity",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/_antigravity",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/Antigravity-\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/antigrav\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/antigravity.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- antigravity.sh",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf antigravity.sh -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- antigravity.desktop",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf antigravity.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/antigravity-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- antigravity-url-handler.desktop",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf antigravity-url-handler.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- antigravity.appdata.xml",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf antigravity.appdata.xml -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- antigravity-workspace.xml",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf antigravity-workspace.xml -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- antigravity.png",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf antigravity.png -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/antigravity /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- antigravity",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf antigravity -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/_antigra\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/_antigravity /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- _antigravity",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf _antigravity -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/LICENSE /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf LICENSE -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/Antigrav\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/Antigravity-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- Antigravity-2.23.1-x86_64.AppIma\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf Antigravity-2.23.1-x86_64.AppIma\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/antigravity-appimage-2.23.1\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/antigravity-appimage-2.23.1\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/antigravity-appimage-2.23.1\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 9B7A287D9A2EC608",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FDC3040B92ACA748",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 62CC73F884E52957B2FDD8839B7A287D\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 262A58EC6C51F7EA395B2E2DFDC3040B\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_YoG4dk/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "tput sgr0",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "tput bold",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "tput setaf 4",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "tput setaf 3",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... udev-reload",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm antigravity-appimage",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm antigravity-appimage",
+        "parent": null,
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "192.178.212.207",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T07:59:14.257546579+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T07:59:14.264788152+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 10,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "opt/antigravity-appimage/Antigravity.AppImage",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "878dc5519299bc8eeb62b9619f720eb35448387497fd97ff1ff2923cd9bcbe54",
+  "signature": null
+}
