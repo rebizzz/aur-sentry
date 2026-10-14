@@ -1,0 +1,1182 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ctranslate2-cuda",
+    "version": "4.8.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c01a0c69a24ddb15ea49ba1b3ed2f8d82e2f80cb",
+    "pkgbuild_sha256": "ede3958b62ae77d46c7489874ae49092056d1a52f94dc1e8a4319821fb5be613",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-14T08:05:36.461216226+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: libcudacxx/test/libcudacxx/std/execution/exec.env/.gitattributes, libcudacxx/test/libcudacxx/std/execution/exec.env/env.pass.cpp, libcudacxx/test/libcudacxx/std/execution/exec.get.env/.gitattributes, libcudacxx/test/libcudacxx/std/execution/exec.get.env/get.env.pass.cpp"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/OpenNMT/CTran\"... /home/builder/build/CTranslate2",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/OpenNMT/CTran\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/OpenNMT/CTran\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1860 on 98e9ca\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/CTranslate2 rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/CTranslate2/\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/jarro2783/cxx\"... /home/builder/build/cxxopts",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/jarro2783/cxx\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/jarro2783/cxx\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1884 on 98e9ca\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cxxopts rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cxxopts/info",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/NVIDIA/cccl.g\"... /home/builder/build/cccl",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/NVIDIA/cccl.g\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/NVIDIA/cccl.g\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1908 on 98e9ca\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cccl rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cccl/info",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/google/cpu_fe\"... /home/builder/build/cpu_features",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/google/cpu_fe\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/google/cpu_fe\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1932 on 98e9ca\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cpu_features rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cpu_features\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/gabime/spdlog\"... /home/builder/build/spdlog",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/gabime/spdlog\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/gabime/spdlog\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1956 on 98e9ca\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/spdlog rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/spdlog/info",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/google/ruy.gi\"... /home/builder/build/ruy",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/google/ruy.gi\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/google/ruy.gi\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1980 on 98e9ca\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/ruy rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/ruy/info",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/pytorch/cpuin\"... /home/builder/build/cpuinfo",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/pytorch/cpuin\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/pytorch/cpuin\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2004 on 98e9ca\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cpuinfo rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cpuinfo/info",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/NVIDIA/cutlas\"... /home/builder/build/cutlass",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/NVIDIA/cutlas\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/NVIDIA/cutlas\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2028 on 98e9ca\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cutlass rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cutlass/info",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/CTranslate2 archive --format tar v4.8.3",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/CTranslate2 CTranslate2",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/CTranslate2",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git tag -l --format=%(tag) v4.8.3",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg v4.8.3 --",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cxxopts cxxopts",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cxxopts",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cccl cccl",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cccl",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cpu_features cpu_features",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cpu_features",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/spdlog spdlog",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/spdlog",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/ruy ruy",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/ruy",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cpuinfo cpuinfo",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cpuinfo",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cutlass cutlass",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cutlass",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule init third_party/thrust",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule init third_party/thrust",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "basename /usr/lib/git-core/git-submodule",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/-/ /",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git --exec-path",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "basename -- /usr/lib/git-core/git-submodule",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "envsubst --variables usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "envsubst usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "uname -s",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --git-dir",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --git-path objects",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --is-inside-work-tree",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --show-prefix",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --show-toplevel",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/-/_/g",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper init -- third_party/thrust",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/thrust.url /home/builder/build/src/cccl",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule init third_party/cxxopts",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule init third_party/cxxopts",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper init -- third_party/cxxopts",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/cxxopts.ur\"... /home/builder/build/src/cxxopts",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule init third_party/cpu_features",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule init third_party/cpu_features",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper init -- third_party/cpu_features",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/cpu_featur\"... /home/builder/build/src/cpu_feat\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule init third_party/spdlog",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule init third_party/spdlog",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper init -- third_party/spdlog",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/spdlog.url /home/builder/build/src/spdlog",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule init third_party/ruy",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule init third_party/ruy",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper init -- third_party/ruy",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/ruy.url /home/builder/build/src/ruy",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule init third_party/cutlass",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule init third_party/cutlass",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper init -- third_party/cutlass",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.third_party/cutlass.ur\"... /home/builder/build/src/cutlass",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c protocol.file.allow=always submodule update",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule update",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper update --",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/cpu_features --name third_party/cpu_features --url /home/builder/build/src/cpu_feat\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/CTransla\"... -- /home/builder/build/src/cpu_feat\"... /home/builder/build/src/CTransla\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/cpu_feat\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/cutlass --name third_party/cutlass --url /home/builder/build/src/cutlass",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/CTransla\"... -- /home/builder/build/src/cutlass /home/builder/build/src/CTransla\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/cutlass/\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/cxxopts --name third_party/cxxopts --url /home/builder/build/src/cxxopts",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/CTransla\"... -- /home/builder/build/src/cxxopts /home/builder/build/src/CTransla\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/cxxopts/\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/ruy --name third_party/ruy --url /home/builder/build/src/ruy",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/CTransla\"... -- /home/builder/build/src/ruy /home/builder/build/src/CTransla\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/ruy/.git",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/spdlog --name third_party/spdlog --url /home/builder/build/src/spdlog",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/CTransla\"... -- /home/builder/build/src/spdlog /home/builder/build/src/CTransla\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/spdlog/.\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/thrust --name third_party/thrust --url /home/builder/build/src/cccl",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/CTransla\"... -- /home/builder/build/src/cccl /home/builder/build/src/CTransla\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/cccl/.gi\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 8a494eb1e158ec2050e5f699a504fbc9\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 8a494eb1e158ec2050e5f699a504fbc9\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 bbe579a9e3beb6ea6626d9227ec32d0d\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f bbe579a9e3beb6ea6626d9227ec32d0d\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 44380e5a44706ab7347f400698c703eb\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 44380e5a44706ab7347f400698c703eb\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 363f252289fb7a1fba1703d991965246\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 363f252289fb7a1fba1703d991965246\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 76fb40d95455f249bd70824ecfcae7a8\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 76fb40d95455f249bd70824ecfcae7a8\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 b5fe509fd11a925f90d6495176707cc1\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f b5fe509fd11a925f90d6495176707cc1\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule init third_party/cpuinfo",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule init third_party/cpuinfo",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper init -- third_party/cpuinfo",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config submodule.cpuinfo.url /home/builder/build/src/cpuinfo",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path third_party/cpuinfo --name cpuinfo --url /home/builder/build/src/cpuinfo",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/CTransla\"... -- /home/builder/build/src/cpuinfo /home/builder/build/src/CTransla\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/cpuinfo/\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 082deffc80ce517f81dc2f3aebe6ba67\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 082deffc80ce517f81dc2f3aebe6ba67\"...",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clean python -dfx",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i s/pybind11==[0-9.",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i /-Wl -rpath/d python/setup.py",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "libcudacxx/test/libcudacxx/std/execution/exec.env/.gitattributes",
+        "operation": "canary_access",
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "libcudacxx/test/libcudacxx/std/execution/exec.env/env.pass.cpp",
+        "operation": "canary_access",
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "libcudacxx/test/libcudacxx/std/execution/exec.get.env/.gitattributes",
+        "operation": "canary_access",
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "libcudacxx/test/libcudacxx/std/execution/exec.get.env/get.env.pass.cpp",
+        "operation": "canary_access",
+        "timestamp": "2026-10-14T08:05:36.342363379+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious code in libgomp (PyPI) (MAL-2025-47783)",
+      "url": "https://osv.dev/vulnerability/MAL-2025-47783"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "06f35726fca06eec2f7bfaa8fe7eff4b09ad0b1fd1809c92a7290ad0da5a5e4c",
+  "signature": null
+}
