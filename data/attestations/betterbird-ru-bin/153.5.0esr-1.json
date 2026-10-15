@@ -1,0 +1,586 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "betterbird-ru-bin",
+    "version": "153.5.0esr-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a3d56f0694d3ef301ebd9313e2bf040ab20d5022",
+    "pkgbuild_sha256": "0fce73ac14a92c46a2b88b63b53380da86768260edd99185d9540b92610fe130",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-15T11:57:45.849515960+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o betterbird-153.5.0esr-bb11.ru.li\"... https://www.betterbird.eu/downlo\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/betterbird-1\"... /home/builder/build/betterbird-1\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/betterbird-1\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/eu.betterbir\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/vendor-prefs\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/betterbi\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/betterbird-1\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- betterbird-153.5.0esr-bb11.ru.li\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf betterbird-153.5.0esr-bb11.ru.li\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/eu.bette\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/eu.betterbir\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- eu.betterbird.Betterbird.desktop",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf eu.betterbird.Betterbird.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/vendor-p\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/vendor-prefs\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- vendor-prefs.js",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf vendor-prefs.js -q *",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/betterbird-ru-bin-153.5.0es\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/betterbird-ru-bin-153.5.0es\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/betterbird-ru-bin-153.5.0es\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 632C3CC0D1C9CAF6",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 94657AB20F2A092B",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 14E46FE5FD69F2E287E244DB632C3CC0\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- ADC8A1FCC15E01D45310419E94657AB2\"...",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm betterbird-ru-bin",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm betterbird-ru-bin",
+        "parent": null,
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "78.47.15.67",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-15T11:57:45.839192539+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.67.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-15T11:57:45.847472050+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 57,
+    "elf_object_count": 24,
+    "elf_objects": [
+      {
+        "path": "opt/betterbird/glxtest",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/liblgpllibs.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libplds4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libmozgtk.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/pingsender",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libmozwayland.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libnssutil3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libsoftokn3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/vaapitest",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libplc4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libnss3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libssl3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libgkcodecs.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libmozsqlite3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libfreeblpriv3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libsmime3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libmozavcodec.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/betterbird-bin",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/betterbird",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/betterbird/libnspr4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libmozsandbox.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libxul.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/librnp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/betterbird/libmozavutil.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d835c2a5a883c0c5f2d59ce4b6cc709fe5dd84329bd99cf7e4a800070da1197a",
+  "signature": null
+}
