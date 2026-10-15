@@ -1,0 +1,14 @@
+pkgbase = cloneholio
+	pkgdesc = Maintain local backups of *all Git repositories* belonging to a user or group.
+	pkgver = 0.17.0
+	pkgrel = 2
+	url = https://github.com/andrewrabert/cloneholio
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	options = !lto
+	source = cloneholio-0.17.0.tar.gz::https://github.com/andrewrabert/cloneholio/archive/0.17.0.tar.gz
+	sha256sums = a94c3c18ab7b151108c4af3d4ccbf3e2bf92b909b382f2c3dfb1721d8d9e7d43
+
+pkgname = cloneholio
