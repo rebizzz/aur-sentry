@@ -1,0 +1,993 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cadcraft-studio",
+    "version": "0.4.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "ebd8907c2cfef275f458a2c52847c91032800540",
+    "pkgbuild_sha256": "413d7bd26bdc909e0c4012590eb0c0d6b3aa2ba3850410718a5246f0b5efdb53",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-16T13:37:25.528295966+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/getcadcraft/s\"... /home/builder/build/studio",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/getcadcraft/s\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/getcadcraft/s\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 963 on bb2d3f4\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/studio rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/studio/info",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/getcadcraft/d\"... /home/builder/build/desktop-shel\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/getcadcraft/d\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/getcadcraft/d\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 984 on bb2d3f4\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/desktop-shel\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/desktop-shel\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cadcraft-studio-cadcraft-0.4.0.t\"... https://github.com/getcadcraft/c\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/cadcraft-stu\"... /home/builder/build/cadcraft-stu\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cadcraft-studio-bimcraft-0.4.0.t\"... https://github.com/getcadcraft/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cadcraft-studio-civilcraft-0.4.0\"... https://github.com/getcadcraft/c\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cadcraft-studio-detailcraft-0.4.\"... https://github.com/getcadcraft/d\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cadcraft-studio-markupcraft-0.4.\"... https://github.com/getcadcraft/m\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cadcraft-studio-modelcraft-0.4.0\"... https://github.com/getcadcraft/m\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cadcraft-studio-partcraft-0.4.0.\"... https://github.com/getcadcraft/p\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cadcraft-studio-takeoffcraft-0.4\"... https://github.com/getcadcraft/t\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/studio archive --format tar 57640c4a050843d44abf6abf694ed754\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/desktop-shel\"... archive --format tar d132555bd0bc191c8045eefa12ccd4a8\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/site-bootstr\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/site-edition\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cadcraft-stu\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/studio studio",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/studio",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg 57640c4a050843d44abf6abf694ed754\"... --",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/desktop-shel\"... desktop-shell",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/desktop-shel\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg d132555bd0bc191c8045eefa12ccd4a8\"... --",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/site-boo\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/site-bootstr\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- site-bootstrap.php",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf site-bootstrap.php -q *",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/site-edi\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/site-edition\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- site-edition.php",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf site-edition.php -q *",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cadcraft\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cadcraft-stu\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cadcraft-studio.desktop",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf cadcraft-studio.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cadcraft-studio-cadcraft-0.4.0.t\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cadcraft-studio-cadcraft-0.4.0.t\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cadcraft-studio-bimcraft-0.4.0.t\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cadcraft-studio-bimcraft-0.4.0.t\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cadcraft-studio-civilcraft-0.4.0\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cadcraft-studio-civilcraft-0.4.0\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cadcraft-studio-detailcraft-0.4.\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cadcraft-studio-detailcraft-0.4.\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cadcraft-studio-markupcraft-0.4.\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cadcraft-studio-markupcraft-0.4.\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cadcraft-studio-modelcraft-0.4.0\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cadcraft-studio-modelcraft-0.4.0\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cadcraft-studio-partcraft-0.4.0.\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cadcraft-studio-partcraft-0.4.0.\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cadcraft-studio-takeoffcraft-0.4\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cadcraft-studio-takeoffcraft-0.4\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d editions/cadcraft/browser-editio\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf editions/cadcraft/browser-editio\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cp -a cadcraft-cadcraft-v0.4.0/web/v0.\"... editions/cadcraft/browser-editio\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d editions/bimcraft/browser-editio\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf editions/bimcraft/browser-editio\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cp -a bimcraft-bimcraft-v0.4.0/web/v0.\"... editions/bimcraft/browser-editio\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d editions/civilcraft/browser-edit\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf editions/civilcraft/browser-edit\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cp -a civilcraft-civilcraft-v0.4.0/web\"... editions/civilcraft/browser-edit\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d editions/detailcraft/browser-edi\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf editions/detailcraft/browser-edi\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cp -a detailcraft-detailcraft-v0.4.0/w\"... editions/detailcraft/browser-edi\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d editions/markupcraft/browser-edi\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf editions/markupcraft/browser-edi\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cp -a markupcraft-markupcraft-v0.4.0/w\"... editions/markupcraft/browser-edi\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d editions/modelcraft/browser-edit\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf editions/modelcraft/browser-edit\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cp -a modelcraft-modelcraft-v0.4.0/web\"... editions/modelcraft/browser-edit\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d editions/partcraft/browser-editi\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf editions/partcraft/browser-editi\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cp -a partcraft-partcraft-v0.4.0/web/v\"... editions/partcraft/browser-editi\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d editions/takeoffcraft/browser-ed\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf editions/takeoffcraft/browser-ed\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cp -a takeoffcraft-takeoffcraft-v0.4.0\"... editions/takeoffcraft/browser-ed\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d builds/cadcraft",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/cadcraft\"... builds/cadcraft/0.4",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/cadcraft\"... builds/cadcraft/devshell",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d builds/bimcraft",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/bimcraft\"... builds/bimcraft/0.4",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/bimcraft\"... builds/bimcraft/devshell",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d builds/civilcraft",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/civilcra\"... builds/civilcraft/0.4",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/civilcra\"... builds/civilcraft/devshell",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d builds/detailcraft",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/detailcr\"... builds/detailcraft/0.4",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/detailcr\"... builds/detailcraft/devshell",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d builds/markupcraft",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/markupcr\"... builds/markupcraft/0.4",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/markupcr\"... builds/markupcraft/devshell",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d builds/modelcraft",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/modelcra\"... builds/modelcraft/0.4",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/modelcra\"... builds/modelcraft/devshell",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d builds/partcraft",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/partcraf\"... builds/partcraft/0.4",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/partcraf\"... builds/partcraft/devshell",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d builds/takeoffcraft",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/takeoffc\"... builds/takeoffcraft/0.4",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/takeoffc\"... builds/takeoffcraft/devshell",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "install -d /home/builder/build/src/site/bin /home/builder/build/src/site/dev\"... /home/builder/build/src/site/pub\"... /home/builder/build/src/site/pub\"... /home/builder/build/src/site/pub\"... /home/builder/build/src/site/pub\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/site/pub\"... /home/builder/build/src/site/dev\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cp /home/builder/build/src/site-boo\"... /home/builder/build/src/site/pub\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cp /home/builder/build/src/site-edi\"... /home/builder/build/src/site/dev\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/cadcraft\"... /home/builder/build/src/site/dev\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -sf /home/builder/build/src/cadcraft\"... /home/builder/build/src/site/pub\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-16T13:37:25.491417592+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can fill the file system (GHSA-2hvr-h6gw-qrxp)",
+      "url": "https://osv.dev/vulnerability/GHSA-2hvr-h6gw-qrxp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo prior to Rust 1.26.0 may download the wrong dependency (GHSA-9f3p-wvj7-q82x)",
+      "url": "https://osv.dev/vulnerability/GHSA-9f3p-wvj7-q82x"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo not respecting umask when extracting crate archives (GHSA-j3xp-wfr4-hx87)",
+      "url": "https://osv.dev/vulnerability/GHSA-j3xp-wfr4-hx87"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo crates in third party registries can override the cached source of other crates (GHSA-jq42-7mfv-hm57)",
+      "url": "https://osv.dev/vulnerability/GHSA-jq42-7mfv-hm57"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo can be coerced to share credentials between registries (GHSA-p688-r7jv-fm6f)",
+      "url": "https://osv.dev/vulnerability/GHSA-p688-r7jv-fm6f"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo did not verify SSH host keys (GHSA-r5w3-xm58-jv6j)",
+      "url": "https://osv.dev/vulnerability/GHSA-r5w3-xm58-jv6j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can corrupt arbitrary files (GHSA-rfj2-q3h3-hm5j)",
+      "url": "https://osv.dev/vulnerability/GHSA-rfj2-q3h3-hm5j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious dependencies can inject arbitrary JavaScript into cargo-generated timing reports (GHSA-wrrj-h57r-vx9p)",
+      "url": "https://osv.dev/vulnerability/GHSA-wrrj-h57r-vx9p"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "a3a3694b650c653d282ce97ee758e47c577868840e1560acd7d976fde6fef9d0",
+  "signature": null
+}
