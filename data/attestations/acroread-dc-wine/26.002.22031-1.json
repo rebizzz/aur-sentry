@@ -1,0 +1,416 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "acroread-dc-wine",
+    "version": "26.002.22031-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e9f254b516570239a5ea2ac823d46930c59bd6a8",
+    "pkgbuild_sha256": "d0b6268141f1ec59e39e7f0651cc408f8667ac07d1e8dbfaf66262b41a74a974",
+    "install_sha256": "338211167ab003a6cc3219b4dc89a086e105f9a95634401e9093e2ac2ec61958"
+  },
+  "analyzed_at": "2026-10-16T21:38:14.165530648+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 36,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o AcroRdrDCx642600222031_en_US.exe\"... https://ardownload2.adobe.com/pu\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/AcroRdrDCx64\"... /home/builder/build/AcroRdrDCx64\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o wine-11a9c08f0acdd7d3cac863d90f6\"... https://gitlab.winehq.org/ajkhou\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/wine-11a9c08\"... /home/builder/build/wine-11a9c08\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/AcroRdrDCx64\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/wine-11a9c08\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/mspatcha-pe-\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/acroread-dc.\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/acroread-dc-\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/AcroRdrD\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/AcroRdrDCx64\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/wine-11a\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/wine-11a9c08\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- wine-11a9c08f0acdd7d3cac863d90f6\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf wine-11a9c08f0acdd7d3cac863d90f6\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/mspatcha\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/mspatcha-pe-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- mspatcha-pe-validation.patch",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf mspatcha-pe-validation.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/acroread\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/acroread-dc.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- acroread-dc.sh",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf acroread-dc.sh -q *",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/acroread-dc-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- acroread-dc-setup.sh",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf acroread-dc-setup.sh -q *",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- acroread-dc.desktop",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf acroread-dc.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- acroread-dc.reg",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf acroread-dc.reg -q *",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i /home/builder/build/src/mspatcha\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "23.221.252.182",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "4.4.81.126",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-16T21:38:14.123268255+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "72b761648125cad07a32b104a56ec49893ac0d03e0a79ad416c59929c7b37237",
+  "signature": null
+}
