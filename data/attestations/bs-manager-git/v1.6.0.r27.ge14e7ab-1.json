@@ -1,0 +1,374 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bs-manager-git",
+    "version": "v1.6.0.r27.ge14e7ab-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "b62d0ae9fbe27e5df6037fc8277eb2e5e1e3c547",
+    "pkgbuild_sha256": "a6e81c212c09c365350ad19606de65b75624129ad8cc93f742442a5a53faddb4",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-16T21:39:37.065815510+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/Zagrios/bs-ma\"... /home/builder/build/bs-manager",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/Zagrios/bs-ma\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/Zagrios/bs-ma\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 951 on 5b60976\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/bs-manager rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/bs-manager/i\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/bs-manager.d\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/bs-manager bs-manager",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/bs-manager",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/bs-manag\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/bs-manager.d\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- bs-manager.desktop",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf bs-manager.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src/.corepac\"...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-16T21:39:37.058203095+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "pnpm vulnerable to Command Injection via environment variable substitution (GHSA-2phv-j68v-wwqx)",
+      "url": "https://osv.dev/vulnerability/GHSA-2phv-j68v-wwqx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: pacquet trust-lockfile install can create dependency symlinks outside the project (GHSA-2rx9-3g3h-c2jv)",
+      "url": "https://osv.dev/vulnerability/GHSA-2rx9-3g3h-c2jv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm v10+ Bypass \"Dependency lifecycle scripts execution disabled by default\" (GHSA-379q-355j-w6rj)",
+      "url": "https://osv.dev/vulnerability/GHSA-379q-355j-w6rj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Repository config can expand victim environment secrets into registry requests before scripts run (GHSA-3qhv-2rgh-x77r)",
+      "url": "https://osv.dev/vulnerability/GHSA-3qhv-2rgh-x77r"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Reserved bin name deletes PNPM_HOME during global remove (GHSA-4gxm-v5v7-fqc4)",
+      "url": "https://osv.dev/vulnerability/GHSA-4gxm-v5v7-fqc4"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Unsafe default behavior breaks integrity check (GHSA-54hh-g5mx-jqcp)",
+      "url": "https://osv.dev/vulnerability/GHSA-54hh-g5mx-jqcp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm incorrectly parses tar archives relative to specification (GHSA-5r98-f33j-g8h7)",
+      "url": "https://osv.dev/vulnerability/GHSA-5r98-f33j-g8h7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Manifest identity spoof satisfies allowBuilds and runs attacker lifecycle (GHSA-5wx6-mg75-v57r)",
+      "url": "https://osv.dev/vulnerability/GHSA-5wx6-mg75-v57r"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Binary ZIP extraction allows arbitrary file write via path traversal (Zip Slip) (GHSA-6pfh-p556-v868)",
+      "url": "https://osv.dev/vulnerability/GHSA-6pfh-p556-v868"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm has Windows-specific tarball Path Traversal (GHSA-6x96-7vc8-cm3p)",
+      "url": "https://osv.dev/vulnerability/GHSA-6x96-7vc8-cm3p"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "b22d7c80963283ceec33f84cafd6d319ab0c70a74e67bf66c72ae2b05ae5b97b",
+  "signature": null
+}
