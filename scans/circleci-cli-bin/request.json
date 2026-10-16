@@ -1,0 +1,8 @@
+{
+  "package": "circleci-cli-bin",
+  "aur_commit": "dc69db3a3b85eb19d5cbf9db05f89949cd4f872c",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-16T13:32:04Z"
+}
