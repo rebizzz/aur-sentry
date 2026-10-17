@@ -1,0 +1,1099 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "datagrip-eap",
+    "version": "263.7031.43-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "027bdd3edf4d79068638b8293136c9427745864e",
+    "pkgbuild_sha256": "5cc2b1283e9fefe1b97d077cd5cbbabe561da3e1a9ba66a67d3acc362a75e5a1",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-17T12:36:05.182635093+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o Datagrip-263.7031.43-x86_64.tar.\"... https://download.jetbrains.com/d\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/Datagrip-263\"... /home/builder/build/Datagrip-263\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/jetbrains-da\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/Datagrip-263\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/jetbrain\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/jetbrains-da\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- jetbrains-datagrip-eap.desktop",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf jetbrains-datagrip-eap.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/LICENSE /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf LICENSE -q *",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/Datagrip\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/Datagrip-263\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- Datagrip-263.7031.43-x86_64.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf Datagrip-263.7031.43-x86_64.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/datagrip-eap-263.7031.43-1-\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.170240063+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/datagrip-eap-263.7031.43-1-\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.170240063+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/datagrip-eap-263.7031.43-1-\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.170240063+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.170240063+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.170240063+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.170240063+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm datagrip-eap",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.170240063+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm datagrip-eap",
+        "parent": null,
+        "timestamp": "2026-10-17T12:36:05.170240063+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "3.167.56.103",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "3.167.112.26",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-17T12:36:05.138349053+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2529,
+    "elf_object_count": 123,
+    "elf_objects": [
+      {
+        "path": "opt/datagrip-eap/plugins/terminal/libghostty-vt/linux-x86_64/libghostty-vt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/pty4j-plugin/lib/pty4j/linux/x86-64/libpty.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jna-plugin/lib/jna/amd64/libjnidispatch.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/profiler-asyncOne-plugin/lib/async-profiler/aarch64/libasyncProfiler.so",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/profiler-asyncOne-plugin/lib/async-profiler/amd64/libasyncProfiler.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remdev-plugin/quiche-native/linux-x86-64/libquiche.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/platform-vcs-plugin/lib/native/linux-x86_64/libsqliteij.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libstdc++.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libssl.so.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libdbus-1.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libfreebl3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libexpat.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libdw.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libpixman-1.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libxcb-render.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libuuid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libX11.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libnssckbi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libplds4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libGLdispatch.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libgcrypt.so.11",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libcairo.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libpci.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libgio-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXfont2.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXext.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libavahi-common.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/liblz4.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libnssutil3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libsecret-1.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libfribidi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libcom_err.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libglib-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXcursor.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libglapi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libsoftokn3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXfixes.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libatk-bridge-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libplc4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libavahi-client.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libnss3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libselinux.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libssl3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libxcb-shm.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libmount.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libatspi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libxkbcommon.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libwayland-server.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libpango-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libgssapi_krb5.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libgobject-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libxshmfence.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libfreeblpriv3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libsystemd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libgmodule-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libwayland-client.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libkrb5support.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libsmime3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libEGL.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libk5crypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libxcb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libz.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/liblzma.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libdrm.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libelf.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libblkid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXdmcp.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libX11.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXrandr.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libffi.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libsqlite3.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libattr.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXtst.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libnssdbm3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libcrypt.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libcrypto.so.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXxf86vm.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libfontenc.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libcap.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libGLX.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libkrb5.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libgpg-error.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libcups.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libkeyutils.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libnspr4.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libasound.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libthai.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libxkbfile.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libatk-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXau.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libfontconfig.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libpng15.so.15",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libgbm.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libe2p.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libwayland-cursor.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXdamage.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libfreetype.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libX11-xcb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libpcre.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libGL.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libbz2.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXcomposite.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXrender.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/lib/libXi.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/bin/xkbcomp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/remote-dev-server/selfcontained/bin/Xvfb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jcef-plugin/jcef/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jcef-plugin/jcef/cef_server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jcef-plugin/jcef/libshared_mem_helper.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jcef-plugin/jcef/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jcef-plugin/jcef/libcef.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jcef-plugin/jcef/libjcef.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jcef-plugin/jcef/jcef_helper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jcef-plugin/jcef/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jcef-plugin/jcef/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/jcef-plugin/jcef/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/plugins/platform-compose-plugin/lib/skiko-awt-runtime-all/libskiko-linux-x64.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/lib/ijent/ijent-x86_64-unknown-linux-musl-release",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/lib/ijent/ijent-aarch64-unknown-linux-musl-release",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip-eap/bin/datagrip",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/bin/remote-dev-server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/datagrip-eap/bin/fsnotifier",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/datagrip-eap/bin/restarter",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "5f35dca3b5c638a502ccfda089640c558ffaa6efe0c75e9f9c72f26e07baf81f",
+  "signature": null
+}
