@@ -1,0 +1,22 @@
+pkgbase = atomdrift-scan
+	pkgdesc = ML-powered malware classification using cleave static analysis
+	pkgver = 2.13.0
+	pkgrel = 1
+	url = https://github.com/atomdrift-project/scan
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = bzip2
+	depends = rizin
+	depends = innoextract
+	optdepends = upx: binary analysis
+	provides = atomscan
+	provides = ascan
+	options = !lto
+	source = atomdrift-scan-2.13.0.tar.gz::https://github.com/atomdrift-project/scan/archive/v2.13.0.tar.gz
+	sha256sums = 51ef3a34ea283be2f5e455e8ec4c3bf1381dd67d10b8e72e64f5b8bb9c3d183a
+
+pkgname = atomdrift-scan
