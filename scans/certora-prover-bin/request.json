@@ -1,0 +1,8 @@
+{
+  "package": "certora-prover-bin",
+  "aur_commit": "60fbddcca6c8fe522e37e5aaed45b973d237590a",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-17T15:54:23Z"
+}
