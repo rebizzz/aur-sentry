@@ -1,0 +1,315 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cc-switch",
+    "version": "4.0.15-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "cb6ac98885623ed8d1275018af40bb7f5d834431",
+    "pkgbuild_sha256": "2a970283137b53e03c1363551bbbe2c8159d1f210e81809ac3f02a874a2f60c2",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-17T22:42:06.188409302+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cc-switch-4.0.15.tar.gz.part https://github.com/farion1231/cc\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/cc-switch-4.\"... /home/builder/build/cc-switch-4.\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cc-switch-4.\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cc-switc\"...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cc-switch-4.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cc-switch-4.0.15.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cc-switch-4.0.15.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-17T22:42:06.180988662+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "pnpm vulnerable to Command Injection via environment variable substitution (GHSA-2phv-j68v-wwqx)",
+      "url": "https://osv.dev/vulnerability/GHSA-2phv-j68v-wwqx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: pacquet trust-lockfile install can create dependency symlinks outside the project (GHSA-2rx9-3g3h-c2jv)",
+      "url": "https://osv.dev/vulnerability/GHSA-2rx9-3g3h-c2jv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Improper Certificate Validation in openssl (GHSA-34p9-f4q3-c4r7)",
+      "url": "https://osv.dev/vulnerability/GHSA-34p9-f4q3-c4r7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm v10+ Bypass \"Dependency lifecycle scripts execution disabled by default\" (GHSA-379q-355j-w6rj)",
+      "url": "https://osv.dev/vulnerability/GHSA-379q-355j-w6rj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509NameBuilder::build` returned object is not thread safe (GHSA-3gxf-9r58-2ghg)",
+      "url": "https://osv.dev/vulnerability/GHSA-3gxf-9r58-2ghg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Repository config can expand victim environment secrets into registry requests before scripts run (GHSA-3qhv-2rgh-x77r)",
+      "url": "https://osv.dev/vulnerability/GHSA-3qhv-2rgh-x77r"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl Use-After-Free in `Md::fetch` and `Cipher::fetch` (GHSA-4fcv-w3qc-ppgg)",
+      "url": "https://osv.dev/vulnerability/GHSA-4fcv-w3qc-ppgg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Reserved bin name deletes PNPM_HOME during global remove (GHSA-4gxm-v5v7-fqc4)",
+      "url": "https://osv.dev/vulnerability/GHSA-4gxm-v5v7-fqc4"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Unsafe default behavior breaks integrity check (GHSA-54hh-g5mx-jqcp)",
+      "url": "https://osv.dev/vulnerability/GHSA-54hh-g5mx-jqcp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm incorrectly parses tar archives relative to specification (GHSA-5r98-f33j-g8h7)",
+      "url": "https://osv.dev/vulnerability/GHSA-5r98-f33j-g8h7"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "96d6fc9ede29b43296ae4fac4b9ce953fac3d444923eafeab2d4673eee2ee787",
+  "signature": null
+}
