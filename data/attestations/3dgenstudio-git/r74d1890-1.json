@@ -1,0 +1,388 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "3dgenstudio-git",
+    "version": "r74d1890-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "fce660e7d26a058a24940ebf47499416f788e8e8",
+    "pkgbuild_sha256": "4e2f254beb212ed59e35b31b7d48b10a98094b30f0329e81ed2f9f39be66f66f",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-18T11:34:56.272249843+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 43,
+      "severity": "CRITICAL",
+      "description": "base64 decode invocation detected (often hides malicious payload)"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 43,
+      "severity": "HIGH",
+      "description": "Long base64-like encoded string found (may hide second-stage payload)"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 43,
+      "severity": "HIGH",
+      "description": "High Shannon entropy (5.64 bits/byte) detected in string literal - packed or encrypted payload"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "PKGBUILD",
+      "line": 43,
+      "severity": "CRITICAL",
+      "description": "Payload decoded from Base64 on line 43: bash /dev/tcp connection (standard reverse shell vector)"
+    },
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: .env.development, .env.docker.example"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/visualbruno/3\"... /home/builder/build/3dgenstudio-\"...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/visualbruno/3\"...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/visualbruno/3\"...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 946 on df62aab\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/3dgenstudio-\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/3dgenstudio-\"...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/3dgenstudio-\"... 3dgenstudio-git",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/3dgenstudio-\"...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg origin/main --",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-list --count HEAD",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --short HEAD",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Updated version: %s",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": ".env.development",
+        "operation": "canary_access",
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      },
+      {
+        "path": ".env.docker.example",
+        "operation": "canary_access",
+        "timestamp": "2026-10-18T11:34:56.259672950+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "npm Vulnerable to Global node_modules Binary Overwrite (GHSA-4328-8hgf-7wjr)",
+      "url": "https://osv.dev/vulnerability/GHSA-4328-8hgf-7wjr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm CLI exposing sensitive information through logs (GHSA-93f3-23rq-pjfp)",
+      "url": "https://osv.dev/vulnerability/GHSA-93f3-23rq-pjfp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Packing does not respect root-level ignore files in workspaces (GHSA-hj9c-8jmm-8c52)",
+      "url": "https://osv.dev/vulnerability/GHSA-hj9c-8jmm-8c52"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Token Leak in npm (GHSA-m5h6-hr3q-22h5)",
+      "url": "https://osv.dev/vulnerability/GHSA-m5h6-hr3q-22h5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Write in npm (GHSA-m6cx-g6qm-p2cx)",
+      "url": "https://osv.dev/vulnerability/GHSA-m6cx-g6qm-p2cx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Incorrect Permission Assignment for Critical Resource in NPM (GHSA-ph34-pc88-72gc)",
+      "url": "https://osv.dev/vulnerability/GHSA-ph34-pc88-72gc"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Local Privilege Escalation in npm (GHSA-v3jv-wrf4-5845)",
+      "url": "https://osv.dev/vulnerability/GHSA-v3jv-wrf4-5845"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm symlink reference outside of node_modules (GHSA-x8qc-rrcw-4r46)",
+      "url": "https://osv.dev/vulnerability/GHSA-x8qc-rrcw-4r46"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "90b8f7927dbc8964ab6ffb0d6c04cd56fa7558cbf2b30ee1bd623d6dfe0e7120",
+  "signature": null
+}
