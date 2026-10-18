@@ -1,0 +1,24 @@
+pkgbase = all-the-platforms-bin
+	pkgdesc = One command for all the platforms: read, search, post, chat and download on 67 platforms, with JSON output and an MCP server
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/WindustH/atp
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	optdepends = ffmpeg: merge video and audio, audio-only downloads
+	optdepends = chromium: pass human checks in a browser (or google-chrome, microsoft-edge, brave)
+	provides = all-the-platforms
+	conflicts = all-the-platforms
+	conflicts = all-the-platforms-git
+	conflicts = atp-bin
+	options = !strip
+	source_x86_64 = atp-0.2.0-x86_64.tar.gz::https://github.com/WindustH/atp/releases/download/v0.2.0/atp-0.2.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bd38424085dfbb4c53dc7602bc199aec140644c5eb681140ddd461f9a6ee5437
+	source_aarch64 = atp-0.2.0-aarch64.tar.gz::https://github.com/WindustH/atp/releases/download/v0.2.0/atp-0.2.0-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 79e23fe44d6a62b9bc6403b106bd75ef6269ca71164c3b419006b1ba688a26e1
+
+pkgname = all-the-platforms-bin
