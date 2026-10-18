@@ -1,0 +1,37 @@
+pkgbase = clice-nightly-bin
+	pkgdesc = Nightly C++ language server and matching crash symbols
+	pkgver = 0.1.2026101807
+	pkgrel = 1
+	url = https://github.com/clice-io/clice
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = patchelf
+	makedepends = python
+	makedepends = llvm
+	options = !strip
+	options = !debug
+	source = symbolize-0.1.2026101807.py::https://raw.githubusercontent.com/clice-io/clice/v0.1.2026101807/scripts/symbolize.py
+	sha256sums = a77049dbaddd1a8438cbc61a0ddb5dfece58c5981a49193bb2e79c38a637a6d9
+	source_x86_64 = clice-0.1.2026101807.x86_64-unknown-linux-gnu.tar.gz::https://github.com/clice-io/clice/releases/download/v0.1.2026101807/clice-0.1.2026101807.x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = clice-0.1.2026101807.x86_64-unknown-linux-gnu.symbols.tar.xz::https://github.com/clice-io/clice/releases/download/v0.1.2026101807/clice-0.1.2026101807.x86_64-unknown-linux-gnu.symbols.tar.xz
+	sha256sums_x86_64 = e331296ec5f98d4ad0d2c70eb73c216a87e4226f66dbad3237ed179d50b6b03a
+	sha256sums_x86_64 = 370bec389f41d35fadacafa7fab76d1bbc1d49c3ca4ad15d5d56181a852f7878
+	source_aarch64 = clice-0.1.2026101807.aarch64-unknown-linux-gnu.tar.gz::https://github.com/clice-io/clice/releases/download/v0.1.2026101807/clice-0.1.2026101807.aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = clice-0.1.2026101807.aarch64-unknown-linux-gnu.symbols.tar.xz::https://github.com/clice-io/clice/releases/download/v0.1.2026101807/clice-0.1.2026101807.aarch64-unknown-linux-gnu.symbols.tar.xz
+	sha256sums_aarch64 = cbf1a8ffb2e8b3092261d2a9f84c008c9bd37d970906b895baf934947437b340
+	sha256sums_aarch64 = fd102a113ae6054a0c48e2448f9f9e95d256a0d4319276454c8361a31a74608c
+
+pkgname = clice-nightly-bin
+	pkgdesc = Next-generation C++ language server (upstream nightly binary)
+	depends = glibc
+	provides = clice=0.1.2026101807
+	conflicts = clice
+	conflicts = clice-bin
+	conflicts = clice-git
+
+pkgname = clice-nightly-bin-debug
+	pkgdesc = Matching GSYM crash symbols for clice nightly
+	depends = clice-nightly-bin=0.1.2026101807-1
+	depends = python
+	depends = llvm
