@@ -1,0 +1,22 @@
+pkgbase = 18xx-maker-git
+	pkgdesc = 🚂 Prototyping tool for 18xx games 💸.
+	pkgver = 1.0.0.beta.138.r0.gbba4dac
+	pkgrel = 1
+	url = https://18xx-maker.com
+	arch = any
+	license = MIT
+	makedepends = gendesk
+	makedepends = nvm
+	makedepends = git
+	makedepends = pnpm
+	makedepends = npm
+	makedepends = jq
+	depends = electron44
+	provides = 18xx-maker=1.0.0.beta.138
+	conflicts = 18xx-maker
+	source = 18xx-maker.git::git+https://github.com/18xx-maker/18xx-maker
+	source = 18xx-maker.sh
+	sha256sums = SKIP
+	sha256sums = dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8
+
+pkgname = 18xx-maker-git
