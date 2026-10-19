@@ -1,0 +1,1960 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "appflowy-bin",
+    "version": "0.14.9-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f73f7e4b09c203f382fb2389fc96898402653a9d",
+    "pkgbuild_sha256": "5c9dda66aa3c554d620f31c183291abcee62f515d79ae54de805371f7f21a8a4",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-19T13:52:34.206822936+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o LICENSE.part https://github.com/AppFlowy-IO/A\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/LICENSE.part /home/builder/build/LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o AppFlowy-0.14.9-linux-x86_64.deb\"... https://github.com/AppFlowy-IO/A\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/AppFlowy-0.1\"... /home/builder/build/AppFlowy-0.1\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "b2sum /home/builder/build/LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "b2sum /home/builder/build/AppFlowy-0.1\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/LICENSE /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- LICENSE",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf LICENSE -q *",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/AppFlowy\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/AppFlowy-0.1\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- AppFlowy-0.14.9-linux-x86_64.deb",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf AppFlowy-0.14.9-linux-x86_64.deb -q *",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf AppFlowy-0.14.9-linux-x86_64.deb",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/appflowy-bin-0.14.9-1-x86_6\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/appflowy-bin-0.14.9-1-x86_6\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/appflowy-bin-0.14.9-1-x86_6\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B8AC08600F108CDF",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 7A4E76095D8A52E4",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 94657AB20F2A092B",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- C06086337C50773E",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 93B11DAA4C197E3D",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F296BDE50368C6CE",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FC1B547C8D8172C8",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 3D4C5008BB5C8D29",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 06096A6AD1CEDDAC",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FDC3040B92ACA748",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A91764759326B440",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 39E4B877E62EB915",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 9B7A287D9A2EC608",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 6D42BDD116E0068F",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 498EF247F340C1E0",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 632C3CC0D1C9CAF6",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 786C63F330D7CB92",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0F65C7D881506130",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E85B8683EB48BC95",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A85E811EB4CA2E08",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 83BC8889351B5DEBBB68416EB8AC0860\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 1519D5ABA65BF6FC2B73C7567A4E7609\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- ADC8A1FCC15E01D45310419E94657AB2\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E499C79F53C96A54E572FEE1C0608633\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F00B96D15228013FFC9C9D0393B11DAA\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 54C1FD273361EA514A237793F296BDE5\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E240B57E2C4630BA768E2F26FC1B547C\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- D2E95FEC015CF1F911AAAB0C3D4C5008\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 535F8C0339450F054A4D282706096A6A\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 262A58EC6C51F7EA395B2E2DFDC3040B\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 2E36D8620221482FC45CB7F2A9176475\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 8FC15A064950A99DD1BD14DD39E4B877\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 62CC73F884E52957B2FDD8839B7A287D\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0429897DE5F3BDAC537A30696D42BDD1\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 5E6D49448958B384301F1F22498EF247\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 14E46FE5FD69F2E287E244DB632C3CC0\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B5971F2C5C10A9A08C60030F786C63F3\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 95220BE99CE6FF778AE0DC670F65C7D8\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 80247D99EABD3A4D1E3A1836E85B8683\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B0D65295476606B71F0C6F82A85E811E\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_4ROxB4/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "setcap cap_net_bind_service cap_net_adm\"... usr/lib/gstreamer-1.0/gst-ptp-he\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_3WLQGG/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "vercmp 0 0.32.0-2",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "dconf update",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_yLipS8/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "vercmp 0 2:2.13.93-1",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/40-fo\"... /etc/fonts/conf.d",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "find usr/share/fontconfig/conf.defaul\"... -mindepth 1",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/60-generic.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-yes-antiali\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/60-latin.conf",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/50-user.conf",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-scale-bitma\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/51-local.conf",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/90-synthetic.c\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/45-generic.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-hinting-sli\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/80-delicious.c\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/49-sansserif.c\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/45-latin.conf",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/48-guessfamily\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/65-fonts-persi\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/30-metric-alia\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/11-lcdfilter-d\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/20-unhint-smal\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/40-nonlatin.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/69-unifont.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/48-spacing.con\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/65-nonlatin.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "vercmp 0 0",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/fc-cache -rs",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... sysusers",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/systemd-sysusers",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-user",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/env PKGSYSTEM_ENABLE_FSYNC=0 /usr/bin/update-mime-database /usr/share/mime",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/update-mime-database /usr/share/mime",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... reload dbus",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/fc-cache -s",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gio-querymodules /usr/lib/gio/modules",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/glib-compile-schemas /usr/share/glib-2.0/schemas",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gtk-query-immodules-3.0 --update-cache",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/gtk-u\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gtk-update-icon-cache -q usr/share/icons/Adwaita/",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gtk-update-icon-cache -q usr/share/icons/AdwaitaLegacy/",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gtk-update-icon-cache -q usr/share/icons/default/",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gtk-update-icon-cache -q usr/share/icons/hicolor/",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/update-desktop-database --quiet",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm appflowy-bin",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm appflowy-bin",
+        "parent": null,
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T13:52:34.143941615+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T13:52:34.157225990+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1563,
+    "elf_object_count": 168,
+    "elf_objects": [
+      {
+        "path": "usr/lib/AppFlowy/AppFlowy",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libbluray.so.2.4.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libXss.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libpocketsphinx.so.3.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libSDL2-2.0.so.0.18.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libvorbis.so.0.4.9",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libtasn1.so.6.6.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libjpeg.so.8.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libtinfo.so.6.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libquadmath.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libcdio_paranoia.so.2.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libncursesw.so.6.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libmpg123.so.0.46.7",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libXxf86vm.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libserd-0.so.0.30.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libdesktop_drop_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsndio.so.7.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libbs2b.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/liblua5.2.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libkrb5.so.3.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/librabbitmq.so.4.4.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libiec61883.so.0.1.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libvdpau.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libssl.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libkrb5support.so.0.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libflowy_infra_ui_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libicudata.so.70.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libusb-1.0.so.0.3.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libbitsdojo_window_linux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libpdfium.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libpostproc.so.55.9.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libpulsecommon-15.99.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libFLAC.so.8.3.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libcdio_cdda.so.2.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/liburl_launcher_linux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libflite_cmu_us_kal.so.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libflite.so.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libogg.so.0.8.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libva-drm.so.2.1400.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsuper_native_extensions.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsphinxbase.so.3.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libbz2.so.1.0.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libasyncns.so.0.3.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libva.so.2.1400.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libk5crypto.so.3.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsodium.so.23.3.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libavfilter.so.7.110.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libvorbisfile.so.3.3.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libcrypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libnorm.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libidn2.so.0.3.7",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libOpenCL.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libwebpmux.so.3.0.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libscreen_retriever_linux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libmedia_kit_video_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libvidstab.so.1.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libflite_cmu_us_rms.so.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libdc1394.so.25.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libplacebo.so.192",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libudev.so.1.7.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libmysofa.so.1.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsratom-0.so.0.6.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libmd.so.0.0.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libarchive.so.13.6.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/librom1394.so.0.3.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libgssapi_krb5.so.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libzvbi.so.0.13.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libslang.so.2.3.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libacl.so.1.1.2301",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libaudioplayers_linux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libwebp.so.7.1.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libvorbisenc.so.2.0.12",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libva-x11.so.2.1400.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libmedia_kit_libs_linux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libdvdread.so.8.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsuper_native_extensions_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/librubberband.so.2.1.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libkeyutils.so.1.9",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsixel.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libavutil.so.56.70.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libflite_cmu_us_awb.so.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libflutter_linux_gtk.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libdb-5.3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsndfile.so.1.0.31",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libdvdnav.so.4.3.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libicuuc.so.70.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libunistring.so.2.2.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libirondash_engine_context_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libopenjp2.so.2.4.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libdart_ffi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libtwolame.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsord-0.so.0.16.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libopenmpt.so.0.3.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libavcodec.so.58.134.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libcaca.so.0.99.19",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libdav1d.so.5.1.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libgomp.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libswresample.so.3.9.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsamplerate.so.0.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libchromaprint.so.1.5.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libflite_cmulex.so.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libaom.so.3.3.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libfile_saver_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libtheoraenc.so.1.1.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libcom_err.so.2.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libflite_cmu_us_slt.so.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libgme.so.0.6.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libasound.so.2.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libgfortran.so.5.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsoxr.so.0.1.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libmujs.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libx265.so.199",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libass.so.9.1.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsnappy.so.1.1.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/liblcms2.so.2.0.12",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libhotkey_manager_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libraw1394.so.11.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libhogweed.so.6.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libapparmor.so.1.8.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libwindow_manager_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libmpv.so.1.109.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libopenal.so.1.19.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libssh-gcrypt.so.4.8.7",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libudfread.so.0.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libmfx.so.1.35",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libfile_selector_linux_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libxcb-xfixes.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libzmq.so.5.2.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libbsd.so.0.11.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libpulse.so.0.24.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libswscale.so.5.9.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/liblapack.so.3.10.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libXv.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libmp3lame.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libxvidcore.so.4.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libgmp.so.10.4.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libtheoradec.so.1.1.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libgtk_plugin.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libflite_cmu_us_kal16.so.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libpgm-5.3.so.0.0.128",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libva-wayland.so.2.1400.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libshine.so.3.0.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libavc1394.so.0.3.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libnettle.so.8.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libcdio.so.19.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libsrt-gnutls.so.1.4.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libgnutls.so.30.31.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/liblilv-0.so.0.24.12",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libcodec2.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libzimg.so.2.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libjack.so.0.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libspeex.so.1.5.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libp11-kit.so.0.3.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libX11-xcb.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libgsm.so.1.0.19",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libapp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libx264.so.163",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libdecor-0.so.0.100.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libxcb-shape.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libnuma.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libavformat.so.58.76.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libxml2.so.2.9.13",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libuchardet.so.0.0.7",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libblas.so.3.10.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libavdevice.so.58.13.100",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libopus.so.0.8.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libvpx.so.7.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/AppFlowy/lib/libflite_usenglish.so.2.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Potential Command Injection in libnotify (GHSA-6898-wx94-8jq8)",
+      "url": "https://osv.dev/vulnerability/GHSA-6898-wx94-8jq8"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ebca35222b398ad0b205b04ca3794489c95e8854aa708f12b0595f05bc410079",
+  "signature": null
+}
