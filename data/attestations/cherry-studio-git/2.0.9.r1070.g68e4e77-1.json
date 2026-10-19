@@ -1,0 +1,450 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cherry-studio-git",
+    "version": "2.0.9.r1070.g68e4e77-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "62b0dbaf1a80ea8d902a3d307d5e3cfba1da5e25",
+    "pkgbuild_sha256": "05d0a94b7d230c18c0b9ed2725b2e9c760f8acb851f289157750734e29aabc3d",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-19T05:11:38.835573764+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 105,
+      "severity": "LOW",
+      "description": "unlocked npm/bun/yarn install during build (unpinned dependency risk)"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: .env.example"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/CherryHQ/cher\"... /home/builder/build/cherry-studi\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/CherryHQ/cher\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/CherryHQ/cher\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 872 on 2332ed8\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cherry-studi\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cherry-studi\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cherry-studi\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cherry-studi\"... cherry-studio.git",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cherry-studi\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cherry-s\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cherry-studi\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cherry-studio.sh",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf cherry-studio.sh -q *",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find /home/builder/build/src -maxdepth 1 -mindepth 1 -type d ! -name .*",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find /home/builder/build/src/cherry-s\"... -name package.json ! -path */node_modules/*",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -q .",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -oE [0-9",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "head -1",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "xargs -I{} jq -r (.devDependencies.electron // .d\"... {}",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find /home/builder/build/src/cherry-s\"... -name package.json ! -path */node_modules/* -print",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "jq -r (.devDependencies.electron // .d\"... /home/builder/build/src/cherry-s\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i -e \\n        s/@electronversion@/44/\"... /home/builder/build/src/cherry-s\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": ".env.example",
+        "operation": "canary_access",
+        "timestamp": "2026-10-19T05:11:38.768458142+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Mise's local credential_command executes untrusted config (GHSA-29hf-rm4x-xxph)",
+      "url": "https://osv.dev/vulnerability/GHSA-29hf-rm4x-xxph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv: Path traversal on Windows through wheel extraction (GHSA-2cv4-cqwr-gwf7)",
+      "url": "https://osv.dev/vulnerability/GHSA-2cv4-cqwr-gwf7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm vulnerable to Command Injection via environment variable substitution (GHSA-2phv-j68v-wwqx)",
+      "url": "https://osv.dev/vulnerability/GHSA-2phv-j68v-wwqx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: pacquet trust-lockfile install can create dependency symlinks outside the project (GHSA-2rx9-3g3h-c2jv)",
+      "url": "https://osv.dev/vulnerability/GHSA-2rx9-3g3h-c2jv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm v10+ Bypass \"Dependency lifecycle scripts execution disabled by default\" (GHSA-379q-355j-w6rj)",
+      "url": "https://osv.dev/vulnerability/GHSA-379q-355j-w6rj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Repository config can expand victim environment secrets into registry requests before scripts run (GHSA-3qhv-2rgh-x77r)",
+      "url": "https://osv.dev/vulnerability/GHSA-3qhv-2rgh-x77r"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Vulnerable to Global node_modules Binary Overwrite (GHSA-4328-8hgf-7wjr)",
+      "url": "https://osv.dev/vulnerability/GHSA-4328-8hgf-7wjr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Local settings bypass config trust checks (GHSA-436v-8fw5-4mj8)",
+      "url": "https://osv.dev/vulnerability/GHSA-436v-8fw5-4mj8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv is vulnerable to arbitrary file write through entry point names (GHSA-4gg8-gxpx-9rph)",
+      "url": "https://osv.dev/vulnerability/GHSA-4gg8-gxpx-9rph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "pnpm: Reserved bin name deletes PNPM_HOME during global remove (GHSA-4gxm-v5v7-fqc4)",
+      "url": "https://osv.dev/vulnerability/GHSA-4gxm-v5v7-fqc4"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "75294504382805f5ba1e48d504d9520b75db0451faafcedf49bc0e95b84d25f7",
+  "signature": null
+}
