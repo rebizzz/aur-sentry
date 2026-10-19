@@ -1,0 +1,228 @@
+# Maintainer: zxp19821005 <zxp19821005 at 163 dot com>
+pkgname=cherry-studio-git
+_pkgname="Cherry Studio"
+pkgver=2.0.9.r1070.g68e4e77
+_electronversion=44
+_nodeversion=24
+pkgrel=1
+pkgdesc="AI productivity studio with smart chat, autonomous agents, and 300+ assistants. Unified access to frontier LLMs."
+arch=('any')
+url="https://cherryai.com/"
+_ghurl="https://github.com/CherryHQ/cherry-studio"
+license=(
+    'AGPL-3.0-or-later'
+    'LicenseRef-custom'
+)
+conflicts=("${pkgname%-git}")
+provides=("${pkgname%-git}=${pkgver%.r*}")
+depends=(
+    "electron${_electronversion}"
+    'libevdev'
+    'python'
+    'python-yaml'
+    'nodejs'
+    'bun'
+    'ripgrep'
+    'uv'
+    'mise'
+)
+makedepends=(
+    'gendesk'
+    'npm'
+    'nvm'
+    'git'
+    'pnpm'
+    'jq'
+)
+source=(
+    "${pkgname%-git}.git::git+${_ghurl}"
+    "${pkgname%-git}.sh"
+)
+sha256sums=('SKIP'
+            'dfcd6603d29c7b8d88e019b517a2e5c1a7b5ab905a0961a8b81adfa508b258b8')
+_get_project_dir() {
+	local d
+	while IFS= read -r d; do
+		find "$d" -name "package.json" ! -path "*/node_modules/*" 2>/dev/null | grep -q . && { echo "$d"; return; }
+	done < <(find "${srcdir}" -maxdepth 1 -mindepth 1 -type d ! -name '.*')
+}
+pkgver() {
+	cd "$(_get_project_dir)"
+	set -o pipefail
+	git describe --long --tags --abbrev=7 --match '[0-9]*' --match 'v[0-9]*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//g' ||
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+}
+_ensure_local_nvm() {
+	local NVM_DIR="${srcdir}/.nvm"
+	source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+	nvm install "${_nodeversion}"
+	nvm use "${_nodeversion}"
+}
+_get_app_dir() {
+	find "${srcdir}" -type f -name "resources.pak" ! -path "*/node_modules/*" -printf '%h\n' 2>/dev/null \
+		| while read -r d; do [[ -d "${d}/resources" ]] && { echo "$d"; return 0; }; done
+}
+_get_electron_version() {
+	_elec_ver=$(find "$(_get_project_dir)" -name "package.json" ! -path "*/node_modules/*" -print \
+		| xargs -I{} jq -r '(.devDependencies.electron // .dependencies.electron) // empty' {} 2>/dev/null \
+		| grep -oE '[0-9]+' | head -1)
+	[[ -z "${_elec_ver}" ]] && return 1
+	(( _elec_ver == _electronversion )) && c=32 || c=31
+	echo -e "Electron version: \033[1;${c}m${_elec_ver}$([[ $c -eq 31 ]] && echo " (expected ${_electronversion})")\033[0m"
+}
+_set_build_env() {
+	export ELECTRON_DIST="/usr/lib/electron${_electronversion}"
+	export ELECTRON_OVERRIDE_DIST_PATH="${ELECTRON_DIST}"
+	export ELECTRON_SKIP_BINARY_DOWNLOAD=1
+	export ELECTRON_BUILDER_OFFLINE=true
+	export SYSTEM_ELECTRON_VERSION="$(electron${_electronversion} -v | sed 's/^v//')"
+	export HOME="${srcdir}/.home"
+	export XDG_CACHE_HOME="${HOME}/.cache"
+	export XDG_CONFIG_HOME="${HOME}/.config"
+	export XDG_DATA_HOME="${HOME}/.local/share"
+	export XDG_STATE_HOME="${HOME}/.local/state"
+	export PNPM_HOME="${HOME}/.pnpm/bin"
+	export pnpm_config_cache_dir="${HOME}/.pnpm_cache"
+	export pnpm_config_store_dir="${HOME}/.pnpm_store"
+	export pnpm_config_global_dir="${HOME}/.pnpm/global"
+	export pnpm_config_state_dir="${HOME}/.pnpm/state"
+	export pnpm_config_node_linker=hoisted
+	export pnpm_config_minimum_release_age=0
+	export pnpm_config_update_notifier=false
+	export COREPACK_NPM_REGISTRY="${COREPACK_NPM_REGISTRY:-${NPM_CONFIG_REGISTRY:-https://registry.npmjs.org}}"
+	export COREPACK_HOME="${HOME}/.corepack"
+	mkdir -p "${HOME}" "${PNPM_HOME}" "${pnpm_config_cache_dir}" "${pnpm_config_store_dir}" "${pnpm_config_global_dir}" "${pnpm_config_state_dir}" "${COREPACK_HOME}"
+	export PATH="${PNPM_HOME}:${PATH}"
+	local _pnpmver=""
+	local _pkgjson="$(_get_project_dir)/package.json"
+	if [ -f "${_pkgjson}" ]; then
+		_pnpmver="$(grep -o '"packageManager"[^,]*' "${_pkgjson}" 2>/dev/null | grep -oE 'pnpm@[^"+]+' | head -n1 | sed 's/^pnpm@//')"
+		if [ -z "${_pnpmver}" ]; then
+			_pnpmver="$(grep -oE '"pnpm"[[:space:]]*:[[:space:]]*"[^"]+"' "${_pkgjson}" 2>/dev/null | grep -oE '[0-9][0-9.]*' | head -n1)"
+		fi
+	fi
+	if [ -n "${_pnpmver}" ]; then
+		npm install -g "pnpm@${_pnpmver}" --prefix "${HOME}/.pnpm" \
+			--registry "${COREPACK_NPM_REGISTRY}"
+	fi
+}
+prepare() {
+    cd "$(_get_project_dir)"
+    _get_electron_version
+    sed -i -e "
+        s/@electronversion@/${_electronversion}/g
+        s/@appname@/${pkgname%-git}/g
+    " "${srcdir}/${pkgname%-git}.sh"
+    gendesk -q -f -n \
+        --pkgname="${pkgname%-git}" \
+        --pkgdesc="${pkgdesc}" \
+        --categories="Utility" \
+        --name="${_pkgname}" \
+        --exec="${pkgname%-git} %U"
+    _ensure_local_nvm
+    _set_build_env
+    jq --arg ver "${SYSTEM_ELECTRON_VERSION}" '.devDependencies.electron = $ver' package.json > package.json.tmp && mv package.json.tmp package.json
+    find src -type f -exec sed -i "s/process.resourcesPath/\'\/usr\/lib\/${pkgname%-git}\'/g" {} +
+    local _arch_name
+    case "${CARCH}" in
+        x86_64)  _arch_name="x64" ;;
+        aarch64) _arch_name="arm64" ;;
+    esac
+    local _binaries_dir="resources/binaries/linux-${_arch_name}"
+    mkdir -p "${_binaries_dir}"
+    touch "${_binaries_dir}/"{mise,bun,uv,uvx,rg}
+    export NODE_ENV=development
+    pnpm install --ignore-scripts
+    sed -i '/"postinstall": "node \.\/script\/install"/d' node_modules/onnxruntime-node/package.json
+    node -e "const fs=require('fs'); const pkg=JSON.parse(fs.readFileSync('package.json','utf8')); pkg.devDependencies['node-abi']='4.33.0'; fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2)+'\n')"
+    pnpm install --ignore-scripts
+    pnpm --filter @cherrystudio/dsh-bridge build
+    pnpm --filter @cherrystudio/remote-protocol build
+    pnpm --filter @cherrystudio/remote-transport build
+}
+build() {
+    cd "$(_get_project_dir)"
+    _ensure_local_nvm
+    _set_build_env
+    export NODE_ENV=production
+    pnpm rebuild better-sqlite3 node-pty selection-hook sharp @napi-rs/canvas @napi-rs/system-ocr tesseract.js koffi esbuild @swc/core electron-winstaller @paymoapp/electron-shutdown-handler @sentry/cli unrs-resolver @j178/prek @deepseek-ai/dsh-subprocess-local
+    python3 << 'PYTHON_EOF'
+import re
+
+with open('scripts/linux-native/compat.js', 'r') as f:
+    content = f.read()
+content = content.replace("glibc: '2.28'", "glibc: '99.99'")
+with open('scripts/linux-native/compat.js', 'w') as f:
+    f.write(content)
+
+with open('scripts/packaging/before-pack.js', 'r') as f:
+    content = f.read()
+
+content = re.sub(
+    r"if \(platform === 'linux'\) \{.*?return",
+    """if (platform === 'linux') {
+    if (context.arch !== Arch.arm64 && context.arch !== Arch.x64) {
+      throw new Error(`Unsupported Linux packaging architecture: ${context.arch}`)
+    }
+    const { getNativeArtifactPaths, readProjectBuildMetadata, verifyNativeArtifact } = require('../linux-native/compat')
+    const artifactPaths = getNativeArtifactPaths(projectRoot, arch)
+    const metadata = readProjectBuildMetadata(projectRoot)
+    const expected = { ...metadata, arch }
+    const artifact = verifyNativeArtifact({ ...artifactPaths, expected })
+    process.stdout.write(`Using locally compiled GLIBC-compatible better-sqlite3 for linux-${arch} (${artifact.inspection.sha256})\\n`)
+    return""",
+    content,
+    flags=re.DOTALL
+)
+
+content = re.sub(
+    r"console\.log\(`Downloading bundled binaries.*?verifyBundledBinaries\(platform, arch\)",
+    """console.log(`Skipping bundled binaries download for ${platform}-${arch}, using system binaries`)
+  const { verifyBundledBinaries } = require('../download-binaries')
+  verifyBundledBinaries(platform, arch)""",
+    content,
+    flags=re.DOTALL
+)
+
+with open('scripts/packaging/before-pack.js', 'w') as f:
+    f.write(content)
+
+with open('electron-builder.yml', 'r') as f:
+    content = f.read()
+content = "npmRebuild: false\n" + content
+with open('electron-builder.yml', 'w') as f:
+    f.write(content)
+PYTHON_EOF
+    pnpm exec dotenv pnpm run build
+    pnpm -c exec "electron-builder --linux dir -c.electronDist=${ELECTRON_DIST} --config electron-builder.yml"
+    find "$(_get_app_dir)/resources" -type d -exec chmod 755 {} +
+	case "${CARCH}" in
+		aarch64)	_archrem=x64	;;
+		x86_64)		_archrem=arm	;;
+	esac
+	find "$(_get_app_dir)/resources/app.asar.unpacked" -depth \
+		\( -name "darwin*" -o -name "win32*" -o -name "*${_archrem}"* \) \
+		-exec rm -rf {} +
+}
+package() {
+    install -Dm755 "${srcdir}/${pkgname%-git}.sh" "${pkgdir}/usr/bin/${pkgname%-git}"
+    install -Dm755 -d "${pkgdir}/usr/lib/${pkgname%-git}"
+	cp -a "$(_get_app_dir)/resources/." "${pkgdir}/usr/lib/${pkgname%-git}/"
+    rm -rf "${pkgdir}/usr/lib/${pkgname%-git}/default_app.asar"
+    local _arch_name
+    case "${CARCH}" in
+        aarch64) _arch_name="linux-arm64"   ;;
+        x86_64)  _arch_name="linux-x64"     ;;
+    esac
+    local _binaries_dir="${pkgdir}/usr/lib/${pkgname%-git}/app.asar.unpacked/resources/binaries/${_arch_name}"
+    mkdir -p "${_binaries_dir}"
+    rm -rf "${_binaries_dir}/"{mise,bun,uv,uvx,rg}
+    ln -sf /usr/bin/mise "${_binaries_dir}/mise"
+    ln -sf /usr/bin/bun "${_binaries_dir}/bun"
+    ln -sf /usr/bin/uv "${_binaries_dir}/uv"
+    ln -sf /usr/bin/uvx "${_binaries_dir}/uvx"
+    ln -sf /usr/bin/rg "${_binaries_dir}/rg"
+    install -Dm644 "$(_get_project_dir)/${pkgname%-git}.desktop" -t "${pkgdir}/usr/share/applications"
+    install -Dm644 "$(_get_project_dir)/build/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
+    install -Dm644 "$(_get_project_dir)/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
