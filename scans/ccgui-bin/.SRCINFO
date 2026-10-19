@@ -1,0 +1,19 @@
+pkgbase = ccgui-bin
+	pkgdesc = Multi-engine AI coding desktop client (prebuilt binary)
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://github.com/zhukunpenglinyutong/desktop-cc-gui
+	arch = x86_64
+	license = NOASSERTION
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	provides = ccgui
+	conflicts = ccgui
+	noextract = ccgui_1.1.5_amd64.AppImage
+	options = !strip
+	source = ccgui_1.1.5_amd64.AppImage::https://github.com/zhukunpenglinyutong/desktop-cc-gui/releases/download/v1.1.5/CC.GUI_1.1.5_amd64.AppImage
+	sha256sums = 137fadc0d589d7105b003da3a62edf5bc44c7cc35a0f916aef95100b079d7de6
+
+pkgname = ccgui-bin
