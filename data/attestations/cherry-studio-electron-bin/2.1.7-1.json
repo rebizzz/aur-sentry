@@ -1,0 +1,455 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cherry-studio-electron-bin",
+    "version": "2.1.7-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "0b2689a4a7ad4583ee45b60a02844c240c291881",
+    "pkgbuild_sha256": "c952d9a2032542c1dbcf81ab1e7691a15d3a71ce5ff4ed2e99b321cbb167c080",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-19T05:09:03.029462186+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (7 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o LICENSE-2.1.7.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/LICENSE-2.1.\"... /home/builder/build/LICENSE-2.1.\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cherry-studio-electron-2.1.7-x86\"... https://github.com/CherryHQ/cher\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/cherry-studi\"... /home/builder/build/cherry-studi\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/LICENSE-2.1.\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cherry-studi\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/LICENSE-\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/LICENSE-2.1.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- LICENSE-2.1.7",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf LICENSE-2.1.7 -q *",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cherry-s\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cherry-studi\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cherry-studio-electron.sh",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf cherry-studio-electron.sh -q *",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cherry-studio-electron-2.1.7-x86\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf cherry-studio-electron-2.1.7-x86\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf cherry-studio-electron-2.1.7-x86\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i -e \\n        s/@electronversion@/44/\"... /home/builder/build/src/cherry-s\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -oP Electron/\\\\K[0-9",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "head -1",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -nr",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find /home/builder/build/src -type f -name resources.pak ! -path */node_modules/* -printf %h\\\\n",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cut -d  -f2-",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find /home/builder/build/src/opt/Cher\"... -maxdepth 1 -type f -executable -printf %s %p\\\\n",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "strings /home/builder/build/src/opt/Cher\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i -e \\n        s/\\\"\\\\/opt\\\\/Cherry Studio\"... /home/builder/build/src/usr/shar\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find /home/builder/build/src/app.asar\"... -type f -exec sed -i s/process.resourcesPath/\\\\'\\\\/usr\\\\\"... {} +",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-19T05:09:03.014571960+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Mise's local credential_command executes untrusted config (GHSA-29hf-rm4x-xxph)",
+      "url": "https://osv.dev/vulnerability/GHSA-29hf-rm4x-xxph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv: Path traversal on Windows through wheel extraction (GHSA-2cv4-cqwr-gwf7)",
+      "url": "https://osv.dev/vulnerability/GHSA-2cv4-cqwr-gwf7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Local settings bypass config trust checks (GHSA-436v-8fw5-4mj8)",
+      "url": "https://osv.dev/vulnerability/GHSA-436v-8fw5-4mj8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv is vulnerable to arbitrary file write through entry point names (GHSA-4gg8-gxpx-9rph)",
+      "url": "https://osv.dev/vulnerability/GHSA-4gg8-gxpx-9rph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "bun vulnerable to OS Command Injection (GHSA-4j66-8f4r-3pjx)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j66-8f4r-3pjx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Mise vulnerable to arbitrary command execution via task-include files in an untrusted, config-less repository (GHSA-77g9-363w-rccq)",
+      "url": "https://osv.dev/vulnerability/GHSA-77g9-363w-rccq"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uv allows ZIP payload obfuscation through parsing differentials (GHSA-8qf3-x8v5-2pj8)",
+      "url": "https://osv.dev/vulnerability/GHSA-8qf3-x8v5-2pj8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "mise HTTP backend uses raw version path for install symlink destination (GHSA-f94h-j2qg-fxw3)",
+      "url": "https://osv.dev/vulnerability/GHSA-f94h-j2qg-fxw3"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Mise Vulnerable to Arbitrary Code Execution via Tera Templates in .tool-versions Files (Trust Bypass) (GHSA-fjj5-v948-whjj)",
+      "url": "https://osv.dev/vulnerability/GHSA-fjj5-v948-whjj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "OS command injection in ripgrep (GHSA-g4xg-fxmg-vcg5)",
+      "url": "https://osv.dev/vulnerability/GHSA-g4xg-fxmg-vcg5"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "71711da5ab367937720c281c31768c93ca27d7f6164a41d1913d89721a88073c",
+  "signature": null
+}
