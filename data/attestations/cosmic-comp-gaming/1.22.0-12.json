@@ -1,0 +1,471 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cosmic-comp-gaming",
+    "version": "1.22.0-12",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "84a8922af3feb665ab3fb019afdb936320825be3",
+    "pkgbuild_sha256": "e786bc62077f1c2beab527a625a13d55682905de1b092ed18d2810a47b65f9ee",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-19T13:50:44.541846640+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/skygrango/cos\"... /home/builder/build/cosmic-comp",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/skygrango/cos\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/skygrango/cos\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1411 on 063c19\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cosmic-comp rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cosmic-comp/\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/skygrango/cos\"... /home/builder/build/cosmic-setti\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1435 on 063c19\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cosmic-setti\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cosmic-setti\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/skygrango/cos\"... /home/builder/build/cosmic-randr",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1459 on 063c19\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cosmic-randr rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cosmic-randr\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/skygrango/xdg\"... /home/builder/build/xdg-desktop-\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/skygrango/xdg\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/skygrango/xdg\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1483 on 063c19\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/xdg-desktop-\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/xdg-desktop-\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cosmic-comp cosmic-comp",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cosmic-comp",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg origin/vulkan-v16 --",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cosmic-setti\"... cosmic-settings",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cosmic-setti\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg origin/hdr_v1 --",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cosmic-randr cosmic-randr",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cosmic-randr",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg origin/vrr_target_rate_v2 --",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/xdg-desktop-\"... xdg-desktop-portal-cosmic",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/xdg-desktop-\"...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg origin/hdr-v2 --",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -n s/host: //p",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-19T13:50:44.521818772+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can fill the file system (GHSA-2hvr-h6gw-qrxp)",
+      "url": "https://osv.dev/vulnerability/GHSA-2hvr-h6gw-qrxp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo prior to Rust 1.26.0 may download the wrong dependency (GHSA-9f3p-wvj7-q82x)",
+      "url": "https://osv.dev/vulnerability/GHSA-9f3p-wvj7-q82x"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo not respecting umask when extracting crate archives (GHSA-j3xp-wfr4-hx87)",
+      "url": "https://osv.dev/vulnerability/GHSA-j3xp-wfr4-hx87"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo crates in third party registries can override the cached source of other crates (GHSA-jq42-7mfv-hm57)",
+      "url": "https://osv.dev/vulnerability/GHSA-jq42-7mfv-hm57"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo can be coerced to share credentials between registries (GHSA-p688-r7jv-fm6f)",
+      "url": "https://osv.dev/vulnerability/GHSA-p688-r7jv-fm6f"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo did not verify SSH host keys (GHSA-r5w3-xm58-jv6j)",
+      "url": "https://osv.dev/vulnerability/GHSA-r5w3-xm58-jv6j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can corrupt arbitrary files (GHSA-rfj2-q3h3-hm5j)",
+      "url": "https://osv.dev/vulnerability/GHSA-rfj2-q3h3-hm5j"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious dependencies can inject arbitrary JavaScript into cargo-generated timing reports (GHSA-wrrj-h57r-vx9p)",
+      "url": "https://osv.dev/vulnerability/GHSA-wrrj-h57r-vx9p"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "609a809eae3a9922d9da08b923f80cbe59bf6f77069087d5ff26cfa8c1785449",
+  "signature": null
+}
