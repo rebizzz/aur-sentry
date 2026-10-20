@@ -1,0 +1,456 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aurgen",
+    "version": "1.9.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a11d3e6e7a95d57f2e5ddf47ad673c3643502798",
+    "pkgbuild_sha256": "12d623e14b9b976c73e539bc99f2bf62b65640c943a4baa0324cd0b2fec94ff4",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-20T17:35:27.245997554+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aurgen-1.9.2.tar.gz.part https://github.com/eserlxl/aurge\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aurgen-1.9.2\"... /home/builder/build/aurgen-1.9.2\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aurgen-1.9.2.tar.gz.sig.part https://github.com/eserlxl/aurge\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "b2sum /home/builder/build/aurgen-1.9.2\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/aurgen-1\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aurgen-1.9.2\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aurgen-1.9.2.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf aurgen-1.9.2.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aurgen-1.9.2.tar.gz.sig",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf aurgen-1.9.2.tar.gz.sig -q *",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aurgen-1.9.2-1-any.pkg.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aurgen-1.9.2-1-any.pkg.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/aurgen-1.9.2-1-any.pkg.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- EA4F7B321A906AD9",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 04DC3FB1445FECA813C27EFAEA4F7B32\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm aurgen",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm aurgen",
+        "parent": null,
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-20T17:35:27.236043047+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-20T17:35:27.244185562+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 27,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary file overwrite in tar-rs (GHSA-2367-c296-3mp2)",
+      "url": "https://osv.dev/vulnerability/GHSA-2367-c296-3mp2"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "node-tar: Decompression/parse DoS via unlimited input (GHSA-23hp-3jrh-7fpw)",
+      "url": "https://osv.dev/vulnerability/GHSA-23hp-3jrh-7fpw"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "node-tar has a race condition leading to uninitialized memory exposure (GHSA-29xp-372q-xqph)",
+      "url": "https://osv.dev/vulnerability/GHSA-29xp-372q-xqph"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-2m8x-mvfx-gwgj)",
+      "url": "https://osv.dev/vulnerability/GHSA-2m8x-mvfx-gwgj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "node-tar Vulnerable to Arbitrary File Creation/Overwrite via Hardlink Path Traversal (GHSA-34x7-hfp2-rc4v)",
+      "url": "https://osv.dev/vulnerability/GHSA-34x7-hfp2-rc4v"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Creation/Overwrite due to insufficient absolute path sanitization (GHSA-3jfq-g458-7qm9)",
+      "url": "https://osv.dev/vulnerability/GHSA-3jfq-g458-7qm9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "tar has a PAX header desynchronization issue (GHSA-3pv8-6f4r-ffg2)",
+      "url": "https://osv.dev/vulnerability/GHSA-3pv8-6f4r-ffg2"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-4wrp-79m8-9m9p)",
+      "url": "https://osv.dev/vulnerability/GHSA-4wrp-79m8-9m9p"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Arbitrary File Creation/Overwrite on Windows via insufficient relative path sanitization (GHSA-5955-9wpr-37jh)",
+      "url": "https://osv.dev/vulnerability/GHSA-5955-9wpr-37jh"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Permission Assignment for Critical Resource (GHSA-5hgf-628x-mcqf)",
+      "url": "https://osv.dev/vulnerability/GHSA-5hgf-628x-mcqf"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "3c7ec2976afc0668c4ebbd3c65d753a30bdf4584f4c000d087d05eeb66e49731",
+  "signature": null
+}
