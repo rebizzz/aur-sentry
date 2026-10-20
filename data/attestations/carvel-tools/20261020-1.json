@@ -1,0 +1,603 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "carvel-tools",
+    "version": "20261020-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "aa549f019fbe5c484743c1bf3dc4b9b945134ce7",
+    "pkgbuild_sha256": "1c4846ec730a886a5279d97d7fcce4822a1cb465a46b85c17332b3f999ebfd42",
+    "install_sha256": "005922568254c7a01e0c1a5421c68aa98d5fd903154c46709da8a349740be5e2"
+  },
+  "analyzed_at": "2026-10-20T05:15:43.383003635+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 13,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o imgpkg-v0.49.0.part https://github.com/carvel-dev/im\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/imgpkg-v0.49\"... /home/builder/build/imgpkg-v0.49\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o kapp-v0.66.1.part https://github.com/carvel-dev/ka\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/kapp-v0.66.1\"... /home/builder/build/kapp-v0.66.1",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o kbld-v0.49.2.part https://github.com/carvel-dev/kb\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/kbld-v0.49.2\"... /home/builder/build/kbld-v0.49.2",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o kctrl-v0.60.9.part https://github.com/carvel-dev/ka\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/kctrl-v0.60.\"... /home/builder/build/kctrl-v0.60.\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o kwt-v0.0.8.part https://github.com/carvel-dev/kw\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/kwt-v0.0.8.p\"... /home/builder/build/kwt-v0.0.8",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o vendir-v0.46.3.part https://github.com/carvel-dev/ve\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/vendir-v0.46\"... /home/builder/build/vendir-v0.46\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o ytt-v0.55.4.part https://github.com/carvel-dev/yt\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/ytt-v0.55.4.\"... /home/builder/build/ytt-v0.55.4",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/imgpkg-v0.49\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/kapp-v0.66.1",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/kbld-v0.49.2",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/kctrl-v0.60.\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/kwt-v0.0.8",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/vendir-v0.46\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/ytt-v0.55.4",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/imgpkg-v\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/imgpkg-v0.49\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- imgpkg-v0.49.0",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf imgpkg-v0.49.0 -q *",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/kapp-v0.\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/kapp-v0.66.1 /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- kapp-v0.66.1",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf kapp-v0.66.1 -q *",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/kbld-v0.\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/kbld-v0.49.2 /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- kbld-v0.49.2",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf kbld-v0.49.2 -q *",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/kctrl-v0\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/kctrl-v0.60.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- kctrl-v0.60.9",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf kctrl-v0.60.9 -q *",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/kwt-v0.0\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/kwt-v0.0.8 /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- kwt-v0.0.8",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf kwt-v0.0.8 -q *",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/vendir-v\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/vendir-v0.46\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- vendir-v0.46.3",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf vendir-v0.46.3 -q *",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/ytt-v0.5\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/ytt-v0.55.4 /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- ytt-v0.55.4",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf ytt-v0.55.4 -q *",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/carvel-tools-20261020-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.381802641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/carvel-tools-20261020-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.381802641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/carvel-tools-20261020-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.381802641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_tL551C/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.381802641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.381802641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.381802641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.381802641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm carvel-tools",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.381802641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm carvel-tools",
+        "parent": null,
+        "timestamp": "2026-10-20T05:15:43.381802641+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-20T05:15:43.369181113+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 22,
+    "elf_object_count": 7,
+    "elf_objects": [
+      {
+        "path": "usr/bin/imgpkg",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/kctrl",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/ytt",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/kbld",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/kwt",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/kapp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/bin/vendir",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "bf11c28c90644ba310158c47d988ac4004f2ef7e4ed3894af5c2ff8f5b27e42f",
+  "signature": null
+}
