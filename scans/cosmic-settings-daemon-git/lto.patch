@@ -1,0 +1,11 @@
+diff -Npur a/Cargo.toml b/Cargo.toml
+--- a/Cargo.toml	2026-07-08 15:39:00.324235538 -0600
++++ b/Cargo.toml	2026-07-08 15:40:11.149266658 -0600
+@@ -69,3 +69,6 @@ zbus = { version = "5.11.0", default-fea
+ # iced_futures = { git = "https://github.com/pop-os/libcosmic//", branch = "theme-v2" }
+ # cosmic-config = { git = "https://github.com/pop-os/libcosmic//", branch = "theme-v2" }
+ # cosmic-theme = { git = "https://github.com/pop-os/libcosmic//", branch = "theme-v2" }
++
++[profile.release]
++lto = "thin"
+Binary files a/.git/index and b/.git/index differ
