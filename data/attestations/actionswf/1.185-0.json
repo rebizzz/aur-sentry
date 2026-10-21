@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "actionswf",
+    "version": "1.185-0",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c8e51271e5f735db1ca2d1dead5f44a620e0c633",
+    "pkgbuild_sha256": "4579538524da337635940f63a01076af0bd0f996eae50ca26500a2c9dce666f7",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-21T14:12:05.229916873+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o actionswf-1.185-0.tar.gz.part https://github.com/colin-i/actio\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/actionswf-1.\"... /home/builder/build/actionswf-1.\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/actionswf-1.\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/actionsw\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/actionswf-1.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- actionswf-1.185-0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf actionswf-1.185-0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cat ../list",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "touch include_dev",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T14:12:05.221052613+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in haxe (GHSA-g785-775g-f2g8)",
+      "url": "https://osv.dev/vulnerability/GHSA-g785-775g-f2g8"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c3d447eae84548215e502f52df58b890685b9ae9fb4fa6c9bbf470ca7525a430",
+  "signature": null
+}
