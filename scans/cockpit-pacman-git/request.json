@@ -1,0 +1,8 @@
+{
+  "package": "cockpit-pacman-git",
+  "aur_commit": "1c70125ffce76a99a3aeb8c0cdd70d78e6bddc94",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-21T00:51:46Z"
+}
