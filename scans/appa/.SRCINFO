@@ -1,0 +1,23 @@
+pkgbase = appa
+	pkgdesc = ☁️ Markdown previews with live reload
+	pkgver = 0.0.15
+	pkgrel = 1
+	url = https://github.com/hcgatewood/appa
+	arch = x86_64
+	license = MIT
+	makedepends = npm
+	makedepends = jq
+	depends = glibc
+	depends = nodejs
+	depends = python
+	provides = appa
+	replaces = nodejs-appa
+	noextract = appa-0.0.15.tgz
+	options = !strip
+	options = emptydirs
+	options = staticlibs
+	options = zipman
+	source = appa-0.0.15.tgz::https://registry.npmjs.org/@hcgatewood/appa/-/appa-0.0.15.tgz
+	b2sums = 06ceedf79a3c0b99c1dbbd9d186820a5b9e30a67afb369d82bda2a6a598120780192fc48048d7c09940444220ad4a352c03fd1577d348bcfb8daf42a7e6c1c83
+
+pkgname = appa
