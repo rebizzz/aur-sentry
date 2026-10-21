@@ -1,0 +1,340 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "caelestia-shell-plugins-git",
+    "version": "2.5.0.r102.g0a515e6-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d213bed90ebec04c408274a746beba218f56959b",
+    "pkgbuild_sha256": "f0f1a63b64381fcc694ddd44e07886f5c0042424a3c16f1c76ae7d5e16ea38d6",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-21T23:38:21.894724190+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: .envrc"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/deeadly137/ca\"... /home/builder/build/caelestia-sh\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/deeadly137/ca\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/deeadly137/ca\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1402 on ff4edf\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/caelestia-sh\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/caelestia-sh\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/caelestia-sh\"... caelestia-shell-plugins-git",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/caelestia-sh\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git describe --long --tags --abbrev=7",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed s/^v//;s/\\\\([^-",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": ".envrc",
+        "operation": "canary_access",
+        "timestamp": "2026-10-21T23:38:21.880626687+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Aubio is vulnerable to out of bound read when samplerate > 50kHz (GHSA-3x58-8qmv-wqw5)",
+      "url": "https://osv.dev/vulnerability/GHSA-3x58-8qmv-wqw5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Aubio is vulnerable to a NULL pointer dereference (GHSA-45h5-cqqw-9rjw)",
+      "url": "https://osv.dev/vulnerability/GHSA-45h5-cqqw-9rjw"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Aubio is vulnerable to a NULL pointer dereference in new_aubio_filterbank (GHSA-7vvr-h4p5-m7fh)",
+      "url": "https://osv.dev/vulnerability/GHSA-7vvr-h4p5-m7fh"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Aubio is vulnerable to a NULL pointer dereference in new_aubio_notes function (GHSA-c6jq-h4jp-72pr)",
+      "url": "https://osv.dev/vulnerability/GHSA-c6jq-h4jp-72pr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Aubio is vulnerable to denial of service via aubio_pitch_set_unit function (GHSA-g7g8-mx45-x4c8)",
+      "url": "https://osv.dev/vulnerability/GHSA-g7g8-mx45-x4c8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "aubio Buffer Overflow vulnerability (GHSA-grmf-4fq6-2r79)",
+      "url": "https://osv.dev/vulnerability/GHSA-grmf-4fq6-2r79"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Aubio is vulnerable to denial of service via aubio_source_avcodec_readframe function (GHSA-rcv6-7hmv-fj7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-rcv6-7hmv-fj7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Aubio Divide-By-Zero DoS vulnerability in new_aubio_source_wavread function (GHSA-vcwx-8mqh-2557)",
+      "url": "https://osv.dev/vulnerability/GHSA-vcwx-8mqh-2557"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "4a5cc65c80ebd459042b77747c51de911b083c62e6d6b68e994ced8bc67deb2b",
+  "signature": null
+}
