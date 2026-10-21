@@ -1,0 +1,406 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "alcom",
+    "version": "1.1.8-3",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "35258783d0fe2391e077d526815b62ae4fc86b34",
+    "pkgbuild_sha256": "8eecacac859883612e1a682526170976c3c9cf72a80002141e93c7baf50b6b84",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-21T08:01:47.072157608+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o alcom-1.1.8.tar.gz.part https://github.com/vrc-get/vrc-g\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/alcom-1.1.8.\"... /home/builder/build/alcom-1.1.8.\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/alcom-1.1.8.\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/build.patch",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/rustls-webpk\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/alcom-1.\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/alcom-1.1.8.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- alcom-1.1.8.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf alcom-1.1.8.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/build.pa\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/build.patch /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- build.patch",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf build.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/rustls-w\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/rustls-webpk\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- rustls-webpki-0.103.16-gui-v1.1.\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf rustls-webpki-0.103.16-gui-v1.1.\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -p 1 -i /home/builder/build/src/build.pa\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -i /home/builder/build/src/rustls-w\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -n s/host: //p",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T08:01:47.059572257+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Cargo extracting malicious crates can fill the file system (GHSA-2hvr-h6gw-qrxp)",
+      "url": "https://osv.dev/vulnerability/GHSA-2hvr-h6gw-qrxp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Improper Certificate Validation in openssl (GHSA-34p9-f4q3-c4r7)",
+      "url": "https://osv.dev/vulnerability/GHSA-34p9-f4q3-c4r7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509NameBuilder::build` returned object is not thread safe (GHSA-3gxf-9r58-2ghg)",
+      "url": "https://osv.dev/vulnerability/GHSA-3gxf-9r58-2ghg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm Vulnerable to Global node_modules Binary Overwrite (GHSA-4328-8hgf-7wjr)",
+      "url": "https://osv.dev/vulnerability/GHSA-4328-8hgf-7wjr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl Use-After-Free in `Md::fetch` and `Cipher::fetch` (GHSA-4fcv-w3qc-ppgg)",
+      "url": "https://osv.dev/vulnerability/GHSA-4fcv-w3qc-ppgg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509Extension::new` and `X509Extension::new_nid` null pointer dereference (GHSA-6hcf-g6gr-hhcr)",
+      "url": "https://osv.dev/vulnerability/GHSA-6hcf-g6gr-hhcr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "openssl npm package vulnerable to command execution (GHSA-75w2-qv55-x7fv)",
+      "url": "https://osv.dev/vulnerability/GHSA-75w2-qv55-x7fv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl has incorrect bounds assertion in aes key wrap (GHSA-8c75-8mhr-p7r9)",
+      "url": "https://osv.dev/vulnerability/GHSA-8c75-8mhr-p7r9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "npm CLI exposing sensitive information through logs (GHSA-93f3-23rq-pjfp)",
+      "url": "https://osv.dev/vulnerability/GHSA-93f3-23rq-pjfp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Cargo prior to Rust 1.26.0 may download the wrong dependency (GHSA-9f3p-wvj7-q82x)",
+      "url": "https://osv.dev/vulnerability/GHSA-9f3p-wvj7-q82x"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "beae172ec0fc5395e99d02f06eba52d3873ceebc16d77238fe28a8d0dcbcda10",
+  "signature": null
+}
