@@ -1,0 +1,537 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cemu",
+    "version": "2.6-5",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a8be9870a5a0e0848ba5cdc0a137d51437c9af2f",
+    "pkgbuild_sha256": "2093bf97666ad58f16a7c56a6f9da7561038b3ae067c0a9bef925d5b6ed47054",
+    "install_sha256": "30401f304a224c6f853e3d24ae93c4ade1049a1ec738b2f898c605fb3bc50f6e"
+  },
+  "analyzed_at": "2026-10-21T23:40:08.958453763+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 31,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (5 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/cemu-project/\"... /home/builder/build/cemu",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/cemu-project/\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/cemu-project/\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 951 on 3ad5b47\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cemu rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cemu/info",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/ocornut/imgui\"... /home/builder/build/imgui",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/ocornut/imgui\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/ocornut/imgui\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 975 on 3ad5b47\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/imgui rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/imgui/info",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/cemu archive --format tar v2.6",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/imgui archive --format tar f65bcf481ab34cd07d3909aab1479f40\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cemu cemu",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cemu",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git tag -l --format=%(tag) v2.6",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg v2.6 --",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/imgui imgui",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/imgui",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg f65bcf481ab34cd07d3909aab1479f40\"... --",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git config --file=.gitmodules submodule.dependencies/imgui.url /home/builder/build/src/imgui",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c protocol.file.allow=always submodule update --init dependencies/imgui",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule update --init dependencies/imgui",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "basename /usr/lib/git-core/git-submodule",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/-/ /",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git --exec-path",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "basename -- /usr/lib/git-core/git-submodule",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "envsubst --variables usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "envsubst usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "uname -s",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --git-dir",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --git-path objects",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --is-inside-work-tree",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --show-prefix",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --show-toplevel",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/-/_/g",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper update --init -- dependencies/imgui",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path dependencies/imgui --name dependencies/imgui --url /home/builder/build/src/imgui",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/cemu/.gi\"... -- /home/builder/build/src/imgui /home/builder/build/src/cemu/dep\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/src/imgui/.g\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 f65bcf481ab34cd07d3909aab1479f40\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f f65bcf481ab34cd07d3909aab1479f40\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i /FMT_HEADER_ONLY/d src/Common/precompiled.h",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i s/glm::glm/glm/ src/Common/CMakeLists.txt src/input/CMakeLists.txt",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T23:40:08.929731743+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb before version 1.0.30 contains a NULL pointer dereference vulnerability that allows attackers to crash applications by supplying a malformed USB configuration descriptor where an interface claims bNumEndpoints greater than zero but is followed by a class-specific descriptor whose bLength exce (PYSEC-2026-3978)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-3978"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb before version 1.0.30 contains a one-byte out-of-bounds read vulnerability in parse_iad_array() in descriptor.c that allows attackers to trigger a denial of service by supplying a malformed USB descriptor whose bLength equals size minus one, causing the bounds check to use the original buffer (PYSEC-2026-3979)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-3979"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb is unmaintained; use rusb instead (RUSTSEC-2016-0004)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2016-0004"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d05ab01da7f1ebabaf399aa20a0290c2a7cdd9cc4b119d8f736f04fd87cab8bc",
+  "signature": null
+}
