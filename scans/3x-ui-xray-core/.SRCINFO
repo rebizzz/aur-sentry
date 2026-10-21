@@ -1,0 +1,21 @@
+pkgbase = 3x-ui-xray-core
+	pkgdesc = Xray, Penetrates Everything. Also the best v2ray-core (for *x-ui)
+	pkgver = 26.10.21
+	pkgrel = 1
+	url = https://github.com/XTLS/Xray-core
+	install = 3x-ui-xray-core.install
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MPL-2.0
+	makedepends = go
+	depends = glibc
+	provides = x-ui-xray-core
+	conflicts = x-ui-xray-core
+	options = !debug
+	source = https://github.com/XTLS/Xray-core/archive/v26.10.21/3x-ui-xray-core-26.10.21.tar.gz
+	sha256sums = 44ef4874529a03848c90f1fdcfb763350fbc5f1de741ec90e0024d651df25650
+	b2sums = 1579a2bac44ed430309083567311984b64e2e9adf8ddc3442c960b874569466bf53a04980080d70de99aff2dbc8bf62499ec2007610b67d247bb4f28a258011b
+
+pkgname = 3x-ui-xray-core
