@@ -1,0 +1,8 @@
+{
+  "package": "check_ssl_cert",
+  "aur_commit": "01acbd2ca713157372862f598d8d1d58bb5c54d5",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-21T07:59:33Z"
+}
