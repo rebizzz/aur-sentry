@@ -1,0 +1,433 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aps-bin",
+    "version": "1.3.4-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "63ffdde8e47f11a344857a3092a16c1c4deffcff",
+    "pkgbuild_sha256": "c7e3a7c3c15d55bfdcbc3d0116d6f8b8052cef396b30a4ae89e878c1a1068c74",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-21T19:01:33.581454554+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aps-1.3.4.bash.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aps-1.3.4.ba\"... /home/builder/build/aps-1.3.4.ba\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aps-1.3.4.zsh.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aps-1.3.4.zs\"... /home/builder/build/aps-1.3.4.zs\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aps-1.3.4.fish.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aps-1.3.4.fi\"... /home/builder/build/aps-1.3.4.fi\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aps-1.3.4.1.scd.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aps-1.3.4.1.\"... /home/builder/build/aps-1.3.4.1.\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o README-1.3.4.md.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/README-1.3.4\"... /home/builder/build/README-1.3.4\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aps-1.3.4-x86_64.part https://github.com/Antiz96/aps/r\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aps-1.3.4-x8\"... /home/builder/build/aps-1.3.4-x8\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aps-1.3.4.ba\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aps-1.3.4.zs\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aps-1.3.4.fi\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aps-1.3.4.1.\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/README-1.3.4\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aps-1.3.4-x8\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/aps-1.3.\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aps-1.3.4.ba\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aps-1.3.4.bash",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf aps-1.3.4.bash -q *",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aps-1.3.4.zs\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aps-1.3.4.zsh",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf aps-1.3.4.zsh -q *",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aps-1.3.4.fi\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aps-1.3.4.fish",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf aps-1.3.4.fish -q *",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aps-1.3.4.1.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aps-1.3.4.1.scd",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf aps-1.3.4.1.scd -q *",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/README-1\"...",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/README-1.3.4\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- README-1.3.4.md",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf README-1.3.4.md -q *",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aps-1.3.4-x8\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aps-1.3.4-x86_64",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf aps-1.3.4-x86_64 -q *",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-21T19:01:33.574672144+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d36d86e7134fd82e6f4969c31c139f947944a3e1891b868776ef7876ea616360",
+  "signature": null
+}
