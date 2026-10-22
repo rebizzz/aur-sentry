@@ -1,0 +1,26 @@
+pkgbase = bzr-player
+	pkgdesc = Audio player supporting a wide array of multi-platform exotic file formats
+	pkgver = 2.0.94
+	pkgrel = 2
+	url = https://github.com/bzr-player/bzr-player
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cmake
+	makedepends = dos2unix
+	makedepends = gendesk
+	makedepends = git
+	makedepends = libglvnd
+	makedepends = ninja
+	makedepends = patchutils
+	makedepends = qt6-declarative
+	makedepends = sdl2-compat
+	makedepends = vulkan-headers
+	depends = hicolor-icon-theme
+	depends = noto-fonts-cjk
+	depends = qt6-base
+	depends = qt6-svg
+	depends = qt-advanced-docking-system
+	source = git+https://github.com/bzr-player/bzr-player.git#tag=2.0.94
+	sha256sums = ff991fc3c01e250103ceda07d997eabd58b88ec4001089cd79f5e504503d4abd
+
+pkgname = bzr-player
