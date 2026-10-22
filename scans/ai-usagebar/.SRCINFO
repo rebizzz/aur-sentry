@@ -1,0 +1,21 @@
+pkgbase = ai-usagebar
+	pkgdesc = Omarchy/Waybar widgets + TUI for tracking multi-provider AI plan usage
+	pkgver = 1.42.0
+	pkgrel = 1
+	url = https://github.com/akitaonrails/ai-usagebar
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	makedepends = nasm
+	depends = gcc-libs
+	optdepends = waybar: status bar that hosts the widget
+	optdepends = libnotify: desktop notifications on hard auth failures
+	conflicts = ai-usagebar-bin
+	options = !lto
+	options = !debug
+	source = ai-usagebar-1.42.0.tar.gz::https://github.com/akitaonrails/ai-usagebar/archive/refs/tags/v1.42.0.tar.gz
+	sha256sums = c2142886c469904ce812e04dd84c0ecd4935e94942b14fbc00217e511a1bc0e6
+
+pkgname = ai-usagebar
