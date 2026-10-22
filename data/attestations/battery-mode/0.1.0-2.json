@@ -1,0 +1,336 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "battery-mode",
+    "version": "0.1.0-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "cae30312333751733f9eff76848dfa287ce5a0e8",
+    "pkgbuild_sha256": "3a180c5d8be7280d9d8ea575d5f97fd7f2deab6bbbc51b047168ae099d9e4b2f",
+    "install_sha256": "aaa5589cf5d9277d6b9c08852f8b5373714472a48266c706f2e28b29928a0b2b"
+  },
+  "analyzed_at": "2026-10-22T05:15:46.746604825+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o battery-mode-0.1.0.tar.gz.part https://github.com/ghollisjr/bat\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/battery-mode\"... /home/builder/build/battery-mode\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/battery-mode\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/battery-\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/battery-mode\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- battery-mode-0.1.0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf battery-mode-0.1.0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/battery-mode-0.1.0-2-any.pk\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/battery-mode-0.1.0-2-any.pk\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/battery-mode-0.1.0-2-any.pk\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_rC9PTO/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "cat",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm battery-mode",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm battery-mode",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_CYPssp/.INSTALL; pre\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemctl disable --now battery-mode-restore.service",
+        "parent": null,
+        "timestamp": "2026-10-22T05:15:46.745346643+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.132",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-22T05:15:46.738707701+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "8008978bf14195c37b3d5089bf7d9ad4dba74ec79e42943a88aef4db1937efd9",
+  "signature": null
+}
