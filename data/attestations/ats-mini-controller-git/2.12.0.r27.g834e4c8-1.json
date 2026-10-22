@@ -1,0 +1,1479 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ats-mini-controller-git",
+    "version": "2.12.0.r27.g834e4c8-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "1603eced8da3a7d26cec0fb7c99180d37103ad71",
+    "pkgbuild_sha256": "ae00817f5429f1ebff1a84ae88408764551c38d361c2239723a6b955e3bcb07f",
+    "install_sha256": "b2f2419c6d226ea10cf9ce0717b9edc14d65b8d6f2334e7430376f226d2f9b2c"
+  },
+  "analyzed_at": "2026-10-22T17:40:34.908953482+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 16,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "PKGBUILD",
+      "line": 47,
+      "severity": "HIGH",
+      "description": "DNS lookup with variable expansion (possible DNS tunneling)"
+    },
+    {
+      "behavior": "PRIVILEGE_ESCALATION",
+      "file": "ats-mini-controller-git.install",
+      "line": 15,
+      "severity": "HIGH",
+      "description": "setting SGID permission bit on binary"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/9M2PJU/ats-mi\"... /home/builder/build/ats-mini-con\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/9M2PJU/ats-mi\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/9M2PJU/ats-mi\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1862 on e5dfda\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/ats-mini-con\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/ats-mini-con\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/ats-mini-con\"... ats-mini-controller",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/ats-mini-con\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg origin/packaging/native-packages --",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -m1 -oP ^APP_VERSION = \\\"\\\\K[^\\",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-list --count HEAD",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --short HEAD",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Updated version: %s",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/ats-mini-controller-git-2.1\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/ats-mini-controller-git-2.1\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/ats-mini-controller-git-2.1\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E0959FEA8B550539",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E75CD4814A77AD943C7AB5A3E0959FEA\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_LrrOQq/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_wkRypD/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "getent group plugdev",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "groupadd -r plugdev",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "id atsradio",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "useradd -r -d /opt/ats-mini-controller -s /usr/bin/nologin -G plugdev atsradio",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "mkdir -p /opt/ats-mini-controller/data/re\"... /etc/ats-mini-controller",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "chown -R atsradio:plugdev /opt/ats-mini-controller/data",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "chmod 2750 /opt/ats-mini-controller/data",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "udevadm control --reload-rules",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "udevadm trigger --subsystem-match=usb --action=change",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemctl daemon-reload",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... sysusers",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/systemd-sysusers",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... udev-reload",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm ats-mini-controller-git",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm ats-mini-controller-git",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_qEHpOJ/.INSTALL; pre\"...",
+        "parent": null,
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-22T17:40:34.845276290+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-22T17:40:34.864996951+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 6557,
+    "elf_object_count": 152,
+    "elf_objects": [
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/linalg/lapack_lite.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/linalg/_umath_linalg.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/_core/_struct_ufunc_tests.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/_core/_multiarray_tests.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/_core/_rational_tests.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/_core/_umath_tests.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/_core/_simd.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/_core/_operand_flag_tests.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/_core/_multiarray_umath.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/fft/_pocketfft_umath.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/random/_sfc64.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/random/_common.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/random/mtrand.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/random/_pcg64.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/random/_philox.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/random/_mt19937.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/random/bit_generator.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/random/_generator.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy/random/_bounded_integers.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy.libs/libquadmath-96973f99-934c22de.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy.libs/libquadmath-2284e583.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy.libs/libgfortran-83c28eba.so.5.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy.libs/libgfortran-040039e1-0352e75f.so.5.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy.libs/libscipy_openblas-5f890258.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pydantic_core/_pydantic_core.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/spatial/_ckdtree.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/spatial/_distance_wrap.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/spatial/_hausdorff.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/spatial/_qhull.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/spatial/_voronoi.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/spatial/transform/_rotation_cy.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/spatial/transform/_rigid_transform_cy.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/spatial/_distance_pybind.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/_cyutility.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_bglu_dense.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_zeros.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_group_columns.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_moduleTNC.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_highspy/_core.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_highspy/_highs_options.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_minpack.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_slsqplib.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_pava_pybind.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/cython_optimize/_zeros.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_lsq/givens_elimination.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_direct.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_lsap.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_lbfgsb.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/optimize/_trlib/_trlib.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/_decomp_interpolative.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/_batched_linalg.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/_decomp_update.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/_fblas.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/_solve_toeplitz.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/cython_blas.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/_flapack.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/_cythonized_array_utils.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/cython_lapack.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/_internal_matfuncs.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/_matfuncs_sqrtm_triu.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/linalg/_linalg_pythran.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/signal/_max_len_seq_inner.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/signal/_spline.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/signal/_sosfilt.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/signal/_upfirdn_apply.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/signal/_sigtools.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/signal/_peak_finding_utils.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/stats/_levy_stable/levyst.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/stats/_stats_pythran.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/stats/_qmvnt_cy.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/stats/_stats.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/stats/_sobol.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/stats/_rcont/rcont.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/stats/_qmc_cy.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/stats/_biasedurn.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/stats/_ansari_swilk_statistics.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/stats/_unuran/unuran_wrapper.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/integrate/_odepack.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/integrate/_vode.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/integrate/_quadpack.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/integrate/_test_multivariate.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/integrate/_dop.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/io/_fast_matrix_market/_fmm_core.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/io/matlab/_streams.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/io/matlab/_mio_utils.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/io/matlab/_mio5_utils.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/ndimage/_rank_filter_1d.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/ndimage/_cytest.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/ndimage/_nd_image.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/ndimage/_ctest.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/ndimage/_ni_label.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/linalg/_propack.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/linalg/_eigen/arpack/_arpacklib.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/linalg/_dsolve/_superlu.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/_csparsetools.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/csgraph/_reordering.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/csgraph/_traversal.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/csgraph/_flow.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/csgraph/_tools.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/csgraph/_min_spanning_tree.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/csgraph/_shortest_path.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/csgraph/_matching.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/sparse/_sparsetools.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/interpolate/_rgi_cython.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/interpolate/_rbfinterp_pythran.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/interpolate/_dierckx.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/interpolate/_fitpack.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/interpolate/_interpnd.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/interpolate/_ppoly.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/cluster/vq/_vq.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/cluster/hierarchy/_hierarchy.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/cluster/hierarchy/_optimal_leaf_ordering.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/fftpack/convolve.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/_lib/_ccallback_c.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/_lib/_test_ccallback.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/_lib/_test_deprecation_def.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/_lib/messagestream.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/_lib/_fpumode.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/_lib/_test_deprecation_call.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/_lib/_uarray/_uarray.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/odr/__odrpack.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/fft/_duccfft/pyduccfft.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/special/_special_ufuncs.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/special/cython_special.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/special/_test_internal.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/special/_ufuncs_cxx.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/special/_gufuncs.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/special/_ellip_harm_2.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/special/_specfun.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/special/_ufuncs.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/scipy/special/_comb.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/uvloop/loop.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/yaml/_yaml.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/watchfiles/_rust_notify.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/websockets/speedups.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy.libs/libquadmath-2284e583-a9307bba.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy.libs/libscipy_openblas64_-61654e39.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/numpy.libs/libgfortran-83c28eba-468e71e5.so.5.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib.libs/libblkid-922f9088.so.1.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib.libs/libusb-1-0e173734.0.so.0.6.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib.libs/libudev-56b81fde.so.1.6.11",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib.libs/libuuid-52ee839c.so.1.3.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib.libs/libselinux-81bdf592.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib.libs/libpcre2-8-516f4c9d.so.0.7.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib.libs/libmount-31ce9968.so.1.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/httptools/parser/url_parser.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/httptools/parser/parser.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib/lib/librtlsdr.so.0.8git",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib/lib/custom_build/librtlsdr.so.0.9git",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib/lib/custom_build/librtlsdr.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib/lib/custom_build/librtlsdr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/ats-mini-controller/venv/lib/python3.14/site-packages/pyrtlsdrlib/lib/librtlsdr.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb before version 1.0.30 contains a NULL pointer dereference vulnerability that allows attackers to crash applications by supplying a malformed USB configuration descriptor where an interface claims bNumEndpoints greater than zero but is followed by a class-specific descriptor whose bLength exce (PYSEC-2026-3978)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-3978"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb before version 1.0.30 contains a one-byte out-of-bounds read vulnerability in parse_iad_array() in descriptor.c that allows attackers to trigger a denial of service by supplying a malformed USB descriptor whose bLength equals size minus one, causing the bounds check to use the original buffer (PYSEC-2026-3979)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-3979"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "libusb is unmaintained; use rusb instead (RUSTSEC-2016-0004)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2016-0004"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "37a570a4db20ae8b15912a0030d6afe466c9230f78b5c46620c93eea3a142f34",
+  "signature": null
+}
