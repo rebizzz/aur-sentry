@@ -1,0 +1,33 @@
+pkgbase = apparmor.d
+	pkgdesc = Full set of apparmor profiles
+	pkgver = 0.4915.0
+	pkgrel = 1
+	url = https://github.com/roddhjav/apparmor.d
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = go
+	makedepends = git
+	makedepends = just
+	depends = apparmor>=4.1.3
+	depends = apparmor<5.0.0
+	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4915.0/apparmor.d-0.4915.0.tar.gz
+	source = https://github.com/roddhjav/apparmor.d/releases/download/v0.4915.0/apparmor.d-0.4915.0.tar.gz.asc
+	validpgpkeys = 06A26D531D56C42D66805049C5469996F0DF68EC
+	sha512sums = 6d0577e75a1f237c99295e1509e484dd44940b9f596ee2d42c417b6cb25af1a7c19bbb477361f374353d708e2368c888b362e354e2edc03028724861125f415e
+	sha512sums = SKIP
+
+pkgname = apparmor.d
+	arch = any
+	depends = apparmor
+	depends = apparmor.d-base
+	depends = apparmor.d-tools
+
+pkgname = apparmor.d-base
+	pkgdesc = Full set of apparmor profiles (base abstractions, tunables, and booleans)
+	arch = any
+
+pkgname = apparmor.d-tools
+	pkgdesc = Full set of apparmor profiles (userland toolings)
