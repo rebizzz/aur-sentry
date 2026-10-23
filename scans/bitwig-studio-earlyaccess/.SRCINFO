@@ -1,0 +1,25 @@
+pkgbase = bitwig-studio-earlyaccess
+	pkgdesc = Digital audio workstation for music production, remixing and live performance - early access version
+	pkgver = 6.1.6
+	pkgrel = 1
+	url = https://www.bitwig.com/
+	arch = x86_64
+	license = custom
+	depends = xdg-utils
+	depends = xcb-util-wm
+	depends = libbsd
+	optdepends = jack
+	optdepends = alsa-lib
+	optdepends = oss
+	optdepends = ffmpeg: MP3 support
+	provides = clap-host
+	provides = vst-host
+	provides = vst3-host
+	conflicts = bitwig-studio-legacy
+	conflicts = bitwig-8-track
+	conflicts = bitwig-studio
+	options = !strip
+	source = bitwig-studio-6.1.6.deb::https://www.bitwig.com/dl/Bitwig%20Studio/6.1.6/installer_linux/
+	sha256sums = 658743a44bc0a0fd95a28175a8d723ecfd0bf26352110b70873e040fc19a6906
+
+pkgname = bitwig-studio-earlyaccess
