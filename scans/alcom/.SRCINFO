@@ -1,0 +1,23 @@
+pkgbase = alcom
+	pkgdesc = A fast open-source alternative of VRChat Creator Companion (VCC)
+	pkgver = 1.1.9
+	pkgrel = 1
+	url = https://github.com/vrc-get/vrc-get
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = gtk3
+	depends = openssl
+	depends = webkit2gtk-4.1
+	optdepends = unityhub: Used to open created projects and migrate projects from older versions of Unity.
+	optdepends = libxml2-legacy: Fix the issue of the missing libxml2.so.2 error in Unity for Linux.
+	options = !lto
+	source = alcom-1.1.9.tar.gz::https://github.com/vrc-get/vrc-get/archive/refs/tags/gui-v1.1.9.tar.gz
+	source = build.patch
+	sha256sums = d2f6bd2e67bc00f6786c9af25731fa3ca826a1404cbf5f5de76250db969d52f1
+	sha256sums = 4aab543caa7554ab0ab3434bc3ea9af185abc7c8614c5c4e15b1ede1269126a9
+
+pkgname = alcom
