@@ -1,0 +1,8 @@
+{
+  "package": "amazon-corretto-25-bin",
+  "aur_commit": "8e3119c1469cf15d224df6a7a672e2d1331fcba5",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-23T18:39:08Z"
+}
