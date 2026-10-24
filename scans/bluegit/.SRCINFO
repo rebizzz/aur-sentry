@@ -1,0 +1,17 @@
+pkgbase = bluegit
+	pkgdesc = Self-hosted git-platform
+	pkgver = 20261024203334
+	pkgrel = 1
+	url = https://git.timfalken.com/timfa/bluegit
+	install = bluegit.install
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = git
+	depends = docker
+	options = !debug
+	backup = etc/bluegit/config.yml
+	source = bluegit-a0b44dfbe01dc07d18dfaeddecb54175e8b0635c.tar.gz::https://git.timfalken.com/timfa/bluegit/-/archive/a0b44dfbe01dc07d18dfaeddecb54175e8b0635c/bluegit-a0b44dfbe01dc07d18dfaeddecb54175e8b0635c.tar.gz
+	sha256sums = a7b09c8fea69abc71b049af6b4bb3d4463edf1c0eb830208cb29d7f35dae36de
+
+pkgname = bluegit
