@@ -1,0 +1,26 @@
+pkgbase = aros-tools-bin
+	pkgdesc = Reproducible host-side build and development tools for AROS
+	pkgver = 0.6.2
+	pkgrel = 1
+	url = https://github.com/metaneutrons/aros-tools
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	depends = ca-certificates
+	depends = cmake
+	depends = curl
+	depends = git
+	depends = ninja
+	depends = patch
+	depends = python
+	provides = aros-tools
+	conflicts = aros-tools
+	options = !strip
+	source_x86_64 = https://github.com/metaneutrons/aros-tools/releases/download/v0.6.2/aros-tools-v0.6.2-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 92c5a69fd30ad0dadf73e709141ea29061b6c693860872c7282854f6686d9745
+	source_aarch64 = https://github.com/metaneutrons/aros-tools/releases/download/v0.6.2/aros-tools-v0.6.2-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 207183927dc54dc15f596b02f19b59521f7cd355f2e396025eb41e192b7ba284
+
+pkgname = aros-tools-bin
