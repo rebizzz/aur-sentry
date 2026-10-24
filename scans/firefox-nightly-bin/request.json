@@ -1,0 +1,8 @@
+{
+  "package": "firefox-nightly-bin",
+  "aur_commit": "1da7f8bf1de8c44fec8afa9ec097f3111e7c4300",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-24T19:04:16Z"
+}
