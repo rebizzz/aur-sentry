@@ -1,0 +1,3 @@
+#!/bin/sh
+export LD_LIBRARY_PATH=/opt/osu-ez2lazer${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+exec "/opt/osu-ez2lazer/Ez2osu!" "$@"

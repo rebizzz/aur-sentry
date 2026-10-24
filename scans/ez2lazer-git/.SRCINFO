@@ -1,0 +1,29 @@
+pkgbase = ez2lazer-git
+	pkgdesc = Ez to Lazer(Pursue the Ez2Ac style in the lazer)做一个炫酷的客户端
+	pkgver = 2026.1023.0.ez2lazer.r4.gb4124d6a21
+	pkgrel = 2
+	url = https://github.com/SK-la/Ez2Lazer
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk-10.0
+	makedepends = git
+	makedepends = python
+	depends = ffmpeg4.4
+	depends = lttng-ust2.12
+	conflicts = ez2lazer
+	conflicts = ez2lazer-bin
+	options = !debug
+	source = osu::git+https://github.com/SK-la/Ez2Lazer.git#branch=master
+	source = ez2lazer-framework::git+https://github.com/SK-la/ez2lazer-framework.git#branch=master
+	source = ez2lazer-resources::git+https://github.com/SK-la/ez2lazer-resources.git#branch=master
+	source = osu-ez2lazer
+	source = osu-ez2lazer.desktop
+	source = lazer.png
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = a3f9ed38e65e5ce1b89c7df53d4139ade3af7eb0e379ef61a2a69a128d8bcbde
+	sha256sums = 17a504de02a94727584e77c90d93b6bf072dd40f339e05fb2df038f67d9a9d6d
+	sha256sums = 30cf4df3fd76006b08a0bcb6a325fb2fdcf6a4371f77001da3c38cbce871bd51
+
+pkgname = ez2lazer-git
