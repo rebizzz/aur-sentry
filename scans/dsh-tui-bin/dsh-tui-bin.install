@@ -1,0 +1,20 @@
+post_install() {
+    sync_profile
+}
+
+post_upgrade() {
+    sync_profile
+}
+
+sync_profile() {
+    local user home
+    user="${SUDO_USER:-}"
+    if [ -z "$user" ]; then
+        user="$(getent passwd | awk -F: '$3 >= 1000 && $3 < 65534 { print $1; exit }')"
+    fi
+    [ -n "$user" ] || return 0
+    home="$(getent passwd "$user" | cut -d: -f6)"
+    [ -n "$home" ] && [ -d "$home" ] || return 0
+    timeout 300 runuser -u "$user" -- \
+        /usr/bin/dsh-tui update || true
+}
