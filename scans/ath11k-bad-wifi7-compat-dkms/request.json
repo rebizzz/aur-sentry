@@ -1,0 +1,8 @@
+{
+  "package": "ath11k-bad-wifi7-compat-dkms",
+  "aur_commit": "d0bdebcdfca4a6687488e001df1a63828dbf8ce0",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-24T04:57:01Z"
+}
