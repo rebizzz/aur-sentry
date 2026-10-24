@@ -1,0 +1,24 @@
+pkgbase = dr14_tmeter
+	pkgdesc = Compute the DR14 dynamic range value of audio files
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://github.com/simon-r/dr14_t.meter
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = ffmpeg
+	depends = lame
+	depends = vorbis-tools
+	optdepends = python-matplotlib: plotting options
+	optdepends = python-scipy: --compress option
+	optdepends = python-mutagen: --tag option
+	conflicts = python-dr14_tmeter
+	source = dr14_tmeter-2.1.2.tar.gz::https://github.com/simon-r/dr14_t.meter/archive/refs/tags/v2.1.2.tar.gz
+	sha256sums = 695f50aeb408ebc7af1a8ee4e40cc37648f09037304d489629b2b4d5e29e45c8
+
+pkgname = dr14_tmeter
