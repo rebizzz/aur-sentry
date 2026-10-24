@@ -1,0 +1,22 @@
+pkgbase = bend-bin
+	pkgdesc = Bend programming language
+	pkgver = 2.0.39
+	pkgrel = 1
+	url = https://github.com/bendlang/bend
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	optdepends = clang: compile Bend programs to native binaries (clang 14+, 19+ for GPU programs)
+	optdepends = cuda: build GPU programs (NVRTC headers/libs at /opt/cuda) and run them on NVIDIA GPUs (needs the NVIDIA driver)
+	optdepends = libx11: build programs that open a window
+	optdepends = alsa-lib: build programs that play audio
+	provides = bend
+	conflicts = bend
+	options = !strip
+	source_x86_64 = bend-2.0.39-linux-x64.tar.gz::https://github.com/bendlang/bend/releases/download/v2.0.39/bend-2.0.39-linux-x64.tar.gz
+	sha256sums_x86_64 = 6cf462fd8f70b094a4950ebb709a9c4ffd8f1d1189d9cedf1fd63cd5d041c7ab
+	source_aarch64 = bend-2.0.39-linux-arm64.tar.gz::https://github.com/bendlang/bend/releases/download/v2.0.39/bend-2.0.39-linux-arm64.tar.gz
+	sha256sums_aarch64 = 71b43e1bb9313dd14ac2b0553b854e41c39d65ecaa47040796ebff4a46f54a97
+
+pkgname = bend-bin
