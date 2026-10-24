@@ -1,0 +1,36 @@
+pkgbase = dumber-browser-git
+	pkgdesc = A minimal keyboard-driven browser for tiling WMs (git version)
+	pkgver = 0.33.2.r5.g905c5d89
+	pkgrel = 1
+	url = https://git.bnema.dev/dumber
+	arch = x86_64
+	license = MIT
+	makedepends = go>=1.27
+	makedepends = git
+	makedepends = brotli
+	depends = gtk4
+	depends = cef
+	depends = webkitgtk-6.0
+	optdepends = gst-plugins-base: Base media codecs
+	optdepends = gst-plugins-good: Additional media codecs
+	optdepends = gst-plugins-bad: Extended media codecs
+	optdepends = gst-plugins-ugly: Patented media codecs
+	optdepends = gst-libav: FFmpeg-based codecs
+	optdepends = gst-plugin-pipewire: PipeWire audio support
+	optdepends = gst-plugin-va: Hardware video decoding (VA-API stateless decoders)
+	optdepends = cef-vaapi-bin: Prebuilt CEF provider with VA-API hardware video decoding support
+	optdepends = cef-vaapi: Source-built CEF provider with VA-API hardware video decoding support
+	optdepends = pipewire: Audio/video routing
+	optdepends = pipewire-pulse: PulseAudio replacement
+	optdepends = mesa: VA-API driver for AMD GPUs
+	optdepends = libva-nvidia-driver: VA-API driver for NVIDIA GPUs
+	optdepends = libva-intel-driver: VA-API driver for older Intel GPUs
+	optdepends = intel-media-driver: VA-API driver for newer Intel GPUs (Broadwell+)
+	provides = dumber-browser
+	provides = dumber
+	conflicts = dumber-browser
+	conflicts = dumber-browser-bin
+	source = git+https://git.bnema.dev/dumber.git
+	sha256sums = SKIP
+
+pkgname = dumber-browser-git
