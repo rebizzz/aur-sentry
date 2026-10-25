@@ -1,0 +1,33 @@
+pkgbase = acceptarium-git
+	pkgdesc = CLI tool to facilitate digitized receipt handling in plain text accounting workflows
+	pkgver = 0.0.0.r252.g84417eb
+	pkgrel = 1
+	url = https://codeberg.org/plaintextaccounting/acceptarium
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = cargo
+	makedepends = imagemagick
+	makedepends = ollama
+	makedepends = tesseract
+	makedepends = jq
+	depends = git
+	depends = git-annex
+	depends = glibc
+	depends = chafa
+	depends = libchafa.so
+	depends = libgcc
+	depends = libgcc_s.so
+	depends = libgit2
+	depends = libgit2.so
+	depends = zlib
+	depends = libz.so
+	depends = zsh
+	optdepends = imagemagick: convert PDFs prior to OCR
+	optdepends = ollama: extract data from images or OCR using local models
+	optdepends = tesseract: process using OCR
+	provides = acceptarium=0.0.0.r252.g84417eb
+	conflicts = acceptarium
+	source = git+https://codeberg.org/plaintextaccounting/acceptarium.git
+	sha256sums = SKIP
+
+pkgname = acceptarium-git
