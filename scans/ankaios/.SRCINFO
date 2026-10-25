@@ -1,0 +1,39 @@
+pkgbase = ankaios
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://eclipse-ankaios.github.io/ankaios
+	arch = x86_64
+	arch = aarch64
+	groups = ankaios
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = protobuf
+	makedepends = help2man
+	depends = libgcc
+	depends = glibc
+	source = ankaios-1.1.0.tar.gz::https://github.com/eclipse-ankaios/ankaios/archive/refs/tags/v1.1.0.tar.gz
+	source = ankaios.sysusers
+	b2sums = 62f2d2e09644d85f604988d8dd4850e5abb4328a2d203baca8a34326063257d721d75f7fada8d2cd4ebc8f33ed30ff3b8e2dd36ec769f6a5b1fe7def95842784
+	b2sums = f8f40d8b3c5e67941d3cd8294ef388eca34ee10e4dd0711f0f842d8e881b856478bf08d9a057f659f190bd81ecd4791ec9873723e946bec0723f897bce6f2436
+
+pkgname = ankaios-server
+	pkgdesc = The server application of Eclipse Ankaios
+	backup = etc/ankaios/ank-server.conf
+	backup = etc/ankaios/state.yaml
+
+pkgname = ankaios-agent
+	pkgdesc = An agent running on each node of an Eclipse Ankaios cluster
+	optdepends = podman: for running podman workloads
+	optdepends = nerdctl: for running containerd workloads
+	backup = etc/ankaios/ank-agent.conf
+
+pkgname = ankaios-cli
+	pkgdesc = A command line tool for communicating with the API of the Eclipse Ankaios server
+	install = ankaios-cli.install
+	backup = etc/ankaios/ank.conf
+
+pkgname = ankaios
+	pkgdesc = Meta-package to install all components of Eclipse Ankaios
+	depends = ankaios-server
+	depends = ankaios-agent
+	depends = ankaios-cli
