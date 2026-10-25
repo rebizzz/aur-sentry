@@ -75,7 +75,7 @@ jobs:
         with:
           toolchain: stable
           components: llvm-tools-preview
-      - uses: taiki-e/install-action@83ac0ad63c0167e6f06796fab0fce28db1bf3db0 # cargo-llvm-cov
+      - uses: taiki-e/install-action@183e4297cca2404691e9380e1307288dced5c82a # cargo-llvm-cov
         with:
           tool: cargo-llvm-cov
       - name: Generate code coverage
