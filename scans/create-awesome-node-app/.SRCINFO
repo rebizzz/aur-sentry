@@ -1,0 +1,13 @@
+pkgbase = create-awesome-node-app
+	pkgdesc = Composable scaffolding CLI — one command, any Node.js stack
+	pkgver = 0.17.4
+	pkgrel = 1
+	url = https://create-awesome-node-app.vercel.app
+	arch = any
+	license = MIT
+	depends = nodejs>=24
+	depends = npm
+	source = https://registry.npmjs.org/create-awesome-node-app/-/create-awesome-node-app-0.17.4.tgz
+	sha256sums = d7851d9063e356fca1df01321bda68ae2bb446c5654e9e0837e763cb2ac344c1
+
+pkgname = create-awesome-node-app
