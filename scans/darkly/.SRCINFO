@@ -1,0 +1,26 @@
+pkgbase = darkly
+	pkgdesc = Fork of Lightly (A modern style for Qt applications)
+	pkgver = 0.5.40
+	pkgrel = 2
+	url = https://github.com/Bali10050/darkly
+	arch = x86_64
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	depends = kdecoration
+	depends = qt6-declarative
+	depends = kcoreaddons
+	depends = kcmutils
+	depends = kcolorscheme
+	depends = kconfig
+	depends = kguiaddons
+	depends = kiconthemes
+	depends = kwindowsystem
+	depends = libplasma
+	depends = frameworkintegration
+	options = !emptydirs
+	source = https://github.com/Bali10050/darkly/archive/refs/tags/v0.5.40.tar.gz
+	sha256sums = 0c171ef2f3c2f7c5d1888a5ad232b47a53d772544cf5149142ebe94406c42a8e
+
+pkgname = darkly
