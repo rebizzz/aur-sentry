@@ -1,0 +1,25 @@
+pkgbase = boxd-cli-bin
+	pkgdesc = External CLI for managing boxd cloud VMs
+	pkgver = 0.2.27
+	pkgrel = 1
+	url = https://boxd.sh/
+	install = boxd-cli-bin.install
+	arch = x86_64
+	arch = aarch64
+	license = custom:boxd-terms
+	depends = ca-certificates
+	depends = glibc
+	optdepends = openssh: connect to boxd VMs via ssh
+	provides = boxd
+	provides = boxd-cli
+	conflicts = boxd
+	conflicts = boxd-cli
+	options = !strip
+	source = LICENSE
+	sha256sums = 7f5da622099b2595235408e5130e231f74b8a4d6972fd0d5234be963f5baa247
+	source_x86_64 = boxd-cli-bin-0.2.27-x86_64::https://boxd.sh/downloads/cli/boxd-linux-amd64
+	sha256sums_x86_64 = 74c713c22069ebc951d5d025bd5ab3104c074e0887b3d488567b77b0f12a993d
+	source_aarch64 = boxd-cli-bin-0.2.27-aarch64::https://boxd.sh/downloads/cli/boxd-linux-arm64
+	sha256sums_aarch64 = 1dd0f381d02b20e327cfe4ee196c069e147ae34b6b7cabc13f18de239066e95c
+
+pkgname = boxd-cli-bin
