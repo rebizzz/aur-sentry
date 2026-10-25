@@ -1,0 +1,30 @@
+--- a/drivers/net/wireless/ath/ath11k/dp_rx.c
++++ b/drivers/net/wireless/ath/ath11k/dp_rx.c
+@@ -2431,6 +2431,7 @@
+ 				     IEEE80211_RADIOTAP_HE_DATA1_BW_RU_ALLOC_KNOWN),
+ 		.data2 = cpu_to_le16(IEEE80211_RADIOTAP_HE_DATA2_GI_KNOWN),
+ 	};
++	struct ieee80211_supported_band *sband;
+ 	struct ieee80211_rx_status *rx_status;
+ 	struct ieee80211_radiotap_he *he = NULL;
+ 	struct ieee80211_sta *pubsta = NULL;
+@@ -2498,6 +2499,19 @@
+ 	    !(is_mcbc && rx_status->flag & RX_FLAG_DECRYPTED))
+ 		rx_status->flag |= RX_FLAG_8023;
+ 
++	if (status->encoding == RX_ENC_LEGACY) {
++		sband = ar->hw->wiphy->bands[status->band];
++		if (!sband || status->rate_idx >= sband->n_bitrates) {
++			ath11k_dbg(ar->ab, ATH11K_DBG_DATA,
++				   "Dropping RX frame with invalid rate_idx %d (n_bitrates %d band %d)\n",
++				   status->rate_idx,
++				   sband ? sband->n_bitrates : 0,
++				   status->band);
++			dev_kfree_skb_any(msdu);
++			return;
++		}
++	}
++
+ 	ieee80211_rx_napi(ar->hw, pubsta, msdu, napi);
+ }
+ 
