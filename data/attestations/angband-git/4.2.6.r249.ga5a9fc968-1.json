@@ -1,0 +1,795 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "angband-git",
+    "version": "4.2.6.r249.ga5a9fc968-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "ad974ccc558fa33d5149438f35f26f5cbaa8ffb6",
+    "pkgbuild_sha256": "19f3f8f1d1fac49e8351a3bb955df3bca7ac09e8120da803bd55fc3db49e6225",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-25T16:52:00.436748406+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/angband/angba\"... /home/builder/build/angband-git",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/angband/angba\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/angband/angba\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1402 on 3d1bb1\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/angband-git rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/angband-git/\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/angband-git angband-git",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/angband-git",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "./autogen.sh",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ./autogen.sh",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "uname",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "aclocal -I m4",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c autom4te --language Autoconf-wit\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "autom4te --language Autoconf-without-aclocal-m4 /usr/share/aclocal-1.19/internal\"... m4/buildsys.m4 acinclude.m4 --trace=AC_DEFUN:$f::$n::${::}% --trace=AC_DEFUN_ONCE:$f::$n::${\"... --trace=AU_DEFUN:$f::$n::${::}% --trace=_AM_AUTOCONF_VERSION:$f:\"... --trace=AC_CONFIG_MACRO_DIR_TRAC\"... --trace=AC_CONFIG_MACRO_DIR:$f::\"... --trace=_AM_CONFIG_MACRO_DIRS:$f\"... --trace=AM_PATH_NCURSESW:$f::$n --trace=AM_PATH_SDL:$f::$n --trace=AM_PATH_SDL2:$f::$n --trace=BUILDSYS_CHECK_IOS:$f::$\"... --trace=BUILDSYS_FRAMEWORK:$f::$\"... --trace=BUILDSYS_INIT:$f::$n --trace=BUILDSYS_PLUGIN:$f::$n --trace=BUILDSYS_PROG_IMPLIB:$f:\"... --trace=BUILDSYS_SHARED_LIB:$f::\"... --trace=MY_CHECK_SIGACTION:$f::$\"... --trace=MY_CHECK_SIGPROCMASK:$f:\"... --trace=MY_EXPAND_DIR:$f::$n --trace=MY_PROG_MAKE_SINCLUDE:$f\"... --trace=MY_PROG_MAKE_SYSVINC:$f:\"... --trace=_MY_PROG_MAKE_VAR:$f::$n configure.ac",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c /usr/bin/m4 --help </dev/null 2>\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --help",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep reload-state",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c echo dumpdef | /usr/bin/m4 --nes\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c /usr/bin/m4 --nesting-limit=1024\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024 --gnu --include=/usr/share/autoconf --debug=aflq --fatal-warning --debugfile=autom4te.cache/trace\"... --trace=AC_CONFIG_MACRO_DIR --trace=AC_CONFIG_MACRO_DIR_TRAC\"... --trace=AC_DEFUN --trace=AC_DEFUN_ONCE --trace=AM_PATH_NCURSESW --trace=AM_PATH_SDL --trace=AM_PATH_SDL2 --trace=AU_DEFUN --trace=BUILDSYS_CHECK_IOS --trace=BUILDSYS_FRAMEWORK --trace=BUILDSYS_INIT --trace=BUILDSYS_PLUGIN --trace=BUILDSYS_PROG_IMPLIB --trace=BUILDSYS_SHARED_LIB --trace=MY_CHECK_SIGACTION --trace=MY_CHECK_SIGPROCMASK --trace=MY_EXPAND_DIR --trace=MY_PROG_MAKE_SINCLUDE --trace=MY_PROG_MAKE_SYSVINC --trace=_AM_AUTOCONF_VERSION --trace=_AM_CONFIG_MACRO_DIRS --trace=_MY_PROG_MAKE_VAR --trace=_m4_warn --trace=include --trace=m4_include ...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024 /tmp/am4tcRIiZt/traces.m4",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024 /tmp/am4tyw5joE/traces.m4",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "autoheader",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c '/usr/bin/autom4te' --language=a\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/autom4te --language=autoconf --trace AC_CONFIG_HEADERS:$$config_h ||=\"... --trace AH_OUTPUT:$$verbatim{'$1'} = '$2\"... --trace AC_DEFINE_TRACE_LITERAL:$$symbol\"... configure.ac",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024 --gnu --include=/usr/share/autoconf --debug=aflq --fatal-warning --debugfile=autom4te.cache/trace\"... --trace=AC_CANONICAL_BUILD --trace=AC_CANONICAL_HOST --trace=AC_CANONICAL_SYSTEM --trace=AC_CANONICAL_TARGET --trace=AC_CONFIG_AUX_DIR --trace=AC_CONFIG_FILES --trace=AC_CONFIG_HEADERS --trace=AC_CONFIG_LIBOBJ_DIR --trace=AC_CONFIG_LINKS --trace=AC_CONFIG_MACRO_DIR --trace=AC_CONFIG_MACRO_DIR_TRAC\"... --trace=AC_CONFIG_SUBDIRS --trace=AC_DEFINE_TRACE_LITERAL --trace=AC_FC_FREEFORM --trace=AC_FC_PP_DEFINE --trace=AC_FC_PP_SRCEXT --trace=AC_FC_SRCEXT --trace=AC_INIT --trace=AC_LIBSOURCE --trace=AC_LIB_HAVE_LINKFLAGS --trace=AC_LIB_LINKFLAGS --trace=AC_LIB_LINKFLAGS_FROM_LI\"... --trace=AC_PROG_LIBTOOL --trace=AC_REQUIRE_AUX_FILE --trace=AC_SUBST ...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024 /tmp/am4tfVVSyx/traces.m4",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c sed 's/^/| /' /tmp/ahtlMAUb/trac\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed s/^/| / /tmp/ahtlMAUb/traces.pl",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "autoconf",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/autom4te --language=autoconf --output=configure /usr/share/autoconf/autoconf/tra\"... configure.ac",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024 /tmp/am4t4aCyJS/traces.m4",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i s/ncursesw5-config/ncursesw6-con\"... acinclude.m4",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git describe --long",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -r s/([^-",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/angband-git-4.2.6.r249.ga5a\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/angband-git-4.2.6.r249.ga5a\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/angband-git-4.2.6.r249.ga5a\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- C06086337C50773E",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 94657AB20F2A092B",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 93B11DAA4C197E3D",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F296BDE50368C6CE",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FC1B547C8D8172C8",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 244740D17C7FD0EC",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 06096A6AD1CEDDAC",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FDC3040B92ACA748",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B8AC08600F108CDF",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A91764759326B440",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 39E4B877E62EB915",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 6D42BDD116E0068F",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 632C3CC0D1C9CAF6",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0F65C7D881506130",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 9B7A287D9A2EC608",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 7A4E76095D8A52E4",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E85B8683EB48BC95",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A85E811EB4CA2E08",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 786C63F330D7CB92",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E499C79F53C96A54E572FEE1C0608633\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- ADC8A1FCC15E01D45310419E94657AB2\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F00B96D15228013FFC9C9D0393B11DAA\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 54C1FD273361EA514A237793F296BDE5\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E240B57E2C4630BA768E2F26FC1B547C\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 2191B89431BAC0A8B96DE93D244740D1\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 535F8C0339450F054A4D282706096A6A\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 262A58EC6C51F7EA395B2E2DFDC3040B\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 83BC8889351B5DEBBB68416EB8AC0860\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 2E36D8620221482FC45CB7F2A9176475\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 8FC15A064950A99DD1BD14DD39E4B877\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0429897DE5F3BDAC537A30696D42BDD1\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 14E46FE5FD69F2E287E244DB632C3CC0\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 95220BE99CE6FF778AE0DC670F65C7D8\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 62CC73F884E52957B2FDD8839B7A287D\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 1519D5ABA65BF6FC2B73C7567A4E7609\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 80247D99EABD3A4D1E3A1836E85B8683\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B0D65295476606B71F0C6F82A85E811E\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B5971F2C5C10A9A08C60030F786C63F3\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm angband-git",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm angband-git",
+        "parent": null,
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-25T16:52:00.381865470+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.3.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-25T16:52:00.417890123+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 330,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/angband",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d28295d896d5dacb7a5a28637e13033524b8dcf8f05d46853a64293b80276fdd",
+  "signature": null
+}
