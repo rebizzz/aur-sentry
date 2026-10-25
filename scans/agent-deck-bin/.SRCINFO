@@ -1,0 +1,18 @@
+pkgbase = agent-deck-bin
+	pkgdesc = Terminal session manager for AI coding agents
+	pkgver = 1.16.33
+	pkgrel = 1
+	url = https://github.com/asheshgoplani/agent-deck
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = tmux
+	depends = glibc
+	provides = agent-deck
+	conflicts = agent-deck
+	options = !strip
+	options = !debug
+	source = https://github.com/asheshgoplani/agent-deck/releases/download/v1.16.33/agent-deck_1.16.33_linux_amd64.tar.gz
+	sha256sums = e2a9c2ccb78a4cbf3ddeffa8e4528aa1c830f26cee035959169f80ecb8f48666
+
+pkgname = agent-deck-bin
