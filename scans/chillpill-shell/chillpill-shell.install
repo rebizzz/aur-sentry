@@ -1,0 +1,99 @@
+NC='\033[0m'
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;34m'
+BOLD='\033[1m'
+
+info() { echo -e "${GREEN}[+]${NC} $*"; }
+warn() { echo -e "${YELLOW}[!]${NC} $*"; }
+
+post_install() {
+  print_notice
+  verify_optional_deps
+  setup_users
+}
+
+post_upgrade() {
+  verify_optional_deps
+  setup_users
+}
+
+print_notice() {
+  echo -e "\n${BOLD}Run '${GREEN}chillpill-shell${NC}${BOLD}' to start now, or open '${GREEN}CP-Shell${NC}${BOLD}' from your app launcher.${NC}"
+  echo -e "${BOLD}Config App:${NC} '${GREEN}chillpill-config${NC}' ${BOLD}(Command)${NC} | ${GREEN}CP-Shell's Config${NC} ${BOLD}(App launcher)${NC}"
+  echo -e "\n${BLUE}==>${NC} ${BOLD}To auto start, paste this in your Hyprland (Lua) config:${NC}"
+  echo -e "\n${BOLD}hl.on(\"hyprland.start\", function()"
+  echo -e "  hl.exec_cmd(\"chillpill-shell\")"
+  echo -e "end)${NC}\n"
+}
+
+verify_optional_deps() {
+  command -v awww &>/dev/null || \
+    warn "Awww not installed. It's needed if you don't use a custom wallpaper script."
+  command -v blueman-manager &>/dev/null || \
+    warn "Blueman not installed. The bluetooth module in the bar won't work — install 'blueman' if you need it."
+  if command -v python3 &>/dev/null; then
+    python3 -c "import holidays" &>/dev/null || \
+      warn "Python 'holidays' lib not installed. Calendar events won't show — run 'pipx install holidays' (needs python-pip/pipx)."
+  fi
+}
+
+# Figure out which real user(s) to set files up for.
+get_users() {
+  local you logins
+  you="$(logname 2>/dev/null)"
+  [[ -z "$you" ]] && you="$SUDO_USER"
+  if [[ -n "$you" && "$you" != "root" ]]; then
+    echo "$you"
+    return
+  fi
+  awk -F: '$3 >= 1000 && $3 < 65534 && $6 ~ /^\/home\// {print $1}' /etc/passwd
+}
+
+setup_user() {
+  local user="$1" real_home cfg_dir cache_dir cfg cava
+  real_home="$(getent passwd "$user" 2>/dev/null | cut -d: -f6)"
+  [[ -z "$real_home" ]] && real_home="/home/$user"
+  [[ -d "$real_home" ]] || return
+
+  cfg_dir="$real_home/.config/chillpill-shell"
+  cache_dir="$real_home/.cache/chillpill-shell"
+  custom_module_dir="$cfg_dir/modules"
+  mkdir -p "$cfg_dir" "$cache_dir" "$custom_module_dir"
+
+  cfg="$cfg_dir/config.jsonc"
+  cava="$cache_dir/cava.conf"
+
+  if [[ -f "$cfg" ]]; then
+    if [[ -f /usr/share/chillpill-shell/scripts/config_update.py ]] && command -v python3 &>/dev/null; then
+      info "Updating config for $user..."
+      python3 /usr/share/chillpill-shell/scripts/config_update.py "$user" 2>/dev/null \
+        || warn "Config update failed for $user, keeping your existing config."
+    fi
+  else
+    info "Setting up default config for $user..."
+    install -Dm644 /usr/share/chillpill-shell/config.jsonc.example "$cfg" 2>/dev/null \
+      || warn "Could not create default config for $user."
+  fi
+
+  if [[ ! -f "$cava" ]] && [[ -f /usr/share/chillpill-shell/scripts/cava.conf ]]; then
+    install -Dm644 /usr/share/chillpill-shell/scripts/cava.conf "$cava" 2>/dev/null \
+      || warn "Could not seed cava.conf for $user."
+  fi
+
+  # copy the sample script (for custom module) in the config directory
+  if [[ ! -f "$custom_module_dir/cpu-temp.sh" ]]; then
+    install -Dm755 /usr/share/chillpill-shell/scripts/cpu-temp.sh "$custom_module_dir/cpu-temp.sh" 2>/dev/null \
+      || warn "Could not seed the custom module sample script for $user."
+  fi
+
+  chown -R "$user:$user" "$cfg_dir" "$cache_dir" "$custom_module_dir"
+}
+
+setup_users() {
+  local u
+  for u in $(get_users); do
+    setup_user "$u"
+  done
+}
