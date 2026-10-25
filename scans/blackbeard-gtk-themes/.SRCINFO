@@ -1,0 +1,15 @@
+pkgbase = blackbeard-gtk-themes
+	pkgdesc = Blackbeard dark and light GTK 2/3/4 and GNOME Shell themes
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/cvusmo/blackbeard-theme
+	arch = any
+	license = 0BSD
+	makedepends = git
+	makedepends = dart-sass>=1.95
+	makedepends = python
+	optdepends = gimp: build the optional GIMP theme with the upstream installer
+	source = git+https://github.com/cvusmo/blackbeard-theme.git#tag=v1.1.0
+	sha256sums = SKIP
+
+pkgname = blackbeard-gtk-themes
