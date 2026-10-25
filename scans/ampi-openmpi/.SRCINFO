@@ -1,0 +1,13 @@
+pkgbase = ampi-openmpi
+	pkgdesc = Adaptive Message Passing Interface, OpenMPI backend
+	pkgver = 8.1.0
+	pkgrel = 1
+	url = http://charm.cs.uiuc.edu/research/ampi
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = gcc-fortran
+	depends = openmpi
+	source = charm-8.1.0.tar.gz::https://github.com/UIUC-PPL/charm/archive/v8.1.0.tar.gz
+	sha512sums = 45584628d3a48979350972d706e25ab7c1b1e80957447e4f516064bfcc410d4d732c2f615811737e411c925991a85e8ccec4ce90f6a1a03f66315d78e1ced00b
+
+pkgname = ampi-openmpi
