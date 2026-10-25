@@ -1,0 +1,14 @@
+pkgbase = clice-bin
+	pkgdesc = A next-generation C++ language server for modern C++, focused on high performance and deep code intelligence.
+	pkgver = 0.1.2026102007
+	pkgrel = 1
+	url = https://github.com/clice-io/clice
+	arch = x86_64
+	license = MIT
+	provides = clice
+	conflicts = clice
+	options = !strip
+	source = https://github.com/clice-io/clice/releases/download/v0.1.2026102007/clice-0.1.2026102007.x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 6b923fc59298e354d133742887fb3a09ad32624bb056732b31334a3534b111bf
+
+pkgname = clice-bin
