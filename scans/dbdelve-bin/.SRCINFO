@@ -1,0 +1,30 @@
+pkgbase = dbdelve-bin
+	pkgdesc = A modern and performant database client for PostgreSQL, MySQL and SQLite
+	pkgver = 0.2.4
+	pkgrel = 1
+	url = https://github.com/ShayanAbbas1/dbdelve
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = OFL-1.1
+	depends = glibc
+	depends = gcc-libs
+	depends = hicolor-icon-theme
+	depends = libxcb
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libglvnd
+	depends = vulkan-icd-loader
+	depends = wayland
+	optdepends = org.freedesktop.secrets: store database passwords in a Secret Service keyring
+	optdepends = xdg-desktop-portal: file export dialogs
+	provides = dbdelve=0.2.4
+	conflicts = dbdelve
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/ShayanAbbas1/dbdelve/releases/download/v0.2.4/dbdelve-0.2.4-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 8271f9e528b41534e150d02733a8b7a58d72c207b86de03f98cd5d45fcd68342
+	source_aarch64 = https://github.com/ShayanAbbas1/dbdelve/releases/download/v0.2.4/dbdelve-0.2.4-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 61c6151b224ac96078566999ce257ce313fbeaa8d8d011acf62f4c2b3da91893
+
+pkgname = dbdelve-bin
