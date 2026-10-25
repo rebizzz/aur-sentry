@@ -1,0 +1,38 @@
+[Unit]
+Description=AMD GPU temperature driven fan control for Tyan S8030GM2NE
+Documentation=file:/usr/share/doc/amdgpu-fan-ctl/README.md
+
+[Service]
+Type=simple
+
+# 专用系统用户（由 sysusers.d 创建），只需要 /dev/ipmi0 与 GPU 传感器访问权
+User=amdgpu-fan-ctl
+Group=amdgpu-fan-ctl
+SupplementaryGroups=render video
+
+ExecStart=/usr/bin/amdgpu-fan-ctl --config /etc/amdgpu-fan-ctl/config.toml
+
+# 无论怎么退出（正常 / 崩溃 / 被 kill）都尝试恢复接管前的 PWM
+ExecStopPost=/usr/bin/amdgpu-fan-ctl --config /etc/amdgpu-fan-ctl/config.toml --restore
+
+Restart=on-failure
+RestartSec=10s
+TimeoutStopSec=20s
+
+# --- 权限收窄：只需要 /dev/ipmi0、state_dir 和 runtime_dir ----------------
+NoNewPrivileges=yes
+ProtectSystem=strict
+PrivateTmp=yes
+# 由 systemd 创建并 chown 给专用用户，替代宽泛的 ReadWritePaths=/run
+StateDirectory=amdgpu-fan-ctl
+StateDirectoryMode=0750
+RuntimeDirectory=amdgpu-fan-ctl
+RuntimeDirectoryMode=0750
+# 只读 /sys 与 /proc 的子集即可，其余全部只读
+ProtectKernelTunables=yes
+ProtectControlGroups=yes
+RestrictRealtime=yes
+MemoryDenyWriteExecute=yes
+
+[Install]
+WantedBy=multi-user.target
