@@ -1,0 +1,40 @@
+pkgbase = amiberry
+	pkgdesc = Optimized Amiga emulator
+	pkgver = 8.4.2
+	pkgrel = 1
+	url = https://github.com/BlitterStudio/amiberry
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = glibc
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	depends = curl
+	depends = flac
+	depends = sdl3
+	depends = sdl3_image
+	depends = sdl3_ttf
+	depends = mpg123
+	depends = libmpeg2
+	depends = libserialport
+	depends = portmidi
+	depends = hicolor-icon-theme
+	depends = enet
+	depends = libpcap
+	depends = tinyxml2
+	depends = nlohmann-json
+	depends = zlib
+	depends = libpng
+	depends = libglvnd
+	provides = amiberry=8.4.2
+	conflicts = amiberry-git
+	conflicts = amiberry-lite
+	source = amiberry::git+https://github.com/BlitterStudio/amiberry.git#tag=v8.4.2
+	sha256sums = 235b20b9493d11a50bb7266f17fde3966f945d9e7cb2c01cf358ec87ef064011
+	source_x86_64 = qemu-uae-linux-x86_64-11.0.1-amiberry.7.tar.xz::https://github.com/BlitterStudio/amiberry-qemu-uae/releases/download/v11.0.1-amiberry.7/qemu-uae-linux-x86_64.tar.xz
+	sha256sums_x86_64 = 62926ba5437d21e6daeea841bc103088c2f5849206681eb47e6d2bcabc9c8f52
+	source_aarch64 = qemu-uae-linux-aarch64-11.0.1-amiberry.7.tar.xz::https://github.com/BlitterStudio/amiberry-qemu-uae/releases/download/v11.0.1-amiberry.7/qemu-uae-linux-aarch64.tar.xz
+	sha256sums_aarch64 = 6906cfc09c2478313c1eaddc941bc670db3d8bda63f418c69773415ebe429c8f
+
+pkgname = amiberry
