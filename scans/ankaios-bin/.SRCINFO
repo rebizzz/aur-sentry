@@ -1,0 +1,48 @@
+pkgbase = ankaios-bin
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://eclipse-ankaios.github.io/ankaios
+	arch = x86_64
+	arch = aarch64
+	groups = ankaios-bin
+	license = Apache-2.0
+	depends = libgcc
+	depends = glibc
+	source = ankaios-bin-1.1.0_configs.tar.gz::https://github.com/eclipse-ankaios/ankaios/releases/download/v1.1.0/ankaios_configs.tar.gz
+	source = ankaios-bin-1.1.0_man-pages.tar.gz::https://github.com/eclipse-ankaios/ankaios/releases/download/v1.1.0/man-pages.tar.gz
+	source = ankaios.sysusers
+	b2sums = 03a7429138045dc7cfe814357bed41346bf70784cd812453a004305a7c7a34216179d1afa8d661756576d8d633c14fb13f68acdb020c8f162f5f3b1b66505f50
+	b2sums = 483f0209232f3bb812b7ca7fd00ab86560937f218368ab5f94392c656c794b6b8401f7d4332f1af99a37d09d3bbdb8cfb7f3720681fc9983fe4ba050324dd344
+	b2sums = f8f40d8b3c5e67941d3cd8294ef388eca34ee10e4dd0711f0f842d8e881b856478bf08d9a057f659f190bd81ecd4791ec9873723e946bec0723f897bce6f2436
+	source_x86_64 = ankaios-bin-1.1.0-x86_64.tar.gz::https://github.com/eclipse-ankaios/ankaios/releases/download/v1.1.0/ankaios-linux-amd64.tar.gz
+	b2sums_x86_64 = 0cdc317a642463388196a32acab0585048551b0ee53962bdcac7e0c9be36c11e127c2f21bca6caf4ca2e0bafde11da6ec2a48df480720e18b2a26b783c7b0959
+	source_aarch64 = ankaios-bin-1.1.0-aarch64.tar.gz::https://github.com/eclipse-ankaios/ankaios/releases/download/v1.1.0/ankaios-linux-arm64.tar.gz
+	b2sums_aarch64 = 051dc12b6c9ef8bcf38c91e356e92e8b9fb0dceef117e4e6bf45685eb1e45b978b59a8407aad31ef6d9d5a64e8b40462ca93194f4675ecbc64d97e67310c1078
+
+pkgname = ankaios-server-bin
+	pkgdesc = The server application of Eclipse Ankaios
+	provides = ankaios-server
+	conflicts = ankaios-server
+	backup = etc/ankaios/ank-server.conf
+	backup = etc/ankaios/state.yaml
+
+pkgname = ankaios-agent-bin
+	pkgdesc = An agent running on each node of an Eclipse Ankaios cluster
+	optdepends = podman: for running podman workloads
+	optdepends = nerdctl: for running containerd workloads
+	provides = ankaios-agent
+	conflicts = ankaios-agent
+	backup = etc/ankaios/ank-agent.conf
+
+pkgname = ankaios-cli-bin
+	pkgdesc = A command line tool for communicating with the API of the Eclipse Ankaios server
+	install = ankaios-cli.install
+	provides = ankaios-cli
+	conflicts = ankaios-cli
+	backup = etc/ankaios/ank.conf
+
+pkgname = ankaios-bin
+	pkgdesc = Meta-package to install all components of Eclipse Ankaios
+	depends = ankaios-server-bin
+	depends = ankaios-agent-bin
+	depends = ankaios-cli-bin
