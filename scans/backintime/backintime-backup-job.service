@@ -1,0 +1,5 @@
+[Unit]
+Description=Run backintime snapshot generation
+
+[Service]
+ExecStart=/usr/bin/backintime backup
