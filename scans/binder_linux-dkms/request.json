@@ -1,0 +1,8 @@
+{
+  "package": "binder_linux-dkms",
+  "aur_commit": "d0bad69f4f18bb0a2617df71e289ca6ea1dce155",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-25T05:04:02Z"
+}
