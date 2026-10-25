@@ -1,0 +1,27 @@
+pkgbase = aqua-bin
+	pkgdesc = Declarative CLI version manager
+	pkgver = 2.65.2
+	pkgrel = 1
+	url = https://aquaproj.github.io
+	install = aqua.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cosign
+	makedepends = slsa-verifier
+	makedepends = help2man
+	depends = bash
+	provides = aqua
+	conflicts = aqua
+	source = aqua-2.65.2-checksums.txt::https://github.com/aquaproj/aqua/releases/download/v2.65.2/aqua_2.65.2_checksums.txt
+	source = aqua-2.65.2-checksums.bundle::https://github.com/aquaproj/aqua/releases/download/v2.65.2/aqua_2.65.2_checksums.txt.sigstore.json
+	source = aqua-2.65.2-multiple.intoto.jsonl::https://github.com/aquaproj/aqua/releases/download/v2.65.2/multiple.intoto.jsonl
+	sha256sums = dec46a6293c1c3aedd887996c65fe358f0c8726ea20bd87b217ab9e37c19638f
+	sha256sums = f44558d85809e507daf41a397ca5bc9e0cec7f6dd614c2a862d7e9340688216c
+	sha256sums = adac13597b69be1e06c0518a73baaf1d3932801c5b332a6d89ab909e5324431e
+	source_x86_64 = aqua-2.65.2-x86_64.tar.gz::https://github.com/aquaproj/aqua/releases/download/v2.65.2/aqua_linux_amd64.tar.gz
+	sha256sums_x86_64 = 971abaccd16d0521fdb8e45990dba2aea17587f476aa075b621aeb972f52a61f
+	source_aarch64 = aqua-2.65.2-aarch64.tar.gz::https://github.com/aquaproj/aqua/releases/download/v2.65.2/aqua_linux_arm64.tar.gz
+	sha256sums_aarch64 = 7abd3d2c27efad797c3284ab1ff21875b143daba28aecb2088917115b7f9cc81
+
+pkgname = aqua-bin
