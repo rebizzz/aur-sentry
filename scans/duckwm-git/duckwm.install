@@ -1,0 +1,11 @@
+post_install() {
+  cat <<'MSG'
+==> duckwm runs /etc/duckwm/config.lua until you have ~/.config/duckwm/config.lua.
+    To start one of your own from it:
+      mkdir -p ~/.config/duckwm && cp /etc/duckwm/config.lua ~/.config/duckwm/
+==> For completion and docs in your editor (lua-language-server):
+      cp /usr/share/duckwm/luarc.json ~/.config/duckwm/.luarc.json
+    It points at /usr/share/duckwm/meta, so upgrades keep it current.
+==> Guide and API reference: /usr/share/doc/duckwm
+MSG
+}
