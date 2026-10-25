@@ -1,0 +1,8 @@
+{
+  "package": "arch-install-manager-git",
+  "aur_commit": "ba243466dd7ce89a109027eeef1365177bca6864",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-10T12:52:59Z"
+}
