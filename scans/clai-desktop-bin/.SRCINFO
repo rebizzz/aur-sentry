@@ -1,0 +1,22 @@
+pkgbase = clai-desktop-bin
+	pkgdesc = Desktop app for building, running, and supervising teams of AI agents
+	pkgver = 26.10.23
+	pkgrel = 1
+	url = https://github.com/clairun/clai
+	arch = x86_64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libsecret
+	depends = openssl
+	depends = bubblewrap
+	depends = hicolor-icon-theme
+	conflicts = clai
+	options = !strip
+	options = !debug
+	source = https://github.com/clairun/clai/releases/download/v26.10.23/clai_26.10.23_amd64.deb
+	source = https://github.com/clairun/clai/raw/v26.10.23/LICENSE
+	sha256sums = 125fc54ffd7b7df601a58e6273f570c97a62787842fa69d79b373db465607f73
+	sha256sums = SKIP
+
+pkgname = clai-desktop-bin
