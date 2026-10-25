@@ -1,0 +1,18 @@
+pkgbase = anodizer
+	pkgdesc = A Rust-native release automation tool
+	pkgver = 0.30.0
+	pkgrel = 1
+	url = https://github.com/tj-smith47/anodizer
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cargo
+	depends = glibc
+	conflicts = anodizer
+	provides = anodizer
+	source = anodizer_0.30.0.tar.gz::https://github.com/tj-smith47/anodizer/releases/download/v0.30.0/anodizer-0.30.0-source.tar.gz
+	sha256sums = 94fabbf2f63af50e5a7df0afd7ae25ebe69298c21b43b0118d996cfee8f44758
+
+pkgname = anodizer
