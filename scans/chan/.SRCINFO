@@ -1,0 +1,20 @@
+pkgbase = chan
+	pkgdesc = Headless terminal multiplexer and workspace manager
+	pkgver = 0.104.0
+	pkgrel = 1
+	url = https://chan.app
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd
+	conflicts = chan-desktop
+	options = !lto
+	source = chan-0.104.0.tar.gz::https://github.com/fiorix/chan/archive/v0.104.0.tar.gz
+	sha256sums = 1b856c9d3b202428d31d0e4de48328a7cc7bde980a711e06d39ae8d4d3623b2a
+
+pkgname = chan
