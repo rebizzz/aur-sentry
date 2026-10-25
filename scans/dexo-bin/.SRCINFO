@@ -1,0 +1,20 @@
+pkgbase = dexo-bin
+	pkgdesc = A terminal database workbench with guardrails for AI agents.
+	pkgver = 1.4.3
+	pkgrel = 1
+	url = https://github.com/KingDasWinx/Dexo
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = Apache-2.0
+	depends = glibc
+	depends = libgcc
+	provides = dexo
+	conflicts = dexo
+	options = !strip
+	source_x86_64 = dexo-x86_64-1.4.3.tgz::https://github.com/KingDasWinx/Dexo/releases/download/v1.4.3/dexo-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 76b460cdf5f69bfee0e9d236c701efa2b9fa16a1f5d6f0311d160674dfeb08df
+	source_aarch64 = dexo-aarch64-1.4.3.tgz::https://github.com/KingDasWinx/Dexo/releases/download/v1.4.3/dexo-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = ae5637fa7307e437123b6370f2842fcab9e36f2ac3975ad8447b92536c0d5c91
+
+pkgname = dexo-bin
