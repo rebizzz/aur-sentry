@@ -1,0 +1,387 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "binder_linux-dkms",
+    "version": "7.1-4",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d0bad69f4f18bb0a2617df71e289ca6ea1dce155",
+    "pkgbuild_sha256": "333ba3e84822fd409bd272c778565497ea553bf72323fe505f3cd2e7178a3be8",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-25T05:08:25.320371996+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o anbox-modules-4d68f90e11992601e8\"... https://github.com/choff/anbox-m\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/anbox-module\"... /home/builder/build/anbox-module\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/anbox-module\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/anbox-mo\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/anbox-module\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- anbox-modules-4d68f90e11992601e8\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf anbox-modules-4d68f90e11992601e8\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find /home/builder/build/src -mindepth 1 -maxdepth 1 -type l ( -name *.patch -o -name *.diff ) -printf Applying %f...\\\\n -exec patch -Np1 -i {} ;",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/binder_linux-dkms-7.1-4-any\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/binder_linux-dkms-7.1-4-any\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/binder_linux-dkms-7.1-4-any\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 93B11DAA4C197E3D",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F00B96D15228013FFC9C9D0393B11DAA\"...",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/dkms install",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm binder_linux-dkms",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm binder_linux-dkms",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/dkms remove",
+        "parent": null,
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-25T05:08:25.311264478+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-25T05:08:25.318641173+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 12,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "067b12e757487280b48b42286d88e2b5194562d28479f65f132cb7e7294f3d49",
+  "signature": null
+}
