@@ -1,0 +1,27 @@
+pkgbase = cronstable-bin
+	pkgdesc = A modern, container-friendly, optionally-distributed, fault-tolerant, highly available, leader-electing, highly configurable, precompiled, multi-architecture, portable, security-hardened, production-ready cron replacement
+	pkgver = 1.2.72
+	pkgrel = 1
+	url = https://github.com/ptweezy/cronstable
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	depends = zlib
+	provides = cronstable
+	conflicts = cronstable
+	options = !strip
+	source = LICENSE-1.2.72::https://raw.githubusercontent.com/ptweezy/cronstable/1.2.72/LICENSE
+	source = README-1.2.72.md::https://raw.githubusercontent.com/ptweezy/cronstable/1.2.72/README.md
+	sha256sums = 0bd06e55daf021493fd9448c09781eb71276cf34f5c732a1f3e556dc1ee8c11d
+	sha256sums = dd55828dcd4e4e3b6111fde277b27d8f36fba3cc012158cdfdc15cfb8a701e85
+	source_i686 = cronstable-i686-1.2.72::https://github.com/ptweezy/cronstable/releases/download/1.2.72/cronstable-linux-i686
+	sha256sums_i686 = 3e59118bd18624f35bbd2d327c9cee299c11980485386f95123c4d4e7936b909
+	source_x86_64 = cronstable-x86_64-1.2.72::https://github.com/ptweezy/cronstable/releases/download/1.2.72/cronstable-linux-amd64
+	sha256sums_x86_64 = 21878dd4b69bb84437b1b1b50949fff1370a80394f362f6962d8d74e25d6d739
+	source_aarch64 = cronstable-aarch64-1.2.72::https://github.com/ptweezy/cronstable/releases/download/1.2.72/cronstable-linux-arm64
+	sha256sums_aarch64 = 9bec1d293fe603a3c55b653ac02e7616abd4e9eb2be3e34c32922d1e0cb9cce9
+
+pkgname = cronstable-bin
