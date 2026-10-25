@@ -1,0 +1,18 @@
+pkgbase = braincup-bin
+	pkgdesc = Train your math skills, memory and focus
+	pkgver = 3.8.1
+	pkgrel = 1
+	url = https://github.com/SimonSchubert/Braincup
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = hicolor-icon-theme
+	provides = braincup
+	conflicts = braincup
+	options = !strip
+	source_x86_64 = Braincup-3.8.1-linux-x86_64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v3.8.1/Braincup-3.8.1-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3b7a3946c176803ebc94bc4fa71ed25159ec74ff17cea5beab95f9f5ff67ad45
+	source_aarch64 = Braincup-3.8.1-linux-aarch64.tar.gz::https://github.com/SimonSchubert/Braincup/releases/download/v3.8.1/Braincup-3.8.1-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 9a061ff55389fb6af37acc62f203492ee3cbf8d478bf6247dbe70dd22125c135
+
+pkgname = braincup-bin
