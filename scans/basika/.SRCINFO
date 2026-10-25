@@ -1,0 +1,25 @@
+pkgbase = basika
+	pkgdesc = BASIC Interpreter
+	pkgver = 0.99.6
+	pkgrel = 1
+	url = https://github.com/kdekorte/basika
+	arch = x86_64
+	license = Unlincense
+	makedepends = gcc
+	makedepends = pkgconf
+	makedepends = make
+	makedepends = sdl3
+	makedepends = sdl3_ttf
+	makedepends = sdl3_mixer
+	makedepends = sdl3_image
+	depends = glibc
+	depends = sdl3
+	depends = sdl3_ttf
+	depends = sdl3_mixer
+	depends = sdl3_image
+	provides = basika
+	options = !lto
+	source = basika-0.99.6.tgz::https://github.com/kdekorte/basika/archive/v0.99.6.tar.gz
+	sha256sums = 87f6c6b9cc975efbd9a56613336e35684b515bf570b28192ee3b06ad1ce9fe10
+
+pkgname = basika
