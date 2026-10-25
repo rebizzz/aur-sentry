@@ -1,0 +1,18 @@
+pkgbase = anidb-mv
+	pkgdesc = Command line client for AniDB
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ljb/anidb-mv
+	arch = any
+	license = GPL-3.0-or-later
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-pycryptodomex
+	source = https://files.pythonhosted.org/packages/source/a/anidb_mv/anidb_mv-1.0.0.tar.gz
+	sha256sums = 974b8a5e21df7af3023963d7a9ac97d025aab13e6278998a71058cc5482abe23
+
+pkgname = anidb-mv
