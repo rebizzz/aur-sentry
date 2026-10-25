@@ -1,0 +1,14 @@
+pkgbase = beansbinding
+	pkgdesc = Beans Binding API (implementation of JSR295)
+	pkgver = 1.2.1
+	pkgrel = 2
+	url = https://tracker.debian.org/pkg/beansbinding
+	arch = any
+	license = LGPL-2.1-only
+	makedepends = jdk8-openjdk
+	makedepends = ant
+	depends = java-runtime
+	source = http://deb.debian.org/debian/pool/main/b/beansbinding/beansbinding_1.2.1.orig.tar.gz
+	sha256sums = 46f618e7c8c4940456cfe1f95cbf489ff872a2424457ec973812b908b17bb694
+
+pkgname = beansbinding
