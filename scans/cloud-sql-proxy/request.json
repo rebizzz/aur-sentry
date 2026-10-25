@@ -1,0 +1,8 @@
+{
+  "package": "cloud-sql-proxy",
+  "aur_commit": "674c30d5a9da0bdc1a922a9317869b349ba68eda",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-24T11:26:39Z"
+}
