@@ -1,0 +1,13 @@
+pkgbase = casparcg-client-bin
+	pkgdesc = A client software used to control the CasparCG Server software
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = http://www.casparcg.com/
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = vlc
+	depends = boost174-libs
+	source = https://github.com/CasparCG/client/releases/download/v2.3.1/casparcg-client-v2.3.1-ubuntu22.deb
+	sha256sums = 4c3a165e9c96e3d1ac12cb1411789fbdd9728f20b180f428f42b8ee86cbecc56
+
+pkgname = casparcg-client-bin
