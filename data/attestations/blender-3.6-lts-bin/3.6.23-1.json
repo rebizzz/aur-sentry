@@ -1,0 +1,1773 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "blender-3.6-lts-bin",
+    "version": "3.6.23-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "0416581be141e0fcc54afdef5379a618554697f8",
+    "pkgbuild_sha256": "662f68cf805ff3afa611bfb5aa6a9d2368b8d6616fb73923fcb59bb29cc57cd3",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-26T15:40:37.154549347+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o blender-3.6.23-linux-x64.tar.xz.\"... https://download.blender.org/rel\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/blender-3.6.\"... /home/builder/build/blender-3.6.\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/blender-3.6.\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/blender-\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/blender-3.6.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- blender-3.6.23-linux-x64.tar.xz",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf blender-3.6.23-linux-x64.tar.xz",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- blender-3.6.sh",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf blender-3.6.sh -q *",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/blender-3.6-lts-bin-3.6.23-\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/blender-3.6-lts-bin-3.6.23-\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/blender-3.6-lts-bin-3.6.23-\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B8AC08600F108CDF",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- C06086337C50773E",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 94657AB20F2A092B",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 93B11DAA4C197E3D",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F296BDE50368C6CE",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FC1B547C8D8172C8",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 244740D17C7FD0EC",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 06096A6AD1CEDDAC",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- FDC3040B92ACA748",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A91764759326B440",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 39E4B877E62EB915",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 83BC8889351B5DEBBB68416EB8AC0860\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E499C79F53C96A54E572FEE1C0608633\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- ADC8A1FCC15E01D45310419E94657AB2\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F00B96D15228013FFC9C9D0393B11DAA\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 54C1FD273361EA514A237793F296BDE5\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E240B57E2C4630BA768E2F26FC1B547C\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 2191B89431BAC0A8B96DE93D244740D1\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 535F8C0339450F054A4D282706096A6A\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 262A58EC6C51F7EA395B2E2DFDC3040B\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 2E36D8620221482FC45CB7F2A9176475\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 8FC15A064950A99DD1BD14DD39E4B877\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/env PKGSYSTEM_ENABLE_FSYNC=0 /usr/bin/update-mime-database /usr/share/mime",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/update-mime-database /usr/share/mime",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/update-desktop-database --quiet",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm blender-3.6-lts-bin",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm blender-3.6-lts-bin",
+        "parent": null,
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.66.172.236",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-26T15:40:37.078834967+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.131.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-26T15:40:37.118291398+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 4879,
+    "elf_object_count": 207,
+    "elf_objects": [
+      {
+        "path": "opt/blender-3.6-lts/blender",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libsycl.so.6.1.0-0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libMaterialXRenderGlsl.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_thread.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libIex.so.30.7.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libopenvdb.so.10.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libOpenEXR.so.30.7.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libOpenImageIO_Util.so.2.4.15",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libusd_ms.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libpi_level_zero.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libOpenColorIO.so.2.2.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libMaterialXGenGlsl.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_atomic.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_date_time.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_locale.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libMaterialXRenderOsl.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libembree4.so.4",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_system.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libcycles_kernel_oneapi_aot.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_serialization.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libosdGPU.so.3.5.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libosdCPU.so.3.5.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libtbb.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libOpenEXRUtil.so.30.7.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libIlmThread.so.30.7.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/mesa/libglapi.so.0.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/mesa/libGLU.so.1.3.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/mesa/libGL.so.1.5.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_wserialization.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libImath.so.30.0.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_python310.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libOpenEXRCore.so.30.7.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_program_options.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_iostreams.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libMaterialXGenMdl.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_numpy310.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libOpenImageIO.so.2.4.15",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_chrono.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libMaterialXRenderHw.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libMaterialXGenOsl.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libMaterialXGenShader.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_filesystem.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libMaterialXFormat.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_regex.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libboost_wave.so.1.80.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libMaterialXCore.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/lib/libMaterialXRender.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/blender-thumbnailer",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_61.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_75.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_89.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_86.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_50.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_35.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_37.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_70.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_30.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_60.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/scripts/addons/cycles/lib/kernel_sm_52.cubin",
+        "arch": "NVIDIA CUDA architecture",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_ctypes.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_posixshmem.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/xxlimited_35.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_contextvars.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_ctypes_test.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_xxtestfuzz.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/cmath.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_codecs_jp.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/audioop.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_datetime.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_lsprof.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_sha3.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/resource.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_testclinic.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_sha256.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_queue.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/xxlimited.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/spwd.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_testbuffer.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/fcntl.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/zlib.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_json.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_sha1.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_elementtree.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/select.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_lzma.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_curses_panel.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_csv.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/syslog.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/pyexpat.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_testimportmultiple.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_opcode.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_statistics.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_codecs_hk.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_bisect.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_zoneinfo.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_codecs_cn.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_blake2.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/grp.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_testinternalcapi.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_random.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/math.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_decimal.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/binascii.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_pickle.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_codecs_iso2022.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_testmultiphase.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/ossaudiodev.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_sqlite3.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_xxsubinterpreters.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_sha512.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_socket.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_struct.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_bz2.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_crypt.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_codecs_kr.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_multiprocessing.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_codecs_tw.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_curses.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_multibytecodec.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_ssl.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_hashlib.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/array.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_md5.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_heapq.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_asyncio.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_testcapi.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/mmap.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/termios.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/unicodedata.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/lib-dynload/_posixsubprocess.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/linalg/lapack_lite.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/linalg/_umath_linalg.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/core/_umath_tests.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/core/_simd.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/core/_multiarray_tests.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/core/_struct_ufunc_tests.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/core/_multiarray_umath.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/core/_operand_flag_tests.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/core/_rational_tests.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/fft/_pocketfft_internal.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/random/_sfc64.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/random/_bounded_integers.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/random/_mt19937.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/random/_common.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/random/mtrand.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/random/_philox.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/random/bit_generator.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/random/_generator.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/numpy/random/_pcg64.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/MaterialX/PyMaterialXGenGlsl.cpython-310-x86_64-linux-gnu.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/MaterialX/PyMaterialXGenShader.cpython-310-x86_64-linux-gnu.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/MaterialX/PyMaterialXCore.cpython-310-x86_64-linux-gnu.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/MaterialX/PyMaterialXFormat.cpython-310-x86_64-linux-gnu.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/MaterialX/PyMaterialXGenOsl.cpython-310-x86_64-linux-gnu.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/MaterialX/PyMaterialXRenderGlsl.cpython-310-x86_64-linux-gnu.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/MaterialX/PyMaterialXGenMdl.cpython-310-x86_64-linux-gnu.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/MaterialX/PyMaterialXRenderOsl.cpython-310-x86_64-linux-gnu.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/MaterialX/PyMaterialXRender.cpython-310-x86_64-linux-gnu.so.1.38.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/libextern_draco.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/OpenImageIO/OpenImageIO.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/PyOpenColorIO.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pyopenvdb.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/Cython/Compiler/Visitor.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/Cython/Compiler/FusedNode.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/Cython/Compiler/Scanning.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/Cython/Compiler/FlowControl.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/Cython/Runtime/refnanny.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/Cython/Tempita/_tempita.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/Cython/Plex/Scanners.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/Cython/Plex/Actions.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/zstandard/backend_c.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Vt/_vt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/GeomUtil/_geomUtil.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Sdf/_sdf.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdMedia/_usdMedia.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Glf/_glf.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdHydra/_usdHydra.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Sdr/_sdr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdSkel/_usdSkel.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Tf/_tf.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdLux/_usdLux.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Ar/_ar.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdAppUtils/_usdAppUtils.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdProc/_usdProc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/CameraUtil/_cameraUtil.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdUI/_usdUI.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Kind/_kind.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Trace/_trace.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Pcp/_pcp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdUtils/_usdUtils.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdMtlx/_usdMtlx.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/PxOsd/_pxOsd.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Gf/_gf.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdImagingGL/_usdImagingGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdRi/_usdRi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdShade/_usdShade.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Usd/_usd.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Ndr/_ndr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Garch/_garch.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Plug/_plug.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/Work/_work.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdPhysics/_usdPhysics.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdVol/_usdVol.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdGeom/_usdGeom.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/site-packages/pxr/UsdRender/_usdRender.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/lib/python3.10/config-3.10-x86_64-linux-gnu/python.o",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/blender-3.6-lts/3.6/python/bin/python3.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c265284d8805e71806ea4dede5173d738b4fae630584fd00e2a0a7d9c256404a",
+  "signature": null
+}
