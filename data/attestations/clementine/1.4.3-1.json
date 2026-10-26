@@ -1,0 +1,344 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "clementine",
+    "version": "1.4.3-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5b5cb3504ab776ae6f121422903e3d4bc9d631de",
+    "pkgbuild_sha256": "3631f7dc28a9323c903b9ad673424b46bc8acf0e9a34ad9341f28a8710af27b5",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-26T21:22:57.578419320+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/clementine-pl\"... /home/builder/build/Clementine",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/clementine-pl\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/clementine-pl\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 949 on 98cddd5\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/Clementine rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/Clementine/i\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/Clementine archive --format tar 9838398307d8928eec2deee5faacb3dc\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/Clementine Clementine",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/Clementine",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg 9838398307d8928eec2deee5faacb3dc\"... --",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git describe --tags",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed s/^v//;s/-/+/g",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-26T21:22:57.556546734+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Crash due to uncontrolled recursion in protobuf crate (GHSA-2gh3-rmm4-6rq5)",
+      "url": "https://osv.dev/vulnerability/GHSA-2gh3-rmm4-6rq5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf affected by a JSON recursion depth bypass (GHSA-7gcm-g887-7qv7)",
+      "url": "https://osv.dev/vulnerability/GHSA-7gcm-g887-7qv7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf-cpp and protobuf-python have potential Denial of Service issue (GHSA-8gq9-2x98-w8hf)",
+      "url": "https://osv.dev/vulnerability/GHSA-8gq9-2x98-w8hf"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf-python has a potential Denial of Service issue (GHSA-8qvm-5x2c-j2w7)",
+      "url": "https://osv.dev/vulnerability/GHSA-8qvm-5x2c-j2w7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf susceptible to buffer overflow (GHSA-jwvw-v7c5-m82h)",
+      "url": "https://osv.dev/vulnerability/GHSA-jwvw-v7c5-m82h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Uncontrolled memory consumption in protobuf (GHSA-mh6h-f25p-98f8)",
+      "url": "https://osv.dev/vulnerability/GHSA-mh6h-f25p-98f8"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "protobuf allows remote authenticated attackers to cause a heap-based buffer overflow. (PYSEC-2017-65)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2017-65"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Nullptr dereference when a null char is present in a proto symbol. The symbol is parsed incorrectly, leading to an unchecked call into the proto file's name during generation of the resulting error message. Since the symbol is incorrectly parsed, the file is nullptr. We recommend upgrading to versio (PYSEC-2022-48)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2022-48"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ba61713c6fbcaea2693cabdcfa2c17851b568066b865a35471fe173ec243900d",
+  "signature": null
+}
