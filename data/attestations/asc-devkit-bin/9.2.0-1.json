@@ -1,0 +1,262 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "asc-devkit-bin",
+    "version": "9.2.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "3cefc08378716ed0ad636b51588555b44da78b6d",
+    "pkgbuild_sha256": "00caab044d20836b9e574172bb7134c557809297f8913025cd2ccab513a1773b",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-26T08:18:43.311131765+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o cann-toolkit-9.2.0.zip.part https://ascend-repo.obs.cn-east-\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/cann-toolkit\"... /home/builder/build/cann-toolkit\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cann-toolkit\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cann-too\"...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cann-toolkit\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf outer inner tk payload",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p outer inner",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "122.9.88.14",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-26T08:18:43.300343189+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "`unzip` is unmaintained (RUSTSEC-2026-0296)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0296"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`unzip`: archive extraction is vulnerable to path traversal (zip-slip) (RUSTSEC-2026-0297)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0297"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ed5b54b6f542610fb3e29a14236d3ec76b458d7798f23e264bf04d5176de2ee5",
+  "signature": null
+}
