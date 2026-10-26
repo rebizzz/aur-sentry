@@ -1,0 +1,24 @@
+pkgbase = archtoys
+	pkgdesc = System-wide color picker for Linux, inspired by PowerToys
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/Mujtaba1i/Archtoys
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	depends = glibc
+	depends = fontconfig
+	depends = libx11
+	depends = libxcb
+	depends = libxcursor
+	depends = libxi
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	depends = libglvnd
+	depends = wayland
+	depends = hicolor-icon-theme
+	source = archtoys-0.4.1.tar.gz::https://github.com/Mujtaba1i/Archtoys/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 85582af5d52f1353b388e98753b3eda95bcbe3fe22c76b77cddb89989c7e4bcb
+
+pkgname = archtoys
