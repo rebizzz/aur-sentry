@@ -1,0 +1,8 @@
+{
+  "package": "blender-3.6-lts-bin",
+  "aur_commit": "0416581be141e0fcc54afdef5379a618554697f8",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-26T15:31:20Z"
+}
