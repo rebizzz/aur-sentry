@@ -1,0 +1,258 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "agentics-agentboard",
+    "version": "0.3.327-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "29f5747b0ac8f3038a684f889bae93f5f67a129f",
+    "pkgbuild_sha256": "0a3ad7087596f016f24800d7dcb4fd9fb751d7e0ab2eebbf358ff6d7083c7201",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-27T08:14:27.585674587+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o agentics-agentboard-0.3.327-x86_\"... https://repo.agentics.co.za/x86_\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/agentics-age\"... /home/builder/build/agentics-age\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/agentics-age\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/agentics\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/agentics-age\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- agentics-agentboard-0.3.327-x86_\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf agentics-agentboard-0.3.327-x86_\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/agentics-agentboard-0.3.327\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.585393845+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/agentics-agentboard-0.3.327\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.585393845+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/agentics-agentboard-0.3.327\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:14:27.585393845+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.21.15.185",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-27T08:14:27.577974228+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "opt/agentics/components/agentboard/0.3.327/agentboard-0.3.327-linux-amd64.enc",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "9f127f927c29056fc835f4b408cb7b2d059636854167449a397f70303f42a2b9",
+  "signature": null
+}
