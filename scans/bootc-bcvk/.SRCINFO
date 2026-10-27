@@ -1,0 +1,17 @@
+pkgbase = bootc-bcvk
+	pkgdesc = Launches ephemeral VMs from bootc containers and creates disk images.
+	pkgver = 0.22.0
+	pkgrel = 1
+	url = https://github.com/bootc-dev/bcvk
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	depends = glibc
+	depends = openssh
+	depends = qemu-system-x86
+	depends = virtiofsd
+	depends = podman
+	source = https://github.com/bootc-dev/bcvk/releases/download/v0.22.0/bcvk-0.22.0.tar.zstd
+	sha256sums = df1cf9f9d0738e0867b75bacfe124bfe6dcc5028f67539c2f78d5b585a6cedac
+
+pkgname = bootc-bcvk
