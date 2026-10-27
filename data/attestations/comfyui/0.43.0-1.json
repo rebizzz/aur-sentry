@@ -1,0 +1,606 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "comfyui",
+    "version": "0.43.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f99ce406707c1707d17629f689784f857d8bf59f",
+    "pkgbuild_sha256": "fece7908f812155fe849109e485757d84591888b06e25593f4856f05f766be66",
+    "install_sha256": "8e376396b43f39f25aff364b681ecb7ff94b79913b00a2a7380ba8e2d894b345"
+  },
+  "analyzed_at": "2026-10-27T08:21:37.563914477+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 17,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o comfyui-0.43.0.tar.gz.part https://github.com/Comfy-Org/Com\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/comfyui-0.43\"... /home/builder/build/comfyui-0.43\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/comfyui-0.43\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/comfyui-\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/comfyui-0.43\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- comfyui-0.43.0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf comfyui-0.43.0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/comfyui.\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/comfyui.inst\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- comfyui.install",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf comfyui.install -q *",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/comfyui.sh /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- comfyui.sh",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf comfyui.sh -q *",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/comfyui.serv\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- comfyui.service",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf comfyui.service -q *",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/comfyui.sysu\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- comfyui.sysusers",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf comfyui.sysusers -q *",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/comfyui.tmpf\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- comfyui.tmpfiles",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf comfyui.tmpfiles -q *",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/comfyui-0.43.0-1-x86_64.pkg\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/comfyui-0.43.0-1-x86_64.pkg\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/comfyui-0.43.0-1-x86_64.pkg\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_EUNeXm/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-sysusers comfyui.conf",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-tmpfiles --create comfyui.conf",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "rm -rf /opt/comfyui/venv",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "python -m venv /opt/comfyui/venv",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/opt/comfyui/venv/bin/python -m ensurepip --upgrade --default-pip",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/opt/comfyui/venv/bin/python -W ignore::DeprecationWarning -c \\nimport runpy\\nimport sys\\nsys.pat\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "lsb_release -a",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "uname -rs",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/opt/comfyui/venv/bin/python -c import torch",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "lspci",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "grep -qi AMD\\\\|Radeon",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "grep -i VGA\\\\|3D\\\\|Display controller",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "grep -i VGA\\\\|3D",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "grep -qi NVIDIA",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/opt/comfyui/venv/bin/pip install torch torchvision torchaudio",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/opt/comfyui/venv/bin/pip install -r /opt/comfyui/requirements.txt",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "rm -rf /opt/comfyui/.pip-cache",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "chown -R comfy:comfy /opt/comfyui",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... sysusers",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/systemd-sysusers",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... tmpfiles",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/systemd-tmpfiles --create",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm comfyui",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm comfyui",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_ImsxyA/.INSTALL; pre\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T08:21:37.407735365+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.64.223",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.192.223",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.128.223",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T08:21:37.455412380+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 995,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "b39dad2253c271c8c3fe4193c7f717fe92f0664419ef4c33c3b091d51af13cd0",
+  "signature": null
+}
