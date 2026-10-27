@@ -1,0 +1,27 @@
+pkgbase = course2md-bin
+	pkgdesc = Turn online course videos (YouTube/Bilibili/local) into image+transcript markdown/html notes
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/mizorewww/course2md
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = ffmpeg
+	depends = yt-dlp
+	depends = aria2
+	optdepends = llama-cpp: local GPU/CPU ASR via llama-server
+	optdepends = ggml-vulkan: GPU ASR via Vulkan (also install the Vulkan driver for your GPU)
+	optdepends = ggml-cuda: alternative GPU ASR backend for NVIDIA GPUs
+	optdepends = intel-npu-driver: Intel Core Ultra NPU acceleration driver
+	optdepends = openvino-intel-npu-plugin: Intel Core Ultra NPU OpenVINO plugin
+	optdepends = python-openvino: OpenVINO Python runtime for NPU
+	provides = course2md
+	conflicts = course2md
+	source = LICENSE-2.0.0::https://github.com/mizorewww/course2md/raw/v2.0.0/LICENSE
+	sha256sums = f588737788750da8ab407e66c13f5004f8933176307add92f64b6c458f486212
+	source_x86_64 = course2md-bin-2.0.0-x86_64::https://github.com/mizorewww/course2md/releases/download/v2.0.0/course2md-linux-x86_64
+	sha256sums_x86_64 = aa9990163d44158d7fa2557599fbedfade9238cc7ca5251a26f4b9fe33b6e5c8
+	source_aarch64 = course2md-bin-2.0.0-aarch64::https://github.com/mizorewww/course2md/releases/download/v2.0.0/course2md-linux-aarch64
+	sha256sums_aarch64 = 7dd807fa8a7b52e10c5ed46cf836694e3b3ef9d8dcc59a993a830d5ba12fc865
+
+pkgname = course2md-bin
