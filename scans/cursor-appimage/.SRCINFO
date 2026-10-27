@@ -1,0 +1,19 @@
+pkgbase = cursor-appimage
+	pkgdesc = Cursor AI code editor (AppImage, extracted)
+	pkgver = 3.27.14
+	pkgrel = 1
+	url = https://www.cursor.com
+	arch = x86_64
+	license = custom
+	depends = glibc
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = alsa-lib
+	provides = cursor
+	conflicts = cursor-bin
+	options = !strip
+	source = Cursor-3.27.14.AppImage::https://downloads.cursor.com/production/69b724ebc67ec522c1b5d287a5025f7a7e81be97/linux/x64/Cursor-3.27.14-x86_64.AppImage
+	sha512sums = 8078590e84ca94df21ab3bb168ab9bdcd35e9be359775ed846a5485af679584730e382fdd9d64a06dfe35dbb39630ff82d283ca46e0fb27656735e7305720961
+
+pkgname = cursor-appimage
