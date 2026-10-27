@@ -1,0 +1,294 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dragon-media-backend",
+    "version": "0.82.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "629a5d21280962ba2de1927472569c808adfc533",
+    "pkgbuild_sha256": "16a3411321a2dc3dae91ef4a829b20c317ae65c0a2ce036a17c3126edbe60ca3",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-27T21:06:00.497087138+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o dragon-media-backend-v0.82.1.tar\"... https://invent.kde.org/libraries\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/dragon-media\"... /home/builder/build/dragon-media\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o kissfft.hh.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/kissfft.hh.p\"... /home/builder/build/kissfft.hh",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/dragon-media\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/kissfft.hh",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/dragon-m\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/dragon-media\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- dragon-media-backend-v0.82.1.tar\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf dragon-media-backend-v0.82.1.tar\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/kissfft.\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/kissfft.hh /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- kissfft.hh",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf kissfft.hh -q *",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "188.40.133.145",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T21:06:00.488792060+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "0cb18f8f1c85b72b7cc2aa901cb57cfa07f8dcabb8e5ba83a2ee9943212357c1",
+  "signature": null
+}
