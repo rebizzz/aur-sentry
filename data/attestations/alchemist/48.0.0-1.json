@@ -1,0 +1,1018 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "alchemist",
+    "version": "48.0.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e881b3a6d2b25e144336c5b04c1f047c93e086e2",
+    "pkgbuild_sha256": "cd707766bd9a97ce3641e346fefac948ed8c6d9098b3f92dbb5366d8e161ed78",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-27T01:52:25.187971542+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o alchemist-48.0.0-1.x86_64.rpm.pa\"... https://github.com/AlchemistSimu\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/alchemist-48\"... /home/builder/build/alchemist-48\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "md5sum /home/builder/build/alchemist-48\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/alchemis\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/alchemist-48\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- alchemist-48.0.0-1.x86_64.rpm",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf alchemist-48.0.0-1.x86_64.rpm -q *",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf alchemist-48.0.0-1.x86_64.rpm",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/alchemist-48.0.0-1-x86_64.p\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/alchemist-48.0.0-1-x86_64.p\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/alchemist-48.0.0-1-x86_64.p\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F296BDE50368C6CE",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 9B7A287D9A2EC608",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 6D42BDD116E0068F",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B8AC08600F108CDF",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 9D4C5AA15426DA0A",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 94657AB20F2A092B",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A85E811EB4CA2E08",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 632C3CC0D1C9CAF6",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0F65C7D881506130",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 7A4E76095D8A52E4",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E0959FEA8B550539",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- C06086337C50773E",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 93B11DAA4C197E3D",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 54C1FD273361EA514A237793F296BDE5\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 62CC73F884E52957B2FDD8839B7A287D\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0429897DE5F3BDAC537A30696D42BDD1\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 83BC8889351B5DEBBB68416EB8AC0860\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 05C7775A9E8B977407FE08E69D4C5AA1\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- ADC8A1FCC15E01D45310419E94657AB2\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B0D65295476606B71F0C6F82A85E811E\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 14E46FE5FD69F2E287E244DB632C3CC0\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 95220BE99CE6FF778AE0DC670F65C7D8\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 1519D5ABA65BF6FC2B73C7567A4E7609\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E75CD4814A77AD943C7AB5A3E0959FEA\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E499C79F53C96A54E572FEE1C0608633\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F00B96D15228013FFC9C9D0393B11DAA\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_meNQQ2/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_f11li0/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/archlinux-java unset",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "id -u",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "unlink /usr/lib/jvm/default",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "unlink /usr/lib/jvm/default-runtime",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/archlinux-java set java-27-openjdk",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "readlink -e /usr/lib/jvm/default",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sf java-27-openjdk /usr/lib/jvm/default",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sf java-27-openjdk /usr/lib/jvm/default-runtime",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm alchemist",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm alchemist",
+        "parent": null,
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T01:52:25.161912744+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-27T01:52:25.172557413+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 198,
+    "elf_object_count": 74,
+    "elf_objects": [
+      {
+        "path": "usr/lib/alchemist/lib/libapplauncher.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libprefs.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libzip.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libawt_headless.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libmlib_image.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libj2gss.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libjaas.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/jspawnhelper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libsimdsort.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libjimage.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libmanagement_ext.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libmanagement.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libjsound.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/server/libjvm.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/server/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libsyslookup.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libinstrument.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libsctp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libjavajpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libawt_xawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libfontmanager.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libmanagement_agent.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/jexec",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libdt_socket.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libnio.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libverify.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libattach.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libjsvml.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libjava.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libextnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libjdwp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libsplashscreen.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libj2pkcs11.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/liblcms.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libfreetype.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libjawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/librmi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libsaproc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libj2pcsc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/lib/libjli.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jhsdb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jar",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jstack",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/keytool",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jstat",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jcmd",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/javap",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/rmiregistry",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jnativescan",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jrunscript",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jpackage",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jwebserver",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jimage",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jps",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jstatd",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jconsole",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jlink",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/javac",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jmod",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jdeprscan",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jfr",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jdb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jmap",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jarsigner",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jinfo",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/java",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/javadoc",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jshell",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/serialver",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/lib/runtime/bin/jdeps",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchemist/bin/alchemist",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "6e3a1fecae517fb09beb3e10f3a27857c0b475a0d3a19da3c7e938e3e7c236a1",
+  "signature": null
+}
