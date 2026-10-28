@@ -1,0 +1,301 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "basecamp-cli",
+    "version": "0.21.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "fa50bf37e596fb3aef4a5c373c42a20a1f885ece",
+    "pkgbuild_sha256": "e44d9171518f04153240c918c25f13972561b9f48d6a16c19fe657c1bb528e72",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-28T22:59:14.083283293+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o basecamp_0.21.0_linux_amd64.tar.\"... https://github.com/basecamp/base\"...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/basecamp_0.2\"... /home/builder/build/basecamp_0.2\"...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/basecamp_0.2\"...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/basecamp\"...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/basecamp_0.2\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- basecamp_0.21.0_linux_amd64.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf basecamp_0.21.0_linux_amd64.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/basecamp-cli-0.21.0-1-x86_6\"...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.082090837+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/basecamp-cli-0.21.0-1-x86_6\"...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.082090837+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/basecamp-cli-0.21.0-1-x86_6\"...",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.082090837+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.082090837+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.082090837+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.082090837+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm basecamp-cli",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.082090837+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm basecamp-cli",
+        "parent": null,
+        "timestamp": "2026-10-28T22:59:14.082090837+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-28T22:59:14.071577798+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/basecamp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "21ef028304f7d222e9fa39f5cb2af2563f9b1cc51891567fa480769d7d8041f7",
+  "signature": null
+}
