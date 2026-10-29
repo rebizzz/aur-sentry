@@ -1,0 +1,1531 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "cef-vaapi",
+    "version": "154.0.34-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "cc5979b87e2fa45c402c1c04245b793049491e38",
+    "pkgbuild_sha256": "f40a9b79effbc3b8c3f9a4e473cb7f7749b087a9589e5b38165baa16452919c5",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-29T14:18:05.744602505+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (9 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: chromium-154.0.8037.154/third_party/dawn/third_party/directx-shader-compiler/src/tools/clang/test/CodeGenSPIRV/spirv.environment.invalid.hlsl, chromium-154.0.8037.154/third_party/depot_tools/external_bin/gsutil/gsutil_5.35/gsutil/third_party/google-auth-library-python/docs/reference/google.auth.environment_vars.rst, chromium-154.0.8037.154/third_party/devtools-frontend/src/.env.template, chromium-154.0.8037.154/third_party/oak/src/.envrc, chromium-154.0.8037.154/third_party/oak/src/codelab/.envrc, chromium-154.0.8037.154/third_party/oak/src/oak_private_memory/.envrc, chromium-154.0.8037.154/third_party/webpagereplay/third_party/golang/linux/x64/go.env"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed s/^libjpeg$/&_turbo/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o chromium-154.0.8037.154-lite.tar\"... https://commondatastorage.google\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/chromium-154\"... /home/builder/build/chromium-154\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/chromiumembed\"... /home/builder/build/cef",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/chromiumembed\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/chromiumembed\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1036 on 8647f7\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/cef rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/cef/info",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/chromium-154\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/cef archive --format tar 14c5a089e8452874cb1a556dc3fde26e\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/chromium-138\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/chromium-145\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/chromium-147\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/chromium-149\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/chromium-150\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/chromium-152\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/chromium-153\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/compiler-rt-\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/increase-for\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/glibc-2.42-b\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cef-no-sysro\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cef-no-libxm\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/chromium-dis\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/FindCEF.cmak\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/chromium\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/chromium-154\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-154.0.8037.154-lite.tar\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf chromium-154.0.8037.154-lite.tar\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/cef cef",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/cef",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg 14c5a089e8452874cb1a556dc3fde26e\"... --",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/chromium-138\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-138-nodejs-version-chec\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-138-nodejs-version-chec\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/chromium-145\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-145-fix-SYS_SECCOMP.pat\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-145-fix-SYS_SECCOMP.pat\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/chromium-147\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-147-revert-clang-no-lif\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-147-revert-clang-no-lif\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-147-rust-1.95-bytemuck.\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-147-rust-1.95-bytemuck.\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/chromium-149\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-149-drop-unknown-clang-\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-149-drop-unknown-clang-\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-149-use-of-undeclared-i\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-149-use-of-undeclared-i\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/chromium-150\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-150-revert-avx-flag-cha\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-150-revert-avx-flag-cha\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/chromium-152\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-152-unbundle-minizip-un\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-152-unbundle-minizip-un\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-152-unbundle-opus-devto\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-152-unbundle-opus-devto\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/chromium-153\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-153-hermetic-python.pat\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-153-hermetic-python.pat\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-153-iamf-tools-unbundle\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-153-iamf-tools-unbundle\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-154-use-system-esbuild.\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-154-use-system-esbuild.\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-154-fix-gn-no-public_in\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-154-fix-gn-no-public_in\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-154-typescript.patch",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-154-typescript.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-154-crubit.patch",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-154-crubit.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-154-remove-private_veri\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-154-remove-private_veri\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-154-build-with-wasm-rol\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-154-build-with-wasm-rol\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/compiler\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/compiler-rt-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- compiler-rt-adjust-paths.patch",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf compiler-rt-adjust-paths.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/increase\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/increase-for\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- increase-fortify-level.patch",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf increase-fortify-level.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/glibc-2.\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/glibc-2.42-b\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- glibc-2.42-baud-rate-fix.patch",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf glibc-2.42-baud-rate-fix.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cef-no-s\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cef-no-sysro\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cef-no-sysroot.patch",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf cef-no-sysroot.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cef-no-l\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cef-no-libxm\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cef-no-libxml-visibility-patch.p\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf cef-no-libxml-visibility-patch.p\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/chromium-dis\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- chromium-disable-font-tests.patc\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf chromium-disable-font-tests.patc\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/FindCEF.\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/FindCEF.cmak\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- FindCEF.cmake",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf FindCEF.cmake -q *",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/cef cef",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i s/OFFICIAL_BUILD/GOOGLE_CHROME_B\"... tools/generate_shim_headers/gene\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i -e s/\\\\<xmlMalloc\\\\>/malloc/ -e s/\\\\<xmlFree\\\\>/free/ -e 1i #include <cstdlib> third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... third_party/blink/renderer/core/\"... ...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-138-nodejs-version-c\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../compiler-rt-adjust-paths.patc\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../increase-fortify-level.patch",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-149-drop-unknown-cla\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-147-revert-clang-no-\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-145-fix-SYS_SECCOMP.\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-147-rust-1.95-bytemu\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-disable-font-tests.p\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../glibc-2.42-baud-rate-fix.patc\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-149-use-of-undeclare\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-150-revert-avx-flag-\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-152-unbundle-minizip\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-152-unbundle-opus-de\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-153-hermetic-python.\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-153-iamf-tools-unbun\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-154-use-system-esbui\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-154-fix-gn-no-public\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-154-typescript.patch",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-154-crubit.patch",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-154-remove-private_v\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../chromium-154-build-with-wasm-\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../cef-no-sysroot.patch",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../cef-no-libxml-visibility-patc\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p third_party/node/linux/node-linu\"... third_party/node/linux/node-linu\"... third_party/jdk/current/bin third_party/rust-toolchain/bin third_party/dawn/tools/golang/li\"... third_party/dawn/tools/golang/li\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /usr/bin/node third_party/node/linux/node-linu\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /usr/bin/java third_party/jdk/current/bin/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /usr/bin/rustc third_party/rust-toolchain/bin/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /usr/bin/go third_party/dawn/tools/golang/li\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f third_party/gperf/cipd/bin/gperf",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /usr/bin/gperf third_party/gperf/cipd/bin/",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf third_party/devtools-frontend/sr\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p third_party/devtools-frontend/sr\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /usr/lib/node_modules/esbuild/ third_party/devtools-frontend/sr\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/fontconfig -type f ! -path third_party/fontconfig/chromium/\"... ! -path third_party/fontconfig/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/brotli -type f ! -path third_party/brotli/chromium/* ! -path third_party/brotli/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/libjpeg_turbo -type f ! -path third_party/libjpeg_turbo/chromi\"... ! -path third_party/libjpeg_turbo/google\"... ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/openh264 -type f ! -path third_party/openh264/chromium/* ! -path third_party/openh264/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/highway -type f ! -path third_party/highway/chromium/* ! -path third_party/highway/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/dav1d -type f ! -path third_party/dav1d/chromium/* ! -path third_party/dav1d/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/flac -type f ! -path third_party/flac/chromium/* ! -path third_party/flac/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/libdrm -type f ! -path third_party/libdrm/chromium/* ! -path third_party/libdrm/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/libxml -type f ! -path third_party/libxml/chromium/* ! -path third_party/libxml/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/zstd -type f ! -path third_party/zstd/chromium/* ! -path third_party/zstd/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/libwebp -type f ! -path third_party/libwebp/chromium/* ! -path third_party/libwebp/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/zlib -type f ! -path third_party/zlib/chromium/* ! -path third_party/zlib/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/opus -type f ! -path third_party/opus/chromium/* ! -path third_party/opus/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/libxslt -type f ! -path third_party/libxslt/chromium/* ! -path third_party/libxslt/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/harfbuzz -type f ! -path third_party/harfbuzz/chromium/* ! -path third_party/harfbuzz/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find third_party/freetype -type f ! -path third_party/freetype/chromium/* ! -path third_party/freetype/google/* ! -path third_party/harfbuzz-ng/utils/hb\"... ! -regex .*\\\\.\\\\(gn\\\\|gni\\\\|isolate\\\\) -delete",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "./build/linux/unbundle/replace_g\"... --system-libraries fontconfig brotli libjpeg openh264 highway dav1d flac libdrm libxml zstd libwebp zlib opus libxslt harfbuzz freetype",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "python3 ./build/linux/unbundle/replace_g\"... --system-libraries fontconfig brotli libjpeg openh264 highway dav1d flac libdrm libxml zstd libwebp zlib opus libxslt harfbuzz freetype",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -oP refs/tags/\\\\K[0-9.",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "python cef/tools/make_version_header.py cef_version_header",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse HEAD",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-list --count HEAD",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git merge-base --is-ancestor HEAD 8037",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git merge-base --is-ancestor HEAD origin/8037",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git cherry origin/master HEAD",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r d8d9e94730933f425cce669d843a5bd5\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 52d82d53266fac88a36cf5f865e131b4\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 7ef0d1ef7df8be751a32d6eb38b66e00\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 843529b297abd44114f010a8953fb1eb\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 80febebe9d67c05ae09bd92a0b405e50\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r dd776390ab79d2abaf6786b096d7254f\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r e514b96a5398ab7e2e70ac447c2ce623\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r d70d6e241f1e37ea6ccf191078c78dd2\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 87b9ff5d5ffdb55ec16f3c1be33fa16b\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r a98cc551c2352ee60259e06703fbd0ab\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r bfc0ea1cbd091b359a43422f82e7091c\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 12b69209d31cac6d2a79529432c89b28\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 97748285e49c35e89bfc3732231caff0\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 1470f57d2657f63d30ebfbe5c0658c9c\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 0d1f6bdb6b45f1c1578bd824d184daac\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r d77ab5daaae5d038a560ec836583d565\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r a845dc1104ef069dbc7964001390b204\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 98d3cc13fe35a8bb6686c6be397c9211\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r b7885e48418d734d3696bccd3993d68a\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 24a4d5f54fc56870ca967315662f64f0\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 0dfcf9c84e746bda2c1152aa285757d4\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 85595822f755ef68b70962579543178a\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 062ebe433bf6575a71cac2dc71c40561\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 6f20cc7a548d39331358a4b151807d1b\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 1bc633116a3f6a0a1d2961f39b07b845\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r e72305f5428000b46338b819bf427fab\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r a2d4692ecdf50a53f1cbac4cc1d07aa5\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 564dd6c4aafff558154bd3176eb5d135\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r c6f60d143fbe551f4d1d2d7cd0c9c1d2\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 4f8a5688b9081578234c2c0f56c75147\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 3e7bc502d6c5abb63dd1da8142c900f6\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 682c378d70d5780061e96644dca16ddd\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r a03e7146331fc5bd72784591e82df01e\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git diff-tree --no-commit-id --name-only -r 14c5a089e8452874cb1a556dc3fde26e\"...",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -E s/\\\\+.*//",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -oP CEF_VERSION \\\"\\\\K[^\\",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "10.0.2.3",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "142.251.16.207",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "chromium-154.0.8037.154/third_party/dawn/third_party/directx-shader-compiler/src/tools/clang/test/CodeGenSPIRV/spirv.environment.invalid.hlsl",
+        "operation": "canary_access",
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "chromium-154.0.8037.154/third_party/depot_tools/external_bin/gsutil/gsutil_5.35/gsutil/third_party/google-auth-library-python/docs/reference/google.auth.environment_vars.rst",
+        "operation": "canary_access",
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "chromium-154.0.8037.154/third_party/devtools-frontend/src/.env.template",
+        "operation": "canary_access",
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "chromium-154.0.8037.154/third_party/oak/src/.envrc",
+        "operation": "canary_access",
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "chromium-154.0.8037.154/third_party/oak/src/codelab/.envrc",
+        "operation": "canary_access",
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "chromium-154.0.8037.154/third_party/oak/src/oak_private_memory/.envrc",
+        "operation": "canary_access",
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "chromium-154.0.8037.154/third_party/webpagereplay/third_party/golang/linux/x64/go.env",
+        "operation": "canary_access",
+        "timestamp": "2026-10-29T14:18:03.450820240+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Scrapy is vulnerable to a denial of service (DoS) attack due to flaws in brotli decompression implementation (GHSA-2qfp-q593-8484)",
+      "url": "https://osv.dev/vulnerability/GHSA-2qfp-q593-8484"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Integer overflow in the bundled Brotli C library (GHSA-5v8v-66v8-mwm7)",
+      "url": "https://osv.dev/vulnerability/GHSA-5v8v-66v8-mwm7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "esbuild enables any website to send any requests to the development server and read the response (GHSA-67mh-4wv8-2f99)",
+      "url": "https://osv.dev/vulnerability/GHSA-67mh-4wv8-2f99"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Brotli: Out-of-bounds write in the Brotli decoder (\"Node2Shell\") also affects the PyPI Brotli package (GHSA-9v8h-qqgm-4m35)",
+      "url": "https://osv.dev/vulnerability/GHSA-9v8h-qqgm-4m35"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "esbuild allows arbitrary file read when running the development server on Windows (GHSA-g7r4-m6w7-qqqr)",
+      "url": "https://osv.dev/vulnerability/GHSA-g7r4-m6w7-qqqr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "A buffer overflow exists in the Brotli library versions prior to 1.0.8 where an attacker controlling the input length of a \"one-shot\" decompression request to a script can trigger a crash, which happens when copying over chunks of data larger than 2 GiB. It is recommended to update your Brotli libra (PYSEC-2020-29)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2020-29"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Scrapy is vulnerable to a denial of service (DoS) attack due to flaws in brotli decompression implementation (PYSEC-2026-2401)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-2401"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Out-of-bounds write in the Brotli decoder (\"Node2Shell\") also affects the PyPI Brotli package (PYSEC-2026-4322)",
+      "url": "https://osv.dev/vulnerability/PYSEC-2026-4322"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "d7ebe78bbc3325f2b45aa1cddd756c4f288aea15da6c05acabaa3633e2e76375",
+  "signature": null
+}
