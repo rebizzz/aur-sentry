@@ -1,0 +1,74 @@
+[Unit]
+Description=Better ComfyUI Launcher
+After=local-fs.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/bin/sh -c ' \
+    [ -f "%D/comfykick/comfykick.py" ] \
+        && exec /usr/bin/python3 "%D/comfykick/comfykick.py" \
+        || exec /usr/bin/python3 /usr/share/comfykick/comfykick.py \
+'
+
+##
+## Security
+##
+NoNewPrivileges=yes
+
+##
+## Sandboxing
+##
+ProtectSystem=full
+ProtectHome=tmpfs
+RuntimeDirectory=comfykick
+ConfigurationDirectory=comfykick
+CacheDirectory=comfykick
+ExecStartPre=+/usr/bin/mkdir -p %D/comfykick
+BindPaths=%D/comfykick
+CacheDirectory=uv
+BindReadOnlyPaths=-%E/uv
+BindReadOnlyPaths=-%D/uv
+BindReadOnlyPaths=-%C/huggingface/hub
+PrivateTmp=yes
+DevicePolicy=closed
+# Devices in /dev/dri, for all GPU backends
+DeviceAllow=char-drm rw
+# /dev/kfd, for hip backend
+DeviceAllow=char-kfd rw
+# /dev/nvidia0, /dev/nvidia1, etc, for cuda backend
+DeviceAllow=char-nvidia rw
+# /dev/nvidiactl, for cuda backend
+DeviceAllow=char-nvidiactl rw
+# /dev/nvidia-uvm, for cuda backend
+DeviceAllow=char-nvidia-uvm rw
+PrivateIPC=yes
+PrivateUsers=self
+ProtectHostname=yes
+ProtectClock=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=strict
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+RestrictNamespaces=yes
+PrivateBPF=yes
+LockPersonality=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+RemoveIPC=yes
+PrivateMounts=yes
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged
+SystemCallArchitectures=native
+EnvironmentFile=-%E/comfykick/environment.conf
+
+##
+## Force HF offline
+## See <https://www.reddit.com/r/LocalLLM/comments/1wehgvc/huggingface_hub_silently_fingerprints_which_ai/>
+##
+Environment=HF_HUB_DISABLE_TELEMETRY=1
+Environment=TRANSFORMERS_OFFLINE=1
+
+[Install]
+WantedBy=default.target

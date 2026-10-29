@@ -1,0 +1,146 @@
+# # ComfyKick configuration
+# #
+# # This is a user-facing example. Edit a copy of this file at one of the
+# # following locations (highest priority last):
+# #   - ~/.config/comfykick/comfykick.toml ($XDG_CONFIG_HOME/comfykick/comfykick.toml)
+# #   - /etc/comfykick.toml
+# #
+# # Omit a key (e.g. comment it out as `# output_dir = /tmp`) to inherit
+# # its value from a lower-priority config file, or to fall back to the
+# # built-in default.
+
+# # ---------------------------------------------------------------------------
+# # Network
+# # ---------------------------------------------------------------------------
+
+# # Hostname or IP address that ComfyUI binds to.
+# # Use "0.0.0.0" to listen on all interfaces.
+# # Default: localhost
+# listen                 = "localhost"
+
+# # TCP port that ComfyUI listens on.
+# # Default: 8188
+# port                   = 8188
+
+# # ---------------------------------------------------------------------------
+# # ComfyUI source
+# # ---------------------------------------------------------------------------
+
+# # Choose which ComfyUI version to run.
+# # e.g. `latest`                                   (latest release)
+# #      `latest-tag`                               (latest tag)
+# #      `v0.24.0`                                  (specify tag)
+# #      `master`                                   (specify branch snap)
+# #      `f49bdb655707b97952dcef40e12e5af1f08d2007` (40-char commit hash)
+# # Default: latest
+# version                = "latest"
+
+# # Whether to check for and download updates.
+# # Set to false to use the previously offline-cached tarball.
+# # Default: true
+# update                 = true
+
+# # GitHub Personal Access Token for API requests.
+# # Leave empty to fall back to the GITHUB_TOKEN env variable if set.
+# # Default: ""
+# github_token           = ""
+
+# # ---------------------------------------------------------------------------
+# # Filesystem layout
+# # ---------------------------------------------------------------------------
+
+# # ComfyUI base directory (settings, models, custom nodes, ...).
+# # Leave empty to use the default value.
+# # Default: ~/.local/share/comfykick/base ($XDG_DATA_HOME/comfykick/base)
+# base_dir               = ""
+
+# # Directory where ComfyUI writes generated outputs.
+# # Leave empty to use the default value.
+# # Default: ~/.local/share/comfykick/output ($XDG_DATA_HOME/comfykick/output)
+# output_dir             = ""
+
+# # Temp directory to contain the running ComfyUI source tree.
+# # Point to tmpfs drive (e.g. `/tmp/comfykick`) to improve performance.
+# # Leave empty to use the default value.
+# # Default: ~/.cache/comfykick ($XDG_CACHE_HOME/comfykick)
+# runtime_dir            = ""
+
+# # Directory to cache ComfyUI version tarballs.
+# # Leave empty to use the default value.
+# # Default: ~/.local/share/comfykick/version_cache ($XDG_DATA_HOME/comfykick/version_cache)
+# version_cache_dir      = ""
+
+# # Directory to cache the venv.
+# # Leave empty to use the default value.
+# # Default: ~/.local/share/comfykick/venv_cache ($XDG_DATA_HOME/comfykick/venv_cache)
+# venv_cache_dir         = ""
+
+# # Path to the ComfyUI extra_model_paths.yaml file.
+# # Leave empty to disable this feature.
+# # Default: disabled
+# extra_model_paths_yaml = ""
+
+# # ---------------------------------------------------------------------------
+# # ComfyUI launch options
+# # ---------------------------------------------------------------------------
+
+# # Toggle to install and enable ComfyUI-Manager.
+# # Default: true
+# enable_manager         = true
+
+# # Extra command-line options forwarded to ComfyUI.
+# # Each entry is split on whitespace and appended to the final argv, so
+# # `["--fast", "--verbose WARNING"]` becomes `--fast --verbose WARNING`.
+# # See https://github.com/Comfy-Org/ComfyUI for the full list of flags.
+# # Default: [
+# #     "--disable-xformers",
+# #     "--fast",
+# #     "--preview-method auto",
+# #     "--use-pytorch-cross-attention",
+# # ]
+# comfyui_extra_options  = [
+#     "--disable-xformers",
+#     "--fast",
+#     "--preview-method auto",
+#     "--use-pytorch-cross-attention",
+# ]
+
+# # ---------------------------------------------------------------------------
+# # Extra setup
+# # ---------------------------------------------------------------------------
+
+# # List of Python Package Index (PyPI) URLs for installing Python packages.
+# # Useful for selecting a specific PyTorch variant or PyPI mirrors.
+# # e.g. `["https://download.pytorch.org/whl/cu130"]`   (CUDA)
+# #      `["https://download.pytorch.org/whl/rocm7.2"]` (ROCm)
+# #      `["https://download.pytorch.org/whl/xpu"]`     (XPU)
+# #      ```
+# #       [
+# #           "https://mirror.nju.edu.cn/pytorch/whl/cu130",
+# #           "https://pypi.tuna.tsinghua.edu.cn/simple"
+# #       ]
+# #      ```                                            (PyPI Mirrors)
+# # Leave empty to use the environment's default.
+# # Default: []
+# pypi_list              = []
+
+# # Sync the dependencies of the custom nodes.
+# # Default: true
+# sync_custom_node_dependencies = true
+
+# # Install extra Python packages you need.
+# # e.g. `["flash-attn", "foo==1.2.3", "bar>=4.5.6"]`
+# # Default: []
+# extra_python_package   = []
+
+# # Shell commands to run before the ComfyUI start.
+# # The working directory is the ComfyUI source tree.
+# # e.g. `["mkdir -p \"$PWD\"/dir", "/path/to/my.sh"]`
+# # Default: []
+# prekick_exec           = []
+
+# # Cleanup the stale ComfyUI tarballs.
+# # Automatically removes version-cache tarballs older than 30 days.
+# # Set to false to disable stale ComfyUI cleanup.
+# # Default: true
+# cleanup_stale_comfyui  = true
