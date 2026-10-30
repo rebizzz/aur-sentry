@@ -1,0 +1,64 @@
+#!/bin/sh
+# Maintainer: Aidan Timson (Timmo) <aidan@timmo.dev>
+pkgname=music-assistant-tui-git
+pkgver=20261030.0.r290.gbfc7375
+pkgrel=1
+pkgdesc="Terminal UI for Music Assistant (git version)"
+arch=('x86_64' 'aarch64')
+url="https://github.com/timmo001/music-assistant-tui"
+license=('Apache-2.0')
+makedepends=('git' 'bun' 'nodejs')
+depends=('alsa-lib' 'glibc' 'icu' 'pipewire-audio')
+provides=('music-assistant-tui')
+conflicts=('music-assistant-tui')
+options=('!strip' '!debug')
+source=("$pkgname::git+https://github.com/timmo001/music-assistant-tui.git")
+source_x86_64=('sendspin-rs-cli::https://github.com/s3than/sendspin-rs-cli/releases/download/v0.0.10/sendspin-rs-cli-linux-amd64')
+source_aarch64=('sendspin-rs-cli::https://github.com/s3than/sendspin-rs-cli/releases/download/v0.0.10/sendspin-rs-cli-linux-arm64')
+sha256sums=('SKIP')
+sha256sums_x86_64=('99e683fd9f50538f5afb418faac98d6e37048ba9943ec492bf5e8b0d892789e2')
+sha256sums_aarch64=('859c62d4dd1c3734d4b191ff878d6a7cedd86aa7b9ec5c53c82bd59094db0385')
+
+# Keep Bun's caches in $srcdir instead of the build user's home
+_bun_env() {
+  export BUN_INSTALL="$srcdir/.bun"
+  export BUN_INSTALL_CACHE_DIR="$BUN_INSTALL/install/cache"
+  export BUN_RUNTIME_TRANSPILER_CACHE_PATH="$BUN_INSTALL/runtime-transpiler-cache"
+}
+
+prepare() {
+  cd "$pkgname"
+  _bun_env
+  bun install --frozen-lockfile
+}
+
+pkgver() {
+  cd "$pkgname"
+  local version
+  version=$(git describe --long --tags --abbrev=7 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')
+  if [ -n "$version" ]; then
+    printf '%s' "$version"
+  else
+    printf "%s.0.r%s.g%s" "$(git log -1 --format=%cd --date=format:%Y%m%d)" "$(git rev-list --count HEAD)" "$(git rev-parse --short=7 HEAD)"
+  fi
+}
+
+build() {
+  cd "$pkgname"
+  _bun_env
+  bun build src/index.ts --compile --outfile music-assistant-tui
+  ./music-assistant-tui completions bash > music-assistant-tui.bash
+  ./music-assistant-tui completions fish > music-assistant-tui.fish
+  ./music-assistant-tui completions zsh > _music-assistant-tui
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -Dm755 music-assistant-tui "$pkgdir/usr/bin/music-assistant-tui"
+  install -Dm755 "$srcdir/sendspin-rs-cli" "$pkgdir/usr/lib/music-assistant-tui/sendspin-rs-cli"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 THIRD_PARTY_NOTICES.md "$pkgdir/usr/share/doc/$pkgname/THIRD_PARTY_NOTICES.md"
+  install -Dm644 music-assistant-tui.bash "$pkgdir/usr/share/bash-completion/completions/music-assistant-tui"
+  install -Dm644 music-assistant-tui.fish "$pkgdir/usr/share/fish/vendor_completions.d/music-assistant-tui.fish"
+  install -Dm644 _music-assistant-tui "$pkgdir/usr/share/zsh/site-functions/_music-assistant-tui"
+}

@@ -1,0 +1,27 @@
+pkgbase = music-assistant-tui-git
+	pkgdesc = Terminal UI for Music Assistant (git version)
+	pkgver = 20261030.0.r290.gbfc7375
+	pkgrel = 1
+	url = https://github.com/timmo001/music-assistant-tui
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = git
+	makedepends = bun
+	makedepends = nodejs
+	depends = alsa-lib
+	depends = glibc
+	depends = icu
+	depends = pipewire-audio
+	provides = music-assistant-tui
+	conflicts = music-assistant-tui
+	options = !strip
+	options = !debug
+	source = music-assistant-tui-git::git+https://github.com/timmo001/music-assistant-tui.git
+	sha256sums = SKIP
+	source_x86_64 = sendspin-rs-cli::https://github.com/s3than/sendspin-rs-cli/releases/download/v0.0.10/sendspin-rs-cli-linux-amd64
+	sha256sums_x86_64 = 99e683fd9f50538f5afb418faac98d6e37048ba9943ec492bf5e8b0d892789e2
+	source_aarch64 = sendspin-rs-cli::https://github.com/s3than/sendspin-rs-cli/releases/download/v0.0.10/sendspin-rs-cli-linux-arm64
+	sha256sums_aarch64 = 859c62d4dd1c3734d4b191ff878d6a7cedd86aa7b9ec5c53c82bd59094db0385
+
+pkgname = music-assistant-tui-git
