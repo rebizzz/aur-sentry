@@ -1,0 +1,13 @@
+pkgbase = capsimage
+	pkgdesc = Library to access IPF and CTR files
+	pkgver = 5.21
+	pkgrel = 1
+	url = https://www.kryoflux.com/
+	arch = x86_64
+	license = custom:SPS License
+	depends = gcc-libs
+	provides = libcapsimage.so=5-64
+	source = https://www.kryoflux.com/download/spsdeclib_5.21_source.zip
+	sha256sums = fca645c00c2ec3bda2c8ad8dd94be50ed4bc4e0e0e4a35515e9386f758e466be
+
+pkgname = capsimage
