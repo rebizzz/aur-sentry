@@ -1,0 +1,295 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "auto-editor-bin",
+    "version": "31.8.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "11de43326eed5c814dbeec33b12256dab60e1b0d",
+    "pkgbuild_sha256": "0c920467809de46a307e251d116f413ac6e6ae092fb2e7adde3331d452b64fa0",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-30T06:14:10.503150909+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o auto-editor-31.8.0-bin.part https://github.com/WyattBlue/aut\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/auto-editor-\"... /home/builder/build/auto-editor-\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/auto-editor-\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/auto-edi\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/auto-editor-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- auto-editor-31.8.0-bin",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf auto-editor-31.8.0-bin -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/auto-editor-bin-31.8.0-1-x8\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.502080641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/auto-editor-bin-31.8.0-1-x8\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.502080641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/auto-editor-bin-31.8.0-1-x8\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.502080641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.502080641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.502080641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.502080641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm auto-editor-bin",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.502080641+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm auto-editor-bin",
+        "parent": null,
+        "timestamp": "2026-10-30T06:14:10.502080641+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-30T06:14:10.494088590+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/auto-editor",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c01819d28781ddef5ba3a6dc0baeb76a4cbf2e0ac71492e391a6aee64ea47971",
+  "signature": null
+}
