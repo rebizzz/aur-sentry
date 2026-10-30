@@ -1,0 +1,1661 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "php74",
+    "version": "7.4.33-12",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "22cce7e7224c54ef8b9879608eb2cf9190a2c3ca",
+    "pkgbuild_sha256": "a66137dd08efa0d7bba420c4b8b84e31cb1dfce0eb13f8a04b91a0561e232a64",
+    "install_sha256": "1b84e55f56273d9a146924a1f48e3e7de40dc69543af9689cccc74495f74b5f7"
+  },
+  "analyzed_at": "2026-10-30T19:59:57.028544275+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 855,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (36 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o php-7.4.33.tar.xz.part https://php.net/distributions/ph\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/php-7.4.33.t\"... /home/builder/build/php-7.4.33.t\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/make-tests.p\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/php-makefile\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/php-apache.c\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/pear-config-\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/php-7.4.33.t\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/libxml-pear-\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/libxml-attri\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/php74-cve-20\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/php-libxml.p\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/libxml-21200\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/icu-74-php-7\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/litespeed-ph\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/openssl-sslv\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/mysql-socket\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/php74-enchan\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/debian-php-7\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/php-phpinfo.\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/timezonedb-g\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/timezonedb-p\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/make-tes\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/make-tests.p\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- make-tests.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf make-tests.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/php-make\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/php-makefile\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- php-makefile-patcher.php",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf php-makefile-patcher.php -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/php-apac\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/php-apache.c\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- php-apache.conf",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf php-apache.conf -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/pear-con\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/pear-config-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- pear-config-patcher.php",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf pear-config-patcher.php -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/php-7.4.\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/php-7.4.33.t\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- php-7.4.33.tar.xz",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf php-7.4.33.tar.xz",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/libxml-p\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/libxml-pear-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- libxml-pear-php-8.0.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf libxml-pear-php-8.0.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/libxml-a\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/libxml-attri\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- libxml-attribute-php-8.0.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf libxml-attribute-php-8.0.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/php74-cv\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/php74-cve-20\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- php74-cve-2026-109618-109619.pat\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf php74-cve-2026-109618-109619.pat\"... -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/php-libx\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/php-libxml.p\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- php-libxml.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf php-libxml.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/libxml-2\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/libxml-21200\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- libxml-21200-php-7.0.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf libxml-21200-php-7.0.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/icu-74-p\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/icu-74-php-7\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- icu-74-php-7.4.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf icu-74-php-7.4.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/litespee\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/litespeed-ph\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- litespeed-phpheader.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf litespeed-phpheader.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/openssl-\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/openssl-sslv\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- openssl-sslv3-consts.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf openssl-sslv3-consts.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/mysql-so\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/mysql-socket\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- mysql-socket-php7.1.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf mysql-socket-php7.1.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/php74-en\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/php74-enchan\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- php74-enchant.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf php74-enchant.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/debian-p\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/debian-php-7\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- debian-php-7.4.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf debian-php-7.4.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/php-phpi\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/php-phpinfo.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- php-phpinfo.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf php-phpinfo.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/timezone\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/timezonedb-g\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- timezonedb-guess.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf timezonedb-guess.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/timezonedb-p\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- timezonedb-php7.4.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf timezonedb-php7.4.patch -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -E s|(includedir[\\\\t",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s|\\\\[php-config\\\\",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -E s|(phpincludedir[\\\\t",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -E s|(include_dir[\\\\t",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e /APACHE_THREADED_MPM=/d -i sapi/apache2handler/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/.conf.default/.conf/g -i sapi/fpm/Makefile.frag",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -E s|ExecStart[\\\\s",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s#^listen =.*#listen = /run/php7\"... -e s#run/php-fpm.pid#/run/php74-fpm\"... -e s#^;*[ \\\\t",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s#^;*[ \\\\t",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../libxml-pear-php-8.0.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../libxml-attribute-php-8.0.patc\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../php74-cve-2026-109618-109619.\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../php-libxml.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../libxml-21200-php-7.0.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../icu-74-php-7.4.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../litespeed-phpheader.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../openssl-sslv3-consts.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../mysql-socket-php7.1.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../php74-enchant.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../debian-php-7.4.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../php-phpinfo.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../timezonedb-guess.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np1 -i ../timezonedb-php7.4.patch",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "./buildconf --force",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname -- ./buildconf",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep ^AC_INIT( configure.ac",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -n s/AC_PREREQ(\\\\[\\\\(.*\\\\)\\\\",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "autoconf --version",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "head -n 1",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/^[^0-9",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "expr 2 * 10000 + 73 * 100",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "expr 2 * 10000 + 68 * 100",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -rf aclocal.m4 autom4te.cache config.cache configure main/php_config.h.in",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "autoconf -f",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/autom4te --force --language=autoconf --output=configure /usr/share/autoconf/autoconf/tra\"... configure.ac",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c /usr/bin/m4 --help </dev/null 2>\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --help",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep reload-state",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c echo dumpdef | /usr/bin/m4 --nes\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c /usr/bin/m4 --nesting-limit=1024\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024 --gnu --include=/usr/share/autoconf --debug=aflq --fatal-warning --debugfile=autom4te.cache/trace\"... --trace=AC_CANONICAL_BUILD --trace=AC_CANONICAL_HOST --trace=AC_CANONICAL_SYSTEM --trace=AC_CANONICAL_TARGET --trace=AC_CONFIG_AUX_DIR --trace=AC_CONFIG_FILES --trace=AC_CONFIG_HEADERS --trace=AC_CONFIG_LIBOBJ_DIR --trace=AC_CONFIG_LINKS --trace=AC_CONFIG_MACRO_DIR --trace=AC_CONFIG_MACRO_DIR_TRAC\"... --trace=AC_CONFIG_SUBDIRS --trace=AC_DEFINE_TRACE_LITERAL --trace=AC_FC_FREEFORM --trace=AC_FC_PP_DEFINE --trace=AC_FC_PP_SRCEXT --trace=AC_FC_SRCEXT --trace=AC_INIT --trace=AC_LIBSOURCE --trace=AC_LIB_HAVE_LINKFLAGS --trace=AC_LIB_LINKFLAGS --trace=AC_LIB_LINKFLAGS_FROM_LI\"... --trace=AC_PROG_LIBTOOL --trace=AC_REQUIRE_AUX_FILE --trace=AC_SUBST ...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c  ./build/config-stubs sapi",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "./build/config-stubs sapi",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname sapi/*/config0.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname sapi/apache2handler/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname sapi/cli/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname sapi/embed/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname sapi/fpm/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname sapi/litespeed/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname sapi/phpdbg/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname sapi/cgi/config9.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c  ./build/config-stubs ext",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "./build/config-stubs ext",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/date/config0.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/libxml/config0.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/openssl/config0.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pcre/config0.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/sqlite3/config0.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/zlib/config0.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/bcmath/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/bz2/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/calendar/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/ctype/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/curl/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/dba/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/dom/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/enchant/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/exif/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/ffi/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/fileinfo/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/filter/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/ftp/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/gd/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/gettext/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/gmp/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/hash/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/iconv/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/imap/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/intl/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/json/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/ldap/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/mbstring/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/mysqli/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/oci8/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/odbc/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/opcache/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pcntl/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pdo/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pdo_dblib/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pdo_firebird/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pdo_mysql/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pdo_oci/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pdo_odbc/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pdo_pgsql/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pdo_sqlite/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pgsql/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/phar/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/posix/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/pspell/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/readline/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/reflection/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/session/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/shmop/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/simplexml/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/snmp/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/soap/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/sockets/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/sodium/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/spl/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/standard/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/sysvmsg/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/sysvsem/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/sysvshm/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/tidy/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/tokenizer/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/xml/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/xmlreader/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/xmlrpc/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/xmlwriter/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/xsl/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/zend_test/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/zip/config.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "dirname ext/mysqlnd/config9.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024 /tmp/am4t0c5J84/traces.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "autoheader",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c '/usr/bin/autom4te' --language=a\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/autom4te --language=autoconf --trace AC_CONFIG_HEADERS:$$config_h ||=\"... --trace AH_OUTPUT:$$verbatim{'$1'} = '$2\"... --trace AC_DEFINE_TRACE_LITERAL:$$symbol\"... configure.ac",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/m4 --nesting-limit=1024 /tmp/am4tgIvIZ5/traces.m4",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sh -c sed 's/^/| /' /tmp/ahzcFhHX/trac\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed s/^/| / /tmp/ahzcFhHX/traces.pl",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f tests/output/stream_isatty_err.p\"... tests/output/stream_isatty_in-er\"... tests/output/stream_isatty_in-ou\"... tests/output/stream_isatty_in-ou\"... tests/output/stream_isatty_out-e\"... tests/output/stream_isatty_out.p\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f Zend/tests/arginfo_zpp_mismatch*\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f Zend/tests/bug79919.phpt",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.85.0.29",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "152.233.50.1",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-30T19:59:56.634338838+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-2m8x-mvfx-gwgj)",
+      "url": "https://osv.dev/vulnerability/GHSA-2m8x-mvfx-gwgj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-4wrp-79m8-9m9p)",
+      "url": "https://osv.dev/vulnerability/GHSA-4wrp-79m8-9m9p"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Permission Assignment for Critical Resource (GHSA-5hgf-628x-mcqf)",
+      "url": "https://osv.dev/vulnerability/GHSA-5hgf-628x-mcqf"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Incorrect Short Circuit Evaluation Issue (GHSA-5pv5-xh52-hvrp)",
+      "url": "https://osv.dev/vulnerability/GHSA-5pv5-xh52-hvrp"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Improper Input Validation Issue in its env Utility (GHSA-5v4g-vw9x-h534)",
+      "url": "https://osv.dev/vulnerability/GHSA-5v4g-vw9x-h534"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-check Time-of-use (TOCTOU) Race Condition (GHSA-6g8r-74qp-6859)",
+      "url": "https://osv.dev/vulnerability/GHSA-6g8r-74qp-6859"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils doesn't preserve file ownership during moves across different filesystem boundaries (GHSA-957r-r8gc-vv3h)",
+      "url": "https://osv.dev/vulnerability/GHSA-957r-r8gc-vv3h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "bzip2 allows attackers to cause a denial of service via a large file that triggers an integer overflow (GHSA-96jv-r488-c2rj)",
+      "url": "https://osv.dev/vulnerability/GHSA-96jv-r488-c2rj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has a Time-of-Check to Time-of-Use (TOCTOU) race condition (GHSA-9gh9-hwpr-rvqq)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gh9-hwpr-rvqq"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "uutils coreutils has an Uncaught Exception When Encountering Valid but Non-UTF-8 Paths (GHSA-f2jv-wjjc-2c94)",
+      "url": "https://osv.dev/vulnerability/GHSA-f2jv-wjjc-2c94"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "f38ce79b809da2f41721360fe883f65b846531b380becf0363aaf1037ac25a74",
+  "signature": null
+}
