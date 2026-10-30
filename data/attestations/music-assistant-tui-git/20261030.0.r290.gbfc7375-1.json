@@ -1,0 +1,359 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "music-assistant-tui-git",
+    "version": "20261030.0.r290.gbfc7375-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f3af6c57c6b22e61e6fc5b71bcca424c2cfb00d2",
+    "pkgbuild_sha256": "d98dc6239c064aea8750bedde384152cfd8c9db9d466e1d637ef60a16618df10",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-30T19:50:02.048441059+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 32,
+      "severity": "LOW",
+      "description": "unlocked npm/bun/yarn install during build (unpinned dependency risk)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/timmo001/musi\"... /home/builder/build/music-assist\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/timmo001/musi\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/timmo001/musi\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1403 on 51c85c\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/music-assist\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/music-assist\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o sendspin-rs-cli.part https://github.com/s3than/sendsp\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/sendspin-rs-\"... /home/builder/build/sendspin-rs-\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/sendspin-rs-\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/music-assist\"... music-assistant-tui-git",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/music-assist\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/sendspin\"...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/sendspin-rs-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- sendspin-rs-cli",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf sendspin-rs-cli -q *",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-30T19:50:02.038214630+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "bun vulnerable to OS Command Injection (GHSA-4j66-8f4r-3pjx)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j66-8f4r-3pjx"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Bun has an Application-level Prototype Pollution vulnerability in the runtime native API for Glo (GHSA-v9mx-4pqq-h232)",
+      "url": "https://osv.dev/vulnerability/GHSA-v9mx-4pqq-h232"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ac603b4bd874ff241eefed903928a573d1b119e4cb9e6ac4599680c0fd2b8e8d",
+  "signature": null
+}
