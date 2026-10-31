@@ -1,0 +1,21 @@
+pkgbase = certora-prover-bin
+	pkgdesc = Certora Prover verification engine, run locally by certora-cli instead of Certora's cloud
+	pkgver = 8.20.2
+	pkgrel = 1
+	url = https://www.certora.com
+	arch = any
+	license = GPL-3.0-only
+	depends = certora-cli
+	depends = certora-tac-optimizer
+	depends = cvc5
+	depends = java-runtime>=19
+	depends = z3
+	optdepends = graphviz: TAC reports
+	provides = certora-prover
+	conflicts = certora-prover
+	noextract = certora-prover-8.20.2.jar
+	options = !debug
+	source = certora-prover-8.20.2.jar::https://github.com/Certora/CertoraProver/releases/download/8.20.2/certora-prover-8.20.2.jar
+	sha256sums = 38aab2ccd0e5d63ea9e6b5c5d1784bd64208d9f074ab52c556eac88b87b2bba4
+
+pkgname = certora-prover-bin
