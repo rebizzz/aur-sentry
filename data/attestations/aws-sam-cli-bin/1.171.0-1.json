@@ -1,0 +1,733 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aws-sam-cli-bin",
+    "version": "1.171.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "914ceac591e124f01cd7ee95442e16c7f83fbece",
+    "pkgbuild_sha256": "37e4315f458dbd8a889d28b2471fb0d0d5c06b1eb0108f3f423bf6067c9c369b",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-10-31T06:12:40.099759044+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aws-sam-cli-linux-1.171.0-x86_64\"... https://github.com/aws/aws-sam-c\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aws-sam-cli-\"... /home/builder/build/aws-sam-cli-\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aws-sam-cli-\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/aws-sam-\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aws-sam-cli-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aws-sam-cli-linux-1.171.0-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gzip -cd",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf aws-sam-cli-linux-1.171.0-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aws-sam-cli-bin-1.171.0-1-x\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.076556733+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aws-sam-cli-bin-1.171.0-1-x\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.076556733+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/aws-sam-cli-bin-1.171.0-1-x\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.076556733+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.076556733+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.076556733+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.076556733+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm aws-sam-cli-bin",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.076556733+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm aws-sam-cli-bin",
+        "parent": null,
+        "timestamp": "2026-10-31T06:12:40.076556733+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-31T06:12:40.045705123+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 5612,
+    "elf_object_count": 72,
+    "elf_objects": [
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/libssl.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_decimal.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/cmath.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_multibytecodec.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_codecs_hk.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_codecs_iso2022.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_multiprocessing.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_csv.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_asyncio.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_codecs_jp.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_ssl.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_contextvars.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/zlib.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_bisect.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_statistics.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_struct.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_json.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/fcntl.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_bz2.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_queue.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/binascii.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_blake2.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_sha3.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_typing.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_hashlib.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_codecs_tw.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/unicodedata.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/grp.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_sha1.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/mmap.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_posixsubprocess.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_md5.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/resource.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/select.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_lsprof.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_random.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_opcode.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_socket.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_datetime.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_elementtree.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_codecs_kr.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/array.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/pyexpat.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_sha256.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_heapq.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_posixshmem.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_zoneinfo.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/syslog.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_codecs_cn.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_pickle.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/termios.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/_sha512.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/python3.11/lib-dynload/math.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/_cffi_backend.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/pydantic_core/_pydantic_core.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/libgcc_s.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/_awscrt.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/libz.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/libffi.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/cryptography/hazmat/bindings/_rust.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/markupsafe/_speedups.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/regex/_regex.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/yaml/_yaml.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/samcli/local/rapid/aws-lambda-rie-x86_64",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/samcli/local/rapid/aws-lambda-rie-arm64",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/rpds/rpds.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/libpython3.11.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/charset_normalizer/md.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/charset_normalizer/cd.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/_internal/libcrypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/share/aws-sam-cli/1.171.0/dist/sam",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d968595e548b161c9eb8b34394641b01e195fecc7362d7dc34ef6c05d34ff657",
+  "signature": null
+}
