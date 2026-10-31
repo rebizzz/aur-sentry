@@ -1,0 +1,8 @@
+{
+  "package": "crowdsec-nginx-bouncer",
+  "aur_commit": "59fd44c9333f3230fd7681d120f6f7848e08fb01",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-31T06:06:17Z"
+}
