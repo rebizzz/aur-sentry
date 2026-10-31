@@ -1,0 +1,425 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "centrifugo-git",
+    "version": "r2000.c8c7e3b-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "1c1473508b6f1e64eb74ca2a9769be2ec025839f",
+    "pkgbuild_sha256": "b629b6941cefe85951004d0a49dd1064a216dbde3fdbf0324de49535044fad5d",
+    "install_sha256": "46c5171671757b89198f4d0183ed034ddf4bab1222bb1586a2bf51af3a37fd19"
+  },
+  "analyzed_at": "2026-10-31T13:02:15.895849785+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 14,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: misc/release/release.env"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/centrifugal/c\"... /home/builder/build/centrifugo",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/centrifugal/c\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/centrifugal/c\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1409 on dbacdb\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/centrifugo rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/centrifugo/i\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/centrifugo.s\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/centrifugo.t\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/centrifugo centrifugo",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/centrifugo",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/centrifu\"...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/centrifugo.s\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- centrifugo.service",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf centrifugo.service -q *",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- centrifugo.sysusers",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf centrifugo.sysusers -q *",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/centrifugo.t\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- centrifugo.tmpfiles",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf centrifugo.tmpfiles -q *",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "misc/release/release.env",
+        "operation": "canary_access",
+        "timestamp": "2026-10-31T13:02:15.885972879+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Centrifugo: Client-forgeable headers emulation lets any client spoof headers forwarded to proxy backends (GHSA-9468-v6mj-fppw)",
+      "url": "https://osv.dev/vulnerability/GHSA-9468-v6mj-fppw"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Centrifugo's dynamic JWKS key cache keyed only by `kid` allows cross-issuer JWT authentication bypass (GHSA-g6vg-wj8f-48cj)",
+      "url": "https://osv.dev/vulnerability/GHSA-g6vg-wj8f-48cj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Centrifugo: SSRF via unverified JWT claims interpolated into dynamic JWKS endpoint URL (GHSA-j77h-rr39-c552)",
+      "url": "https://osv.dev/vulnerability/GHSA-j77h-rr39-c552"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Centrifugo's InsecureSkipTokenSignatureVerify flag silently disables JWT verification with no warning (GHSA-q926-c743-49qj)",
+      "url": "https://osv.dev/vulnerability/GHSA-q926-c743-49qj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Centrifugo v6.6.0 dependency vulnerabilities in github.com/centrifugal/centrifugo (GO-2026-4528)",
+      "url": "https://osv.dev/vulnerability/GO-2026-4528"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Centrifugo: SSRF via unverified JWT claims interpolated into dynamic JWKS endpoint URL in github.com/centrifugal/centrifugo (GO-2026-4702)",
+      "url": "https://osv.dev/vulnerability/GO-2026-4702"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Centrifugo's InsecureSkipTokenSignatureVerify flag silently disables JWT verification with no warning in github.com/centrifugal/centrifugo (GO-2026-4703)",
+      "url": "https://osv.dev/vulnerability/GO-2026-4703"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Centrifugo's dynamic JWKS key cache keyed only by `kid` allows cross-issuer JWT authentication bypass in github.com/centrifugal/centrifugo (GO-2026-5872)",
+      "url": "https://osv.dev/vulnerability/GO-2026-5872"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Centrifugo: Client-forgeable headers emulation lets any client spoof headers forwarded to proxy backends in github.com/centrifugal/centrifugo (GO-2026-6490)",
+      "url": "https://osv.dev/vulnerability/GO-2026-6490"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "2efbefa73e1da66743e994e62fe506a3091b91a83abe57804431e459b5241fb1",
+  "signature": null
+}
