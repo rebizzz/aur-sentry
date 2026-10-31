@@ -1,0 +1,21 @@
+pkgbase = claudectl-bin
+	pkgdesc = Auto-pilot for Claude Code — local LLM watches sessions and decides what to approve
+	pkgver = 0.92.3
+	pkgrel = 1
+	url = https://github.com/mercurialsolo/claudectl
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = claudectl
+	conflicts = claudectl
+	conflicts = claudectl-git
+	options = !strip
+	options = !debug
+	source = LICENSE-0.92.3::https://raw.githubusercontent.com/mercurialsolo/claudectl/v0.92.3/LICENSE
+	sha256sums = c7335fce47998935bbe76ef2fe9dfeb0ba7b7fb8f0edec16127a0a370f6c8b80
+	source_x86_64 = claudectl-0.92.3-x86_64.tar.gz::https://github.com/mercurialsolo/claudectl/releases/download/v0.92.3/claudectl-v0.92.3-x86_64-unknown-linux-musl.tar.gz
+	sha256sums_x86_64 = f1186dc786fa1296226be66805c2d8ccc056cab5df496e42ace66b1c357c5325
+	source_aarch64 = claudectl-0.92.3-aarch64.tar.gz::https://github.com/mercurialsolo/claudectl/releases/download/v0.92.3/claudectl-v0.92.3-aarch64-unknown-linux-musl.tar.gz
+	sha256sums_aarch64 = 748c1d8c5bf506287ac11ef04c37a56c21e36192edb07cfd59cdaf6e418b5b47
+
+pkgname = claudectl-bin
