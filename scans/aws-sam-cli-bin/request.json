@@ -1,0 +1,8 @@
+{
+  "package": "aws-sam-cli-bin",
+  "aur_commit": "914ceac591e124f01cd7ee95442e16c7f83fbece",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-31T06:04:58Z"
+}
