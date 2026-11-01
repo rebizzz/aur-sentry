@@ -1,0 +1,8 @@
+{
+  "package": "archiso-systemd-boot",
+  "aur_commit": "d2b490cbf4cd38c1a769d6f4e266aee479cbefc9",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-01T20:49:16Z"
+}
