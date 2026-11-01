@@ -1,0 +1,320 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "git-tree-bin",
+    "version": "2.2.7-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "52e66b81cc63c5918ac407b1a289b37b683c4e41",
+    "pkgbuild_sha256": "c9d4a882123326e2981b0fab8a41554c4332a135c1496d4c2559f1d323b4c41c",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-01T06:36:27.510013205+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (4 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o git-tree-x86_64-2.2.7.deb.part https://github.com/git-tree-app/\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/git-tree-x86\"... /home/builder/build/git-tree-x86\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/git-tree-x86\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/git-tree\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/git-tree-x86\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- git-tree-x86_64-2.2.7.deb",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf git-tree-x86_64-2.2.7.deb -q *",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf git-tree-x86_64-2.2.7.deb",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/git-tree-bin-2.2.7-1-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.508883976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/git-tree-bin-2.2.7-1-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.508883976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/git-tree-bin-2.2.7-1-x86_64\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.508883976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.508883976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.508883976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.508883976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm git-tree-bin",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.508883976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm git-tree-bin",
+        "parent": null,
+        "timestamp": "2026-11-01T06:36:27.508883976+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-01T06:36:27.502288994+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 8,
+    "elf_object_count": 2,
+    "elf_objects": [
+      {
+        "path": "usr/bin/gittree",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/bin/ogt-helper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "dd2179119c519311e053c2cc7bfcf0a2b9af6fbacbe360cb76fb6952caffd9a3",
+  "signature": null
+}
