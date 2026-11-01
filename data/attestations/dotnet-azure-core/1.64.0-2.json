@@ -1,0 +1,392 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dotnet-azure-core",
+    "version": "1.64.0-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "51f585de432ea7bab8857825dc669f13900c72c9",
+    "pkgbuild_sha256": "c2313a368e6ac37eb8bd47ec712036c51893c02054911c0894600b278c711914",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-01T21:04:59.733595061+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: azure-sdk-for-net-254a1b693af968afee40958e77d0762b44a1b13c/sdk/contentunderstanding/Azure.AI.ContentUnderstanding/tests/sample.env, azure-sdk-for-net-254a1b693af968afee40958e77d0762b44a1b13c/sdk/transcription/Azure.AI.Speech.Transcription/tests/.env.sample, azure-sdk-for-net-254a1b693af968afee40958e77d0762b44a1b13c/sdk/voicelive/Azure.AI.VoiceLive/tests/.env.example"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o azure-sdk-for-net-254a1b693af968\"... https://github.com/Azure/azure-s\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/azure-sdk-fo\"... /home/builder/build/azure-sdk-fo\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o azure-sdk-assets-3adf93d405a7f3f\"... https://github.com/Azure/azure-s\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/azure-sdk-as\"... /home/builder/build/azure-sdk-as\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/azure-sdk-fo\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/azure-sdk-as\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/azure-core-t\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "b2sum /home/builder/build/azure-sdk-fo\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "b2sum /home/builder/build/azure-sdk-as\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "b2sum /home/builder/build/azure-core-t\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/azure-sd\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/azure-sdk-fo\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- azure-sdk-for-net-254a1b693af968\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf azure-sdk-for-net-254a1b693af968\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/azure-sdk-as\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- azure-sdk-assets-3adf93d405a7f3f\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf azure-sdk-assets-3adf93d405a7f3f\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/azure-co\"...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/azure-core-t\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- azure-core-tests-no-broker.patch",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf azure-core-tests-no-broker.patch -q *",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p nuget-local",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "azure-sdk-for-net-254a1b693af968afee40958e77d0762b44a1b13c/sdk/contentunderstanding/Azure.AI.ContentUnderstanding/tests/sample.env",
+        "operation": "canary_access",
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "azure-sdk-for-net-254a1b693af968afee40958e77d0762b44a1b13c/sdk/transcription/Azure.AI.Speech.Transcription/tests/.env.sample",
+        "operation": "canary_access",
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "azure-sdk-for-net-254a1b693af968afee40958e77d0762b44a1b13c/sdk/voicelive/Azure.AI.VoiceLive/tests/.env.example",
+        "operation": "canary_access",
+        "timestamp": "2026-11-01T21:04:58.956931598+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "8683da699e60a3f9768b745ebcce489afea15bf56931aae0447cad1715736146",
+  "signature": null
+}
