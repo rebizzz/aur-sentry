@@ -1,0 +1,23 @@
+_announce() {
+    cat <<'EOF'
+
+==> ClipCascade needs a clipboard tool matching your display server:
+==>   Xorg session:    pacman -S xclip
+==>   Wayland session: pacman -S wl-clipboard xorg-xwayland
+==>
+==> Recommended for Xorg users (efficient event-based monitor):
+==>   pacman -S python-gobject gtk3
+==>
+==> For emoji glyphs in the tray menu:
+==>   pacman -S noto-fonts-emoji
+
+EOF
+}
+
+post_install() {
+    _announce
+}
+
+post_upgrade() {
+    _announce
+}
