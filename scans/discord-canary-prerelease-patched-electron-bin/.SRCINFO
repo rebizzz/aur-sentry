@@ -1,0 +1,42 @@
+pkgbase = discord-canary-prerelease-patched-electron-bin
+	pkgdesc = Discord Canary with patched Electron and Linux fixes (AVX2 required)
+	pkgver = 20261101.022752
+	pkgrel = 1
+	url = https://github.com/discord-patched-electron/discord-patched-electron
+	arch = x86_64
+	license = MIT
+	license = BSD-3-Clause
+	license = AGPL-3.0-only
+	depends = glibc>=2.38
+	depends = gcc-libs
+	depends = alsa-lib
+	depends = gtk3
+	depends = libcups
+	depends = libxss
+	depends = libxtst
+	depends = libxcb
+	depends = nss
+	depends = libdrm
+	depends = mesa
+	depends = libpulse
+	depends = python>=3.11
+	depends = ca-certificates
+	depends = gnupg
+	depends = brotli
+	depends = bash
+	depends = coreutils
+	depends = pipewire
+	depends = pipewire-audio
+	depends = zenity
+	optdepends = xdg-desktop-portal: desktop screen selection
+	optdepends = wireplumber: PipeWire session management
+	optdepends = kdotool: KDE Plasma window labels
+	provides = discord-canary
+	conflicts = discord-canary
+	conflicts = discord-canary-electron-bin
+	options = !strip
+	options = !debug
+	source = discord-canary-prerelease-patched-electron-bin-20261101.022752.tar.gz::https://github.com/discord-patched-electron/discord-patched-electron/releases/download/v20261101022752.0.0-canary.fc964fa56c016ca1/discord-canary-prerelease-patched-electron-bin-linux-x86_64.tar.gz
+	sha256sums = b9c01552ec7b11d84f5a7503e852f05891e4a2af7c24647a5a071c1167f79407
+
+pkgname = discord-canary-prerelease-patched-electron-bin
