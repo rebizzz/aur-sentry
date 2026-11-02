@@ -1,0 +1,412 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aurutils",
+    "version": "21.1.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "957c74c7b83d6a10cec5475a9b1c00f84e372dcb",
+    "pkgbuild_sha256": "8f89a865992a2ba1868cfb22e8d4b9bfba5fd58f66ba1a69dbbacd29c0347d28",
+    "install_sha256": "c5387f70ad51e0d212afc029cedf303566747100fc2c2e24fc3e9cacfb705af3"
+  },
+  "analyzed_at": "2026-11-02T01:50:21.472398108+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 14,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aurutils-21.1.2.tar.gz.part https://github.com/AladW/aurutil\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aurutils-21.\"... /home/builder/build/aurutils-21.\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/aurutils-21.\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/aurutils\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aurutils-21.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aurutils-21.1.2.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf aurutils-21.1.2.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aurutils-21.1.2-1-any.pkg.t\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aurutils-21.1.2-1-any.pkg.t\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/aurutils-21.1.2-1-any.pkg.t\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B8AC08600F108CDF",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 7A4E76095D8A52E4",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- A85E811EB4CA2E08",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 83BC8889351B5DEBBB68416EB8AC0860\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 1519D5ABA65BF6FC2B73C7567A4E7609\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B0D65295476606B71F0C6F82A85E811E\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/detec\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "perl -e $v = $^V->{version}; print $v->[\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm aurutils",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm aurutils",
+        "parent": null,
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-02T01:50:21.462371301+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-02T01:50:21.469872633+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 61,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "0f5375dcdb66d8784cfcc8db46fe4f3cdbdd6f7436a71549a9e556531d22b69a",
+  "signature": null
+}
