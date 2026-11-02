@@ -1,0 +1,26 @@
+pkgbase = cfn-teleport-bin
+	pkgdesc = A command-line tool for managing CloudFormation resources across and within stacks
+	pkgver = 0.52.5
+	pkgrel = 1
+	url = https://github.com/udondan/cfn-teleport
+	arch = aarch64
+	arch = arm
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	provides = cfn-teleport
+	conflicts = cfn-teleport
+	replaces = cfn-teleport
+	source_aarch64 = https://github.com/udondan/cfn-teleport/releases/download/v0.52.5/cfn-teleport-aarch64-unknown-linux-musl-v0.52.5.tar.gz
+	sha256sums_aarch64 = 17cafa80049b3361f82d61b177ef1b33a663db5f18b7c3c14326bf71fb8e98fd
+	source_arm = https://github.com/udondan/cfn-teleport/releases/download/v0.52.5/cfn-teleport-arm-unknown-linux-musleabihf-v0.52.5.tar.gz
+	sha256sums_arm = 5247bc709e5a660d2750544e476cdfe01bd8ea50fad96d11a65e35d230e3fc7b
+	source_armv7h = https://github.com/udondan/cfn-teleport/releases/download/v0.52.5/cfn-teleport-armv7-unknown-linux-musleabihf-v0.52.5.tar.gz
+	sha256sums_armv7h = f65fb6eb3f93c2549fba51459693b3e073a119ddd1d24c51c08d669064745c63
+	source_i686 = https://github.com/udondan/cfn-teleport/releases/download/v0.52.5/cfn-teleport-i686-unknown-linux-musl-v0.52.5.tar.gz
+	sha256sums_i686 = fbbfa1b50697a7be87761a43cc8a6d4d290c2e0b750ced995319d18eb7c294d8
+	source_x86_64 = https://github.com/udondan/cfn-teleport/releases/download/v0.52.5/cfn-teleport-x86_64-unknown-linux-musl-v0.52.5.tar.gz
+	sha256sums_x86_64 = 395fa54ece30549afd61ec58e1a7261bf9bc8c05a2664715ac48dcbd5c2603e1
+
+pkgname = cfn-teleport-bin
