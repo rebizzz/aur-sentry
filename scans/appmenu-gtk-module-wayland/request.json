@@ -1,0 +1,8 @@
+{
+  "package": "appmenu-gtk-module-wayland",
+  "aur_commit": "12ea78821576783b3bd941a26ed23c7f0ce67952",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-02T20:36:21Z"
+}
