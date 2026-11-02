@@ -1,0 +1,16 @@
+pkgbase = archon-appimage
+	pkgdesc = Desktop uploader app for Archon packaged as the upstream AppImage
+	pkgver = 9.6.223
+	pkgrel = 11
+	url = https://www.archon.gg/download
+	arch = x86_64
+	license = custom
+	depends = fuse2
+	provides = archon
+	conflicts = archon
+	conflicts = archon-bin
+	options = !strip
+	source = archon-v9.6.223.AppImage::https://github.com/RPGLogs/Uploaders-archon/releases/download/v9.6.223/archon-v9.6.223.AppImage
+	sha256sums = 28ed8c761d7571ebb1c350eaab231fcaeddcbe568d5c7de8354d745c1f535285
+
+pkgname = archon-appimage
