@@ -1,0 +1,350 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dokku",
+    "version": "0.38.34-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "d9dac9a23a9cde39273848b5e6ad7b441f07a4b2",
+    "pkgbuild_sha256": "7d5a34f1817211cf2dee4e177930db1da5be5f38b3733beeca9e7c061b2efca0",
+    "install_sha256": "d614323822b83612688a1192daedb3f7bf69f0d1a0e1df08411f5c32e4adde05"
+  },
+  "analyzed_at": "2026-11-02T09:55:06.843788624+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: dokku-0.38.34/tests/apps/python/.env, dokku-0.38.34/tests/apps/ruby/.env, dokku-0.38.34/tests/apps/static/.env"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o dokku-0.38.34.zip.part https://github.com/dokku/dokku/a\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/dokku-0.38.3\"... /home/builder/build/dokku-0.38.3\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/dokku-0.38.3\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/dokku.instal\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/cron_command\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/dokku-0.\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/dokku-0.38.3\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- dokku-0.38.34.zip",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gzip -cd",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf dokku-0.38.34.zip",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/dokku.in\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/dokku.instal\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- dokku.install",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf dokku.install -q *",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/cron_com\"...",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/cron_command\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- cron_command.patch",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf cron_command.patch -q *",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "dokku-0.38.34/tests/apps/python/.env",
+        "operation": "canary_access",
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "dokku-0.38.34/tests/apps/ruby/.env",
+        "operation": "canary_access",
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      },
+      {
+        "path": "dokku-0.38.34/tests/apps/static/.env",
+        "operation": "canary_access",
+        "timestamp": "2026-11-02T09:55:06.829511869+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "85816d91582d0ec8dcdb0d041386e960a1fccf6c44d39d24d090aa1e51587614",
+  "signature": null
+}
