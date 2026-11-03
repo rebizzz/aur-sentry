@@ -1,0 +1,1162 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "azure-functions-core-tools-4-bin",
+    "version": "4.15.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "db2295289127abf886a8fcaff1cb9ee9ca291d77",
+    "pkgbuild_sha256": "838c708db5ad5b13bb827a202c6eeba0497c8848dfeffa463f8468e79e8e0667",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-03T20:02:24.329152591+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o Azure.Functions.Cli.linux-x64.4.\"... https://github.com/Azure/azure-f\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/Azure.Functi\"... /home/builder/build/Azure.Functi\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "b2sum /home/builder/build/Azure.Functi\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/Azure.Fu\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/Azure.Functi\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- Azure.Functions.Cli.linux-x64.4.\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gzip -cd",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf Azure.Functions.Cli.linux-x64.4.\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/azure-functions-core-tools-\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.276557976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/azure-functions-core-tools-\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.276557976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/azure-functions-core-tools-\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.276557976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.276557976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.276557976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.276557976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm azure-functions-core-tools-4-bin",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.276557976+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm azure-functions-core-tools-4-bin",
+        "parent": null,
+        "timestamp": "2026-11-03T20:02:24.276557976+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-03T20:02:24.211439741+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 8884,
+    "elf_object_count": 135,
+    "elf_objects": [
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libhostfxr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libhostfxr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libSystem.Net.Security.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libdbgshim.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libcoreclrtraceptprovider.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libhostpolicy.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libSystem.Globalization.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libmscordbi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libSystem.IO.Compression.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/gozip",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libMonoPosixHelper.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/createdump",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libcoreclr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libSystem.Security.Cryptography.Native.OpenSsl.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libclrjit.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libmscordaccore.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/func",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc6/libSystem.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libSystem.Net.Security.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libcoreclrtraceptprovider.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libhostpolicy.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libSystem.Globalization.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libmscordbi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libhostfxr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libSystem.Net.Security.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libcoreclrtraceptprovider.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libhostpolicy.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libSystem.Globalization.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libmscordbi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libSystem.IO.Compression.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/gozip",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libMonoPosixHelper.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/createdump",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libcoreclr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libSystem.Security.Cryptography.Native.OpenSsl.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libclrgc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libclrjit.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libmscordaccore.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.4/runtimes/linux-musl-x64/native/libpsl-native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.4/runtimes/linux-arm/native/libpsl-native.so",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.4/runtimes/linux-arm/native/libSystem.IO.Ports.Native.so",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.4/runtimes/linux-x64/native/libpsl-native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.4/runtimes/linux-x64/native/libSystem.IO.Ports.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.4/runtimes/linux-arm64/native/libpsl-native.so",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.4/runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-musl-x64/native/libpsl-native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-arm/native/System.IO.Ports.Native.so",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-arm/native/libpsl-native.so",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-x64/native/libgrpc_csharp_ext.x64.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-x64/native/libmi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-x64/native/System.IO.Ports.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-x64/native/libpsrpclient.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-x64/native/libpsl-native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-arm64/native/libgrpc_csharp_ext.arm64.so",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-arm64/native/System.IO.Ports.Native.so",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/runtimes/linux-arm64/native/libpsl-native.so",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7/Microsoft.Azure.Functions.PowerShellWorker",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.2/runtimes/linux-musl-x64/native/libpsl-native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.2/runtimes/linux-arm/native/libpsl-native.so",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.2/runtimes/linux-arm/native/libSystem.IO.Ports.Native.so",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.2/runtimes/linux-x64/native/libmi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.2/runtimes/linux-x64/native/libpsrpclient.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.2/runtimes/linux-x64/native/libpsl-native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.2/runtimes/linux-x64/native/libSystem.IO.Ports.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.2/runtimes/linux-arm64/native/libpsl-native.so",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/powershell/7.2/runtimes/linux-arm64/native/libSystem.IO.Ports.Native.so",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.10/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.10/LINUX/X64/grpc/_cython/cygrpc.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.10/LINUX/X64/markupsafe/_speedups.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.13/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.13/LINUX/X64/grpc/_cython/cygrpc.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.13/LINUX/X64/markupsafe/_speedups.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.9/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.9/LINUX/X64/grpc/_cython/cygrpc.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.9/LINUX/X64/markupsafe/_speedups.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.12/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.12/LINUX/X64/grpc/_cython/cygrpc.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.12/LINUX/X64/markupsafe/_speedups.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.11/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.11/LINUX/X64/grpc/_cython/cygrpc.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.11/LINUX/X64/markupsafe/_speedups.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.8/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.8/LINUX/X64/grpc/_cython/cygrpc.cpython-38-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.8/LINUX/X64/markupsafe/_speedups.cpython-38-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.7/LINUX/X64/google/protobuf/internal/_api_implementation.cpython-37m-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.7/LINUX/X64/google/protobuf/pyext/_message.cpython-37m-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.7/LINUX/X64/grpc/_cython/cygrpc.cpython-37m-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/workers/python/3.7/LINUX/X64/markupsafe/_speedups.cpython-37m-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/func",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/in-proc8/libSystem.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libclrgcexp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libSystem.IO.Compression.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libMonoPosixHelper.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/createdump",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libcoreclr.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libSystem.Security.Cryptography.Native.OpenSsl.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libclrgc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libclrjit.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libmscordaccore.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7.4/runtimes/linux-x64/native/libpsl-native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7.4/runtimes/linux-x64/native/libSystem.IO.Ports.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7/runtimes/linux-x64/native/libgrpc_csharp_ext.x64.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7/runtimes/linux-x64/native/libmi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7/runtimes/linux-x64/native/System.IO.Ports.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7/runtimes/linux-x64/native/libpsrpclient.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7/runtimes/linux-x64/native/libpsl-native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7/Microsoft.Azure.Functions.PowerShellWorker",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7.6/runtimes/linux-x64/native/libpsl-native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7.6/runtimes/linux-x64/native/libSystem.IO.Ports.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7.2/runtimes/linux-x64/native/libmi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7.2/runtimes/linux-x64/native/libpsrpclient.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7.2/runtimes/linux-x64/native/libpsl-native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/powershell/7.2/runtimes/linux-x64/native/libSystem.IO.Ports.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.10/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.10/LINUX/X64/grpc/_cython/cygrpc.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.10/LINUX/X64/markupsafe/_speedups.cpython-310-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.13/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.13/LINUX/X64/grpc/_cython/cygrpc.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.13/LINUX/X64/uvloop/loop.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.13/LINUX/X64/markupsafe/_speedups.cpython-313-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.14/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.14/LINUX/X64/grpc/_cython/cygrpc.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.14/LINUX/X64/uvloop/loop.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.14/LINUX/X64/markupsafe/_speedups.cpython-314-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.9/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.9/LINUX/X64/grpc/_cython/cygrpc.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.9/LINUX/X64/markupsafe/_speedups.cpython-39-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.12/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.12/LINUX/X64/grpc/_cython/cygrpc.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.12/LINUX/X64/markupsafe/_speedups.cpython-312-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.11/LINUX/X64/google/_upb/_message.abi3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.11/LINUX/X64/grpc/_cython/cygrpc.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/workers/python/3.11/LINUX/X64/markupsafe/_speedups.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/func",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/azure-functions-core-tools-4/libSystem.Native.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Improper Certificate Validation in openssl (GHSA-34p9-f4q3-c4r7)",
+      "url": "https://osv.dev/vulnerability/GHSA-34p9-f4q3-c4r7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509NameBuilder::build` returned object is not thread safe (GHSA-3gxf-9r58-2ghg)",
+      "url": "https://osv.dev/vulnerability/GHSA-3gxf-9r58-2ghg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl Use-After-Free in `Md::fetch` and `Cipher::fetch` (GHSA-4fcv-w3qc-ppgg)",
+      "url": "https://osv.dev/vulnerability/GHSA-4fcv-w3qc-ppgg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509Extension::new` and `X509Extension::new_nid` null pointer dereference (GHSA-6hcf-g6gr-hhcr)",
+      "url": "https://osv.dev/vulnerability/GHSA-6hcf-g6gr-hhcr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "openssl npm package vulnerable to command execution (GHSA-75w2-qv55-x7fv)",
+      "url": "https://osv.dev/vulnerability/GHSA-75w2-qv55-x7fv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl has incorrect bounds assertion in aes key wrap (GHSA-8c75-8mhr-p7r9)",
+      "url": "https://osv.dev/vulnerability/GHSA-8c75-8mhr-p7r9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `SubjectAlternativeName` and `ExtendedKeyUsage::other` allow arbitrary file read (GHSA-9qwg-crg9-m2vc)",
+      "url": "https://osv.dev/vulnerability/GHSA-9qwg-crg9-m2vc"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl: rustMdCtxRef::digest_final() writes past caller buffer with no length check (GHSA-ghm9-cr32-g9qj)",
+      "url": "https://osv.dev/vulnerability/GHSA-ghm9-cr32-g9qj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl: Unchecked callback length in PSK/cookie trampolines leaks adjacent memory to peer (GHSA-hppc-g8h3-xhp3)",
+      "url": "https://osv.dev/vulnerability/GHSA-hppc-g8h3-xhp3"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl: Potential out-of-bounds write in `CipherCtxRef::cipher_update_inplace` for AES-KW-PAD ciphers (GHSA-phqj-4mhp-q6mq)",
+      "url": "https://osv.dev/vulnerability/GHSA-phqj-4mhp-q6mq"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "680320daf773bd60c0a53791de3ceadfe06cbbf0050fc880202fe2e35417f614",
+  "signature": null
+}
