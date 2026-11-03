@@ -1,0 +1,25 @@
+pkgbase = binvec-bin
+	pkgdesc = A simple application to convert raster graphics to vector graphics (pre-compiled)
+	pkgver = 1.20.35
+	pkgrel = 1
+	url = https://github.com/RouHim/binvec
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = MIT
+	provides = binvec
+	conflicts = binvec
+	options = !strip
+	source = binvec-1.20.35.tar.gz::https://github.com/RouHim/binvec/archive/refs/tags/1.20.35.tar.gz
+	sha256sums = cc9f0a7a6af6d2b5e677a261fabd9a45f07b4e8635f650d668840f3341462839
+	source_x86_64 = binvec-1.20.35-x86_64-unknown-linux-gnu::https://github.com/RouHim/binvec/releases/download/1.20.35/binvec-x86_64-unknown-linux-gnu
+	sha256sums_x86_64 = f6e6c36da97f5368f0b36247fd6418b0c1c184338563e5c50c52fdb82eb92bec
+	source_aarch64 = binvec-1.20.35-aarch64-unknown-linux-gnu::https://github.com/RouHim/binvec/releases/download/1.20.35/binvec-aarch64-unknown-linux-gnu
+	sha256sums_aarch64 = a5bfebc8e17383376e44bb863df4a5fc91500fdac2949f36091eef4618221c7b
+	source_armv7h = binvec-1.20.35-armv7-unknown-linux-gnueabihf::https://github.com/RouHim/binvec/releases/download/1.20.35/binvec-armv7-unknown-linux-gnueabihf
+	sha256sums_armv7h = fb3ced374c93451b36e75d709af92fdc92c82fdede8fbd0e2a878a43d9f9c3fa
+	source_armv6h = binvec-1.20.35-arm-unknown-linux-gnueabihf::https://github.com/RouHim/binvec/releases/download/1.20.35/binvec-arm-unknown-linux-gnueabihf
+	sha256sums_armv6h = 29a8ec7cbf1525dab8bb6ca41c9e27946c2c9a831db0c0cf3dc19f4c6d3fbe9f
+
+pkgname = binvec-bin
