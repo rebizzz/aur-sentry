@@ -1,0 +1,302 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "audio.cpp-vulkan-git",
+    "version": "r424.5fda891-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "2b2ff843c5754aea91e50f7dfc6bcba456a6356f",
+    "pkgbuild_sha256": "100fb20fb662c738c4ec072956bfad348db785975d2c360335ac5ee8cb53ad7f",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-03T12:19:56.881705630+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/0xShug0/audio\"... /home/builder/build/audio.cpp",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/0xShug0/audio\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/0xShug0/audio\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 946 on 97d3a88\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/audio.cpp rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/audio.cpp/in\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/audio.cpp audio.cpp",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/audio.cpp",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-list --count HEAD",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --short=7 HEAD",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Updated version: %s",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.116.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-03T12:19:56.848769071+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious code in shaderc (npm) (MAL-2025-3645)",
+      "url": "https://osv.dev/vulnerability/MAL-2025-3645"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "spirv_headers is unmaintained, use spirv instead (RUSTSEC-2021-0096)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2021-0096"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "c3c2e7320260dab8c56d9a597bdaa53eed481aa0b383e278b1b2afbda0f176c3",
+  "signature": null
+}
