@@ -1,0 +1,30 @@
+pkgbase = crit.md-bin
+	pkgdesc = Review agent plans, diffs, and web apps in the browser
+	pkgver = 0.23.2
+	pkgrel = 1
+	url = https://github.com/tomasz-tomczyk/crit
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = git
+	optdepends = xdg-utils: open reviews in the default browser
+	provides = crit.md=0.23.2
+	conflicts = crit.md
+	conflicts = crit
+	conflicts = crit-bin
+	conflicts = crit-git
+	noextract = crit-0.23.2-linux-amd64
+	noextract = crit-0.23.2-linux-arm64
+	options = !strip
+	options = !debug
+	source = crit-0.23.2-LICENSE::https://raw.githubusercontent.com/tomasz-tomczyk/crit/v0.23.2/LICENSE
+	source = crit-0.23.2-README.md::https://raw.githubusercontent.com/tomasz-tomczyk/crit/v0.23.2/README.md
+	sha256sums = 2cf35fdedf349b666381d909b857baf5641314024edf7064e16d553c59f67345
+	sha256sums = 226fa475c452a355dd520a8a266a5395a8a3fce90521c9d774a62ec15fabd2f9
+	source_x86_64 = crit-0.23.2-linux-amd64::https://github.com/tomasz-tomczyk/crit/releases/download/v0.23.2/crit-linux-amd64
+	depends_x86_64 = glibc
+	sha256sums_x86_64 = 10aa756a3146362be3a349cc8223955e23a1cd6daa0abbb13dd500741f793a90
+	source_aarch64 = crit-0.23.2-linux-arm64::https://github.com/tomasz-tomczyk/crit/releases/download/v0.23.2/crit-linux-arm64
+	sha256sums_aarch64 = fc1cc46624d5573157336e96bc3b93c965cd649eb8168f966b8b93f77c0b4072
+
+pkgname = crit.md-bin
