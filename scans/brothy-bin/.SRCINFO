@@ -1,0 +1,21 @@
+pkgbase = brothy-bin
+	pkgdesc = A calm terminal Markdown reader: folder tree, outline, live reload, Obsidian-flavored, 26 themes
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/jackMort/brothy
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	provides = brothy
+	conflicts = brothy
+	options = !strip
+	source = README-0.3.0.md::https://raw.githubusercontent.com/jackMort/brothy/v0.3.0/README.md
+	source = LICENSE-0.3.0::https://raw.githubusercontent.com/jackMort/brothy/v0.3.0/LICENSE
+	sha256sums = 4fb2ccb636d7e3cd57e761c9d32af89afcf1d87fe0202a9eec0a0ec98a7ec1ec
+	sha256sums = 483336fdde3746910f4fed5c399c64c765c2cdf19f886ad952c8af6c6a663b35
+	source_x86_64 = brothy-x86_64-0.3.0::https://github.com/jackMort/brothy/releases/download/v0.3.0/brothy-linux-x64
+	sha256sums_x86_64 = e1f671be5b531a33c0fa09251e26f1b1f6848195c238160be834508f1a2dfee1
+	source_aarch64 = brothy-aarch64-0.3.0::https://github.com/jackMort/brothy/releases/download/v0.3.0/brothy-linux-arm64
+	sha256sums_aarch64 = 08314b08dbe57d6804cd2a5943b276a5329a92d3d625fdf52119f7423e441201
+
+pkgname = brothy-bin
