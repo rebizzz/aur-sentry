@@ -1,0 +1,17 @@
+pkgbase = amux-bin
+	pkgdesc = TUI for easily running parallel coding agents
+	pkgver = 0.0.21
+	pkgrel = 1
+	url = https://github.com/andyrewlee/amux
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = amux
+	conflicts = amux
+	options = !strip
+	source_x86_64 = amux-x86_64-0.0.21.tgz::https://github.com/andyrewlee/amux/releases/download/v0.0.21/amux_0.0.21_linux_amd64.tar.gz
+	sha256sums_x86_64 = 579d55990357f216fc9174742960dc5012d658b556b4a12ed935a5cbd9c73a82
+	source_aarch64 = amux-aarch64-0.0.21.tgz::https://github.com/andyrewlee/amux/releases/download/v0.0.21/amux_0.0.21_linux_amd64.tar.gz
+	sha256sums_aarch64 = 579d55990357f216fc9174742960dc5012d658b556b4a12ed935a5cbd9c73a82
+
+pkgname = amux-bin
