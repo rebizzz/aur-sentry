@@ -1,0 +1,27 @@
+pkgbase = aria2tui
+	pkgdesc = A TUI Frontend for the Aria2c Download Manager
+	pkgver = 0.1.13.5
+	pkgrel = 1
+	url = https://github.com/grimandgreedy/aria2tui
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = aria2
+	depends = python-pyperclip
+	depends = python-toml
+	depends = python-requests
+	depends = python-tabulate
+	depends = python-numpy
+	depends = python-plotille
+	depends = listpick
+	provides = aria2tui
+	conflicts = python-aria2tui
+	replaces = python-aria2tui
+	source = https://files.pythonhosted.org/packages/source/a/aria2tui/aria2tui-0.1.13.5.tar.gz
+	sha256sums = 43c8b19f6dacb17530f001688317d01f295c5f6dc554916dceef284c6ff5540e
+
+pkgname = aria2tui
