@@ -1,0 +1,327 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "beardrive-bin",
+    "version": "0.18.2-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "58e1cc8791d1f9c07ea33287aa44de8cd0f9ec21",
+    "pkgbuild_sha256": "5deb47ead81597c6426a77ded72467e0abdf2c4eabaa92621d11217ac2ad8082",
+    "install_sha256": "1a3f9cb20a211bb02a9255fca097ff55d3812603347af03bb79ac9e37155012e"
+  },
+  "analyzed_at": "2026-11-04T00:57:16.850504624+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 11,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o beardrive_0.18.2_linux_amd64.tar\"... https://github.com/runbear-io/be\"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/beardrive_0.\"... /home/builder/build/beardrive_0.\"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/beardrive_0.\"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/beardriv\"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/beardrive_0.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- beardrive_0.18.2_linux_amd64.tar\"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf beardrive_0.18.2_linux_amd64.tar\"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/beardrive-bin-0.18.2-1-x86_\"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.849244020+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/beardrive-bin-0.18.2-1-x86_\"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.849244020+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/beardrive-bin-0.18.2-1-x86_\"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.849244020+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_ZiffDm/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.849244020+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "cat",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.849244020+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.849244020+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.849244020+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.849244020+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm beardrive-bin",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.849244020+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm beardrive-bin",
+        "parent": null,
+        "timestamp": "2026-11-04T00:57:16.849244020+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-04T00:57:16.838798807+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 7,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/bdrive",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "8aeaf7bcf269146e08f058390ffa00c6454d288f635e263f33c94179d8ba785a",
+  "signature": null
+}
