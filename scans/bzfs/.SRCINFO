@@ -1,0 +1,21 @@
+pkgbase = bzfs
+	pkgdesc = ZFS dataset replication tool.
+	pkgver = 1.26.1
+	pkgrel = 1
+	url = https://github.com/whoschek/bzfs
+	arch = any
+	license = Apache-2.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-uv-build
+	depends = python
+	optdepends = zstd: compression
+	optdepends = pv: progress bars
+	optdepends = mbuffer: stream buffering
+	optdepends = python-tenacity: auxiliary test microbenchmark
+	source = https://files.pythonhosted.org/packages/source/b/bzfs/bzfs-1.26.1.tar.gz
+	sha256sums = ebda7ebf1831c9600648aacbb37f13ac7af84c4147dc529dbd0bddeb7e0a895e
+
+pkgname = bzfs
