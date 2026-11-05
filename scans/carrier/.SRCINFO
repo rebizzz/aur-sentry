@@ -1,0 +1,21 @@
+pkgbase = carrier
+	pkgdesc = Distraction-free desktop client for Facebook Messenger
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/kristofferR/Carrier
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	options = !strip
+	options = !debug
+	source = LICENSE-2.1.0::https://raw.githubusercontent.com/kristofferR/Carrier/v2.1.0/LICENSE
+	sha256sums = 957e3579dea42e66b0d3cdea831c3b93edaaa8a3566e4115efd11959f60c0d9d
+	source_x86_64 = carrier-2.1.0-x86_64.deb::https://github.com/kristofferR/Carrier/releases/download/v2.1.0/Carrier_2.1.0_lin_x64.deb
+	sha256sums_x86_64 = d689ed6873065813bb89474e919b6e4d6c083cee7da46297862daae9e7bb02f8
+	source_aarch64 = carrier-2.1.0-aarch64.deb::https://github.com/kristofferR/Carrier/releases/download/v2.1.0/Carrier_2.1.0_lin_arm.deb
+	sha256sums_aarch64 = 80015df74cc185948d28d0811f277affde55fef81363ca3b24d87b91985cd95c
+
+pkgname = carrier
