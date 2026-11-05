@@ -1,0 +1,87 @@
+# Maintainer: Integral <integral@member.fsf.org>
+# Contributor: Pylogmon <pylogmon@outlook.com>
+
+pkgname=clash-verge-rev
+_pkgname=${pkgname%-rev}
+pkgver=2.5.10
+_ipc_ver=2.7.7
+pkgrel=1
+pkgdesc="Continuation of Clash Verge | A Clash Meta GUI based on Tauri"
+arch=('x86_64' 'i686' 'aarch64' 'armv7h')
+url="https://github.com/${pkgname}/${pkgname}"
+license=('GPL-3.0-or-later')
+depends=('webkit2gtk-4.1' 'gtk3' 'libayatana-appindicator' 'mihomo' 'zstd')
+conflicts=("${_pkgname}")
+provides=("${_pkgname}")
+makedepends=('pnpm' 'nodejs' 'rust' 'jq' 'moreutils')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+	"${_pkgname}-service-ipc-${_ipc_ver}.tar.gz::https://github.com/${pkgname}/${_pkgname}-service-ipc/archive/v${_ipc_ver}.tar.gz"
+	https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/{Country.mmdb,geo{ip,site}.dat}
+)
+sha512sums=('7b28dcb41abe622a23a2ae625070d3c9bee5ea3bcab259f0b93a25a78843a22035110c972cf9d7f51953a9c2ab37114e466e3be5199f2a83e759ecaf0e90c932'
+            'fcfb16a27e754d352a523b9fb78f44b102c0f6c0413dc060352e9b32ddcf290cac9004c46fdbd9914feaa252e4f8dc5f2586b3b0837b2ad36799f0986e479415'
+            'ed86aae09266affd61c141fe17c8fea9faf84e6e5581161a1dec69e83254c61d75b083c6584f7ae0f96ac633ab25724655b1e33b049bcca6b11a8b9695943bb2'
+            'b16fd46388255d0900cd3e25f50366510893dbab935044c805f0c754300d66467caaa6c6e3d823b7706c64109c9e00786b9aa676ed84b7fd03a4476cba72d783'
+            '441399f024e827c4d6f1201003971d368283dd1be9865abf53ad708a3090c43e6587077cc58e6f08e1ef6a0eb3f85a785eb230dfaa2eee204e6461114bbdbb21')
+
+prepare() {
+	pushd "${_pkgname}-service-ipc-${_ipc_ver}/"
+	_prepare_service
+	popd
+
+	cd "${pkgname}-${pkgver}/"
+	jq '.bundle.createUpdaterArtifacts = false' src-tauri/tauri.conf.json | sponge src-tauri/tauri.conf.json
+	pnpm i
+
+	cd src-tauri
+	cargo fetch --locked --target host-tuple
+}
+
+build() {
+	pushd "${_pkgname}-service-ipc-${_ipc_ver}/"
+	export CFLAGS+=" -ffat-lto-objects"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
+	export AWS_LC_SYS_NO_JITTER_ENTROPY=1
+	export ZSTD_SYS_USE_PKG_CONFIG=1
+	_build_service
+	_package_service
+	popd
+
+	cd "${pkgname}-${pkgver}/"
+	install -Dm644 ${srcdir}/{Country.mmdb,geo{ip,site}.dat} -t ./src-tauri/resources
+
+	# Use empty files as placeholders
+	touch ./src-tauri/sidecar/verge-mihomo{,-alpha}-${CARCH}-unknown-linux-gnu
+
+	pnpm build -b deb
+}
+
+package() {
+	cp -a ${pkgname}-${pkgver}/src-tauri/target/release/bundle/deb/Clash\ Verge_${pkgver}_*/data/* "${pkgdir}"
+	ln -sf /usr/bin/mihomo "${pkgdir}/usr/bin/verge-mihomo"
+	ln -sf /usr/bin/mihomo "${pkgdir}/usr/bin/verge-mihomo-alpha"
+}
+
+_prepare_service() {
+	echo "==> Starting ${FUNCNAME[0]}()..."
+	cargo fetch --locked --target host-tuple
+}
+
+_build_service() {
+	echo "==> Starting ${FUNCNAME[0]}()..."
+	cargo build --frozen --release --features "standalone client"
+}
+
+_package_service() {
+	echo "==> Starting ${FUNCNAME[0]}()..."
+
+	pushd target/release
+	local _sidecar_dir="${srcdir}/${pkgname}-${pkgver}/src-tauri/sidecar"
+	local _suffix="${CARCH}-unknown-linux-gnu"
+	install -Dm755 "${_pkgname}-service" "${_sidecar_dir}/${_pkgname}-service-${_suffix}"
+	install -Dm755 "${_pkgname}-service-install" "${_sidecar_dir}/${_pkgname}-service-install-${_suffix}"
+	install -Dm755 "${_pkgname}-service-uninstall" "${_sidecar_dir}/${_pkgname}-service-uninstall-${_suffix}"
+	popd
+}
