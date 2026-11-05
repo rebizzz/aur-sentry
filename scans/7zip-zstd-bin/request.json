@@ -1,0 +1,8 @@
+{
+  "package": "7zip-zstd-bin",
+  "aur_commit": "defac903eed62419940261865a115a29c7c2e0ad",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-05T16:43:10Z"
+}
