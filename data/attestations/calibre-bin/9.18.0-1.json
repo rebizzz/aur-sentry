@@ -1,0 +1,439 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "calibre-bin",
+    "version": "9.18.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "896b4667e9c6a396e4a3f3283e59e169ca52d7f6",
+    "pkgbuild_sha256": "9295ed51e16e00def3771acee2ca4fe7e2ad4ac6b5969a710c6b72c99e27ff57",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-06T16:16:14.674597290+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o calibre-9.18.0-x86_64.txz.part https://download.calibre-ebook.c\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/calibre-9.18\"... /home/builder/build/calibre-9.18\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o calibre-9.18.0.tar.gz.part https://github.com/kovidgoyal/ca\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/share.tar.xz",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/calibre-9.18\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/share.ta\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/share.tar.xz /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- share.tar.xz",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf share.tar.xz",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/calibre-9.18\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- calibre-9.18.0-x86_64.txz",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf calibre-9.18.0-x86_64.txz",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- calibre-9.18.0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf calibre-9.18.0.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm /home/builder/build/src/share.ta\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/bin /home/builder/build/src/lib /home/builder/build/src/libexec /home/builder/build/src/resource\"... /home/builder/build/src/plugins /home/builder/build/src/translat\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find /home/builder/build/src -maxdepth 1 -type f -executable -exec mv {} /home/builder/build/src/calibre-\"... ;",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/web2disk /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/calibre /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/ebook-co\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/calibre-\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/calibre_\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/lrs2lrf /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/lrfviewe\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/ebook-me\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/ebook-vi\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/fetch-eb\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/ebook-ed\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/ebook-de\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/markdown\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/lrf2lrs /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/ebook-po\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv /home/builder/build/src/calibred\"... /home/builder/build/src/calibre-\"...",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "57.129.147.232",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.9",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-06T16:16:14.646684116+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "e7193a1f269a0f14f2f903184ec9e90f2349aad732f9811cbb718f9834216858",
+  "signature": null
+}
