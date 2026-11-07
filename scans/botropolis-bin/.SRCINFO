@@ -1,0 +1,32 @@
+pkgbase = botropolis-bin
+	pkgdesc = Every Claude Code session on this machine, drawn as a city (binary release)
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/Botropolis-City/botropolis
+	install = botropolis.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	license = OFL-1.1
+	license = CC0-1.0
+	license = BSD-3-Clause
+	depends = glibc
+	depends = libgl
+	depends = libx11
+	depends = libxcursor
+	depends = libxi
+	depends = libxinerama
+	depends = libxrandr
+	depends = hicolor-icon-theme
+	optdepends = claude-code: the sessions botropolis draws and manages
+	optdepends = waybar: a status bar for `botropolis bar --watch`
+	optdepends = ffmpeg: record clips in sharing mode
+	provides = botropolis=0.5.0
+	conflicts = botropolis
+	options = !debug
+	source_x86_64 = botropolis-0.5.0-linux-amd64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.5.0/botropolis-0.5.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 66c800cba30afeabe506e16e0b482ad90f49d74ff100d75210d40b4be493bbfd
+	source_aarch64 = botropolis-0.5.0-linux-arm64.tar.gz::https://github.com/Botropolis-City/botropolis/releases/download/v0.5.0/botropolis-0.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 8cdf69af96b276e0edc35d29cc833d15f6b304f5dcb8e3cc18b38d241c197bba
+
+pkgname = botropolis-bin
