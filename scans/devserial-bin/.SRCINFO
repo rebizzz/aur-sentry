@@ -1,0 +1,19 @@
+pkgbase = devserial-bin
+	pkgdesc = Serial terminal with SQLite-buffered output and CLI, TUI, GUI, REST and MCP
+	pkgver = 0.2.18
+	pkgrel = 1
+	url = https://github.com/metaneutrons/devserial
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = gcc-libs
+	provides = devserial
+	conflicts = devserial
+	options = !strip
+	source_x86_64 = https://github.com/metaneutrons/devserial/releases/download/devserial-v0.2.18/devserial-0.2.18-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 7d6d5906552742963918b51bf1885cbe00fd1e228d4c247348d1ed78addea985
+	source_aarch64 = https://github.com/metaneutrons/devserial/releases/download/devserial-v0.2.18/devserial-0.2.18-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = bc3cfd5a57d5446dcaee6567d262da72602ee3e35b254d4f4a509ca4fefefe86
+
+pkgname = devserial-bin
