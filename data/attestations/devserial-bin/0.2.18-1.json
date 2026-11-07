@@ -1,0 +1,301 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "devserial-bin",
+    "version": "0.2.18-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "f194c8add116938f96e93a194b60ec1f3198fffa",
+    "pkgbuild_sha256": "b3b838c71eaa4357a19809ec2d16f2e98bfb47ba99bfeb0d4bf14c1fd54ea60c",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-07T22:18:11.345665372+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o devserial-0.2.18-x86_64-unknown-\"... https://github.com/metaneutrons/\"...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/devserial-0.\"... /home/builder/build/devserial-0.\"...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/devserial-0.\"...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/devseria\"...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/devserial-0.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- devserial-0.2.18-x86_64-unknown-\"...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf devserial-0.2.18-x86_64-unknown-\"...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/devserial-bin-0.2.18-1-x86_\"...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.344673524+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/devserial-bin-0.2.18-1-x86_\"...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.344673524+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/devserial-bin-0.2.18-1-x86_\"...",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.344673524+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.344673524+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.344673524+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.344673524+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm devserial-bin",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.344673524+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm devserial-bin",
+        "parent": null,
+        "timestamp": "2026-11-07T22:18:11.344673524+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-07T22:18:11.336264674+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 8,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/devserial",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "e5d55781b10a48fe8a1965959ab8d84ee21c3d4b4b7aa2286cef65f78cb1e1c7",
+  "signature": null
+}
