@@ -1,0 +1,19 @@
+pkgbase = clustercut-bin
+	pkgdesc = Cross-platform clipboard sync between your devices
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/keithvassallomt/ClusterCut
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = libayatana-appindicator
+	depends = hicolor-icon-theme
+	provides = clustercut=0.6.0
+	conflicts = clustercut
+	options = !strip
+	options = !debug
+	source = ClusterCut_0.6.0_amd64.deb::https://github.com/keithvassallomt/ClusterCut/releases/download/v0.6.0/ClusterCut_0.6.0_amd64.deb
+	sha256sums = 700f2bc289451632af617e6fec7dec41f9b2dad00cea7b12348d8a1f531c533b
+
+pkgname = clustercut-bin
