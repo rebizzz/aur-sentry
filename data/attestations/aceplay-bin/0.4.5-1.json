@@ -1,0 +1,302 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "aceplay-bin",
+    "version": "0.4.5-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "1ef98f0cb37b5997b12b398764a8ecd0d97ca79a",
+    "pkgbuild_sha256": "2053634916c7008175b06e43c4764e2d80b822bf67125ba44cc87e30e99eaa91",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-08T22:29:38.634208206+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "DYNAMIC_DOWNLOAD",
+      "file": "PKGBUILD",
+      "line": 17,
+      "severity": "LOW",
+      "description": "integrity verification bypassed ('SKIP') for non-VCS source archive"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o aceplay_0.4.5_linux_amd64.tar.gz\"... https://github.com/crstian19/ace\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/aceplay_0.4.\"... /home/builder/build/aceplay_0.4.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/aceplay_\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aceplay_0.4.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aceplay_0.4.5_linux_amd64.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf aceplay_0.4.5_linux_amd64.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/aceplay.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/aceplay.desk\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- aceplay.desktop",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf aceplay.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aceplay-bin-0.4.5-1-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.633888047+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/aceplay-bin-0.4.5-1-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.633888047+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/aceplay-bin-0.4.5-1-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:29:38.633888047+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-08T22:29:38.626143468+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 2,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/aceplay",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "5fecfbf887ece6dd82ea02ad3c43ff4e209179cf5937e74feb223f1cd44d5bc1",
+  "signature": null
+}
