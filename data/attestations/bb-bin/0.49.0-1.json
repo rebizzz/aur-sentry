@@ -1,0 +1,565 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "bb-bin",
+    "version": "0.49.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "b3130127596e4c2d8fff31a1e5a1045449429a84",
+    "pkgbuild_sha256": "5e1ac87fc0a7c6db4190c85172db5532fbaacaacb9795b6905aba3d605f1697d",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-08T22:35:40.587114958+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o bb-bin-0.49.0.AppImage.part https://github.com/get-bb/bb/rel\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/bb-bin-0.49.\"... /home/builder/build/bb-bin-0.49.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/bb-bin-0.49.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/bb-launcher.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/LICENSE",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/bb-bin-0\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/bb-bin-0.49.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/bb-launc\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/bb-launcher.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- bb-launcher.sh",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf bb-launcher.sh -q *",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/LICENSE",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/LICENSE /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- LICENSE",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf LICENSE -q *",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod +x /home/builder/build/src/bb-bin-0\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/home/builder/build/src/bb-bin-0\"... --appimage-extract",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/bb-bin-0.49.0-1-x86_64.pkg.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.523524323+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/bb-bin-0.49.0-1-x86_64.pkg.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.523524323+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/bb-bin-0.49.0-1-x86_64.pkg.\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.523524323+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.523524323+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.523524323+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.523524323+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm bb-bin",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.523524323+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm bb-bin",
+        "parent": null,
+        "timestamp": "2026-11-08T22:35:40.523524323+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-08T22:35:40.467385445+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 11291,
+    "elf_object_count": 34,
+    "elf_objects": [
+      {
+        "path": "opt/bb/usr/lib/libappindicator3.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/usr/lib/libindicator3.so.7.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/usr/lib/libXtst.so.6.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/usr/lib/libgconf-2.so.4.1.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/usr/lib/libXss.so.1.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/usr/lib/libnotify.so.4.0.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/bb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-arm64/fs-native-extensions.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-arm64/fs-native-extensions.bare",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-ia32/fs-native-extensions.node",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-ia32/fs-native-extensions.bare",
+        "arch": "Intel 80386",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-x64/fs-native-extensions.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-x64/fs-native-extensions.bare",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-arm/fs-native-extensions.node",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/android-arm/fs-native-extensions.bare",
+        "arch": "ARM",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/linux-x64/fs-native-extensions.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/linux-x64/fs-native-extensions.bare",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/linux-arm64/fs-native-extensions.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/fs-native-extensions/prebuilds/linux-arm64/fs-native-extensions.bare",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/linuxmusl-x64.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/linux-x64.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/linux-arm64.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/better-sqlite3/prebuilds/linuxmusl-arm64.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-x64/pty.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/node-pty/prebuilds/linux-arm64/pty.node",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-x64-glibc/watcher.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-arm64-musl/watcher.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-x64-musl/watcher.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/resources/app.asar.unpacked/node_modules/@parcel/watcher-linux-arm64-glibc/watcher.node",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/chrome_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/bb/libffmpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "029975d9b8b4360ba69e0c510665730413569532c1763ab3e59a6e05d7c770df",
+  "signature": null
+}
