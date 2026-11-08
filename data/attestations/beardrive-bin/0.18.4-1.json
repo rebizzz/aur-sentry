@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "beardrive-bin",
+    "version": "0.18.4-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "46c4da91bdc230441c77ee7c97f8b49f401b871e",
+    "pkgbuild_sha256": "d98fdd3e56374e2ad2404e0156ece0e5d6e3d39129ca37bbaba85095b3036447",
+    "install_sha256": "1a3f9cb20a211bb02a9255fca097ff55d3812603347af03bb79ac9e37155012e"
+  },
+  "analyzed_at": "2026-11-08T09:23:31.855226211+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 11,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o beardrive_0.18.4_linux_amd64.tar\"... https://github.com/runbear-io/be\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f -- beardrive_0.18.4_linux_amd64.tar\"...",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Failure while downloading %s",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-08T09:23:31.844997673+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "205e546ed615b8b48945ba2677a30f1c562cc4c162ef4227119d626e1d58c615",
+  "signature": null
+}
