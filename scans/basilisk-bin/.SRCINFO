@@ -1,0 +1,34 @@
+pkgbase = basilisk-bin
+	pkgdesc = A XUL-based web-browser demonstrating the Unified XUL Platform (UXP).
+	pkgver = 2026.11.01
+	pkgrel = 1
+	epoch = 2
+	url = https://www.basilisk-browser.org
+	arch = x86_64
+	arch = aarch64
+	arch = i686
+	arch = loongarch64
+	license = MPL-2.0
+	depends = gtk3
+	depends = dbus-glib
+	depends = libxt
+	depends = mime-types
+	depends = nss
+	depends = alsa-lib
+	depends = icu
+	optdepends = hunspell: spell checker and morphological analyzer
+	optdepends = hyphen: library for hyphenation and justification
+	optdepends = ffmpeg: record, convert, and stream audio and video
+	provides = basilisk=2026.11.01
+	conflicts = basilisk
+	options = !strip
+	source = basilisk.desktop
+	sha256sums = c4223e966bc404467fece4a524cc2db3e99c12455087da2ade9a47b8d99d3a45
+	source_x86_64 = https://dl.basilisk-browser.org/basilisk-20261101202235.linux-x86_64-gtk3.tar.xz
+	sha256sums_x86_64 = 4c460ffe927f743dbef377489fe9f7d43aafad56732bab58e74cdd615ca5b8d6
+	source_aarch64 = https://dl.basilisk-browser.org/basilisk-20261102021204.linux-aarch64-gtk3.tar.xz
+	sha256sums_aarch64 = eb025b927ed8b91eea10a33ccc90fa9bedb7c8919c8a1bd791c74b5a9e76a5b9
+	source_i686 = https://dl.basilisk-browser.org/basilisk-20261101191016.linux-i686-gtk3.tar.xz
+	sha256sums_i686 = cd820aaca36bf4a8edd126d71b9958cd61e03ce082e52eba6be861d08460ffc2
+
+pkgname = basilisk-bin
