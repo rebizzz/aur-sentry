@@ -1,0 +1,17 @@
+pkgbase = dabradio-bin
+	pkgdesc = A DAB/DAB+ digital radio decoder
+	pkgver = 0.5.2
+	pkgrel = 1
+	url = https://github.com/xoolive/desperado
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = alsa-lib
+	provides = dabradio
+	conflicts = dabradio
+	source_x86_64 = dabradio-0.5.2-x86_64-unknown-linux-gnu.tar.xz::https://github.com/xoolive/desperado/releases/download/v0.5.2/dabradio-x86_64-unknown-linux-gnu.tar.xz
+	sha256sums_x86_64 = 364896facf1d00d88120da96022ac2727396da288539bb0e7168cf85b7ee1636
+	source_aarch64 = dabradio-0.5.2-aarch64-unknown-linux-gnu.tar.xz::https://github.com/xoolive/desperado/releases/download/v0.5.2/dabradio-aarch64-unknown-linux-gnu.tar.xz
+	sha256sums_aarch64 = ccf5f93593a1aeabc1a268679da3ef81af8f264a9f42966b7eb9b572218c3b51
+
+pkgname = dabradio-bin
