@@ -1,0 +1,12 @@
+post_remove() {
+  cat <<END
+
+The launcher has been removed, but the files and games it installed are still there. If you want to remove the launcher completely, have a look at the directories used by the launcher and remove them :
+- \$HOME/.config/Ankama
+- \$HOME/.config/Ankama\\ Launcher
+- \$HOME/.config/zaap
+- \$HOME/.config/unity3d/Ankama/
+- \$HOME/.config/Dofus\\ Retro
+
+END
+}
