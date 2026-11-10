@@ -1,0 +1,24 @@
+pkgbase = blockwork
+	pkgdesc = A Qt 6/QML app to visually create and run automation.
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/Blockworked/blockwork
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = cargo
+	makedepends = git
+	makedepends = pkgconf
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = gtk3
+	depends = hicolor-icon-theme
+	depends = libgcc
+	depends = glibc
+	provides = macros
+	conflicts = blockwork-git
+	conflicts = macros
+	options = !lto
+	source = blockwork-0.6.1.tar.gz::https://github.com/Blockworked/blockwork/archive/refs/tags/0.6.1.tar.gz
+	sha256sums = 26b3a61bacbc877c3cd15ec28ad276b9d87e1206fb56a081a00d595d7d0a5358
+
+pkgname = blockwork
