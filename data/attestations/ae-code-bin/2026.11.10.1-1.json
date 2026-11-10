@@ -1,0 +1,320 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ae-code-bin",
+    "version": "2026.11.10.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "c9f2bf2263b0f681ec29e45f641a1804e5525814",
+    "pkgbuild_sha256": "84e0a9cc9939176efbd0b9c8827b8a9c79ff38ae5d2937138ab853c5cf60df42",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-10T13:01:13.001391180+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (7 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o ae-code-bin-2026.11.10.1.tar.gz.\"... https://github.com/SelfRef/ae-co\"...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/ae-code-bin-\"... /home/builder/build/ae-code-bin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o ae-code-bin-2026.11.10.1-LICENSE\"... https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o ae-code-bin-2026.11.10.1-icon.pn\"... https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o ae-code-bin-2026.11.10.1-metainf\"... https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/ae-code-bin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/ae-code-\"...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/ae-code-bin-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- ae-code-bin-2026.11.10.1-LICENSE",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf ae-code-bin-2026.11.10.1-LICENSE -q *",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- ae-code-bin-2026.11.10.1-icon.pn\"...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf ae-code-bin-2026.11.10.1-icon.pn\"... -q *",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- ae-code-bin-2026.11.10.1-metainf\"...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf ae-code-bin-2026.11.10.1-metainf\"... -q *",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p app",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf ae-code-bin-2026.11.10.1.tar.gz -C app --strip-components=1",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-10T13:01:12.992678104+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Potential Command Injection in libnotify (GHSA-6898-wx94-8jq8)",
+      "url": "https://osv.dev/vulnerability/GHSA-6898-wx94-8jq8"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "bd373338927ad8b1f2f3885f726d7efadb910edbd65296a8531c936f6c18b8b3",
+  "signature": null
+}
