@@ -1,0 +1,22 @@
+pkgbase = brisk-bin
+	pkgdesc = Ultra-fast, modern download manager for desktop.
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/AminBhst/brisk
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = gendesk
+	depends = gtk3
+	depends = libkeybinder3
+	depends = libayatana-indicator
+	depends = ayatana-ido
+	depends = libayatana-appindicator
+	provides = brisk=2.4.0
+	conflicts = brisk
+	noextract = brisk-2.4.0.tar.xz
+	source = brisk-2.4.0.tar.xz::https://github.com/AminBhst/brisk/releases/download/v2.4.0/Brisk-v2.4.0-linux-x86_64.tar.xz
+	source = brisk.sh
+	sha256sums = 521b233e1772d8cc55c58fb90f76b95e507d420e00677180665bac30f1e4b0a9
+	sha256sums = d7002fa1a9ae60749490e982fa8a4f4622f7381b02559f5b014df033c0773a3c
+
+pkgname = brisk-bin
