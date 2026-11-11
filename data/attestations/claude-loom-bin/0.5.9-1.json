@@ -1,0 +1,429 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "claude-loom-bin",
+    "version": "0.5.9-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "572ab5b2d1ab06262516de0b8eca3d8c8302c16c",
+    "pkgbuild_sha256": "386e8b796dbaa3d9afc5aec11a69c0fe82f6e91da5565a322e49348106b0f1c1",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-11T02:18:50.276073479+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 46,
+      "severity": "HIGH",
+      "description": "deeply nested substitution with pipe chain (obfuscated execution)"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (4 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o claude-loom-0.5.9.pacman.part https://github.com/HyotmakFin/cl\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/claude-loom-\"... /home/builder/build/claude-loom-\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o LICENSE-0.5.9.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/LICENSE-0.5.\"... /home/builder/build/LICENSE-0.5.\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/claude-loom-\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/LICENSE-0.5.\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/claude-loom.\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/claude-l\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/claude-loom-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- claude-loom-0.5.9.pacman",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf claude-loom-0.5.9.pacman",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/LICENSE-\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/LICENSE-0.5.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- LICENSE-0.5.9",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf LICENSE-0.5.9 -q *",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/claude-loom.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- claude-loom.js",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf claude-loom.js -q *",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- claude-loom.sh",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf claude-loom.sh -q *",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i -e \\n        s/@electronversion@/45/\"... /home/builder/build/src/claude-l\"... /home/builder/build/src/claude-l\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -oP Electron/\\\\K[0-9",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "head -1",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -nr",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "cut -d  -f2-",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find /home/builder/build/src -type f -name resources.pak ! -path */node_modules/* -printf %h\\\\n",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "find /home/builder/build/src/opt/Loom -maxdepth 1 -type f -executable -printf %s %p\\\\n",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "strings /home/builder/build/src/opt/Loom\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i s/\\\\/opt\\\\/Loom\\\\///g /home/builder/build/src/usr/shar\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/claude-loom-bin-0.5.9-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.275668814+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/claude-loom-bin-0.5.9-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.275668814+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/claude-loom-bin-0.5.9-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T02:18:50.275668814+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-11T02:18:50.267307160+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 10,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/lib/claude-loom/loom-backend",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "82dd5db5c19c4080ebcaf343c89964a2fcdddb406f7f818d864fdf3e5f9c2790",
+  "signature": null
+}
