@@ -1,0 +1,8 @@
+--- src/lib/utils/boost/info.txt	2026-02-01 21:44:22.006365347 +0100
++++ src/lib/utils/boost/info.txt	2026-02-01 21:44:35.567098178 +0100
+@@ -5,5 +5,4 @@
+ load_on vendor
+
+ <libs>
+-all -> boost_system
+ </libs>
