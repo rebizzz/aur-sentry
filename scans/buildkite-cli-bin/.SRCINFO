@@ -1,0 +1,17 @@
+pkgbase = buildkite-cli-bin
+	pkgdesc = The official Buildkite CLI
+	pkgver = 3.67.0
+	pkgrel = 1
+	url = https://github.com/buildkite/cli
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = buildkite-cli
+	provides = bk
+	conflicts = buildkite-cli
+	source_x86_64 = buildkite-cli-bin-3.67.0-x86_64.tar.gz::https://github.com/buildkite/cli/releases/download/v3.67.0/bk_3.67.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = d3bbd5501bd28b373cf9fe805f9572dea20cb2212f9f1a6027e57918cc739983
+	source_aarch64 = buildkite-cli-bin-3.67.0-aarch64.tar.gz::https://github.com/buildkite/cli/releases/download/v3.67.0/bk_3.67.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = a6e1cece3cbe687519a9c76c02eb2d1af7ade7f7e65578147bf329aa6c9ab2f8
+
+pkgname = buildkite-cli-bin
