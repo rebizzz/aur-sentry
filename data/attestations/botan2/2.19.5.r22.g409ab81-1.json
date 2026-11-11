@@ -1,0 +1,365 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "botan2",
+    "version": "2.19.5.r22.g409ab81-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "b6c2d4719df40fb52a30a64d5c1dc7ee468d964f",
+    "pkgbuild_sha256": "8fd30bc90ed850fc60787f30bb6b0d81755426c72395495b5409ee8bd68f359d",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-11T09:57:33.215436307+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "CREDENTIAL_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "CRITICAL",
+      "description": "canary secret accessed during build: src/configs/repo_config.env"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/randombit/bot\"... /home/builder/build/botan",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/randombit/bot\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/randombit/bot\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 953 on dc16b10\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/botan rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/botan/info",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c core.abbrev=no -C /home/builder/build/botan archive --format tar 409ab8104c13c1b4c474bfddf4279535\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/boost-fixes.\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/botan botan",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/botan",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg 409ab8104c13c1b4c474bfddf4279535\"... --",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/boost-fi\"...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/boost-fixes.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- boost-fixes.patch",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf boost-fixes.patch -q *",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -p0 -i ../boost-fixes.patch",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git describe --abbrev=7 --long --tags",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed s/-/.r/;s/-/./",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": [
+      {
+        "path": "src/configs/repo_config.env",
+        "operation": "canary_access",
+        "timestamp": "2026-11-11T09:57:33.178570960+00:00",
+        "phase": "build"
+      }
+    ]
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "bzip2 allows attackers to cause a denial of service via a large file that triggers an integer overflow (GHSA-96jv-r488-c2rj)",
+      "url": "https://osv.dev/vulnerability/GHSA-96jv-r488-c2rj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "bzip2 Denial of Service (DoS) (RUSTSEC-2023-0004)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2023-0004"
+    }
+  ],
+  "verdict": "MALICIOUS",
+  "evidence_hash": "0c4abd7df7bfc4c5924e8b0b1cf85491cce3e4e3ae8bdbe41b3f4be4978a6420",
+  "signature": null
+}
