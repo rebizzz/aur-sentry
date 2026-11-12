@@ -1,0 +1,18 @@
+pkgbase = avocado-cli
+	pkgdesc = Command line interface for Avocado Linux
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/avocado-linux/avocado-cli
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = rust
+	makedepends = cmake
+	makedepends = clang
+	depends = gcc-libs
+	depends = glibc
+	provides = avocado
+	options = !lto
+	source = avocado-cli-1.1.0.tar.gz::https://github.com/avocado-linux/avocado-cli/archive/1.1.0.tar.gz
+	sha256sums = 6644e657d7566349fab28d1760b25601c8651a9e430007ab5ca6cb998aebc8c1
+
+pkgname = avocado-cli
