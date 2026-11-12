@@ -1,0 +1,25 @@
+pkgbase = anibeam
+	pkgdesc = Browse, play and track a local anime library (Qt 6 and libmpv)
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://github.com/marcusbandit/AniBeam
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = rust
+	depends = qt6-base
+	depends = qt6-declarative
+	depends = qt6-svg
+	depends = mpvqt
+	depends = mpv
+	depends = gcc-libs
+	depends = glibc
+	depends = hicolor-icon-theme
+	depends = anirss>=0.6.0
+	depends = qbittorrent-nox
+	optdepends = org.freedesktop.secrets: tracker sign-ins kept in the keyring rather than a file
+	options = !lto
+	source = anibeam-2.4.0.tar.gz::https://github.com/marcusbandit/AniBeam/archive/refs/tags/v2.4.0.tar.gz
+	sha256sums = 98e73d74233f9aadbaf989d91f3a7ed92b57084ed4ad4d3349aaaa6d1d4fbbc9
+
+pkgname = anibeam
