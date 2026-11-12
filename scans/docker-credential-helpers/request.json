@@ -1,0 +1,8 @@
+{
+  "package": "docker-credential-helpers",
+  "aur_commit": "a27ce74d5957f186f4e37724a8e9a6f3cc8210d9",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-12T01:04:59Z"
+}
