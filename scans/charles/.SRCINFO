@@ -1,0 +1,15 @@
+pkgbase = charles
+	pkgdesc = Web debugging proxy application
+	pkgver = 5.2.3
+	pkgrel = 1
+	url = http://www.charlesproxy.com
+	arch = x86_64
+	license = LicenseRef-Charles-EULA
+	depends = java-runtime>=8
+	depends = hicolor-icon-theme
+	provides = charles
+	conflicts = charles-bin
+	source = http://www.charlesproxy.com/assets/release/5.2.3/charles-proxy-5.2.3_x86_64.tar.gz
+	md5sums = 79749b38d6be56000917f4c342bbde79
+
+pkgname = charles
