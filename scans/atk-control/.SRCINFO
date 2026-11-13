@@ -1,0 +1,23 @@
+pkgbase = atk-control
+	pkgdesc = Native GTK4/libadwaita configuration tool for ATK/VXE gaming mice
+	pkgver = 0.9.5
+	pkgrel = 1
+	url = https://github.com/NasirA1991/atk-control
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-gobject
+	depends = gtk4
+	depends = libadwaita
+	depends = python-cairo
+	depends = python-dbus
+	depends = hicolor-icon-theme
+	provides = compx-control
+	conflicts = compx-control
+	conflicts = compx-control-git
+	conflicts = atk-control-git
+	replaces = compx-control
+	source = atk-control-0.9.5.tar.gz::https://github.com/NasirA1991/atk-control/releases/download/v0.9.5/atk-control-0.9.5.tar.gz
+	sha256sums = 2fd34ecc8887eb31a368d41919113f85bd48929f04d33974b637bc14796b2bef
+
+pkgname = atk-control
