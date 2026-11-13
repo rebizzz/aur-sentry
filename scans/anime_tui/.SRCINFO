@@ -1,0 +1,17 @@
+pkgbase = anime_tui
+	pkgdesc = Terminal anime browser and player
+	pkgver = r53.gf17e2d7
+	pkgrel = 1
+	url = https://github.com/tuanlyphong/anime_tui
+	arch = any
+	license = custom:project
+	makedepends = git
+	makedepends = npm
+	depends = nodejs
+	depends = fzf
+	depends = mpv
+	depends = java-runtime
+	source = git+https://github.com/tuanlyphong/anime_tui.git
+	sha256sums = SKIP
+
+pkgname = anime_tui
