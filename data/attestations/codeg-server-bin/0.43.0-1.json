@@ -1,0 +1,440 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "codeg-server-bin",
+    "version": "0.43.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "5805e088d2146b85b7994e2871c1d851e05a9d77",
+    "pkgbuild_sha256": "45ba920546e67cb1ea8682894f672ebc7e1f9511384c9c9b093a0e7938cc2939",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-13T09:58:53.338637853+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o LICENSE-0.43.0.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/LICENSE-0.43\"... /home/builder/build/LICENSE-0.43\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o codeg-server-linux-x64.tar.gz.pa\"... https://github.com/xintaofei/cod\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/codeg-server\"... /home/builder/build/codeg-server\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/LICENSE-0.43\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/codeg-server\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/LICENSE-\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/LICENSE-0.43\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- LICENSE-0.43.0",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf LICENSE-0.43.0 -q *",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/codeg-se\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/codeg-server\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- codeg-server-linux-x64.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf codeg-server-linux-x64.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/codeg-server-bin-0.43.0-1-x\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.334250931+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/codeg-server-bin-0.43.0-1-x\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.334250931+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/codeg-server-bin-0.43.0-1-x\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.334250931+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.334250931+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.334250931+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.334250931+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm codeg-server-bin",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.334250931+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm codeg-server-bin",
+        "parent": null,
+        "timestamp": "2026-11-13T09:58:53.334250931+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.111.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.110.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "48.202.10.80",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-13T09:58:53.321318575+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1276,
+    "elf_object_count": 4,
+    "elf_objects": [
+      {
+        "path": "usr/lib/codeg-server/codeg-cli",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/codeg-server/codeg-computer-helper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/codeg-server/codeg-mcp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/codeg-server/codeg-server",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Improper Certificate Validation in openssl (GHSA-34p9-f4q3-c4r7)",
+      "url": "https://osv.dev/vulnerability/GHSA-34p9-f4q3-c4r7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509NameBuilder::build` returned object is not thread safe (GHSA-3gxf-9r58-2ghg)",
+      "url": "https://osv.dev/vulnerability/GHSA-3gxf-9r58-2ghg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl Use-After-Free in `Md::fetch` and `Cipher::fetch` (GHSA-4fcv-w3qc-ppgg)",
+      "url": "https://osv.dev/vulnerability/GHSA-4fcv-w3qc-ppgg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509Extension::new` and `X509Extension::new_nid` null pointer dereference (GHSA-6hcf-g6gr-hhcr)",
+      "url": "https://osv.dev/vulnerability/GHSA-6hcf-g6gr-hhcr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "openssl npm package vulnerable to command execution (GHSA-75w2-qv55-x7fv)",
+      "url": "https://osv.dev/vulnerability/GHSA-75w2-qv55-x7fv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl has incorrect bounds assertion in aes key wrap (GHSA-8c75-8mhr-p7r9)",
+      "url": "https://osv.dev/vulnerability/GHSA-8c75-8mhr-p7r9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `SubjectAlternativeName` and `ExtendedKeyUsage::other` allow arbitrary file read (GHSA-9qwg-crg9-m2vc)",
+      "url": "https://osv.dev/vulnerability/GHSA-9qwg-crg9-m2vc"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl: rustMdCtxRef::digest_final() writes past caller buffer with no length check (GHSA-ghm9-cr32-g9qj)",
+      "url": "https://osv.dev/vulnerability/GHSA-ghm9-cr32-g9qj"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl: Unchecked callback length in PSK/cookie trampolines leaks adjacent memory to peer (GHSA-hppc-g8h3-xhp3)",
+      "url": "https://osv.dev/vulnerability/GHSA-hppc-g8h3-xhp3"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl: Potential out-of-bounds write in `CipherCtxRef::cipher_update_inplace` for AES-KW-PAD ciphers (GHSA-phqj-4mhp-q6mq)",
+      "url": "https://osv.dev/vulnerability/GHSA-phqj-4mhp-q6mq"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "4cdb8fbdf9d37560d3598c5edc5179bf4a721d9d2cf1f766e120889748b65642",
+  "signature": null
+}
