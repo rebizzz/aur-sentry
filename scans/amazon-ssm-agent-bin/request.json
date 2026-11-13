@@ -1,0 +1,8 @@
+{
+  "package": "amazon-ssm-agent-bin",
+  "aur_commit": "8906c61f2eedc84cf7a3e7ec6536ec6faf44e625",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-13T01:25:59Z"
+}
