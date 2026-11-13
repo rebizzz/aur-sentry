@@ -1,0 +1,320 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "clockwork-orange-git",
+    "version": "4.8.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "80189e6e9b23ac62705c55d127995a2a7ca767ba",
+    "pkgbuild_sha256": "d94cc3fc032fd99173e652f417769722c766a096b0407a913ce2df7f71c735d5",
+    "install_sha256": "6cf2bd596eaf72c9d71004e8631b96c3f30e49ef1230b38b646c21b60c322c38"
+  },
+  "analyzed_at": "2026-11-13T18:10:41.964859894+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "PACKAGE_INSTALLATION",
+      "file": "PKGBUILD",
+      "line": 20,
+      "severity": "INFO",
+      "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/ushineko/cloc\"... /home/builder/build/clockwork-or\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/ushineko/cloc\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/ushineko/cloc\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1403 on 872bbd\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/clockwork-or\"... rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/clockwork-or\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/clockwork-or\"... clockwork-orange-git",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/clockwork-or\"...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "tr -d [:space:",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-list --count HEAD",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --short HEAD",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Updated version: %s",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-13T18:10:41.951363765+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Malicious code in shaderc (npm) (MAL-2025-3645)",
+      "url": "https://osv.dev/vulnerability/MAL-2025-3645"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "spirv_headers is unmaintained, use spirv instead (RUSTSEC-2021-0096)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2021-0096"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "gcc crate is unmaintained (RUSTSEC-2025-0121)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2025-0121"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "bed28f1257b4a56b4a4a36ab4b9a0aa005c9d08c83dd634d2820cc790ebe2980",
+  "signature": null
+}
