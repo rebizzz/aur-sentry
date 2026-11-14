@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dotnet-source-build-reference-packages",
+    "version": "10.0.114-2",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "530f5156b6f12354f2afbd704ac79f0256e2859c",
+    "pkgbuild_sha256": "84cc67f92480c2c2f1a49e832fa9dcd4eee394e498cfd02a1092096a648ce7fe",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-14T00:01:19.983329226+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o source-build-assets-a13f85878bf4\"... https://github.com/dotnet/source\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/source-build\"... /home/builder/build/source-build\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/source-build\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "b2sum /home/builder/build/source-build\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/source-b\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/source-build\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- source-build-assets-a13f85878bf4\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf source-build-assets-a13f85878bf4\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p nuget-local",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf /usr/share/dotnet/source-built-a\"... -C nuget-local *.nupkg",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext A failure occurred in %s().",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Aborting...",
+        "parent": null,
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.10",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-14T00:01:19.947907145+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "67ac9524795a35f96c5592d4b48ab8656176bac92d2257d4cc5c01dc1ebf6e80",
+  "signature": null
+}
