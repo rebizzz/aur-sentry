@@ -1,0 +1,13 @@
+post_install() {
+  printf '\n\e[1;33m==> cmdflow: your history may be missing repeated commands\e[0m\n'
+  printf '    Fish removes repeats from its history, and Bash/Zsh often skip them too\n'
+  printf '    (ignoredups). Without a fix, cmdflow undercounts the commands you use most.\n\n'
+  printf '    Run this once (it is safe to run again, also after upgrades):\n'
+  printf '        \e[1;32mcmdflow --fix-history\e[0m\n\n'
+  printf '    It appends a "# Added by cmdflow" block to ~/.bashrc and ~/.zshrc and a\n'
+  printf '    logging hook to ~/.config/fish/config.fish. Restart your terminals afterwards.\n\n'
+}
+
+post_upgrade() {
+  post_install
+}
