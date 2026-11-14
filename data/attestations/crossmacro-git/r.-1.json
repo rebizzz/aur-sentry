@@ -6,12 +6,12 @@
     "arch": "x86_64"
   },
   "source": {
-    "aur_commit": "5e591c865481383d699deb89ff2b47bc860dbdea",
-    "pkgbuild_sha256": "5ed6c4239173cf7ba8b4e332b778f1cc3437032d2d03349128661a1545971fcd",
+    "aur_commit": "f8a80b137e0d8b50095425616d6c6b98fb9d32a4",
+    "pkgbuild_sha256": "d9fd8553f31e0629a6268b08389e4399e3d893868071b2eec5fc127f65ef770e",
     "install_sha256": "5df9f7b402d1dfd55d60612a2e08b592b11aa44fc47c8afdc8f06e957de08002"
   },
-  "analyzed_at": "2026-09-28T05:49:15.946123088+00:00",
-  "scanner_version": "aur-sentry/0.1.0",
+  "analyzed_at": "2026-11-14T06:58:32.755574824+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
   "static_findings": [
     {
       "behavior": "PACKAGE_INSTALLATION",
@@ -19,6 +19,20 @@
       "line": 20,
       "severity": "INFO",
       "description": "references external .install scriptlet"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (4 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "OBFUSCATION",
+      "file": "crossmacro.install",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (9 found) - possible command splicing obfuscation"
     },
     {
       "behavior": "NETWORK_ACCESS",
@@ -30,20 +44,291 @@
   ],
   "dynamic_evidence": {
     "collected": true,
-    "processes": [],
-    "network": [
+    "processes": [
       {
-        "destination": "172.17.0.1",
-        "port": 53,
-        "protocol": "undeclared",
-        "timestamp": "2026-09-28T05:49:15.927730285+00:00",
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
         "phase": "build"
       },
       {
-        "destination": "140.82.114.3",
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/alper-han/Cro\"... /home/builder/build/crossmacro",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/alper-han/Cro\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/alper-han/Cro\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1407 on d07e94\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/crossmacro rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/crossmacro/i\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/crossmacro crossmacro",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/crossmacro",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg 490a2c5bd6645ee058cea1593a491aba\"... --",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/crossmac\"...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/crossmacro.s\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- crossmacro.sysusers",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf crossmacro.sysusers -q *",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/crossmacro-m\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- crossmacro-modules.conf",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf crossmacro-modules.conf -q *",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git describe --long --tags --abbrev=7",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed s/^v//;s/\\\\([^-",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.182.252.133",
         "port": 443,
         "protocol": "undeclared",
-        "timestamp": "2026-09-28T05:49:15.927730285+00:00",
+        "timestamp": "2026-11-14T06:58:32.741203797+00:00",
         "phase": "build"
       }
     ],
@@ -111,6 +396,6 @@
     }
   ],
   "verdict": "SUSPICIOUS",
-  "evidence_hash": "b8aada683146d9f2b002742f898c192bcd9ba739ef6692aa7de0c6b7883a6174",
+  "evidence_hash": "3236b575c3a231a260bffb04c4eea077eb50b3b1489be4f4dd2d3180b2c62ec3",
   "signature": null
 }
