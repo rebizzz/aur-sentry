@@ -1,0 +1,15 @@
+post_install() {
+  cat <<'EOF'
+==> Edit /etc/cli-proxy-api/config.yaml before starting the service.
+    Documentation:
+      https://help.router-for.me/
+      https://help.router-for.me/cn/
+
+    Start the service:
+      systemctl enable --now cli-proxy-api.service
+
+    WARNING: default configuration expose service to [::]:8317 !
+
+    Before exposing the service, review and replace the host,api-keys,remote-management values.
+EOF
+}
