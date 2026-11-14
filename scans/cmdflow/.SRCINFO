@@ -1,0 +1,16 @@
+pkgbase = cmdflow
+	pkgdesc = A minimalist CLI tool written in Rust that parses shell history and renders graphs
+	pkgver = 3.1.0
+	pkgrel = 1
+	url = https://github.com/voideez/cmdflow
+	install = cmdflow.install
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = gcc-libs
+	source = cmdflow-3.1.0.tar.gz::https://github.com/voideez/cmdflow/archive/v3.1.0.tar.gz
+	sha256sums = 85202cac0a604663a0d1c4974de18f165e60b66e343700d0337bea9f6b03e440
+
+pkgname = cmdflow
