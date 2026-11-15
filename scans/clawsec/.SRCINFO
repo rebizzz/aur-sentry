@@ -1,0 +1,17 @@
+pkgbase = clawsec
+	pkgdesc = Encrypted netcat with SOCKS5, reverse tunnels, port scanning, and post-quantum crypto
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://github.com/LF3551/ClawSec
+	arch = x86_64
+	arch = aarch64
+	license = BSD
+	makedepends = gcc
+	makedepends = make
+	depends = openssl
+	depends = argon2
+	depends = zlib
+	source = clawsec-3.0.0.tar.gz::https://github.com/LF3551/ClawSec/archive/refs/tags/v3.0.0.tar.gz
+	sha256sums = da839d751181105feeb5cc069c5f667c7c4a72a9158548785092ea3cce66c8c1
+
+pkgname = clawsec
