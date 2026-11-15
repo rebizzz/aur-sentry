@@ -1,0 +1,23 @@
+pkgbase = app2unit
+	pkgdesc = Utility to launch commands as systemd user units
+	pkgver = 1.4.4
+	pkgrel = 1
+	url = https://github.com/Vladimir-csp/app2unit
+	arch = any
+	license = GPL-3.0-only
+	makedepends = make
+	makedepends = scdoc
+	depends = sh
+	depends = systemd
+	depends = libnotify
+	provides = app2unit
+	provides = app2unit-open
+	provides = app2unit-open-scope
+	provides = app2unit-open-service
+	provides = app2unit-term
+	provides = app2unit-term-scope
+	provides = app2unit-term-service
+	source = app2unit-1.4.4.tgz::https://github.com/Vladimir-csp/app2unit/archive/v1.4.4.tar.gz
+	sha256sums = 03c1206097a1596c0e49dc48b82d0b602cc9f38cc498542fe27ef613a050d6fc
+
+pkgname = app2unit
