@@ -1,0 +1,24 @@
+pkgbase = data2g
+	pkgdesc = HF data modem on the SSTVAE OFDM waveform (VARA-compatible host ports, KISS): host, GUI and tools
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = https://github.com/arodland/Data2G
+	arch = x86_64
+	arch = aarch64
+	license = Artistic-2.0
+	license = Apache-2.0
+	makedepends = cmake
+	makedepends = ninja
+	depends = glibc
+	depends = libgcc
+	depends = libstdc++
+	depends = hamlib
+	depends = qt6-base
+	depends = qt6-multimedia
+	depends = qt6-websockets
+	depends = zlib
+	optdepends = rtkit: real-time priority for the audio threads without extra permissions
+	source = data2g-0.5.1.tar.gz::https://github.com/arodland/Data2G/archive/refs/tags/v0.5.1.tar.gz
+	sha256sums = 3bdff933b647884c7a7c2f4c873bb63249a201feea386c8b32b49d41c09bc1c4
+
+pkgname = data2g
