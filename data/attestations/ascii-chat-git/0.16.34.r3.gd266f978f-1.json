@@ -1,0 +1,153 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "ascii-chat-git",
+    "version": "0.16.34.r3.gd266f978f-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e8db76f92a9b3603d129b61bc3fdb90e4a379496",
+    "pkgbuild_sha256": "0e7531f04a31073a8925ef7fae18d7829b191f06c5cdd5b2c72cffcd16fe5696",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-15T23:14:14.468888874+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cannot find the %s binary requir\"...",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-11-15T23:14:14.462152157+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Improper Certificate Validation in openssl (GHSA-34p9-f4q3-c4r7)",
+      "url": "https://osv.dev/vulnerability/GHSA-34p9-f4q3-c4r7"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509NameBuilder::build` returned object is not thread safe (GHSA-3gxf-9r58-2ghg)",
+      "url": "https://osv.dev/vulnerability/GHSA-3gxf-9r58-2ghg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl Use-After-Free in `Md::fetch` and `Cipher::fetch` (GHSA-4fcv-w3qc-ppgg)",
+      "url": "https://osv.dev/vulnerability/GHSA-4fcv-w3qc-ppgg"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `X509Extension::new` and `X509Extension::new_nid` null pointer dereference (GHSA-6hcf-g6gr-hhcr)",
+      "url": "https://osv.dev/vulnerability/GHSA-6hcf-g6gr-hhcr"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "openssl npm package vulnerable to command execution (GHSA-75w2-qv55-x7fv)",
+      "url": "https://osv.dev/vulnerability/GHSA-75w2-qv55-x7fv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "rust-openssl has incorrect bounds assertion in aes key wrap (GHSA-8c75-8mhr-p7r9)",
+      "url": "https://osv.dev/vulnerability/GHSA-8c75-8mhr-p7r9"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "`openssl` `SubjectAlternativeName` and `ExtendedKeyUsage::other` allow arbitrary file read (GHSA-9qwg-crg9-m2vc)",
+      "url": "https://osv.dev/vulnerability/GHSA-9qwg-crg9-m2vc"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Mimalloc Can Allocate Memory with Bad Alignment (GHSA-g23h-7vf9-xc25)",
+      "url": "https://osv.dev/vulnerability/GHSA-g23h-7vf9-xc25"
+    }
+  ],
+  "verdict": "BUILD_FAILED",
+  "evidence_hash": "ce32332c8b089afe76a8dac11fae21b3ad22391e7336ce1f8f206e0ce3103fbc",
+  "signature": null
+}
