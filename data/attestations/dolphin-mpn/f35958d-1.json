@@ -1,0 +1,2625 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "dolphin-mpn",
+    "version": "f35958d-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "2ce92782cff6b0cd90acaa9bff59ea073b1bcd20",
+    "pkgbuild_sha256": "12401fe5db739487fb870fb35a2b9207b1faeac456b1668200daf5166d2410f0",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-16T19:12:13.700760037+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Cloning %s %s repo...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin --mirror https://github.com/MarioPartyNet\"... /home/builder/build/Dolphin-MPN",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/MarioPartyNet\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/MarioPartyNet\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1407 on 859894\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git -c safe.bareRepository=all -C /home/builder/build/Dolphin-MPN rev-parse --absolute-git-dir",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/Dolphin-MPN/\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipped",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Creating working copy of %s %s r\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git clone --origin=origin -s /home/builder/build/Dolphin-MPN Dolphin-MPN",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/bin/sh -c git-upload-pack '/home/builder/b\"... git-upload-pack '/home/builder/b\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git-upload-pack /home/builder/build/Dolphin-MPN",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git tag -l --format=%(tag) f35958d",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git checkout --force --no-track -B makepkg f35958d --",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule update --init --recursive",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-submodule update --init --recursive",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "basename /usr/lib/git-core/git-submodule",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/-/ /",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git --exec-path",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "basename -- /usr/lib/git-core/git-submodule",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "envsubst --variables usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "envsubst usage: $dashless $USAGE",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "uname -s",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --git-dir",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --git-path objects",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --is-inside-work-tree",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --show-prefix",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git rev-parse --show-toplevel",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -e s/-/_/g",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "git submodule--helper update --recursive --init --",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path Externals/Cross-Compatible-FileL\"... --name Externals/Cross-Compatible-FileL\"... --url https://github.com/KaganCanSit/C\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/KaganCanSit/C\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/KaganCanSit/C\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/KaganCanSit/C\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1492 on 859894\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/FFmpeg-bin --name Externals/FFmpeg-bin --url https://github.com/dolphin-emu/e\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/dolphin-emu/e\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/dolphin-emu/e\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/dolphin-emu/e\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1504 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/Qt --name Externals/Qt --url https://github.com/MarioPartyNet\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/MarioPartyNet\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1516 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/SDL/SDL --name Externals/SDL/SDL --url https://github.com/libsdl-org/SD\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/libsdl-org/SD\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/libsdl-org/SD\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/libsdl-org/SD\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1528 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/SFML/SFML --name Externals/SFML/SFML --url https://github.com/SFML/SFML.git",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/SFML/SFML.git /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/SFML/SFML.git",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/SFML/SFML.git",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1540 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/Vulkan-Headers --name Externals/Vulkan-Headers --url https://github.com/KhronosGroup/\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/KhronosGroup/\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/KhronosGroup/\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/KhronosGroup/\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1552 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/VulkanMemoryAllocator --name Externals/VulkanMemoryAllocator --url https://github.com/GPUOpen-Libra\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/GPUOpen-Libra\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/GPUOpen-Libra\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/GPUOpen-Libra\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1564 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/bzip2/bzip2 --name Externals/bzip2/bzip2 --url https://gitlab.com/bzip2/bzip2.g\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://gitlab.com/bzip2/bzip2.g\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://gitlab.com/bzip2/bzip2.g\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://gitlab.com/bzip2/bzip2.g\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1576 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/cpp-ipc/cpp-ipc --name Externals/cpp-ipc/cpp-ipc --url https://github.com/mutouyun/cpp-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/mutouyun/cpp-\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/mutouyun/cpp-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/mutouyun/cpp-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1588 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/cpp-optparse/cpp-optpa\"... --name Externals/cpp-optparse/cpp-optpa\"... --url https://github.com/weisslj/cpp-o\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/weisslj/cpp-o\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/weisslj/cpp-o\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/weisslj/cpp-o\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1600 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/cubeb/cubeb --name Externals/cubeb/cubeb --url https://github.com/mozilla/cubeb\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/mozilla/cubeb\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/mozilla/cubeb\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/mozilla/cubeb\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1609 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/curl/curl --name Externals/curl/curl --url https://github.com/curl/curl.git",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/curl/curl.git /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/curl/curl.git",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/curl/curl.git",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1621 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/enet/enet --name Externals/enet/enet --url https://github.com/lsalzman/enet\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/lsalzman/enet\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/lsalzman/enet\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/lsalzman/enet\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1633 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/fmt/fmt --name Externals/fmt/fmt --url https://github.com/fmtlib/fmt.gi\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/fmtlib/fmt.gi\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/fmtlib/fmt.gi\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/fmtlib/fmt.gi\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1645 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/glslang/glslang --name Externals/glslang/glslang --url https://github.com/KhronosGroup/\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1657 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/gtest --name Externals/gtest --url https://github.com/google/google\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/google/google\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/google/google\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/google/google\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1669 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/hidapi/hidapi-src --name hidapi-src --url https://github.com/libusb/hidapi\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/libusb/hidapi\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/libusb/hidapi\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/libusb/hidapi\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1681 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/imgui/imgui --name Externals/imgui/imgui --url https://github.com/ocornut/imgui\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/ocornut/imgui\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/ocornut/imgui\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/ocornut/imgui\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1693 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/implot/implot --name Externals/implot/implot --url https://github.com/epezent/implo\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/epezent/implo\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/epezent/implo\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/epezent/implo\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1705 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/libadrenotools --name Externals/libadrenotools --url https://github.com/bylaws/libadr\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/bylaws/libadr\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/bylaws/libadr\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/bylaws/libadr\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1714 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/libspng/libspng --name Externals/libspng/libspng --url https://github.com/randy408/libs\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/randy408/libs\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/randy408/libs\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/randy408/libs\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1726 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/libusb/libusb --name libusb --url https://github.com/libusb/libusb\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/libusb/libusb\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/libusb/libusb\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/libusb/libusb\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1738 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/libzmq/libzmq --name Externals/libzmq/libzmq --url https://github.com/zeromq/libzmq\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/zeromq/libzmq\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/zeromq/libzmq\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/zeromq/libzmq\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1750 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/lz4/lz4 --name Externals/lz4/lz4 --url https://github.com/lz4/lz4.git",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/lz4/lz4.git /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/lz4/lz4.git",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/lz4/lz4.git",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1762 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/mGBA/mgba --name Externals/mGBA/mgba --url https://github.com/mgba-emu/mgba\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/mgba-emu/mgba\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/mgba-emu/mgba\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/mgba-emu/mgba\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1774 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/miniupnpc/miniupnp --name Externals/miniupnpc/miniupnp --url https://github.com/miniupnp/mini\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/miniupnp/mini\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/miniupnp/mini\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/miniupnp/mini\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1786 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/minizip-ng/minizip-ng --name Externals/minizip-ng/minizip-ng --url https://github.com/zlib-ng/miniz\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/zlib-ng/miniz\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/zlib-ng/miniz\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/zlib-ng/miniz\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1798 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/pugixml/pugixml --name Externals/pugixml/pugixml --url https://github.com/zeux/pugixml.\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/zeux/pugixml.\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/zeux/pugixml.\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/zeux/pugixml.\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1810 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/rcheevos/rcheevos --name Externals/rcheevos/rcheevos --url https://github.com/RetroAchievem\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/RetroAchievem\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/RetroAchievem\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/RetroAchievem\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1822 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/spirv_cross/SPIRV-Cros\"... --name Externals/spirv_cross/SPIRV-Cros\"... --url https://github.com/KhronosGroup/\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1834 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/tinygltf/tinygltf --name Externals/tinygltf/tinygltf --url https://github.com/syoyo/tinyglt\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/syoyo/tinyglt\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/syoyo/tinyglt\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/syoyo/tinyglt\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1846 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/watcher/watcher --name Externals/watcher/watcher --url https://github.com/e-dant/watche\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/e-dant/watche\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/e-dant/watche\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/e-dant/watche\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1858 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/wil --name Externals/wil --url https://github.com/microsoft/wil\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/microsoft/wil\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/microsoft/wil\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/microsoft/wil\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1870 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/xxhash/xxHash --name Externals/xxhash/xxHash --url https://github.com/Cyan4973/xxHa\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/Cyan4973/xxHa\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/Cyan4973/xxHa\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/Cyan4973/xxHa\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1882 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/zlib-ng/zlib-ng --name Externals/zlib-ng/zlib-ng --url https://github.com/zlib-ng/zlib-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/zlib-ng/zlib-\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/zlib-ng/zlib-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/zlib-ng/zlib-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1894 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --depth=1 --path Externals/zstd/zstd --name Externals/zstd/zstd --url https://github.com/facebook/zstd\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --depth=1 --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/facebook/zstd\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/facebook/zstd\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/facebook/zstd\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git --shallow-file /home/builder/build/src/Dolphin-\"... index-pack --stdin --fix-thin --keep=fetch-pack 1906 on 859894\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 42ffdc24b06a85383e1b7a20e09931d7\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 42ffdc24b06a85383e1b7a20e09931d7\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/Cross-C\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 9bc087fbca36ce5a85eb4fd73f0c7381\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 9bc087fbca36ce5a85eb4fd73f0c7381\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/FFmpeg-\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 660ac2560e62f3abfa4d9ce410a47674\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 660ac2560e62f3abfa4d9ce410a47674\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/Qt/ --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 fa2c02bb6e21974a89ea9824bc53c993\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list --objects --stdin --not --exclude-hidden=fetch --all --quiet --alternate-refs",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git maintenance run --auto --no-quiet --detach",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin fa2c02bb6e21974a89ea9824bc53c993\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1939 on 859894\"... --pack_header=2 194783",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f fa2c02bb6e21974a89ea9824bc53c993\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/SDL/SDL\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 7f1162dfea4969bc17417563ac55d93b\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 7f1162dfea4969bc17417563ac55d93b\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1964 on 859894\"... --pack_header=2 50369",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 7f1162dfea4969bc17417563ac55d93b\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/SFML/SF\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 05fe2cc910a68c9ba5dac07db46ef785\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 05fe2cc910a68c9ba5dac07db46ef785\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 1989 on 859894\"... --pack_header=2 4247",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 05fe2cc910a68c9ba5dac07db46ef785\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/Vulkan-\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 3bab6924988e5f19bf36586a496156cf\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 3bab6924988e5f19bf36586a496156cf\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2014 on 859894\"... --pack_header=2 10619",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 3bab6924988e5f19bf36586a496156cf\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/VulkanM\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 6a8690fc8d26c815e798c588f796eabe\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 6a8690fc8d26c815e798c588f796eabe\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2039 on 859894\"... --pack_header=2 439",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 6a8690fc8d26c815e798c588f796eabe\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/bzip2/b\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 f8e71a548c3d9f2ae2bd2f7bfe111490\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin f8e71a548c3d9f2ae2bd2f7bfe111490\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2064 on 859894\"... --pack_header=2 4373",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f f8e71a548c3d9f2ae2bd2f7bfe111490\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/cpp-ipc\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 2265d647232249a53a03b411099863ce\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 2265d647232249a53a03b411099863ce\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/cpp-opt\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 54217bca3f3e0cd53c073690a23dd25d\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 54217bca3f3e0cd53c073690a23dd25d\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2093 on 859894\"... --pack_header=2 7441",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 54217bca3f3e0cd53c073690a23dd25d\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/cubeb/c\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path cmake/sanitizers-cmake --name cmake/sanitizers-cmake --url https://github.com/arsenm/saniti\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/arsenm/saniti\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/arsenm/saniti\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/arsenm/saniti\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2109 on 859894\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path googletest --name googletest --url https://github.com/google/google\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/google/google\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2121 on 859894\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 aab6948fa863bc1cbe5d0850bc46b9ef\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f aab6948fa863bc1cbe5d0850bc46b9ef\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 40412d85124f7c6f3d88454583c4633e\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 40412d85124f7c6f3d88454583c4633e\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 cfbfb65047e85e6b08af65fe9cdbcf68\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin cfbfb65047e85e6b08af65fe9cdbcf68\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2150 on 859894\"... --pack_header=2 243576",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f cfbfb65047e85e6b08af65fe9cdbcf68\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/curl/cu\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 2a85cd64459f6ba038d233a634d94404\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 2a85cd64459f6ba038d233a634d94404\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2175 on 859894\"... --pack_header=2 1496",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 2a85cd64459f6ba038d233a634d94404\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/enet/en\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 e424e3f2e607da02742f73db84873b80\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin e424e3f2e607da02742f73db84873b80\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2200 on 859894\"... --pack_header=2 39548",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f e424e3f2e607da02742f73db84873b80\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/fmt/fmt\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 a57276bf558f5cf94d3a9854ebdf5a22\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin a57276bf558f5cf94d3a9854ebdf5a22\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2225 on 859894\"... --pack_header=2 53735",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f a57276bf558f5cf94d3a9854ebdf5a22\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/glslang\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 58d77fa8070e8cec2dc1ed015d66b454\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 58d77fa8070e8cec2dc1ed015d66b454\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2250 on 859894\"... --pack_header=2 24274",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 58d77fa8070e8cec2dc1ed015d66b454\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/gtest/ --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 7011fa98af2dde00c298105735e470de\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 7011fa98af2dde00c298105735e470de\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2275 on 859894\"... --pack_header=2 3132",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 7011fa98af2dde00c298105735e470de\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/hidapi/\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 45acd5e0e82f4c954432533ae9985ff0\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 45acd5e0e82f4c954432533ae9985ff0\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2300 on 859894\"... --pack_header=2 48843",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 45acd5e0e82f4c954432533ae9985ff0\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/imgui/i\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 3da8bd34299965d3b0ab124df743fe3e\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 3da8bd34299965d3b0ab124df743fe3e\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2325 on 859894\"... --pack_header=2 2309",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 3da8bd34299965d3b0ab124df743fe3e\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/implot/\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 8fae8ce254dfc1344527e05301e43f37\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 8fae8ce254dfc1344527e05301e43f37\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/libadre\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper clone --path lib/linkernsbypass --name lib/linkernsbypass --url https://github.com/bylaws/liblin\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git clone --no-checkout --separate-git-dir /home/builder/build/src/Dolphin-\"... -- https://github.com/bylaws/liblin\"... /home/builder/build/src/Dolphin-\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git remote-https origin https://github.com/bylaws/liblin\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git-remote-htt\"... origin https://github.com/bylaws/liblin\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2345 on 859894\"... --check-self-contained-and-conne\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 aa3975893d83ef1bc84c321ec60c65fb\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f aa3975893d83ef1bc84c321ec60c65fb\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 dc5b1032c08efac68ad30170f7ccbf0a\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin dc5b1032c08efac68ad30170f7ccbf0a\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2370 on 859894\"... --pack_header=2 3808",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f dc5b1032c08efac68ad30170f7ccbf0a\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/libspng\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 ba698478afc3d3a72644eef9fc4cd24c\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin ba698478afc3d3a72644eef9fc4cd24c\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2395 on 859894\"... --pack_header=2 11838",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f ba698478afc3d3a72644eef9fc4cd24c\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/libusb/\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 7a7bfa10e6b0e99210ed9397369b59f9\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 7a7bfa10e6b0e99210ed9397369b59f9\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2420 on 859894\"... --pack_header=2 44774",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 7a7bfa10e6b0e99210ed9397369b59f9\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/libzmq/\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 5fc0630a0ed55e9755b0fe3990cd021a\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 5fc0630a0ed55e9755b0fe3990cd021a\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2445 on 859894\"... --pack_header=2 13795",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 5fc0630a0ed55e9755b0fe3990cd021a\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/lz4/lz4\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 0b40863f64d0940f333fa1c638e75f86\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 0b40863f64d0940f333fa1c638e75f86\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2470 on 859894\"... --pack_header=2 70690",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 0b40863f64d0940f333fa1c638e75f86\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/mGBA/mg\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 bf4215a7574f88aa55859db9db00e3ae\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin bf4215a7574f88aa55859db9db00e3ae\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2495 on 859894\"... --pack_header=2 12751",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f bf4215a7574f88aa55859db9db00e3ae\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/miniupn\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 0969e94b7b88132d9a4623dc2aef4349\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 0969e94b7b88132d9a4623dc2aef4349\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2520 on 859894\"... --pack_header=2 12308",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 0969e94b7b88132d9a4623dc2aef4349\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/minizip\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 ee86beb30e4973f5feffe3ce63bfa4fb\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin ee86beb30e4973f5feffe3ce63bfa4fb\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2545 on 859894\"... --pack_header=2 9245",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f ee86beb30e4973f5feffe3ce63bfa4fb\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/pugixml\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 b443902b1cdfee5a66b09fec20a94d2d\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin b443902b1cdfee5a66b09fec20a94d2d\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2570 on 859894\"... --pack_header=2 5835",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f b443902b1cdfee5a66b09fec20a94d2d\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/rcheevo\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 ebe2aa0cd80f5eb5cd8a605da604cacf\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin ebe2aa0cd80f5eb5cd8a605da604cacf\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2595 on 859894\"... --pack_header=2 33393",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f ebe2aa0cd80f5eb5cd8a605da604cacf\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/spirv_c\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 c5641f2c22d117da7971504591a8f6a4\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin c5641f2c22d117da7971504591a8f6a4\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2620 on 859894\"... --pack_header=2 3335",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f c5641f2c22d117da7971504591a8f6a4\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/tinyglt\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 b03bdcfc11549df595b77239cefe2643\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin b03bdcfc11549df595b77239cefe2643\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2645 on 859894\"... --pack_header=2 10865",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f b03bdcfc11549df595b77239cefe2643\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/watcher\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 7447d38337abf23a5c2286305b743506\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin 7447d38337abf23a5c2286305b743506\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2670 on 859894\"... --pack_header=2 2453",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f 7447d38337abf23a5c2286305b743506\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/wil/ --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 bbb27a5efb85b92a0486cf361a863571\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin bbb27a5efb85b92a0486cf361a863571\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2695 on 859894\"... --pack_header=2 5600",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f bbb27a5efb85b92a0486cf361a863571\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/xxhash/\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 ce01b1e41da298334f8214389cc93695\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin ce01b1e41da298334f8214389cc93695\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2720 on 859894\"... --pack_header=2 13727",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f ce01b1e41da298334f8214389cc93695\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/zlib-ng\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git rev-list -n 1 f8745da6ff1ad1e7bab384bd1f9d7424\"... --not --all",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git fetch origin f8745da6ff1ad1e7bab384bd1f9d7424\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git index-pack --stdin --fix-thin --keep=fetch-pack 2745 on 859894\"... --pack_header=2 61229",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git checkout -q -f f8745da6ff1ad1e7bab384bd1f9d7424\"...",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/lib/git-core/git submodule--helper update --recursive --super-prefix=Externals/zstd/zs\"... --jobs=1 --init",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.3",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.113.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "172.65.251.78",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-16T19:12:13.520780198+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in cmake (GHSA-4j59-hfw6-6w7h)",
+      "url": "https://osv.dev/vulnerability/GHSA-4j59-hfw6-6w7h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "zstd vulnerable to buffer overrun (GHSA-5c9c-6x87-f9vm)",
+      "url": "https://osv.dev/vulnerability/GHSA-5c9c-6x87-f9vm"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Downloads Resources over HTTP in sfml (GHSA-5q5w-mf87-57x4)",
+      "url": "https://osv.dev/vulnerability/GHSA-5q5w-mf87-57x4"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Code injection in npm git (GHSA-9gqr-xp86-f87h)",
+      "url": "https://osv.dev/vulnerability/GHSA-9gqr-xp86-f87h"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Data from an abandoned stream leaks into the next stream on a reused context (RUSTSEC-2026-0391)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0391"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Uninitialized memory exposed by `write::Decoder` on a corrupt legacy frame (RUSTSEC-2026-0392)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0392"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Out-of-bounds read when training a dictionary from inconsistent sample sizes (RUSTSEC-2026-0393)",
+      "url": "https://osv.dev/vulnerability/RUSTSEC-2026-0393"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "ef9cfaf98708ec761b100fc8033d1f2360fed9ee744c23704b2203464d6b7a95",
+  "signature": null
+}
