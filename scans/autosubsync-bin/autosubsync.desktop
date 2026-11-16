@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=AutoSubSync
+Comment=Automatic subtitle synchronization tool.
+Exec=assy %f
+Icon=autosubsync
+Terminal=false
+Type=Application
+Categories=AudioVideo;Video;Utility;
+StartupWMClass=AutoSubSync
