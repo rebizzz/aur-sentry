@@ -1,0 +1,1648 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "alchitry-labs-bin",
+    "version": "2.0.63-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a1e1e417e1518b08eebae7c4b845076c2f1d4371",
+    "pkgbuild_sha256": "dcb4eaa07f567e06a28eef0e5b254fa9aee94af9371f1d675fbddd580350d813",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-17T22:49:49.327893830+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o alchitry-labs-bin-2.0.63.tar.gz.\"... https://github.com/alchitry/Alch\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/alchitry-lab\"... /home/builder/build/alchitry-lab\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/alchitry-lab\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/alchitry\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/alchitry-lab\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- alchitry-labs-bin-2.0.63.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf alchitry-labs-bin-2.0.63.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/alchitry-labs-bin-2.0.63-1-\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/alchitry-labs-bin-2.0.63-1-\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/alchitry-labs-bin-2.0.63-1-\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F296BDE50368C6CE",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 9B7A287D9A2EC608",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- C06086337C50773E",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 94657AB20F2A092B",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 93B11DAA4C197E3D",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 54C1FD273361EA514A237793F296BDE5\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 62CC73F884E52957B2FDD8839B7A287D\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E499C79F53C96A54E572FEE1C0608633\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- ADC8A1FCC15E01D45310419E94657AB2\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F00B96D15228013FFC9C9D0393B11DAA\"...",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm alchitry-labs-bin",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm alchitry-labs-bin",
+        "parent": null,
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.112.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-17T22:49:49.190959913+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-17T22:49:49.262400293+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 10494,
+    "elf_object_count": 206,
+    "elf_objects": [
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libsplashscreen.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/jspawnhelper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libjavajpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libnio.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libverify.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libzip.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libjimage.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/liblcms.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libawt_headless.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libsyslookup.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libfontmanager.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libjava.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libjli.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/jexec",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libjawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libmlib_image.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libextnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/server/libjvm.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/server/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libawt_xawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libprefs.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libsimdsort.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libjsound.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libjaas.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libmanagement.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libj2gss.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/runtime/lib/libawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libgcc_s.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libtk8.6.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libgirepository-1.0.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libX11.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libselinux.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libharfbuzz.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libc.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libXrender.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libkrb5support.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libreadline.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libpng16.so.16",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libmd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/config-3.11-x86_64-linux-gnu/python.o",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/xxlimited_35.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_curses.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_opcode.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/termios.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_typing.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_testclinic.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_decimal.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/ossaudiodev.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_codecs_iso2022.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_testimportmultiple.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/xxlimited.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_codecs_kr.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_ssl.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_testmultiphase.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/grp.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/nis.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_curses_panel.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_sha1.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_zoneinfo.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/resource.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/array.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_contextvars.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_tkinter.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_multibytecodec.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_socket.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/binascii.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_lsprof.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_codecs_hk.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_queue.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_testbuffer.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_uuid.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_datetime.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_random.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/syslog.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/readline.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_codecs_cn.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_sqlite3.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_codecs_tw.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_crypt.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_multiprocessing.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_xxsubinterpreters.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_bisect.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_hashlib.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/select.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/cmath.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_testinternalcapi.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_ctypes_test.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_bz2.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_xxtestfuzz.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_asyncio.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_testcapi.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/spwd.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_sha512.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/math.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_pickle.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_md5.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_sha256.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_codecs_jp.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_blake2.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_ctypes.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_statistics.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_json.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_lzma.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/fcntl.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_sha3.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_posixsubprocess.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/audioop.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/zlib.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/unicodedata.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/pyexpat.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_struct.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_csv.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/mmap.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_posixshmem.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_heapq.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/lib-dynload/_elementtree.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/site-packages/cairo/_cairo.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/site-packages/PyGObject-3.46.0-py3.11-linux-x64.egg/gi/_gi.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/python3.11/site-packages/PyGObject-3.46.0-py3.11-linux-x64.egg/gi/_gi_cairo.cpython-311-x86_64-linux-gnu.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libpangoft2-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libnsl.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libXdmcp.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libuuid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libudev.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libxcb-shm.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libpython3.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libboost_filesystem.so.1.74.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libblkid.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libtcl8.6.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libxcb.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libnss_hesiod.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libpango-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libz.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libcrypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libbsd.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libpcre2-8.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libbz2.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libgraphite2.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libstdc++.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libgmodule-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libpython3.11.so.1.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libffi.so.8",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libkeyutils.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libgssapi_krb5.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libdatrie.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libXft.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libssl.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libpixman-1.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libcrypt.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libnss_files.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libboost_thread.so.1.74.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libgio-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libftdi1.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libboost_program_options.so.1.74.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libXau.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libfribidi.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libgobject-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libXext.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libpcre.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libncursesw.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libusb-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libcairo-gobject.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libexpat.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libbrotlidec.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libsqlite3.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libxcb-render.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libpangocairo-1.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libtinfo.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libpanelw.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libnss_compat.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libglib-2.0.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libmount.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/liblzma.so.5",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libm.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libbrotlicommon.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libfontconfig.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libcom_err.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/ld-linux-x86-64.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libXss.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libkrb5.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libfreetype.so.6",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libthai.so.0",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libresolv.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libk5crypto.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libcairo.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libtirpc.so.3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/lib/libnss_dns.so.2",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/iceprog",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/yosys-filterlib",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/yosys",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/icebram",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/python3.11",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/icemulti",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/dot",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/iceunpack",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/icepack",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/yosys-abc",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/icetime",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/icepll",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/oss-cad-suite/libexec/nextpnr-ice40",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/tclkit-8.5.17",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/lib/app/tools/sv2v",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/bin/alchitry",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "usr/lib/alchitry/alchitry-labs/bin/alchitry-labs",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "bea2ea5f7a4c0abd075471c592a6a06c1d332e800f8d18b4268807b41d3b1419",
+  "signature": null
+}
