@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Outfit Studio
+Exec=/opt/BodySlide/OutfitStudio %U
+Terminal=false
+Type=Application
+Icon=OutfitStudio
+StartupWMClass=OutfitStudio
+Comment=A tool to convert, create, and customize outfits and bodies for Bethesda games.
+Categories=Graphics;
