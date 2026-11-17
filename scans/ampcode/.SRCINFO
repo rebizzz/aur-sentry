@@ -1,0 +1,24 @@
+pkgbase = ampcode
+	pkgdesc = Amp CLI — Sourcegraph's agentic coding tool
+	pkgver = 0.0.1794873665_g35bc76
+	pkgrel = 1
+	url = https://ampcode.com
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-proprietary
+	depends = glibc
+	optdepends = ripgrep: faster file search (amp downloads its own if missing)
+	provides = amp
+	conflicts = amp
+	conflicts = ampcode-bin
+	replaces = sourcegraph-amp
+	options = !strip
+	options = !debug
+	source = ampcode-0.0.1794873665_g35bc76-npm.tgz::https://registry.npmjs.org/@sourcegraph/amp/-/amp-0.0.1794873665-g35bc76.tgz
+	sha256sums = 154a8eec652f70517229ab7f4774ced89fbbff194e9cc37c04c5ffc88504e991
+	source_x86_64 = ampcode-0.0.1794873665_g35bc76-x64::https://static.ampcode.com/cli/0.0.1794873665-g35bc76/amp-linux-x64
+	sha256sums_x86_64 = 0a3daef4d14a5633373f10ac69fefbe2c86eb8b84da4e64edb8127e4171f1759
+	source_aarch64 = ampcode-0.0.1794873665_g35bc76-arm64::https://static.ampcode.com/cli/0.0.1794873665-g35bc76/amp-linux-arm64
+	sha256sums_aarch64 = 12924f9ce644b0a43760bc39c87518d3072f36b3bdedc9d9833c80c534771dad
+
+pkgname = ampcode
