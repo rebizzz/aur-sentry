@@ -1,0 +1,27 @@
+pkgbase = ashell
+	pkgdesc = A ready to go Wayland status bar for Hyprland and Niri
+	pkgver = 0.12.1
+	pkgrel = 1
+	url = https://github.com/MalpenZibo/ashell
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = cargo
+	makedepends = git
+	makedepends = wayland-protocols
+	makedepends = clang
+	depends = libxkbcommon
+	depends = wayland
+	depends = dbus
+	depends = libpipewire
+	depends = libpulse
+	optdepends = cava: audio visualizer in the media player module
+	provides = ashell
+	conflicts = ashell-git
+	options = !lto
+	source = ashell-0.12.1.tar.gz::https://github.com/MalpenZibo/ashell/archive/refs/tags/0.12.1.tar.gz
+	source = ashell.service
+	sha512sums = 9cfebff5255d5eb688d69213361f6123f5c02274e6271e9c4ff337eb4862db9d3d099b2fcf8c4d03def57a188a1615c50308195cc68d2da64caa1d1b87008488
+	sha512sums = d66d30f7ce7d3d8b8c0fbba35f1d6723abaa881b6a91a335b18d557ee1eb6f6d56abc40de3c7dc08af4385b2d99e7068f4acecb40e579ff355d18352a0c051a1
+
+pkgname = ashell
