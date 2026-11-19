@@ -1,0 +1,260 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "360-media-viewer-bin",
+    "version": "3.9.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "936827245732cbf704c1dbd2956bf52209db7d56",
+    "pkgbuild_sha256": "7883d7c262e3ae12176f455ece9a9545480d45e572fd3fec1d578fc985d8203b",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-19T00:45:23.295217644+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 44,
+      "severity": "HIGH",
+      "description": "deeply nested substitution with pipe chain (obfuscated execution)"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o 360-media-viewer-3.9.1.deb.part https://github.com/shturnev/ubun\"...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/360-media-vi\"... /home/builder/build/360-media-vi\"...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o LICENSE-3.9.1.part https://raw.githubusercontent.co\"...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/LICENSE-3.9.\"... /home/builder/build/LICENSE-3.9.\"...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/360-media-vi\"...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext FAILED",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/LICENSE-3.9.\"...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext One or more files did not pass t\"...",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext ERROR:",
+        "parent": null,
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "48.202.10.80",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.109.133",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-19T00:45:23.290463880+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "0cb61fc890f6a9af4902804dddaf9b86a65d7b6e7641292756c1f981fea58a7e",
+  "signature": null
+}
