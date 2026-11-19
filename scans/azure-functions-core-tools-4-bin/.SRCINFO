@@ -1,0 +1,27 @@
+pkgbase = azure-functions-core-tools-4-bin
+	pkgdesc = Command line tools for Azure Functions (v4)
+	pkgver = 4.16.1
+	pkgrel = 1
+	url = https://github.com/Azure/azure-functions-core-tools
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	depends = glibc
+	depends = icu
+	depends = openssl
+	depends = zlib
+	optdepends = dotnet-runtime: to install extensions and run .NET functions
+	provides = azure-functions-core-tools
+	provides = azure-functions-core-tools-4
+	conflicts = azure-functions-core-tools
+	conflicts = azure-functions-core-tools-bin
+	conflicts = azure-functions-core-tools-4
+	options = !strip
+	options = staticlibs
+	source_x86_64 = https://github.com/Azure/azure-functions-core-tools/releases/download/4.16.1/Azure.Functions.Cli.linux-x64.4.16.1.zip
+	b2sums_x86_64 = 9f909d77d090b36b625c3f137e4f2a9cba7446738927d06c5f7db8fd602ab85cd56547b3f7e49374e586efaf9d60d2a2c4f107994449abd6a8c6297c82bf43b1
+	source_aarch64 = https://github.com/Azure/azure-functions-core-tools/releases/download/4.16.1/Azure.Functions.Cli.linux-arm64.4.16.1.zip
+	b2sums_aarch64 = e4bd5cf8531d63618e7ac850e824b1b460ce0210de445808938a7d167645b884bfc91daf05e49d3f77a4a58a6797c1d781c826da3f935089d687b1749e7d89cc
+
+pkgname = azure-functions-core-tools-4-bin
