@@ -1,0 +1,21 @@
+pkgbase = bootc
+	pkgdesc = Boot and upgrade via container images
+	pkgver = 1.17.5
+	pkgrel = 1
+	url = https://github.com/bootc-dev/bootc
+	arch = x86_64
+	license = Apache-2.0 OR MIT
+	makedepends = cargo
+	makedepends = go-md2man
+	depends = bash
+	depends = gcc-libs
+	depends = glib2
+	depends = glibc
+	depends = openssl
+	depends = ostree
+	depends = zlib
+	depends = zstd
+	source = https://github.com/bootc-dev/bootc/releases/download/v1.17.5/bootc-1.17.5.tar.zstd
+	sha256sums = 6be0a34b3b9f89f5320c1862c2fcc71acea3c043793face5c4686e67e0e19297
+
+pkgname = bootc
