@@ -1,0 +1,8 @@
+{
+  "package": "bitcoin-abc-qt",
+  "aur_commit": "ca7ff99294ca66751b8ad58c179d9b569d157132",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-20T22:04:22Z"
+}
