@@ -1,0 +1,8 @@
+{
+  "package": "adguard-cli-nightly-bin",
+  "aur_commit": "fdbd45bf27a43e2f32ecb0435f5bbedfe2bb01c0",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-20T13:23:01Z"
+}
