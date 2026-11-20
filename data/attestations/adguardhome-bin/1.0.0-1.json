@@ -1,0 +1,425 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "adguardhome-bin",
+    "version": "1.0.0-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "63675982e70f0a68c43e2a61a5dc0736391af72b",
+    "pkgbuild_sha256": "c5e25194133c7062e69733fa65eb8a6edba90ded30dbf1901c0beac57d0162bb",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-20T03:42:48.213801073+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o AdGuardHome-1.0.0-x86_64.tar.gz.\"... https://github.com/AdguardTeam/A\"...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/AdGuardHome-\"... /home/builder/build/AdGuardHome-\"...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/adguardhome.\"...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/AdGuardHome-\"...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/adguardh\"...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/adguardhome.\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- adguardhome.service",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf adguardhome.service -q *",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- adguardhome.sysusers",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf adguardhome.sysusers -q *",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/AdGuardH\"...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/AdGuardHome-\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- AdGuardHome-1.0.0-x86_64.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf AdGuardHome-1.0.0-x86_64.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/adguardhome-bin-1.0.0-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/adguardhome-bin-1.0.0-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/adguardhome-bin-1.0.0-1-x86\"...",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... sysusers",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/systemd-sysusers",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... daemon-reload-system",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-detect-virt --chroot",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "systemd-notify --booted",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm adguardhome-bin",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm adguardhome-bin",
+        "parent": null,
+        "timestamp": "2026-11-20T03:42:48.212817451+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "140.82.114.4",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "185.199.108.133",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-20T03:42:48.197792596+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 4,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/adguardhome",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "AdGuard Home: HTTP/2 Cleartext (h2c) Upgrade Authentication Bypass (GHSA-5fg6-wrq4-w5gh)",
+      "url": "https://osv.dev/vulnerability/GHSA-5fg6-wrq4-w5gh"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "AdGuardHome privilege escalation vulnerability (GHSA-7jp9-vgmq-c8r5)",
+      "url": "https://osv.dev/vulnerability/GHSA-7jp9-vgmq-c8r5"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Adguard Home arbitrary file read vulnerability (GHSA-9cp9-8gw2-8v7m)",
+      "url": "https://osv.dev/vulnerability/GHSA-9cp9-8gw2-8v7m"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "AdGuardHome vulnerable to Cross-Site Request Forgery (GHSA-mwwc-3jv2-62j3)",
+      "url": "https://osv.dev/vulnerability/GHSA-mwwc-3jv2-62j3"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "AdGuard Home: DoQ-to-UDP State Reduction and Source-Port Oracle (GHSA-xgx4-4h9w-53pv)",
+      "url": "https://osv.dev/vulnerability/GHSA-xgx4-4h9w-53pv"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "AdGuardHome privilege escalation vulnerability in github.com/AdguardTeam/AdGuardHome (GO-2024-2924)",
+      "url": "https://osv.dev/vulnerability/GO-2024-2924"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "Adguard Home arbitrary file read vulnerability in github.com/AdguardTeam/AdGuardHome (GO-2024-3184)",
+      "url": "https://osv.dev/vulnerability/GO-2024-3184"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "AdGuard Home: HTTP/2 Cleartext (h2c) Upgrade Authentication Bypass in github.com/AdguardTeam/AdGuardHome (GO-2026-4686)",
+      "url": "https://osv.dev/vulnerability/GO-2026-4686"
+    },
+    {
+      "source": "osv.dev",
+      "summary": "AdGuard Home: DoQ-to-UDP State Reduction and Source-Port Oracle in github.com/AdguardTeam/AdGuardHome (GO-2026-5756)",
+      "url": "https://osv.dev/vulnerability/GO-2026-5756"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "743571cb717f5c9ce2d9f260fb803dc234ed5a3bb7c9e943e60100624ae944a8",
+  "signature": null
+}
