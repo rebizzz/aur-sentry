@@ -1,0 +1,19 @@
+pkgbase = brum-bin
+	pkgdesc = Multi-Pane Web Environment (File Commander/Manager) - By Woofson (Pre-compiled standalone binary)
+	pkgver = 1.25.0
+	pkgrel = 1
+	url = https://github.com/Woofson/brum
+	arch = x86_64
+	license = MIT
+	provides = brum
+	conflicts = brum
+	depends = glibc
+	depends = sqlite
+	depends = libssh2
+	depends = openssl
+	depends = ca-certificates
+	optdepends = proton-drive-cli-bin: Proton Drive (Brum can also install it in Settings)
+	source = brum-v1.25.0-linux-x86_64.tar.gz::https://github.com/Woofson/brum/releases/download/v1.25.0/brum-v1.25.0-linux-x86_64.tar.gz
+	sha256sums = 80cb121905afd68c116fe9470d3d14a7818f74e17987ac5a2a0e4ee60ec7a1b8
+
+pkgname = brum-bin
