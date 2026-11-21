@@ -1,0 +1,18 @@
+pkgbase = aries-connect-git
+	pkgdesc = KDE Connect-compatible daemon exposing devices over D-Bus (no KDE/Qt dependencies)
+	pkgver = v0.4.0.r0.g544aa7f
+	pkgrel = 1
+	url = https://gitlab.com/zotta/aries-connect
+	arch = x86_64
+	license = GPL-2.0-or-later
+	makedepends = git
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	conflicts = aries-connect
+	conflicts = aries-connect-bin
+	options = !lto
+	source = aries-connect::git+https://gitlab.com/zotta/aries-connect.git
+	sha256sums = SKIP
+
+pkgname = aries-connect-git
