@@ -1,0 +1,16 @@
+pkgbase = catbath
+	pkgdesc = a tiny editor: terminal-first, browser-curious, extension-friendly.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/skorotkiewicz/catbath
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = gcc-libs
+	options = !strip
+	source_x86_64 = catbath-0.1.8-1-x86_64.tar.gz::https://github.com/skorotkiewicz/catbath/releases/download/v0.1.8/catbath-v0.1.8-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = bbfba8770a8a2182f7e245a950a70006ac99cf9b4fe9db8b12b5b71655fcfd2e
+	source_aarch64 = catbath-0.1.8-1-aarch64.tar.gz::https://github.com/skorotkiewicz/catbath/releases/download/v0.1.8/catbath-v0.1.8-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = d77fc3f43d3deacf7a4dfee60ffaa8abeca0f67a41198778132c6b9f1a335127
+
+pkgname = catbath
