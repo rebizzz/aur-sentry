@@ -1,0 +1,27 @@
+pkgbase = amp-desktop-bin
+	pkgdesc = Amp, the frontier coding agent, as a desktop app
+	pkgver = 0.1.29905201
+	pkgrel = 1
+	url = https://ampcode.com
+	arch = x86_64
+	arch = aarch64
+	license = LicenseRef-proprietary
+	depends = gtk3
+	depends = nss
+	depends = alsa-lib
+	depends = libcups
+	depends = mesa
+	depends = libnotify
+	depends = xdg-utils
+	provides = amp-desktop
+	conflicts = amp-desktop
+	noextract = amp-desktop-0.1.29905201-x86_64.deb
+	noextract = amp-desktop-0.1.29905201-aarch64.deb
+	options = !strip
+	options = !debug
+	source_x86_64 = amp-desktop-0.1.29905201-x86_64.deb::https://static.ampcode.com/linux/0.1.29905201/amp-desktop-0.1.29905201-amd64.deb
+	sha256sums_x86_64 = 73a28ec5b5d9bc5eb3fb83ab996d5d1db825d333da90a1eb086cb05972a5c5b3
+	source_aarch64 = amp-desktop-0.1.29905201-aarch64.deb::https://static.ampcode.com/linux/0.1.29905201/amp-desktop-0.1.29905201-arm64.deb
+	sha256sums_aarch64 = 5b927aea4242a8e0b34bc5c23a48185dd50ee21ea3c8227fcec6a7f9e54ec3a9
+
+pkgname = amp-desktop-bin
