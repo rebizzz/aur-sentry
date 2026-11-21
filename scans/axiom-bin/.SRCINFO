@@ -1,0 +1,23 @@
+pkgbase = axiom-bin
+	pkgdesc = Powerful log analytics from the comfort of your command-line
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://axiom.co
+	license = MIT
+	conflicts = axiom-bin
+	conflicts = axiom-git
+	provides = axiom-bin
+	arch = aarch64
+	source_aarch64 = axiom-bin_0.23.0_aarch64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.23.0/axiom_0.23.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = b09f211d0260b8fd827ced4a2e0156b92ddd57dce86499c023a8a8de92749766
+	arch = armv7h
+	source_armv7h = axiom-bin_0.23.0_armv7h.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.23.0/axiom_0.23.0_linux_armv7.tar.gz
+	sha256sums_armv7h = 9871cbe7494deb9d63b0edbb412bfbc69a9f2287f21bfa4f1151801d6b0a0dc5
+	arch = i686
+	source_i686 = axiom-bin_0.23.0_i686.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.23.0/axiom_0.23.0_linux_386.tar.gz
+	sha256sums_i686 = 5e899545cdff31b51d54a714aaa3c2d0d28915f429563ec48c3262ab62992180
+	arch = x86_64
+	source_x86_64 = axiom-bin_0.23.0_x86_64.tar.gz::https://github.com/axiomhq/cli/releases/download/v0.23.0/axiom_0.23.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 9acaa769d99100823cef605946e98f9b35d9dbdf34dc57db1552d421e4851497
+	
+pkgname = axiom-bin
