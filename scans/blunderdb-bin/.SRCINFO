@@ -1,0 +1,21 @@
+pkgbase = blunderdb-bin
+	pkgdesc = Backgammon blunder analysis tool (precompiled, webkit2gtk-4.1)
+	pkgver = 0.47.1
+	pkgrel = 1
+	url = https://github.com/kevung/blunderDB
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	optdepends = gst-plugins-good: lecture des vidéos de match (MP4, WebM)
+	optdepends = gst-libav: décodage H.264/HEVC
+	provides = blunderdb
+	conflicts = blunderdb
+	options = !strip
+	source_x86_64 = blunderdb-0.47.1-x86_64.tar.gz::https://github.com/kevung/blunderDB/releases/download/0.47.1/blunderDB-linux-webkit2gtk-4.1-0.47.1.tar.gz
+	sha256sums_x86_64 = 8f97ca6bc0c40f99adc0204d8b50cff925dce07d884dd60f1772a27aa6048b70
+	source_aarch64 = blunderdb-0.47.1-aarch64.tar.gz::https://github.com/kevung/blunderDB/releases/download/0.47.1/blunderDB-linux-arm64-webkit2gtk-4.1-0.47.1.tar.gz
+	sha256sums_aarch64 = e307e74b949c4dfe3bb528deae9a5c47a27574e28f57e6caf70538378ec95dd1
+
+pkgname = blunderdb-bin
