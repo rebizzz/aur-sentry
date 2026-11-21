@@ -1,0 +1,20 @@
+pkgbase = brygge-bin
+	pkgdesc = Carries version-control history between systems: decodes Git, Mercurial, Subversion and CVS into a verifiable IR (the release's attested binary)
+	pkgver = 0.7.1
+	pkgrel = 1
+	url = https://github.com/prikk-vcs/brygge
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	depends = gcc-libs
+	provides = brygge
+	conflicts = brygge
+	options = !strip
+	options = !debug
+	source_x86_64 = https://github.com/prikk-vcs/brygge/releases/download/0.7.1/brygge-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = b4f55c24c97091c70f74f0136e0f958f74274910e554b8d49ceafbdb27007226
+	source_aarch64 = https://github.com/prikk-vcs/brygge/releases/download/0.7.1/brygge-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 95d84721f5f7172f4c40fdcdd74977510d13e11aa0800cd3c98406b804fc58fe
+
+pkgname = brygge-bin
