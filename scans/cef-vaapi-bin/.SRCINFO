@@ -1,0 +1,33 @@
+pkgbase = cef-vaapi-bin
+	pkgdesc = Chromium Embedded Framework with VAAPI and proprietary codecs enabled (binary distribution)
+	pkgver = 156.0.30
+	pkgrel = 1
+	url = https://chromiumembedded.github.io/cef
+	arch = x86_64
+	license = BSD-3-Clause
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = dav1d
+	depends = dbus
+	depends = libdrm
+	depends = libffi
+	depends = libpulse
+	depends = libva
+	depends = libxcomposite
+	depends = libxdamage
+	depends = libxkbcommon
+	depends = libxrandr
+	depends = mesa
+	depends = nss
+	depends = openh264
+	depends = pango
+	depends = vulkan-icd-loader
+	optdepends = libva-mesa-driver: VAAPI driver for AMD GPUs
+	optdepends = intel-media-driver: VAAPI driver for modern Intel GPUs
+	optdepends = libva-utils: VAAPI diagnostics such as vainfo
+	provides = cef=156.0.30
+	conflicts = cef
+	source = cef-vaapi-156.0.30-1-x86_64.pkg.tar.zst::https://github.com/bnema/cef-vaapi/releases/download/cef-vaapi-v156.0.30-1/cef-vaapi-156.0.30-1-x86_64.pkg.tar.zst
+	sha256sums = 1d9caf1863387adf852041ba7d7d26e074d804dacbcc26953761bc0a5b4eee60
+
+pkgname = cef-vaapi-bin
