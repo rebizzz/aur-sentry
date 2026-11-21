@@ -1,0 +1,22 @@
+pkgbase = android-studio-canary
+	pkgdesc = The Official Android IDE (Canary branch)
+	pkgver = 2026.2.3.2
+	pkgrel = 1
+	url = http://tools.android.com/
+	arch = i686
+	arch = x86_64
+	license = APACHE
+	makedepends = unzip
+	makedepends = zip
+	depends = freetype2
+	depends = libxrender
+	depends = libxtst
+	optdepends = gtk2: GTK+ look and feel
+	optdepends = libgl: emulator support
+	options = !strip
+	source = https://edgedl.me.gvt1.com/android/studio/ide-zips/2026.2.3.2/android-studio-rabbit3-canary2-linux.tar.gz
+	source = android-studio-canary.desktop
+	sha256sums = 51deae1b14923bcec3073c12e062f05613b9fb5cc000254227d98a99c861df7a
+	sha256sums = 12ff377490cff386ba7b3ab9c94adfc2ca99515fdfad4773813268217dcd56b7
+
+pkgname = android-studio-canary
