@@ -1,0 +1,8 @@
+{
+  "package": "dotnet-build-deps-10.0",
+  "aur_commit": "707178ad27870a95605dfaeb9297ef3d7a418242",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-01T20:51:47Z"
+}
