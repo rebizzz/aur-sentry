@@ -1,0 +1,19 @@
+pkgbase = bayesian-ssh-bin
+	pkgdesc = A fast multi environment ssh connexion manager
+	pkgver = 2.16.1
+	pkgrel = 1
+	url = https://github.com/abdoufermat5/bayesian-ssh
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	depends = gcc-libs
+	provides = bayesian-ssh
+	conflicts = bayesian-ssh
+	source = LICENSE-2.16.1::https://raw.githubusercontent.com/abdoufermat5/bayesian-ssh/v2.16.1/LICENSE
+	source = README-2.16.1.md::https://raw.githubusercontent.com/abdoufermat5/bayesian-ssh/v2.16.1/README.md
+	sha256sums = b9836a6627fcb346bc64e118b2ff89f31ea834398cd30721e62855bd31199dbe
+	sha256sums = 6350bdb1f1bc160e8d29e701a1e57f5288b11ff0896102e96caf7ca01f410786
+	source_x86_64 = bayesian-ssh-x86_64-2.16.1::https://github.com/abdoufermat5/bayesian-ssh/releases/download/v2.16.1/bayesian-ssh-linux-x86_64
+	sha256sums_x86_64 = f4a2abfe37ef90175fa153ac687b27c1b97f6dade1327627d65cdece22d7bce6
+
+pkgname = bayesian-ssh-bin
