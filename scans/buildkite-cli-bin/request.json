@@ -1,0 +1,8 @@
+{
+  "package": "buildkite-cli-bin",
+  "aur_commit": "f90b2d90fb57f998787c50b31e7547cf67cbba38",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-11T02:11:28Z"
+}
