@@ -1,0 +1,24 @@
+# Colored makepkg-like functions
+msg_blue() {
+    printf "${blue}==>${bold} $1${all_off}\n"
+}
+
+note() {
+    printf "${blue}==>${yellow} NOTE:${bold} $1${all_off}\n"
+}
+
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+blue="${bold}$(tput setaf 4)"
+yellow="${bold}$(tput setaf 3)"
+
+post_install() {
+    note "ComfyKick sandboxes your \$HOME directory for safety. So it is neither readable nor writable by default."
+    note "To grant read/write access to a path under your \$HOME, see </usr/share/comfykick/override.conf>."
+    note "See </usr/share/doc/comfykick/comfykick.toml> for configuration instructions."
+    note "Once configured, kick the ComfyKick with: systemctl --user start comfykick.service"
+}
+
+post_upgrade() {
+    post_install
+}
