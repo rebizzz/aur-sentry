@@ -1,0 +1,8 @@
+{
+  "package": "aur-check-updates-bin",
+  "aur_commit": "432325c9410bd2d5f5af4457dd6c7aa9ebb7bfc9",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-04T23:58:18Z"
+}
