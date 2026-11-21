@@ -1,0 +1,20 @@
+pkgbase = cadoodle-bin
+	pkgdesc = Simple drag-and-drop CAD tool, local TinkerCAD alternative (AppImage)
+	pkgver = 1.9.010
+	pkgrel = 1
+	url = https://cadoodlecad.com
+	arch = x86_64
+	license = CC0-1.0
+	depends = fuse2
+	depends = hicolor-icon-theme
+	depends = zlib
+	provides = cadoodle
+	conflicts = cadoodle
+	options = !strip
+	options = !debug
+	source = cadoodle-1.9.010.AppImage::https://github.com/CommonWealthRobotics/CaDoodle/releases/download/1.9.010/CaDoodle-Linux-x86_64.AppImage
+	source = cadoodle.png::https://github.com/CommonWealthRobotics/CaDoodle/blob/main/SourceIcon.png?raw=true
+	sha256sums = 33f7520cd94cb9b1984e9864615f86ffff8626df639e6716b7f0fc9a6d8678c3
+	sha256sums = 0cbecec683a9c1dbd609e6468e47a3f2e67c5825e514afe30976a111cd212348
+
+pkgname = cadoodle-bin
