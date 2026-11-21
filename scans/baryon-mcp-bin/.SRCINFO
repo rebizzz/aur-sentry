@@ -1,0 +1,20 @@
+pkgbase = baryon-mcp-bin
+	pkgdesc = Read Proton Mail and save drafts through your local Proton Mail Bridge.
+	pkgver = 0.7.2
+	pkgrel = 1
+	url = https://github.com/combor/baryon-mcp
+	license = BSD-3-Clause
+	optdepends = gnome-keyring: Secret Service keyring for the Bridge password (auto-unlocks at login)
+	optdepends = kwallet: Secret Service provider on KDE Plasma
+	optdepends = keepassxc: Secret Service provider while its database is unlocked
+	conflicts = baryon-mcp
+	provides = baryon-mcp
+	install = baryon-mcp.install
+	arch = aarch64
+	source_aarch64 = baryon-mcp-bin_0.7.2_aarch64.tar.gz::https://github.com/combor/baryon-mcp/releases/download/v0.7.2/baryon-mcp_0.7.2_linux_arm64.tar.gz
+	sha256sums_aarch64 = 2ad3b015b40efdc626b7f897eb62657e0045310bb388cfa71c33786cf2c002e9
+	arch = x86_64
+	source_x86_64 = baryon-mcp-bin_0.7.2_x86_64.tar.gz::https://github.com/combor/baryon-mcp/releases/download/v0.7.2/baryon-mcp_0.7.2_linux_amd64.tar.gz
+	sha256sums_x86_64 = 3ee3393d38acbf9bf965b176226fe06b53e7f1d80f5572cc39e2114f3b9ee9a2
+	
+pkgname = baryon-mcp-bin
