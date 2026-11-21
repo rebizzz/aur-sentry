@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Fio Signer
+Name[en]=Fio Signer
+Name[cs]=Fio podepisovač
+Name[sk]=Fio podpisovač
+Exec=java -cp /usr/share/fiosign/signer_client.jar cz.fio.signer.client.gui.Main
+Type=Application
+GenericName=Online-Banking-Program
+Terminal=false
+Icon=fiosign
+X-KDE-StartupNotify=false
+Categories=Application;Office;

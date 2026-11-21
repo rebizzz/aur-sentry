@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec java -cp /usr/share/fiosign/signer_client.jar cz.fio.signer.client.gui.Main
