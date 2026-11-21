@@ -1,0 +1,8 @@
+{
+  "package": "cli-proxy-api-systemd-bin",
+  "aur_commit": "e8a9eb533157e506b701cb1b169f58df6657259b",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-14T15:23:00Z"
+}
