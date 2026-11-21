@@ -1,0 +1,8 @@
+{
+  "package": "cabal-install-static",
+  "aur_commit": "02de96c2e634cf6fec260f80f07ce7e12ba67714",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-03T19:52:13Z"
+}
