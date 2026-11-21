@@ -1,0 +1,24 @@
+pkgbase = chatpane
+	pkgdesc = Unofficial desktop app for Facebook Messenger
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://chatpane.app/
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = hicolor-icon-theme
+	provides = carrier
+	conflicts = carrier
+	replaces = carrier
+	options = !strip
+	options = !debug
+	source = LICENSE-3.2.0::https://raw.githubusercontent.com/kristofferR/Chatpane/v3.2.0/LICENSE
+	sha256sums = 957e3579dea42e66b0d3cdea831c3b93edaaa8a3566e4115efd11959f60c0d9d
+	source_x86_64 = chatpane-3.2.0-x86_64.deb::https://github.com/kristofferR/Chatpane/releases/download/v3.2.0/Chatpane_3.2.0_lin_x64.deb
+	sha256sums_x86_64 = ee4701052a578dfb82b7a549cfd3307961a964fc3b11c6549f91c69afe114dc7
+	source_aarch64 = chatpane-3.2.0-aarch64.deb::https://github.com/kristofferR/Chatpane/releases/download/v3.2.0/Chatpane_3.2.0_lin_arm.deb
+	sha256sums_aarch64 = cb4872e939fd139bf390e2efc1bb6bcbea57b9f7f0ad1d5a700f70d8697a47ff
+
+pkgname = chatpane
