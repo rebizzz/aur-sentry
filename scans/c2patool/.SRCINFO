@@ -1,0 +1,17 @@
+pkgbase = c2patool
+	pkgdesc = Tool for displaying and creating C2PA manifests
+	pkgver = 0.29.0
+	pkgrel = 1
+	url = https://github.com/contentauth/c2patool
+	arch = x86_64
+	arch = aarch64
+	license = MIT OR Apache-2.0
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = openssl
+	options = !lto
+	source = c2patool-0.29.0.tar.gz::https://github.com/contentauth/c2patool/archive/refs/tags/v0.29.0.tar.gz
+	sha256sums = e63fd122be91ea8c8cc99caa1471e86f06efa59d0e0e3e0ebb6f19483a1e977d
+
+pkgname = c2patool
