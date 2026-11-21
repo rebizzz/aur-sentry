@@ -1,0 +1,23 @@
+pkgbase = bongo-cat-todo-bin
+	pkgdesc = Tauri 2 desktop pet cat with a todo list and mail notifier (fork of BongoCat, prebuilt binary)
+	url = https://github.com/ChHsiching/bongocat-todo
+	license = MIT
+	arch = x86_64
+	arch = aarch64
+	pkgver = 1.4.0
+	pkgrel = 1
+	depends = webkit2gtk-4.1
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = libsoup3
+	depends = hicolor-icon-theme
+	provides = bongo-cat-todo
+	conflicts = bongo-cat-todo
+	conflicts = bongo-cat-todo-git
+	options = !strip
+	sha256sums_aarch64 = a7cf302f3ee3228566fc98bd81b0fd74b597aed73ac0306e8a6770f6db847dba
+	sha256sums_x86_64 = 44179f6271618cabd13438207aed24472bd7b0cbbeb1c43fccb5ea52e4a63807
+	source_aarch64 = bongo-cat-todo-bin-1.4.0-arm64.deb::https://github.com/ChHsiching/bongocat-todo/releases/download/v1.4.0/BongoCat.Todo_1.4.0_arm64.deb
+	source_x86_64 = bongo-cat-todo-bin-1.4.0-amd64.deb::https://github.com/ChHsiching/bongocat-todo/releases/download/v1.4.0/BongoCat.Todo_1.4.0_amd64.deb
+
+pkgname = bongo-cat-todo-bin
