@@ -1,0 +1,8 @@
+{
+  "package": "aws-mountpoint-s3-bin",
+  "aur_commit": "fcc559e4787fc291f295b441109140078911b725",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-13T01:26:40Z"
+}
