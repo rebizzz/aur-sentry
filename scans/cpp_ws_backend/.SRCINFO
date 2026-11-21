@@ -1,0 +1,25 @@
+pkgbase = cpp_ws_backend
+	pkgdesc = High-performance FastCGI web backend library in C++
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/bokic/cpp_ws_backend
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = LGPL-3.0-only
+	makedepends = cmake
+	makedepends = gcc
+	depends = glibc
+	depends = fcgi
+	depends = json-c
+	optdepends = sqlite: SQLite database support
+	optdepends = mariadb-libs: MySQL and MariaDB database support
+	optdepends = postgresql-libs: PostgreSQL database support
+	provides = libws_backend.so
+	options = !debug
+	source = cpp_ws_backend-0.2.0.tar.gz::https://github.com/bokic/cpp_ws_backend/archive/refs/tags/0.2.0.tar.gz
+	sha512sums = 5f5b3aa72229b414b2c35d5827f75241c15aef0c1947cf75419c6fae52d85683abb94f66608aac1b846f785bd4f75b8484a2c5374fffc0bdc9290ec7308af41b
+
+pkgname = cpp_ws_backend
