@@ -1,0 +1,17 @@
+pkgbase = bw-pinentry
+	pkgdesc = A pinentry wrapper around the bitwarden CLI to use your vault for GPG-Key storage.
+	pkgver = 1.0.9
+	pkgrel = 1
+	url = https://github.com/Skycoder42/bw-pinentry
+	changelog = CHANGELOG.md
+	arch = x86_64
+	license = BSD
+	depends = pinentry
+	depends = bitwarden-cli
+	options = !strip
+	source = bw-pinentry-1.0.9-sources.tar.gz::https://github.com/Skycoder42/bw-pinentry/archive/refs/tags/v1.0.9.tar.gz
+	source = bw-pinentry-1.0.9-linux.tar.xz::https://github.com/Skycoder42/bw-pinentry/releases/download/v1.0.9/bw_pinentry-1.0.9-linux.tar.xz
+	b2sums = 859323c5317d9239d087ac82a6836e7a3736d454bc56698002699a554ccd99c2e713be14e1684795936c3bc8409ad7afd4bfd768807105ed179bd5f0df380e79
+	b2sums = 6467f859fa313c7a01ff3ea8cfc6d0998196448fe2b69e71e681a1bc40cfbd0b0881b391110b4dc0804823ee3363e1105de26163a2fd120338e77622de6a2d7b
+
+pkgname = bw-pinentry
