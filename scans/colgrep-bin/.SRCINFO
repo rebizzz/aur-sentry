@@ -1,0 +1,18 @@
+pkgbase = colgrep-bin
+	pkgdesc = Semantic code search powered by ColBERT (prebuilt binary)
+	pkgver = 1.8.5
+	pkgrel = 1
+	url = https://github.com/lightonai/next-plaid
+	arch = x86_64
+	license = Apache-2.0
+	depends = gcc-libs
+	depends = glibc
+	depends = openssl
+	provides = colgrep
+	conflicts = colgrep
+	source = colgrep-1.8.5-x86_64-unknown-linux-gnu.tar.xz::https://github.com/lightonai/next-plaid/releases/download/v1.8.5/colgrep-x86_64-unknown-linux-gnu.tar.xz
+	source = colgrep-1.8.5-x86_64-unknown-linux-gnu.tar.xz.sha256::https://github.com/lightonai/next-plaid/releases/download/v1.8.5/colgrep-x86_64-unknown-linux-gnu.tar.xz.sha256
+	sha256sums = 532e1da739f6b5d489cdaefd20c5918fa1bb0ff9f456c89098eb49a6379ae205
+	sha256sums = 8e67c85349963e5df64a3caae014857bd9f5ed2721f3c68c81744185eccdabbd
+
+pkgname = colgrep-bin
