@@ -1,0 +1,31 @@
+pkgbase = inter-doom
+	pkgdesc = International Doom. Small, functional and simple Doom, Heretic, Hexen source port, created with help, efforts and bits of code from people around the world
+	pkgver = 9.1
+	pkgrel = 1
+	url = https://github.com/JNechaevsky/international-doom
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = aarch64
+	license = GPL-2.0-only
+	makedepends = cmake
+	depends = hicolor-icon-theme
+	depends = glibc
+	depends = sdl2>=2.0.18
+	depends = sdl2_mixer>=2.0.2
+	depends = libsamplerate
+	depends = fluidsynth
+	optdepends = doom1-wad: Doom shareware game data
+	optdepends = heretic1-wad: Heretic shareware game data
+	optdepends = hexen1-wad: Hexen demo game data
+	provides = inter-heretic=9.1
+	provides = inter-hexen=9.1
+	conflicts = inter-heretic
+	conflicts = inter-hexen
+	conflicts = inter-doom-git
+	conflicts = inter-heretic-git
+	conflicts = inter-hexen-git
+	source = inter-doom-9.1.tar.gz::https://github.com/JNechaevsky/international-doom/archive/refs/tags/9.1.tar.gz
+	b2sums = f950f1161a0b5a211f06d231dc575f70d1715f693a74e02e618f9da18dc628efa503d519b876f94d35dfe1b1c7ba7ffcd4f9f0dd3d0fb1ec162d7100986d1d4c
+
+pkgname = inter-doom
