@@ -1,0 +1,27 @@
+pkgbase = amneziavpn-bin
+	pkgdesc = Amnezia VPN Client
+	pkgver = 5.1.0.6
+	pkgrel = 1
+	url = https://github.com/amnezia-vpn/amnezia-client
+	install = amneziavpn.install
+	arch = x86_64
+	license = GPL-3.0-only
+	makedepends = 7zip
+	makedepends = binwalk
+	makedepends = patchelf
+	optdepends = xcb-util-cursor: X11 cursor support
+	optdepends = xcb-util-wm: X11 window manager interaction support
+	provides = amneziavpn
+	conflicts = amneziavpn
+	conflicts = amneziavpn-git
+	noextract = qt6-base-6.10.1-1.tar.zst
+	noextract = qt6-wayland-6.10.1-1.tar.zst
+	options = !debug
+	source = amneziavpn-5.1.0.6.run::https://github.com/amnezia-vpn/amnezia-client/releases/download/5.1.0.6/AmneziaVPN_5.1.0.6_linux_x64.run
+	source = qt6-base-6.10.1-1.tar.zst::https://archive.archlinux.org/packages/q/qt6-base/qt6-base-6.10.1-1-x86_64.pkg.tar.zst
+	source = qt6-wayland-6.10.1-1.tar.zst::https://archive.archlinux.org/packages/q/qt6-wayland/qt6-wayland-6.10.1-1-x86_64.pkg.tar.zst
+	sha256sums = f60a4f373332dac8465bd9b8e4f233ee3aa32131fe124d31ca70bc499c73496f
+	sha256sums = d29607b32affcb7fb523cf2d39960e43cc07859f3262b83500532f495175e6de
+	sha256sums = 1f72bc0986e737f61cf5d4bdf2381ea835f348642063edd2591b136ba8f5118c
+
+pkgname = amneziavpn-bin
