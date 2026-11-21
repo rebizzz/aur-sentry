@@ -1,0 +1,22 @@
+pkgbase = apache-tools
+	pkgdesc = Useful Apache tools - htdigest, htpasswd, ab (Apache Benchmark), htdbm
+	pkgver = 2.4.70
+	pkgrel = 1
+	url = http://httpd.apache.org/
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = apr-util
+	makedepends = db
+	depends = apr-util
+	depends = pcre
+	conflicts = apache
+	source = https://dlcdn.apache.org/httpd/httpd-2.4.70.tar.bz2
+	source = apache-tools-Makefile.patch
+	sha256sums = 1eefd7dc95836c5872894ce8e6a37f773d5a6764f0766869d39b8bcf0b1bafc3
+	sha256sums = 2dc48d34773b0c873d10e3542f77a4f7b50d5fb9bd8c52e3bb28b76ff9587f3f
+
+pkgname = apache-tools
