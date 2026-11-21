@@ -1,0 +1,20 @@
+pkgbase = clip-bridge-bin
+	pkgdesc = Sync your X11 and Wayland clipboard seamlessly
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/noctisynth/clip-bridge
+	arch = x86_64
+	license = MIT
+	depends = wayland
+	depends = wayland-protocols
+	depends = libx11
+	depends = libxkbcommon
+	depends = libxkbcommon-x11
+	optdepends = wl-clipboard
+	optdepends = xclip
+	provides = clip-bridge
+	conflicts = clip-bridge
+	source = https://github.com/noctisynth/clip-bridge/releases/download/clip-bridge-v0.2.0/clip-bridge-0.2.0-x86_64.tar.gz
+	sha256sums = deb6e03a84731c93f78ff0fe870423517806cd278bd0731039df302a8ff2c56e
+
+pkgname = clip-bridge-bin
