@@ -1,0 +1,20 @@
+pkgbase = bs
+	pkgdesc = The classic game of Battleships against the computer. Ncurses.
+	pkgver = 2.15
+	pkgrel = 1
+	url = http://www.catb.org/~esr/bs/
+	arch = i686
+	arch = x86_64
+	license = BSD-2-Clause
+	makedepends = asciidoctor
+	depends = glibc
+	depends = ncurses
+	depends = hicolor-icon-theme
+	source = http://www.catb.org/~esr/bs/bs-2.15.tar.gz
+	source = Makefile_fix.patch
+	source = bs_fix.patch
+	sha256sums = 007d8cf2740c7a923fbc0db8a4f69d356812e52c9a654e495e6fb748ad2cb898
+	sha256sums = c365f25c70353b0b00a2cf078f9ff76ca144141733505039d6a9025ff0b611cb
+	sha256sums = 41eb069b252b151c6994a78df29bbe71e5a3372cf9988a0671c56a037d022bdc
+
+pkgname = bs
