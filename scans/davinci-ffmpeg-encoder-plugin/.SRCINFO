@@ -1,0 +1,15 @@
+pkgbase = davinci-ffmpeg-encoder-plugin
+	pkgdesc = FFmpeg Encoder Plugin for DaVinci Resolve Studio
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/EdvinNilsson/ffmpeg_encoder_plugin
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = vulkan-headers
+	depends = ffmpeg
+	optdepends = davinci-resolve-studio
+	source = davinci-ffmpeg-encoder-plugin-1.5.0.tar.gz::https://github.com/EdvinNilsson/ffmpeg_encoder_plugin/archive/v1.5.0.tar.gz
+	sha256sums = 50bfd8ea9046f0ec7173e49045dbf268face3b6393ca47c1714c344460ae1385
+
+pkgname = davinci-ffmpeg-encoder-plugin
