@@ -1,0 +1,349 @@
+# Changelog
+
+This changelog keeps the history of certificates changes in the zip file
+provided by ICP-Brasil containing the Brazilian government's
+Certification Authorities (CA) certificates.
+
+The format is based on Keep a Changelog (see https://keepachangelog.com),
+and this project versioning is YYYYMMDD.
+
+## 20261106
+
+### Added:
+
+- Autoridade_Certificadora_INFOCOMEX_v2.crt
+
+## 20261022
+
+### Added:
+
+- AC_SOLUTI-JUS_v6.crt
+
+## 20260828
+
+### Changed:
+
+- Certificate files are no longer provided under ACcompactado directory.
+
+## 20260826
+
+### Added:
+
+- AC_SINCOR_G5.crt
+
+### Deleted:
+
+- AC_DOCCLOUD.crt
+
+### Changed:
+
+- Certificate files are now provided under ACcompactado directory, so
+  the PKGBUILD was updated to reflect that change.
+
+## 20260810
+
+### Added:
+
+- AC_Secretaria_da_Receita_Federal_do_Brasil_v5.crt
+- AC_SyngularID_Multipla_v12.crt
+- AC_SyngularID_v12.crt
+- AC_VALID-JUS_v6.crt
+
+## 20260714
+
+### Added
+
+- Autoridade_Certificadora_SDI_v2.crt
+- Autoridade_Certificadora_SIRIUS.crt
+
+## 20260706
+
+### Added
+
+- AC_Certisign_Tempo_G3.crt
+
+## 20260625
+
+### Added
+
+- AC_Certisign_ICP_Brasil_SSL_G5.crt
+
+## 20260506
+
+### Added
+
+- AC_DIGITALSIGN_G3.crt
+
+## 20260427
+
+### Added
+
+- AC_SOLUTI_v12.crt
+
+## 20260325
+
+### Added
+
+- AC_CERTISIGN-JUS_G7.crt
+- AC_SAFEWEB_CD_V12.crt
+- Autoridade_Certificadora_ZAPSIGN.crt
+- Autoridade_Certificadora_do_SERPRO_Final_v6.crt
+
+## 20260302
+
+### Added
+
+- AC_DIGITALSIGN_ACP_G3.crt
+
+## 20260225
+
+### Added
+
+- AC_OAB_G4.crt
+
+## 20260213
+
+### Added
+
+- AC_PLANO_DIGITAL_CD.crt
+
+## 20260204
+
+### Added
+
+- AC_Certisign_Multipla_G8.crt
+
+## 20251201
+
+### Added
+
+- Autoridade_Certificadora_FECOMERCIO_MG_RFB.crt
+
+## 20251127
+
+### Added
+
+- AC_SAFETECH_RFB_v5.crt
+- AC_VALID_BRASIL_V12.crt
+- Autoridade_Certificadora_SERPRO_v5.crt
+
+## 20251007
+
+### Added
+
+- AC_Safeweb_v12.crt
+
+## 20250822
+
+### Deleted
+
+- AC_CACB_CD.crt
+- Serasa_AC_v5.crt
+
+## 20250801
+
+### Deleted
+
+- AC_META_CERTIFICADO_DIGITAL_CD.crt
+- AC_PREMIUM_CERTIFICADORA_DIGITAL_CD.crt
+
+## 20250704
+
+### Deleted
+
+- AC-SERASA-SSL-EV-V2.crt
+- AC-SERASA-SSL-EV-V3.crt
+- AC-SERASA-SSL-EV-V4.crt
+- AC-VALID-CODE-SIGNING.crt
+
+## 20250528
+
+### Added
+
+- AC_JUS_v6.crt
+
+## 20250325
+
+### Removed
+
+- AC_MRE.crt
+- AC-MRE-V1.crt
+- Autoridade_Certificadora_da_Presidencia_da_Republica_v3.crt
+- Autoridade_Certificadora_da_Presidencia_da_Republica_v4.crt
+- ICP-Brasilv13.crt
+- ICP-Brasilv4.crt
+
+## 20250321
+
+### Added
+
+- AC_Certisign_G8.crt
+- Autoridade_Certificadora_da_Presidencia_da_Republica_v3.crt
+- Autoridade_Certificadora_da_Presidencia_da_Republica_v4.crt
+
+## 20250225
+
+### Added
+
+- AC_MRE.crt
+- AC-MRE-V1.crt
+- ICP-Brasilv13.crt
+
+## 20250131
+
+### Added
+
+- AC_CONSULTI_RFB.crt
+- Autoridade_Certificadora_IDFEDERAL.crt
+
+## 20241204
+
+### Added
+
+- Autoridade_Certificadora_da_Presidencia_da_Republica_v6.crt
+
+## 20241126
+
+### Added
+
+- AC_Certisign_OM-BR.crt
+- AC_Validar_Multipla.crt
+
+## 20241024
+
+### Added
+
+- ICP-Brasilv12.crt
+- ICP-Brasilv4.crt
+- ICP-Brasilv6.crt
+- ICP-Brasilv7.crt
+
+## 20240718
+
+### Added
+
+- AC_Solucao_Digital_Multipla.crt
+
+## 20240205
+
+### Removed
+
+- AC_PRODEMGE_G4.crt
+
+## 20240117
+
+### Removed 
+
+- AC-CERTISIGN-ICP-BRASIL-CODE.crt
+
+## 20231124
+
+### Removed
+
+- AC_DIGITAL_v5.crt
+
+## 20231010
+
+### Added
+
+- Autoridade_Certificadora_PRIMECERT.crt
+
+## 20230718
+
+### Added
+
+- AC_SOLUTI_Multipla_TIMESTAMPING_v5.crt
+
+### Removed
+
+- AC_Prodemge_BR.crt
+- AC_Prodemge_Codesigning.crt
+- AC_Prodemge_Codesigning_v2.crt
+- AC_Prodemge_MG.crt
+- AC_Prodemge_MG_v2.crt
+- AC_Prodemge_SSL.crt
+- AC_Prodemge_SSL_v2.crt
+
+## 20230712
+
+### Added
+
+- Autoridade_Certificadora_DIGITAL_CERTY.crt
+
+## 20230628
+
+### Removed
+
+- AC_BoaVista.crt
+- AC_Digital.crt
+- AC_Digitalsign_ACP.crt
+- AC_DIGITALSIGN_SSL.crt
+- AC_Imprensa_Oficial_G4.crt
+- AC_Imprensa_Oficial_SP_G4.crt
+- AC_Imprensa_Oficial_SSL.crt
+- AC_Soluti.crt
+- AC_SOLUTI_Multipla_CODESIGNING.crt
+- AC_SOLUTI_Multipla_SSL.crt
+- AC_SOLUTI_Multipla_TIMESTAMPING.crt
+- AC_Soluti_Multipla_v1.crt
+- Autoridade_Certificadora_da_Presidencia_da_Republica_v4.crt
+- ICP-Brasil.crt
+- ICP-Brasilv2.crt
+
+## 20230606
+
+### Removed
+
+- AC-SOLUTI-CS-EV.crt
+
+## 20230529
+
+### Added
+
+- AC_FCDL_SC_v5_G2.crt
+- AC_SOLUTI_Multipla_v5_G2.crt
+
+## 20230502
+
+### Added
+
+- AC_MAXIMUS_TECNOLOGIA_E_EVENTOS_v5_G2.crt
+
+## 20230427
+
+### Added
+
+- AC-SERASA-SSL-EV-V4.crt
+
+## 20230417
+
+### Added
+
+- AC-Certisign-ICP-Brasil-SSL-EV-G4.crt
+
+## 20230323
+
+### Added
+
+- AC-SOLUTI-SSL-EV-G4.crt
+
+### Removed
+
+- AC-CERTISIGN-ICP-BRASIL-SSL.crt
+- AC-SERASA-SSL-EV.crt
+- AC-SOLUTI-SSL-EV.crt
+
+## 20230307
+
+### Removed
+
+- AC-SEMPRE-RFB.crt
+
+## 20230117
+
+### Added
+
+- AC-Certisign-ICP-Brasil-SSL-EV-G3.crt
+- AC_SEMPRE_RFB_v2.crt
+- AC_Soluti_OM-BR.crt
+
