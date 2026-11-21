@@ -1,0 +1,25 @@
+pkgbase = etr-terminal-bin
+	pkgdesc = Reconnecting remote shell over QUIC — a Rust implementation of Eternal Terminal (et)
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://github.com/l1a/etr
+	arch = x86_64
+	arch = aarch64
+	license = GPL-3.0-only
+	depends = glibc
+	depends = libutempter
+	depends = openssh
+	conflicts = etr
+	conflicts = etr-bin
+	source = etr-extras-0.11.0.tar.gz::https://github.com/l1a/etr/releases/download/v0.11.0/etr-extras.tar.gz
+	sha256sums = 92f432d039df1c51a86b21b69bca0f8a8f0bae0ca06f4c6a69430f94c314bb58
+	source_x86_64 = etr-0.11.0-linux-x86_64::https://github.com/l1a/etr/releases/download/v0.11.0/etr-linux-x86_64
+	source_x86_64 = etrs-0.11.0-linux-x86_64::https://github.com/l1a/etr/releases/download/v0.11.0/etrs-linux-x86_64
+	sha256sums_x86_64 = 81c19e8ffc5cd1cb2a162ace3b2ec81afc3aa0e40fa1aac6da14b1470484713d
+	sha256sums_x86_64 = 1de7996a9023749607def13d0e306ba14e64a5fca3ee34bb0fa6df68e202312a
+	source_aarch64 = etr-0.11.0-linux-aarch64::https://github.com/l1a/etr/releases/download/v0.11.0/etr-linux-aarch64
+	source_aarch64 = etrs-0.11.0-linux-aarch64::https://github.com/l1a/etr/releases/download/v0.11.0/etrs-linux-aarch64
+	sha256sums_aarch64 = 9aad62b6f750cbe074869cbe44a422e4b552a863b1475da503f91e1907750a33
+	sha256sums_aarch64 = 58c6cd07170f93834e7a50ba1a86c6298e9f5ec7f4b45a84f2dd402f4e4ea134
+
+pkgname = etr-terminal-bin
