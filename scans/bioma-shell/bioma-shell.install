@@ -1,0 +1,108 @@
+# Dictation's paste needs /dev/uinput now, not after the next reboot: the
+# module is loaded and the node triggered, so the seat's user gets its ACL.
+_uinput() {
+    modprobe uinput 2>/dev/null || true
+    udevadm trigger --subsystem-match=misc --sysname-match=uinput 2>/dev/null || true
+}
+
+# ---- The greeter ----------------------------------------------------------------
+#
+# Installing Bioma no longer makes it the login screen: the setup asks, on its
+# LOGIN step, and scripts/greeter-setup does it through pkexec when the answer
+# is yes (docs/design/SETUP.md). What stays here is the way back. A beta set
+# greetd up by itself, and removing the package must still undo that.
+
+_greetd_config=/etc/greetd/config.toml
+_greetd_backup=/etc/greetd/config.toml.before-bioma
+_greeter_dir=/var/lib/bioma-greeter
+_keyring_mark='# bioma: the login password unlocks the keyring'
+
+# Rewrites [default_session] to run $1 as user `greeter`, and keeps everything
+# else in the file: the terminal, an initial_session, comments.
+_greetd_point_at() {
+    local tmp
+    tmp="$(mktemp)" || return 1
+    awk -v cmd="$1" '
+        function emit() { if (!done) { print "command = \"" cmd "\""; print "user = \"greeter\""; done = 1 } }
+        /^[ \t]*\[/ {
+            if (section) emit()
+            section = ($0 ~ /^[ \t]*\[default_session\][ \t]*$/)
+            print; next
+        }
+        section && /^[ \t]*(command|user)[ \t]*=/ { next }
+        { print }
+        END {
+            if (section) emit()
+            else if (!done) { print ""; print "[default_session]"; emit() }
+        }
+    ' "$_greetd_config" > "$tmp" && cat "$tmp" > "$_greetd_config"
+    rm -f "$tmp"
+}
+
+# A greetd left pointing at a removed package has nothing to show, and the
+# only way back in is a text console. Removing Bioma gives the login screen
+# back as it was.
+_greeter_remove() {
+    if [ -f "$_greetd_config" ] && grep -q 'bioma' "$_greetd_config"; then
+        if [ -f "$_greetd_backup" ] && ! grep -q 'bioma' "$_greetd_backup"; then
+            cat "$_greetd_backup" > "$_greetd_config"
+        else
+            _greetd_point_at "agreety --cmd /bin/sh"
+        fi
+    fi
+    rm -f "$_greetd_backup"
+    # The keyring lines greeter-setup added to greetd's PAM file, each under
+    # its mark; any other line stays.
+    if [ -f /etc/pam.d/greetd ] && grep -qxF "$_keyring_mark" /etc/pam.d/greetd; then
+        local tmp
+        tmp="$(mktemp)" && awk -v mark="$_keyring_mark" '
+            skip { skip = 0; if ($0 ~ /pam_gnome_keyring/) next }
+            $0 == mark { skip = 1; next }
+            { print }
+        ' /etc/pam.d/greetd > "$tmp" && cat "$tmp" > /etc/pam.d/greetd
+        rm -f "$tmp"
+    fi
+    # The login manager the setup's greeter replaced, back in its place: a
+    # disabled SDDM with greetd removed would leave a text console.
+    if [ -f "$_greeter_dir/.manager-before" ]; then
+        local before
+        before="$(cat "$_greeter_dir/.manager-before")"
+        if [ -n "$before" ] && systemctl cat "$before" >/dev/null 2>&1; then
+            systemctl disable greetd.service >/dev/null 2>&1 || true
+            systemctl enable "$before" >/dev/null 2>&1 || true
+        fi
+    fi
+    rm -rf "$_greeter_dir"
+}
+
+post_install() {
+    _uinput
+    cat <<'MSG'
+==> Bioma is installed in /usr/share/bioma. It starts by itself at the next
+    niri login, and the first start walks you through the rest: the layout,
+    the look, its keys in niri's configuration, the login screen, and what is
+    still missing on this machine. Nothing outside Bioma's own files changes
+    until you say so there.
+
+    Already in niri, or starting niri from a TTY rather than a login manager?
+    Start it now from a terminal inside niri:
+
+      bioma -d
+
+    For a terminal instead, `bioma-install --autostart` writes the keys and
+    the includes, and `bioma-install --check` says what is missing.
+MSG
+}
+
+post_upgrade() {
+    _uinput
+    cat <<'MSG'
+==> Restart Bioma to run the new version:  /usr/share/bioma/scripts/shell restart
+    Keys the new version brings are added to your bioma-binds.kdl then;
+    the ones you removed stay removed.
+MSG
+}
+
+post_remove() {
+    _greeter_remove
+}
