@@ -1,0 +1,8 @@
+{
+  "package": "discord-canary-prerelease-patched-electron-bin",
+  "aur_commit": "8bf5bddf011e9e3754d7a609c4776e9962d0c7c7",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-01T06:31:18Z"
+}
