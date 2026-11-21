@@ -1,0 +1,8 @@
+{
+  "package": "cockroachdb-bin",
+  "aur_commit": "6cc34b6781fb0d5e74163f70c51335bbbddf5af6",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-10-29T13:31:12Z"
+}
