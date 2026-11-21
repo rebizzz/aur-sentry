@@ -1,0 +1,25 @@
+pkgbase = bili-space-bin
+	pkgdesc = Bilibili desktop client with native GTK and isolated account profiles (official Linux build)
+	pkgver = 0.1.71
+	pkgrel = 1
+	url = https://github.com/GuqiGG/Bili-Space
+	arch = x86_64
+	license = custom
+	depends = python
+	depends = python-gobject
+	depends = python-cairo
+	depends = gtk3
+	depends = webkit2gtk-4.1
+	depends = gstreamer
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	provides = bili-space
+	conflicts = bili-space
+	options = !strip
+	source = Bili-Space-0.1.71-linux.deb::https://github.com/GuqiGG/Bili-Space/releases/download/v0.1.71/Bili-Space-0.1.71-linux.deb
+	sha256sums = 7e4dd7720e0353e63164956fc4e1a260d98c004fe480178f761de79621f81307
+
+pkgname = bili-space-bin
