@@ -1,0 +1,366 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "fiosign",
+    "version": "6.0.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "cee5916baa9dfef68ecb036451db2e5346c8689e",
+    "pkgbuild_sha256": "243dcd88dfa60aaa753710a85caa97067c4cfee82cc076d25042774dc8c3aafc",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-21T20:52:33.660782953+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o signer_client.jar.part http://www.fio.cz/apps/signer_cl\"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/signer_clien\"... /home/builder/build/signer_clien\"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o logo_P_662_C_pod_sebou.png.part http://www.fio.cz/docs/web_pics/\"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/logo_P_662_C\"... /home/builder/build/logo_P_662_C\"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/signer_clien\"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/logo_P_662_C\"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/LICENSE",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/fiosign.desk\"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/fiosign",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/signer_c\"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/signer_clien\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/logo_P_6\"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/logo_P_662_C\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- logo_P_662_C_pod_sebou.png",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf logo_P_662_C_pod_sebou.png -q *",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/LICENSE",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/LICENSE /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- LICENSE",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf LICENSE -q *",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/fiosign.\"...",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/fiosign.desk\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- fiosign.desktop",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf fiosign.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/fiosign",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/fiosign /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- fiosign",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf fiosign -q *",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "92.38.6.11",
+        "port": 80,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "92.38.6.11",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-21T20:52:33.656659975+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "d43d235d5f7bb2e7ae283026495882b654fefead9e4de73cf4af44c755670f05",
+  "signature": null
+}
