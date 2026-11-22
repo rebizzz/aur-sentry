@@ -1,0 +1,21 @@
+pkgbase = aggr-bin
+	pkgdesc = Git-native feed reader
+	pkgver = 3.0.1
+	pkgrel = 1
+	url = https://github.com/aymericbeaumet/aggr
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	provides = aggr
+	conflicts = aggr
+	options = !strip
+	source = README-3.0.1.md::https://raw.githubusercontent.com/aymericbeaumet/aggr/v3.0.1/readme.md
+	sha256sums = d51e62be76251a1ec8402fb5a22bc3e5fc0024cec53ded4d20419de521c71ef8
+	source_x86_64 = aggr-x86_64-3.0.1.tgz::https://github.com/aymericbeaumet/aggr/releases/download/v3.0.1/aggr-linux-amd64.tar.gz
+	sha256sums_x86_64 = 8b7dcd88316cc29a12c1dd3b7ceb51ba6c029b1f3da1ad516a15e61678687012
+	source_aarch64 = aggr-aarch64-3.0.1.tgz::https://github.com/aymericbeaumet/aggr/releases/download/v3.0.1/aggr-linux-arm64.tar.gz
+	sha256sums_aarch64 = 3119202ce8656279fce404774e33d34f8ccdbe654776d08373525e94cf89f3bd
+
+pkgname = aggr-bin
