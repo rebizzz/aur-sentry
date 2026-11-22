@@ -1,0 +1,22 @@
+pkgbase = carapace-bin
+	pkgdesc = A multi-shell completion binary
+	pkgver = 1.8.4
+	pkgrel = 1
+	url = https://github.com/carapace-sh/carapace-bin
+	license = MIT
+	optdepends = carapace-aws-bin: for enriched aws completion
+	optdepends = carapace-ffmpeg-bin: for FFmpeg completion
+	optdepends = carapace-magick-bin: for ImageMagick completion
+	conflicts = carapace
+	provides = carapace
+	arch = aarch64
+	source_aarch64 = carapace-bin_1.8.4_aarch64.tar.gz::https://github.com/carapace-sh/carapace-bin/releases/download/v1.8.4/carapace-bin_1.8.4_linux_arm64.tar.gz
+	sha256sums_aarch64 = ce627da7f950c77b452b4924fb0b5f28a4aeffcf90ec9d777ed337d62f323fdb
+	arch = i686
+	source_i686 = carapace-bin_1.8.4_i686.tar.gz::https://github.com/carapace-sh/carapace-bin/releases/download/v1.8.4/carapace-bin_1.8.4_linux_386.tar.gz
+	sha256sums_i686 = 89acaf84b9157ecb1a8a512e1701df23062e1f673c91093193ee9c22d0eaaee2
+	arch = x86_64
+	source_x86_64 = carapace-bin_1.8.4_x86_64.tar.gz::https://github.com/carapace-sh/carapace-bin/releases/download/v1.8.4/carapace-bin_1.8.4_linux_amd64.tar.gz
+	sha256sums_x86_64 = 267cbf267703debd61064efbd6aca24edc64a025ed3f2a59c4f89d1918cc6a07
+	
+pkgname = carapace-bin
