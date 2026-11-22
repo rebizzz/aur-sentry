@@ -1,0 +1,25 @@
+pkgbase = cogpit
+	pkgdesc = Control center for Claude Code, OpenAI Codex, and GitHub Copilot CLI sessions
+	pkgver = 3.7.8
+	pkgrel = 1
+	url = https://github.com/gentritbiba/cogpit
+	arch = x86_64
+	license = MIT
+	depends = c-ares
+	depends = gcc-libs
+	depends = glibc
+	depends = gtk3
+	depends = libcups
+	depends = libdrm
+	depends = libnotify
+	depends = libxcrypt-compat
+	depends = libxss
+	depends = mesa
+	depends = nss
+	depends = alsa-lib
+	options = !strip
+	options = !debug
+	source = cogpit-3.7.8.pacman::https://github.com/gentritbiba/cogpit/releases/download/v3.7.8/cogpit-3.7.8.pacman
+	sha256sums = 77e8ddcc4722fe7bfee440c50686bee648fb8917ce3b49d53e792eb61d844101
+
+pkgname = cogpit
