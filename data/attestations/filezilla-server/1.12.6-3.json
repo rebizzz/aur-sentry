@@ -1,0 +1,307 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "filezilla-server",
+    "version": "1.12.6-3",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "89acf674d17ae153cec12335b4eebded0d0287e6",
+    "pkgbuild_sha256": "100e51d6f5afe7daa29a48d756d39c6f9d948fead48603e2d159b52fdedaccc2",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-22T10:13:59.343246219+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o FileZilla_Server_1.12.6_src.tar.\"... https://sourceforge.net/projects\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/FileZilla_Se\"... /home/builder/build/FileZilla_Se\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/FileZilla_Se\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha512sum /home/builder/build/filezilla-se\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/FileZill\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/FileZilla_Se\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- FileZilla_Server_1.12.6_src.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf FileZilla_Server_1.12.6_src.tar.\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/filezill\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/filezilla-se\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- filezilla-server-Remove-demos-le\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf filezilla-server-Remove-demos-le\"... -q *",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Starting %s()...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "patch -Np2 -i ../filezilla-server-Remove-demos\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sed -i s|fz::get_user_uid(account);|fz:\"... system_identity_provider.cpp",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.18.13.149",
+        "port": 443,
+        "protocol": "declared-source",
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "104.18.12.149",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "79.142.76.130",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-22T10:13:59.335189937+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": false,
+    "file_count": 0,
+    "elf_object_count": 0,
+    "elf_objects": [],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "e7ced76a9a9c6541b5fa600c21ec67cafa178230954217ff6045edc223620dfc",
+  "signature": null
+}
