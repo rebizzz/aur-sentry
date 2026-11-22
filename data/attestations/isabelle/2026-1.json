@@ -1,0 +1,1552 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "isabelle",
+    "version": "2026-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "a48a07027dd80261f1d1db76a5dcbd0f27a1c982",
+    "pkgbuild_sha256": "28a521fd28432340b3ed1c33152826ee3abda9ba20a8a74c8a767cff7bfade0e",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-22T10:28:45.140057114+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "OBFUSCATION",
+      "file": "PKGBUILD",
+      "line": 1,
+      "severity": "HIGH",
+      "description": "Multiple short variable definitions (3 found) - possible command splicing obfuscation"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    },
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during install"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Found %s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o Isabelle2026_linux.tar.gz.part https://isabelle.in.tum.de/websi\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/Isabelle2026\"... /home/builder/build/Isabelle2026\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/isabelle.des\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/Isabelle2026\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/isabelle\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/isabelle.des\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- isabelle.desktop",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -tf isabelle.desktop -q *",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/Isabelle\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/Isabelle2026\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- Isabelle2026_linux.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf Isabelle2026_linux.tar.gz",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/isabelle-2026-1-x86_64.pkg.\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/isabelle-2026-1-x86_64.pkg.\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/isabelle-2026-1-x86_64.pkg.\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-dirs",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --list-components",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpg --version",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/gpgsm --version",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/sbin/gpgconf --version",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 6D42BDD116E0068F",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- B8AC08600F108CDF",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- C06086337C50773E",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 94657AB20F2A092B",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 93B11DAA4C197E3D",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 8 --logger-fd 12 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F296BDE50368C6CE",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --enable-special-filenames --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 11 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --verify -- -&12 -&14",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 0429897DE5F3BDAC537A30696D42BDD1\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 83BC8889351B5DEBBB68416EB8AC0860\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- E499C79F53C96A54E572FEE1C0608633\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- ADC8A1FCC15E01D45310419E94657AB2\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- F00B96D15228013FFC9C9D0393B11DAA\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "gpg --batch --lc-messages=C.UTF-8 --lc-ctype=C.UTF-8 --status-fd 9 --logger-fd 13 --homedir=/etc/pacman.d/gnupg/ --no-tty --charset=utf8 --enable-progress-filter --exit-on-status-write-error --with-colons --list-keys -- 54C1FD273361EA514A237793F296BDE5\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/bash -c . /tmp/alpm_2ul441/.INSTALL; pos\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "vercmp 0 2:2.13.93-1",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/40-fo\"... /etc/fonts/conf.d",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "find usr/share/fontconfig/conf.defaul\"... -mindepth 1",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/90-synthetic.c\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/65-fonts-persi\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/48-spacing.con\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/65-nonlatin.co\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/60-latin.conf",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/40-nonlatin.co\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/45-generic.con\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-scale-bitma\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/80-delicious.c\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/45-latin.conf",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/20-unhint-smal\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/60-generic.con\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-yes-antiali\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/50-user.conf",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/48-guessfamily\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/10-hinting-sli\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/30-metric-alia\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/49-sansserif.c\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/69-unifont.con\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/51-local.conf",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ln -sT /usr/share/fontconfig/conf.defau\"... /etc/fonts/conf.d/11-lcdfilter-d\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "vercmp 0 0",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/fc-cache -rs",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "ldconfig",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/share/libalpm/scripts/syste\"... update",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "touch -c /usr",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "/usr/bin/fc-cache -s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced pacman -R --noconfirm isabelle",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -R --noconfirm isabelle",
+        "parent": null,
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "131.159.46.82",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-22T10:28:44.864340826+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      },
+      {
+        "destination": "151.101.195.52",
+        "port": 443,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-22T10:28:45.021073547+00:00",
+        "phase": "install"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 24556,
+    "elf_object_count": 153,
+    "elf_objects": [
+      {
+        "path": "opt/isabelle/Isabelle2026",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/zstd-jni-1.5.7-11/x86_64-linux/libzstd-jni-1.5.7-11.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/z3-4.4.0pre-8/x86_64-linux/z3",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/e-3.2/x86_64-linux/eprover",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/e-3.2/x86_64-linux/epclextract",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/spass-3.8ds-5/x86_64-linux/SPASS",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/minisat-2.2.1-2/x86_64-linux/minisat",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/cvc5-1.3.4/x86_64-linux/cvc5-bin",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/extensions/microsoft-authentication/dist/msal-node-runtime.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/extensions/microsoft-authentication/dist/libmsalruntime.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscodium/policy-watcher/build/Release/vscodium-policy-watcher.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscodium/native-keymap/build/Release/keymapping.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/native-is-elevated/build/Release/iselevated.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@microsoft/mxc-sdk/bin/arm64/lxc-exec",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@microsoft/mxc-sdk/bin/arm64/linux-test-proxy",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@microsoft/mxc-sdk/bin/x64/lxc-exec",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@microsoft/mxc-sdk/bin/x64/linux-test-proxy",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/deviceid/build/Release/windows.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-s390x/rg",
+        "arch": "IBM S/390",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-arm64/rg",
+        "arch": "AArch64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-ia32/rg",
+        "arch": "Intel 80386",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-arm/rg",
+        "arch": "ARM",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-ppc64/rg",
+        "arch": "PowerPC64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-x64/rg",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/ripgrep-universal/bin/linux-riscv64/rg",
+        "arch": "RISC-V",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/native-watchdog/build/Release/watchdog.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/sqlite3/build/Release/vscode-sqlite3.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/spdlog/build/Release/spdlog.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@vscode/os-proxy-resolver-linux-x64-gnu/os_proxy_resolver.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/node-pty/build/Release/pty.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/@parcel/watcher/build/Release/watcher.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/windows-foreground-love/build/Release/foreground_love.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/windows-foreground-love/build/Release/obj.target/foreground_love.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/kerberos/build/Release/kerberos.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules.asar.unpacked/kerberos/build/Release/obj.target/kerberos.node",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/resources/vscodium/node_modules/@vscode/sandbox-runtime/vendor/seccomp/x64/apply-seccomp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/chrome_crashpad_handler",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/libvulkan.so.1",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/libvk_swiftshader.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/libEGL.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/chrome-sandbox",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/libGLESv2.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/libffmpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vscodium-1.135.06055/x86_64-linux/electron",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/mlton-20241230-2/x86_64-linux/bin/mllex",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/mlton-20241230-2/x86_64-linux/bin/mlnlffigen",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/mlton-20241230-2/x86_64-linux/bin/mlyacc",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/mlton-20241230-2/x86_64-linux/bin/mlprof",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/mlton-20241230-2/x86_64-linux/lib/mlton/mlton-compile",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/polyml-5.9.2-6/x86_64-linux/polyimport",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/polyml-5.9.2-6/x86_64-linux/libgmp.so.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/polyml-5.9.2-6/x86_64-linux/poly",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/polyml-5.9.2-6/x86_64_32-linux/polyimport",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/polyml-5.9.2-6/x86_64_32-linux/libgmp.so.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/polyml-5.9.2-6/x86_64_32-linux/poly",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/smbc-0.4.1-1/x86_64-linux/smbc",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/flatlaf-3.7.2/lib/flatlaf-3.7.2-linux-arm64.so",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/flatlaf-3.7.2/lib/flatlaf-3.7.2-linux-x86_64.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jdeprscan",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jhsdb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jwebserver",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jcmd",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/javadoc",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jar",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jimage",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jinfo",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jpackage",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jshell",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jstack",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/keytool",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/serialver",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jlink",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jarsigner",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/java",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/javap",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jconsole",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jdeps",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/rmiregistry",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/javac",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jdb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jmod",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jrunscript",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jstat",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jmap",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jstatd",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jnativescan",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jps",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/bin/jfr",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libjimage.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libawt_xawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libattach.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libmanagement_ext.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libjsvml.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libjavajpeg.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libjawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libdt_socket.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libnio.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libmanagement_agent.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libj2gss.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libzip.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libsyslookup.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/server/libjvm.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/server/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libprefs.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libmlib_image.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libjsound.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libjdwp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libawt_headless.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libsaproc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/liblcms.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libmanagement.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libjli.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/jexec",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libsplashscreen.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/jspawnhelper",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libverify.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libjava.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libj2pkcs11.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libjaas.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libsctp.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libsimdsort.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libinstrument.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libextnet.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libj2pcsc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libawt.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libfontmanager.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libfreetype.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/libjsig.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/jdk-25.0.4/x86_64-linux/lib/librmi.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/rsync-3.2.7-2/x86_64-linux/rsync",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/rsync-3.2.7-2/arm64-linux/rsync",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/sqlite-3.53.4.0/x86_64-linux/libsqlitejdbc.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/nunchaku-0.5-1/x86_64-linux/nunchaku",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/zipperposition-2.1-2/x86_64-linux/libgmp.so.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/zipperposition-2.1-2/x86_64-linux/zipperposition",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/opam-2.0.7-1/x86_64-linux/opam",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/verit-2026.05/x86_64-linux/veriT",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/verit-2026.05/x86_64-linux/libgmp.so.10",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/bash_process-20260628/x86_64-linux/bash_process",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/bash_process-20260628/arm64-linux/bash_process",
+        "arch": "AArch64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/naproche-20260903/x86_64-linux/Naproche",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/csdp-6.1.1-1/x86_64-linux/csdp",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/kodkodi-20260628/jni/x86_64-linux/libcryptominisat.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/kodkodi-20260628/jni/x86_64-linux/libzchaffmincost.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/kodkodi-20260628/jni/x86_64-linux/libminisat.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/kodkodi-20260628/jni/x86_64-linux/libminisatprover.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/kodkodi-20260628/jni/x86_64-linux/libminisat1.14.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/kodkodi-20260628/jni/x86_64-linux/plingeling",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/kodkodi-20260628/jni/x86_64-linux/liblingeling.so",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      },
+      {
+        "path": "opt/isabelle/contrib/vampire-4.8-2/x86_64-linux/vampire",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/stack-2.15.7/x86_64-linux/stack",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      },
+      {
+        "path": "opt/isabelle/contrib/elm-0.19.1/x86_64-linux/elm",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": true,
+        "pie": false
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "DIVERGED",
+  "external_intelligence": [
+    {
+      "source": "osv.dev",
+      "summary": "Malicious code in libgomp (PyPI) (MAL-2025-47783)",
+      "url": "https://osv.dev/vulnerability/MAL-2025-47783"
+    }
+  ],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "a8caa86b0255d07a2417411001a676be8fa3e03be28607113133999876c01c7b",
+  "signature": null
+}
