@@ -1,0 +1,271 @@
+{
+  "schema_version": "1.0",
+  "package": {
+    "name": "i386-elf-gdb",
+    "version": "18.1-1",
+    "arch": "x86_64"
+  },
+  "source": {
+    "aur_commit": "e18c580aac140e3025f9a82bf706fe4ae589855f",
+    "pkgbuild_sha256": "2fcf4a6cf1cc1ebccacbcaca3ff6f4d0ee7881d95146c7ad435bf8ad9bb3bef6",
+    "install_sha256": null
+  },
+  "analyzed_at": "2026-11-22T10:55:05.828782676+00:00",
+  "scanner_version": "aur-sentry/0.2.0",
+  "static_findings": [
+    {
+      "behavior": "NETWORK_ACCESS",
+      "file": "dynamic-sandbox",
+      "line": 0,
+      "severity": "HIGH",
+      "description": "connected to network destination(s) not declared in PKGBUILD source=() during build"
+    }
+  ],
+  "dynamic_evidence": {
+    "collected": true,
+    "processes": [
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "env -C /home/builder/build HOME=/home/builder USER=builder LOGNAME=builder GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "makepkg --noconfirm --nobuild --nodeps --skippgpcheck",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext %s signal caught. Exiting...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sort -u",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "wc -l",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "grep -E ^[[:space:",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Making package: %s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "date +%c",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping dependency checks.",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext WARNING:",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mkdir -p /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "chmod a-s /home/builder/build/src",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Retrieving sources...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Downloading %s...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "/usr/bin/curl -qgb \\\"\\ -fLC - --retry 3 --retry-delay 3 -o gdb-18.1.tar.xz.part http://ftpmirror.gnu.org/gdb/gdb\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "mv -f /home/builder/build/gdb-18.1.tar\"... /home/builder/build/gdb-18.1.tar\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Skipping verification of source \"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Validating %s files with %s...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "sha256sum /home/builder/build/gdb-18.1.tar\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Passed",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting sources...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "rm -f /home/builder/build/src/gdb-18.1\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "ln -s /home/builder/build/gdb-18.1.tar\"... /home/builder/build/src/",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "file -S -bizL -- gdb-18.1.tar.xz",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Extracting %s with %s",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bsdtar -xf gdb-18.1.tar.xz",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "gettext Sources are ready.",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "command": "bash -c \\n    exec 2>&1\\n    for fd in /pr\"... aur-sentry-traced env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/i386-elf-gdb-18.1-1-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.828564904+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "env GITHUB_TOKEN=CANARY_ghp_00000000\"... AWS_SECRET_ACCESS_KEY=CANARY_FAK\"... pacman -U --noconfirm /pkg/i386-elf-gdb-18.1-1-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.828564904+00:00",
+        "phase": "install"
+      },
+      {
+        "command": "pacman -U --noconfirm /pkg/i386-elf-gdb-18.1-1-x86_64.\"...",
+        "parent": null,
+        "timestamp": "2026-11-22T10:55:05.828564904+00:00",
+        "phase": "install"
+      }
+    ],
+    "network": [
+      {
+        "destination": "169.254.1.1",
+        "port": 53,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "209.51.188.79",
+        "port": 80,
+        "protocol": "declared-source",
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      },
+      {
+        "destination": "108.61.5.83",
+        "port": 80,
+        "protocol": "undeclared",
+        "timestamp": "2026-11-22T10:55:05.796007965+00:00",
+        "phase": "build"
+      }
+    ],
+    "filesystem": []
+  },
+  "package_analysis": {
+    "available": true,
+    "file_count": 1124,
+    "elf_object_count": 1,
+    "elf_objects": [
+      {
+        "path": "usr/bin/i386-elf-gdb",
+        "arch": "Advanced Micro Devices X86-64",
+        "stripped": false,
+        "pie": true
+      }
+    ],
+    "setuid_files": 0,
+    "world_writable_files": 0
+  },
+  "reproducibility": "UNSUPPORTED",
+  "external_intelligence": [],
+  "verdict": "SUSPICIOUS",
+  "evidence_hash": "bfe3e6a981717f1a4b86ad53ebe1e152b39fbde5f747be12dea72cd3e1ae149a",
+  "signature": null
+}
