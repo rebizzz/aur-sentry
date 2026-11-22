@@ -1,0 +1,97 @@
+# Maintainer: Yakov Till <yakov.till@gmail.com>
+pkgname=apkscope
+pkgver=0.12.0
+pkgrel=1
+pkgdesc="Android APK decompiler, xrefs, API recon and MCP server, with native viewer"
+arch=('x86_64')
+url="https://github.com/suffixing/apkscope"
+license=('Apache-2.0')
+depends=(
+  'glibc'
+  'libgcc'
+  # Opened with dlopen by winit/glutin, so they appear in no NEEDED entry and
+  # namcap cannot see them, yet the viewer cannot start without them: winit's X11
+  # connection opens libX11, libXcursor, libX11-xcb and libXi with `?`, and its XKB
+  # context needs the X11 bridge, which ships as a package of its own rather than
+  # inside libxkbcommon.
+  'libglvnd'
+  'libx11'
+  'libxcursor'
+  'libxkbcommon'
+  'libxkbcommon-x11'
+  'libxi'
+  'wayland'
+)
+makedepends=('cargo')
+# makepkg's `lto` option (on in stock Arch and here) injects -flto into CFLAGS,
+# which turns the cc-built mimalloc and libdeflate sources into GCC LTO objects
+# that rust-lld cannot link, failing on undefined mi_* and libdeflate_* symbols.
+# Cargo.toml's own `lto = true` still applies to the Rust code.
+options=('!lto')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('5802cf1be63a3ffb22280b267f4b23430fa984a4aba04352d6954824e1f8726a')
+
+# glutin's sys crates generate their bindings into target/ during the build and
+# rustc records the generated file's path in panic metadata, so the binary ships
+# the builder's absolute $srcdir unless the prefix is remapped. build() and
+# check() must pass identical rustflags: package() installs whatever the check
+# build left in target/release, and differing flags would rebuild every crate.
+_cargo_env() {
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  export CARGO_ENCODED_RUSTFLAGS="--remap-path-prefix=${srcdir}/="
+}
+
+# Upstream builds eframe with default-features off and never re-enables a
+# windowing backend, so winit aborts with "The platform you're compiling for is
+# not supported by winit" and the viewer only ever exists for Windows. Enabling
+# the two backends winit needs makes the viewer build here. All three phases use
+# this one value, because prepare() must cache exactly what the build reaches.
+_cargo_features="eframe/x11,eframe/wayland"
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
+  # `cargo fetch` caches only the crates the features above reach, but expanding
+  # eframe's weak `egui-wgpu?/x11` feature needs `egui-wgpu`'s registry entry even
+  # though that optional dependency stays disabled and never enters the lock
+  # file. Unwarmed, the --frozen build cannot resolve features offline and fails
+  # with "no matching package named `egui-wgpu` found". `cargo tree` performs that
+  # resolution from the registry index alone, pulling no crate payloads.
+  cargo tree --locked --features "$_cargo_features" > /dev/null
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  _cargo_env
+  cargo build --release --frozen --features "$_cargo_features"
+}
+
+check() {
+  cd "$pkgname-$pkgver"
+  _cargo_env
+  # Same feature set as build(): a --no-default-features test run would replace
+  # target/release/$pkgname with the viewer-less binary that package() installs.
+  cargo test --release --frozen --features "$_cargo_features"
+  # The viewer is the only consumer of these strings; their presence is the
+  # proof that the tested binary is the one with the window, not the CLI build.
+  grep -qaF 'Drop an APK here' "target/release/$pkgname"
+  ./target/release/apkscope --version
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
+  # NOTICE carries terms the license text does not: the trademark restriction on
+  # the name and logo, and the AOSP provenance of src/data/android_public.txt.
+  install -Dm644 NOTICE -t "$pkgdir/usr/share/licenses/$pkgname/"
+}
+
+# Upstream tags releases without bumping the crate manifest (v0.5.3 still
+# declares 0.5.2), so pkgver follows the release tag while `apkscope --version`
+# reports the manifest number.
+latestver() {
+  gh api repos/suffixing/apkscope/releases/latest --jq '.tag_name' |
+      sed -nE 's/^v([0-9]+(\.[0-9]+)*)$/\1/p'
+}
