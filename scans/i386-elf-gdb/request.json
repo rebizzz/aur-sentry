@@ -1,0 +1,8 @@
+{
+  "package": "i386-elf-gdb",
+  "aur_commit": "e18c580aac140e3025f9a82bf706fe4ae589855f",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-22T10:10:07Z"
+}

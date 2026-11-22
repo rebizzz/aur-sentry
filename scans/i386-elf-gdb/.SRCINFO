@@ -1,0 +1,19 @@
+pkgbase = i386-elf-gdb
+	pkgdesc = GNU debugger crosscompiled for i386 development
+	pkgver = 18.1
+	pkgrel = 1
+	url = https://www.gnu.org/software/gdb
+	arch = x86_64
+	groups = i386-elf-toolchain
+	license = GPL-3.0-or-later
+	makedepends = gmp
+	makedepends = mpfr
+	depends = xz
+	depends = libmpc
+	depends = i386-elf-gcc
+	depends = gdb
+	options = !strip
+	source = http://ftpmirror.gnu.org/gdb/gdb-18.1.tar.xz
+	sha256sums = cd9fc3fe2b47743840e42c1592d3d87f8302eb18639c0b8b4ba0898002e2348f
+
+pkgname = i386-elf-gdb
