@@ -1,0 +1,34 @@
+pkgbase = haven-desktop-git
+	pkgdesc = Matrix chat and social client, built on Element Web/Desktop (built from source - see docs/building.md for build flags)
+	pkgver = 0.12.0.r6.g3a9f4fae34
+	pkgrel = 1
+	url = https://github.com/Haven-Organization/haven-desktop
+	install = haven-desktop-git.install
+	arch = x86_64
+	license = AGPL-3.0-only
+	makedepends = git
+	makedepends = nodejs
+	makedepends = npm
+	makedepends = libxcrypt-compat
+	depends = gtk3
+	depends = nss
+	depends = libxss
+	depends = libnotify
+	depends = libayatana-appindicator
+	depends = alsa-lib
+	depends = at-spi2-core
+	depends = libsecret
+	depends = c-ares
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = re2
+	depends = snappy
+	provides = haven-desktop
+	conflicts = haven-desktop
+	options = !strip
+	options = !debug
+	source = haven-desktop::git+https://github.com/Haven-Organization/haven-desktop.git#branch=develop
+	sha256sums = SKIP
+
+pkgname = haven-desktop-git
