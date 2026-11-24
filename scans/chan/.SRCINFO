@@ -1,0 +1,20 @@
+pkgbase = chan
+	pkgdesc = Supercharged terminal emulator, headless server and CLI
+	pkgver = 0.134.0
+	pkgrel = 1
+	url = https://chan.app
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cargo
+	makedepends = nodejs
+	makedepends = npm
+	depends = gcc-libs
+	depends = glibc
+	depends = systemd
+	conflicts = chan-desktop
+	options = !lto
+	source = chan-0.134.0.tar.gz::https://github.com/fiorix/chan/archive/v0.134.0.tar.gz
+	sha256sums = 318ef3d5f24838f4a5304db11c1f24a062c2d686a942018d3696d8e18f7c55b0
+
+pkgname = chan
