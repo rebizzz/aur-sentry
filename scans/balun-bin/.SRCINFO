@@ -1,0 +1,24 @@
+pkgbase = balun-bin
+	pkgdesc = A lightweight cross-platform HDHomeRun live TV viewer (Pre-compiled Binary)
+	pkgver = 0.2.3
+	pkgrel = 1
+	url = https://github.com/jm2/balun
+	arch = x86_64
+	license = GPL-3.0-or-later
+	depends = glibc
+	depends = libgcc
+	depends = gtk4>=4.16
+	depends = libadwaita>=1.6
+	depends = gstreamer>=1.20
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-good
+	depends = gst-plugins-bad-libs
+	depends = gst-plugin-gtk4
+	depends = gst-libav
+	provides = balun=0.2.3
+	conflicts = balun
+	options = !debug
+	source = balun-bin-0.2.3.pkg.tar.zst::https://github.com/jm2/balun/releases/download/v0.2.3/balun-x86_64.pkg.tar.zst
+	sha256sums = 0d167e255419f61a7f30ab5418c853a8a7a0c69768785d4c8ded9f89570831b3
+
+pkgname = balun-bin
