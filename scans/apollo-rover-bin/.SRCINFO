@@ -1,0 +1,14 @@
+pkgbase = apollo-rover-bin
+	pkgdesc = CLI for Apollo's suite of GraphQL developer productivity tools (binary release)
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/apollographql/rover
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	depends = zlib
+	conflicts = apollo-rover
+	source = apollo-rover-bin-1.1.0.tar.gz::https://github.com/apollographql/rover/releases/download/v1.1.0/rover-v1.1.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 1857bb8370e9de6f24295bded60f678864ab3b2a168ead494a149c97e4dba068
+
+pkgname = apollo-rover-bin
