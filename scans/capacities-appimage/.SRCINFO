@@ -1,0 +1,22 @@
+pkgbase = capacities-appimage
+	pkgdesc = Personal Knowledge Management app - A studio for your mind
+	pkgver = 1.74.3
+	pkgrel = 1
+	url = https://capacities.io/
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	depends = zlib
+	depends = hicolor-icon-theme
+	depends = fuse2
+	provides = capacities
+	noextract = capacities-1.74.3-x86_64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.74.3.AppImage
+	noextract = capacities-1.74.3-aarch64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.74.3-arm64.AppImage
+	options = !strip
+	options = !debug
+	source_x86_64 = capacities-1.74.3-x86_64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.74.3.AppImage
+	sha256sums_x86_64 = a876c7dc19e8b47612076ebc86e70de5a7aa988a997912cce498d85cfa76d2b1
+	source_aarch64 = capacities-1.74.3-aarch64.AppImage::https://2vks4.upcloudobjects.com/capacities-desktop-app/Capacities-1.74.3-arm64.AppImage
+	sha256sums_aarch64 = 1ad9e6c8023fb8e132b04ef890fd94b876ebc7532374c43315fbd08515cc6a35
+
+pkgname = capacities-appimage
