@@ -1,0 +1,8 @@
+{
+  "package": "beeper-nightly-bin",
+  "aur_commit": "84865a28c5d119aacf2e0ba22850d231e556d777",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-26T00:46:45Z"
+}
