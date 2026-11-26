@@ -1,0 +1,18 @@
+pkgbase = ciphey
+	pkgdesc = Automatically decrypt encryptions without knowing the key or cipher, decode encodings, and crack hashes
+	pkgver = 0.12.1
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/bee-san/Ciphey
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	depends = glibc
+	depends = libgcc
+	depends = oniguruma
+	depends = openssl
+	depends = sqlite
+	source = ciphey-0.12.1.tar.gz::https://github.com/bee-san/Ciphey/archive/refs/tags/v0.12.1.tar.gz
+	b2sums = 7c1e2a25d430abc13dcc7ce10be3978e27816d791caa241ed5f7e3ab9092ddd54f2cef42ef6835390b1dc4494b638a07e25db906143dace88e5f78c8529b48d2
+
+pkgname = ciphey
