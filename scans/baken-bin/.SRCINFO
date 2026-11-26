@@ -1,0 +1,25 @@
+pkgbase = baken-bin
+	pkgdesc = Bake'n Deck - Rekordbox to CDJ prep toolkit: loudness gain, Key+BPM playlist sort, and CDJ-safe MP3 transcode
+	pkgver = 4.15.2
+	pkgrel = 1
+	url = https://github.com/M-Igashi/baken
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = ffmpeg
+	provides = baken
+	conflicts = baken
+	conflicts = headroom
+	replaces = headroom
+	source = LICENSE-4.15.2::https://raw.githubusercontent.com/M-Igashi/baken/v4.15.2/LICENSE
+	source = README-4.15.2.md::https://raw.githubusercontent.com/M-Igashi/baken/v4.15.2/README.md
+	sha256sums = 08e71ca36a425ca384c0c028fa9ee04f2de6caceee94ba539cb0f9c7715e6e89
+	sha256sums = 732326c5ff932c49ab3f2889582114568b0526fa20d39bcfa64420e95b2a3b9d
+	source_x86_64 = baken-x86_64-4.15.2.tgz::https://github.com/M-Igashi/baken/releases/download/v4.15.2/baken-v4.15.2-linux-x86_64.tar.gz
+	sha256sums_x86_64 = c4ae3ed081d4e81c8c4e509c6b39fe4b10dd370191fe6424b94fdfeb3b718995
+	source_aarch64 = baken-aarch64-4.15.2.tgz::https://github.com/M-Igashi/baken/releases/download/v4.15.2/baken-v4.15.2-linux-aarch64.tar.gz
+	sha256sums_aarch64 = 5e48f29ea75c5267cd5abc04b8e4f0126b657af01877b5dad19de2d5154d4bbf
+
+pkgname = baken-bin
