@@ -1,0 +1,23 @@
+pkgbase = cline-desktop-bin
+	pkgdesc = Cline AI coding agent.
+	pkgver = 0.0.51
+	pkgrel = 1
+	url = https://cline.bot/
+	arch = aarch64
+	arch = x86_64
+	license = Apache-2.0
+	depends = gtk3
+	depends = gdk-pixbuf2
+	depends = webkit2gtk-4.1
+	depends = libayatana-indicator
+	depends = libappindicator
+	provides = cline-desktop=0.0.51
+	conflicts = cline-desktop
+	conflicts = cline-cli
+	options = !strip
+	source_aarch64 = cline-desktop-0.0.51-aarch64.deb::https://github.com/cline/cline/releases/download/desktop-v0.0.51/Cline_0.0.51_arm64.deb
+	sha256sums_aarch64 = 0b616c496c9e7df91d593809330eb1218a85f2dee95955b46c188620c920e3ab
+	source_x86_64 = cline-desktop-0.0.51-x86_64.deb::https://github.com/cline/cline/releases/download/desktop-v0.0.51/Cline_0.0.51_amd64.deb
+	sha256sums_x86_64 = f7d9e7043a6d87db491922475edc88ccdc15ecf19c8a65e990abcd40885629da
+
+pkgname = cline-desktop-bin
