@@ -1,0 +1,19 @@
+pkgbase = bentwire
+	pkgdesc = Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/mschabhuettl/bentwire
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	license = LGPL-2.1-or-later
+	checkdepends = dbus
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	depends = libxkbcommon
+	source = bentwire-0.2.2.tar.gz::https://github.com/mschabhuettl/bentwire/archive/v0.2.2/bentwire-0.2.2.tar.gz
+	sha256sums = 7445a18e892f469f62ea44ff616adc13be58e0acda16f8fdafbb183f9cadd12e
+
+pkgname = bentwire
