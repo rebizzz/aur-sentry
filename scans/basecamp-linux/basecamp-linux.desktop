@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BaseCamp Linux
+Comment=Unofficial Linux companion app for Mountain peripherals (Keyboard, Mouse, DisplayPad)
+Exec=basecamp-linux
+Icon=basecamp-linux
+Type=Application
+Categories=Utility;
