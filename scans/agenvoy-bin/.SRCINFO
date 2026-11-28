@@ -1,0 +1,18 @@
+pkgbase = agenvoy-bin
+	pkgdesc = Local AI agent harness that runs continuously with auto-built tools, MCP and Ollama
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/pardnchiu/Agenvoy
+	arch = x86_64
+	arch = aarch64
+	license = AGPL-3.0-only
+	depends = glibc
+	provides = agenvoy
+	conflicts = agenvoy
+	options = !debug
+	source_x86_64 = agenvoy-bin-1.5.0-x86_64.tar.gz::https://github.com/pardnchiu/Agenvoy/releases/download/v1.5.0/agen-v1.5.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = bf5ef6708b45c2abc920cabf0b882cb9f9f60f9af6f828b27058cef6b92e08ad
+	source_aarch64 = agenvoy-bin-1.5.0-aarch64.tar.gz::https://github.com/pardnchiu/Agenvoy/releases/download/v1.5.0/agen-v1.5.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 91f271582b2aec36fa287e6a89ba4fd2825045fc334b0b5af31d7f500db1d297
+
+pkgname = agenvoy-bin
