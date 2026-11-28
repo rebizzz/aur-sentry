@@ -1,0 +1,21 @@
+pkgbase = bentwire
+	pkgdesc = Desktop characters (Microsoft Agent and Office Assistant formats) for Wayland
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://github.com/mschabhuettl/bentwire
+	arch = x86_64
+	license = MIT OR Apache-2.0
+	license = LGPL-2.1-or-later
+	checkdepends = dbus
+	makedepends = cargo
+	makedepends = pkgconf
+	depends = alsa-lib
+	depends = glibc
+	depends = libgcc
+	depends = libxkbcommon
+	optdepends = espeak-ng: speech output
+	options = !lto
+	source = bentwire-0.7.0.tar.gz::https://github.com/mschabhuettl/bentwire/archive/v0.7.0/bentwire-0.7.0.tar.gz
+	sha256sums = f13d1aeb538e302295c10f61146fb786c840bfc58839bb5ff31fedd2dba9d94a
+
+pkgname = bentwire
