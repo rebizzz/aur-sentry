@@ -1,0 +1,19 @@
+pkgbase = atago-bin
+	pkgdesc = End-to-end test runner for CLI tools
+	pkgver = 0.28.0
+	pkgrel = 1
+	url = https://github.com/nao1215/atago
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = atago
+	conflicts = atago
+	options = !strip
+	source = atago-0.28.0-checksums.txt::https://github.com/nao1215/atago/releases/download/v0.28.0/checksums.txt
+	sha256sums = 9f822a84a5d5413224a757050bb394add2db748c1f60568423401023fbac17c1
+	source_x86_64 = atago-0.28.0-x86_64.tgz::https://github.com/nao1215/atago/releases/download/v0.28.0/atago_0.28.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 74f87ced906836988645fca6f5e6bfd6a14e4d2ea59a74b2f0bda401a61316fa
+	source_aarch64 = atago-0.28.0-aarch64.tgz::https://github.com/nao1215/atago/releases/download/v0.28.0/atago_0.28.0_linux_arm64.tar.gz
+	sha256sums_aarch64 = 4cc594b5961f509d4b6758eb258a14ab3b3c546cd07240064393324471508967
+
+pkgname = atago-bin
