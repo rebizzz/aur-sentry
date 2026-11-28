@@ -1,0 +1,20 @@
+pkgbase = agentfield-bin
+	pkgdesc = Build, run and scale AI agents like API and microservices
+	pkgver = 0.1.147
+	pkgrel = 1
+	url = https://github.com/Agent-Field/agentfield
+	arch = x86_64
+	arch = aarch64
+	license = Apache-2.0
+	depends = glibc
+	provides = agentfield
+	conflicts = agentfield
+	options = !debug
+	source = agentfield-bin-0.1.147-LICENSE::https://raw.githubusercontent.com/Agent-Field/agentfield/v0.1.147/LICENSE
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
+	source_x86_64 = agentfield-bin-0.1.147-x86_64::https://github.com/Agent-Field/agentfield/releases/download/v0.1.147/agentfield-linux-amd64
+	sha256sums_x86_64 = 7ae0613ec6ce30ee7b350952863da3d78c544e0db9157cff3d8cd764b7b4583f
+	source_aarch64 = agentfield-bin-0.1.147-aarch64::https://github.com/Agent-Field/agentfield/releases/download/v0.1.147/agentfield-linux-arm64
+	sha256sums_aarch64 = f99bc2a01ba3b08f9af0b3c38918b8208257f11874ee129b61a1d4f223e3199d
+
+pkgname = agentfield-bin
