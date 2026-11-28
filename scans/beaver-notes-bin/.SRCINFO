@@ -1,0 +1,20 @@
+pkgbase = beaver-notes-bin
+	pkgdesc = Open-source, local-first workspace for notes, projects, and meetings
+	pkgver = 5.0.0
+	pkgrel = 1
+	url = https://github.com/Beaver-Notes/Beaver-Notes
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	provides = beaver-notes
+	conflicts = beaver-notes
+	noextract = Beaver-notes-5.0.0-aarch64.tar.gz
+	noextract = Beaver-notes-5.0.0-x86_64.tar.gz
+	source = https://github.com/Beaver-Notes/Beaver-Notes/raw/v5.0.0/LICENSE
+	sha256sums = 593ed481f41652b46705e544226e0b58ffc046138f6a34777a0092e8d1f54b1d
+	source_x86_64 = https://github.com/Beaver-Notes/Beaver-Notes/releases/download/v5.0.0/Beaver-notes-5.0.0-x86_64.tar.gz
+	sha256sums_x86_64 = 4ad18e487d3a87a93a04ee9627bb8aac21733a12d96ca7230f888032a077501b
+	source_aarch64 = https://github.com/Beaver-Notes/Beaver-Notes/releases/download/v5.0.0/Beaver-notes-5.0.0-aarch64.tar.gz
+	sha256sums_aarch64 = 0d728a083c44dabb86ed9c53f783a63ee25f90abdf0461457987a129f15605ac
+
+pkgname = beaver-notes-bin
