@@ -1,0 +1,23 @@
+pkgbase = agildomonitor
+	pkgdesc = Monitor de hardware e processos Liquid Glass em C++20/Qt6 para Linux
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/juglesbass/AgildoMonitor
+	install = agildomonitor.install
+	arch = x86_64
+	license = GPL-3.0-or-later
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = ninja
+	depends = gcc-libs
+	depends = glibc
+	depends = kirigami
+	depends = kwindowsystem
+	depends = qt6-base
+	depends = qt6-declarative
+	optdepends = pciutils: nome detalhado da GPU AMD via lspci (chamado uma única vez no arranque)
+	optdepends = nvidia-utils: métricas de GPU NVIDIA via nvidia-smi assíncrono
+	source = AgildoMonitor-2.0.0.tar.gz::https://github.com/juglesbass/AgildoMonitor/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = b0aaffef41f8078caa9dbb5b8d9a4972b11e76019c0eed99f15ab1ae4a072032
+
+pkgname = agildomonitor
