@@ -1,0 +1,23 @@
+pkgbase = autopulse-bin
+	pkgdesc = Update Plex, Jellyfin and other media servers from Sonarr and Radarr notifications
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/dan-online/autopulse
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	depends = glibc
+	depends = libgcc
+	depends = postgresql-libs
+	depends = sqlite
+	provides = autopulse
+	conflicts = autopulse
+	options = !debug
+	source = autopulse-bin-2.1.0-LICENSE::https://raw.githubusercontent.com/dan-online/autopulse/v2.1.0/LICENSE
+	sha256sums = f81a86b7bab42f2596d02465fc98977cf32b396535ff6d0cd180bdfafc230581
+	source_x86_64 = autopulse-bin-2.1.0-x86_64.tar.gz::https://github.com/dan-online/autopulse/releases/download/v2.1.0/autopulse-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = f33f8e9b8ab01fb878282763c46b97d39cb5e94bdfaf59129b19977e14b7469c
+	source_aarch64 = autopulse-bin-2.1.0-aarch64.tar.gz::https://github.com/dan-online/autopulse/releases/download/v2.1.0/autopulse-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = a85557648adc525ec478db1073dc01397742db2888d56b9e3e207f542918806a
+
+pkgname = autopulse-bin
