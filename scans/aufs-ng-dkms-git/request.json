@@ -1,0 +1,8 @@
+{
+  "package": "aufs-ng-dkms-git",
+  "aur_commit": "cdd36ffe5c2eddc4178c7994920affd8c7586bff",
+  "reasons": [
+    "NEW"
+  ],
+  "requested_at": "2026-11-28T08:13:12Z"
+}
